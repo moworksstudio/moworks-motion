@@ -21,6 +21,9 @@ Bản sửa an toàn sau một lượt rà soát mã nguồn từ bên ngoài.
   được, `kit.py gallery check --static` (mới: preset.json, quy tắc khung hình theo thời gian, SHA-256 của file giữ nguyên bản gốc, không cần
   trình duyệt), skill zip khớp nguồn (`engine\tests\pack_skill.py --check`, mới), looks giữ nguyên bản gốc, `kit.py publish-check`. Cảnh báo
   lỗ hổng của Dependabot đã bật cho repo.
+- **Thư viện chỉ chủ kit được sửa:** chỉ máy có `%USERPROFILE%\.aimotionkit\maintainer.txt` mới thêm, giữ hay bỏ mẫu (nút trên Gallery,
+  `kit.py library import | keep | drop`); máy khác chỉ có nút COPY và hiệu ứng mới nằm trong `presets\` của phim. Trên máy chủ kit,
+  mỗi thẻ thư viện có nút **BỎ** (vào Thùng rác) để sàng lọc; mẫu kit đang dùng (code, skill, test, mẫu khác gọi tới) ghi "kit đang dùng".
 - `kit.py gallery check --random N`: kiểm N mẫu chọn ngẫu nhiên. Cả thư viện mất khoảng 1,5 giờ, giờ chỉ chạy hết khi thay đổi có thể
   đổi hình của mọi phim.
 - Smoke test kiểm thêm 7 điểm trên của player (20 bước).

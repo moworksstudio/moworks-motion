@@ -12,6 +12,12 @@ cần final check giữ hoặc không"): a film's own preset goes to library/inc
 its demo clip and checks here, and shows on the page under "Mới nhập" with Giữ (moved into library/presets|layouts, usable by every film)
 and Bỏ (Recycle Bin). Until kept, films cannot use it (build only looks in the library and the film's own presets/).
 
+The library is the kit owner's cherry-pick (user 12/10/2026: "library là không cho sửa trừ chủ repo"): only the owner's machine
+(%USERPROFILE%\\.aimotionkit\\maintainer.txt, never in git) imports, keeps or drops presets, from the Gallery's buttons or kit.py library
+import | keep | drop. The owner also gets Bỏ on every library card (the preset to the Recycle Bin; the next maintenance pull request takes
+the removal to GitHub), except on presets the kit itself uses (in_use: its code, skill, tests, or another preset). Other machines see
+Copy only, and their films keep a new effect in the film's own presets/.
+
 Machine checks (results in library/gallery/checks/<group>__<name>.json and on each card):
   build     the preset bakes into literal tweens (no tween the builder cannot write out), no page errors
   seek      the same time renders the same pixels after jumping elsewhere (seek-safe, nothing random or wall-clock); "seek" counts pixels
@@ -37,6 +43,7 @@ ROOTS = {("motion", False): LIBP, ("layout", False): LIBL, ("motion", True): INC
 GAL = KIT / "library" / "gallery"
 GALI = GAL / "incoming"                                # "Mới nhập" clips / thumbs / checks + incoming.js data: out of git until kept
 WORKG = LOCAL / "work" / "gallery"
+OWNER = LOCAL / "maintainer.txt"                       # this machine is the kit owner's: the only one that changes the library
 VENDOR = ENGINE / "vendor"
 FPS, SCALE, CHECK_SCALE = 15, 0.25, 0.5
 BAD = [(r"Math\.random", "Math.random"), (r"Date\.now|new Date", "Date"), (r"performance\.now", "performance.now"),
@@ -83,10 +90,43 @@ def find(name):
     return None
 
 
+def owner():
+    return OWNER.exists()
+
+
+def need_owner(what):
+    if not owner():
+        raise SystemExit(f"{what}: only the kit owner changes the library (this machine has no {OWNER}). A new effect stays in the "
+                         "film's own 03_HTML/presets/ (workflow/library-intake.md)")
+
+
+def in_use():
+    """{library preset: [what uses it]}: the kit's own code, skill and tests (engine/, vendor aside) and the other library presets' code or
+    demo (e.g. house/pop-cute is called by five others). The owner's Bỏ is refused for these: a film, the skill or a preset would break.
+    Not counted: engine/tests/hf_*.json (the HyperFrames import lists name every block they made) and notes (tests/*.md).
+    Read again on every call, so a preset whose last user was dropped becomes droppable."""
+    recs = [(n, m) for n, m in records() if not m.get("_incoming")]
+    names, used = {n for n, _ in recs}, {}
+    name_rx = re.compile(r"""["'`]([a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*)["'`]""")
+    for f in ENGINE.rglob("*"):
+        rel = f.relative_to(ENGINE).parts
+        if rel[0] in ("vendor", "models", "fonts") or "__pycache__" in rel or f.suffix not in (".py", ".js", ".mjs", ".html", ".json", ".md") or not f.is_file(): continue
+        if rel[0] == "tests" and (f.name.startswith("hf_") or f.suffix == ".md"): continue
+        where = rel[0] if rel[0] in ("skill", "tests") else "engine"
+        for x in set(name_rx.findall(f.read_text(encoding="utf-8", errors="ignore"))):
+            if x in names: used.setdefault(x, set()).add(where)
+    for n, m in recs:
+        text = Path(m["_js"]).read_text(encoding="utf-8", errors="ignore") + json.dumps(m.get("demo") or {})
+        for x in set(name_rx.findall(text)):
+            if x in names and x != n: used.setdefault(x, set()).add(n)
+    return {k: sorted(v) for k, v in used.items()}
+
+
 def import_preset(src_dir, name, layout=False, say=say):
     """a film's preset folder -> library/incoming/<presets|layouts>/<name>/ (its AIMK.preset("...") registration renamed to <name>), then its
     demo clip and checks. The folder is copied as it is: check it first for client text, pictures, colours and names (the skill says how)."""
     import datetime
+    need_owner("library import")
     src_dir = Path(src_dir)
     if not (src_dir / "preset.js").exists(): raise SystemExit(f"no preset.js in {src_dir}")
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*", name):
@@ -124,6 +164,7 @@ def _prune(d):
 def keep(name, say=say):
     """Giữ: library/incoming/.../<name> -> library/presets|layouts/<name> (films can use it now); its clip and checks stay"""
     import datetime
+    need_owner("library keep")
     f = find(name)
     if not f or not f[1]: raise SystemExit(f"keep: {name} is not waiting in Mới nhập")
     dst = ROOTS[(f[0], False)] / name
@@ -145,12 +186,16 @@ def keep(name, say=say):
 
 
 def drop(name, say=say):
-    """Bỏ: the waiting preset, its clip, picture and checks -> Recycle Bin"""
+    """Bỏ: a preset waiting in Mới nhập, or (12/10/2026) one in the library: its folder, clip, picture and checks -> Recycle Bin. The kit
+    owner only; a library preset the kit uses (in_use) stays. A library removal reaches GitHub with the next maintenance pull request."""
     from common import trash
+    need_owner("library drop")
     f = find(name)
-    if not f or not f[1]: raise SystemExit(f"drop: {name} is not waiting in Mới nhập")
-    s = slug(name)
-    trash([f[2]] + [x for x in (GALI / "clips" / f"{s}.mp4", GALI / "thumbs" / f"{s}.png", GALI / "checks" / f"{s}.json") if x.exists()])
+    if not f: raise SystemExit(f"drop: no preset {name} in the library or Mới nhập")
+    if not f[1] and (by := in_use().get(name)):
+        raise SystemExit(f"drop: {name} stays, the kit uses it ({', '.join(by)})")
+    s, G = slug(name), (GALI if f[1] else GAL)
+    trash([f[2]] + [x for x in (G / "clips" / f"{s}.mp4", G / "thumbs" / f"{s}.png", G / "checks" / f"{s}.json") if x.exists()])
     _prune(f[2].parent)
     write_data(load_checks())
     say(f"  {name}: -> Recycle Bin")
@@ -521,10 +566,12 @@ def serve_page(port=None):
                 body = dec.read_bytes() if dec.exists() else b"{}"
                 self.send_response(200); self.send_header("Content-Type", "application/json"); self.send_header("Content-Length", str(len(body))); self.end_headers()
                 self.wfile.write(body); return
+            if self.path.startswith("/api/owner"):          # the owner's machine: its buttons, and the presets the kit uses (no Bỏ on those)
+                return self._json(200, {"owner": True, "in_use": in_use()} if owner() else {"owner": False})
             return super().do_GET()
 
-        def do_POST(self):                                  # the "Mới nhập" buttons: {"name": "<group>/<name>"} -> Giữ / Bỏ
-            act = {"/api/incoming/keep": keep, "/api/incoming/drop": drop}.get(self.path.split("?")[0])
+        def do_POST(self):                                  # Giữ / Bỏ of "Mới nhập", Bỏ of a library card: {"name": "<group>/<name>"} (the owner only)
+            act = {"/api/incoming/keep": keep, "/api/incoming/drop": drop, "/api/library/drop": drop}.get(self.path.split("?")[0])
             if not act: return self._json(404, {"ok": False, "msg": "unknown"})
             try:
                 name = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}").get("name", "")

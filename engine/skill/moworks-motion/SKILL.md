@@ -153,8 +153,8 @@ Rebuild, and answer with a table: line · what you changed · fixed / not fixed 
      versions) are never removed at all, not even offered (`workflow/film.md`, Rounds).
    - A file the user has open or edits (lyrics, notes, a brief) is theirs: write yours next to it under a new name.
    - **A film chat never changes the kit or its libraries** (`engine`, `library`, `skill`: no fix, no new shared function).
-     One exception, only when the user asks: a clean copy of an effect or layout into the Gallery's Incoming section (`kit.py library import`,
-     `workflow/library-intake.md`); the user keeps or drops it on the Gallery.
+     One exception, only when the user asks and only on the kit owner's machine: a clean copy of an effect or layout into the Gallery's
+     Incoming section (`kit.py library import`, `workflow/library-intake.md`); the owner keeps or drops it on the Gallery.
      A kit bug that blocks the film: work around it INSIDE the film (`03_HTML\presets\`, a film.json trick, a film script) so the film gets
      done, and write it down for the main kit chat (`workflow/film.md`, "Handoff"): the bug, the file, how you worked around it, every
      function or preset you wrote. Code for one film lives in `03_HTML\presets\`.

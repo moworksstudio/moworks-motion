@@ -61,6 +61,7 @@ python kit.py ae      <project>                            editable After Effect
 python kit.py library [motion|layout] [word ...]         the library, one line per preset (name, verdict, description, tags), for choosing
 python kit.py library import <project> <preset> [--as group/name] [--layout]   a film's own preset -> "Mới nhập" (library/incoming), demo + checks
 python kit.py library incoming | keep <name> | drop <name>   what waits in "Mới nhập"; Giữ (into the library) / Bỏ (Recycle Bin), as the Gallery's buttons
+                                                             (import / keep / drop: the kit owner's machine only; drop also takes a library preset the kit does not use)
 python kit.py pulse   <project> [--video f.mp4] [--from s --to s]   does the picture move ON the beat (lift, jolts, still frames; the A/B film B as reference)
 python kit.py collide <project> [--step 0.05]             readable elements running into each other, blank frames at scene cuts -> qa\\collide.json
 python kit.py transcribe <project> [file.wav] [--lang vi] [--prompt "names"]   voice -> words with times (local Whisper) -> audio\\transcript\\ (a file: before film.json has it)
@@ -1260,7 +1261,7 @@ def cmd_library(a):
 
 
 def _library_intake(a, words, gallery):
-    """kit.py library import | incoming | keep | drop (E5, "Mới nhập": gallery.py)"""
+    """kit.py library import | incoming | keep | drop (E5, "Mới nhập": gallery.py); import / keep / drop on the kit owner's machine only"""
     cmd, rest = words[0], words[1:]
     if cmd == "incoming":
         recs = [(n, m) for n, m in gallery.records() if m.get("_incoming")]
