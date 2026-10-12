@@ -20,14 +20,13 @@ focus). Phim mẫu của repo tải GSAP / three.js từ CDN lúc render, trái 
 
 | # | Lấy gì | Gộp vào đâu trong kit | Giấy phép | Giá trị | Công sức | Đề xuất |
 |---|---|---|---|---|---|---|
-| 1 | Kiểm lặp lại bằng máy ("variety audit"): cùng một chuyển cảnh ở hai cut liền nhau, một chuyển cảnh dùng quá 2 lần trong phim dưới 60 s, cùng một kiểu vào chữ 3 lần liền, một ease chiếm quá nửa số chuyển động, hơn 60 % cảnh dài bằng nhau | Một mục mới của `kit.py lint`, đọc thẳng film.json (preset, ease, độ dài cảnh), có cách đánh dấu lặp có chủ ý (`motif`) | MIT | vừa | 4–6 giờ | viết lại (luật lấy từ `variety_audit.py`, nguồn dữ liệu là film.json) |
-| 2 | Bảng "chuyển cảnh kể chuyện" (24 mục: dùng khi nào, tránh gì) và vài chuyển cảnh dựng bằng DOM để lên AE thành keyframe chỉnh được (type carry, object carry, line-to-horizon, parallax 3 lớp, shape mask, split stack, rewind scrub) | Bảng ngắn trong skill (`workflow/film.md`); từng preset `transition/*` qua "Mới nhập" nếu muốn | MIT | vừa | bảng 1–2 giờ; mỗi preset 2–3 giờ | bảng: viết lại; preset: để sau, chỉ khi cần |
-| 3 | Bảng "giọng phim → lựa chọn" (11 giọng: calm, premium, urgent, playful… → ease, nhịp cắt, camera, màu, chữ, chuyển cảnh, âm thanh) | Skill: `workflow/free-design.md` hoặc cạnh "The numbers" trong `film.md` | MIT | thấp | 1 giờ | viết lại nếu muốn |
-| 4 | Ghi công người làm video tham khảo (tên + link) khi học nhịp / bố cục từ phim của người khác | Một dòng luật trong `workflow/remake.md`; `compare --shots` có thể in thêm nhịp cắt (số cut mỗi 10 s, shot trung vị, số cut trong 3 s đầu) | MIT | thấp | 1 giờ | viết lại nếu muốn |
+| 1 | Kiểm lặp lại bằng máy ("variety audit"): cùng một chuyển cảnh ở hai cut liền nhau, một chuyển cảnh dùng quá 2 lần trong phim dưới 60 s, cùng một kiểu vào chữ 3 lần liền, một ease chiếm quá nửa số chuyển động, hơn 60 % cảnh dài bằng nhau | Một mục mới của `kit.py lint`, đọc thẳng film.json (preset, ease, độ dài cảnh), có cách đánh dấu lặp có chủ ý (`motif`) | MIT | vừa | 4–6 giờ | không lấy |
+| 2 | Bảng "chuyển cảnh kể chuyện" (24 mục: dùng khi nào, tránh gì) và vài chuyển cảnh dựng bằng DOM để lên AE thành keyframe chỉnh được (type carry, object carry, line-to-horizon, parallax 3 lớp, shape mask, split stack, rewind scrub) | Bảng ngắn trong skill (`workflow/film.md`); từng preset `transition/*` qua "Mới nhập" nếu muốn | MIT | vừa | bảng 1–2 giờ; mỗi preset 2–3 giờ | không lấy |
+| 3 | Bảng "giọng phim → lựa chọn" (11 giọng: calm, premium, urgent, playful… → ease, nhịp cắt, camera, màu, chữ, chuyển cảnh, âm thanh) | Skill: `workflow/free-design.md` hoặc cạnh "The numbers" trong `film.md` | MIT | thấp | 1 giờ | không lấy |
+| 4 | Ghi công người làm video tham khảo (tên + link) khi học nhịp / bố cục từ phim của người khác | Một dòng luật trong `workflow/remake.md`; `compare --shots` có thể in thêm nhịp cắt (số cut mỗi 10 s, shot trung vị, số cut trong 3 s đầu) | MIT | thấp | 1 giờ | không lấy |
 | 5 | 101 theme, playbook, phim mẫu, `breakdown.py`, `loop_check.py`, `deliver.sh`, `warm_sfx.py`, quy trình người ảo qua fal, ghim UI lên màn hình xanh | — | MIT | thấp | — | không lấy |
 
-**Kết luận:** Không nhập repo. Nếu muốn lấy một thứ thì lấy #1 (máy bắt lỗi "phim nào cũng giống nhau", điều kit hiện chỉ có ở dạng luật
-viết); #2–#4 là ghi chú nhỏ cho skill, làm khi tiện.
+**Quyết định (người dùng, 2026-10-12): không lấy, bỏ qua mọi mục.** Bảng trên giữ lại làm hồ sơ những gì đã xem; phiên desktop không dựng mục nào.
 
 ## Already in the kit
 
@@ -73,6 +72,8 @@ viết); #2–#4 là ghi chú nhỏ cho skill, làm khi tiện.
    Ideas only; nothing to vendor.
 
 ## Build notes for the desktop session
+
+Not to be built: the user decided on 2026-10-12 not to use this repository. The notes stay as a record.
 
 Only if the user asks for a row; nothing is copied as shipped. Credit line in `docs/THIRD-PARTY.md` "Techniques and references"
 (saas-motion-kit, MIT, commit `bc7a414`) and a `docs/CHANGELOG.md` line.
