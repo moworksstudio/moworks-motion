@@ -83,9 +83,8 @@ def kit_faces():
 def hf_faces(p, names):
     """the kit's own copy of every Google family a HyperFrames block page (ctx.hfFrame, its assets/*.html) names in its styles: the files go
     into the film (assets/vendor/fonts/google/...) and the map to window.AIMK_HF_FACES, where ctx.hfFrame gives them to a page that names a
-    family it never loads. Without it such a page drew the font Windows had (install.bat puts these families in the user fonts for After
-    Effects, other machines may not have them) and Chromium loads user fonts late: code/code-morph measured its code with a stand-in font
-    whenever the browser had not loaded "JetBrains Mono" yet, a 1-2 px shift that came and went (gallery check, 12/10/2026)."""
+    family it never loads. Without it such a page drew whatever font Windows had under that name (install.bat puts these families in the
+    user fonts for After Effects, other machines may not have them), so the same film could differ from machine to machine (12/10/2026)."""
     import re
     named = set()
     for n in names:

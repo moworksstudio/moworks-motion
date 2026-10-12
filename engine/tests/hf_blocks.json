@@ -212,7 +212,10 @@
  "code-morph": {
   "name": "code/code-morph",
   "title_vi": "Đoạn code biến thành đoạn khác (Magic Move)",
-  "desc_vi": "Một đoạn code biến thành đoạn khác: các token trượt sang vị trí mới, token bỏ mờ đi, token mới hiện vào (kiểu Shiki Magic Move)."
+  "desc_vi": "Một đoạn code biến thành đoạn khác: các token trượt sang vị trí mới, token bỏ mờ đi, token mới hiện vào (kiểu Shiki Magic Move).",
+  "seek_tolerance": 0.0005,
+  "bake_tolerance": 0.012,
+  "notes": "Seek check tolerance 0.05 % and bake 1.2 % (measured 0.023 % and 0.86 % on 12/10/2026): the tokens move on GPU layers (transforms) and Chromium snaps their raster differently between page loads; the document positions are identical (checked over repeated loads)."
  },
  "code-particle-assemble": {
   "name": "code/code-particle-assemble",

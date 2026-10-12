@@ -185,8 +185,8 @@
       for (const k in o.urls || {}) s = s.split(k).join(ctx.asset(o.urls[k]));
       for (const f of o.files || []) s = s.replace(new RegExp(`(["'(])(\\./)?${f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(["')])`, "g"), (m0, a, d, b) => a + "./" + ctx.asset(f) + b);
       let face = [...fams].map(f => `@font-face { font-family: "${f}"; src: url("assets/fonts/${/mono|code|courier/i.test(f) ? "RobotoMono-var.woff2" : "RobotoFlex-var.woff2"}") format("woff2"); font-weight: 100 1000; font-display: block; }`).join("\n");
-      // a family the page names but loads nowhere (no link, no @font-face) was drawn with whatever Windows had installed, loaded late:
-      // the kit's own copy instead (window.AIMK_HF_FACES: kit build, hf_faces), the same on every machine (12/10/2026: code/code-morph)
+      // a family the page names but loads nowhere (no link, no @font-face) was drawn with whatever Windows had installed under that name:
+      // the kit's own copy instead (window.AIMK_HF_FACES: kit build, hf_faces), the same on every machine (12/10/2026)
       const HFF = window.AIMK_HF_FACES || {}, gone = new Set([...fams].map(f => f.toLowerCase()));
       const declared = new Set([...s.matchAll(/@font-face\s*\{[^}]*?font-family:\s*["']?([^;"'}]+)/gi)].map(m => m[1].trim().toLowerCase()));
       const own = new Set();

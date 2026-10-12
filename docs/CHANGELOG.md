@@ -9,8 +9,7 @@ Bản cập nhật về độ ổn định của thư viện mẫu, ghi công t�
 
 ### Sửa lỗi
 - **Chữ trong các mẫu HyperFrames hiển thị giống nhau trên mọi máy:** mẫu dùng font mà tự nó không tải (Inter, JetBrains Mono, Playfair
-  Display…) nay dùng bản font đi kèm kit thay cho font cài trên máy, khắc phục hiện tượng chữ lệch 1–2 px thất thường (ví dụ
-  `code/code-morph`).
+  Display…) nay dùng bản font đi kèm kit thay cho font cài trên từng máy.
 - Quy tắc phát hiện truy cập mạng trong bộ kiểm tra thư viện hoạt động đúng trở lại; toàn bộ thư viện đạt.
 
 ### Ghi công

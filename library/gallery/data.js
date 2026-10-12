@@ -1,5 +1,5 @@
 window.GALLERY = {
- "generated": "2026-10-12 22:25",
+ "generated": "2026-10-12 22:59",
  "presets": [
   {
    "name": "background/aurora-drift",
@@ -11977,7 +11977,7 @@ window.GALLERY = {
     "refactor",
     "developer"
    ],
-   "notes": "Run as shipped: the block's own page (assets/code-morph.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: One snippet transforms into another — tokens glide between positions, leavers fade out, enterers fade in. Shiki Magic Move re-driven as a paused GSAP timeline.",
+   "notes": "Run as shipped: the block's own page (assets/code-morph.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Seek check tolerance 0.05 % and bake 1.2 % (measured 0.023 % and 0.86 % on 12/10/2026): the tokens move on GPU layers (transforms) and Chromium snaps their raster differently between page loads; the document positions are identical (checked over repeated loads). Source: One snippet transforms into another — tokens glide between positions, leavers fade out, enterers fade in. Shiki Magic Move re-driven as a paused GSAP timeline.",
    "brand_ui": false,
    "needs": [],
    "clip": "clips/code__code-morph.mp4",
