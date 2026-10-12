@@ -10,7 +10,7 @@ the one with `1. Preview.bat`) or its `03_HTML`; an older film's own folder also
 | `round <project> film [--note "..."] [--base vK]` | a film round goes to the user → `02_Assets\Rounds\Film_v<kk>\` (film.json, index.html, presets + the assets / audio new in it, files.json; nothing new when unchanged); prints the line to say in the chat; exports carry the newest vN in their names. `version` = the same |
 | `round <project> storyboard [A B C] [--note]` · `round <project> assets [kind=]<file> ... [--note]` | a design round → `Storyboard_R<k>\<name>.png` (the `kit.py storyboard` sheets) / `Assets_R<k>\<characters\|locations\|props>\` (no file: the `kit.py sheet` outputs); prints the line to say |
 | `rounds <project>` | every round in order (the film rounds = the player's version list), and whether the working film moved on |
-| `restore <project> vK` | version K becomes the working film again (the user: "quay lại vK"); the working film is kept as a round first |
+| `restore <project> vK` | version K becomes the working film again (the user says "quay lại vK"); the working film is kept as a round first |
 | `build <project>` | film.json → index.html (tweens written out; old file backed up to qa\backup); scene entries `{ "include": "parts/x.json" }` are long-film parts; film.json `"groove"` (`film.md`) becomes one code block; ends with the quick lint (warnings, `qa\lint.json`; `AIMK_NO_LINT=1` skips it) |
 | `lint <project> [--hf]` | the quick lint alone: a logo with motion, text over text / outside the margin at rest, a blank frame after a cut, text shown too briefly to read (0.5 s + 0.3 s a word), text under 4.5:1 contrast with what is behind it (3:1 large), opacity or colour on a bouncing ease, a product render moving next to resting text, an image sequence that jumps, film.json `"checks"` that do not hold (seconds). `--hf`: HyperFrames' own linter |
 | `storyboard <project> [A B C]` | gate 1: every `qa\storyboard\<name>.json` (a still film per option) built apart, film.json / index.html untouched → `02_Assets\Stills\storyboard\<name>\sheet.png` |
@@ -53,7 +53,7 @@ the one with `1. Preview.bat`) or its `03_HTML`; an older film's own folder also
 | `psd <project> "<file.psb>" --list \| --frames "P01=Group/1" [--keep "Group/BG"] [--film] [--compare <dir> --pairs "P01=1"]` | PSD / PSB → `psd\` (PSD-TREE.md, psd.json, fonts.json, PSD.md) + layers + still scenes |
 | `brand <project> <pack \| look>` | apply a brand pack of `brands\` (fonts, logos, `assets\brand.css`; `brands/pack.md`) or a public look of `library\looks\` (colours, type; then build with its `FRAME.md`: `workflow/free-design.md`) |
 | `brand-check <project> <pack> [--brief [file]]` | check a film against the pack (logos animated or grooved, colours: film.json `"brand_colors"` = the pack's product / campaign colours on montage words, backgrounds, text clusters, fonts, frame 0). `--brief`: the brief vs the guideline (colours, fonts, sizes, capitals, logo motion), works before any film exists: ask the user brief or guideline for each point |
-| `pulse <project> [--video f.mp4] [--from s --to s] [--bpm 135 --offset 2]` | does the picture move ON the beat: lift after the beat, beats with a visible jolt, still frames (the film rendered small, a few minutes; or an exported video in seconds), against the A/B film the user liked best |
+| `pulse <project> [--video f.mp4] [--from s --to s] [--bpm 135 --offset 2]` | does the picture move ON the beat: lift after the beat, beats with a visible jolt, still frames (the film rendered small, a few minutes; or an exported video in seconds), against a film that worked well |
 | `font <family>` | find a font file (installed, brand packs, Adobe Fonts activated in Creative Cloud) and check its Vietnamese glyphs |
 | `pdf <file.pdf> [--pages 3-5] [--in <project>]` | PDF pages → PNG on this machine (PyMuPDF comes with the kit): look at guideline pages, not only their text |
 | `loudness <file.wav> [--fix out.wav]` \| `loudness <project>` | LUFS / true peak / the phone band (200 Hz - 6 kHz); `--fix` normalises to -14 LUFS, -1 dBTP. A film: its exported mix, and every sound effect's level over the bed (aim 3 to 6 dB) |
@@ -76,7 +76,7 @@ with a result table; uninstall moves everything install put on the machine to th
 (`.gitignore`, `.gitattributes` are there but hidden; the version is `engine\VERSION`).
 **Your own Playwright script** (a client's web page to capture, any job the commands above do not cover): its first lines are
 `import sys; sys.path.insert(0, r"<kit>\engine"); import common`, so Playwright uses the kit's Chromium (on a new machine it is in
-`%USERPROFILE%\.aimotionkit\ms-playwright`, not Playwright's default place: clean-machine test, 10/10/2026). A web page: `goto(url,
+`%USERPROFILE%\.aimotionkit\ms-playwright`, not Playwright's default place: clean-machine test). A web page: `goto(url,
 wait_until="load", timeout=30000)` then a fixed short wait, never `networkidle` (pages with trackers never go idle); a cookie banner:
 click its accept / decline button or hide it before the shot. Ask before capturing a client's site (it is a download). A 403 or a bot
 check: stop at the first one (never retry, never bypass) and ask the user for the screenshots, saying which pages and where to put them.

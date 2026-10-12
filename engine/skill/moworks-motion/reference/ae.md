@@ -14,28 +14,27 @@ motion → building in After Effects → comparing frames with the browser → c
   blocks each, made most of that). Run the port in the background and wait for its end (no progress monitor: `SKILL.md` rule 6).
 - **What becomes what:** scenes → precomps (transitions on the precomp layer); text → live text layers; counting numbers → Slider + Source Text
   expression; solid boxes → shape layers; **plain vector SVGs** (paths, rects, circles, ellipses, lines, polygons with flat fills /
-  strokes: the character rig's parts, a film's drawn art) → native **shape layers** with their Bezier paths (user 09/10/2026: "port qua AE
-  thành shape layer"); groups switched by `tl.set` (expressions, hand variants, the blink lid) → hold keys on the shape group's opacity;
+  strokes: the character rig's parts, a film's drawn art) → native **shape layers** with their Bezier paths; groups switched by `tl.set` (expressions, hand variants, the blink lid) → hold keys on the shape group's opacity;
   fills and straight strokes cut by a `<clipPath>` (the rig's shirt plaid / stripe / hem band) stay vector through Merge Paths (Intersect);
   gradients, shadows, other SVG (masks, gradients, filters, text inside, curved strokes under a clip), WebGL → PNG (2x still, or a sequence
   when the paint changes, an SVG's inside included); a **skew** (any layer) → AE's Transform effect "Skew (kit)" keyed with the layer (past AE's 70°: 2-4 stacked
-  effects, the others linked to the first by expression; 11/10/2026 test: skewed parts as PNG sequences took 24 min); overflow /
+  effects, the others linked to the first by expression; skewed parts as PNG sequences once took 24 min); overflow /
   clip-path (inset, circle, ellipse, polygon, path; also one the timeline sets later) → track mattes; an SVG filter stroke / drop shadow (a PSD group's) → a text layer's own
   stroke + Drop Shadow, baked into the pictures of the group's other elements; `-webkit-text-stroke` → the text layer's stroke
   (`paint-order` = under / over the fill); a `<span>` styled apart inside a line (size, weight, colour) → per-letter style (AE 24.3+);
   blur, grayscale, brightness, contrast, drop-shadow → effects; motion-blur switch on for moving
   layers (comp switch off: the user turns it on); the film's audio clips → audio layers in the main comp (files copied to `footage\audio\`,
   volume and fades as Audio Levels).
-- **Precomps** (user, 07/10/2026: "whatever can be precomposed, precompose it"): besides the scenes, the port precomposes every film-level layer
+- **Precomps** (precompose whatever can be): besides the scenes, the port precomposes every film-level layer
   (`"layers"` of film.json: the product, the background world, the credit), every element that has children (a chat bubble with its letters,
   a switch, a sticker of several parts, a group) and every run of layers that one preset made (the cells of one transition). Single layers
   stay single.
-- **Image sequences** (user, 07/10/2026: "import all the files into AE as an image sequence, then use time remap", the right way on a job): every
+- **Image sequences** (all the files as one image sequence + time remap, the right way on a job): every
   picture sequence becomes ONE footage of all its files + Time Remap keys: a film's 3D render (`motion/image-sequence`; with `"source"` the
   client's original files at full size) and the kit's own captured sequences (canvas, paint that changes). WebP is converted to PNG.
-- **Fixing after a port: in After Effects, freely** (user, 07-08/10/2026, Test 1: "if the project content does not change and only the port went wrong,
-  fix it right in AE... fix in AE first, do not port the film again or render high-res files, unless there is no other way"; there Claude first
-  proposed a kit fix + a new port, then a pre-rendered video, and only rebuilt it natively after the user asked):
+- **Fixing after a port: in After Effects, freely** (when the film's content does not change and only the port went wrong, fix it right
+  in AE first; do not port the film again or render high-res files unless there is no other way; never offer a kit fix + a new port or a
+  pre-rendered video first):
   1. Whatever the port got wrong while the film itself did not change (a layer out of order, a lost background, a canvas that came as a
      still, keys, precomps, names, fonts): rebuild it IN the open project with a script, natively (shapes, gradients, effects, keys),
      `kit.py ae <project> --jsx <file.jsx>` (a copy of the .aep first, check frames before / after and vs the browser). Seconds per try.
@@ -58,5 +57,5 @@ motion → building in After Effects → comparing frames with the browser → c
 - **`engine\ae` changes only in the main kit chat** (`SKILL.md` rule 9): a film chat writes what the port got wrong and how it fixed it in
   AE into its handoff (`film.md`). The main chat runs the regression check before calling a port change done: `python
   engine\tests\ae\run_cases.py` (23 cases, needs AE open, 20 - 30 minutes; `run_cases.py <name>` reruns one and keeps the others' rows) → `engine\tests\ae\results.md`; no case may get worse.
-- Fixed 08/10/2026 (no workaround needed any more): canvas drawn by film code ports as a sequence (it came as one still: lost background,
+- Fixed in 2.0.0 (no workaround needed any more): canvas drawn by film code ports as a sequence (it came as one still: lost background,
   lost streaks), and layers follow the browser's real paint order (z-index; a bar with a lower z-index came above its number).

@@ -1,16 +1,16 @@
 # Character and illustration films
 
 For cartoon-style character animation, people or hands moving frame by frame, a film rebuilt from a finished video with no artwork,
-or vector artwork (AI / SVG) from the user. Written after the 2D rebuild test (09/10/2026). That test rebuilt a 96 s flat 2D film from
+or vector artwork (AI / SVG) from the user. Written after the 2D rebuild test. That test rebuilt a 96 s flat 2D film from
 its MP4 alone. It took 6 h and 1.4 B tokens, and 74 % of the time and 78 % of the tokens went into three rounds of redrawing people, hands and props
-AFTER the first cut. Everything below moves that work to the start, where it is done once. The 10-11/10/2026 test (a film rebuilt from a video) settled
-how art is made: **redraw, never trace** (section 5; the user: "tao muốn đây là workflow làm đúng duy nhất nha, ko trace nữa").
+AFTER the first cut. Everything below moves that work to the start, where it is done once. A later test (a film rebuilt from a video) settled
+how art is made: **redraw, never trace** (section 5).
 
 ## 0. A heavy job: say the cost first
 A frame-by-frame motion graphic film (a 1:1 remake of a video, character animation, redrawn sets and props), or a reference in a complex
-textured style (watercolour, gouache, crayon, paint), is a HARD, EXPENSIVE job class (the user, 11/10/2026). Before any work, in plain
+textured style (watercolour, gouache, crayon, paint), is a HARD, EXPENSIVE job class. Before any work, in plain
 words:
-- it is heavy; the measured cost: the 10-11/10/2026 test (a 31 s film rebuilt from a video), about 5 h 30 - 6 h of work and ~860 M tokens processed (~$515
+- it is heavy; the measured cost: a 31 s film rebuilt from a video took about 5 h 30 - 6 h of work and ~860 M tokens processed (~$515
   API-equivalent) done redraw-only; each helper ~50 - 135 M tokens, ~$30 - 75, 1 - 1.5 h; six helpers at once hit the plan's 5-hour
   usage limit;
 - the limits, so the user knows what will not match: a copy is not 100 % (a few px, simpler hands, approximate gestures); a textured
@@ -45,18 +45,18 @@ Sources:
 - the user's artwork: their files in `01_Brief\`.
 
 **Ask for the best source** before measuring. A still exported from the original project, a 4K or PNG master, or the least compressed
-file (11/10/2026 test: the user had a lossless QuickTime Animation master; every time and colour was measured on it):
+file (a lossless QuickTime Animation master lets every time and colour be measured on it):
 - a 1080p H.264 frame has soft, colour-bled edges;
 - details under ~2 px (small text, hair highlights, thin lines) cannot be measured on it.
 
 **List the film's gestures, not only its poses:** from the shot table, every pose AND gesture each character makes (the close-up's two
 palms rising one after the other, a knee bending on landing). The parts of a puppet come from this list, not from one hero frame
-(11/10/2026 test: the close-up got ONE `hands` part, so the palms could not rise apart as in the master).
+(a close-up given ONE `hands` part cannot raise its palms apart as in the master).
 
 ## 3. The cast on the library rig
 The library rig is `engine\vendor\libs\aimk\rig.js`, `window.AIMK_RIG`. For a free design or generic people. In a rebuild from a video
-the film's own redrawn characters come first (section 5): the library rig is not trusted by default there (the user: "kit có rig nhân
-vật mà chưa chắc rig đó đúng đâu").
+the film's own redrawn characters come first (section 5): the library rig is not trusted by default there (it may not
+match the reference).
 - **Where:** define the film's looks in its own cast preset, `presets\cast\<name>\preset.js`. Its build does nothing:
   ```js
   AIMK_RIG.LOOK.anna = AIMK_RIG.look("woman", { shirt: "#2F9E8F", skirt: "#24324F", hairStyle: "bun", heads: 1.1, legLen: 1.05 });
@@ -78,7 +78,7 @@ vật mà chưa chắc rig đó đúng đâu").
 - **Faces:**
   - Expressions: `smile`, `happy`, `laugh`, `joy`, `surprised`, `excited`, `neutral`, `content`, `proud`.
   - Blink: a lid shown for 0.1 s. Talk: the mouth flaps.
-  - Every person on screen longer than a second gets an expression that fits the beat, blinks, and a talking mouth when speaking (the user: no frozen faces).
+  - Every person on screen longer than a second gets an expression that fits the beat, blinks, and a talking mouth when speaking (no frozen faces).
 - **Hands:** the variants are `rel`, `open`, `fist`, `point`, `grip`, `flat`. A hand that fills the frame is `AIMK_RIG.giantHand` (3-segment fingers, poses `flat`, `rest`, `spread`, `cup`, `grab`, `fist`, `point`, `pinch`).
 
 ## 4. The sheets: `kit.py sheet <film> [--looks a,b] [--poses p,q]`
@@ -93,7 +93,7 @@ vật mà chưa chắc rig đó đúng đâu").
 - Crossed arms need the far arm in front: `person(..., { farFront: true })`.
 
 ## 5. Redraw characters, props and locations (never trace)
-`kit.py trace` is gone (10-11/10/2026 test). Three rounds of traced characters each showed new defects (9 kinds: holes where a part
+`kit.py trace` is gone. In testing, three rounds of traced characters each showed new defects (9 kinds: holes where a part
 was covered in its frame, colours glued across objects, lost thin lines, wobbly edges), found by the USER. Redrawn the way below, the cast
 had no hole or cut in any pose on the first round, and the sets and props were right on the first try. Why trace fails: a frame shows only
 what is visible; every part loses what another part covers, and animation reveals it; filling it afterwards is guessing.
@@ -113,7 +113,7 @@ what is visible; every part loses what another part covers, and animation reveal
    format below (one file per puppet). Face features as their own small paths at the measured spots (blink lids, talking mouths on top).
 5. **Prove it before anyone looks:** `kit.py sheet <film> --puppets [a,b] [--hero <picture | video@seconds>]` (put the film's gestures in
    `AIMK_ART[name].poses = {pose: {part: degrees}}` first):
-   - `<name>_hero.png`: at rest drawn at its origin over the hero frame + a difference picture (the 11/10/2026 test reached: mean difference 0.4 -
+   - `<name>_hero.png`: at rest drawn at its origin over the hero frame + a difference picture (reached in testing: mean difference 0.4 -
      0.6, edges within 1 - 2 px);
    - `<name>_parts.png`: every part ALONE on a checker (exploded view), its pivot marked;
    - `<name>_poses.png`: the puppet ALONE on #00FF00 at rest, in its own poses and every part turned ±30°, each against the rest pose:
@@ -128,7 +128,7 @@ what is visible; every part loses what another part covers, and animation reveal
 
 Result: not 100 % the original (a few px, simpler hands, approximate gestures), but no broken line and no hole, first round.
 
-**A style reference (the default for drawn or acted content, user 11/10/2026: followed for its style, not copied 1:1):** the same method
+**A style reference (the default for drawn or acted content: followed for its style, not copied 1:1):** the same method
 without the measuring. Design the characters, sets and props yourself in the reference's art style (`01_Brief\style_guide.md`: palette,
 line, shape language, proportions), from the gestures YOUR storyboard needs; steps 3 (whole parts, hidden parts drawn in, children ending
 inside their parents), 4 and 5 hold (`kit.py sheet --puppets`, without `--hero`), and so does the asset gate. Much lighter than a copy:
@@ -165,7 +165,7 @@ colors, split})` draws a still one; `AIMK_RIG.puppet(name, id, x, y, {pose})` a 
 Read, swap, measure and review as in `remake.md` (`kit.py compare --shots`, `--follow`, the compare loop, `--split`); this file
 adds the cast, the sheets and the asset gate. Notes: `kit.py feedback <film>` gives the user's open notes only.
 
-## 8. Helpers and tokens (the user: fewer tokens and less time, never at the cost of quality)
+## 8. Helpers and tokens (fewer tokens and less time, never at the cost of quality)
 - **Where the tokens go:** 98 % are cache reads. Every tool call re-reads the whole chat. Cost grows with calls × context length.
 - **Ways to cut it:**
   - do the gates in section 1 (no rework rounds);

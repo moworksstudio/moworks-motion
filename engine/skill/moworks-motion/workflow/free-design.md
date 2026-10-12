@@ -1,15 +1,15 @@
 # FREE DESIGN: only text, an idea or a song
 
-You design everything: concept, layout, graphics, type, colour, motion, at maximum creative effort and free of house rules (user,
-08/10/2026: only a guideline's design rules, logos, the user's asks and the quality checks bind; `SKILL.md` step 4). Before any motion is built the user picks a direction from **3
-storyboard options**, then approves the **motion spec table** (user, 07/10/2026: a storyboard and a spec are cheaper to change than a render;
+You design everything: concept, layout, graphics, type, colour, motion, at maximum creative effort and free of house rules
+(only a guideline's design rules, logos, the user's asks and the quality checks bind; `SKILL.md` step 4). Before any motion is built the user picks a direction from **3
+storyboard options**, then approves the **motion spec table** (a storyboard and a spec are cheaper to change than a render;
 both gates are hard, a brief's "a complete first cut" does not waive them); from then on they lead with notes in the player.
 
 ## Style reference (when the user gives a film, a video or images to match)
 The default for drawn or acted content (people, animals, rigged or frame-by-frame acting, detailed illustration, effects drawn frame by
 frame): its STYLE is followed, never copied shot by shot; a 1:1 copy only when the user asks for one in so many words. Built content
 (type, shapes, UI, icons, pictogram people, photos, footage) may be copied closely when the user wants a copy (`workflow/remake.md`).
-A mixed film is decided shot by shot (user, 11/10/2026; `SKILL.md` step 4).
+A mixed film is decided shot by shot (`SKILL.md` step 4).
 1. `kit.py compare <film> <ref> --shots` (the film needs no build yet): sheets every 0.25 s with times, the cuts marked, and
    `01_Brief\SHOTS.md`; Read the sheets.
 2. Write `01_Brief\style_guide.md`: palette (hex), type (families, weights, sizes, case), the art style (flat or textured, line or no line,
@@ -49,11 +49,11 @@ The studio's past work lives in two folders the user fills (finished work only, 
    `02_Assets\Rounds\Storyboard_R<k>\`), and open your message with the line it prints, then "This film tells [audience] that [promise]."
    (`story.md` 5). Send the three sheets (with their paths), each with one line: its idea and its motion
    language (a song film: also where the cuts and hits fall), and the scene table with each scene's **why**. Ask the user to pick or mix (AskUserQuestion). **Stop until they pick.**
-   **None of them works** (Test 3: the user disliked the black + yellow): ask what they like and dislike in each (AskUserQuestion with concrete choices),
+   **None of them works**: ask what they like and dislike in each (AskUserQuestion with concrete choices),
    make 2-3 variants around the closest one (its layout with other colours, or its colours with other layouts: `A1.json`, `A2.json`...),
    `kit.py storyboard <film> A1 A2 A3`. At most two such rounds, then ask about the brief again.
 3. **Gate 2: the motion spec table** of the picked option, one row per scene, saved as `<film>\03_HTML\notes\MOTION-SPEC.md` AND pasted in the chat
-   (users read it there; Tests 1 and 3 asked for it), with the file's path:
+   (users read it there), with the file's path:
 
    | # | Time (s) / beat / lyric | On screen (layout, copy) | In: move, ease or spring, length, on which beat / word | Hold (what keeps moving) | Out + transition to the next scene (what carries over) | Sound / hits | Source |
    |---|---|---|---|---|---|---|---|
@@ -87,7 +87,7 @@ The studio's past work lives in two folders the user fills (finished work only, 
   glow orbs, bloom, lens flares, neon on dark by default; floating particles as decoration; everything fading in at once; fade-and-slide-up
   on every element; centred-everything layouts; generic spinning turntables; text that moves while it is read; a made-up tagline. Keep
   the list alive: after the first build, name each default the film used anyway, add it to the film's BANNED line and build again.
-- Avoid palettes that read "made by AI" (Test 3: black + yellow was "too Claude AI"; also neon lime on black, purple-blue gradients,
+- Avoid palettes that read "made by AI" (black + yellow; neon lime on black, purple-blue gradients,
   glassy blobs): take colours from the client's own material, or from a specific idea for this film (a material, a place, a decade), and
   make at least one of the 3 options a palette the user would not expect.
 - The main super and the hero lean toward the centre, as one group where it fits, never forced (`film.md`, "Composition").

@@ -6,7 +6,7 @@ margins, writing, logo rules, products, job rules, the `"kit"` block), `notes.md
 are under NDA. A film uses a pack when the brief names that brand (the pack's folder name or `brand.json` `"name"`, its products, its
 font) or the user says so.
 
-**Follow the pack, no question** (user, 07-08/10/2026). It governs the DESIGN on every piece of text, small words included (fonts,
+**Follow the pack, no question**. It governs the DESIGN on every piece of text, small words included (fonts,
 sizes, colours, margins, KV) and the logos as its rules say; all other motion is free, text included. Brief points that break it
 (colours above all): `kit.py brand-check <project> <pack> --brief`, one list to the user, brief or guideline for each, the answers in
 `notes\NOTES.md`, before the storyboard.

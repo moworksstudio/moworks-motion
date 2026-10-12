@@ -3,26 +3,25 @@
 ## Project
 `python engine\kit.py new "<Client> <Project name>" --aspect 16:9 --dir "<job folder>"` (9:16, 1:1, 4:5 also) creates
 `<job folder>\NN_Client_Project-Name\` (numbered, ASCII), called `<film>` in this skill; the job folder is the chat's folder. Inside
-(user, 08/10/2026; a folder appears only when something goes in it):
+(a folder appears only when something goes in it):
 ```
 <film>\  1. Preview.bat   the player (its Export panel does the rest); finds the kit through %USERPROFILE%\.aimotionkit\kit-root.txt
   01_Brief\     the brief, lyrics, guideline links, the user's words AND the user's original files (PSD, deck, images, logos,
                 fonts, music, voice, video: copy them here, never edit them); LYRICS-TIMED.md / POSES.md for the user to check
-  02_Assets\    what you make for review (11/10/2026): Rounds\ Storyboard_R01\ Assets_R01\ Film_v01\ ... (every round the
+  02_Assets\    what you make for review: Rounds\ Storyboard_R01\ Assets_R01\ Film_v01\ ... (every round the
                 user reviewed, one folder each, numbered per kind), Stills\, Compare\, Music-Options\
   03_HTML\      the film: film.json, index.html, assets\ (the film's own copies), audio\, presets\, psd\ / deck\ (intake data),
                 notes\ (NOTES, MOTION-SPEC, feedback, RECAP-SESSION), qa\
-  04_Renders\   MP4\ MOV\ + EXPORTS.md only (user, 11/10/2026), made on the first export; names carry the version (<film>_v3_60fps_...)
-  05_AE\        Port to AE (user, 08/10/2026: outside 04_Renders): <name>.aep, footage\, Audio\ (mix.wav + the stems), AE-PORT.md
+  04_Renders\   MP4\ MOV\ + EXPORTS.md only, made on the first export; names carry the version (<film>_v3_60fps_...)
+  05_AE\        Port to AE (outside 04_Renders): <name>.aep, footage\, Audio\ (mix.wav + the stems), AE-PORT.md
 ```
 Every `kit.py` command takes `<film>` (or its `03_HTML`). Write the brief and decisions into `03_HTML\notes\NOTES.md`. An older film
 (`brief\`, `renders\` inside one folder) still works as it is; a film made before 11/10/2026 (rounds and stills in
-`04_Renders\`, the user's files in `02_Assets\`) works too: `kit.py tidy <film>` moves it to this layout. **60 fps only** (user, 07/10/2026: smooth motion; no 30 fps option anywhere).
+`04_Renders\`, the user's files in `02_Assets\`) works too: `kit.py tidy <film>` moves it to this layout. **60 fps only** (smooth motion; no 30 fps option anywhere).
 Scene starts snap to the 60 fps grid (8.52 s starts at 8.5167 s): code that computes a local time from a scene start uses
-`Math.round(start * 60) / 60`, never the written number (11/10/2026 test: 3 ms off).
+`Math.round(start * 60) / 60`, never the written number (it can be 3 ms off).
 
-**Rounds (user, Test 1: "never overwrite"; 08/10/2026: v1 v2 v3; 10/10/2026: "khi bắt đầu mỗi round hoặc đổi round chỉnh sửa claude cũng
-phải thông báo trong chat và trong player preview cũng thể hiện rõ"; every round in one folder):** a round is one thing you send the user to
+**Rounds (never overwrite; every round announced in the chat and shown in the player; every round in one folder):** a round is one thing you send the user to
 review. Publish it the moment you send it, then say the line the command prints, as the FIRST line of your message:
 | You send | Command | Folder |
 |---|---|---|
@@ -30,13 +29,13 @@ review. Publish it the moment you send it, then say the line the command prints,
 | character / location / prop sheets | `kit.py round <film> assets characters=<f> locations=<f> props=<f> --note "..."` (no file: the `kit.py sheet` outputs) | `Assets_R<k>\<kind>\` |
 | the film (first preview, every round of fixes) | `kit.py round <film> film --note "<what this round changed>"` | `Film_v<kk>\` (film + the assets / audio new in it) |
 It prints e.g. `Phim v3: chữ vào chậm hơn, cảnh 4 đổi nền`. Design rounds (storyboard, sheets) are reviewed IN THE CHAT: show
-the pictures there (lean flow, user 11/10/2026: the player is the video, the notes and the exports only). The player lists every film
+the pictures there (lean flow: the player is the video, the notes and the exports only). The player lists every film
 version (the user watches an older one read-only, compares it with the one before, and its notes carry the version: `[v2 · 3.40 s] ...`)
 and reloads the working film by itself when it changes. Nothing new when the film did not change. Every export also publishes the
 version it shows (vN in its file name). **Going back:** the user's words "quay lại vK" (or an old note `[vK · 0.00 s] Sửa tiếp từ bản
 này`): `kit.py restore <film> vK` (the working film is kept as a round first), fix the other notes, then
 `kit.py round <film> film --base vK --note "..."` and say `Phim vM (sửa tiếp từ vK)`. Say it too when you switch rounds yourself.
-**Rounds are kept, all of them** (user, 11/10/2026: "không cho xóa bất kỳ gì cả ... dung lượng rất nhẹ ... cứ giữ lại hết"): never delete,
+**Rounds are kept, all of them** (they are light): never delete,
 trash or offer to remove a round (storyboard, asset sheets, film versions), not even a rejected one; only the user removes one by hand in
 Explorer, and the next round still takes the next free number.
 
@@ -102,11 +101,11 @@ procedure: `workflow/reframe.md`.
     mix (-14 LUFS, true peak -1 dBTP), its phone band (200 Hz - 6 kHz: a big drop from the full mix = the weight sits in the sub, which a
     phone does not play) and every effect over the bed: aim for 3 to 6 dB (under 3 it is lost on a phone, over 6 it jumps out); change
     its `"gain"` and measure again. The picture must work muted first: the feed plays without sound.
-  - **No music given and no generation wanted** (Test 3): pick 3 free tracks from Mixkit (mixkit.co, Mixkit Stock Music Free Licence: say
-    so) that fit the brief and **download all three at once, without asking** (user, 08/10/2026: "the user could not listen first... download 3 tracks
-    for the user to listen to before choosing"; free, a few MB) into `<film>\02_Assets\Music-Options\` as `A - <Title> (<Artist>).mp3`,
-    `B - ...`, `C - ...`: `curl -L --max-time 90 -o "<file>" https://assets.mixkit.co/music/<id>/<id>.mp3` (Test 3: curl without a time
-    limit hung for minutes; a track that fails: take another and say so). Then a table in chat: A / B / C · title · artist · length ·
+  - **No music given and no generation wanted**: pick 3 free tracks from Mixkit (mixkit.co, Mixkit Stock Music Free Licence: say
+    so) that fit the brief and **download all three at once, without asking** (so the user
+    can listen before choosing; free, a few MB) into `<film>\02_Assets\Music-Options\` as `A - <Title> (<Artist>).mp3`,
+    `B - ...`, `C - ...`: `curl -L --max-time 90 -o "<file>" https://assets.mixkit.co/music/<id>/<id>.mp3` (curl without a time
+    limit can hang for minutes; a track that fails: take another and say so). Then a table in chat: A / B / C · title · artist · length ·
     mood · why it fits · the file's full path (double-click to listen) · its Mixkit page. The user listens and picks; the pick is copied to
     `03_HTML\audio\music\`, its licence line goes into `notes\NOTES.md`, the other two stay in `Music-Options\` (the user keeps or bins
     them). A track cut to the film's length (sections joined on bar starts) is a new file in `audio\music\`, the original kept; run
@@ -120,17 +119,17 @@ procedure: `workflow/reframe.md`.
   "offset": -0.1 }` on a motion or sfx; captions: an empty box + `{ "preset": "text/captions", "target": "cap", "params": { "words": "voice" } }`.
   Every build writes `audio\transcript\film.srt`. A cut on a spoken word (`"until": { "word": "..." }`): give the next scene's
   `transition_in` `"align": "center"`, so the transition's middle sits on the word (the previous scene runs d/2 past it, the next starts
-  d/2 before it); the default `"end"` puts the whole transition before the cut (Test 4: every change of picture came early).
+  d/2 before it); the default `"end"` puts the whole transition before the cut (every change of picture then comes early).
 - **A film cut to a song** (a lyric film, a launch on a track; `workflow/recipes.md`, "Song film"):
   - `kit.py beats <project>` → `audio\transcript\<song>.beats.json` (BPM, beats, bars, hits, onsets). It prints a "tempo check" (the
-    candidate tempos with how far the strong onsets sit from each one's grid: Test 3's track read 150 BPM, 7.5 ms, where the old fit said
+    candidate tempos with how far the strong onsets sit from each one's grid: e.g. a track read 150 BPM, 7.5 ms, where a plain fit said
     152). Say the BPM so the user can check it by ear (`--bpm`, `--offset` to correct).
   - The lyrics are known (the user's text): `kit.py align <project> 01_Brief\lyrics.txt [--pin "8=17.58; 12=33.32"]` → a time per sung word +
     `01_Brief\LYRICS-TIMED.md` for the user. Heard words move 80 ms earlier (Whisper's lag). It is a DRAFT (on the A/B song, by sections:
     median 0.42 s off the times the user liked): show the table; the user taps line starts in the player's lyric mode (or `--pin`), run
     align again (`--snap 8` then puts the words on the song's eighths; on a raw draft snapping made it worse), and their ear wins. The brief gives rough times per section (a script table)? Mark them in
     the lyrics file (`[17.5] We walk on together` before a line) or `--sections "1=0; 8=17.5; 11=29.6"`: each section is then heard
-    in its own window, with only its own lines (07/10/2026 test: the whole-song pass placed lines 11-19 twenty seconds early).
+    in its own window, with only its own lines (a whole-song pass once placed lines 11-19 twenty seconds early).
     Unheard words are placed inside their own section; a run of the same word ("la la la...", sung over a held synth) goes on
     consecutive beats (a test song: the repeated word landed exactly where a hand placement put it). What Whisper heard is cached, so a second
     run after the user's taps takes about a second: run it again freely.
@@ -147,7 +146,7 @@ procedure: `workflow/reframe.md`.
   the preset `"source"`: the client's original files (`"source": "J:/.../Product_Render.####.png"`), so the AE port imports those at full
   size. **Read the render first:** `kit.py poses <project> <folder>` → a numbered contact sheet + `01_Brief\POSES.md` (its rest poses found
   by frame difference); fill in for every rest pose: open / closed, front / back / edge, and **which way up** (where the camera is). A pose
-  seen upside down (camera at the bottom) is only passed through, never held (07/10/2026 test: a back view held upside down).
+  seen upside down (camera at the bottom) is only passed through, never held (a back view held upside down reads wrong).
   It also prints the **portals**: rest poses that show the same picture (a test render had 1 = 97-136 = 210-240 and 312-347 = 491-531 =
   628-641): a jump from one to the other is invisible, so one phone can run continuously through every pose of the film. And the
   **product box** of every frame (the opaque part, as fractions of the picture: `qa\seq-boxes.json`; POSES.md gives it per rest pose with
@@ -160,7 +159,7 @@ procedure: `workflow/reframe.md`.
   the source: small edits there are fine; rebuilding from film.json replaces them (backup kept), so say so before you rebuild.
 - Default font: Roboto Flex (`RFlex`). Client fonts in `assets\fonts\` + `"fonts"`; check Vietnamese with `kit.py font <family>`.
 
-## Creative first; the libraries are a toolbox (user, 07/10/2026)
+## Creative first; the libraries are a toolbox
 **Design the film first, then open the library.** First decide, for THIS film:
 - the look: palette, type scale, grid, texture (a guideline: its design rules);
 - every scene's composition;
@@ -170,8 +169,8 @@ procedure: `workflow/reframe.md`.
 (Keep design: the client's frames fix the layout, the motion is yours.) Then use the library only where it saves real work: chart / counter
 / map engines, device and app chrome, code windows, 3D, captions, image sequences, springs, a transition you would write the same way.
 
-**Free by default: validate, don't constrain** (user, 07-08/10/2026: the plain-prompt A/B film, with no library and no rules, was "very free,
-dynamic, uninhibited" and scored 55 / 70 against the skill's 46: motion 9, sync 9, layout 8). Locked are only: the client's layout in
+**Free by default: validate, don't constrain** (in an A/B test the plain-prompt film, with no library and no rules,
+scored 55 / 70 against a rule-heavy skill's 46: motion 9, sync 9, layout 8). Locked are only: the client's layout in
 KEEP DESIGN (followed exactly), the guideline's design rules on every piece of text (fonts, sizes, colours, margins), logos (rule 5: never
 distorted; a pack may forbid any move), the end tag / end card, the credit line, real content, and what the user asked for by name.
 Everything else is free and should be bold: layout (free design), backgrounds, transitions,
@@ -179,19 +178,19 @@ stickers, particles, the product's acting, the montage words, big type under the
 `motion/tween` per word or beat, canvas layers drawn as pure functions of film time, the groove). `brand-check`, `collide`, `verify` and
 `pulse` run AFTER you create; they never shape the first idea.
 
-**Composition (user, 08/10/2026: the A/B film whose main super and product drifted far left / right / up / down scored 5 for layout, the
+**Composition (the A/B film whose main super and product drifted far left / right / up / down scored 5 for layout, the
 one that kept them near the centre 8):** lean the main super and the hero (the product) toward the centre of the frame, as one group where
 it fits (`"type": "group"`, `"center": true`, `kit.py measure`). A tendency, not a rule: never force every frame into the middle (a
 layout pushed to the centre each time turns stiff); a frame can sit off-centre when it reads and balances better. Secondary things
 (stickers, particles, small words) float free.
 
-**Dynamic level (asked at row 0 of the motion spec; user, 08/10/2026: Moworks is a motion studio, recommend strong):** light = elements
+**Dynamic level (asked at row 0 of the motion spec; recommend strong):** light = elements
 settle and hold; strong = nothing on screen is ever still: multi-line supers enter alternately from left and right (±900 px, expo.out),
 their lines drift in opposite directions while held and leave both ways; backgrounds drift or zoom, people breathe, stickers float. In KEEP
 DESIGN strong means large drifts and slides while a frame holds; the designed place (2 px) binds only when the scene has fully settled
-(Test 4: the first cut held the layout too tightly and was called "tame").
+(a first cut that holds the layout too tightly reads "tame").
 
-**The groove (only when the user wants it; asked at row 0; user, 08/10/2026 after Tests 1 and 3: not a default):** elements nudging on the
+**The groove (only when the user wants it; asked at row 0; never a default):** elements nudging on the
 song's grid. Slow or soft music: no groove. When it is wanted, keep it sparing: backgrounds on the downbeats, the product only on the
 montage drops (the repeated chant words), the rest still; `kit.py pulse` only for a film with a groove.
 film.json `"groove"` makes elements nudge on the song's grid all film long, each through its own inner layer, so it never fights an
@@ -228,7 +227,7 @@ tag, logo, type rules), the brief wins on what the film says; a credit "througho
 - **Motion presets** `library\presets\<group>\<name>\`; **layouts** `library\layouts\<group>\<name>\`; HyperFrames items run as shipped
   (params, `replace`, `images`, `theme`, `slots`: `library\README.md`). The carousels (`carousel/*`) take real params now, patched by the
   kit at build: `background` (also `"transparent"`), `cardBg` (`"transparent"` for PNG cards), `scale`, `card` `[width, height]`,
-  `duration` (longer = the block slows to fit the scene instead of freezing); use them, never `replace` on their CSS (Test 4 had to).
+  `duration` (longer = the block slows to fit the scene instead of freezing); use them, never `replace` on their CSS.
 - **Read the list once per film:** `python engine\kit.py library` (`kit.py library layout chat` filters), then the chosen presets' `preset.js`.
 - **Lines copied from the Gallery** (the COPY button's line: the exact preset name in quotes, e.g. "text/mask-rise", then its title): use exactly that preset.
 - **Match by meaning, not by name.** A name the user gives exactly is used as is.
@@ -253,7 +252,7 @@ tag, logo, type rules), the brief wins on what the film says; a credit "througho
 - **Say what you chose:** in the round-1 message, one line per scene: its idea, the moves written for it (marked "new") and the library parts used.
 
 ## The numbers (write motion as numbers, not adjectives)
-From the "Motion Lab" study (12/10/2026, the user: follow it): every adjective left in a spec is a decision handed to the default look.
+From the "Motion Lab" study (`docs/THIRD-PARTY.md`): every adjective left in a spec is a decision handed to the default look.
 - **Easing by role:** entrances ease out (`expo.out` 0.16,1,0.3,1 for text and logo reveals; `power4.out` / quint 0.22,1,0.36,1 for a
   premium entrance); moves across the frame and camera ease in-out (quart 0.76,0,0.24,1; camera the softest: sine / quart); exits ease in
   (`expo.in` 0.7,0,0.84,0) and run 40 to 50 % shorter than their entrance; a playful pop `back.out` (0.34,1.56,0.64,1). Linear only for a
@@ -284,14 +283,14 @@ From the "Motion Lab" study (12/10/2026, the user: follow it): every adjective l
 - A first GSAP `fromTo` draws its "from" state at once (immediateRender): an element whose start state is visible (a ring at scale 0.2)
   shows from frame 0. Hide it until its time (`motion/tween` `"hide_before": true`, or a set).
 - **An out move starts only after the in move on the same property has ended.** Overlapping, the in move finishes after the out move when
-  the film PLAYS (preview, PNG, MP4) and its end state stays on screen (07/10/2026 test: a giant word stayed over the next line), while a
+  the film PLAYS (preview, PNG, MP4) and its end state stays on screen (a giant word can stay over the next line), while a
   direct seek looks right, so stills and `collide` miss it. `kit.py build` shortens such an in move and says so; `kit.py verify` lists
   overlaps in code blocks and `--play` compares played frames with seeks.
 - `"type": "box"` and `"group"` take `"html"` too (inner markup: an SVG, a few spans); a motion whose target matches nothing stops the build.
 - Never blend two frames of a sequence; never let a picture change inside one exported frame (snap to the 60 fps grid).
 - Text measured, not guessed: lines at 140 px are wider than they look (`kit.py measure`).
 - Text scaled up inside `will-change: transform` renders soft (`kit.py verify` warns): scale the font size or drop will-change.
-- Lessons of Test 4 (the user's notes):
+- Lessons from past reviews:
   - a number always counts in full, from 0 to the designed number, centred while it counts (measure its width on the final string);
   - light only ON an object: a shine inside the strokes of letters, a sweep inside a card, a person or a box (the object as its mask);
     never a light streak, light leak or white flash over the whole frame ("very weird"); footage never flashes white; a "cinematic"
@@ -312,16 +311,16 @@ From the "Motion Lab" study (12/10/2026, the user: follow it): every adjective l
   image sequence that skips more than 3 render frames in one film frame between pictures that differ (`jump`: slow the key, or cut on a
   portal). Warnings only: look at the still, fix what is real.
 - Before the FIRST preview: the quick self-review (`workflow/review.md`: stills of every scene and every cut) and, with a brand pack, `kit.py
-  brand-check <project> <pack>` (seconds). Then **tell the user the film is ready** and OFFER the long checks with their time (user,
-  Test 1: they ran for many minutes after each build and slowed the export): `kit.py verify <project> --play` (act on BUG lines; EDGE
+  brand-check <project> <pack>` (seconds). Then **tell the user the film is ready** and OFFER the long checks with their time (they take
+  minutes and slow an export): `kit.py verify <project> --play` (act on BUG lines; EDGE
   lines are sub-pixel picture edges, not bugs; `--loop` for a looping film), `kit.py collide <project>` (the whole film; a "note" = text
   under a picture: look at that still), `kit.py pulse` for a film with a groove. Never while an export runs; not in feedback rounds.
 - Stills: `kit.py stills <project> 1.5 4 8` | `--beats` (a frame per scene) | `--strip <t>` (12 frames in a row) | `--cuts` (a strip at
   every scene change) | `--phone` (360 px) → `02_Assets\Stills\<kind>\` + sheet.png.
 - Notes in camera words (`workflow/review.md`, "Words for notes"); a vague note ("make it nicer"): ask one question with 2-4 concrete choices.
 
-## Export (only when asked, or from the player's buttons; user, 08/10/2026: three buttons)
-MOV and MP4 are both finished films with the sound inside; no stems beside them (user, 08/10/2026).
+## Export (only when asked, or from the player's three buttons)
+MOV and MP4 are both finished films with the sound inside; no stems beside them.
 - **MOV Export** (`kit.py mov <project>` = [MOV Export]): ProRes 4444 (10-bit, no chroma subsampling, PCM 24-bit audio), 60 fps, 180°
   motion blur on by default (never across a cut; **Blur** off / `--no-blur`: pixel-art and hand-drawn films, remind the user), **Trong
   suốt** / `--alpha` for a transparent background (the button asks Blur / Trong suốt / 4K, remembered per film, then where to save) →
@@ -336,7 +335,7 @@ MOV and MP4 are both finished films with the sound inside; no stems beside them 
 - **Port to AE** (`kit.py ae <project> --run --check auto` = [Port to AE]): `reference/ae.md` → `05_AE\`, with `Audio\`
   (`mix.wav` + voice, music, sfx stems) beside the project.
 - `kit.py qa <project>` (pops, one-frame flashes, photosensitivity) reads the last MOV / MP4 render. There is no PNG sequence export any more
-  (`kit.py frames` removed 11/10/2026, the user: "cần remove chức năng đó đi nếu ko cần nữa"); After Effects gets Port to AE.
+  (`kit.py frames` was removed); After Effects gets Port to AE.
 - Every export is dated, never overwritten, and logged in `04_Renders\EXPORTS.md`. Tell the user the folder. Old exports pile up: offer
   `kit.py trash` on the ones they no longer need.
 - No export goes through HyperFrames (its MP4 grabs JPEG frames). Words: ffmpeg "encodes" frames into an MP4 / MOV (not "joins"). A render takes time and disk: say both before you start one.
@@ -358,14 +357,14 @@ the presenter's screen. A deck still exports to MP4 / MOV / AE as a film.
   a bill; use it to compare jobs. Prices: `engine\qa\prices.json` (a model missing there: look the price up with the claude-api skill and
   add it, never from memory). Copy the tables into `notes\RECAP-SESSION.md`; tell the user the totals in a small table. Never guess.
 
-## Handoff to the main kit chat (every film; user, 08/10/2026)
+## Handoff to the main kit chat (every film)
 A film chat changes no kit code and no library (`SKILL.md` rule 9); everything the kit should learn goes to the main kit chat through
-`<film>\03_HTML\notes\RECAP-SESSION.md` (one file per film), which starts with a section **"Tasks for the main kit chat"** in Test 3's format: a table
+`<film>\03_HTML\notes\RECAP-SESSION.md` (one file per film), which starts with a section **"Tasks for the main kit chat"** in this format: a table
 priority · code · kit file · what to change (the bug, how you worked around it, the fix you propose), then the kit bugs hit, every
 function, preset and generator you wrote for the film (path, what it does, its params: candidates for the library), the skill gaps,
 the user's own words that changed a rule (verbatim), the self-review scores, and the tracking tables.
 
 ## HyperFrames Studio (not used; only on request)
-The player does what HyperFrames was used for (user, 07/10/2026). Only when the user asks to edit a timeline by hand: `kit.py studio
+The player does what HyperFrames was used for. Only when the user asks to edit a timeline by hand: `kit.py studio
 <project>` (asks before installing). After they save in Studio, re-read `index.html` before you change anything. Never pick Google fonts in
 Studio for client work (network).

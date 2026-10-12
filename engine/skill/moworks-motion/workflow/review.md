@@ -1,10 +1,10 @@
-# Self-review before the user sees it (plan A1, user 07/10/2026: "by the book")
+# Self-review before the user sees it
 
 **When:** before the FIRST preview of a film, and when the user asks you to look it over / check it yourself. Not in normal feedback rounds (there the
 user's notes lead).
 
-**Look at it like a strict director, not a proud author.** EVERY round, the quick part, on your own (seconds; Read the sheets: user,
-07/10/2026 test: a round without them missed bugs; 08/10/2026: keep looking at the pictures closely, quality first):
+**Look at it like a strict director, not a proud author.** EVERY round, the quick part, on your own (seconds; Read the sheets: a round without them misses bugs;
+look at the pictures closely, quality first):
 - the build's lint lines (text too brief to read, text over text at rest, a logo with motion, a blank frame after a cut, a product moving
   next to resting text, an image sequence that jumps);
 - `kit.py stills <film> --beats`: one settled frame per scene;
@@ -18,10 +18,10 @@ user's notes lead).
 - a fix that did not hold: render the frames just before and after the problem side by side, list every difference, find the one line
   that causes it, change only that line, render both again.
 
-The heavy part is OFFERED with its time once you have said the film is ready (user's choice, 08/10/2026: the machine is busy for minutes):
+The heavy part is OFFERED with its time once you have said the film is ready (the machine is busy for minutes):
 `kit.py verify <film> --play` (frames played in order vs direct seeks: catches an out move that starts before its in move ends),
 `kit.py collide <film>` (the whole film), and for a film with a groove `kit.py pulse <film>` (lift after the beat, beats with a jolt,
-still frames, against the A/B film the user liked best: lift 1.42, 76 %, 5 %).
+still frames, against a film that worked well: lift 1.42, 76 %, 5 %).
 
 **Score 1-10 each:**
 1. hook: the first 2 s make you watch;
@@ -33,7 +33,7 @@ still frames, against the A/B film the user liked best: lift 1.42, 76 %, 5 %).
 6. brand / design: the pack's rules, the client's frames (keep design: 2 px tolerance);
 7. sync: moves land ON the words / beats they belong to (and, with a groove, the picture jolts on the kick).
 
-**Hunt for these:** a main super + product pushed far off-centre for no reason (user, 08/10/2026: scored 5); sung words entering on the beat instead of on their sung time; text running into text during a change; objects gliding evenly instead of accelerating; corner labels and
+**Hunt for these:** a main super + product pushed far off-centre for no reason (a test film scored 5 / 10 for layout this way); sung words entering on the beat instead of on their sung time; text running into text during a change; objects gliding evenly instead of accelerating; corner labels and
 decorative frames (premium recipe); a title alone on a gradient; text that goes soft when it scales; a beat where nothing happens; a jump
 at a loop or a cut; a scene that looks like its Gallery demo; anything the user complained about in an earlier film.
 
@@ -58,7 +58,7 @@ helper only the `--beats` and `--cuts` sheets.
 | Moves feel late on the music | the move starts on the beat instead of landing on it → start it earlier (`recipes.md` section 4), `kit.py pulse` |
 | An invented feature or number | no source → the client's screenshots / facts; illustrative numbers labelled "Example" |
 
-## Words for notes (plan A5: the user's notes in camera words; the user writes them in Vietnamese, these are their usual meanings)
+## Words for notes (the user's notes in camera words; notes often come in Vietnamese, these are their usual meanings)
 | The user says | It means |
 |---|---|
 | "slow every zoom to 0.7x" | every zoom's duration / 0.7 |
@@ -80,5 +80,5 @@ helper only the `--beats` and `--cuts` sheets.
 A vague note ("make it nicer", "not right yet"): ask ONE question with 2-4 concrete choices (AskUserQuestion).
 Translate a feeling into numbers before you change anything, and say the numbers in your reply.
 
-## Effort (plan A7)
+## Effort
 In the app's model box: **xhigh** to start a new film, **max** when the first 3 seconds must carry a launch, **medium** for small fixes.

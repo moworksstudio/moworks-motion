@@ -1,6 +1,6 @@
 # Ideas by kind of film (none of this is a rule)
 
-User, 08/10/2026: the film is free; the only rules are a guideline's design rules, logos, the user's own asks and the quality checks
+The film is free; the only rules are a guideline's design rules, logos, the user's own asks and the quality checks
 (`SKILL.md` step 4). What follows is what worked on past films: take what helps THIS film, ignore the rest, break it when the idea is
 better. The groups disagree with each other on purpose (what suits a launch is wrong for a premium product). The user's words beat all of it.
 
@@ -8,7 +8,7 @@ better. The groups disagree with each other on purpose (what suits a launch is w
 For young, playful, launch and music films (the user's words young, lively, dynamic, "not tame" point here too). Written this way from
 round 1 it saves rounds: a tame first cut was the slowest part of an earlier film (six rounds to get here).
 - **One type scale for every super** (a guideline: its own sizes): the montage words (the hook words, the chant, the one-word punches)
-  break it, in size AND colour. Big one-word type may sit UNDER the product while it reads (user, 08/10/2026: a product passing over a one-word super).
+  break it, in size AND colour. Big one-word type may sit UNDER the product while it reads (a product passing over a one-word super).
 - **Colour on the montage words**, from the brand's or product's own colours where there are some (a brand pack may limit coloured type:
   see its notes, list the allowed ones in film.json `"brand_colors"`; some allow one accent colour per visible text cluster), on a
   background it reads on. With a guideline, "many colours" in a brief means more of the brand's colours; with none, your own palette.
@@ -22,7 +22,7 @@ round 1 it saves rounds: a tame first cut was the slowest part of an earlier fil
 - **Colour bars swept in behind key numbers;** feature words in word by word.
 - **Ambient life clear of the text:** confetti / shapes drifting only on free spots, at least 60 px from every text box (measure them).
 - A product film: one product through the film (a `layers` element), a light sweep on its turns, glows drifting on film-time waves.
-- **Liveliness quotas** (the plain-prompt A/B branch met them and the user called it "extremely free and dynamic", 07/10/2026): a scene change
+- **Liveliness quotas** (the best-liked test film met them): a scene change
   or a new world at least every 3 s; nothing on screen still for more than 0.5 s (supers only pulse with the groove while read);
   every montage word its own entrance AND its own size / weight / colour; one sticker per feature, bouncing on the beat; a background that
   is never a flat colour for long (patterns drifting, rings blooming on the beat, soft blobs, 30-60 particles fading near text).
@@ -53,8 +53,7 @@ From @twoclipping / @verbove in the course.
 - A card dragged by the cursor and let go: `motion/drag-release` (it lags, tilts with its speed, bounces home or to a drop spot).
 
 ## 4. Song film (a lyric film, a launch cut to a track)
-The plain-prompt A/B branch synced best so far (user, 07/10/2026: "it listens to the music and follows the beat (kick, bass) and the lyrics quite
-precisely, the most precise so far"). What it did, now the rule:
+The best-synced test film so far followed the beat (kick, bass) and the lyrics precisely. What it did, now the rule:
 - **One grid for everything:** the song's beat grid (`kit.py beats`: beats placed where the kick is heard) drives the scenes, the words,
   the hits and, when the user wants a groove, the pulses (film.json "groove": `film.md`). Times as references (`{ "beat": n }`, `{ "lyric": ... }`), never typed seconds.
 - **Every sung word on the grid:** `kit.py align` with the brief's sections (`--sections`) gives a draft; ask the user to tap the line starts

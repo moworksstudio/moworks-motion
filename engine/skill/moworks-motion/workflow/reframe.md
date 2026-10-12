@@ -1,6 +1,6 @@
 # Another aspect: a new film, or an approved film re-laid out
 
-**Sizes (the user's standards, 08/10/2026):** 16:9 1920×1080 · 9:16 1080×1920 · 1:1 1200×1200 · 4:5 1080×1350 (the Facebook / Instagram feed
+**Sizes (standard frames):** 16:9 1920×1080 · 9:16 1080×1920 · 1:1 1200×1200 · 4:5 1080×1350 (the Facebook / Instagram feed
 size). **4K:** any export with `--4k` (MP4 / MOV) draws twice the pixels on the same layout (3840×2160, 2160×3840, 2400×2400,
 2160×2700); text and vectors are sharp, a small source picture is not (say so when the pictures are small).
 
