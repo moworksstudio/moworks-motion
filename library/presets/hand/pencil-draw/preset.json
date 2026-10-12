@@ -8,7 +8,7 @@
  "params_vi": "tool brush | pencil · mode box | circle | underline | strike | path · points · color · w · pad · duration · ease · boil (vẽ lại / giây khi giữ) · hold · seed",
  "source": {
   "label": "claude-animation (Hanif, MIT), ported to the kit",
-  "url": "https://github.com/buildwithhanif/claude-animation-skill",
+  "url": "https://github.com/buildwithhanif/claude-animation-skill", "repo": "buildwithhanif/claude-animation-skill", "commit": "4ddb8c80fdec96dc9f55d4b9bdee60bde6f0134b",
   "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
  },
  "license": "MIT (claude-animation, Hanif)",

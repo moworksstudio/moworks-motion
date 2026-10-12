@@ -1,5 +1,5 @@
 window.GALLERY = {
- "generated": "2026-10-12 11:21",
+ "generated": "2026-10-12 22:25",
  "presets": [
   {
    "name": "background/aurora-drift",
@@ -398,6 +398,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/tiktok-video-skills",
+    "commit": "2a775336b5a638cbf8a61dbd785f9a1b649be016",
     "path": "skills/countdown-video/references/digit-flip.md"
    },
    "license": "MIT",
@@ -690,6 +691,8 @@ window.GALLERY = {
    "source": {
     "label": "claude-animation (Hanif, MIT), ported to the kit",
     "url": "https://github.com/buildwithhanif/claude-animation-skill",
+    "repo": "buildwithhanif/claude-animation-skill",
+    "commit": "4ddb8c80fdec96dc9f55d4b9bdee60bde6f0134b",
     "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
    },
    "license": "MIT (claude-animation, Hanif)",
@@ -741,6 +744,8 @@ window.GALLERY = {
    "source": {
     "label": "claude-animation (Hanif, MIT), ported to the kit",
     "url": "https://github.com/buildwithhanif/claude-animation-skill",
+    "repo": "buildwithhanif/claude-animation-skill",
+    "commit": "4ddb8c80fdec96dc9f55d4b9bdee60bde6f0134b",
     "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
    },
    "license": "MIT (claude-animation, Hanif)",
@@ -792,7 +797,9 @@ window.GALLERY = {
    "desc_vi": "Cả khung (hoặc một nhóm) rung mạnh rồi tắt dần, cho cú va, cú dậm, chữ đập xuống. Đặt lên khung trong của cảnh (id cảnh + \"in\") hoặc một nhóm.",
    "source": {
     "label": "claude-animation (Hanif, MIT), formula of lib/fx.mjs shake()",
-    "url": "https://github.com/buildwithhanif/claude-animation-skill"
+    "url": "https://github.com/buildwithhanif/claude-animation-skill",
+    "repo": "buildwithhanif/claude-animation-skill",
+    "commit": "4ddb8c80fdec96dc9f55d4b9bdee60bde6f0134b"
    },
    "license": "MIT (claude-animation, Hanif)",
    "ae": "keyframes",
@@ -842,6 +849,8 @@ window.GALLERY = {
    "source": {
     "label": "claude-animation (Hanif, MIT), ported to the kit",
     "url": "https://github.com/buildwithhanif/claude-animation-skill",
+    "repo": "buildwithhanif/claude-animation-skill",
+    "commit": "4ddb8c80fdec96dc9f55d4b9bdee60bde6f0134b",
     "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
    },
    "license": "MIT (claude-animation, Hanif)",
@@ -2301,6 +2310,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/motion-design-skills",
+    "commit": "3c129f769d90a1328c209c386492333c9ac62312",
     "path": "skills/logo-animation/references/logo-patterns.md"
    },
    "license": "MIT",
@@ -3508,6 +3518,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/motion-design-skills",
+    "commit": "3c129f769d90a1328c209c386492333c9ac62312",
     "path": "skills/after-effects/references/expression-library.md"
    },
    "license": "MIT",
@@ -3558,6 +3569,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/ecommerce-video-skills",
+    "commit": "2bd0dd19c9b2df5230f5d8f7453861b9681e49b4",
     "path": "skills/photo-slideshow/references/ken-burns.md"
    },
    "license": "MIT",
@@ -6038,6 +6050,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/manim-skills",
+    "commit": "a15833c44de5108a3ee68f178a1fca126aa7c6d8",
     "path": "skills/manim/references/math-and-text.md"
    },
    "license": "MIT",
@@ -8272,6 +8285,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/motion-design-skills",
+    "commit": "3c129f769d90a1328c209c386492333c9ac62312",
     "path": "skills/motion-background/references/background-recipes.md"
    },
    "license": "MIT; simplex noise: Stefan Gustavson (public domain)",
@@ -12069,7 +12083,7 @@ window.GALLERY = {
     "scroll",
     "developer"
    ],
-   "notes": "Run as shipped: the block's own page (assets/code-scroll.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Seek check tolerance 1.5 %: mid-scroll the code sits on a GPU layer (translate3d at a fractional y) and Chromium's text raster on it depends on the seek history; the state is the same (checked: identical transforms). Source: The camera scrolls a long file to bring a target line to center and spotlights it — for walking through real modules.",
+   "notes": "Run as shipped: the block's own page (assets/code-scroll.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Seek check tolerance 2 % and bake 3 % (measured 1.51 % and 2.58 % on 12/10/2026, glyph edges only, same positions): mid-scroll the code sits on a GPU layer (translate3d at a fractional y) and Chromium's text raster on it depends on the seek history; the state is the same (checked: identical transforms). Source: The camera scrolls a long file to bring a target line to center and spotlights it — for walking through real modules.",
    "brand_ui": false,
    "needs": [],
    "clip": "clips/code__code-scroll.mp4",
@@ -13486,6 +13500,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/youtube-video-skills",
+    "commit": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd",
     "path": "skills/audiogram/references/waveform-render.md"
    },
    "license": "MIT",
@@ -13944,6 +13959,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/manim-skills",
+    "commit": "a15833c44de5108a3ee68f178a1fca126aa7c6d8",
     "path": "skills/manim/references/graphs-and-updaters.md"
    },
    "license": "MIT",
@@ -13994,6 +14010,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/explainer-video-skills",
+    "commit": "3e2d411b725d9a72939cf8e5eb81579e751373e7",
     "path": "skills/isometric-animation/references/isometric-recipes.md"
    },
    "license": "MIT",
@@ -14396,6 +14413,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/explainer-video-skills",
+    "commit": "3e2d411b725d9a72939cf8e5eb81579e751373e7",
     "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md"
    },
    "license": "MIT",
@@ -18204,6 +18222,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/explainer-video-skills",
+    "commit": "3e2d411b725d9a72939cf8e5eb81579e751373e7",
     "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md"
    },
    "license": "MIT",
@@ -18717,6 +18736,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/map-animation-skills",
+    "commit": "390ca98bbcf2ea88a430a69c0dcbf423e43d075d",
     "path": "skills/map-animation/references/vector-maps.md"
    },
    "license": "MIT; map: Natural Earth (public domain) via world-atlas",
@@ -20415,6 +20435,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/data-animation-skills",
+    "commit": "8ce2709c3992490251e8a991535b1945f01c6865",
     "path": "skills/presentation-video/references/slide-components.md"
    },
    "license": "MIT",
@@ -21944,6 +21965,7 @@ window.GALLERY = {
    "source": {
     "label": "iart-ai motion skills (MIT)",
     "repo": "iart-ai/youtube-video-skills",
+    "commit": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd",
     "path": "skills/youtube-intro-outro/references/intro-outro.md"
    },
    "license": "MIT",

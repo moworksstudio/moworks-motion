@@ -48,6 +48,12 @@ VENDOR = ENGINE / "vendor"
 FPS, SCALE, CHECK_SCALE = 15, 0.25, 0.5
 BAD = [(r"Math\.random", "Math.random"), (r"Date\.now|new Date", "Date"), (r"performance\.now", "performance.now"),
        (r"requestAnimationFrame", "requestAnimationFrame"), (r"https?://", "network URL")]
+# what static_problems leaves out before the BAD rules (12/10/2026: "//" was cut as a comment inside "https://" too, so the network rule
+# never fired): comments (a "//" only at a line start or after a space or ; { } ( ) is one), a CDN address the preset maps to its local
+# copy ("libs": {"https://cdn...": "assets/vendor/..."}, the build uses the copy), and SVG / XML namespaces (www.w3.org, never fetched)
+NOT_CODE = [(r"/\*.*?\*/|(?:^|(?<=[\s;{}()]))//[^\n]*", re.S | re.M),
+            (r"""(["'`])https?://[^"'`\s]+\1\s*:\s*(["'`])(?!https?:)[^"'`]+\2""", 0),
+            (r"https?://www\.w3\.org/[^\s\"'`]*", 0)]
 
 VN = "Chuyển động mượt mà"
 VN2 = "Thiết kế đẹp, dễ chỉnh sửa"
@@ -328,7 +334,8 @@ async def _render_and_check(base, kind, clip_out, thumb_out, check_end, thumb_at
 def static_problems(meta):
     """what a preset's files say without a browser: the BAD rules its preset.js breaks (comments left out), and its files copied as
     shipped whose SHA-256 changed (None when it has none; engine/tests/hf_blocks.py, blocks added from 11/10/2026)"""
-    js = re.sub(r"/\*.*?\*/|//[^\n]*", "", Path(meta["_js"]).read_text(encoding="utf-8"), flags=re.S)
+    js = Path(meta["_js"]).read_text(encoding="utf-8")
+    for rx, fl in NOT_CODE: js = re.sub(rx, '""', js, flags=fl)
     static = [lab for rx, lab in BAD if re.search(rx, js)]
     sums = (meta.get("source") or {}).get("sha256") or {}
     if not sums: return static, None
@@ -380,7 +387,8 @@ def run_one(name, meta, say=say, out=None):
     if r.get("blank"): problems.append("blank: nothing drawn at any sample")
     stol = float((meta.get("demo") or {}).get("seek_tolerance", 0.0002))   # demo.seek_tolerance: paint-level noise of an as-shipped component (same state, notes say why)
     if r["seek"] > stol: problems.append(f"seek not stable {r['seek']:.3%}")
-    if r["bake"] > 0.002: problems.append(f"bake differs {r['bake']:.2%}")
+    btol = float((meta.get("demo") or {}).get("bake_tolerance", 0.002))   # demo.bake_tolerance: the same, film against draft (12/10/2026)
+    if r["bake"] > btol: problems.append(f"bake differs {r['bake']:.2%}")
     if check_end and r.get("end", 0) > 0.003: problems.append(f"end differs from layout {r['end']:.2%}")
     if chk["static"]: problems.append("uses " + ", ".join(chk["static"]))
     if chk.get("source"): problems.append("not as shipped (SHA-256): " + ", ".join(chk["source"]))
@@ -511,11 +519,26 @@ def check_all(filt=None, say=say, sample=0):
     return changed
 
 
+def credit_problems(meta, third):
+    """who made a preset, from its preset.json (12/10/2026, the user: every preset names its author): a "source" label and a "license";
+    one made outside the studio also its repo or url, the commit read ("read": the date, for a page with no commits), and that repo in
+    docs/THIRD-PARTY.md (`third`: its text)"""
+    s = meta.get("source") if isinstance(meta.get("source"), dict) else {}
+    lic = str(meta.get("license") or "").strip()
+    if not s.get("label") or not lic: return ["credit: no source label or licence in preset.json"]
+    if lic.lower().startswith(("moworks", "kit")): return []          # the studio's own
+    where, out = s.get("repo") or s.get("url"), []
+    if not where: out.append("credit: no repo or url")
+    if not (s.get("commit") or s.get("read")): out.append("credit: no commit (or read date)")
+    if where and where.split("github.com/")[-1].strip("/") not in third: out.append(f"credit: {where} not in docs/THIRD-PARTY.md")
+    return out
+
+
 def check_static(filt=None, say=say):
     """kit.py gallery check --static: the part of the check that needs no browser, for GitHub's checks on every pull request (audit
     12/10/2026): every preset.json reads, no preset.js breaks the BAD rules (a frame must be a function of time: no Math.random, Date,
-    requestAnimationFrame, network), files copied as shipped keep their SHA-256. A problem its stored check already names passes.
-    Returns [(name, [problems])]."""
+    requestAnimationFrame, network), files copied as shipped keep their SHA-256, every preset names who made it (credit_problems). A
+    problem its stored check already names passes. Returns [(name, [problems])]."""
     bad = []
     for root in (LIBP, LIBL):
         for mj in sorted(root.rglob("preset.json")):
@@ -525,9 +548,10 @@ def check_static(filt=None, say=say):
         for n, pr in bad: say(f"  {n}: {'; '.join(pr)}")
         return bad
     old, recs = load_checks(), [(n, m) for n, m in records() if not m.get("_incoming") and (not filt or any(f in n for f in filt.split(",")))]
+    third = (KIT / "docs" / "THIRD-PARTY.md").read_text(encoding="utf-8")
     for name, meta in recs:
         static, src = static_problems(meta)
-        probs = (["uses " + ", ".join(static)] if static else []) + (["not as shipped (SHA-256): " + ", ".join(src)] if src else [])
+        probs = (["uses " + ", ".join(static)] if static else []) + (["not as shipped (SHA-256): " + ", ".join(src)] if src else []) + credit_problems(meta, third)
         new = [x for x in probs if x not in ((old.get(name) or {}).get("problems") or [])]
         if new: bad.append((name, new))
     say(f"gallery check --static: {len(recs)} preset(s), {len(bad)} with a new problem")

@@ -6,7 +6,7 @@
  "title_vi": "Dây nối có dòng dữ liệu chạy",
  "desc_vi": "Một dây nối giữa hai thành phần, trên đó nét đứt chạy liên tục và một hạt sáng đi từ đầu này sang đầu kia, lặp lại: dữ liệu đang chảy. Hợp sơ đồ hệ thống, luồng xử lý.",
  "params_vi": "d: đường SVG trong toạ độ của ô (trống = chữ S nhẹ từ giữa trái sang giữa phải) · wire, flow, packet: màu dây, nét chạy, hạt · width: độ dày · dash, gap: nét đứt (10 / 12) · march: thời gian chạy một chu kỳ nét (0.7 s) · travel: thời gian hạt đi hết dây (1.6 s) · radius: cỡ hạt · reverse: chạy ngược · duration: tổng thời gian · drawIn: thời gian dây tự vẽ ra (0.6 s)",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "commit": "3e2d411b725d9a72939cf8e5eb81579e751373e7", "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md" },
  "license": "MIT",
  "ae": "png",
  "brand_safe": true,

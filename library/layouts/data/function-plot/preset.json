@@ -6,7 +6,7 @@
  "title_vi": "Đồ thị hàm số tự vẽ, chấm chạy theo đường cong",
  "desc_vi": "Kiểu Manim: trục toạ độ và vạch chia tự vẽ ra, nhãn trục hiện, đường cong của hàm số tự vẽ, rồi một chấm chạy dọc đường cong kèm số đọc (x; f(x)) và có thể kèm tiếp tuyến. Hợp video giáo dục, giải thích toán / số liệu.",
  "params_vi": "fn: hàm số theo x (cú pháp JavaScript, ví dụ 2 * (x - 5) ** 2, Math.sin(x)) · xMin, xMax, yMin, yMax: khung trục · xStep, yStep: bước vạch · xLabel, yLabel · color: màu đường cong · axis: màu trục · dot: màu chấm và số đọc · tangent: vẽ tiếp tuyến · decimals: số chữ số lẻ · axes, curve, trace: thời gian vẽ trục, vẽ đường, chạy chấm · traceFrom, traceTo: chấm chạy từ x nào đến x nào · samples: độ mịn đường",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/manim-skills", "path": "skills/manim/references/graphs-and-updaters.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/manim-skills", "commit": "a15833c44de5108a3ee68f178a1fca126aa7c6d8", "path": "skills/manim/references/graphs-and-updaters.md" },
  "license": "MIT",
  "ae": "png",
  "brand_safe": true,

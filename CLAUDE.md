@@ -18,12 +18,16 @@ Chromium (Playwright), exported as MP4 / MOV or an editable After Effects projec
 - Talk to the user in Vietnamese: short, plain words, tables. Code, commit messages and file names in English.
 - Do only what the user asked. Nothing is deleted for good. Ask before downloading anything large or paid.
 - The repository is public (MIT): no client, brand or job names in any tracked file, commit message or pull request.
+- Everything shown on GitHub (README and docs, CHANGELOG, release notes, pull request titles and descriptions, commit messages) is
+  professional public writing: no internal build notes, chat quotes, test names, work-log asides or debugging stories. Release notes
+  are written fresh as product notes (summary, how to update, then sections such as Bảo mật / Điểm mới / Cải thiện / Sửa lỗi).
 - Third-party code and assets: source, commit and licence recorded in `docs/THIRD-PARTY.md`; files copied as shipped keep SHA-256 checksums.
 - New features extend existing commands and workflows (a flag, a section), never parallel ones. Upstream code as shipped beats a kit re-write
   when it is better; a re-write needs a stated reason.
 - `main` is protected: changes arrive by pull request (the maintainer merges). Never force-push, rewrite history or push tags.
-- GitHub runs `.github/workflows/checks.yml` on every pull request (no packages: JSON / Python, `kit.py gallery check --static`,
-  `pack_skill.py --check`, looks, `publish-check`); a red check is fixed before the merge.
+- GitHub runs `.github/workflows/checks.yml` on every pull request and both jobs must pass before `main` takes it: `checks` (JSON /
+  Python, `kit.py gallery check --static` with the frame rules, as-shipped SHA-256 and every preset's author, `pack_skill.py --check`,
+  looks, `publish-check`) and `smoke` (a clean Windows machine: install.bat's Python and Chromium steps, then the smoke test).
 
 ## Cloud sessions: repo intake research
 

@@ -6,7 +6,7 @@
  "title_vi": "Sóng âm chạy theo giọng nói / nhạc",
  "desc_vi": "Âm thanh hiện thành hình: các cột tần số đối xứng (âm trầm ở giữa, toả ra hai bên) hoặc một đường sóng mềm nhảy theo đúng file giọng đọc hay nhạc, từng khung hình. Hợp video podcast, trích đoạn phỏng vấn, audiogram mạng xã hội.",
  "params_vi": "src: file âm thanh trong thư mục phim (ví dụ audio/voice/vo.mp3) · mode: bars | wave · bands: số tần số (16, đối xứng thành 32 cột) · points: số điểm của đường sóng (64) · mirror · color · boost: khuếch đại (4) · smooth: số khung làm mượt (3; 1 = giật hơn) · gap, barWidth, radius, minBar · stroke: nét đường sóng · fLo, fHi: dải tần (70–4000 Hz) · offset: bắt đầu từ giây nào của file · duration: thời gian chạy · fps",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/youtube-video-skills", "path": "skills/audiogram/references/waveform-render.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/youtube-video-skills", "commit": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd", "path": "skills/audiogram/references/waveform-render.md" },
  "license": "MIT",
  "scripts": ["libs/kit/audiogram.js"],
  "ae": "png",

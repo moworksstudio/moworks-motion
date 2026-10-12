@@ -109,13 +109,14 @@ File gốc của HyperFrames giữ nguyên; kit thêm một chỉnh nhỏ khi d�
 | `effect/editorial-flash`, `effect/freeze-frame-dressing` | Lớp phủ nền trong suốt, demo chỉ thấy nền tối | Demo có ảnh nền mẫu |
 | `carousel/*` | `--background` không tác dụng, thẻ 3D cắt nhau, đồng hồ dừng ở 6 s | Vá nền, màu thẻ, thứ tự chồng, độ dài (`ctx.hfFrame`) |
 | `compare/grade-split-reveal` | Chỉnh màu do runtime HyperFrames làm bằng shader | Chỉnh màu gần đúng bằng ma trận màu SVG (`hf-mount.js`) |
+| Các block gọi font mà tự không tải (Inter, JetBrains Mono, Playfair Display…) | Chữ vẽ bằng font cài trên máy; Chromium nạp font này trễ nên vị trí chữ có thể lệch 1–2 px giữa các lần dựng | Dùng bản font đi kèm kit (`engine/vendor/fonts/google`), tải ngay khi trang của block mở (`ctx.hfFrame`) |
 
 ## Ghi chú khác
 
 - `text/text-shimmer` và `text/caption-blend-difference` có khung cuối khác layout một chút; đó là thiết kế của hiệu ứng.
 - `text/anime-roll`: mép chữ lệch dưới 1 px (0,44 %) so với layout do tách ký tự; dấu tiếng Việt không bị cắt.
-- Khi máy đang tải nặng, `code/code-morph`, `code/code-scroll`, `code/apple-terminal-pro` đôi khi báo lệch nhỏ trong bộ kiểm; kiểm riêng
-  thì đạt.
+- `code/code-scroll`: mép chữ trên lớp GPU (vị trí lẻ pixel khi đang cuộn) được vẽ hơi khác tuỳ lịch sử tua, tối đa khoảng 2,6 % điểm
+  ảnh, vị trí chữ giống hệt; bộ kiểm dùng ngưỡng riêng cho mẫu này.
 - `kit.py collide` không thấy chữ bên trong block HyperFrames chạy trong iframe; các block này cần kiểm bằng mắt.
 - Mẫu WebGL dựng và kiểm chậm (2–11 phút mỗi mẫu) vì WebGL vẽ bằng CPU.
 - Chữ scramble của anime.js khi đang hiện ký tự khối: After Effects dùng font thay thế cho các ký tự đó.

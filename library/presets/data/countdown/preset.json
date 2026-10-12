@@ -6,7 +6,7 @@
  "title_vi": "Đồng hồ đếm ngược, chữ số cuộn như đồng hồ công-tơ-mét",
  "desc_vi": "Đồng hồ đếm ngược thật (mm:ss, ss hoặc hh:mm:ss): mỗi giây, chữ số nào đổi thì cuộn mượt từ số cũ sang số mới trong 0.3 giây cuối của giây đó, dừng đúng nhịp. Hợp đếm ngược ra mắt, khuyến mãi, livestream sắp bắt đầu.",
  "params_vi": "from: số giây lúc bắt đầu (10) · to: đếm tới (0) · format: mm:ss | ss | hh:mm:ss · roll: thời gian cuộn mỗi chữ số (0.3 s)",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/tiktok-video-skills", "path": "skills/countdown-video/references/digit-flip.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/tiktok-video-skills", "commit": "2a775336b5a638cbf8a61dbd785f9a1b649be016", "path": "skills/countdown-video/references/digit-flip.md" },
  "license": "MIT",
  "ae": "keyframes",
  "brand_safe": true,
