@@ -8,7 +8,7 @@
  "params_vi": "duration (giây, gốc 0,45) · amp (px lúc đầu) · rot (độ lúc đầu) · fps",
  "source": {
   "label": "claude-animation (Hanif, MIT), formula of lib/fx.mjs shake()",
-  "url": "https://github.com/buildwithhanif/claude-animation-skill"
+  "url": "https://github.com/buildwithhanif/claude-animation-skill", "repo": "buildwithhanif/claude-animation-skill", "commit": "4ddb8c80fdec96dc9f55d4b9bdee60bde6f0134b"
  },
  "license": "MIT (claude-animation, Hanif)",
  "ae": "keyframes",

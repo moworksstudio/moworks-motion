@@ -7,8 +7,8 @@ library/layouts/<group>/<name>/ (preset.js, preset.json, assets/<the block's fil
 
 Row keys: name (<group>/<name> in the library), title_vi, desc_vi, kind ("blocks" | "components"), file (the page, when not the only
 .html), replace ([[from, to], ...] on the page, demo and default), demo_vars (demo-only params, e.g. a replace that gives an overlay a
-backdrop), defaults (params), bg (demo background), needs, notes, reload (a seek back reloads the page), seek_tolerance / thumb_at (copied
-into demo), length (seconds: the page's own timeline when it is shorter than its data-duration), drop (taken out of the library: why),
+backdrop), defaults (params), bg (demo background), needs, notes, reload (a seek back reloads the page), seek_tolerance / bake_tolerance /
+thumb_at (copied into demo), length (seconds: the page's own timeline when it is shorter than its data-duration), drop (taken out of the library: why),
 vendor_files (kit files copied beside the page), fix ([[from, to], ...] always applied before the film's own replace, e.g. a font the
 page names that has no Vietnamese), commit, skill, incoming (where the files come from and where the layout goes: engine/tests/hf_source.py), title / about / tags (a skill's
 page has no registry-item.json), times (params holding block seconds, which take song references: preset.json "times", build.py)."""
@@ -121,7 +121,7 @@ def write(reg, row):
         "demo": {"duration": dur, "hold": 0, "elements": [{"id": "slot", "type": "box", "style": {"left": "0px", "top": "0px", "width": "1920px", "height": "1080px"}}],
                  "motion": [{"target": "slot", "at": 0, "params": {"duration": dur, **({"replace": row["replace"]} if row.get("replace") else {}), **(row.get("demo_vars") or {})}}], "bg": row.get("bg", "#0b0c0e")},
     }
-    for k in ("seek_tolerance", "thumb_at"):            # demo.seek_tolerance: paint-level noise only (same state; the row's notes say why)
+    for k in ("seek_tolerance", "bake_tolerance", "thumb_at"):   # paint-level noise only (same state; the row's notes say why)
         if row.get(k): pj["demo"][k] = row[k]
     if row.get("times"): pj["times"] = row["times"]
     finish(pj, row, waiting, old)

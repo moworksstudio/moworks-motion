@@ -6,7 +6,7 @@
  "title_vi": "Rơi vào có đà, nảy tắt dần (inertial bounce kiểu AE)",
  "desc_vi": "Phần tử lao vào có tốc độ, vượt quá rồi rung tắt dần vào chỗ như biểu thức inertial bounce quen thuộc của After Effects. Dùng cho vị trí, cỡ hoặc góc xoay.",
  "params_vi": "prop: x | y | scale | rotation · from: giá trị bắt đầu (y -420 px; scale ví dụ 0) · duration: thời gian lao vào (0.45 s) · ease: none | power1.in | power2.in (lao nhanh dần) · amp: độ nảy (0.10; 0.05 nhẹ, 0.2 nảy nhiều) · freq: số lần nảy mỗi giây (3) · decay: tắt nhanh (5) · fade: hiện dần lúc vào",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "path": "skills/after-effects/references/expression-library.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "commit": "3c129f769d90a1328c209c386492333c9ac62312", "path": "skills/after-effects/references/expression-library.md" },
  "license": "MIT",
  "ae": "keyframes",
  "brand_safe": true,

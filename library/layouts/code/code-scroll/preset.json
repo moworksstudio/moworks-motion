@@ -27,7 +27,7 @@
  "brand_ui": false,
  "needs": [],
  "check_end": false,
- "notes": "Run as shipped: the block's own page (assets/code-scroll.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Seek check tolerance 1.5 %: mid-scroll the code sits on a GPU layer (translate3d at a fractional y) and Chromium's text raster on it depends on the seek history; the state is the same (checked: identical transforms). Source: The camera scrolls a long file to bring a target line to center and spotlights it — for walking through real modules.",
+ "notes": "Run as shipped: the block's own page (assets/code-scroll.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Seek check tolerance 2 % and bake 3 % (measured 1.51 % and 2.58 % on 12/10/2026, glyph edges only, same positions): mid-scroll the code sits on a GPU layer (translate3d at a fractional y) and Chromium's text raster on it depends on the seek history; the state is the same (checked: identical transforms). Source: The camera scrolls a long file to bring a target line to center and spotlights it — for walking through real modules.",
  "demo": {
   "duration": 6.0,
   "hold": 0,
@@ -53,6 +53,7 @@
    }
   ],
   "bg": "#0b0c0e",
-  "seek_tolerance": 0.015
+  "seek_tolerance": 0.02,
+  "bake_tolerance": 0.03
  }
 }

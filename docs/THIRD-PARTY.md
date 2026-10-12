@@ -10,7 +10,7 @@ preset's `source.sha256`, and the kit verifies them before use.
 |---|---|---|---|
 | [claude-motion-design](https://github.com/howseen-ai/claude-motion-design) (Howseen AI, Raphaël Aubry) | 2026 | MIT (notice below) | Origin of the kit: films as HTML driven by one `seek(t)`, Playwright frame capture, sub-frame motion blur, sound placed by peak, ffmpeg encoding. Its remake mode (cut detection, measuring on reference frames, split screen, old-colour scan, tempo matching) is re-implemented in `engine/qa/shots.py`, `follow.py`, `compare.py` and `kit.py beats --to-bpm` |
 | [GSAP](https://gsap.com) + plugins | 3.15.0 | GSAP Standard License (see below) | Animation runtime of every film (`engine/vendor/gsap`) |
-| [anime.js](https://animejs.com) (Julian Garnier) | 4.5.0 | MIT (`LICENSE.md` beside it) | As shipped in `engine/vendor/libs/anime/`; driven by the film's clock through `engine/vendor/libs/aimk/anime-sync.js` (kit code) for the `motion/anime` family of presets |
+| [anime.js](https://github.com/juliangarnier/anime) (Julian Garnier, animejs.com) | 4.5.0 | MIT (`LICENSE.md` beside it) | As shipped in `engine/vendor/libs/anime/`; driven by the film's clock through `engine/vendor/libs/aimk/anime-sync.js` (kit code) for the `motion/anime` family of presets |
 | [HyperFrames](https://github.com/heygen-com/hyperframes) (HeyGen) | 0.8.x, installed on demand | Apache-2.0 | Optional Studio and presentation mode; not vendored |
 | HyperFrames registry blocks and components | commits `0ca6947`, `ba08acb` (per item in `preset.json`) | Apache-2.0 | About 250 library layouts run the registry code as shipped (`engine/tests/hf_blocks.py`, `hf_templates.py`); kit-side adjustments are listed in [KNOWN-ISSUES.md](KNOWN-ISSUES.md) |
 | HyperFrames skills | commit `ba08acb1f506b06757bd77a7e7f491d412647fbd` | Apache-2.0 | **As shipped:** embedded-captions (`engine/vendor/hf-captions/`, run by `engine/intake/captions.py`, played by `text/embedded-captions`), music-to-video templates and primitives, hyperframes-creative frame presets (`library/looks/`), talking-head-recut design assets, pr-to-video ingest (`engine/vendor/hf-pr/`), motion-graphics locate (`engine/vendor/hf-locate/`). **Re-implemented:** the story method (`workflow/story.md`), slideshow schema, talking-head layouts, the person matte for video, caption plate effects, the `nudge` ease and `transition/push` `hit` |
@@ -18,7 +18,9 @@ preset's `source.sha256`, and the kit verifies them before use.
 | HyperFrames voiceover carve | `carve.mjs` at v0.8.147; `@hyperframes/core` 0.8.147 (`dist/audioCarve.js`, `dist/audioFx.js`) | Apache-2.0 | As shipped in `engine/vendor/hf-carve/`, run by `engine/audio/carve.py` |
 | Vietnamese faces for the caption fonts | kit-made | SIL OFL 1.1 (from the fonts below) | `engine/vendor/hf-captions-vi/` (`engine/tests/hf_captions_vi.py`): HyperFrames' family and file names, glyphs from OFL families with Vietnamese |
 | vtake-skills (leeoxiang) | as adapted in HyperFrames `ba08acb` | MIT (notice below) | Card styles, layouts and frames of `card/talking-card` and `motion/talking-layout` |
-| claude-animation (Hanif, @hanifproduktif) | main, 2026 | MIT | Drawing core ported to the browser in `engine/vendor/libs/hand/handkit.js` (`hand/paper`, `hand/pencil-draw`, `hand/watercolor`; formulas in `hand/shake`, `hand/comic-text`) |
+| [claude-animation](https://github.com/buildwithhanif/claude-animation-skill) (Hanif, @hanifproduktif) | commit `4ddb8c8` (23/09/2026) | MIT | Drawing core ported to the browser in `engine/vendor/libs/hand/handkit.js` (`hand/paper`, `hand/pencil-draw`, `hand/watercolor`; formulas in `hand/shake`, `hand/comic-text`) |
+| [iart-ai motion skills](https://github.com/iart-ai) (iart.ai): `iart-ai/motion-design-skills` 3c129f7, `iart-ai/manim-skills` a15833c, `iart-ai/explainer-video-skills` 3e2d411, `iart-ai/youtube-video-skills` f3df381, `iart-ai/map-animation-skills` 390ca98, `iart-ai/data-animation-skills` 8ce2709, `iart-ai/tiktok-video-skills` 2a77533, `iart-ai/ecommerce-video-skills` 2bd0dd1 | commits of 22/06/2026 | MIT (notice below) | Techniques re-implemented in the kit's own code from their reference notes (repo, commit and file in each `preset.json`): `data/countdown`, `logo/svg-reveal`, `motion/inertial-bounce`, `motion/ken-burns`, `text/math-write`, `background/noise-flow`, `data/audiogram`, `data/function-plot`, `data/iso-stack`, `data/sequence-diagram`, `line/flow-connector`, `map/pin-route`, `text/bullets`, `title/yt-end-screen` |
+| [remocn](https://github.com/Remocn/remocn) (Remocn) | `3e03565` (caret-swap), `ea730a2` (kinetic-center-build), through the HyperFrames registry `0ca6947` | MIT (the notice stays in each block's file) | `text/caret-swap`, `text/center-build` |
 | three.js | 0.147.0, 0.181.2 and the version under `libs/three` | MIT | 3D presets and layouts (`engine/vendor/libs/three*`) |
 | lottie-web | vendored | MIT | Lottie playback |
 | d3, topojson-client | d3 7.9.0 | ISC | Charts and maps |
@@ -100,6 +102,32 @@ SOFTWARE.
 MIT License
 
 Copyright (c) 2026 leeoxiang
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## iart.ai motion skills: MIT licence notice
+
+```
+MIT License
+
+Copyright (c) 2026 iart.ai
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

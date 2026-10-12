@@ -6,7 +6,7 @@
  "title_vi": "Khung màn hình kết YouTube (chừa chỗ thẻ video, nút đăng ký)",
  "desc_vi": "Khung kết video YouTube 16:9 đúng chuẩn: thương hiệu nằm gọn bên trái (logo, tên kênh, dòng kêu gọi đăng ký), hai phần ba bên phải để trống đúng chỗ cho thẻ video tiếp theo và nút đăng ký của YouTube, chừa đáy cho thanh điều khiển điện thoại. Bật guides để xem vùng khi duyệt.",
  "params_vi": "logo: ảnh logo (trống = không) · name: tên kênh · cta: dòng kêu gọi · bg, fg, accent: màu · guides: vẽ khung nét đứt các vùng YouTube (chỉ để duyệt, tắt khi xuất) · fade: thời gian hiện (0.6 s)",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/youtube-video-skills", "path": "skills/youtube-intro-outro/references/intro-outro.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/youtube-video-skills", "commit": "f3df381d65abe5078f5ed410bbc3ed72e7cb92bd", "path": "skills/youtube-intro-outro/references/intro-outro.md" },
  "license": "MIT",
  "ae": "keyframes",
  "brand_safe": true,

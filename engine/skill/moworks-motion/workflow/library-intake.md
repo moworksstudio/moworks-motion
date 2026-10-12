@@ -36,6 +36,11 @@ the folder can be copied into another film's `presets\` to use it there). Never 
    closest library preset, in Vietnamese: the user decides KEEP / DROP with it), `params_vi`, `ae` (keyframes | expression | png), `tags`, `notes`,
    `demo` (neutral: the Gallery's pictures `assets/demo/...` (dishes, people, stickers, UI cards, two 1920x1080 screens), Vietnamese text
    with its marks, `bg`, `duration`, `thumb_at` when 82 % is already the outro). A `box` takes `html`, not `text`.
+   **Who made it** (`source`, `license`; GitHub's checks refuse a preset without them): the studio's own work → `"source": {"label":
+   "Moworks Motion"}`, `"license": "Moworks"`. Built from someone else's code, repo, article or post (ask the user when unsure) →
+   `"source": {"label": "<project> (<author>, <licence>)", "repo": "<owner/name>" or "url": "...", "commit": "<sha>" or "read":
+   "<date>"}` and its licence: MIT, Apache-2.0, BSD, ISC, OFL, CC0 only; anything else or unclear: stop and ask. Tell the user the source
+   needs a docs/THIRD-PARTY.md row (the maintenance chat adds it when it takes the preset to GitHub).
 4. `kit.py library import <film> <group>/<name>` (`--layout` for a layout / UI block; `--as <group>/<name>` to rename on the way). It copies
    the folder into `library\incoming\`, builds the demo and runs the machine checks. Not `ok`: read the check, fix the copy in the film,
    `kit.py library drop <name>`, import again.

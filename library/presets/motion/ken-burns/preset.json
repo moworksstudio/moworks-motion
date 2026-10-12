@@ -6,7 +6,7 @@
  "title_vi": "Ảnh trôi và phóng chậm (Ken Burns), mỗi ảnh một kiểu",
  "desc_vi": "Mỗi ảnh trôi và phóng (hoặc lùi) chậm liên tục suốt thời gian, mỗi ảnh một kiểu khác nhau theo thứ tự nhưng lần nào render cũng giống nhau. Hợp slideshow ảnh, ảnh sản phẩm, ảnh sự kiện.",
  "params_vi": "duration: thời gian chuyển động (5 s, thường bằng thời gian ảnh trên màn) · anchor: tâm phóng (\"50% 50%\"; ảnh chân dung nên \"50% 30%\") · seed: đổi bộ kiểu chuyển động",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/ecommerce-video-skills", "path": "skills/photo-slideshow/references/ken-burns.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/ecommerce-video-skills", "commit": "2bd0dd19c9b2df5230f5d8f7453861b9681e49b4", "path": "skills/photo-slideshow/references/ken-burns.md" },
  "license": "MIT",
  "ae": "keyframes",
  "brand_safe": true,

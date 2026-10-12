@@ -58,6 +58,52 @@ def preset_file(name, project=None):
     return next((d / name / "preset.js" for d in dirs if (d / name / "preset.js").exists()), None)
 
 
+_FACES = None
+
+
+def kit_faces():
+    """{family, lower case: [{file under engine/vendor, weight, style}]} of the Google families the kit ships (engine/vendor/fonts/google),
+    read once from each file's name, fvar and OS/2 tables"""
+    global _FACES
+    if _FACES is None:
+        _FACES = {}
+        try: from fontTools.ttLib import TTFont
+        except ImportError: return _FACES
+        for f in sorted((ENGINE / "vendor" / "fonts" / "google").glob("*/*.ttf")):
+            try:
+                t = TTFont(str(f), lazy=True); nm = t["name"]; fam = nm.getDebugName(16) or nm.getDebugName(1)
+                ax = next((a for a in t["fvar"].axes if a.axisTag == "wght"), None) if "fvar" in t else None
+                w = f"{int(ax.minValue)} {int(ax.maxValue)}" if ax else str(t["OS/2"].usWeightClass)
+                st = "italic" if t["OS/2"].fsSelection & 1 or "italic" in f.stem.lower() else "normal"
+                _FACES.setdefault(fam.lower(), []).append({"name": fam, "file": f.relative_to(ENGINE / "vendor").as_posix(), "weight": w, "style": st})
+            except Exception: continue
+    return _FACES
+
+
+def hf_faces(p, names):
+    """the kit's own copy of every Google family a HyperFrames block page (ctx.hfFrame, its assets/*.html) names in its styles: the files go
+    into the film (assets/vendor/fonts/google/...) and the map to window.AIMK_HF_FACES, where ctx.hfFrame gives them to a page that names a
+    family it never loads. Without it such a page drew whatever font Windows had under that name (install.bat puts these families in the
+    user fonts for After Effects, other machines may not have them), so the same film could differ from machine to machine (12/10/2026)."""
+    import re
+    named = set()
+    for n in names:
+        f = preset_file(n, p)
+        if not f or "hfFrame(" not in f.read_text(encoding="utf-8"): continue
+        for h in f.parent.glob("assets/*.html"):
+            s = h.read_text(encoding="utf-8", errors="ignore")
+            for m in re.finditer(r"""font-family\s*:\s*([^;}{<\n]+)|fontFamily\s*[:=]\s*["'`]([^"'`]+)""", s):
+                named |= {x.strip().strip("\"'").strip().lower() for x in (m.group(1) or m.group(2)).split(",")}
+    out, K = {}, kit_faces()
+    for fam in sorted(named & K.keys()):
+        for face in K[fam]:
+            dst = p / "assets" / "vendor" / face["file"]
+            if not dst.exists() or dst.stat().st_size != (ENGINE / "vendor" / face["file"]).stat().st_size:
+                dst.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(ENGINE / "vendor" / face["file"], dst)
+            out.setdefault(fam, []).append({"name": face["name"], "src": "assets/vendor/" + face["file"], "weight": face["weight"], "style": face["style"]})
+    return out
+
+
 def local_times(name, params, at, S, project, where):
     """a preset's preset.json "times" (11/10/2026): params that hold times in the block's own seconds (a beat-synced template's landings,
     strobe plan...). Song references in them ({"beat": 12}, {"hit": 3}, {"downbeat": 2}, {"lyric": ...}, at any depth) become seconds
@@ -356,6 +402,7 @@ def slideshow_island(spec, lay):
 
 def page(spec, lay, draft):
     extra_scripts = "".join(f'<script src="assets/vendor/{x}"></script>\n' for x in spec.get("_scripts", []))
+    hf_faces = f'<script>window.AIMK_HF_FACES = {json.dumps(spec["_hf_faces"])};</script>\n' if spec.get("_hf_faces") else ""
     W, H = spec.get("size", [1920, 1080])
     css_links = '<link rel="stylesheet" href="assets/brand.css">\n' if spec.get("brand") else ""
     # project fonts (film.json "fonts": [{"family": "...", "src": "assets/fonts/x.ttf"}], e.g. the PSD's own fonts)
@@ -416,7 +463,7 @@ def page(spec, lay, draft):
   .scene {{ position: absolute; inset: 0; overflow: hidden; }}
   .inner {{ position: absolute; inset: 0; overflow: hidden; }}
 </style>
-%PRESET_STYLES%</head>
+{hf_faces}%PRESET_STYLES%</head>
 <body>
 <div id="stage" data-composition-id="root" data-width="{W}" data-height="{H}" data-duration="{total}" data-fps="{FPS}">
   <div id="bg"></div>
@@ -626,6 +673,7 @@ def build(project_dir, force=False, say=say, draft_out=None, report=None, spec=N
             else: src = f"assets/lib/{n}/{f['file']}"
             x = {"family": f["family"], "src": src, "weight": f.get("weight", "400"), "style": f.get("style", "normal")}
             if (x["family"], x["src"]) not in have: spec.setdefault("fonts", []).append(x); have.add((x["family"], x["src"]))
+    spec["_hf_faces"] = hf_faces(p, names)                # the kit's copies of the families HyperFrames block pages name (ctx.hfFrame)
     runtime = (ENGINE / "runtime" / "spec-runtime.js").read_text(encoding="utf-8")
     base, srv = serve_in_thread(p)                       # the project folder is the web root: films only use paths inside it
     import hashlib
