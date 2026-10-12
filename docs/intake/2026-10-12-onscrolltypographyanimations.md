@@ -62,6 +62,10 @@ Each effect is imported as its own preset first (`text/codrops-<style>`, for exa
 categories first. Each batch: write the presets in a scratch film, `kit.py library import <film> <group>/<name>` for each, `kit.py gallery
 build`, then the user's review.
 
+**Manifest and handover:** the 29 items (with ImageExpansionTypography's 5) are in
+[2026-10-12-codrops-manifest.json](2026-10-12-codrops-manifest.json); the order of work is in
+[2026-10-12-desktop-handover.md](2026-10-12-desktop-handover.md).
+
 ## Already in the kit
 
 | fx | Effect (source values) | Closest kit item | Status |

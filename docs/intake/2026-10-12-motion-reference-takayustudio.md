@@ -99,6 +99,10 @@ what to verify first: [text rules](2026-10-12-motion-reference-takayustudio-text
 `ctx.split(el, "chars")` (`engine/runtime/spec-runtime.js`, line 108) splits by code point without NFC, so Vietnamese typed with
 combining marks comes apart in per-letter effects.
 
+**Manifest and handover:** every motion's import name, batch (3.1–3.8), Vietnamese title and description, tags and checked spec are in
+[2026-10-12-motion-reference-takayustudio-manifest.json](2026-10-12-motion-reference-takayustudio-manifest.json); the order of work is in
+[2026-10-12-desktop-handover.md](2026-10-12-desktop-handover.md).
+
 ## Already in the kit
 
 | Group | Motions | have | generic | partial | missing | skip | high | medium | low |

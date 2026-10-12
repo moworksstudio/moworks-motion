@@ -30,6 +30,9 @@ Same rules as the other reports of this session: each variant is its own item in
 "0d614791f94198bcab655762b26a3cb85da851f4", "path": "js/effect-<N>/expandImageEffect.js"}`, `"license": "MIT"`, family "Codrops (MIT)" in
 the Gallery's "Nguồn" filter; the kept ones merge into `text/inline-image-expand` with a `style` param, with the user's OK.
 
+**Manifest and handover:** the 5 items are in [2026-10-12-codrops-manifest.json](2026-10-12-codrops-manifest.json); the order of
+work is in [2026-10-12-desktop-handover.md](2026-10-12-desktop-handover.md).
+
 ## Already in the kit
 
 Nothing does this. Closest: `text/svg-mask-reveal` and the text layouts with a word slot (`text/anchor-word-slot`), which reveal or swap
