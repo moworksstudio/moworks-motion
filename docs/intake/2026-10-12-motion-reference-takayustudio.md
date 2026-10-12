@@ -31,8 +31,8 @@
 | 4 | 45 việc ưu tiên thấp (102 motion: HUD game, cuộn web, quy ước chữ tiếng Nhật) | như trên | code kit tự viết | thấp | — | để sau, làm khi có phim cần |
 | 5 | Tên easing còn thiếu: Material 3 (standard, emphasized, accelerate), CSS `ease`, whip / glide, và `expoScale`, `slowMo`, `rough` của GSAP EasePack (đã có trong `engine/vendor/gsap` nhưng phim chưa nạp) | `engine/vendor/libs/aimk/eases.js` | kit / GSAP Standard License | vừa–cao | 1–2 giờ | viết lại |
 | 6 | Quy tắc thời lượng theo căn bậc hai quãng đường (chưa có trong luật của skill) | `workflow/recipes.md` | ý tưởng | thấp–vừa | < 1 giờ | viết lại |
-| 7 | **codrops OnScrollTypographyAnimations**: 29 hiệu ứng chữ, 21 motion của trang lấy từ đây | intake riêng → preset `text/` | MIT | vừa–cao | intake riêng | port từ repo gốc, giữ thông số và ghi công MIT |
-| 8 | **magicui**: 79 component React, 17 motion của trang lấy từ đây | intake riêng | MIT | vừa | intake riêng | port (React → GSAP), ghi công MIT |
+| 7 | **codrops OnScrollTypographyAnimations**: 29 hiệu ứng chữ; 17 motion của trang ghi nguồn repo này (24 ghi nguồn Codrops nói chung) | intake riêng → preset `text/` | MIT | vừa–cao | intake riêng | port từ repo gốc, giữ thông số và ghi công MIT |
+| 8 | **magicui**: 79 component React; 19 motion của trang ghi nguồn magicui | intake riêng | MIT | vừa | intake riêng | port (React → GSAP), ghi công MIT |
 | 9 | number-flow (2 motion) | `data/odometer` (mới) | MIT | vừa | 2–4 giờ | port thông số (WAAPI → đồng hồ của phim) |
 | 10 | Code của trang (`seek(t)` canvas, track WAAPI, text engine, tab React) | — | không có giấy phép, "học cá nhân" | — | — | không lấy |
 | 11 | Code react-bits (trang nhắc ở 29 motion) | — | MIT + Commons Clause: cấm phân phối lại, kể cả bản port | — | — | không lấy code; chuyển động viết mới |
@@ -199,23 +199,14 @@ odometer, typewriter rhythm), 40 are pictures (`png`: particles, glow, displacem
 fold-to-90-degrees rule (`library/README.md`, practical notes), since `backface-visibility` is unreliable in renders.
 
 **Upstream origins (text motions).**
-- codrops/OnScrollTypographyAnimations `af28d61` (MIT; 29 effects: `src/js/index.js` fx1 to fx15, `src/js/index2.js` 14 more; GSAP + ScrollTrigger +
-  Splitting.js; scroll-scrubbed, so the port replaces the scroll position with the film's time and Splitting.js with `ctx.split`): site
-  motions `tx-scale-y-unfold`, `tx-converge-from-spread`, `tx-scatter-assemble`, `tx-random-tilt-scale-in`, `tx-smear-stretch-in`,
-  `tx-scale-pop-in`, `tx-char-exit-up`, `tx-explode-scatter-out`, `tx-char-flicker-in`, `tx-char-mask-rise`, `tx-slide-x-mask`,
-  `tx-blur-random-in`, `tx-flip-up-3d`, `tx-swing-door`, `tx-z-fly-in`, `tx-tumble-in`, `tx-horizontal-letter-drop`, `tx-dual-wave-columns`,
-  `tx-repetition-echo`, `tx-text-window-zoom`, `tx-lens-bulge`. A separate intake of the repository is the cleaner path (faithful port,
-  MIT notice).
-- magicuidesign/magicui `85f97fd` (MIT; 79 components in `apps/www/registry/magicui/`, React + `motion/react` + Tailwind, so a port, not
-  as shipped): `tx-fade-up-words`, `tx-blur-evaporate-out`, `tx-marker-highlight`, `tx-comic-pop`, `tx-gooey-morph`, `tx-texture-fill`,
-  `tx-shiny-sweep`, `tx-gradient-flow`, `tx-aurora-text`, `tx-color-band-sweep`, `tx-line-shadow`, `tx-count-up`, `tx-circular-text-spin`,
-  `tx-roll-flip-hover`, `tx-scroll-word-highlight`, `tx-scroll-velocity-marquee`, `tx-sparkles-text`.
+- codrops/OnScrollTypographyAnimations `af28d61` (MIT; 29 effects; **intake done:**
+  [2026-10-12-onscrolltypographyanimations.md](2026-10-12-onscrolltypographyanimations.md)): the 17 site motions that name this
+  repository: `tx-stretch-rise`, `tx-scale-y-unfold`, `tx-converge-from-spread`, `tx-scatter-assemble`, `tx-random-tilt-scale-in`, `tx-smear-stretch-in`, `tx-scale-pop-in`, `tx-explode-scatter-out`, `tx-char-flicker-in`, `tx-slide-x-mask`, `tx-blur-random-in`, `tx-flip-up-3d`, `tx-swing-door`, `tx-z-fly-in`, `tx-tumble-in`, `tx-scroll-word-highlight`, `tx-horizontal-letter-drop`. 7 more name other Codrops demos (not studied): `tx-char-exit-up`, `tx-char-mask-rise`, `tx-cylinder-text`, `tx-dual-wave-columns`, `tx-repetition-echo`, `tx-text-window-zoom`, `tx-lens-bulge`.
+- magicuidesign/magicui `85f97fd` (MIT; 79 React components; **intake done:**
+  [2026-10-12-magicui.md](2026-10-12-magicui.md)): the 19 site motions that name it: `tx-fade-up-words`, `tx-blur-evaporate-out`, `tx-marker-highlight`, `tx-comic-pop`, `tx-rotating-letters-spring`, `tx-gooey-morph`, `tx-scramble-decode`, `tx-circular-text-spin`, `tx-texture-fill`, `tx-shiny-sweep`, `tx-gradient-flow`, `tx-aurora-text`, `tx-color-band-sweep`, `tx-line-shadow`, `tx-roll-flip-hover`, `tx-scroll-word-highlight`, `tx-scroll-velocity-marquee`, `tx-count-up`, `tx-sparkles-text`.
 - barvian/number-flow `c5906cf` (MIT; `packages/number-flow`, a web component animating with WAAPI in its shadow root, real time, so the
   odometer takes its numbers, not its runtime): `tx-odometer-roll`, `tx-ticker-flash`.
-- react-bits (write from the spec only): `tx-fade-up-chars`, `tx-stretch-rise`, `tx-emoji-grapheme-pop`, `tx-split-flap`,
-  `tx-rotating-letters-spring`, `tx-decrypt-center`, `tx-slot-shuffle`, `tx-blur-in-3step`, `tx-true-focus`, `tx-rgb-split-glitch`,
-  `tx-fuzzy-text`, `tx-ascii-render`, `tx-text-pressure`, `tx-variable-proximity`, `tx-falling-pile`, `tx-particle-text`,
-  `tx-curved-loop-marquee`, `tx-layered-depth`, `tx-scroll-blur-tilt`, `tx-proximity-scramble`, `tx-cursor-text-trail`.
+- react-bits (write from the spec only; all 29 motions that name it): `tx-fade-up-chars`, `tx-stretch-rise`, `tx-emoji-grapheme-pop`, `tx-split-flap`, `tx-rotating-letters-spring`, `tx-typewriter-loop`, `tx-decrypt-center`, `tx-slot-shuffle`, `tx-falling-pile`, `tx-particle-text`, `tx-circular-text-spin`, `tx-curved-loop-marquee`, `tx-shiny-sweep`, `tx-gradient-flow`, `tx-blur-in-3step`, `tx-true-focus`, `tx-rgb-split-glitch`, `tx-fuzzy-text`, `tx-ascii-render`, `tx-layered-depth`, `tx-text-pressure`, `tx-variable-proximity`, `tx-scroll-blur-tilt`, `tx-scroll-velocity-marquee`, `tx-repetition-echo`, `tx-proximity-scramble`, `tx-cursor-text-trail`, `tx-count-up`, `tx-layout-word-insert`.
 - typed.js (write from the spec only): `tx-typewriter-loop`. aceternity (ideas only): `tx-pointer-highlight-box`, `tx-flip-words-blur`,
   `tx-random-color-pop`, `tx-text-generate`, `tx-turbulence-wobble`, `tx-spotlight-outline`, `tx-pointer-reveal-card`,
   `tx-layout-word-insert`.
