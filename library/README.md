@@ -143,7 +143,8 @@ expressions, blinks, talking, hand swaps, walks). Workflow: `engine/skill/mowork
 ## Presets that belong to one film
 
 Motion written for one project lives in `<film>/03_HTML/presets/<group>/<name>/` (same format); `kit.py build` looks there first. A preset
-enters `library/` only through the Gallery's "Mới nhập" review.
+enters `library/` only through the Gallery's "Mới nhập" review, and the library is the kit owner's cherry-pick: only the owner's machine
+(`%USERPROFILE%\.aimotionkit\maintainer.txt`) imports, keeps or drops presets (the Gallery's buttons, `kit.py library import | keep | drop`).
 
 ## Practical notes
 

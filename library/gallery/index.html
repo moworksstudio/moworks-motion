@@ -77,7 +77,7 @@
 <script>
 (() => {
   const G = window.GALLERY || { presets: [] }, P = G.presets.concat((window.GALLERY_INCOMING || { presets: [] }).presets);
-  let D = {}, cur = null;
+  let D = {}, cur = null, OWNER = false, USED = {};   // the kit owner's machine (api/owner): GIỮ / BỎ, BỎ on library cards but those the kit uses
   const online = location.protocol.startsWith("http");
   const $ = id => document.getElementById(id), esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const srcOf = p => (p.source && p.source.label) || (p.source && p.source.repo) || "Moworks Motion";
@@ -114,7 +114,7 @@
   const inLib = p => state.lib === "incoming" ? !!p.incoming : !p.incoming && (p.lib || "motion") === state.lib;
   const catOf = p => p.cat || p.group;
   function filters() {
-    const lib = P.filter(p => !p.incoming), nm = lib.filter(p => (p.lib || "motion") === "motion").length, nl = lib.length - nm, ni = P.length - lib.length;
+    const lib = P.filter(p => !p.incoming), nm = lib.filter(p => (p.lib || "motion") === "motion").length, nl = lib.length - nm, ni = OWNER ? P.length - lib.length : 0;
     $("f-lib").innerHTML = [["motion", `Thư viện chuyển động ${nm}`], ["layout", `Thư viện layout ${nl}`]].concat(ni ? [["incoming", `Mới nhập ${ni}`]] : [])
       .map(([v, l]) => `<span class="chip${v === "incoming" ? " inc" : ""}" data-v="${v}">${l}</span>`).join("");
     $("f-lib").onclick = e => { const c = e.target.closest(".chip"); if (!c) return; state.lib = c.dataset.v; state.cat = state.group = state.use = state.source = null; filters(); render(); };
@@ -163,15 +163,16 @@
         ${c.render ? `<div class="probs" style="color:var(--drop)">${esc(c.render)}</div>` : ""}
         ${note ? `<div class="note">Ghi chú của bạn: ${esc(note)}</div>` : ""}
         ${p.incoming ? `<div class="note">Mới nhập${p.incoming === true ? "" : " ngày " + esc(p.incoming)} (${p.lib === "layout" ? "layout" : "chuyển động"}): phim chưa dùng được cho tới khi bạn bấm GIỮ.</div>` : ""}
-        <div class="acts">${p.incoming ? `<button class="keep"${online ? "" : " disabled title=\"mở bằng gallery.bat\""}>GIỮ</button><button class="drop"${online ? "" : " disabled"}>BỎ</button>`
-                                        : `<button class="cp" title="${esc(brief(p))}">COPY</button>`}</div>
+        <div class="acts">${p.incoming ? (OWNER ? `<button class="keep">GIỮ</button><button class="drop">BỎ</button>` : "")
+                                        : `<button class="cp" title="${esc(brief(p))}">COPY</button>` + (!OWNER ? "" : USED[p.name]
+                                          ? `<span class="tag" title="dùng bởi: ${esc(USED[p.name].join(", "))}">kit đang dùng</span>` : `<button class="drop">BỎ</button>`)}</div>
       </div></div>`;
   }
   function render() {
     document.querySelectorAll(".chip").forEach(c => { const k = { "f-lib": "lib", "f-cat": "cat", "f-group": "group", "f-use": "use", "f-source": "source", "f-check": "check" }[c.parentElement.id]; c.classList.toggle("on", state[k] === c.dataset.v); });
     const L = P.filter(visible);
     $("grid").innerHTML = L.length ? L.map(card).join("") : `<div class="empty">Không có mẫu nào khớp bộ lọc.</div>`;
-    $("count").textContent = `${L.length}/${P.length} mẫu`;
+    $("count").textContent = `${L.length}/${P.filter(p => OWNER || !p.incoming).length} mẫu`;
   }
   $("grid").addEventListener("click", e => {
     const el = e.target.closest(".card"); if (!el) return; const p = P.find(x => x.name === el.dataset.n);
@@ -181,11 +182,13 @@
   });
   $("grid").addEventListener("mouseover", e => { const v = e.target.closest(".media")?.querySelector("video"); if (v && v.paused) { v.currentTime = 0; v.play().catch(() => {}); } });
   $("grid").addEventListener("mouseout", e => { const m = e.target.closest(".media"); if (m && !m.contains(e.relatedTarget)) { const v = m.querySelector("video"); if (v) { v.pause(); v.currentTime = 0; v.load(); } } });
-  async function decide(btn, p, keepIt) {                // GIỮ: into the library (films can use it); BỎ: to the Recycle Bin
-    if (!keepIt && !confirm(`Bỏ "${p.name}"? (vào Thùng rác, khôi phục được)`)) return;
+  async function decide(btn, p, keepIt) {                // GIỮ: into the library (films can use it); BỎ: to the Recycle Bin (a library card too)
+    if (!keepIt && !confirm(p.incoming ? `Bỏ "${p.name}"? (vào Thùng rác, khôi phục được)`
+                                       : `Bỏ "${p.name}" khỏi thư viện? Vào Thùng rác (khôi phục được); lên GitHub ở lần bảo trì tới.`)) return;
     btn.disabled = true; btn.textContent = "...";
     try {
-      const r = await fetch(`api/incoming/${keepIt ? "keep" : "drop"}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: p.name }) });
+      const url = p.incoming ? `api/incoming/${keepIt ? "keep" : "drop"}` : "api/library/drop";
+      const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: p.name }) });
       const j = await r.json(); if (!j.ok) throw new Error(j.msg);
       // the page stays where it is (no reload: the user lost "Mới nhập" after every GIỮ, 11/10/2026): a kept preset joins its library with
       // its clip and picture at their new place (gallery.py keep moves incoming/clips|thumbs -> clips|thumbs); a dropped one leaves the list
@@ -193,6 +196,7 @@
       else P.splice(P.indexOf(p), 1);
       if (state.lib === "incoming" && !P.some(x => x.incoming)) state.lib = p.lib || "motion";
       const y = scrollY; filters(); render(); scrollTo(0, y);
+      if (!keepIt && !p.incoming) owner();                // the presets it used may be free to drop now
     } catch (err) { btn.disabled = false; btn.textContent = keepIt ? "GIỮ" : "BỎ"; alert("Không được: " + err.message); }
   }
   function openModal(p) {
@@ -209,8 +213,12 @@
   $("mx").onclick = close; $("modal").onclick = e => { if (e.target.id === "modal") close(); }; addEventListener("keydown", e => { if (e.key === "Escape") close(); });
   $("q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); render(); };
   $("gen").textContent = G.generated ? "· dữ liệu " + G.generated : "";
+  function owner() {                                    // the owner's buttons come when the server answers (it reads what the kit uses: a few seconds)
+    if (online) fetch("api/owner").then(r => r.json()).then(o => { OWNER = !!o.owner; USED = o.in_use || {}; const y = scrollY; filters(); render(); scrollTo(0, y); }).catch(() => {});
+  }
   filters();
   (online ? fetch("api/decisions").then(r => r.json()).catch(() => ({})) : Promise.resolve({})).then(d => { D = d || {}; render(); });
+  owner();
 })();
 </script>
 </body>

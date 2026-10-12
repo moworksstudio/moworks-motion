@@ -53,6 +53,10 @@ The user gives repositories (or articles) to study. For each one:
 
 ## Desktop sessions: building from intake reports
 
+- The library is the owner's cherry-pick: only the owner's machine (`%USERPROFILE%/.aimotionkit/maintainer.txt`) imports, keeps or drops
+  presets. First thing in a desktop session: `git status`; library files the owner removed with the Gallery's BỎ go into the next pull
+  request with the counts (README, README.en, library/README, repo About), a CHANGELOG line, and their names out of
+  `engine/tests/hf_blocks.json` / `hf_templates.json` so a re-import does not bring them back.
 - Read the report(s), show the user the table (take what, merge where, licence) and wait for the OK before building.
 - New presets / layouts go through "Mới nhập" (`kit.py library import`, the user keeps or drops them on the Gallery); engine changes extend
   existing commands; a `docs/THIRD-PARTY.md` row and a `docs/CHANGELOG.md` line for each.

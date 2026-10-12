@@ -6,6 +6,11 @@ library grows only when the user asks). Everything goes first into **Incoming** 
 yet; the user watches it on the Gallery and presses **KEEP** (into the library, every film can use it) or **DROP** (Recycle Bin). This is
 the one change to the kit a film chat may make (`SKILL.md` rule 9), and only when the user asks.
 
+**The kit owner's machine only.** The library is the owner's cherry-pick: `kit.py library import | keep | drop` work only where
+`%USERPROFILE%\.aimotionkit\maintainer.txt` exists. Elsewhere `kit.py library import` says "only the kit owner changes the library": tell
+the user in one line that the library is curated by the kit's owner and the effect stays in this film (`03_HTML\presets\<group>\<name>\`;
+the folder can be copied into another film's `presets\` to use it there). Never write into `library\` by hand to get around it.
+
 ## The user's guide (send it in Vietnamese when the user asks how, or with the first import; the Gallery's on-screen labels as they are)
 
 **Putting an effect / layout into the library, step by step:**
