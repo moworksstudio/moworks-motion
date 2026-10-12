@@ -90,6 +90,15 @@ version) besides the faithful ports of the other two reports, so the user can co
 categories first. Each batch: write the presets in a scratch film, `kit.py library import <film> <group>/<name>` for each, `kit.py gallery
 build`, then the user's review.
 
+## Rules for the skill
+
+27 candidate rules from the site's own text guides (stagger budgeted by total time, an overshoot budget for text with springs at
+damping ratio ≥ 0.6, NFC + grapheme splitting, subtitle line / duration limits, phrase-aware line breaks that keep Vietnamese words
+together, whole-pixel speeds for tickers, MP4 chroma on small text...), each with where it would go, what the kit already says and
+what to verify first: [text rules](2026-10-12-motion-reference-takayustudio-text-rules.md). One of them is a kit defect found on the way:
+`ctx.split(el, "chars")` (`engine/runtime/spec-runtime.js`, line 108) splits by code point without NFC, so Vietnamese typed with
+combining marks comes apart in per-letter effects.
+
 ## Already in the kit
 
 | Group | Motions | have | generic | partial | missing | skip | high | medium | low |
