@@ -12,18 +12,19 @@
 ## Tóm tắt cho người dùng
 
 Repo này là bộ **dựng footage có sẵn** (cắt, ghép, phụ đề burn-in, xuất cho từng nền tảng), không phải bộ làm motion graphic. Kit đã có
-phần lớn những gì liên quan tới phim (loudness, beat, cắt cảnh, GIF, phụ đề động, audiogram) và làm tốt hơn cho phim. Ba thứ nên học:
+phần lớn những gì liên quan tới phim (loudness, beat, cắt cảnh, GIF, phụ đề động, audiogram) và làm tốt hơn cho phim.
+
+**Quyết định (người dùng, 2026-10-12): không dùng repo này, bỏ qua mọi mục.** Bảng dưới giữ lại làm hồ sơ những gì đã xem; phiên desktop không dựng mục nào.
 
 | # | Lấy gì | Gộp vào đâu trong kit | Giấy phép | Giá trị | Công sức | Đề xuất |
 |---|---|---|---|---|---|---|
-| 1 | Kiểm footage trước khi dùng: HDR (PQ / HLG / Dolby Vision), tốc độ khung không đều (VFR), xoay dọc, video Log; chuyển HDR → SDR BT.709 (`zscale` + `tonemap`) | Một bước chuẩn bị footage dùng chung: chạy trong `kit.py cutout <video>` trước khi tách khung, và `kit.py build` / `lint` cảnh báo video chưa chuẩn bị trong film.json. Tên lệnh để phiên desktop chọn (gợi ý: `kit.py ingest <project> <clip>`) | MIT | cao | 5–7 giờ | viết lại (ý và chuỗi filter của `color.py`, `_common/probe.py`) |
-| 2 | Vùng an toàn theo nền tảng (TikTok / Reels / Shorts che trên, dưới, cột phải) + bảng kiểm file xuất (độ dài, khổ, fps, codec, `yuv420p`, dung lượng, LUFS, true peak) | film.json `"platform"`; `kit.py lint` báo chữ / logo nằm trong vùng bị che; `kit.py stills --phone` tô vùng bị che; `kit.py mp4 --platform <tên>` kiểm file vừa xuất | MIT | vừa | 4–6 giờ | viết lại (số liệu cần kiểm lại: không có nguồn chính thức) |
-| 3 | Kinh nghiệm thực tế về footage (iPhone HDR + VFR + xoay, GoPro 10-bit nhưng không phải HDR, DJI không tiếng, quay màn hình VFR, Log trông xám, 60 → 30 fps mất nửa chuyển động) | Skill: `workflow/recipes.md` mục 6 (talking head) hoặc `film.md` | MIT | vừa | 1 giờ | viết lại thành luật của skill |
-| 4 | Chống rung (`vidstab`), áp LUT cho video Log, khử nhiễu | Tuỳ chọn của bước #1 | MIT | thấp | 2 giờ | để sau, khi có job cần |
-| 5 | Cắt / ghép / bỏ khoảng lặng / phụ đề burn-in / lower third bằng drawtext / multicam / xuất timeline cho Premiere / MCP | — | MIT | thấp | — | không lấy (việc của phần mềm dựng; bản HTML của kit đẹp hơn) |
+| 1 | Kiểm footage trước khi dùng: HDR (PQ / HLG / Dolby Vision), tốc độ khung không đều (VFR), xoay dọc, video Log; chuyển HDR → SDR BT.709 (`zscale` + `tonemap`) | Một bước chuẩn bị footage dùng chung: chạy trong `kit.py cutout <video>` trước khi tách khung, và `kit.py build` / `lint` cảnh báo video chưa chuẩn bị trong film.json. Tên lệnh để phiên desktop chọn (gợi ý: `kit.py ingest <project> <clip>`) | MIT | thấp (chỉ khi phim dùng footage iPhone HDR) | 5–7 giờ | không lấy |
+| 2 | Vùng an toàn theo nền tảng (TikTok / Reels / Shorts che trên, dưới, cột phải) + bảng kiểm file xuất (độ dài, khổ, fps, codec, `yuv420p`, dung lượng, LUFS, true peak) | film.json `"platform"`; `kit.py lint` báo chữ / logo nằm trong vùng bị che; `kit.py stills --phone` tô vùng bị che; `kit.py mp4 --platform <tên>` kiểm file vừa xuất | MIT | vừa | 4–6 giờ | không lấy |
+| 3 | Kinh nghiệm thực tế về footage (iPhone HDR + VFR + xoay, GoPro 10-bit nhưng không phải HDR, DJI không tiếng, quay màn hình VFR, Log trông xám, 60 → 30 fps mất nửa chuyển động) | Skill: `workflow/recipes.md` mục 6 (talking head) hoặc `film.md` | MIT | vừa | 1 giờ | không lấy |
+| 4 | Chống rung (`vidstab`), áp LUT cho video Log, khử nhiễu | Tuỳ chọn của bước #1 | MIT | thấp | 2 giờ | không lấy |
+| 5 | Cắt / ghép / bỏ khoảng lặng / phụ đề burn-in / lower third bằng drawtext / multicam / xuất timeline cho Premiere / MCP | — | MIT | thấp | — | không lấy |
 
-**Kết luận:** Không nhập repo này vào kit. Nên làm #1 trước (rủi ro thật cho phim talking head quay bằng iPhone), rồi #2 và #3. Studio
-có job chỉ cắt / ghép footage, không có motion: có thể cài riêng skill này (`npx ffmpeg-skill`); nó chạy độc lập, không đụng tới kit.
+**Kết luận:** Không lấy. Kit không cần repo này để làm phim. Lỗ hổng duy nhất đáng nhớ (#1: footage HDR từ iPhone có thể ra khung nhạt màu khi `cutout` tách khung) chỉ xảy ra khi phim dùng footage quay bằng điện thoại; nếu gặp, phiên desktop thử một clip trước, có lỗi mới sửa. Job chỉ cắt / ghép footage, không có motion: cài riêng skill này (`npx ffmpeg-skill`), không đụng tới kit.
 
 ## Already in the kit
 
@@ -89,6 +90,8 @@ reads media facts from `ffmpeg -i` output (`engine/audio/media.py` `probe`), and
    rules). -16 still passes their ± 2 tolerance; a `--platform` check in the kit should report the kit's target, not replace it.
 
 ## Build notes for the desktop session
+
+Not to be built: the user decided on 2026-10-12 not to use this repository. The notes stay as a record, in case a footage job brings row 1 back.
 
 Nothing is copied as shipped; re-write in the kit's own code with a credit line in `docs/THIRD-PARTY.md` ("Techniques and references":
 ffmpeg-skill, MIT, commit `f62e7d0`, the probe facts, the HDR → SDR chain, the platform table) and a `docs/CHANGELOG.md` line.
