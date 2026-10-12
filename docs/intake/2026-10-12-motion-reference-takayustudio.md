@@ -22,7 +22,9 @@
 **Quyết định của bạn (12/10/2026):** **nhập hết** 782 motion vào "Mới nhập", mỗi motion một mục riêng, kể cả cái kit đã có (để
 so cạnh nhau) và 12 bài học (thành clip minh hoạ). Bạn chọn GIỮ / BỎ trên Gallery. Ưu tiên trong bảng dưới chỉ còn là **thứ tự
 nhập**. Mỗi mục ghi nguồn trong `preset.json` (card Gallery hiện "Nguồn"), lọc được bằng hàng "Nguồn" (họ mới: TakayuStudio).
-Vẫn không chép code của trang: kit tự viết từng mục từ thông số.
+Vẫn không chép code của trang: kit tự viết từng mục từ thông số. Mỗi mục mang thêm **tag theo cách phân loại của trang** (danh mục
+như `camera`, `easing`, `text-reveal` và cảm giác `smooth` / `crisp` / `soft` / `heavy` / `bouncy`), nên gõ vào ô tìm kiếm của
+Gallery là lọc được như trên trang Takayu.
 
 **Cách lấy:** lấy **ý tưởng và thông số** của cả 782 motion (tên, thời lượng, easing, keyframe); **không chép code của trang**. Thông số
 được ghi lại bằng lời của báo cáo này, kit tự viết preset từ đó. Ý tưởng chuyển động và thuật toán không được bảo hộ (Luật bản quyền Nhật,
@@ -64,6 +66,13 @@ GIỮ / BỎ per item; only GIỮ moves an item into the tracked (public) librar
 3. **The Gallery's "Nguồn" filter** groups labels into families (`srcShort` in `library/gallery/index.html`: HyperFrames, Moworks v1,
    iart-ai (MIT), claude-animation (MIT), anime.js (MIT), else Moworks). Add the family "TakayuStudio (ý tưởng)" (label starts "TakayuStudio") there, written like the existing five
    (one regex on the label), so "Mới nhập" can be filtered by source while the user reviews.
+
+**Tags (the site's own classification, kept for review):** each imported preset's `tags` gets, besides the kit's descriptive tags,
+the site's category and feel from the catalogue's "site tags" column: the category as a slug of its English name (`camera`,
+`timing-rhythm`, `game-hud`, `text-glyph-physics`...) and the feel as `smooth`, `crisp`, `soft`, `heavy` or `bouncy` (the site's
+なめらか / きびきび / やわらかい / 重い / 弾む). The Gallery's search box already covers tags, so typing `camera` or `bouncy` in
+"Mới nhập" shows the site's grouping; no new filter. A "Cảm giác" (feel) filter on the Gallery would be a new feature: only if the
+user asks.
 
 **Names:** by purpose inside the group; when a name is taken (in the library or by another source of the same batch), prefix the source
 the way the anime.js family is named (`motion/anime-path`, `text/anime-roll`): `takayu-`. Once the user has chosen, kept siblings can be
