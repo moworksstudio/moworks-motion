@@ -17,30 +17,36 @@
 
 ## Tóm tắt cho người dùng
 
-**Nên gộp vào library hay chạy đơn lẻ? Chạy đơn lẻ, cộng một cầu nối nhỏ trong kit. Không gộp vào library.**
+**Quyết định (người dùng, 2026-10-12): lấy theo 4 bước dưới.** anidoodle chạy riêng như một skill (không nhập engine vào kit); 32 phong
+cách thành một **danh mục "Phong cách vẽ tay"** trong Gallery để chọn và brief khi job chưa có định hướng hình ảnh; cầu nối để tranh /
+phim anidoodle nằm trong phim kit.
 
-Lý do:
-- **anidoodle không phải bộ hiệu ứng dùng lại được.** Library của kit là những hiệu ứng / layout gọi từ film.json, đổi nội dung bằng tham
-  số. Mỗi bức của anidoodle (con cáo, con cá koi, ngọn hải đăng…) là một đoạn code viết riêng cho bức đó. Phong cách nằm ở "bộ cọ"
-  (`woodcutKit.ts`, `sumiEKit.ts`…) và công thức trong tài liệu. Muốn có bức mới cho khách thì Claude phải viết code mới bằng skill
-  anidoodle. Đưa 32 bức có sẵn vào Gallery chỉ được 32 bức tranh cố định, không dùng cho phim khách được.
-- **Đây là một hệ hoàn chỉnh khác hẳn kit:** khoảng 23.000 dòng TypeScript, skill riêng, quy trình duyệt riêng, bộ kiểm riêng,
-  engine nhạc riêng. Nhập vào kit là tạo một hệ song song, trái luật của repo ("mở rộng lệnh có sẵn, không làm hệ song song").
-- **Kết nối với kit rất dễ:** anidoodle xuất được một file HTML chạy offline, có sẵn hàm tua tới từng khung (`window.FILM.seek(n)`) và chế
-  độ "đứng yên chờ điều khiển". Đó đúng là kiểu trang mà kit đang nhúng cho các block HyperFrames (`hf-frame.js`). Chỉ cần dạy
-  `hf-frame.js` nhận thêm loại trang này là tranh anidoodle nằm trong phim kit, chạy theo đồng hồ phim, đúng từng khung, xuất được 4K.
+**anidoodle làm gì:** vẽ tranh minh hoạ hoàn toàn bằng code theo 32 chất liệu, và **làm cả chuyển động**, không chỉ tranh tĩnh:
+- tranh **tự vẽ ra từng nét** theo thứ tự của hoạ sĩ chất liệu đó (cả 32 phong cách đều có bản "tự vẽ");
+- **vẽ xong thì sống dậy**: cá koi bơi qua hồ rộng hơn khung hình, camera bám theo (`koiWorld.ts`); con báo chạy trên khung xương
+  (`cheetahRig.ts`, `cheetahRun.ts`); nhân vật bước theo nhịp nhạc rồi vẫy tay (`miraWalk.ts`); phim mẫu 47 s, con bướm cơ khí từ bản vẽ
+  kỹ thuật thành bướm màu nước bay đi (`example/`);
+- camera (lia, zoom, parallax, rung: `camera.ts`), chuyển cảnh (quét cọ, vòng tròn, chớp: `transitions.ts`; vật biến thành cảnh sau:
+  `morph.ts`; cắt nối liền chuyển động: `seams.ts`), chữ vẽ tay động (`kinetic.ts`), loop / sticker / GIF, phim dài có nhạc tự soạn,
+  video giới thiệu sản phẩm nhiều khổ.
+
+Mọi bức và mọi chuyển động đều do Claude **viết code mới cho từng tác phẩm**, dùng "bộ cọ" của phong cách (`woodcutKit.ts`, `sumiEKit.ts`…)
+và công thức của nó (`references/styles/*.md`). 32 bức trong repo là ảnh minh hoạ cho 32 phong cách. Vì vậy engine không vào `library/`
+(một hệ TypeScript khoảng 23.000 dòng, có skill, quy trình duyệt và bộ kiểm riêng: nhập vào là tạo hệ song song, trái luật của repo).
+Còn **danh mục phong cách** thì vào Gallery, như một bảng màu / chất liệu để chọn.
 
 | # | Lấy gì | Gộp vào đâu trong kit | Giấy phép | Giá trị | Công sức | Đề xuất |
 |---|---|---|---|---|---|---|
-| 1 | Cài anidoodle như một plugin / skill riêng của Claude Code để làm tranh, timelapse vẽ tay, phim minh hoạ | Không vào kit: một skill riêng trên máy, cạnh skill moworks-motion | Apache-2.0 | cao (kit chưa có tranh minh hoạ vẽ tay kiểu này) | 30 phút cài + thử | dùng nguyên bản, đơn lẻ |
-| 2 | **Thử trên Windows trước:** cài, dựng 1 tranh, 1 timelapse vẽ, xuất HTML; đo thời gian vẽ mỗi khung | Máy desktop | — | cao (quyết định #3) | 1–2 giờ | làm trước #3 |
-| 3 | Cầu nối: một tác phẩm anidoodle (file HTML xuất từ `emit.mjs`) thành một lớp trong phim kit, tua theo đồng hồ phim, nét 4K | Mở rộng `engine/vendor/libs/hf/hf-frame.js` (`ctx.hfFrame`) để nhận trang có `window.FILM`; một dòng trong `workflow/recipes.md` | code kit (MIT); file HTML nhúng là Apache-2.0, đi kèm `NOTICE` | cao nếu #2 đạt | 0,5–1 ngày | viết trong kit |
+| 1 | Cài anidoodle chạy riêng (plugin / skill của Claude Code) và **thử trên Windows**: vẽ một chủ đề thật của studio (ví dụ sản phẩm của khách) theo 2 phong cách, cho nó tự vẽ ra và chuyển động; đo thời gian mỗi khung ở 1080p và 4K | Không vào kit: một skill riêng trên máy, cạnh skill moworks-motion | Apache-2.0 | cao (quyết định #3) | 30 phút cài + 1–2 giờ thử | dùng nguyên bản, đơn lẻ |
+| 2 | **Danh mục "Phong cách vẽ tay"** trong Gallery: 32 thẻ, mỗi thẻ có ảnh mẫu, clip tranh tự vẽ ra, mô tả (chất liệu, thứ tự nét, hợp với loại phim nào) và nút COPY brief (ví dụ *"Vẽ minh hoạ phong cách khắc gỗ (anidoodle) cho cảnh 3"*) | Một mục mới của Gallery (`engine/gallery.py`); ảnh và clip render lại từ code của tác giả trên máy desktop | Apache-2.0: ảnh / clip là bản render của code tác giả; kèm `LICENSE` + `NOTICE`, một dòng `THIRD-PARTY.md` | cao (job chưa có định hướng hình ảnh có chỗ chọn) | 0,5–1 ngày | làm |
+| 3 | Cầu nối: tranh / phim anidoodle (file HTML xuất từ `emit.mjs`) thành một lớp trong phim kit, tua theo đồng hồ phim, nét 4K | Mở rộng `engine/vendor/libs/hf/hf-frame.js` (`ctx.hfFrame`) để nhận trang có `window.FILM`; một dòng trong `workflow/recipes.md` | code kit (MIT); file HTML nhúng là Apache-2.0, đi kèm `NOTICE` | cao nếu #1 đạt | 0,5–1 ngày | viết trong kit |
 | 4 | Nhạc viết bằng code của anidoodle cho phim kit (không bản quyền, chạy offline) | Ngoài kit: xuất WAV, đưa vào `audio/music` của phim | Apache-2.0; nếu dùng tiếng phòng thu (rooms) thì phải ghi công CC BY 4.0 | vừa (phải nghe thử) | 1 giờ thử | thử nghe, chưa quyết |
-| 5 | 32 bức có sẵn làm preset / layout, engine vào `library/`, nhân vật canvas thay rig của kit | — | — | thấp | — | không lấy |
+| 5 | Engine vào `library/` hoặc `engine/vendor/`; 32 bức thành preset / layout chạy được; nhân vật canvas thay rig của kit | — | — | thấp | — | không lấy |
 
-**Kết luận:** Dùng anidoodle đơn lẻ (#1), thử trên Windows (#2), rồi làm cầu nối nhỏ (#3) nếu thử đạt. After Effects sẽ nhận tranh
-anidoodle dưới dạng chuỗi ảnh (canvas, như KI-10), không phải layer chỉnh được. Chữ trong phim nên là chữ của kit đặt trên tranh, vì chữ của
-anidoodle dùng font hệ thống của Mac (Avenir Next, Helvetica); trên Windows sẽ đổi sang Arial.
+**Kết luận:** Làm #1 trước, rồi #2 (không phụ thuộc kết quả #1, nhưng thẻ chỉ có ích khi máy có skill anidoodle), #3 nếu #1 đạt, #4 khi
+có job cần nhạc. After Effects nhận tranh anidoodle dưới dạng chuỗi ảnh (canvas, như KI-10), không phải layer chỉnh được. Chữ trong phim
+nên là chữ của kit đặt trên tranh, vì chữ của anidoodle dùng font hệ thống của Mac (Avenir Next, Helvetica); trên Windows sẽ đổi sang
+Arial.
 
 ## Already in the kit
 
@@ -60,8 +66,9 @@ anidoodle dùng font hệ thống của Mac (Avenir Next, Helvetica); trên Wind
   `engine/src/canvas-core/*.ts` alone (top level, without `music/`, `character/`), plus tools. It brings its own skill, gates and
   approval steps: a second system next to the kit's. Keeping it as its own skill keeps the author's updates (`/plugin` update) and
   leaves the kit small.
-- **The 32 style plates as presets / layouts.** Fixed pictures (a koi, a fox, a lighthouse), not effects with parameters; in a client
-  film they would be stock art. The styles are reached by asking anidoodle for a new picture.
+- **The 32 style plates as runnable presets / layouts.** They illustrate the 32 styles; as presets they would be fixed pictures (a koi,
+  a fox, a lighthouse) with no parameters. They enter the Gallery as style cards instead (row 2): pick a style, then anidoodle draws
+  the client's subject in it.
 - **Its lettering and text.** Lettering is hand-authored per word (`lettering.ts` draws "anidoodle"); UI text uses the font stack
   `"Avenir Next", "Helvetica Neue", Helvetica, Arial` and `"SF Mono", Menlo, Monaco, monospace` (`launchKit.ts:14-15`, `kinetic.ts:395`),
   macOS fonts that fall back to Arial / Courier on Windows. In a kit film the words stay kit text (Vietnamese, brand fonts, AE text
@@ -92,12 +99,28 @@ anidoodle dùng font hệ thống của Mac (Avenir Next, Helvetica); trên Wind
 
 ## Build notes for the desktop session
 
-**Row 1 / 2: install and trial (nothing committed)**
+**Row 1: install and trial (nothing committed)**
 - Claude Code: `/plugin marketplace add alexgreensh/anidoodle`, `/plugin install anidoodle@alexgreensh-anidoodle` (README "Get started").
   Engine use: `node <skill>/engine/tools/scaffold.mjs <dir> --still hero --film intro --format 16x9 --duration 10 --fps 60`, then
   `npm install`, a Chromium (risk 3), `node tools/still.mjs`, `render.mjs`, `gate.mjs`, `emit.mjs intro --out out/intro.html`.
 - Check on Windows: the scaffold and `npm install` run; `gate.mjs` passes; draw time per frame at 1080p and 4K; the emitted HTML opens
   offline; a transparent background is possible for the piece (the README lists WebM / APNG with alpha).
+
+**Row 2: the "Phong cách vẽ tay" Gallery category**
+- Source per style: `references/styles/INDEX.md` (generated by `tools/registry.mjs` from the `STYLE` blocks in the plates) gives the id,
+  medium, hero module and draw-film module; `references/styles/<id>.md` the recipe (30 files at the commit above for the 32
+  rows of the index: the cards of the two styles without one take their text from the plate's header comment); `tools/style-media.json` a one-line medium per plate. The repo ships no per-style image, only the contact sheet
+  `assets/styles.jpg`: render each card on the desktop with anidoodle's own tools, `node tools/still.mjs <hero module> --scale 2` for
+  the picture and `node tools/render.mjs <draw-film module> --out <id>.mp4` for the drawing clip (deterministic: the same pixels as
+  the author's). Record the anidoodle version used.
+- Where it lives: a Gallery section (`engine/gallery.py`), extending the Gallery, not a parallel page. Storage to decide on the desktop:
+  `library/looks/` holds colour / type looks applied by `kit.py brand` (`brand.json`, `FRAME.md`), which a drawing medium is not; a small
+  folder of style cards read by the Gallery is the likely fit. Each card: title in Vietnamese and English, the medium in one line, the
+  order of the marks, "hợp với" (from `references/styles.md` "Picking one"), the picture, the clip, COPY brief naming the style id.
+- Licence: the pictures and clips are renders of Apache-2.0 code: commit anidoodle's `LICENSE` and `NOTICE` beside them, a
+  `docs/THIRD-PARTY.md` row (version, commit), SHA-256 of each file. Counts in README / library README if the Gallery counts change.
+- Skill: one line in `engine/skill/moworks-motion/workflow/free-design.md` (a job with no visual direction may start from a drawing style
+  card; drawing it needs the anidoodle skill installed), then `engine/tests/pack_skill.py`.
 
 **Row 3: the bridge (extend what exists, nothing new beside it)**
 - Page contract, from `engine/src/hosts/page.ts:176-181` at the commit above: `window.FILM = { meta, ready, mount(scale), seek(frame),
