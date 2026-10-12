@@ -172,7 +172,7 @@ def skill_step():
         files = {Path(*Path(n).parts[1:]): n for n in z.namelist() if n.startswith("moworks-motion/") and not n.endswith("/")}
         same = SKILL_DST.is_dir() and all((SKILL_DST / r).is_file() and (SKILL_DST / r).read_bytes() == z.read(n) for r, n in files.items())
     if same: same = {p.relative_to(SKILL_DST) for p in SKILL_DST.rglob("*") if p.is_file() and p.name.lower() != "desktop.ini"} <= set(files)
-    if old == new and same: note("skill", f"{new}: đã có" + extra); return True
+    if old == new and same: note("skill", f"{new}: đã có (trùng nội dung bản trong kit)" + extra); return True
     if SKILL_DST.exists():
         from common import trash
         if not trash([SKILL_DST]) or SKILL_DST.exists(): note("skill", f"[LỖI] không chuyển được bản cũ ({SKILL_DST}); đóng Claude rồi chạy lại"); return False

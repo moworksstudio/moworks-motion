@@ -3,6 +3,14 @@
 Mỗi phiên bản một mục, mới nhất ở trên. `update.bat` hiển thị các mục mới hơn bản đang cài, cùng danh sách mẫu thư viện được thêm, sửa
 hoặc bỏ.
 
+## 2.0.1 (12/10/2026)
+
+- **Cập nhật skill đúng cả khi số phiên bản không đổi:** `install.bat` và `update.bat` so nội dung skill đã cài với bản trong kit,
+  không chỉ số phiên bản (trước đây bản skill sửa mà giữ nguyên số không được cài lại); bảng kết quả ghi rõ "trùng nội dung bản trong
+  kit" khi không có gì để cài.
+- `update.bat` chạy các bước cài đặt bằng mã vừa tải về, nên bản sửa của trình cài đặt có tác dụng ngay trong lần cập nhật đó.
+- Skill: bỏ các ghi chú nội bộ (ai quyết định, ngày, tên bài test), giữ nguyên mọi quy tắc.
+
 ## 2.0.0 (09/10/2026, cập nhật đến 12/10/2026)
 
 Bản phát hành chính thức đầu tiên của Moworks Motion.
@@ -74,8 +82,6 @@ Bản phát hành chính thức đầu tiên của Moworks Motion.
 - `compare --shots` nhầm chuyển cảnh nhanh với cut; `compare` lệch nửa khung với video 30 fps.
 - Giá trị `style` có nháy kép làm gãy thuộc tính; `ctx.hash` cho giá trị xếp thành hàng chéo.
 - Mục quá lớn so với Thùng rác bị xoá hẳn mà không hỏi.
-- `install.bat` / `update.bat` chỉ so số phiên bản của skill, nên skill sửa mà giữ nguyên số không được cài lại; nay so cả nội dung,
-  và `update.bat` chạy các bước cài đặt bằng mã vừa tải về.
 
 ## 2.0.0-beta.1 (08/10/2026)
 
