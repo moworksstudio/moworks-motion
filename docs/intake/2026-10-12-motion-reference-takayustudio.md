@@ -19,28 +19,67 @@
 
 ## Tóm tắt cho người dùng
 
+**Quyết định của bạn (12/10/2026):** **nhập hết** 782 motion vào "Mới nhập", mỗi motion một mục riêng, kể cả cái kit đã có (để
+so cạnh nhau) và 12 bài học (thành clip minh hoạ). Bạn chọn GIỮ / BỎ trên Gallery. Ưu tiên trong bảng dưới chỉ còn là **thứ tự
+nhập**. Mỗi mục ghi nguồn trong `preset.json` (card Gallery hiện "Nguồn"), lọc được bằng hàng "Nguồn" (họ mới: TakayuStudio).
+Vẫn không chép code của trang: kit tự viết từng mục từ thông số.
+
 **Cách lấy:** lấy **ý tưởng và thông số** của cả 782 motion (tên, thời lượng, easing, keyframe); **không chép code của trang**. Thông số
 được ghi lại bằng lời của báo cáo này, kit tự viết preset từ đó. Ý tưởng chuyển động và thuật toán không được bảo hộ (Luật bản quyền Nhật,
 Điều 10 khoản 3); mã nguồn thì được bảo hộ, mà trang không cho giấy phép nào.
 
 | # | Lấy gì | Gộp vào đâu trong kit | Giấy phép | Giá trị | Công sức | Đề xuất |
 |---|---|---|---|---|---|---|
-| 1 | Danh mục 782 motion đối chiếu với kit: 311 đã có, 55 chỉ làm được bằng preset chung, **317 có gần giống, 87 còn thiếu**, 12 bỏ | Báo cáo này + [specs](2026-10-12-motion-reference-takayustudio-specs.md) + [catalog](2026-10-12-motion-reference-takayustudio-catalog.md) | ý tưởng, thông số | cao | xong | đã lấy |
+| 1 | Danh mục 782 motion đối chiếu với kit: 311 đã có, 55 chỉ làm được bằng preset chung, **317 có gần giống, 87 còn thiếu**, 12 bài học (nhập thành clip minh hoạ) | Báo cáo này + [specs](2026-10-12-motion-reference-takayustudio-specs.md) + [catalog](2026-10-12-motion-reference-takayustudio-catalog.md) | ý tưởng, thông số | cao | xong | đã lấy |
 | 2 | **40 việc ưu tiên cao** (65 motion): mở rộng `text/land-in` (tách từng chữ), `motion/camera`, `effect/ring-pulse`, `motion/squash-stretch`, `motion/emphasis`, `data/odometer`, `motion/card-flip`, `transition/crossfade` và 6 chuyển cảnh khác, chế độ phụ đề của `text/captions`… | `library/presets/<group>/` qua "Mới nhập" | code kit tự viết (`"license": "kit"`) | cao | ước tính thô 15–25 giờ (chưa đo) | viết lại từ thông số |
 | 3 | 126 việc ưu tiên vừa (237 motion): thanh HUD, chữ chạy theo đường, vòng lặp từng chữ, nổ hạt, gợn mực, nút bấm, gập giấy… | như trên, theo lô | code kit tự viết | vừa | ước tính thô 40–70 giờ | viết lại, theo lô |
-| 4 | 45 việc ưu tiên thấp (102 motion: HUD game, cuộn web, quy ước chữ tiếng Nhật) | như trên | code kit tự viết | thấp | — | để sau, làm khi có phim cần |
+| 4 | 45 việc ưu tiên thấp (102 motion: HUD game, cuộn web, quy ước chữ tiếng Nhật) | như trên | code kit tự viết | thấp | — | nhập ở đợt cuối |
 | 5 | Tên easing còn thiếu: Material 3 (standard, emphasized, accelerate), CSS `ease`, whip / glide, và `expoScale`, `slowMo`, `rough` của GSAP EasePack (đã có trong `engine/vendor/gsap` nhưng phim chưa nạp) | `engine/vendor/libs/aimk/eases.js` | kit / GSAP Standard License | vừa–cao | 1–2 giờ | viết lại |
 | 6 | Quy tắc thời lượng theo căn bậc hai quãng đường (chưa có trong luật của skill) | `workflow/recipes.md` | ý tưởng | thấp–vừa | < 1 giờ | viết lại |
 | 7 | **codrops OnScrollTypographyAnimations**: 29 hiệu ứng chữ; 17 motion của trang ghi nguồn repo này (24 ghi nguồn Codrops nói chung) | intake riêng → preset `text/` | MIT | vừa–cao | intake riêng | port từ repo gốc, giữ thông số và ghi công MIT |
 | 8 | **magicui**: 79 component React; 19 motion của trang ghi nguồn magicui | intake riêng | MIT | vừa | intake riêng | port (React → GSAP), ghi công MIT |
 | 9 | number-flow (2 motion) | `data/odometer` (mới) | MIT | vừa | 2–4 giờ | port thông số (WAAPI → đồng hồ của phim) |
-| 10 | Code của trang (`seek(t)` canvas, track WAAPI, text engine, tab React) | — | không có giấy phép, "học cá nhân" | — | — | không lấy |
+| 10 | Code của trang (`seek(t)` canvas, track WAAPI, text engine, tab React) | — | không có giấy phép, "học cá nhân" | — | — | không chép code; chuyển động vẫn nhập, kit tự viết |
 | 11 | Code react-bits (trang nhắc ở 29 motion) | — | MIT + Commons Clause: cấm phân phối lại, kể cả bản port | — | — | không lấy code; chuyển động viết mới |
-| 12 | typed.js, aceternity | — | GPL-3.0 / chưa rõ | — | — | không lấy code |
+| 12 | typed.js, aceternity | — | GPL-3.0 / chưa rõ | — | — | không lấy code; chuyển động vẫn nhập, kit tự viết |
 
-**Kết luận:** đáng lấy, dưới dạng danh mục tham khảo và danh sách việc cần dựng, không phải code. Thứ tự: (1) 40 việc ưu tiên cao, (2) tên
-easing, (3) intake riêng cho codrops và magicui (giấy phép MIT, port được nguyên thông số), (4) 126 việc ưu tiên vừa theo lô 20–30
-preset, (5) phần ưu tiên thấp khi có phim cần.
+**Kết luận:** nhập hết 782 motion vào "Mới nhập" (kit tự viết từ thông số, không chép code của trang), bạn chọn trên Gallery. Thứ tự
+nhập: (1) 40 việc ưu tiên cao, (2) tên easing, (3) 126 việc ưu tiên vừa, (4) phần ưu tiên thấp, các motion kit đã có và 12 bài học.
+codrops và magicui có báo cáo riêng (port nguyên thông số, MIT).
+
+## Import plan (decided with the user, 2026-10-12)
+
+The user reviews everything on the Gallery and decides per item, so **nothing is dropped at intake**: every one of the 782 motions goes into
+"Mới nhập" (`library/incoming/`, out of git) as **its own Gallery item**, including the ones the kit already has (for a side-by-side
+look; their `desc_vi` ends with "Kit đã có: `<name>`"). The priorities in this report are only the **import order**. The user presses
+GIỮ / BỎ per item; only GIỮ moves an item into the tracked (public) library, so licence questions are settled at GIỮ, not at import.
+
+**Classification: the library's own three layers, no extra tags.**
+1. **Group folder by purpose** (`text`, `transition`, `motion`, `effect`, `ui`, `background`, `line`, `data`, `map`... for presets; the
+   layout groups for blocks). The Gallery derives its category from the group (`engine/gallery.py` `category()`).
+2. **Source in `preset.json`**: `source` (`label`, `repo`, `commit`, `path` or `url`) and `license`, shown on the Gallery card as
+   "Nguồn" and "License". For this source: `"source": {"label": "TakayuStudio motion-reference: <id> (motion idea, written for the kit)", "url":
+   "https://motion-reference.takayustudio.jp/#motion=<id>"}`, `"license": "kit"`; when the site credits an upstream, `notes` says so
+   ("site credits react-bits" / "typed.js" / "aceternity" / "Codrops" / "Magic UI").
+3. **The Gallery's "Nguồn" filter** groups labels into families (`srcShort` in `library/gallery/index.html`: HyperFrames, Moworks v1,
+   iart-ai (MIT), claude-animation (MIT), anime.js (MIT), else Moworks). Add the family "TakayuStudio (ý tưởng)" (label starts "TakayuStudio") there, written like the existing five
+   (one regex on the label), so "Mới nhập" can be filtered by source while the user reviews.
+
+**Names:** by purpose inside the group; when a name is taken (in the library or by another source of the same batch), prefix the source
+the way the anime.js family is named (`motion/anime-path`, `text/anime-roll`): `takayu-`. Once the user has chosen, kept siblings can be
+merged into one preset with a `style` param (a rename the desktop session proposes to the user, never on its own).
+
+**What cannot run as it is gets adapted, not dropped:** content fetched from the network becomes params or the project's own media; live
+mouse, hover, click or scroll becomes a scripted path or cue times on the film's timeline; frames that imitate a real product get
+`"brand_ui": true`; anything of unclear licence stays in "Mới nhập" with a note in `notes` (replace or drop it before GIỮ if unsure).
+The site's code is still not copied: every item is written for the kit from the specs; the 29 motions that credit
+react-bits and the one crediting typed.js are written from the spec only. The 12 lessons become demo clips of the principle with
+neutral shapes (`desc_vi` starting "Bài học:"). Motions that credit Codrops or Magic UI are imported here too (as the site's
+version) besides the faithful ports of the other two reports, so the user can compare both.
+
+**Batches:** (1) magicui, 79 items; (2) codrops, 29 items; (3) the TakayuStudio motions by category, about 100 per batch, high-priority
+categories first. Each batch: write the presets in a scratch film, `kit.py library import <film> <group>/<name>` for each, `kit.py gallery
+build`, then the user's review.
 
 ## Already in the kit
 
@@ -76,6 +115,8 @@ preset, (5) phần ưu tiên thấp khi có phim cần.
 
 ## Not taken, and why
 
+Every motion is imported (Import plan above); what is not taken is the site's **code**:
+
 - **The site's own code** (the `seek(t)` canvas functions, the WAAPI track exports, the text engine, the HTML / CSS / GSAP / React tabs and
   the "save standalone HTML" pages): no licence; the footer limits the site to personal study; the operator is commercial. Technically it
   would not fit either: 336 demos are schematic canvas drawings (dashed guides, value readouts) that reach After Effects only as pictures,
@@ -86,7 +127,7 @@ preset, (5) phần ưu tiên thấp khi có phim cần.
 - **typed.js** (GPL-3.0 since 3.0.0): not mixable with the kit's MIT. The kit's `text/typewriter` already covers it; the gaps (backspace
   loops, human rhythm) are specified in our own words.
 - **aceternity** (8 motions): the Pro licence forbids redistributing components; the free tier's terms were not found. Treated as ideas.
-- **12 skipped motions**: lessons whose content is the explanation itself (pose-to-pose, timing = weight, spring vs tween, overshoot
+- **12 lessons** (imported as demo clips of the principle, not as motions): lessons whose content is the explanation itself (pose-to-pose, timing = weight, spring vs tween, overshoot
   budget, duration by size, exit faster than enter, overlap levels, reading hold, energy arc, tooltip placement) and the audio-only
   J / L cut. Their rules already exist in `film.md` / `recipes.md`, except the square-root distance rule (row 6 above).
 - **Teaching UI of the site** (onion skin, speed graph, comparison lab): the kit has its own onion skin and speed graph (THIRD-PARTY.md,

@@ -1,7 +1,8 @@
 # Intake: magicui component notes
 
 Part of the intake [2026-10-12-magicui.md](2026-10-12-magicui.md): every component at commit `85f97fd`, what it does, why it is taken or
-not, and for the taken ones the defaults a faithful port keeps and how it becomes a function of the film's time.
+not, and for the taken ones the defaults a faithful port keeps and how it becomes a function of the film's time. **All 79 are imported
+(the user's decision, 2026-10-12):** `skip` below is the first judgement, kept as the note the item carries on the Gallery.
 
 ### Text
 

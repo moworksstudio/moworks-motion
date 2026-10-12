@@ -9,7 +9,7 @@ and eases are the site's; status, kit match, target, priority and spec are this 
 
 Status: **have** = a kit preset or layout does it · **generic** = only the general-purpose `motion/anime` / `motion/tween` do it (no
 named preset) · **partial** = the kit has the mechanism but lacks a defining part · **missing** = nothing in the kit · **skip** = a lesson
-or an audio-only item with no film motion. Engine: `canvas` = the site draws a schematic on a 320 x 200 canvas (port the moving subject,
+or an audio-only item with no film motion (imported anyway as a lesson demo: every motion is imported, the user decides). Engine: `canvas` = the site draws a schematic on a 320 x 200 canvas (port the moving subject,
 not the guides or readouts) · `dom` = keyframe tracks on elements (320 x 180 stage) · `text` = the site's text engine. Times in ms.
 
 ## The full catalogue, by the site's categories

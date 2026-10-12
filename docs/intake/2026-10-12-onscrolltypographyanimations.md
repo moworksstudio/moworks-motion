@@ -14,16 +14,53 @@
 
 ## Tóm tắt cho người dùng
 
+**Quyết định của bạn (12/10/2026):** **nhập hết** 29 kiểu vào "Mới nhập", mỗi kiểu một mục riêng (`text/codrops-<kiểu>`), kể cả
+2 kiểu kit đã có, để bạn so và chọn GIỮ / BỎ. Gộp thành một preset `text/split-entrance` chỉ làm sau khi bạn đã chọn. Nguồn ghi
+trong `preset.json` ("Codrops", MIT), lọc được bằng hàng "Nguồn" (họ mới: Codrops).
+
 | # | Lấy gì | Gộp vào đâu trong kit | Giấy phép | Giá trị | Công sức | Đề xuất |
 |---|---|---|---|---|---|---|
-| 1 | **29 kiểu chữ vào** (từng chữ cái hoặc từng từ: bung nghiêng, kéo giãn, mở dọc, hội tụ, tán rồi tụ, lật 3D, cửa xoay, nhấp nháy ký tự, nhoè ngẫu nhiên, trượt trong mặt nạ, quệt giãn, rơi từ trên cao, cuộn trụ, bay từ sâu, lộn nhào, xoắn quạt, nảy đàn hồi, lan từ giữa…) | **một preset mới `text/split-entrance`**, tham số `style` chọn 1 trong 29 kiểu (giữ đúng thông số gốc) | MIT, ghi công Codrops | cao (tiêu đề, chữ to trong phim) | ước tính thô 4–8 giờ (chưa đo) | port nguyên thông số |
+| 1 | **29 kiểu chữ vào** (từng chữ cái hoặc từng từ: bung nghiêng, kéo giãn, mở dọc, hội tụ, tán rồi tụ, lật 3D, cửa xoay, nhấp nháy ký tự, nhoè ngẫu nhiên, trượt trong mặt nạ, quệt giãn, rơi từ trên cao, cuộn trụ, bay từ sâu, lộn nhào, xoắn quạt, nảy đàn hồi, lan từ giữa…) | **29 mục riêng trong "Mới nhập"** (`text/codrops-<kiểu>`), giữ đúng thông số gốc; cái nào bạn GIỮ thì sau đó gộp thành một preset `text/split-entrance` có tham số `style` | MIT, ghi công Codrops | cao (tiêu đề, chữ to trong phim) | ước tính thô 4–8 giờ (chưa đo) | port nguyên thông số |
 | 2 | Cách "cuộn trang" điều khiển chuyển động | đổi thành **thời gian của phim**: cả hiệu ứng trải trong `duration` của preset | — | — | (trong mục 1) | thay ScrollTrigger bằng đồng hồ phim |
 | 3 | Số ngẫu nhiên (`gsap.utils.random`, `Math.random`) | `ctx.hash` theo từng chữ: cố định giữa các lần render | — | — | (trong mục 1) | sửa cho tất định |
 | 4 | Splitting.js, Lenis, ScrollTrigger, font Adobe | — | MIT / MIT / GSAP / không phân phối lại được | — | — | không lấy (kit có `ctx.split`, font của phim) |
 
-**Kết luận:** nên lấy cả 29 kiểu, gom vào một preset `text/split-entrance` có tham số `style`. Kit đã có sẵn 5 kiểu tương tự (nhấp nháy ký
+**Kết luận:** nhập cả 29 kiểu, mỗi kiểu một mục để bạn chọn; những kiểu được GIỮ gộp thành một preset `text/split-entrance` có tham số
+`style`. Kit đã có sẵn 5 kiểu tương tự (nhấp nháy ký
 tự, nhoè ngẫu nhiên, trượt trong mặt nạ, cả đoạn sáng dần theo từ, bung nghiêng), nhưng vẫn nên giữ trong bộ để đủ 29 kiểu. 24 kiểu còn
 lại kit chưa có preset riêng: nhiều nhất là lật / bay 3D từng chữ cái, thứ `text/land-in` hiện chỉ làm theo từng từ.
+
+## Import plan (decided with the user, 2026-10-12)
+
+The user reviews everything on the Gallery and decides per item, so **nothing is dropped at intake**: every one of the 29 effects goes into
+"Mới nhập" (`library/incoming/`, out of git) as **its own Gallery item**, including the ones the kit already has (for a side-by-side
+look; their `desc_vi` ends with "Kit đã có: `<name>`"). The priorities in this report are only the **import order**. The user presses
+GIỮ / BỎ per item; only GIỮ moves an item into the tracked (public) library, so licence questions are settled at GIỮ, not at import.
+
+**Classification: the library's own three layers, no extra tags.**
+1. **Group folder by purpose** (`text`, `transition`, `motion`, `effect`, `ui`, `background`, `line`, `data`, `map`... for presets; the
+   layout groups for blocks). The Gallery derives its category from the group (`engine/gallery.py` `category()`).
+2. **Source in `preset.json`**: `source` (`label`, `repo`, `commit`, `path` or `url`) and `license`, shown on the Gallery card as
+   "Nguồn" and "License". For this source: `"source": {"label": "Codrops: On-Scroll Typography Animations fx<N>", "repo":
+   "codrops/OnScrollTypographyAnimations", "commit": "af28d61d1f8d3d117f5d1e9b09d5209e20a1a212", "path": "src/js/index.js" or
+   "src/js/index2.js"}`, `"license": "MIT"`.
+3. **The Gallery's "Nguồn" filter** groups labels into families (`srcShort` in `library/gallery/index.html`: HyperFrames, Moworks v1,
+   iart-ai (MIT), claude-animation (MIT), anime.js (MIT), else Moworks). Add the family "Codrops (MIT)" (label starts "Codrops") there, written like the existing five
+   (one regex on the label), so "Mới nhập" can be filtered by source while the user reviews.
+
+**Names:** by purpose inside the group; when a name is taken (in the library or by another source of the same batch), prefix the source
+the way the anime.js family is named (`motion/anime-path`, `text/anime-roll`): `codrops-`. Once the user has chosen, kept siblings can be
+merged into one preset with a `style` param (a rename the desktop session proposes to the user, never on its own).
+
+**What cannot run as it is gets adapted, not dropped:** content fetched from the network becomes params or the project's own media; live
+mouse, hover, click or scroll becomes a scripted path or cue times on the film's timeline; frames that imitate a real product get
+`"brand_ui": true`; anything of unclear licence stays in "Mới nhập" with a note in `notes` (replace or drop it before GIỮ if unsure).
+Each effect is imported as its own preset first (`text/codrops-<style>`, for example `text/codrops-swing-door`); the single
+`text/split-entrance` with a `style` param below is the merge proposed after the user's choices.
+
+**Batches:** (1) magicui, 79 items; (2) codrops, 29 items; (3) the TakayuStudio motions by category, about 100 per batch, high-priority
+categories first. Each batch: write the presets in a scratch film, `kit.py library import <film> <group>/<name>` for each, `kit.py gallery
+build`, then the user's review.
 
 ## Already in the kit
 
@@ -97,7 +134,9 @@ Totals: have 2 · generic 8 (only `motion/anime` can do them, written by hand ea
   `"source": {"label": "Codrops: On-Scroll Typography Animations", "repo": "codrops/OnScrollTypographyAnimations", "commit":
   "af28d61d1f8d3d117f5d1e9b09d5209e20a1a212", "paths": ["src/js/index.js", "src/js/index2.js"]}`, `"license": "MIT"`, the MIT notice in
   `docs/THIRD-PARTY.md` with a table row (as for claude-motion-design), a CHANGELOG line, and "Mới nhập" for the user's KEEP / DROP.
-- **One preset, 29 styles.** `text/split-entrance` (`kind: effect`, `ae: keyframes` unless the AE check says otherwise). Params:
+- **Import first, merge after.** Each effect is imported as its own preset `text/codrops-<style>` (style names below) so the user can
+  keep or drop it; the kept ones then merge into one preset with the user's OK:
+- **One preset, 29 styles (after the user's choices).** `text/split-entrance` (`kind: effect`, `ae: keyframes` unless the AE check says otherwise). Params:
   `style` (names below), `duration` (the whole entrance, default 1.6 s), `split` (`chars` default; `words` for fx16 and fx27, which work
   on words), `perspective` (from the source per style), `seed`. Style names: `tilt-pop` (fx1), `stretch-rise` (2), `unfold-down` (3),
   `converge` (4), `scatter` (5), `flip-up` (6), `swing-door` (7), `flicker` (8), `center-stretch` (9), `blur-random` (10),
