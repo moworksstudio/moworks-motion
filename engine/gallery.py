@@ -280,6 +280,17 @@ async def _render_and_check(base, kind, clip_out, thumb_out, check_end, thumb_at
     return res
 
 
+def static_problems(meta):
+    """what a preset's files say without a browser: the BAD rules its preset.js breaks (comments left out), and its files copied as
+    shipped whose SHA-256 changed (None when it has none; engine/tests/hf_blocks.py, blocks added from 11/10/2026)"""
+    js = re.sub(r"/\*.*?\*/|//[^\n]*", "", Path(meta["_js"]).read_text(encoding="utf-8"), flags=re.S)
+    static = [lab for rx, lab in BAD if re.search(rx, js)]
+    sums = (meta.get("source") or {}).get("sha256") or {}
+    if not sums: return static, None
+    from common import as_shipped
+    return static, [f for f, h in sums.items() if not as_shipped(Path(meta["_js"]).parent / "assets" / f, h)]
+
+
 def run_one(name, meta, say=say, out=None):
     """one demo built, rendered (clip + thumbnail) and checked; out = a scratch folder for the clip, thumbnail and work files (gallery check)"""
     from build import build
@@ -291,12 +302,8 @@ def run_one(name, meta, say=say, out=None):
     if meta.get("_incoming"):                            # a "Mới nhập" preset is not in the library yet: the demo film carries its own copy
         shutil.copytree(Path(meta["_js"]).parent, d / "presets" / name, ignore=shutil.ignore_patterns("desktop.ini"))
     chk = {"name": name, "at": time.strftime("%Y-%m-%d %H:%M")}
-    sums = (meta.get("source") or {}).get("sha256") or {}   # files copied as shipped (engine/tests/hf_blocks.py, blocks added from 11/10/2026)
-    if sums:
-        from common import as_shipped
-        chk["source"] = [f for f, h in sums.items() if not as_shipped(Path(meta["_js"]).parent / "assets" / f, h)]
-    js = Path(meta["_js"]).read_text(encoding="utf-8")
-    chk["static"] = [lab for rx, lab in BAD if re.search(rx, re.sub(r"/\*.*?\*/|//[^\n]*", "", js, flags=re.S))]
+    chk["static"], src = static_problems(meta)
+    if src is not None: chk["source"] = src
     rep = {}
     quiet = lambda *a: None
     try:
@@ -434,15 +441,19 @@ def build_all(filt=None, say=say):
     say(f"gallery data: {n} presets -> {GAL / 'data.js'}")
 
 
-def check_all(filt=None, say=say):
-    """kit.py gallery check [filter]: every demo built, rendered and checked as `gallery build` does, but into a scratch folder: the
-    library's clips, thumbnails and checks are not touched. Lists every preset whose result differs from its stored check. Final audit
-    09/10/2026: an engine change that breaks a preset in the film and the draft alike (text/mask-rise since 06/10) passed an old-vs-new
-    engine pixel compare, but not this. Returns the changed presets."""
+def check_all(filt=None, say=say, sample=0):
+    """kit.py gallery check [filter] [--random N]: every demo built, rendered and checked as `gallery build` does, but into a scratch
+    folder: the library's clips, thumbnails and checks are not touched. Lists every preset whose result differs from its stored check.
+    Final audit 09/10/2026: an engine change that breaks a preset in the film and the draft alike (text/mask-rise since 06/10) passed an
+    old-vs-new engine pixel compare, but not this. sample: N presets picked at random (12/10/2026: the whole library takes about 1.5 h;
+    it runs only when what films look like may change, a sample when unsure). Returns the changed presets."""
     out = LOCAL / "work" / "gallery-check"
     if out.exists(): shutil.rmtree(out, ignore_errors=True)
     old, changed = load_checks(), []
     recs = [(n, m) for n, m in records() if (not filt or any(f in n for f in filt.split(","))) and not (m.get("demo") or {}).get("skip")]
+    if sample and sample < len(recs):
+        import random
+        recs = sorted(random.sample(recs, sample), key=lambda r: r[0])
     say(f"gallery check: {len(recs)} preset(s) into {out} (the library is not touched)")
     for i, (name, meta) in enumerate(recs, 1):
         c = run_one(name, meta, out=out); o = old.get(name) or {}
@@ -453,6 +464,30 @@ def check_all(filt=None, say=say):
     say(f"gallery check: {len(changed)} of {len(recs)} differ from the stored checks" + (": look at each (kit.py gallery build <name> once it is right)" if changed else ""))
     for n, a, b, pr in changed: say(f"  {n}: {a} -> {b} {'; '.join(str(x) for x in pr if x)}")
     return changed
+
+
+def check_static(filt=None, say=say):
+    """kit.py gallery check --static: the part of the check that needs no browser, for GitHub's checks on every pull request (audit
+    12/10/2026): every preset.json reads, no preset.js breaks the BAD rules (a frame must be a function of time: no Math.random, Date,
+    requestAnimationFrame, network), files copied as shipped keep their SHA-256. A problem its stored check already names passes.
+    Returns [(name, [problems])]."""
+    bad = []
+    for root in (LIBP, LIBL):
+        for mj in sorted(root.rglob("preset.json")):
+            try: json.loads(mj.read_text(encoding="utf-8"))
+            except ValueError as e: bad.append((mj.parent.relative_to(root).as_posix(), [f"preset.json does not read: {e}"]))
+    if bad:
+        for n, pr in bad: say(f"  {n}: {'; '.join(pr)}")
+        return bad
+    old, recs = load_checks(), [(n, m) for n, m in records() if not m.get("_incoming") and (not filt or any(f in n for f in filt.split(",")))]
+    for name, meta in recs:
+        static, src = static_problems(meta)
+        probs = (["uses " + ", ".join(static)] if static else []) + (["not as shipped (SHA-256): " + ", ".join(src)] if src else [])
+        new = [x for x in probs if x not in ((old.get(name) or {}).get("problems") or [])]
+        if new: bad.append((name, new))
+    say(f"gallery check --static: {len(recs)} preset(s), {len(bad)} with a new problem")
+    for n, pr in bad: say(f"  {n}: {'; '.join(pr)}")
+    return bad
 
 
 def open_page(port=None, say=say):

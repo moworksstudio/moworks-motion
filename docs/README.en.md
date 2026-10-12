@@ -5,7 +5,7 @@
 <p align="center"><b>From brief to motion graphics film: Claude directs, the kit builds every frame in code.</b></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.0.2-1d3fd8" alt="version 2.0.2">
+  <img src="https://img.shields.io/badge/version-2.0.3-1d3fd8" alt="version 2.0.3">
   <img src="https://img.shields.io/badge/Claude-Opus_5.5-d97757" alt="Claude Opus 5.5">
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-555" alt="Windows 10 | 11">
   <img src="https://img.shields.io/badge/fps-60-111" alt="60 fps">

@@ -74,11 +74,13 @@ def version():
 # ------------------------------------------------------------------ steps shared with update.py
 
 def packages():
-    """every package in engine/requirements.txt (the optional ones too: one question covers all)"""
+    """every package in engine/requirements.txt (the optional ones too: one question covers all); what they pull in at the versions of
+    engine/constraints.txt (audit 12/10/2026: the same set on every machine)"""
     req = [l.split("#")[0].strip() for l in (ENGINE / "requirements.txt").read_text(encoding="utf-8").splitlines()
            if l.strip() and not l.lstrip().startswith("#")]
+    con = ENGINE / "constraints.txt"
     print("   đang cài / kiểm tra (lần đầu vài phút)...")
-    ok = run([sys.executable, "-m", "pip", "install", "-q", "--disable-pip-version-check", *req])
+    ok = run([sys.executable, "-m", "pip", "install", "-q", "--disable-pip-version-check", *(["-c", str(con)] if con.exists() else []), *req])
     note("python", f"{len(req)} gói" if ok else "[LỖI] xem dòng pip phía trên")
     return ok
 
@@ -90,13 +92,41 @@ def _installed(dist):
     except Exception: return False
 
 
+VERIFIED = ENGINE / "models" / "verified.json"                         # model files already hashed: {to: "size:mtime:sha256"}
+
+
+def _sha256(f):
+    import hashlib
+    h = hashlib.sha256()
+    with open(f, "rb") as fh:
+        while b := fh.read(1 << 22): h.update(b)
+    return h.hexdigest()
+
+
+def model_there(f, seen):
+    """a model file is there when its size and its SHA-256 match models.json (audit 12/10/2026: the size alone let a damaged or swapped
+    file through). It is hashed once (about 4 s for all of them); then its size and time in verified.json stand for the hash"""
+    p = ENGINE / "models" / f["to"]
+    if not p.exists() or p.stat().st_size != f["size"]: return False
+    if not f.get("sha256"): return True
+    key = f"{f['size']}:{p.stat().st_mtime_ns}:{f['sha256']}"
+    if seen.get(f["to"]) == key: return True
+    if _sha256(p) != f["sha256"]: return False
+    seen[f["to"]] = key; return True
+
+
 def models_missing():
-    """[(model, [missing files])] from engine/models.json: a file is there when its size matches"""
+    """[(model, [missing files])] from engine/models.json: a file is missing when it is not there, or its size or SHA-256 differ"""
     spec = json.loads((ENGINE / "models.json").read_text(encoding="utf-8"))
-    out = []
+    try: seen = json.loads(VERIFIED.read_text(encoding="utf-8"))
+    except (OSError, ValueError): seen = {}
+    before, out = dict(seen), []
     for m in spec["models"]:
-        miss = [f for f in m["files"] if not ((ENGINE / "models" / f["to"]).exists() and (ENGINE / "models" / f["to"]).stat().st_size == f["size"])]
+        miss = [f for f in m["files"] if not model_there(f, seen)]
         if miss: out.append((m, miss))
+    if seen != before:
+        try: VERIFIED.write_text(json.dumps(seen, indent=1), encoding="utf-8")
+        except OSError: pass
     return out
 
 
@@ -106,26 +136,29 @@ def models_step():
     ok, got = True, []
     for m, miss in todo:
         if not _installed(m["package"]): print(f"   {m['name']}: bỏ qua (gói {m['package']} chưa cài)"); ok = False; continue
-        good = all([download(f["url"], ENGINE / "models" / f["to"], f["size"]) for f in miss])
+        good = all([download(f["url"], ENGINE / "models" / f["to"], f["size"], f.get("sha256")) for f in miss])
         if good: got.append(m["name"])
         ok &= good
     note("models", ("đã tải " + ", ".join(got) if got else "") + ("" if ok else ("; " if got else "") + "[LỖI] xem phía trên"))
     return ok
 
 
-def download(url, dst, size):
-    """url -> dst through a .part file, progress every 10 %; the size must match"""
+def download(url, dst, size, sha256=None):
+    """url -> dst through a .part file, progress every 10 %; the size and the SHA-256 (models.json) must match before it replaces dst"""
+    import hashlib
     dst.parent.mkdir(parents=True, exist_ok=True); part = dst.with_name(dst.name + ".part")
     print(f"   tải {dst.name} ({size / 1e6:.0f} MB)")
     try:
+        h = hashlib.sha256()
         with urllib.request.urlopen(url, timeout=60) as r, open(part, "wb") as out:
             done, mark = 0, 0.1
             while True:
                 b = r.read(1 << 20)
                 if not b: break
-                out.write(b); done += len(b)
+                out.write(b); h.update(b); done += len(b)
                 if size and done / size >= mark: print(f"     {done / size:.0%}"); mark += 0.1
         if size and part.stat().st_size != size: raise IOError(f"size {part.stat().st_size} != {size}")
+        if sha256 and h.hexdigest() != sha256: raise IOError(f"SHA-256 {h.hexdigest()[:12]}... != {sha256[:12]}... (models.json): file not used")
         os.replace(part, dst); return True
     except Exception as e:
         print(f"   [LỖI] {dst.name}: {e}"); part.unlink(missing_ok=True); return False

@@ -313,7 +313,7 @@ Dành cho người phát triển kit; chạy từ thư mục gốc.
 |---|---|
 | `engine\tests\smoke_new_project.py` | Chạy thử một phim từ lúc tạo tới khi xuất, báo từng bước |
 | `engine\tests\ae\run_cases.py` | Bộ ca port After Effects (cần AE đang mở), so khung với trình duyệt |
-| `kit.py gallery check [lọc]` | Chạy bộ kiểm mọi demo ra thư mục tạm và báo mẫu nào khác kết quả đã lưu |
+| `kit.py gallery check [lọc] [--static \| --random N]` | Chạy bộ kiểm mọi demo ra thư mục tạm và báo mẫu nào khác kết quả đã lưu (cả thư viện khoảng 1,5 giờ). `--static`: chỉ phần không cần trình duyệt (preset.json, quy tắc khung hình, SHA-256 file gốc), GitHub chạy phần này; `--random N`: kiểm N mẫu chọn ngẫu nhiên |
 | `kit.py gallery build [lọc]` | Dựng lại clip demo và kết quả kiểm |
 | `engine\tests\bake_library.py`, `demo_pixels.py` | Kiểm việc dựng mọi demo; so điểm ảnh giữa hai phiên bản engine |
 | `engine\tests\hf_blocks.py`, `hf_templates.py` | Sinh lại các mẫu HyperFrames từ mã nguồn gốc |

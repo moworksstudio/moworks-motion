@@ -3,6 +3,29 @@
 Mỗi phiên bản một mục, mới nhất ở trên. `update.bat` hiển thị các mục mới hơn bản đang cài, cùng danh sách mẫu thư viện được thêm, sửa
 hoặc bỏ.
 
+## 2.0.3 (12/10/2026)
+
+Bản sửa an toàn sau một lượt rà soát mã nguồn từ bên ngoài.
+
+- **Player chỉ trả file của phim:** địa chỉ của một round có đường dẫn kiểu `C:/...` (`/__round/v1/C:/...`, `/__api/media?r=v1&f=C:/...`)
+  từng đọc được mọi file trên máy trong lúc player mở. Giờ mọi file player trả về phải nằm trong thư mục phim.
+- **Server của kit chỉ trả lời trang của chính nó:** player, Gallery và server render kiểm địa chỉ (Host) và nơi gửi (Origin). Một trang web
+  khác đang mở trong trình duyệt không còn gửi được ghi chú, bấm xuất phim, Port to AE hay bấm Bỏ một preset Mới nhập.
+- **Âm thanh trong player được gửi từng phần** từ file (tua được bằng Range), không đọc cả file vào bộ nhớ.
+- **Model AI được kiểm SHA-256:** `install.bat` / `update.bat` chỉ nhận file đúng mã băm ghi trong `engine\models.json`; file hỏng hoặc bị
+  thay mà cùng kích thước sẽ được tải lại. Whisper tải từ một commit cố định trên Hugging Face, không theo nhánh main. File đã kiểm được nhớ
+  trong `engine\models\verified.json`, lần sau không băm lại.
+- **Khoá phiên bản các gói kéo theo:** `engine\constraints.txt` (57 gói, đo trên máy gốc, Python 3.12) được đưa cho pip khi cài và cập
+  nhật, nên máy mới cài đúng bộ đã kiểm.
+- **GitHub tự kiểm mỗi pull request** (`.github/workflows/checks.yml`, trên Windows): mọi file JSON đọc được, mọi file Python biên dịch
+  được, `kit.py gallery check --static` (mới: preset.json, quy tắc khung hình theo thời gian, SHA-256 của file giữ nguyên bản gốc, không cần
+  trình duyệt), skill zip khớp nguồn (`engine\tests\pack_skill.py --check`, mới), looks giữ nguyên bản gốc, `kit.py publish-check`. Cảnh báo
+  lỗ hổng của Dependabot đã bật cho repo.
+- `kit.py gallery check --random N`: kiểm N mẫu chọn ngẫu nhiên. Cả thư viện mất khoảng 1,5 giờ, giờ chỉ chạy hết khi thay đổi có thể
+  đổi hình của mọi phim.
+- Smoke test kiểm thêm 7 điểm trên của player (20 bước).
+- `update.bat` trên máy đang được sửa kit (một nhánh khác `main`) báo "Kit đang bảo trì, vui lòng update lại sau" thay cho lỗi git khó hiểu.
+
 ## 2.0.2 (12/10/2026)
 
 Bản cập nhật lớn cho âm thanh ("sound pass": Claude không nghe được, nên mọi bước âm thanh đều được đo).
