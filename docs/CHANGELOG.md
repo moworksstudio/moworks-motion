@@ -11,6 +11,22 @@ hoặc bỏ.
 - `update.bat` chạy các bước cài đặt bằng mã vừa tải về, nên bản sửa của trình cài đặt có tác dụng ngay trong lần cập nhật đó.
 - Skill: bỏ các ghi chú nội bộ (ai quyết định, ngày, tên bài test), giữ nguyên mọi quy tắc.
 
+### Âm thanh ("sound pass": Claude không nghe được, nên mọi bước đều đo)
+- **Tiếng hiệu ứng thu thật thay cho tiếng tạo bằng code:** bộ 19 tiếng của HyperFrames (Pixabay, dùng thương mại được) trong
+  `engine\vendor\hf-sfx\`: whoosh (ngắn, dài), riser, pop, click, gõ phím, typing, sparkle, chime, ping, notification, error, glitch,
+  impact bass. Tên cũ (swoosh, tick, tickhi, thump) vẫn dùng được và trỏ sang tiếng thật. Mỗi tiếng được căn theo điểm bắt đầu kêu (whoosh,
+  riser: theo đỉnh), rơi sau hình một khung.
+- **Mức tiếng hiệu ứng được đo khi dựng phim:** mỗi tiếng nằm trên nhạc khoảng 4 dB và thấp hơn giọng đọc ít nhất 2 dB, đo trên đúng đoạn nền
+  dưới nó; `"gain"` trong film.json chỉnh thêm (0,5 = mức đo được).
+- **Mức tổng mới: −16 LUFS, đỉnh thật ≤ −4 dBTP** để không vỡ tiếng sau khi nén AAC hay trên loa điện thoại; film.json `"loudness": -14` khi
+  khách cần bản to hơn.
+- **`kit.py loudness <phim>`** đo trên file MP4 đã xuất (và khi ghép mono), từng tiếng so với nhạc và giọng đọc, liệt kê cut chưa có tiếng,
+  chỉ ra nguồn gây đỉnh khi phim nhỏ hơn mục tiêu, xuất bảng ảnh khung trước / sau mỗi tiếng kèm sóng âm, và đưa 5 mốc để người dùng nghe
+  bằng tai nghe.
+- **`kit.py beats`** kiểm tiếng kick dưới 120 Hz so với lưới nhịp (tự dời lưới nửa nhịp khi rõ ràng) và vẽ ảnh để xem; **`--fit`** dời
+  điểm bắt đầu nhạc để cut và tiếng hiệu ứng rơi đúng beat khi không sửa được hình.
+- Sửa: kit đọc được các file mp3 rất ngắn (ffmpeg không tua được trong đó).
+
 ## 2.0.0 (09/10/2026, cập nhật đến 12/10/2026)
 
 Bản phát hành chính thức đầu tiên của Moworks Motion.

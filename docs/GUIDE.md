@@ -122,6 +122,22 @@ Quy trình remake (`workflow\remake.md` trong skill):
 - **Carve:** khi nhạc lấn giọng đọc, kit chỉ khoét nhạc ở dải tần giọng đang dùng theo từng câu, thay vì hạ cả bài xuống 25 %. Mức từ 0
   đến 1 (mặc định 0,8; 0,4–0,6 giữ nhạc rõ hơn). Cần Node.js; nếu thiếu, kit hạ nhạc 25 % và thông báo.
 
+### Âm thanh: đo, không đoán
+
+Claude không nghe được, nên mọi bước âm thanh đều được đo:
+
+1. **Nhạc có bản quyền:** nhạc của bạn, nhạc Mixkit hoặc nhạc tạo bằng ElevenLabs; nguồn và giấy phép ghi trong `notes\NOTES.md`. Không
+   có nhạc hay tiếng hiệu ứng nào tạo bằng code.
+2. **Kiểm nhịp:** `kit.py beats` so tiếng kick (dưới 120 Hz) với lưới nhịp và vẽ ảnh `02_Assets\Stills\beats\<bài>_kick.png`; lưới lệch
+   nửa nhịp thì tự dời khi rõ ràng.
+3. **Cut đúng beat:** khi không sửa được hình (phim giữ thiết kế, phim đã duyệt), `kit.py beats <phim> --fit` dời điểm bắt đầu nhạc.
+4. **Một tiếng cho mỗi cut và chuyển động lớn:** 19 tiếng thu thật trong `engine\vendor\hf-sfx\` (whoosh, pop, click, gõ phím, typing,
+   riser, impact…).
+5. **Mức âm lượng:** giọng đọc to nhất, nhạc hạ xuống khi có giọng, tiếng hiệu ứng nằm trên nhạc (kit đo và đặt mức từng tiếng khi dựng).
+   Mức tổng −16 LUFS, đỉnh thật ≤ −4 dBTP; khách cần bản to hơn thì đặt `"loudness": -14` trong film.json.
+6. **Kiểm sau khi xuất:** `kit.py loudness <phim>` đo trên file MP4 (cả khi ghép mono), xuất bảng ảnh khung trước / sau mỗi tiếng kèm sóng
+   âm (`02_Assets\Stills\audio\`) và đưa **5 mốc thời gian để bạn nghe kiểm bằng tai nghe**. Claude không tự kết luận âm thanh đã ổn.
+
 ### Player
 
 `1. Preview.bat` dùng để xem phim, ghi chú và xuất phim; storyboard và bảng nhân vật được duyệt trong cuộc trò chuyện.

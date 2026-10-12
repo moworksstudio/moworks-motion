@@ -281,8 +281,8 @@ def audio_clips(spec, lay, total):
 
 
 def final_audio(p, spec, lay, total, cues, say=say):
-    """the film's clips as heard: voice / audio clips, sound effects (scene "sfx" + presets' ctx.sfx cues, never on or after the end tag,
-    tick / thump with their loudest point one frame after the cue), music as v1 plays it (loop, fade in, ducking under voices, tail fade), baked into
+    """the film's clips as heard: voice / audio clips, sound effects (scene "sfx" + presets' ctx.sfx cues, never on or after the end tag;
+    recorded sounds from engine/vendor/hf-sfx, each one's attack, or a whoosh's swell, one frame after the cue), music as v1 plays it (loop, fade in, ducking under voices, tail fade), baked into
     audio/_built/<id>.wav so the player, mix.wav and the AE layers all hear the same thing"""
     from audio import sfx as SFX
     from audio.media import bake_music
@@ -301,15 +301,24 @@ def final_audio(p, spec, lay, total, cues, say=say):
         if "volume" not in c: c["volume"] = 0.6 if voices else 1.0               # v1: music at 0.6 under a voice
         c.update(src=out.relative_to(p).as_posix(), trim=0, dur=round(total - c["start"], 4), fade_in=0, fade_out=0)
     if allc:                                                                     # v1: sfx scale with the loudest of voice / music (at least 0.5)
-        from audio.media import load
+        import numpy as np
+        from audio.media import load, stems
         ref = max([0.5] + [float(abs(load(p / c["src"], c.get("trim", 0), c["dur"])).max()) * c.get("volume", 1) for c in cl])
-        SFX.ensure(p / "assets" / "sfx")
+        SFX.ensure(p / "assets" / "sfx", {c["name"] for c in allc})
+        # the bed each cue sits on, as the film plays it (music baked with its ducking, voices): every cue's level is measured against it
+        bed = stems(p, [dict(c, media_start=c.get("trim", 0), volume=c.get("volume", 1), fade_in=c.get("fade_in") or 0, fade_out=c.get("fade_out") or 0)
+                        for c in cl], total) if cl else {"music": None, "voice": None}
     for i, c in enumerate(sorted(allc, key=lambda c: c["t"])):
         # the loudest point lands ONE FRAME AFTER the picture's hit (12/10/2026, the "Motion Lab" article the user asked to follow: "put
         # each visual hit 1 frame before its sound, never after ... light beats sound"); before, it landed on the hit's own frame
         f = p / "assets" / "sfx" / f"{c['name']}.wav"; start = max(0.0, c["t"] + 1.0 / FPS - SFX.peak(c["name"]))
+        vol = SFX.mix_volume(c["name"], start, bed["music"], bed["voice"], c.get("gain", 0.5), c.get("gain", 0.5) * SFX.level(c["name"]) * ref)
+        dur = round(min(SFX.duration_of(f), total - start), 4)
         cl.append({"id": f"sfx{i + 1}_{c['name']}", "src": f"assets/sfx/{c['name']}.wav", "start": round(start, 4), "trim": 0, "role": "sfx",
-                   "dur": round(min(SFX.duration_of(f), total - start), 4), "volume": round(c.get("gain", 0.5) * SFX.LEVEL.get(c["name"], 1.0) * ref, 4)})
+                   "dur": dur, "volume": vol})
+        if bed["music"] is not None and dur > 0:           # a later cue sits over this one's tail too
+            s = SFX.sound(c["name"])[:int(dur * 48000)] * np.float32(vol); a = int(round(start * 48000)); n = max(0, min(len(s), len(bed["music"]) - a))
+            bed["music"][a:a + n] += s[:n]
     return [c for c in cl if c["dur"] > 0]
 
 

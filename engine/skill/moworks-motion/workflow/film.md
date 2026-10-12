@@ -96,11 +96,27 @@ procedure: `workflow/reframe.md`.
     Generate: `kit.py music <project> "<prompt>" --length 30
     [--instrumental]` (cost first, then `--yes`; it runs `kit.py beats` on the result). A sound effect file: `kit.py sfx-gen <project>
     "<description>" --length 1.5`, used as an `"audio"` clip with `"role": "sfx"`.
-  - **Hits and the phone** (the light comes before the sound): a sound effect's loudest point lands ONE frame after its picture (the kit
-    places the built-in ones so; place an `"audio"` sfx file by its peak, not its start). `kit.py loudness <film>` measures the exported
-    mix (-14 LUFS, true peak -1 dBTP), its phone band (200 Hz - 6 kHz: a big drop from the full mix = the weight sits in the sub, which a
-    phone does not play) and every effect over the bed: aim for 3 to 6 dB (under 3 it is lost on a phone, over 6 it jumps out); change
-    its `"gain"` and measure again. The picture must work muted first: the feed plays without sound.
+  - **Hits and the phone** (the light comes before the sound): a sound effect's attack (a whoosh / riser: the top of its swell) lands ONE
+    frame after its picture (the kit places the library's so; place an `"audio"` sfx file by its peak, not its start). The picture must
+    work muted first: the feed plays without sound.
+  - **The sound pass** (you cannot hear: measure every step, never go by feel):
+    1. Licensed music only: the user's track, a Mixkit track (below) or `kit.py music`; note the source and licence in `notes\NOTES.md`.
+       Never music or sound effects synthesised in code.
+    2. `kit.py beats`: read its **kick check** (the waveform under 120 Hz against the grid) and LOOK at its picture
+       (`02_Assets\Stills\beats\<track>_kick.png`): kicks on the solid lines. Kicks on the dotted lines = the grid is half a beat off:
+       `--offset <first beat + half a beat>`.
+    3. Big moves (cuts, titles landing) on the beat. The animation cannot change (a kept design, an approved film)? Move where the music
+       starts instead: `kit.py beats <film> --fit` (rewrites the music clip's `"trim"`), build again.
+    4. One ready-made sound for every cut and big move, from the kit's library: a whoosh for movement, pop for things appearing, click for
+       clicks, typing for typing. `kit.py loudness` lists the cuts with no sound.
+    5. The voice is the loudest thing, the music drops under it, the effects sit above the music: the build sets every effect's level so
+       (measured on the bed under it: about 4 dB over the music, at least 2 dB under a voice; `"gain"` moves it, 0.5 = that level, 1 =
+       +6 dB). The master: about **-16 LUFS, true peaks under -4 dBTP** (no clipping after AAC or on a phone speaker in mono; film.json
+       `"loudness": -14` only when the client asks for a louder master).
+    6. After MP4 Export: `kit.py loudness <film>` measures the EXPORTED MP4 (and its mono fold-down), every effect over the music and
+       against the voice, the cuts with no sound, and writes the cue sheet (`02_Assets\Stills\audio\cues_*.png`: the frame before / after
+       each cue + the waveform): look at every page. Then give the user the **five timestamps it prints to check with headphones**.
+       Never tell the user the sound is good: you have not heard it.
   - **No music given and no generation wanted**: pick 3 free tracks from Mixkit (mixkit.co, Mixkit Stock Music Free Licence: say
     so) that fit the brief and **download all three at once, without asking** (so the user
     can listen before choosing; free, a few MB) into `<film>\02_Assets\Music-Options\` as `A - <Title> (<Artist>).mp3`,
@@ -110,8 +126,11 @@ procedure: `workflow/reframe.md`.
     `03_HTML\audio\music\`, its licence line goes into `notes\NOTES.md`, the other two stay in `Music-Options\` (the user keeps or bins
     them). A track cut to the film's length (sections joined on bar starts) is a new file in `audio\music\`, the original kept; run
     `kit.py beats` on it. Paid generation (`kit.py music`) still asks first.
-  - the kit's own sound effects (synthesised, free): per scene `"sfx": [ { "at": 0.4, "name": "pop", "gain": 0.5 } ]` or film-level `"sfx"`
-    at film times; names swoosh, whoosh, pop, sparkle, tick, tickhi, thump. Put them on the motion. Nothing plays on or after the end tag.
+  - the kit's sound effects (recorded, HyperFrames' bundled library, free; `engine\vendor\hf-sfx\manifest.json` says what each is for):
+    per scene `"sfx": [ { "at": 0.4, "name": "pop" } ]` or film-level `"sfx"` at film times. Names: whoosh, whoosh-short,
+    whoosh-cinematic (a 2.5 s build, its swell on the cut), riser (its swell on the reveal), pop, click, click-soft, key-press, typing,
+    sparkle, chime, ping, notification, error, glitch-1 / -2 / -3, impact-bass-1 / -2; older names still work (swoosh, tick, tickhi,
+    thump, impact, glitch). Put them on the motion. Nothing plays on or after the end tag.
   - The player plays it all (M mutes); MOV and MP4 carry the mix inside; the AE port adds audio layers and writes `05_AE\Audio\`:
     `mix.wav` + the stems (voice, music, sfx) side by side.
 - **Motion on the voice's words** (local Whisper): `kit.py transcribe <project> [--lang vi] [--prompt "names"]` →
@@ -123,7 +142,8 @@ procedure: `workflow/reframe.md`.
 - **A film cut to a song** (a lyric film, a launch on a track; `workflow/recipes.md`, "Song film"):
   - `kit.py beats <project>` → `audio\transcript\<song>.beats.json` (BPM, beats, bars, hits, onsets). It prints a "tempo check" (the
     candidate tempos with how far the strong onsets sit from each one's grid: e.g. a track read 150 BPM, 7.5 ms, where a plain fit said
-    152). Say the BPM so the user can check it by ear (`--bpm`, `--offset` to correct).
+    152) and a kick check with its picture (the sound pass, step 2: a tracker can lock onto the off-beat, a whole grid 0.22 s off). Say
+    the BPM so the user can check it by ear (`--bpm`, `--offset` to correct).
   - The lyrics are known (the user's text): `kit.py align <project> 01_Brief\lyrics.txt [--pin "8=17.58; 12=33.32"]` → a time per sung word +
     `01_Brief\LYRICS-TIMED.md` for the user. Heard words move 80 ms earlier (Whisper's lag). It is a DRAFT (on the A/B song, by sections:
     median 0.42 s off the times the user liked): show the table; the user taps line starts in the player's lyric mode (or `--pin`), run

@@ -186,6 +186,61 @@ def tempo_check(strong, b0):
     return best, [[r[0], round(r[1], 1)] for r in rows[:6]]
 
 
+LOW = 120            # Hz: under it only the kick (and the bass) remain (the "sound pass" article: plot the waveform below 120 Hz against the grid)
+
+
+def _low(y):
+    import numpy as np
+    from scipy.signal import butter, sosfiltfilt
+    return sosfiltfilt(butter(4, LOW, "low", fs=SR, output="sos"), y.astype(np.float64))
+
+
+def kick_check(y, beats, period):
+    """12/10/2026, the "sound pass" X article (the user: follow it): a beat tracker sometimes locks onto the off-beat (the article's grid was
+    0.22 s off), caught only by looking at the waveform under 120 Hz against the grid. Share of beats with a kick attack within 40 ms, on the
+    grid and on the grid moved half a beat -> (on grid, half a beat off), 0..1"""
+    import numpy as np
+    if len(beats) < 8: return None, None
+    lo = np.abs(_low(y)); k = max(1, int(0.005 * SR)); e = np.convolve(lo, np.ones(k) / k, "same")
+    att = np.maximum(0, np.diff(e, prepend=e[:1])); w = max(1, int(0.02 * SR)); att = np.convolve(att, np.ones(w), "same")
+    thr = 0.3 * np.percentile(att, 99.5)
+
+    def share(ts):
+        hit = [att[max(0, int((t - 0.04) * SR)):int((t + 0.04) * SR)].max(initial=0) >= thr for t in ts if 0.05 < t < len(y) / SR - 0.05]
+        return float(np.mean(hit)) if hit else 0.0
+    b = np.asarray(beats, float)
+    return round(share(b), 3), round(share(b + period / 2), 3)
+
+
+def kick_picture(y, beats, downs, period, out, bars=4):
+    """the waveform under 120 Hz with the grid (bar lines strong, beats thin, half beats dotted), three stretches of `bars` bars: after the
+    first downbeat, the middle, three quarters in -> out (PNG). Kicks sitting on the thin lines = the grid is right; on the dotted ones = it
+    is half a beat off"""
+    import numpy as np
+    from PIL import Image, ImageDraw
+    lo = _low(y); dur = len(y) / SR; span = bars * 4 * period; W, H = 1600, 200
+    starts = [downs[0] if downs else 0.0]
+    for f in (0.5, 0.75):
+        c = [t for t in downs if t >= dur * f - span / 2]
+        if c and c[0] + span < dur and all(abs(c[0] - s) > span * 0.5 for s in starts): starts.append(c[0])
+    img = Image.new("RGB", (W, H * len(starts)), (16, 16, 18)); d = ImageDraw.Draw(img); top = np.abs(lo).max() or 1.0
+    for r, s0 in enumerate(starts):
+        y0 = r * H; mid = y0 + H // 2 + 8; seg = lo[int(s0 * SR):int((s0 + span) * SR)]
+        if not len(seg): continue
+        cols = np.array_split(seg, W)
+        for x, c in enumerate(cols):
+            if len(c): d.line([(x, mid - int(c.max() / top * (H / 2 - 16))), (x, mid - int(c.min() / top * (H / 2 - 16)))], fill=(90, 160, 255))
+        X = lambda t: int((t - s0) / span * W)
+        for t in beats:
+            if s0 <= t <= s0 + span: d.line([(X(t), y0 + 18), (X(t), y0 + H - 4)], fill=(255, 90, 90) if any(abs(t - q) < 1e-3 for q in downs) else (230, 200, 90), width=2 if any(abs(t - q) < 1e-3 for q in downs) else 1)
+            h = t + period / 2
+            if s0 <= h <= s0 + span:
+                for yy in range(y0 + 18, y0 + H - 4, 8): d.point((X(h), yy), fill=(150, 150, 150))
+        d.text((6, y0 + 3), f"{s0:.2f} - {s0 + span:.2f} s   under {LOW} Hz: kicks on the solid lines = grid right; on the dotted lines = half a beat off", fill=(220, 220, 220))
+    Path(out).parent.mkdir(parents=True, exist_ok=True); img.save(out)
+    return out
+
+
 def analyse(src, bpm=None, offset=None):
     import numpy as np
     y = decode(src); dur = len(y) / SR
@@ -242,6 +297,17 @@ def analyse(src, bpm=None, offset=None):
                 o = int(np.argmax(acc)); downs = beats[o::4]; period = float(np.median(np.diff(bt))); method = "beat tracker (librosa, tempo changes)"
     except ImportError:
         pass
+    kc = None
+    try:                                                  # the waveform check under 120 Hz: move the grid half a beat only on clear evidence
+        on_g, off_g = kick_check(y, beats, period)
+        kc = {"on_grid": on_g, "half_beat_off": off_g, "moved": False}
+        if offset is None and on_g is not None and off_g >= 0.5 and off_g >= 1.5 * on_g:
+            beats = [round(t + period / 2, 4) for t in beats if t + period / 2 < dur]
+            acc = [_pool(low, beats[k::4]).mean() + 0.3 * _pool(full, beats[k::4]).mean() for k in range(4)]
+            o = int(np.argmax(acc)) if len(beats) >= 8 else 0; downs = beats[o::4]; ph = beats[0] if beats else ph
+            kc.update(moved=True, on_grid=off_g, half_beat_off=on_g)
+    except ImportError:
+        pass
     hits = peaks(np.maximum(full, 1.3 * low), np.percentile(full, 99.0), 0.25)
     strong = [t for t in on if _interp(full, [t])[0] > 2.0]
     g = period / 2
@@ -249,7 +315,7 @@ def analyse(src, bpm=None, offset=None):
     return {"duration": round(dur, 3), "bpm": round(60 / period, 3), "beat": round(period, 5), "eighth": round(period / 2, 5), "phase": round(ph, 4),
             "meter": 4, "downbeat_offset": o, "beats": beats, "downbeats": downs, "hits": hits, "kicks": kicks(low, beats, period), "onsets": on,
             "grid_error_ms": None if err is None else round(err, 1), "method": method,
-            "phase_fix_ms": round(fix * 1000, 1), "tempo_check": check}
+            "phase_fix_ms": round(fix * 1000, 1), "tempo_check": check, "kick_check": kc}
 
 
 def out_file(p, src):
@@ -280,8 +346,52 @@ def run(p, src=None, bpm=None, offset=None, say=print):
         f"grid error {r['grid_error_ms']} ms (median, strong onsets)")
     if r.get("tempo_check"): say("  tempo check (median distance of strong onsets to each tempo's eighth notes): "
                                  + ", ".join(f"{b:g} BPM {e} ms" for b, e in r["tempo_check"][:4]))
+    kc = r.get("kick_check") or {}
+    if kc.get("on_grid") is not None:
+        say(f"  kick check (waveform under {LOW} Hz): {kc['on_grid']:.0%} of the beats have a kick, {kc['half_beat_off']:.0%} half a beat off"
+            + ("  -> the grid was moved half a beat" if kc.get("moved") else "  -> check the picture if these are close"))
+    try:
+        from common import renders
+        pic = kick_picture(decode(f), r["beats"], r["downbeats"], r["beat"], renders(p, "stills") / "beats" / f"{f.stem}_kick.png")
+        say(f"  kick picture: {pic}  (look at it: kicks on the solid lines)")
+    except Exception as e:
+        say(f"  kick picture: not drawn ({e})")
     say(f"-> {out.relative_to(p).as_posix()}   Listen: does {r['bpm']} BPM feel right? If not: --bpm <n> (and --offset <first beat s>).")
     return out
+
+def fit_start(p, src=None, write=True, say=print):
+    """12/10/2026, the "sound pass" X article: the big moves (cuts, sound effect cues) belong on the beat; "if you can't change the
+    animation, move where the music starts". For the film's music clip (film.json "audio", role "music"): the "trim" (seconds skipped at the
+    file's start) within half a beat of the current one that puts the built film's cuts and cues nearest the beats. Writes it into film.json
+    (build again); a film cut to a song is built on the song's grid already and is left alone"""
+    import numpy as np
+    p = Path(p); fj = p / "film.json"
+    spec = json.loads(fj.read_text(encoding="utf-8"))
+    music = [a for a in spec.get("audio") or [] if a.get("role") == "music" and (not src or a.get("src") == src)]
+    if not music: raise SystemExit("--fit: no music clip in film.json \"audio\" (role \"music\"); a film cut to a \"song\" is on its grid already")
+    clip = music[0]
+    from common import in_film
+    bj = out_file(p, in_film(p, clip["src"]))
+    if not bj.exists(): run(p, clip["src"], say=say)
+    B = json.loads(bj.read_text(encoding="utf-8")); beats = np.asarray(B["beats"], float); period = B["beat"]
+    from audio.loudness import cue_list, cut_times
+    ev = np.asarray(sorted(set(cut_times(p)) | {t for t, _, _ in cue_list(p)}), float)
+    if not len(ev): raise SystemExit("--fit: the built film has no cuts or sound effects to put on the beat (kit.py build first)")
+    at, trim0 = float(clip.get("at", 0)), float(clip.get("trim", 0))
+
+    def err(trim):
+        film_beats = at + beats - trim
+        return float(np.mean(np.min(np.abs(ev[:, None] - film_beats[None, :]), axis=1)))
+    cands = [t for t in np.arange(trim0 - period / 2, trim0 + period / 2, 0.005) if t >= 0]
+    best = min(cands, key=err)
+    say(f"--fit {clip['src']}: {len(ev)} cuts / cues; mean distance to the nearest beat {err(trim0) * 1000:.0f} ms with \"trim\": {trim0:g}, "
+        f"{err(best) * 1000:.0f} ms with \"trim\": {best:.3f}")
+    if write and abs(best - trim0) > 0.004 and err(best) < err(trim0) - 0.005:
+        clip["trim"] = round(float(best), 3); fj.write_text(json.dumps(spec, indent=1, ensure_ascii=False), encoding="utf-8")
+        say("  film.json updated: build again, then listen at the cuts")
+    else: say("  kept: the music already starts at its best place")
+    return best
+
 
 def stretch(p, src, to_bpm, bpm=None, force=False, say=print):
     """the track at to_bpm, pitch kept -> audio/music/<name>_<bpm>bpm.wav; its tempo from --bpm or its beats file"""

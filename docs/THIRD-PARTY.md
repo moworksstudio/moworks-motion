@@ -14,6 +14,7 @@ preset's `source.sha256`, and the kit verifies them before use.
 | [HyperFrames](https://github.com/heygen-com/hyperframes) (HeyGen) | 0.8.x, installed on demand | Apache-2.0 | Optional Studio and presentation mode; not vendored |
 | HyperFrames registry blocks and components | commits `0ca6947`, `ba08acb` (per item in `preset.json`) | Apache-2.0 | About 250 library layouts run the registry code as shipped (`engine/tests/hf_blocks.py`, `hf_templates.py`); kit-side adjustments are listed in [KNOWN-ISSUES.md](KNOWN-ISSUES.md) |
 | HyperFrames skills | commit `ba08acb1f506b06757bd77a7e7f491d412647fbd` | Apache-2.0 | **As shipped:** embedded-captions (`engine/vendor/hf-captions/`, run by `engine/intake/captions.py`, played by `text/embedded-captions`), music-to-video templates and primitives, hyperframes-creative frame presets (`library/looks/`), talking-head-recut design assets, pr-to-video ingest (`engine/vendor/hf-pr/`), motion-graphics locate (`engine/vendor/hf-locate/`). **Re-implemented:** the story method (`workflow/story.md`), slideshow schema, talking-head layouts, the person matte for video, caption plate effects, the `nudge` ease and `transition/push` `hit` |
+| HyperFrames bundled sound effects | commit `2905162d925fc87fb8242e24ed0bbf025d307ea1`, `skills/media-use/audio/assets/sfx/` | the sounds: Pixabay Content License (`CREDITS.md`); the repository: Apache-2.0 (`LICENSE` beside them) | As shipped in `engine/vendor/hf-sfx/` (19 sounds, `manifest.json`, `CREDITS.md`; SHA-256 in `CHECKSUMS.json`), decoded into each film by `engine/audio/sfx.py`. Upstream ships `click` = `click-soft` and `whoosh` = `whoosh-short` as identical files |
 | HyperFrames voiceover carve | `carve.mjs` at v0.8.147; `@hyperframes/core` 0.8.147 (`dist/audioCarve.js`, `dist/audioFx.js`) | Apache-2.0 | As shipped in `engine/vendor/hf-carve/`, run by `engine/audio/carve.py` |
 | Vietnamese faces for the caption fonts | kit-made | SIL OFL 1.1 (from the fonts below) | `engine/vendor/hf-captions-vi/` (`engine/tests/hf_captions_vi.py`): HyperFrames' family and file names, glyphs from OFL families with Vietnamese |
 | vtake-skills (leeoxiang) | as adapted in HyperFrames `ba08acb` | MIT (notice below) | Card styles, layouts and frames of `card/talking-card` and `motion/talking-layout` |
@@ -44,6 +45,8 @@ preset's `source.sha256`, and the kit verifies them before use.
   (`static.heygen.ai/hyperframes-oss`). They are demo media: a film uses its own footage.
 - No music library is bundled (the few sounds inside registry layouts are their own demo media). When a project has no music, the kit
   downloads three free tracks from Mixkit under the [Mixkit Stock Music Free License](https://mixkit.co/license/#musicFree).
+- The sound effects are HyperFrames' bundled set from Pixabay (above). Pixabay's licence allows commercial use without attribution but not
+  redistributing the files on their own: the kit ships them inside its library as HyperFrames does, and films use them as sound.
 - Brand packs (`brands/`) and reference libraries (`library/refs/`) stay on the user's machine and are never committed.
 
 ## Techniques and references
@@ -54,6 +57,9 @@ Ideas re-written in the kit's own words and code (no code copied):
 - "Motion design studio with Opus 5.5" (X article by @0xMovez): spring eases and sums of springs (`engine/vendor/libs/aimk/eases.js`,
   `ctx.track`), the self-review loop.
 - HyperFrames animation rules (`nudge-curve`, `reactive-displacement`): the `nudge` ease and `transition/push` `hit`.
+- "Sound pass" prompt (X post by @Voxyz_ai): recorded sound effects instead of synthesised ones, the kick check under 120 Hz, moving
+  where the music starts, -16 LUFS with peaks under -4 dBFS measured on the exported MP4, frames around every cue, five timestamps for
+  the user's headphones (`engine/audio/sfx.py`, `beats.py`, `loudness.py`, `media.py`, `workflow/film.md`).
 
 ## GSAP Standard License
 

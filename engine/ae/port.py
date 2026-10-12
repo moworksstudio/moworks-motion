@@ -1431,7 +1431,7 @@ def audio_layers(p, film, work):
     out, used = [], set()
     cl = clips(film)
     total = float(re.search(r'data-composition-id="root"[^>]*data-duration="([\d.]+)"', film.read_text(encoding="utf-8")).group(1)) if cl else 0
-    # the same master gain as mix.wav, so AE's mix is -14 LUFS too; mix.wav + stems (voice / music / sfx) written beside the project
+    # the same master gain as mix.wav, so AE's mix is at the film's loudness too; mix.wav + stems (voice / music / sfx) written beside the project
     # (user, 08/10/2026: the stems come with Port to AE; the MOV / MP4 are finished films and carry their sound inside)
     mg = master(p, cl, total, work / "audio") if cl else 0.0
     for c in cl:
@@ -1520,7 +1520,7 @@ def run(project, run_ae=False, check="", save=True, say=say, estimate_only=False
               f"- pictures: {len(rec['pictures'])} (still PNG at 2x or PNG sequence, in footage/)", "- motion blur: switch on for moving layers, comp switch off (turn it on in the comp)"]
     if audio: report.append(f"- audio: {len(audio)} layer(s) in the main comp (files copied to footage/audio/; volume and fades as Audio Levels); "
                             "the whole mix and its stems: Audio/mix.wav + voice|music|sfx.wav next to it (older films: audio/mix.wav + "
-                            "audio/stems/), -14 LUFS")
+                            "audio/stems/), the film's loudness target")
     report.append("")
     if rec["page_errors"]: report.append(f"- page errors while recording: {rec['page_errors']}")
     if B.notes: report += ["## Not ported / check", ""] + [f"- {x}" for x in sorted(B.notes)]

@@ -22,7 +22,9 @@ python kit.py stills  <project> t1 t2 ... | --beats | --strip <t> | --cuts | --p
 python kit.py doctor                                       is this machine ready: Python, packages, Chromium, ffmpeg, models,
                                                            AE fonts, kit-root, skill versions, git, After Effects, player, disk (reads only)
 python kit.py trash   <path> ...                           send files / folders to the Recycle Bin (never a permanent delete)
-python kit.py beats   <project> [<audio>] [--bpm] [--offset]   a song's tempo grid, beats, bars, hits -> audio/transcript/<file>.beats.json
+python kit.py beats   <project> [<audio>] [--bpm] [--offset]   a song's tempo grid, beats, bars, hits -> audio/transcript/<file>.beats.json,
+                                                           a kick check under 120 Hz + its picture (02_Assets/Stills/beats/);
+                                                           --fit: move where the music starts so the cuts and sound cues land on the beat
 python kit.py align   <project> <lyrics.txt> [<audio>] [--pin "8=17.58"]   known lyrics -> a time per sung word (draft: check by ear)
 python kit.py measure "<text>" --font <family> --size 140 [--weight 700] [--in <project>]   text width in px with the real font
 python kit.py pdf     <file.pdf> [--pages 3-5] [--in <project>]   PDF pages as PNG (to see a guideline's pictures; needs PyMuPDF)
@@ -50,7 +52,9 @@ python kit.py lint    <project> [--hf]                     the v2 lint (also aft
                                                            the margin at rest, blank frames after cuts; --hf: HyperFrames' linter
 python kit.py qa      <project>                            motion QA on the last MOV / MP4 render: pops, one-frame flashes, still time, > 3 flashes/s
 python kit.py font    "<family>" ["<family>" ...]          where a font is (installed or in a brand pack, .ttc included) and whether it has every Vietnamese letter
-python kit.py loudness <file.wav> [--fix out.wav]          LUFS / LRA / true peak; --fix: two-pass normalise to -14 LUFS, true peak <= -1 dBTP
+python kit.py loudness <file.wav|project> [--fix out.wav]  LUFS / LRA / true peak; --fix: two-pass normalise to -16 LUFS, true peak <= -4 dBTP;
+                                                           a film: the sound pass (mix, exported MP4 + mono, effects over the bed, cuts
+                                                           with no sound, cue sheet, five moments to check with headphones)
 python kit.py ae      <project>                            editable After Effects project -> 05_AE\\ (.aep, footage, Audio\\ mix + stems; --run builds it
                                                            in the open AE; --estimate: its size first;
                                                            --rebuild: AE step again from the saved recording; --jsx <file>: a fix on the open project)
@@ -324,13 +328,13 @@ def render_png(p, film, blur, alpha, workers, tag="png", scale=1):
 
 
 def mix_audio(p, film, duration, dst):
-    """the film's <audio> clips -> dst/mix.wav + stems (from frame 0, -14 LUFS, v1); returns the clip count"""
+    """the film's <audio> clips -> dst/mix.wav + stems (from frame 0, the film's loudness target, default -16 LUFS); returns the clip count"""
     if film.name != "index.html": return 0
-    from audio.media import clips, master
+    from audio.media import clips, master, targets
     cl = clips(film)
     if not cl: return 0
-    g = master(p, cl, duration, dst)
-    say(f"Audio: {len(cl)} clip(s) -> {dst / 'mix.wav'} + stems\\voice|music|sfx.wav (from frame 0, -14 LUFS, peaks under -1 dBFS, gain {g:+.1f} dB).")
+    g = master(p, cl, duration, dst); I, P = targets(p)
+    say(f"Audio: {len(cl)} clip(s) -> {dst / 'mix.wav'} + stems\\voice|music|sfx.wav (from frame 0, {I:g} LUFS, true peaks under {P:g} dBTP, gain {g:+.1f} dB).")
     return len(cl)
 
 
@@ -1140,29 +1144,59 @@ def cmd_qa(a):
 
 
 def cmd_loudness(a):
-    """measure a WAV (LUFS, LRA, true peak, the 200 Hz - 6 kHz phone band); with --fix <out.wav>: two-pass normalise to -14 LUFS, true peak
-    <= -1 dBTP. A film (its folder): its mix as exported, plus every sound effect's level over the bed (12/10/2026, the "Motion Lab" article:
-    hits 3 to 6 dB over the bed, judged in the phone band)"""
-    from audio.loudness import hits, measure, normalize
+    """measure a WAV / MP4 (LUFS, LRA, true peak, the 200 Hz - 6 kHz phone band); with --fix <out.wav>: two-pass normalise to -16 LUFS, true
+    peak <= -4 dBTP. A film (its folder): the "sound pass" (12/10/2026, X articles the user asked to follow): its mix against the film's
+    target (default -16 LUFS, true peaks under -4 dBTP), the latest exported MP4 measured as people hear it (AAC) and folded to mono (a
+    phone speaker), every sound effect's level over the bed (want 3 to 6 dB, the "Motion Lab" article), the cuts with no sound, a cue sheet
+    (02_Assets/Stills/audio/cues_*.png: the exported frame before / after each cue + the waveform) and five moments for the user's headphones"""
+    from audio.loudness import cue_sheet, hit_verdict, hits, latest_export, listen_points, loudest_source, measure, measure_mono, normalize, silent_cuts
     if a.fix:
         b, x = normalize(a.project, a.fix); say(f"before {b}\nafter  {x}  -> {a.fix}"); return
     src = Path(a.project)
     if src.is_dir() or not src.suffix:
         import re
-        from audio.media import clips, master
-        from common import work_dir
+        from audio.media import clips, master, targets
+        from common import renders, work_dir
         p = film_dir(src.resolve())
         if not (p / "index.html").exists(): raise SystemExit(f"no built film in {p}: kit.py build first")
         m = re.search(r'data-duration="([\d.]+)"', (p / "index.html").read_text(encoding="utf-8")); total = float(m.group(1)) if m else 0
         d = work_dir("loudness", film_name(p)); master(p, clips(p / "index.html"), total, out_dir=d)
         if not (d / "mix.wav").exists(): raise SystemExit("the film has no sound")
-        M = measure(d / "mix.wav")
-        say(f"mix: {M['I']:.1f} LUFS (target -14), true peak {M['TP']:.1f} dBTP (<= -1), LRA {M['LRA']:.1f} LU, phone band (200 Hz - 6 kHz) "
+        I, P = targets(p); M = measure(d / "mix.wav")
+        flag = lambda v, lim: "ok" if v <= lim + 0.05 else "OVER"
+        under = ""
+        if M["I"] < I - 1:
+            ls = loudest_source(p, d / "mix.wav")
+            if ls:
+                fix = {"the voice": "a voice-over with lower peaks (compressed / limited when it is recorded or generated)",
+                       "the music": "a lower music volume does not help: a track with lower peaks, or accept a quieter film"}.get(ls[1], "lower its gain")
+                under = f"; the peaks hold the gain down: the highest is {ls[0]} s, made by {ls[1]} ({fix})"
+        say(f"mix: {M['I']:.1f} LUFS (target {I:g}{under}), "
+            f"true peak {M['TP']:.1f} dBTP (<= {P:g}: {flag(M['TP'], P)}), LRA {M['LRA']:.1f} LU, phone band (200 Hz - 6 kHz) "
             f"{M.get('phone', float('nan')):.1f} LUFS ({M.get('phone', 0) - M['I']:+.1f} LU from the full mix: a big drop = the weight sits in the sub)")
+        v = latest_export(p)
+        if v:
+            E, Mo = measure(v, phone=False), measure_mono(v)
+            loss = Mo["I"] - E["I"] + 3.0                    # a centred (mono) mix folds down exactly 3 LU quieter: that part is normal
+            say(f"export {v.name}: {E['I']:.1f} LUFS, true peak {E['TP']:.1f} dBTP (<= {P:g}: {flag(E['TP'], P)}, after AAC); folded to mono (a "
+                f"phone speaker): {loss:+.1f} LU beyond the normal 3 LU{': sounds cancel out in mono, check the stereo effects' if loss < -3 else ' (ok)'}, "
+                f"true peak {Mo['TP']:.1f} dBTP")
+        else: say("export: none yet. Measure again after MP4 Export (the article: measure the exported MP4, not the WAV)")
         H = hits(p, total)
         if H:
-            say(f"sound effects over the bed (K-weighted, first 60 ms; want 3 to 6 dB):")
-            for i, t, db in H: say(f"  {t:7.2f} s  {i:28s} {db:+5.1f} dB  {'ok' if 3 <= db <= 6 else 'quiet: lost on a phone' if db < 3 else 'loud: jumps out'}")
+            say("sound effects (K-weighted, first 60 ms): over the music, want 3 to 6 dB; against the voice, never over it:")
+            for i, t, over, vs in H:
+                say(f"  {t:7.2f} s  {i:28s} {over:+5.1f} dB over the music" + (f", {vs:+5.1f} dB against the voice" if vs is not None else "")
+                    + f"  {hit_verdict(over, vs)}")
+        sc = silent_cuts(p)
+        say(f"cuts with no sound effect within 0.35 s: {', '.join(f'{t:.2f} s' for t in sc)}" if sc else "every cut has a sound effect")
+        if v:
+            pages = cue_sheet(p, v, renders(p, "stills") / "audio")
+            if pages: say(f"cue sheet (frame before / after each cue + the waveform; look at every page): {pages[0].parent}  ({len(pages)} page(s))")
+        pts = listen_points(p, d / "mix.wav", H)
+        if pts:
+            say("check with headphones (give the user these five, never say the sound is good):")
+            for t, why in pts: say(f"  {t:7.2f} s  {why}")
         return
     M = measure(src)
     say(str(M))
@@ -1405,8 +1439,9 @@ def _proj_dir(arg):
 
 def cmd_beats(a):
     """the song's tempo grid -> audio/transcript/<file>.beats.json (engine/audio/beats.py; numpy / scipy, this machine only)"""
-    from audio.beats import run, stretch
+    from audio.beats import fit_start, run, stretch
     p = _proj_dir(a.project); src = a.times[0] if a.times else None
+    if a.fit: return fit_start(p, src, True, say)
     if a.to_bpm:
         if not src: raise SystemExit("--to-bpm: give the track, e.g. kit.py beats myfilm audio/music/track.mp3 --to-bpm 124")
         return run(p, stretch(p, src, a.to_bpm, a.bpm or None, a.force, say), a.to_bpm, None, say)
@@ -1614,6 +1649,7 @@ def main():
     ap.add_argument("--bpm", type=float, default=0, help="beats: force the tempo; pulse: the grid when the film has no song")
     ap.add_argument("--video", default="", help="pulse: measure this exported video instead of rendering the film small")
     ap.add_argument("--offset", type=float, default=None, help="beats: force the first beat (seconds)")
+    ap.add_argument("--fit", action="store_true", help="beats: move where the music starts (its \"trim\") so the built film's cuts and sound cues land on the beat")
     ap.add_argument("--workers", type=int, default=default_workers(), help="mp4 / mov / proxy: render processes at once (default: by cores and free memory)")
     ap.add_argument("--4k", dest="uhd", action="store_true", help="mp4 / mov: 4K, twice the film's pixels on the same layout (3840x2160 for 16:9, 2160x3840 for 9:16)")
     ap.add_argument("--alpha", action="store_true", help="mov: transparent where the film has no background (ProRes 4444 alpha)")
