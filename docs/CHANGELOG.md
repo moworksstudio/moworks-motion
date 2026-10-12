@@ -3,15 +3,10 @@
 Mỗi phiên bản một mục, mới nhất ở trên. `update.bat` hiển thị các mục mới hơn bản đang cài, cùng danh sách mẫu thư viện được thêm, sửa
 hoặc bỏ.
 
-## 2.0.1 (12/10/2026)
+## 2.0.2 (12/10/2026)
 
-- **Cập nhật skill đúng cả khi số phiên bản không đổi:** `install.bat` và `update.bat` so nội dung skill đã cài với bản trong kit,
-  không chỉ số phiên bản (trước đây bản skill sửa mà giữ nguyên số không được cài lại); bảng kết quả ghi rõ "trùng nội dung bản trong
-  kit" khi không có gì để cài.
-- `update.bat` chạy các bước cài đặt bằng mã vừa tải về, nên bản sửa của trình cài đặt có tác dụng ngay trong lần cập nhật đó.
-- Skill: bỏ các ghi chú nội bộ (ai quyết định, ngày, tên bài test), giữ nguyên mọi quy tắc.
+Bản cập nhật lớn cho âm thanh ("sound pass": Claude không nghe được, nên mọi bước âm thanh đều được đo).
 
-### Âm thanh ("sound pass": Claude không nghe được, nên mọi bước đều đo)
 - **Tiếng hiệu ứng thu thật thay cho tiếng tạo bằng code:** bộ 19 tiếng của HyperFrames (Pixabay, dùng thương mại được) trong
   `engine\vendor\hf-sfx\`: whoosh (ngắn, dài), riser, pop, click, gõ phím, typing, sparkle, chime, ping, notification, error, glitch,
   impact bass. Tên cũ (swoosh, tick, tickhi, thump) vẫn dùng được và trỏ sang tiếng thật. Mỗi tiếng được căn theo điểm bắt đầu kêu (whoosh,
@@ -26,6 +21,14 @@ hoặc bỏ.
 - **`kit.py beats`** kiểm tiếng kick dưới 120 Hz so với lưới nhịp (tự dời lưới nửa nhịp khi rõ ràng) và vẽ ảnh để xem; **`--fit`** dời
   điểm bắt đầu nhạc để cut và tiếng hiệu ứng rơi đúng beat khi không sửa được hình.
 - Sửa: kit đọc được các file mp3 rất ngắn (ffmpeg không tua được trong đó).
+
+## 2.0.1 (12/10/2026)
+
+- **Cập nhật skill đúng cả khi số phiên bản không đổi:** `install.bat` và `update.bat` so nội dung skill đã cài với bản trong kit,
+  không chỉ số phiên bản (trước đây bản skill sửa mà giữ nguyên số không được cài lại); bảng kết quả ghi rõ "trùng nội dung bản trong
+  kit" khi không có gì để cài.
+- `update.bat` chạy các bước cài đặt bằng mã vừa tải về, nên bản sửa của trình cài đặt có tác dụng ngay trong lần cập nhật đó.
+- Skill: bỏ các ghi chú nội bộ (ai quyết định, ngày, tên bài test), giữ nguyên mọi quy tắc.
 
 ## 2.0.0 (09/10/2026, cập nhật đến 12/10/2026)
 
