@@ -83,8 +83,9 @@ def main():
         step("mp4 (reuses the MOV's frames)", ["mp4", str(p), "--no-open"], lambda o: "no new render" in o and "encoded" in o, timeout=900)
         step("qa (reads the last render)", ["qa", str(p)], lambda o: "motion QA" in o, rcs=(0, 1))       # 1 = it found pops: still ran
         results.append(("mp4 file + EXPORTS.md", any((root / "04_Renders" / "MP4").glob("*_v1_60fps_*.mp4")) and (root / "04_Renders" / "EXPORTS.md").exists(), 0, ""))
-        player_ok = player_check(root)
+        player_ok, guard = player_check(root)
         results.append(("player loads film + audio + Export panel", player_ok, 0, ""))
+        results.append(("player: only its own pages and the film's files; audio streamed (audit 12/10/2026)", guard, 0, ""))
     finally:
         try:
             subprocess.run(["powershell", "-NoProfile", "-Command",
@@ -120,9 +121,36 @@ def player_check(p):
     try:
         n, mute, exp, smooth = asyncio.run(run())
         print(f"   player: {n} scene buttons, mute button {'shown' if mute == '' else 'hidden'}, {exp} export buttons, smooth playback {'yes' if smooth else 'no'}")
-        return n == 3 and mute == "" and exp == 3 and smooth              # MP4 Export, MOV Export, Port to AE (08/10/2026); Phát mượt (09/10/2026)
+        return n == 3 and mute == "" and exp == 3 and smooth, guard_check(url, p)   # MP4 Export, MOV Export, Port to AE (08/10/2026); Phát mượt (09/10/2026)
     finally:
         srv.shutdown()
+
+
+def guard_check(url, root):
+    """the player answers only its own pages and serves only the film's files (audit 12/10/2026: no Host / Origin check, and
+    /__round/v1/C:/... read any file on the machine); the film's audio comes from its file, whole or in Range pieces"""
+    import http.client, urllib.parse
+    u = urllib.parse.urlsplit(url)
+
+    def req(method, path, headers=None, body=None):
+        c = http.client.HTTPConnection(u.hostname, u.port, timeout=30)
+        try:
+            c.request(method, path, body=body, headers=headers or {}); r = c.getresponse()
+            return r.status, r.getheader("Content-Type") or "", r.read()
+        finally: c.close()
+    far = urllib.parse.quote(str(KIT / "engine" / "VERSION").replace("\\", "/"))      # a real file outside the film
+    wav = (root / "03_HTML" / "audio" / "voice" / "vo.wav").stat().st_size
+    whole, part = req("GET", "/__api/media?f=audio/voice/vo.wav"), req("GET", "/__api/media?f=audio/voice/vo.wav", {"Range": "bytes=0-99"})
+    checks = {"another address (Host)": req("GET", "/__api/info", {"Host": "evil.example"})[0] == 403,
+              "a POST from another site": req("POST", "/__api/prefs", {"Origin": "http://evil.example", "Content-Type": "application/json"}, b"{}")[0] == 403,
+              "a file outside the film (round)": req("GET", f"/__round/v1/{far}")[0] == 404,
+              "a file outside the film (media of a round)": req("GET", f"/__api/media?r=v1&f={far}")[0] == 404,
+              "a file outside the film (media)": req("GET", f"/__api/media?f={far}")[0] == 404,
+              "audio whole, text/plain": whole[0] == 200 and whole[1].startswith("text/plain") and len(whole[2]) == wav,
+              "audio in Range pieces": part[0] == 206 and len(part[2]) == 100}
+    bad = [k for k, v in checks.items() if not v]
+    print(f"   player guard: {len(checks) - len(bad)}/{len(checks)}" + (f" (failed: {', '.join(bad)})" if bad else ""))
+    return not bad
 
 
 if __name__ == "__main__":

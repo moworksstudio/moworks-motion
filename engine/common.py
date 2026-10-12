@@ -193,21 +193,26 @@ def round_file(p, name, rel):
     round that holds it (files.json), else the live film's; an older film's 03_HTML/versions/v<k>: its own file, else the live film's"""
     import re
     p = Path(film_dir(p)); rel = rel.lstrip("/").replace("\\", "/")
-    if ".." in rel.split("/"): return None
+    # the player serves what this returns: a drive or an absolute path ("C:/...", which Path joins as itself) or a "..", in the file or
+    # the round's name, reached any file on the machine (audit 12/10/2026); every answer must also sit inside the film's own folder
+    if ".." in rel.split("/") or ":" in rel or Path(rel).is_absolute() or not re.fullmatch(r"[^/\\:]+", name or "") or name in (".", ".."): return None
+    home = film_root(p).resolve()
+
+    def ok(f):
+        try: return f if f.is_file() and f.resolve().is_relative_to(home) else None
+        except OSError: return None
     if re.fullmatch(r"v\d+", name):                     # an older film's version
-        f = p / "versions" / name / rel
-        return f if f.is_file() else (p / rel if (p / rel).is_file() else None)
+        return ok(p / "versions" / name / rel) or ok(p / rel)
     R = rounds_dir(p) / name
     if not (R / "film").is_dir():                       # a design round: its pictures and videos
-        f = R / rel
-        return f if f.is_file() else None
-    f = R / "film" / rel
-    if f.is_file(): return f
+        return ok(R / rel)
+    f = ok(R / "film" / rel)
+    if f: return f
     held = (round_manifest(R / "film") or {}).get(rel)
-    if held and held[0] != "live":
-        f = rounds_dir(p) / held[0] / "film" / rel
-        if f.is_file(): return f
-    return p / rel if (p / rel).is_file() else None
+    if held and held[0] != "live" and re.fullmatch(r"[^/\\:]+", held[0]) and held[0] not in (".", ".."):
+        f = ok(rounds_dir(p) / held[0] / "film" / rel)
+        if f: return f
+    return ok(p / rel)
 
 
 def _round_md(order, title, note="", base="", extra=()):

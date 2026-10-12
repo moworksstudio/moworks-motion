@@ -17,6 +17,22 @@ class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
+    def parse_request(self):
+        """only this server's own pages are answered (audit 12/10/2026; the player and the Gallery read and write the film's files):
+        the Host must be this server's own address (a web page whose name was pointed at 127.0.0.1, "DNS rebinding", sends its own
+        name), and a POST from a page of another site (its Origin) is refused. 127.0.0.1 alone let any page open in the browser post
+        notes, start Port to AE or press Bỏ on the Gallery. A request with no Host (a local tool) still passes."""
+        if not super().parse_request(): return False
+        port = self.server.server_address[1]
+        own = (f"127.0.0.1:{port}", f"localhost:{port}")
+        host = (self.headers.get("Host") or "").strip().lower()
+        if host and host not in own:
+            self.send_error(403, "Forbidden: not this server's address"); return False
+        origin = (self.headers.get("Origin") or "").strip().lower()
+        if self.command not in ("GET", "HEAD") and origin and origin not in tuple("http://" + h for h in own):
+            self.send_error(403, "Forbidden: a page of another site"); return False
+        return True
+
     def end_headers(self):
         self.send_header("Cache-Control", "no-store")      # edits show up on F5
         self.send_header("Accept-Ranges", "bytes")

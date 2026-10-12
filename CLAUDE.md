@@ -22,6 +22,8 @@ Chromium (Playwright), exported as MP4 / MOV or an editable After Effects projec
 - New features extend existing commands and workflows (a flag, a section), never parallel ones. Upstream code as shipped beats a kit re-write
   when it is better; a re-write needs a stated reason.
 - `main` is protected: changes arrive by pull request (the maintainer merges). Never force-push, rewrite history or push tags.
+- GitHub runs `.github/workflows/checks.yml` on every pull request (no packages: JSON / Python, `kit.py gallery check --static`,
+  `pack_skill.py --check`, looks, `publish-check`); a red check is fixed before the merge.
 
 ## Cloud sessions: repo intake research
 
@@ -54,7 +56,9 @@ The user gives repositories (or articles) to study. For each one:
 - Read the report(s), show the user the table (take what, merge where, licence) and wait for the OK before building.
 - New presets / layouts go through "Mới nhập" (`kit.py library import`, the user keeps or drops them on the Gallery); engine changes extend
   existing commands; a `docs/THIRD-PARTY.md` row and a `docs/CHANGELOG.md` line for each.
-- Before a commit: `engine/tests/smoke_new_project.py`; `kit.py gallery check` when the engine or library changed;
+- Before a commit: `engine/tests/smoke_new_project.py`. `kit.py gallery check` (the whole library takes about 1.5 h) only when what films
+  look like may change (runtime, build, presets / layouts, the frame render): the touched presets by filter, the whole library when the
+  change reaches every film, `--random 30` when unsure; not for servers, the installer, tests or docs;
   `engine/tests/ae/run_cases.py` when the AE port changed; skill edits in `engine/skill/moworks-motion/`, then `engine/tests/pack_skill.py`.
 - Before a push: `kit.py publish-check`, grep the diff and the commit message for client names, then the user's OK. Versions: a small fix
   is a commit only; a batch worth reading bumps the last number + a CHANGELOG section + a GitHub release; the middle or first number only

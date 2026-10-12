@@ -3,7 +3,7 @@
   1. which version is here, which is the newest (git fetch; the newest engine/VERSION on GitHub)
   2. what changed: docs/CHANGELOG.md of the versions in between, every motion preset / layout added, changed or removed (library/), other files
   3. after a yes: the whole repo is pulled (git pull --ff-only: never over the user's own edits), then
-     Python packages when requirements.txt changed, missing AI models (asks), the skill for Claude Code (old copy to the Recycle Bin),
+     Python packages when requirements.txt or constraints.txt changed, missing AI models (asks), the skill for Claude Code (old copy to the Recycle Bin),
      kit-root.txt (and git's two files in the kit root hidden again)
 The user's own folders (brands/, library/refs/, engine/models/) are not in git: an update never touches them.
 Run from a Claude desktop chat it opens its own window outside the app and runs there (engine/outside.py), the chat shows its log.
@@ -38,6 +38,8 @@ def quick():
     """--check --quiet: one line, nothing installed (the skill reads it when it loads and tells the user)"""
     mine = I.version()
     if git("rev-parse", "--is-inside-work-tree", timeout=10) != "true": print(f"kit {mine}: not a git clone, no update check"); return 1
+    br = git("rev-parse", "--abbrev-ref", "HEAD", timeout=10)
+    if br and br != "main": print(f"kit {mine}: under maintenance (branch {br}), no update check"); return 1
     if git("fetch", "--quiet", timeout=20) is None: print(f"kit {mine}: GitHub not reachable, no update check"); return 1
     up = git("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}", timeout=10)
     if not up: print(f"kit {mine}: this branch follows no GitHub branch, no update check"); return 1
@@ -85,6 +87,8 @@ def main():
     print(f"Moworks Motion: bản đang có {mine} ({KIT})")
     if git("rev-parse", "--is-inside-work-tree") != "true":
         print("Kit này không cài bằng git clone nên không tự cập nhật được: tải bản mới từ GitHub, hoặc clone lại rồi chạy install.bat."); return 1
+    br = git("rev-parse", "--abbrev-ref", "HEAD")              # a maintenance chat works on its own branch until its pull request is merged
+    if br and br != "main": print("Kit đang bảo trì, vui lòng update lại sau."); return 1
     print("Đang hỏi GitHub ...");
     if git("fetch", "--quiet") is None: print("[LỖI] Không kết nối được GitHub (mạng, hoặc chưa đăng nhập git cho repo riêng)."); return 1
     up = git("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
@@ -112,7 +116,7 @@ def main():
     if ahead: print(f"Máy này có {ahead} lần lưu chưa đẩy lên GitHub: cập nhật sẽ dừng nếu hai bên khác nhau.")
     if check_only: return 0
     if not I.ask(f"\nCập nhật lên {newest}?", True): print("Chưa cập nhật."); return 0
-    req_changed = bool(git("diff", "--name-only", "HEAD", up, "--", "engine/requirements.txt"))
+    req_changed = bool(git("diff", "--name-only", "HEAD", up, "--", "engine/requirements.txt", "engine/constraints.txt"))
     if git("pull", "--ff-only", "--quiet") is None:
         print("[LỖI] Không cập nhật được (file bạn sửa trùng với bản mới, hoặc lịch sử khác nhau). Chụp màn hình gửi Claude, đừng xoá gì."); return 1
     I = __import__("importlib").reload(I)                     # the steps below run the code just pulled, not the copy loaded at start

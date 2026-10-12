@@ -1,5 +1,6 @@
 AI models the kit runs on this machine (CPU; nothing is uploaded). Not in the git repo: `install.bat` / `update.bat` download the
-missing ones here after asking, from the addresses and sizes in `engine/models.json`.
+missing ones here after asking, from the addresses, sizes and SHA-256 in `engine/models.json` (a file counts only when both match;
+`verified.json` here remembers the files already hashed).
 
 - `faster-whisper-small` (484 MB): speech to text with word times. Used by `kit.py transcribe` and `kit.py align`
   (`engine/audio/transcribe.py`, `align.py`): words.json + .srt per voice, motion and sound effects on the voice's words, captions.

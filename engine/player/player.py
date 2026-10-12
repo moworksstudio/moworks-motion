@@ -342,18 +342,29 @@ def serve(project, port=None):
     class H(Quiet):
         def translate_path(self, path):                     # /__api/pv = the smooth-playback video, served with Range like any file
             if path.split("?")[0] == "/__api/pv": return str(proxy_state(p)["file"])
+            if path.split("?")[0] == "/__api/media":        # a film's audio, streamed from its file like any other (Range too)
+                f = self.media(); return str(f) if f else str(p / "__no_such_file__")
             if path.startswith("/__round/"):                # a round's file, with Range too (a design round's videos)
                 f = round_path(path); return str(f) if f else str(p / "__no_such_file__")
             return super().translate_path(path)
 
+        def media(self):
+            """/__api/media?f=<file in the film>[&r=<round>] -> that file, or None (outside the film, missing)"""
+            from urllib.parse import parse_qs, urlparse
+            q = parse_qs(urlparse(self.path).query); rel = (q.get("f") or [""])[0]
+            if q.get("r"): return round_file(p, q["r"][0], rel)   # a version being watched: its own sound files
+            f = (p / rel).resolve()
+            return f if f.is_file() and f.is_relative_to(p.resolve()) else None
+
         def guess_type(self, path):
+            if getattr(self, "plain", False): return "text/plain"
             return "application/octet-stream" if str(path).endswith("preview.mp4") else super().guess_type(path)
 
         def _send(self, body, ctype):
             self.send_response(200); self.send_header("Content-Type", ctype); self.send_header("Content-Length", str(len(body))); self.end_headers(); self.wfile.write(body)
 
         def do_GET(self):
-            path = self.path.split("?")[0]
+            path = self.path.split("?")[0]; self.plain = False
             if path in ("/__player/", "/__player/index.html"): return self._send(page, "text/html; charset=utf-8")
             if path == "/__aimk/driver.js": return self._send(driver, "text/javascript; charset=utf-8")
             if path == "/__api/notes": return self._send(json.dumps(read_notes(p), ensure_ascii=False).encode("utf-8"), "application/json")
@@ -383,18 +394,10 @@ def serve(project, port=None):
             if path == "/__api/pv":
                 if not proxy_state(p)["file"].is_file(): self.send_error(404); return
                 return super().do_GET()
-            if path == "/__api/media":
-                from urllib.parse import parse_qs, urlparse
-                q = parse_qs(urlparse(self.path).query); rel = (q.get("f") or [""])[0]
-                if q.get("r"):                             # a version being watched: its own sound files
-                    f = round_file(p, q["r"][0], rel)
-                    if not f: self.send_error(404); return
-                    return self._send(f.read_bytes(), "text/plain")
-                f = (p / rel).resolve()
-                try: f.relative_to(p.resolve())
-                except ValueError: self.send_error(403); return
-                if not f.is_file(): self.send_error(404); return
-                return self._send(f.read_bytes(), "text/plain")
+            if path == "/__api/media":                     # sent from the file piece by piece (it was read whole into memory: audit 12/10/2026)
+                if not self.media(): self.send_error(404); return
+                self.plain = True
+                return super().do_GET()
             if path == "/index.html" and "aimk=" in self.path:
                 html = (p / "index.html").read_text(encoding="utf-8")
                 # the driver must run before the film's own scripts (it hooks gsap as it loads): first thing in <head>

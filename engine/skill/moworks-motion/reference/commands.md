@@ -63,7 +63,7 @@ the one with `1. Preview.bat`) or its `03_HTML`; an older film's own folder also
 | `library [motion\|layout] [word ...]` | the library as one line per preset (name, description, tags, the user's notes) for choosing |
 | `library import <film> <group>/<name> [--as <group>/<name>] [--layout]` · `library incoming` · `library keep\|drop <name>` | a film's clean preset into the Gallery's Incoming section (`library\incoming\`, demo + checks), what waits there, KEEP / DROP as the Gallery's buttons (`workflow/library-intake.md`) |
 | `gallery build [filter]` / `gallery open` | library demo clips + machine checks / the gallery page (= `gallery.bat` in the kit root) |
-| `gallery check [filter]` | maintainer only: every demo checked into a scratch folder (the library untouched); lists presets whose result differs from the stored check |
+| `gallery check [filter] [--static \| --random N]` | maintainer only: every demo checked into a scratch folder (the library untouched); lists presets whose result differs from the stored check. `--static`: only what needs no browser (preset.json, frame rules, as-shipped SHA-256), the part GitHub runs; `--random N`: N presets picked at random |
 | `studio <project>` | HyperFrames Studio, only when the user asks to edit a timeline by hand (asks before installing) |
 | `studio <project> --present` | a deck (film.json `"slides"`) in HyperFrames' presenter: slides, fragments, notes, audience tab (`workflow/film.md`, "A deck") |
 | `hf status\|install\|test\|update\|rollback` | HyperFrames versions (only when HyperFrames is used) |
