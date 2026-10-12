@@ -1,0 +1,19 @@
+{
+ "name": "background/noise-flow",
+ "kind": "block",
+ "group": "background",
+ "title": "Looping noise flow",
+ "title_vi": "Nền dòng chảy nhiễu lặp liền mạch",
+ "desc_vi": "Nền êm: hàng trăm đường dòng chảy mềm trôi theo một trường nhiễu, màu chuyển giữa hai sắc, lặp lại liền mạch (khung cuối khớp khung đầu). Hợp nền công nghệ, dữ liệu, nền trình chiếu.",
+ "params_vi": "colorA, colorB: hai màu · bg: nền (transparent = nền phim) · lines: số đường (420) · steps, step: độ dài đường · width: độ dày · alpha: độ đậm · scale: độ rộng vân nhiễu · radius: biên độ trôi · period: chu kỳ lặp (10 s) · duration: thời gian chạy · seed",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "path": "skills/motion-background/references/background-recipes.md" },
+ "license": "MIT; simplex noise: Stefan Gustavson (public domain)",
+ "ae": "png",
+ "brand_safe": true,
+ "tags": ["background", "flow-field", "noise", "loop", "ambient"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Recipe #4's closed-circle sampling (phase = t / PERIOD x 2 pi) makes the loop exact. The kit draws streamlines (each traced 14 steps through the field) on a canvas, frame by frame from the film time. Seeds come from a fixed LCG, so every render is the same.",
+ "demo": { "duration": 6, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0, "params": { "duration": 6 } }], "bg": "#070a12" }
+}

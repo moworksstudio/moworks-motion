@@ -1,0 +1,17 @@
+{
+ "name": "text/caption-clip-wipe",
+ "at": "2026-10-06 09:41",
+ "static": [],
+ "build": "ok",
+ "tweens": 100,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 8.8,
+ "problems": [],
+ "status": "ok",
+ "seconds": 7.9
+}

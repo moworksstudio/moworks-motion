@@ -1,0 +1,17 @@
+{
+ "name": "motion/inertial-bounce",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Inertial bounce (AE expression)",
+ "title_vi": "Rơi vào có đà, nảy tắt dần (inertial bounce kiểu AE)",
+ "desc_vi": "Phần tử lao vào có tốc độ, vượt quá rồi rung tắt dần vào chỗ như biểu thức inertial bounce quen thuộc của After Effects. Dùng cho vị trí, cỡ hoặc góc xoay.",
+ "params_vi": "prop: x | y | scale | rotation · from: giá trị bắt đầu (y -420 px; scale ví dụ 0) · duration: thời gian lao vào (0.45 s) · ease: none | power1.in | power2.in (lao nhanh dần) · amp: độ nảy (0.10; 0.05 nhẹ, 0.2 nảy nhiều) · freq: số lần nảy mỗi giây (3) · decay: tắt nhanh (5) · fade: hiện dần lúc vào",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "path": "skills/after-effects/references/expression-library.md" },
+ "license": "MIT",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "tags": ["bounce", "inertia", "overshoot", "after-effects", "settle"],
+ "check_end": false,
+ "notes": "The expression's formula and defaults (amp 0.10, freq 3, decay 5, v = arrival speed). The wobble is sampled at its peaks and written as sine.inOut tweens between them (close to the damped sine, and real keyframes for the AE port) until it is under half a pixel.",
+ "demo": { "hold": 0.6, "elements": [{ "id": "t1", "type": "text", "text": "Rơi vào chỗ", "style": { "color": "#f5f5f2", "font-weight": "800", "font-size": "150px", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.3 }] }
+}

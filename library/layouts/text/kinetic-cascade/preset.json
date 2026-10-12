@@ -1,0 +1,69 @@
+{
+ "name": "text/kinetic-cascade",
+ "kind": "block",
+ "group": "text",
+ "title": "Intro Kinetic Cascade",
+ "title_vi": "Câu mở đầu hiện từng chữ lớn, kết bằng icon reo",
+ "desc_vi": "Một câu mở đầu dàn thành các cụm chữ lớn kiểu tạp chí (mỗi cụm một chữ được phóng to), hiện từng chữ đúng mốc, cắt cứng giữa các cụm, kết bằng cụm trượt vào kèm icon reo (chuông, con trỏ, lấp lánh, emoji, SVG). 3.5-7 s.",
+ "params_vi": "theme: Palette — light | dark | bold, mặc định \"light\" · icon: Climax icon — bell|cursor|sparkle|bolt|play|heart|check|star, an emoji, <svg>, or none, mặc định \"bell\" · phrases: Phrases JSON (empty = built-in intro) · climax: Climax JSON {text,in,iconAt,hold,size} (empty = default) · duration: độ dài của block (7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/templates/intro-kinetic-cascade/index.html",
+  "sha256": {
+   "index.html": "7a69edbfd3cae461f233c934430d66791c11cb8d00d2979d9e15ff842159ab23",
+   "program.json": "e2f9a2a5de8e0fd659181d0ee545524aee245c0b0f24c891427217e749041ce5"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "intro",
+  "kinetic",
+  "type"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/index.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\"). Source:",
+ "demo": {
+  "duration": 7.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "times": [
+  "phrases",
+  "climax"
+ ],
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

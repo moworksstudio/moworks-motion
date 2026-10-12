@@ -1,0 +1,65 @@
+{
+ "name": "logo/split-lockup-pulse",
+ "kind": "block",
+ "group": "logo",
+ "title": "Logo Split, Lockup Pulse",
+ "title_vi": "Logo hai nửa tách ra, chữ mọc giữa rồi đập theo nhịp",
+ "desc_vi": "Một dấu hai phần ghép ở giữa tách trái phải mở khe, giữa khe mọc cụm chữ từng từ một theo nhịp (từ chính rơi đúng cú drop), khép lại trên một cú hit rồi đập theo nhịp. Logo sting ngắn 2-4 s.",
+ "params_vi": "bgColor: Background, mặc định \"#249b5f\" · markColor: Logo mark color, mặc định \"#e7e3dd\" · textColor: Word color, mặc định \"#e7e3dd\" · leftMark: Left mark SVG (empty = spark) · rightMark: Right mark SVG (empty = cloud) · word1: Word 1 (opens the gap), mặc định \"lille\" · word2: Word 2 (lands on the surge), mặc định \"2020\" · word3: Word 3 (optional) · word4: Word 4 (optional) · duration: độ dài của block (2.875 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/templates/logo-split-lockup-pulse/index.html",
+  "sha256": {
+   "assets/fredoka-700.woff2": "ee61b48acab42fcfee4e1c398b03bbae7e09d1be8471779c440a97dc85118c16",
+   "index.html": "ec2c97b761011d0fe044ba0983b7ce4ec9943c2997b153b9029de414b9664511"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "logo",
+  "sting",
+  "lockup"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/index.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\"). Source:",
+ "demo": {
+  "duration": 2.875,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 2.875
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

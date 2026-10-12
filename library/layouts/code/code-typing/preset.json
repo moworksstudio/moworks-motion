@@ -1,0 +1,57 @@
+{
+ "name": "code/code-typing",
+ "kind": "block",
+ "group": "code",
+ "title": "Code Typing",
+ "title_vi": "Code gõ ra theo từng token, con trỏ chạy theo",
+ "desc_vi": "Code hiện ra theo từng token, con trỏ bám theo đầu dòng đang gõ.",
+ "params_vi": "duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-typing/code-typing.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "code",
+  "code-animation",
+  "typing",
+  "developer"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/code-typing.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Token-streamed typing reveal with a caret that tracks the frontier — deterministic, no CSS animation.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

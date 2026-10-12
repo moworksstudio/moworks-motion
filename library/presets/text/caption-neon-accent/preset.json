@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-neon-accent",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: neon accent",
+ "title_vi": "Phụ đề mạng xã hội, từ nhấn neon lớn, lắc nhẹ",
+ "desc_vi": "Phụ đề theo giọng đọc kiểu mạng xã hội: tối đa 4 từ một cụm trên một hoặc hai dòng cân nhau, chữ in hoa đậm bóng sâu, một số từ to gấp 1.2 lần màu neon xanh chuối / đỏ / vàng có quầng sáng; cụm bật lên từ 65 % và lắc chéo nhẹ 14 px trong lúc hiện.",
+ "params_vi": "words: \"voice\" · keywords: từ luôn tô neon · maxWords 4, pause 0.1 s · size 88 (tối thiểu 62), width 1400, bottom 100 · wiggle: lắc (true) hay đứng yên · distance 14 px · primary, accents: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-neon-accent/caption-neon-accent.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "social", "neon", "tiktok"],
+ "notes": "Colours (#53FF01 #FF0002 #FCFF00 accents picked by the source's seeded formula, function words white), shadows and four-step glow, accent words at 1.2x, grouping (4 words, fits 1400 px with the 1.14 safety on one or two balanced lines, a mark or a 0.1 s pause ends a group), pop from 0.65 in 7 frames, diagonal sway 14 px (1.54 s cycle, alternating direction) as in the source. Changed: the film's font at weight 800 instead of Montserrat; words from the voice transcript; keywords are a param; Vietnamese function words added; the last group holds 0.5 s after its last word. The sway moves text while it is read, which the kit's rule 2 avoids: params.wiggle false keeps the group still.",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo" } } ]
+ }
+}

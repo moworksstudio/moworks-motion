@@ -1,0 +1,58 @@
+{
+ "name": "effect/overwhelm-surround",
+ "kind": "block",
+ "group": "effect",
+ "title": "Overwhelm Surround",
+ "title_vi": "Việc, tab, thông báo dồn ép quanh một người",
+ "desc_vi": "Công việc, tab, tiếng ping và bong bóng thông báo tăng tốc dồn vào quanh một chủ thể bình tĩnh ở giữa, biến sự quá tải thành áp lực nhìn thấy được.",
+ "params_vi": "count: Chip count, mặc định 16 · centerLabel: Center label, mặc định \"You\" · intensity: Intensity, mặc định 1 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/overwhelm-surround/overwhelm-surround.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "effects",
+  "agitate",
+  "overwhelm",
+  "pressure",
+  "notifications"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/overwhelm-surround.html) in a kit film, mounted by ctx.hf.  Source: Tasks, tabs, pings, and notification bubbles accelerate inward around a calm central subject, turning overload into visible spatial pressure.",
+ "demo": {
+  "duration": 4.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "centerLabel": "Bạn",
+     "duration": 4.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

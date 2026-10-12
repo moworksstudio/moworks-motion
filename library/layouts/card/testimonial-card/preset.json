@@ -1,0 +1,18 @@
+{
+ "name": "card/testimonial-card",
+ "kind": "block",
+ "group": "card",
+ "title": "Testimonial card",
+ "title_vi": "Thẻ đánh giá khách hàng",
+ "desc_vi": "Số sao và câu nhận xét trồi lên trước, rồi avatar, tên và tài khoản hạ xuống nhẹ; cuối clip thẻ mờ dần.",
+ "params_vi": "quote: câu nhận xét · author: tên · handle: chức danh hoặc @tài khoản · rating: 0 đến 5 sao (có thể lẻ) · bg, fg, muted, surface, border: màu · radius: bo góc (px) · duration: độ dài gốc 4 s (quyết định lúc thẻ mờ đi)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/testimonial-card/testimonial-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["testimonial", "quote", "rating", "social proof", "card"],
+ "notes": "Motion as in the source: proof (rating + quote) yPercent 18 -> 0 with opacity 0 -> 1, 0.7 s power2.out at 0.12 s; avatar, author and handle yPercent 34 -> 0, 0.56 s power2.out each, 0.06 s apart from 0.82 s (the source used one tween with stagger 0.06; the builder cannot write out a multi-target stagger tween, it reads the stagger total back as the duration, so it is three tweens); card opacity 1 -> 0 over 0.45 s power2.in at duration - 0.45 s (source: the composition length 4 s, here the param duration; IN and OUT scale together when duration < 1.95 s). All cqw / cqh sizes converted to px from the target box (the block fills the box it is placed in; in a full-frame slot that is 1920 x 1080): card width min(86cqw, 128cqh), padding / gap / font sizes as min(Xcqw, Xcqh), border 0.16cqh. The source theme tokens (bg, fg, muted, surface, border, radius) are params with the demo theme as default; color-mix() is written as plain hex / rgba. Differences: the source painted a full-box background (var(--bg)), the port leaves the box transparent so the film background shows through (bg only tints the card shadow and the avatar initials); the star rating is drawn with five SVG stars (same geometry as star-rating-fill, partial last star kept by clipping) instead of the star text glyph, so it does not depend on a symbol font; the rating text and handle use the film's font (the source used a monospace token font for the rating text); the rating decimal uses a comma (Vietnamese); y percentages written as yPercent; avatar is the initials circle of the source (no photo). Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#0b1020", "duration": 4.4,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

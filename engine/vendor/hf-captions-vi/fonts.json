@@ -1,0 +1,221 @@
+{
+ "about": "HF caption families drawn with Vietnamese-complete fonts (SIL OFL 1.1, engine/vendor/fonts/google/<folder>/OFL.txt); HF's file name -> its CSS family, weight, style and the kit font (engine/vendor/fonts/google/...) it was made from (engine/ae/port.py reads it)",
+ "faces": {
+  "anton-latin-400-normal.woff2": {
+   "css": "Anton",
+   "weight": 400,
+   "style": "normal",
+   "font": "Anton/Anton-Regular.ttf"
+  },
+  "audiowide-latin-400-normal.woff2": {
+   "css": "Audiowide",
+   "weight": 400,
+   "style": "normal",
+   "font": "Exo2/Exo2[wght].ttf"
+  },
+  "baloo-2-latin-400-normal.woff2": {
+   "css": "Baloo 2",
+   "weight": 400,
+   "style": "normal",
+   "font": "Baloo2/Baloo2[wght].ttf"
+  },
+  "baloo-2-latin-700-normal.woff2": {
+   "css": "Baloo 2",
+   "weight": 700,
+   "style": "normal",
+   "font": "Baloo2/Baloo2[wght].ttf"
+  },
+  "bodoni-moda-latin-400-normal.woff2": {
+   "css": "Bodoni Moda",
+   "weight": 400,
+   "style": "normal",
+   "font": "PlayfairDisplay/PlayfairDisplay[wght].ttf"
+  },
+  "bodoni-moda-latin-700-normal.woff2": {
+   "css": "Bodoni Moda",
+   "weight": 700,
+   "style": "normal",
+   "font": "PlayfairDisplay/PlayfairDisplay[wght].ttf"
+  },
+  "caveat-latin-400-normal.woff2": {
+   "css": "Caveat",
+   "weight": 400,
+   "style": "normal",
+   "font": "PatrickHand/PatrickHand-Regular.ttf"
+  },
+  "caveat-latin-700-normal.woff2": {
+   "css": "Caveat",
+   "weight": 700,
+   "style": "normal",
+   "font": "PatrickHand/PatrickHand-Regular.ttf"
+  },
+  "chakra-petch-latin-500-normal.woff2": {
+   "css": "Chakra Petch",
+   "weight": 500,
+   "style": "normal",
+   "font": "ChakraPetch/ChakraPetch-Medium.ttf"
+  },
+  "chakra-petch-latin-700-normal.woff2": {
+   "css": "Chakra Petch",
+   "weight": 700,
+   "style": "normal",
+   "font": "ChakraPetch/ChakraPetch-Bold.ttf"
+  },
+  "cormorant-garamond-latin-400-normal.woff2": {
+   "css": "Cormorant Garamond",
+   "weight": 400,
+   "style": "normal",
+   "font": "CormorantGaramond/CormorantGaramond[wght].ttf"
+  },
+  "cormorant-garamond-latin-700-normal.woff2": {
+   "css": "Cormorant Garamond",
+   "weight": 700,
+   "style": "normal",
+   "font": "CormorantGaramond/CormorantGaramond[wght].ttf"
+  },
+  "fredoka-latin-400-normal.woff2": {
+   "css": "Fredoka",
+   "weight": 400,
+   "style": "normal",
+   "font": "Baloo2/Baloo2[wght].ttf"
+  },
+  "fredoka-latin-700-normal.woff2": {
+   "css": "Fredoka",
+   "weight": 700,
+   "style": "normal",
+   "font": "Baloo2/Baloo2[wght].ttf"
+  },
+  "inter-latin-400-normal.woff2": {
+   "css": "Inter",
+   "weight": 400,
+   "style": "normal",
+   "font": "Inter/Inter[opsz,wght].ttf"
+  },
+  "inter-latin-500-italic.woff2": {
+   "css": "Inter",
+   "weight": 500,
+   "style": "italic",
+   "font": "Inter/Inter-Italic[opsz,wght].ttf"
+  },
+  "inter-latin-500-normal.woff2": {
+   "css": "Inter",
+   "weight": 500,
+   "style": "normal",
+   "font": "Inter/Inter[opsz,wght].ttf"
+  },
+  "inter-latin-600-italic.woff2": {
+   "css": "Inter",
+   "weight": 600,
+   "style": "italic",
+   "font": "Inter/Inter-Italic[opsz,wght].ttf"
+  },
+  "inter-latin-600-normal.woff2": {
+   "css": "Inter",
+   "weight": 600,
+   "style": "normal",
+   "font": "Inter/Inter[opsz,wght].ttf"
+  },
+  "inter-latin-700-normal.woff2": {
+   "css": "Inter",
+   "weight": 700,
+   "style": "normal",
+   "font": "Inter/Inter[opsz,wght].ttf"
+  },
+  "inter-latin-800-normal.woff2": {
+   "css": "Inter",
+   "weight": 800,
+   "style": "normal",
+   "font": "Inter/Inter[opsz,wght].ttf"
+  },
+  "inter-latin-900-normal.woff2": {
+   "css": "Inter",
+   "weight": 900,
+   "style": "normal",
+   "font": "Inter/Inter[opsz,wght].ttf"
+  },
+  "orbitron-latin-400-normal.woff2": {
+   "css": "Orbitron",
+   "weight": 400,
+   "style": "normal",
+   "font": "ChakraPetch/ChakraPetch-Regular.ttf"
+  },
+  "orbitron-latin-700-normal.woff2": {
+   "css": "Orbitron",
+   "weight": 700,
+   "style": "normal",
+   "font": "ChakraPetch/ChakraPetch-Bold.ttf"
+  },
+  "permanent-marker-latin-400-normal.woff2": {
+   "css": "Permanent Marker",
+   "weight": 400,
+   "style": "normal",
+   "font": "SedgwickAveDisplay/SedgwickAveDisplay-Regular.ttf"
+  },
+  "press-start-2p-latin-400-normal.woff2": {
+   "css": "Press Start 2P",
+   "weight": 400,
+   "style": "normal",
+   "font": "VT323/VT323-Regular.ttf"
+  },
+  "shippori-mincho-latin-400-normal.woff2": {
+   "css": "Shippori Mincho",
+   "weight": 400,
+   "style": "normal",
+   "font": "Newsreader/Newsreader[opsz,wght].ttf"
+  },
+  "shippori-mincho-latin-700-normal.woff2": {
+   "css": "Shippori Mincho",
+   "weight": 700,
+   "style": "normal",
+   "font": "Newsreader/Newsreader[opsz,wght].ttf"
+  },
+  "sora-latin-400-normal.woff2": {
+   "css": "Sora",
+   "weight": 400,
+   "style": "normal",
+   "font": "Lexend/Lexend[wght].ttf"
+  },
+  "sora-latin-700-normal.woff2": {
+   "css": "Sora",
+   "weight": 700,
+   "style": "normal",
+   "font": "Lexend/Lexend[wght].ttf"
+  },
+  "space-grotesk-latin-400-normal.woff2": {
+   "css": "Space Grotesk",
+   "weight": 400,
+   "style": "normal",
+   "font": "SpaceGrotesk/SpaceGrotesk[wght].ttf"
+  },
+  "space-grotesk-latin-700-normal.woff2": {
+   "css": "Space Grotesk",
+   "weight": 700,
+   "style": "normal",
+   "font": "SpaceGrotesk/SpaceGrotesk[wght].ttf"
+  },
+  "special-elite-latin-400-normal.woff2": {
+   "css": "Special Elite",
+   "weight": 400,
+   "style": "normal",
+   "font": "IBMPlexMono/IBMPlexMono-Regular.ttf"
+  },
+  "teko-latin-400-normal.woff2": {
+   "css": "Teko",
+   "weight": 400,
+   "style": "normal",
+   "font": "SairaCondensed/SairaCondensed-Regular.ttf"
+  },
+  "teko-latin-700-normal.woff2": {
+   "css": "Teko",
+   "weight": 700,
+   "style": "normal",
+   "font": "SairaCondensed/SairaCondensed-Bold.ttf"
+  },
+  "vt323-latin-400-normal.woff2": {
+   "css": "VT323",
+   "weight": 400,
+   "style": "normal",
+   "font": "VT323/VT323-Regular.ttf"
+  }
+ }
+}

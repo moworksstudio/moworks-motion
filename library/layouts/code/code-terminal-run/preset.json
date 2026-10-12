@@ -1,0 +1,66 @@
+{
+ "name": "code/code-terminal-run",
+ "kind": "block",
+ "group": "code",
+ "title": "Code terminal run",
+ "title_vi": "Terminal gõ lệnh rồi chạy",
+ "desc_vi": "Một khung terminal gõ từng ký tự một dòng lệnh sau con trỏ nhấp nháy, chạy lệnh, in từng dòng kết quả rồi hiện dấu nhắc mới có con trỏ đặc; sau đó đứng yên.",
+ "params_vi": "command: dòng lệnh (tô màu bằng thẻ <s>chuỗi</s> <f>cờ</f> <p>đường dẫn</p> <o>ok</o> <m>mờ</m>) · output: các dòng kết quả (cùng cú pháp thẻ) · glyph: ký hiệu dấu nhắc ($, rỗng = ẩn) · cadence: human | uniform · cues: giây in từng dòng kết quả (rỗng = theo nhịp gốc) · accent: màu dấu nhắc và con trỏ · exit: none | fade | up · duration: độ dài gốc 5 s · colStr, colFlag, colPath, colOk, colMuted, bg, base, fg, surface, border, shadow: màu · radius: bo góc (px, 0 = mặc định)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/code-terminal-run/code-terminal-run.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "terminal",
+  "typing",
+  "code",
+  "command",
+  "per-frame"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Schedule, cadence, layout and envelope as in the source (panel 84 cqw wide, token chrome with three dots, body padding 3 cqh x 3 cqw, min height 40 cqh; mono size min(clamp(108 / longest line, 2, 3.2) cqw, clamp(46 / (1.6 x lines), 3.2, 6.4) cqh); settle 0.5 s; typing from 0.4 s with the fixed-seed LCG 0x51ec0ded and the same chunk / gap rules for 'human' and 'uniform'; execute beat 0.22 s, lead beat 0.3 s, one output line every 0.3 s or at the given cues, tail prompt 0.35 s after the last line, 0.12 s print fades, the schedule shrinks proportionally only if it would overflow D - OUT - 0.3 s, drift -0.45 cqh with sine.inOut halves ending in 0.3 s of stillness, optional exit 0.45 s). cqw / cqh / cqmin are taken from the target box (the gallery demo uses the same 72 % x 66 % card as the source demo). The slot (a template with data-terminal command and output elements and span classes ct-str / ct-flag / ct-path / ct-ok / ct-muted) became params: `command` and `output` are strings with the small markup <s> <f> <p> <o> <m> (one tag per colour class); the colours are params (source tokens: --brand for strings and ok, --accent for flags, --accent-2 for paths, --muted). The typing is a pure function of time written through ctx.code (one proxy tween whose onUpdate shows the first n characters across the coloured segments and sets the caret opacity: blink with integer sine cycles, solid after typing, gone at execute); the table of times is computed when the block is built and written into the code as numbers, so the film never calls a random function. The caret blink and the solid / hidden steps are one function (the source used a blink proxy plus two sets), so no literal tween shares a property with the code. ae is expression: the typed line is per-frame DOM text. The prompt glyph was a ::before pseudo-element with a CSS custom property; it is a real span. The caret is a real span. Source variables: prompt_glyph, cadence, cues (comma string; array accepted), exit kept; accent is a hex colour (source: green / blue / violet reading theme tokens). The system monospace stack (Consolas / Cascadia Mono / Menlo) is used, no font file ships. color-mix() is written as rgba / computed hex. The default command is code and stays English (build ... --minify --out); the printed lines are Vietnamese (source: English). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "radial-gradient(ellipse at 50% 44%, #171a20 0%, #0b0c0e 72%)",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "card",
+    "type": "box",
+    "style": {
+     "left": "269px",
+     "top": "184px",
+     "width": "1382px",
+     "height": "713px",
+     "overflow": "hidden",
+     "border-radius": "30px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "card",
+    "at": 0,
+    "params": {
+     "glyph": ">",
+     "cadence": "uniform",
+     "cues": [
+      2.7,
+      3,
+      3.3,
+      3.7
+     ],
+     "accent": "#61a8ff",
+     "surface": "#14171c",
+     "border": "#343a46",
+     "duration": 5
+    }
+   }
+  ]
+ }
+}

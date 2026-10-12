@@ -1,0 +1,18 @@
+{
+ "name": "flow/settings-toggle-flow",
+ "kind": "block",
+ "group": "flow",
+ "title": "Settings toggle flow",
+ "title_vi": "Thẻ cài đặt có công tắc",
+ "desc_vi": "Thẻ cài đặt trồi lên, từng dòng tùy chọn trượt vào, các công tắc đang bật nảy nhẹ vào vị trí.",
+ "params_vi": "rows: danh sách dòng { title, sub, on } · ink, muted, border, surface, rowBg, off, knob: màu · scale: độ phóng to (1.2)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/settings-toggle-flow/settings-toggle-flow.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["settings", "toggle", "ui flow", "card"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, radii, spacing and the three staggered tweens are as in the source (card y 24 + opacity, 0.34 s power2.out at 0.28 s; rows x -18 + opacity, 0.28 s power2.out, stagger 0.08 at 0.55 s; switches that are on scale 0.92 -> 1, 0.28 s back.out(1.8), stagger 0.08 at 0.88 s). Where the source demo differs from the snippet its value is used (sub line weight 500 instead of 760); the demo's 1.2x enlargement is the param `scale` (a wrapper with transform: scale that is never tweened). Font: the film's font instead of Inter. The switch knob was a ::after pseudo-element with transform: translateX(22px) for the on state; it is a real child element here placed at left 26 px (on) or 4 px (off), same pixels. The switches are div elements instead of i. Rows are a param (array of { title, sub, on }, any number of rows; source: three fixed rows) with Vietnamese defaults (source: English).",
+ "demo": { "bg": "#f8fafc", "duration": "auto", "hold": 1.2 }
+}

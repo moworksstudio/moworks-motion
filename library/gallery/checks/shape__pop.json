@@ -1,0 +1,17 @@
+{
+ "name": "shape/pop",
+ "at": "2026-10-05 22:07",
+ "static": [],
+ "build": "ok",
+ "tweens": 4,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.00012,
+ "seek": 4e-05,
+ "bake": 0.0,
+ "duration": 2.04,
+ "problems": [],
+ "status": "ok",
+ "seconds": 4.7
+}

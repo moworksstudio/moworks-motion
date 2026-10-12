@@ -1,0 +1,19 @@
+{
+ "name": "text/bullets",
+ "kind": "block",
+ "group": "text",
+ "title": "Bullet list build",
+ "title_vi": "Danh sách gạch đầu dòng hiện lần lượt",
+ "desc_vi": "Danh sách ý kiểu trình chiếu hiện theo thứ tự đọc: mỗi dòng hiện dần và nhích lên 18 px như lò xo không nảy, cách nhau 0.27 giây, có chấm màu nhấn đầu dòng; có thể kèm tiêu đề.",
+ "params_vi": "items: các ý, cách nhau | · title: tiêu đề phía trên (trống = không) · accent: màu chấm · ink: màu chữ · size: cỡ chữ (54) · gap: khoảng cách dòng (28) · stagger: cách nhau (0.267 s = 8 khung) · enter: thời gian mỗi dòng (0.4 s)",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/data-animation-skills", "path": "skills/presentation-video/references/slide-components.md" },
+ "license": "MIT",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "tags": ["bullets", "list", "presentation", "slide", "stagger"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "useEnter and BulletList from the recipe (Remotion spring damping 200 over 12 frames, 18 px rise, 8-frame stagger, 28 px gap, 12 px accent dot); the spring curve is fitted to one Bezier. Body weight 400 / line-height 1.35 as in the recipe; the title is a kit addition (800, 1.35x).",
+ "demo": { "hold": 1.0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "260px", "top": "160px", "width": "1400px", "height": "760px" } }], "motion": [{ "target": "slot", "at": 0.2, "params": { "title": "Bộ kit làm được gì" } }], "bg": "#101418" }
+}

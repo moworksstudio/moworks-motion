@@ -1,0 +1,65 @@
+{
+ "name": "text/embedded-captions",
+ "kind": "effect",
+ "group": "text",
+ "title": "Embedded captions (HyperFrames, 35 identities)",
+ "title_vi": "Phụ đề trong cảnh quay (HF: 35 phong cách, chữ nằm sau người nói)",
+ "desc_vi": "Bộ phụ đề talking-head của HyperFrames chạy nguyên bản: 10 phong cách chữ chìm trong cảnh (cream, ink, editorial, keynote, documentary, loud, neon, glitch, chrome, velocity) và 25 theme (anchor, ordnance, terminal, neonsign, stardust, stomp, ...). Rail phụ đề đọc được + một từ đỉnh nằm sau người, hiệu ứng cả khung (rung, zoom, tách màu, hạt) đúng như HF. Font HF đổi sang font có tiếng Việt.",
+ "params_vi": "clip: tên clip (thư mục assets/captions/<clip>/, do kit.py cutout <phim> <clip> --people --captions tạo) · duration: mặc định độ dài clip · plate: true = rung / zoom / tách màu / hạt của theme · dir: thư mục trang đã biên dịch sẵn (demo của Gallery), thay cho clip",
+ "source": {
+  "label": "HyperFrames skill embedded-captions",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/embedded-captions/"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "captions",
+  "subtitles",
+  "talking-head",
+  "embedded",
+  "hyperframes"
+ ],
+ "brand_ui": false,
+ "needs": [
+  "a talking-head clip: kit.py cutout <film> <clip> --people --captions, then theme.json or cinematic.json in assets/captions/<clip>/"
+ ],
+ "check_end": false,
+ "notes": "HF's pages and compilers as shipped (engine/vendor/hf-captions, MANIFEST.json sha256); the kit adds the Vietnamese faces (engine/vendor/hf-captions-vi), plays the pages live instead of HF's render + ffmpeg composite, swaps the page's <video> for the film's picture sequences and redraws HF's _postfx.sh plate reaction (same zoompan expressions; grain from the kit's tile). Known: the six themes that hand-write the apex with a single-line pen font (aurora, brush, chalkboard, graffiti, neonsign, spectrum) draw only unaccented Latin letters; make-cinematic matches words on a-z0-9 only (Vietnamese words still match in order).",
+ "demo": {
+  "duration": 6.2,
+  "hold": 0,
+  "bg": "#000",
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "dir": "assets/lib/text/embedded-captions/demo"
+    }
+   }
+  ],
+  "thumb_at": 0.42
+ },
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

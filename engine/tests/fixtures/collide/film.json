@@ -1,0 +1,192 @@
+{
+ "spec": "aimk-motionspec/0",
+ "title": "collide test",
+ "size": [
+  1920,
+  1080
+ ],
+ "background": "#ffffff",
+ "scenes": [
+  {
+   "id": "s1",
+   "name": "Bugs",
+   "duration": 2.0,
+   "elements": [
+    {
+     "id": "a",
+     "type": "text",
+     "text": "Chữ thứ nhất",
+     "style": {
+      "left": "100px",
+      "top": "100px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    },
+    {
+     "id": "b",
+     "type": "text",
+     "text": "Chữ thứ hai",
+     "style": {
+      "left": "160px",
+      "top": "120px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    },
+    {
+     "id": "c",
+     "type": "text",
+     "text": "Bị che",
+     "style": {
+      "left": "100px",
+      "top": "400px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    },
+    {
+     "id": "lid",
+     "type": "box",
+     "style": {
+      "left": "80px",
+      "top": "380px",
+      "width": "300px",
+      "height": "140px",
+      "background": "#ff7a1a"
+     }
+    }
+   ],
+   "motion": [
+    {
+     "preset": "motion/slide-in",
+     "target": "lid",
+     "at": 0.5
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "Fine",
+   "duration": 2.0,
+   "transition_in": {
+    "preset": "transition/push",
+    "duration": 0.6
+   },
+   "elements": [
+    {
+     "id": "pic",
+     "type": "box",
+     "style": {
+      "left": "80px",
+      "top": "80px",
+      "width": "800px",
+      "height": "300px",
+      "background": "#1d3fd8"
+     }
+    },
+    {
+     "id": "d",
+     "type": "text",
+     "text": "Trên panel",
+     "style": {
+      "left": "100px",
+      "top": "150px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    },
+    {
+     "id": "e1",
+     "type": "text",
+     "text": "Bản sao",
+     "style": {
+      "left": "100px",
+      "top": "600px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    },
+    {
+     "id": "e2",
+     "type": "text",
+     "text": "Bản sao",
+     "style": {
+      "left": "100px",
+      "top": "600px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    },
+    {
+     "id": "f1",
+     "type": "text",
+     "text": "Bỏ qua",
+     "style": {
+      "left": "1000px",
+      "top": "600px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     },
+     "attrs": {
+      "data-lint": "ignore"
+     }
+    },
+    {
+     "id": "f2",
+     "type": "text",
+     "text": "Bỏ qua nhé",
+     "style": {
+      "left": "1020px",
+      "top": "610px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "name": "Blank start",
+   "duration": 2.0,
+   "elements": [
+    {
+     "id": "g",
+     "type": "text",
+     "text": "Cảnh trống lúc đầu",
+     "style": {
+      "left": "100px",
+      "top": "400px",
+      "font-size": "80px",
+      "font-weight": "700",
+      "white-space": "nowrap",
+      "color": "#111"
+     }
+    }
+   ],
+   "motion": [
+    {
+     "preset": "text/soft-blur-in",
+     "target": "s3in",
+     "at": 0.3
+    }
+   ]
+  }
+ ]
+}

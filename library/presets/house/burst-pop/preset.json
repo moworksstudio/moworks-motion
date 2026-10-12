@@ -1,0 +1,79 @@
+{
+ "name": "house/burst-pop",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop (burst)",
+ "title_vi": "Ngôi sao nổ sau con số",
+ "desc_vi": "Hình sao nổ phía sau con số bật ra từ đáy giữa, nảy nhẹ.",
+ "params_vi": "Giống pop-cute; mặc định rot 0, ease back.out(1.7), dur 0.7, origin 50% 60%",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "burst",
+  "starburst",
+  "house"
+ ],
+ "notes": "Port of P.burstPop (popCute with rot 0, back.out(1.7), 0.7 s, origin 50% 60%). The demo uses a generated starburst picture and the v1 breathe on it.",
+ "demo": {
+  "bg": "#c1121f",
+  "duration": 4,
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "burst",
+    "type": "image",
+    "src": "assets/demo/house-burst.png",
+    "style": {
+     "left": "580px",
+     "top": "160px",
+     "width": "760px",
+     "height": "760px"
+    }
+   },
+   {
+    "id": "num",
+    "type": "text",
+    "text": "GIẢM 50%",
+    "style": {
+     "left": "640px",
+     "top": "470px",
+     "font-size": "120px",
+     "color": "#c1121f",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "burst",
+    "at": 0.3
+   },
+   {
+    "target": "num",
+    "at": 0.7,
+    "params": {
+     "rot": 0
+    },
+    "preset": "house/pop-cute"
+   },
+   {
+    "target": "burst",
+    "at": 0.3,
+    "params": {
+     "amp": 0.02,
+     "origin": "50% 60%",
+     "period": 4
+    },
+    "preset": "house/breathe"
+   }
+  ]
+ }
+}

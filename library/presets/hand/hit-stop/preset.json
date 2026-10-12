@@ -1,0 +1,25 @@
+{
+ "name": "hand/hit-stop",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Hit-stop",
+ "title_vi": "Khựng lúc va (hit-stop)",
+ "desc_vi": "Kỹ thuật hoạt hình: đúng lúc va chạm, vật bị đánh đứng sững vài khung ở tư thế bẹp / phình nhất rồi bật về, kèm một khung loé sáng. Cho cú đấm, cú dậm, chữ đập xuống.",
+ "params_vi": "punch (phóng lúc va) · squash (bẹp ngang 0-1) · hold (giây đứng sững) · recover (giây bật về) · flash (màu loé, rỗng = không) · flash_on (id khung loé)",
+ "source": { "label": "Moworks Motion", "film": "plan C3 07/10/2026 (gói vẽ tay)" },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["hand-drawn", "impact", "hit-stop", "flash"],
+ "notes": "A one-frame flash: check photosensitivity with kit.py qa (at most 3 flashes a second).",
+ "demo": {
+  "bg": "#f3ead8",
+  "elements": [ { "id": "ball", "type": "box", "style": { "left": "860px", "top": "440px", "width": "200px", "height": "200px", "border-radius": "100px", "background": "#d6342b" } } ],
+  "motion": [
+   { "preset": "motion/tween", "target": "ball", "at": 0.2, "params": { "from": { "y": -420 }, "to": { "y": 0 }, "duration": 0.45, "ease": "power3.in" } },
+   { "target": "ball", "at": 0.65, "params": {} },
+   { "preset": "hand/shake", "target": "s1in", "at": 0.65, "params": { "amp": 12, "duration": 0.3 } }
+  ],
+  "duration": 2.0
+ }
+}

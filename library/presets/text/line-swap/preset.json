@@ -1,0 +1,17 @@
+{
+ "name": "text/line-swap",
+ "kind": "effect",
+ "group": "text",
+ "title": "Line swap",
+ "title_vi": "Đổi cả dòng theo nhịp, gạch chân từ nhấn",
+ "desc_vi": "Dòng thứ nhất trồi lên trong khung che rồi giữ; đúng nhịp, nó bay lên khỏi khung trong khi dòng thứ hai trồi vào thay chỗ, sau đó một vạch màu kẻ dưới từ nhấn. Chữ của phần tử là dòng thứ nhất.",
+ "params_vi": "lineB: dòng thứ hai · underline: từ được gạch (để trống = không gạch) · accent: green | blue | violet hoặc mã màu · swapAt: lúc đổi, tính từ at (1.5 s, tối thiểu 0.5) · exit: none | fade | up · duration: độ dài cả hiệu ứng khi có exit (3.5 s) · pad: khoảng chừa trên dưới cho dấu (0.3 em)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/line-swap/line-swap.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["swap", "line", "mask", "underline", "beat"],
+ "check_end": false,
+ "notes": "Phases and eases as in the source (IN 0.5 s power4.out; SWAP: A out 0.35 s power2.in at the beat, B in 0.22 s later, 0.5 s power4.out; bar 0.15 s after B lands, 0.45 s power2.out, scaleX 0 -> 1 from the left, 0.055 em tall, 0.14 em under the word; exit fade | up 0.45 s power2.in, up rises 7 % of the frame). The source compressed the phases when its mount was shorter than them; here swapAt is only held at 0.5 s or later. Accent colours are the source's fallbacks (#71f5a7 / #61a8ff / #c5a3ff). Mask: the source's 1.42 em mask with 115 % travel would cut Vietnamese marks; here the mask has 0.3 em room and the travel is one line + room + 0.25 em. End check off: the end shows line B.",
+ "demo": { "duration": 3.6, "hold": 0.3, "elements": [{ "id": "t1", "type": "text", "text": "Ai cũng hứa hẹn AI với bạn.", "style": { "color": "#f8fafc", "font-weight": "600", "font-size": "92px", "letter-spacing": "-0.02em", "line-height": "1", "white-space": "nowrap", "text-align": "center", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.2 }] }
+}

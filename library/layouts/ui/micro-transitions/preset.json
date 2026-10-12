@@ -1,0 +1,59 @@
+{
+ "name": "ui/micro-transitions",
+ "kind": "block",
+ "group": "ui",
+ "title": "Micro Transitions",
+ "title_vi": "Bộ chuyển động giao diện nhỏ",
+ "desc_vi": "Bộ chuyển động giao diện nhỏ: huy hiệu, menu thả, hộp thoại, tab, tooltip, dấu tích thành công.",
+ "params_vi": "badge: Badge, mặc định \"3\" · tooltip: Tooltip, mặc định \"Copied\" · tone: Badge tone (red | amber | violet), mặc định \"red\" · travel: Travel (close | standard | far), mặc định \"standard\" · duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/micro-transitions/demo.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "transition-primitive",
+  "motion-primitive",
+  "transitions-dev-port",
+  "ui",
+  "transition",
+  "microinteraction"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/demo.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/micro-transitions.html. Source: A transitions.dev-inspired pack of badge, dropdown, modal, tabs, tooltip, and success-check micro transitions",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

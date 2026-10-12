@@ -1,0 +1,52 @@
+{
+ "name": "house/zoom-in-shape",
+ "kind": "effect",
+ "group": "house",
+ "title": "Zoom inside shape",
+ "title_vi": "Ảnh zoom chậm trong khung",
+ "desc_vi": "Ảnh luôn chuyển động: phóng chậm từ 1 lên 1,06 bên trong khung hình của nó, viền không nhúc nhích.",
+ "params_vi": "to: scale cuối (1.06) · dur: giây (12) · origin · mask: ảnh khác làm cửa sổ (null = chính ảnh)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "zoom",
+  "picture",
+  "mask",
+  "house"
+ ],
+ "notes": "Port of P.zoomInShape. The container is masked by the picture's alpha (CSS mask-image, written into its style); the zoom is a ctx.code proxy tween 0 -> 1 over dur with ease none, so it holds at 1 before `at` and at `to` after. Demo picture is a generated arch with a pattern; the demo zooms to 1.12 for visibility. In After Effects the mask becomes an alpha track matte.",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "arch",
+    "type": "text",
+    "text": "",
+    "html": "<img id='arch_img' src='assets/demo/house-arch.png' style='position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover' alt=''>",
+    "style": {
+     "left": "660px",
+     "top": "200px",
+     "width": "600px",
+     "height": "515px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "arch",
+    "at": 0.0,
+    "params": {
+     "to": 1.12,
+     "dur": 5
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "name": "effect/gooey-split",
+ "kind": "block",
+ "group": "effect",
+ "title": "Gooey Split",
+ "title_vi": "Chấm dẻo tách ba rồi xoáy thành dấu",
+ "desc_vi": "Một chấm tách thành ba chấm có cổ dính như chất lỏng (metaball), xoay thành dấu xoáy với vệt mờ chuyển động theo đúng hướng quay, rồi tách lại ba chấm và nhập về một. Hợp cho icon, logo nhỏ, nút menu.",
+ "params_vi": "duration: độ dài của block (4.7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "registry/blocks/gooey-split/gooey-split.html",
+  "sha256": {
+   "gooey-split.html": "4752d7d73f59aa151105234531c913538481700166b74f1078beb3af71b27db2"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js",
+  "gsap/CustomEase.min.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "effect",
+  "gooey",
+  "metaball",
+  "motion-blur",
+  "morph",
+  "logo"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/gooey-split.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Added 11/10/2026 from HyperFrames main (the block came after the 0ca6947 snapshot, on 06/10/2026). Its motion blur is its own shutter snippet (sub-frame seeks inside the page), not the kit's. Source: A dot splits into a three-dot menu with a gooey metaball neck, spins into a swirl mark under directional shutter motion blur, then breaks back into three dots and merges into one. The goo is an SVG blur-and-threshold filter on the dots; the blur integrates each part along its real trajectory, so the smear follows the direction and speed of the spin.",
+ "demo": {
+  "duration": 4.7,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.7
+    }
+   }
+  ],
+  "bg": "#f9da41"
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

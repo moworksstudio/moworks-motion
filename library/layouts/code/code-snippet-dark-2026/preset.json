@@ -1,0 +1,56 @@
+{
+ "name": "code/code-snippet-dark-2026",
+ "kind": "block",
+ "group": "code",
+ "title": "Code Snippet - Dark 2026",
+ "title_vi": "VS Code Dark 2026 gõ code từng ký tự",
+ "desc_vi": "Giao diện VS Code đầy đủ (thanh hoạt động, cây thư mục, tab, terminal, thanh trạng thái) theo theme Dark 2026, code được gõ ra từng ký tự.",
+ "params_vi": "duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-snippet-dark-2026/code-snippet-dark-2026.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "code",
+  "developer",
+  "showcase",
+  "vscode"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/code-snippet-dark-2026.html) in a kit film, mounted by ctx.hf.  Source: VS Code workbench with per-character typing animation in the Dark 2026 theme. Full editor chrome with activity bar, sidebar, tabs, terminal, and status bar.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "name": "lower/stack-bars",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: stack bars",
+ "title_vi": "Lower third hai thanh chồng, quét ngược chiều",
+ "desc_vi": "Thanh tên đen quét vào từ trái, thanh chức danh vàng quét vào từ phải ngay dưới; tự ra ở giây 4.25, hai thanh quét ngược lại.",
+ "params_vi": "name, role: chữ · nameBg, roleBg: màu hai thanh · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-stack-bars/lt-stack-bars.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super", "bars"],
+ "notes": "Fonts: the film's font at weight 900 instead of Archivo Black, the kit's Roboto Mono instead of Space Mono (no network in films). Exit: role bar at exitAt, name bar 0.07 s later (source 4.25 / 4.32 s). Source hard kill at 4.75 s not needed (both bars are fully clipped).",
+ "demo": { "bg": "#5b6b82", "duration": 5.2 }
+}

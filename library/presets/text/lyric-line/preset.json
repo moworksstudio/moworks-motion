@@ -1,0 +1,60 @@
+{
+ "name": "text/lyric-line",
+ "kind": "effect",
+ "group": "text",
+ "title": "Lyric line word by word",
+ "title_vi": "Dòng lời hiện từng chữ theo lúc hát",
+ "desc_vi": "Một dòng lời bài hát hiện từng chữ, mỗi chữ chạm đúng lúc hát (giờ từ kit.py align hoặc nhập tay), với một kiểu vào của text/land-in. Khác text/captions (phụ đề theo giọng): đây là chữ thiết kế lớn, một dòng.",
+ "params_vi": "times: [giây tính từ at, mỗi chữ một số] · style: rise · stomp · stompS · pop · steps · stepsup · fade · flip · zoom · stagger: giây cho chữ không có giờ",
+ "ae": "keyframes",
+ "tags": [
+  "text",
+  "lyric",
+  "word",
+  "song",
+  "beat"
+ ],
+ "notes": "Viết cho một phim lời bài hát của studio (08/10/2026).",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 3.4,
+  "elements": [
+   {
+    "id": "ln",
+    "type": "text",
+    "text": "Mình cùng nhau bước tới",
+    "style": {
+     "left": "250px",
+     "top": "460px",
+     "font": "760 130px RFlex",
+     "color": "#f5f5f2",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "ln",
+    "at": 0.3,
+    "params": {
+     "style": "stompS",
+     "times": [
+      0,
+      0.35,
+      0.62,
+      1.1,
+      1.5
+     ]
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

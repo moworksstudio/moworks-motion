@@ -1,0 +1,19 @@
+{
+ "name": "data/iso-stack",
+ "kind": "block",
+ "group": "data",
+ "title": "Isometric stack build",
+ "title_vi": "Chồng khối isometric dựng từ dưới lên, có nhãn",
+ "desc_vi": "Các tấm khối isometric có đổ sáng ba mặt dựng chồng từ dưới lên trên một lưới isometric tự vẽ, mỗi tầng một nhãn, rồi cả cảnh trôi nhẹ. Hợp sơ đồ kiến trúc hệ thống, các tầng sản phẩm.",
+ "params_vi": "layers: tên các tầng từ dưới lên, cách nhau | · colors: màu từng tầng (dấu phẩy) · size: cạnh khối (300) · thick: độ dày tầng (46) · gap: khe giữa tầng (26) · grid: vẽ lưới · gridSize: số ô lưới · labelColor, gridColor · drift: biên độ trôi (6 px) · duration: tổng thời gian (6 s)",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "path": "skills/isometric-animation/references/isometric-recipes.md" },
+ "license": "MIT",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "tags": ["isometric", "stack", "architecture", "diagram", "layers"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Projection, shading order, SVG painting, grid draw-on and the bottom-up rise as in recipes 0, 2, 3, 5 and 6 (the drift is a vertical float of the scene; the recipe's pointer parallax and hover have no place in a film). Shading factors 1 / 0.77 / 0.54 match the recipe's example colours (#3a9bff, #2c78c8, #1f5896). Labels default to Vietnamese.",
+ "demo": { "duration": 6, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0 }], "bg": "#0f1319" }
+}

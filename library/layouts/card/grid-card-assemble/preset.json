@@ -1,0 +1,18 @@
+{
+ "name": "card/grid-card-assemble",
+ "kind": "block",
+ "group": "card",
+ "title": "Grid card assemble",
+ "title_vi": "Lưới thẻ tính năng lắp ráp lần lượt",
+ "desc_vi": "Nhiều thẻ tính năng lần lượt hiện và trượt nhẹ vào đúng ô của mình, biểu tượng nét mảnh được vẽ khi thẻ đáp xuống; xong là đứng yên.",
+ "params_vi": "items: danh sách thẻ, cách nhau dấu phẩy (3 đến 12 thẻ; \"Nhãn: mô tả\" thêm một dòng mô tả, mô tả không được chứa dấu phẩy) · layout: grid | list · columns: số cột (0 = tự chọn) · cues: giây vào của từng thẻ, cách nhau dấu phẩy (trống = nhịp mặc định) · accent: màu nét biểu tượng · fg, muted, surface, border: màu · exit: none | fade | up · duration: độ dài gốc 4.5 s (thẻ cuối đáp xuống lúc 60 %)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/grid-card-assemble/grid-card-assemble.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["card", "grid", "feature tour", "icons", "stagger", "layout"],
+ "notes": "Layout logic, sizes and motion as in the source: columns (0 = auto: one row up to 3 items, else ceil(sqrt(N)); list = 1), row height = min(row cap 15 / 30 / 38cqh, (76 - 3 x (rows - 1)) / rows cqh), stage width 88cqw (list 64cqw), gap 2.2cqmin, card padding 12 % (list 16 %) of the row height, icon min(30 % of the row, 9.5cqh) (list 50 %), label and body sizes fitted from the longest text (label at 0.75 em per glyph, body at 0.56 em, capped by the row height), surface with a top light linear-gradient, 1 px border, radius 1.8cqmin; six thin-line icons cycled by index. Motion: each card opacity 0 -> 1 and y 3cqh -> 0 over the tile time (0.65 s, power3.out, no overshoot) at its start; the default cascade lands the last card around 60 % of `duration` (start gap spread, first start 0.15 s), per-item `cues` override and are clamped so every card lands before the exit; each icon path draws on inside its card's settle window (starts at 25 % of the tile time, 0.7 x tile x 0.55 per path); no hold motion; exit fade (opacity) or up (+ y -3cqh), min(0.45 s, 25 % of the duration), power2.in, at duration - OUT. All cqw / cqh / cqmin converted to px from the target box. Differences: the icon draw tweens the CSS strokeDashoffset (the source tweened the SVG attribute through the attr plugin, which the builder cannot write out; the dash length is measured at build and written as a literal); the monospace token font of the labels is replaced by the film's font (tracking and fitting factors kept); the `items` parameter also accepts a JS array; the source's content-override slot (hand-made cards inside [data-slot=items]) is not ported; accent is a hex param (the source chose green / blue / violet tokens; default #71f5a7); theme tokens fg, muted, surface, border are params with the source fallback values; the source's transparent background is kept (the film shows through). Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#0b0c10", "duration": 5.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": { "items": "Phân quyền,Nhật ký hệ thống,Triển khai,Tìm kiếm,Bản nháp,Trích dẫn", "columns": 3, "accent": "#c5a3ff" } }] }
+}

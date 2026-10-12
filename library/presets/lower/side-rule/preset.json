@@ -1,0 +1,16 @@
+{
+ "name": "lower/side-rule",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: side rule",
+ "title_vi": "Lower third vạch dọc, tên chữ hẹp",
+ "desc_vi": "Vạch dọc màu mọc từ trên xuống, tên chữ hẹp in hoa và chức danh chữ mono trượt vào từ trái, có bóng mềm để đặt trên video; tự ra ở giây 4.3.",
+ "params_vi": "name, role: chữ · accent: màu vạch · left, bottom: vị trí (px) · exitAt: giây tên ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-side-rule/lt-side-rule.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super", "condensed", "over footage"],
+ "notes": "Fonts: League Gothic becomes Roboto Flex at wdth 25 / weight 600, JetBrains Mono the kit's Roboto Mono (no network in films); in After Effects the width axis is lost and the port fits the tracking to the browser width. Exit kept as the source's three offsets around exitAt (role -0.05 s, name 0, bar +0.02 s). Source hard kill at 4.75 s not needed.",
+ "demo": { "bg": "#3a4a5e", "duration": 5.2 }
+}

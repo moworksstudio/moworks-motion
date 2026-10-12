@@ -1,0 +1,52 @@
+{
+ "name": "text/text-shimmer",
+ "kind": "effect",
+ "group": "text",
+ "title": "Text Shimmer",
+ "title_vi": "Vệt sáng quét ngang qua chữ",
+ "desc_vi": "Chữ đứng yên, một vệt sáng mảnh quét qua các nét chữ đúng một lần rồi trả về chữ sạch.",
+ "params_vi": "accent: màu vệt sáng (#22c55e) · highlight: lõi sáng (#ffffff) · base: màu chữ (auto = màu hiện có) · sweepAt: lúc bắt đầu quét (1.2 s) · sweep: thời gian quét (0.9 s) · hold: trôi chậm về sau (0.9 s)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/text-shimmer/text-shimmer.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "shimmer",
+  "gradient",
+  "emphasis",
+  "background-clip"
+ ],
+ "notes": "Motion ported 1:1: gradient stops, 300 % background-size, 100% -> 0% sweep over 0.9 s sine.inOut at 1.2 s, then the 4% drift over the hold. The source paints the text with colour tokens (--fg, --brand / --accent / --accent-2 picked by the accent variable): here base = the target's own colour (param base 'auto'), highlight = white (the source's --fg fallback), accent = the source's green #22c55e as a param; the two accent/highlight mixes (58 % and 72 %) are computed in JS and written as rgb() so the film carries no color-mix. The effect makes the target's text transparent and paints it with the gradient (background-clip: text); the gradient is painted only inside the element box, so a film that sets a very tight line-height can clip tall diacritics (the end check would show it). Source variable sweep_at is clamped to 0.2-2 s there; here any value is accepted. The drift is invisible by design (it keeps the band off the glyphs). AE: needs a rendered layer (background-clip text gradient), hence ae = png. Gallery status is 'warn' (end differs from layout 0.55 % at half size): the difference is only a one-pixel anti-aliasing outline of the glyphs (text painted through background-clip: text rasterises its edges slightly differently from plain text, checked with a diff image); there is no clipping and no position shift. 05/10/2026 fix: with background-clip:text on the target itself, glyph parts outside the line box (descenders of y / g, the dot under ộ / ợ) were cut off; the gradient now sits on an inner inline-block padded 0.35em / 0.1em with equal negative margins (same layout, nothing cut). The gallery end check still reports about 0.5 %: gradient-clipped glyph edges anti-alias slightly differently from plain text (checked by eye, no mark missing).",
+ "demo": {
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Chuyển động mượt mà",
+    "style": {
+     "color": "#f5f5f2",
+     "font-weight": "780",
+     "font-size": "140px",
+     "letter-spacing": "-0.055em",
+     "line-height": "1.1",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3
+   }
+  ]
+ }
+}

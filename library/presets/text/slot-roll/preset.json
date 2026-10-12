@@ -1,0 +1,16 @@
+{
+ "name": "text/slot-roll",
+ "kind": "effect",
+ "group": "text",
+ "title": "Slot machine roll",
+ "title_vi": "Từng ký tự cuộn như máy quay số",
+ "desc_vi": "Mỗi ký tự là một ô quay số: bắt đầu ở số 0 rồi cuộn lên một nấc để dừng đúng ký tự, các ô lần lượt cách nhau 0.06 giây. Hợp với mã số, con số, chữ viết tắt.",
+ "params_vi": "direction: up | down · start: ký tự ban đầu của mọi ô (\"0\") · duration 0.52 · stagger 0.06 · pad: khoảng chừa cho dấu (0.3 em)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/slot-machine-roll/slot-machine-roll.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["slot", "reel", "roll", "number", "code"],
+ "notes": "Timing as the source's timeline integration (one row, 0.52 s power3.inOut, stagger 0.06). Rolling down starts with the result above the start character, as in the source. The source's size and tone variables are the element's size and colour; its 6 px reel gap is the element's letter spacing.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "A7K-2026", "style": { "color": "#fafafa", "font-family": "RMono", "font-weight": "700", "font-size": "150px", "line-height": "1", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.3 }] }
+}

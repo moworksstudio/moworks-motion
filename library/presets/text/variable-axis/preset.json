@@ -1,0 +1,17 @@
+{
+ "name": "text/variable-axis",
+ "kind": "effect",
+ "group": "text",
+ "title": "Variable axis type",
+ "title_vi": "Nét chữ phình từ mảnh sang đậm",
+ "desc_vi": "Chữ đứng yên nhưng nét chữ phình từ mảnh sang rất đậm (hoặc từ hẹp sang rộng) trong 1.4 giây, tạo nhịp nhấn mạnh mà không cần di chuyển. Cần font biến thiên (font mặc định RFlex của kit dùng được).",
+ "params_vi": "axis: wght (độ đậm) | wdth (độ rộng) · from, to: giá trị đầu / cuối (wght 200 → 900; wdth trong khoảng 25–151) · duration 1.4",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/variable-axis-type/variable-axis-type.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["variable-font", "weight", "emphasis", "axis"],
+ "check_end": false,
+ "notes": "As in the source (font-variation-settings with the complete axis list at both ends, 1.4 s expo.out; the axis values are clamped to Roboto Flex's ranges). The source's Roboto Flex is the kit's RFlex (same font, all axes). The source compressed IN for shorter hosts; here duration is a param. End check off: the end weight differs from the element's own weight.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "ẤN TƯỢNG", "style": { "color": "#f8fafc", "font-family": "RFlex", "font-weight": "400", "font-size": "300px", "letter-spacing": "-0.045em", "line-height": "0.9", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.2 }], "bg": "#0b1120" }
+}

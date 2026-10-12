@@ -1,0 +1,18 @@
+{
+ "name": "card/split-tilt-cards",
+ "kind": "block",
+ "group": "card",
+ "title": "Split tilt cards",
+ "title_vi": "Hai thẻ nghiêng đối xứng (so sánh)",
+ "desc_vi": "Hai thẻ bay vào từ hai bên, nghiêng đối xứng như sách mở; hai huy hiệu nảy ra ở mép trong, rồi cặp thẻ trôi nhẹ ngược pha và đứng yên.",
+ "params_vi": "labelA, labelB: nhãn trên hai thẻ (để trống thì ẩn) · badgeA, badgeB: huy hiệu ở mép trong (để trống thì không hiện) · imgA, imgB: đường dẫn ảnh phủ thân thẻ (trống = khung xương mặc định) · accent: màu thẻ phải · bg, fg, muted, surface, border: màu · exit: none | fade | up · duration: độ dài gốc 4.5 s",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/split-tilt-cards/split-tilt-cards.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["card", "compare", "before after", "tilt", "3d", "badge"],
+ "notes": "Layout, colours and motion as in the source: two columns with a 5cqw gap and 8cqw side padding under perspective 120cqw; wings max-width 38cqw, height 58cqh with preserve-3d; cards carry static rotateY +18 / -18 deg with shadows falling outward (2.4cqw 3cqh 7cqh); right card tinted with the accent (border 46 %, fill 12 %); two blurred ambient glows (muted 11 % left, accent 13 % right, 52cqw x 72cqh, blur 6cqmin); label min(2.1cqw, 3.4cqh), badge min(2.2cqw, 3.6cqh) with 1.4cqh 1.8cqw padding, badge positioners at the inner edge translate(+-32 %, -50 %). Motion: each card fades 0.5 s power2.out while its wing moves x +-26cqw -> 0 and scale 0.85 -> 1 over 1.1 s power3.out (the source wrote x and scale as two tweens with the same time and ease, here one tween), right card 0.2 s later; badges opacity + scale 0 -> 1 over 0.4 s back.out(1.9) at 1.45 s and 1.75 s; whole 2 s idle cycles (floatA y 0 -> -0.6cqh -> 0, floatB the opposite, 1 s sine.inOut halves) fit inside HOLD minus 0.3 s stillness; exit fade (clip opacity) or up (opacity + y -6cqh), 0.5 s power2.in; IN / OUT scale together when `duration` is too short. All cqw / cqh / cqmin sizes converted to px from the target box. ae is png because the two cards sit under a CSS perspective (rotateY with preserve-3d wings), which has no literal After Effects equivalent. Differences: the source's two `[data-slot]` bodies (edited by hand in an installed copy) become params imgA / imgB (a picture, covered) with the source's token skeleton wireframe as default (bar + three lines, muted on the left, accent on the right); the hf:sfx sound-cue events are not ported (the kit has no audio events); the monospace token font of labels and badges is replaced by the film's font (tracking kept); accent is a hex param (default the source fallback #22c55e; the source also offered blue / violet token choices); theme tokens bg, fg, muted, surface, border are params with the source's fallback values; the radius is the source fallback 2.4cqmin; the source's full-box background is not painted; color-mix() written as hex / rgba. Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#0b1016", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

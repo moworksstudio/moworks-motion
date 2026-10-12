@@ -1,0 +1,58 @@
+{
+ "name": "map/zoom-scribble",
+ "kind": "block",
+ "group": "map",
+ "title": "North Korea Locked Down",
+ "title_vi": "Bản đồ zoom vào quốc gia, khoanh đỏ, nhãn",
+ "desc_vi": "Bản đồ thực zoom vào Triều Tiên, khoanh tròn nét đỏ, nhãn bật lên và lớp phủ đỏ kiểu báo chí (bản mẫu).",
+ "params_vi": "duration: độ dài của block (7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/north-korea-locked-down/north-korea-locked-down.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "showcase",
+  "map",
+  "annotation",
+  "youtube",
+  "kinetic"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/north-korea-locked-down.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Realistic map zoom into North Korea with a red scribble circle, locked-down pop-up label, and reddish editorial wash.",
+ "demo": {
+  "duration": 7.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

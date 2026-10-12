@@ -1,0 +1,103 @@
+{
+ "name": "motion/image-sequence",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Image sequence (3D product render)",
+ "title_vi": "Chuỗi ảnh render sẵn (sản phẩm 3D)",
+ "desc_vi": "Chạy / tua một chuỗi PNG hoặc WebP render sẵn (sản phẩm 3D xoay, lật, mở ra) theo thời gian phim: khung theo lưới 60 fps, không trộn hai khung (không bóng ma), chỉ dừng ở tư thế nghỉ của bản render; tuỳ chọn tự di chuyển, nổi / lắc nhẹ và vệt sáng lướt qua theo đúng hình sản phẩm.",
+ "params_vi": "dir · digits · ext · first · last · keys [[giây, khung, ease]] · pos [[giây, x, y, scale, ease]] · op · float [px, chu kỳ] · sway [độ, chu kỳ] · sweep [[giây, thời lượng, hướng ±1]] · band [rộng, độ sáng, góc] · source (file gốc của khách cho port AE, vd \"J:/.../product_render.####.png\": AE nạp cả chuỗi gốc làm một footage + Time Remap)",
+ "source": {
+  "label": "Claude",
+  "film": "test 07/10/2026 (motion/f8-seq + motion/f8-rig), nội dung trung tính; demo vẽ bằng code"
+ },
+ "license": "kit",
+ "ae": "footage+timeremap",
+ "brand_safe": true,
+ "tags": [
+  "3D",
+  "product",
+  "sequence",
+  "light sweep"
+ ],
+ "notes": "Added 07/10/2026 at the user's request (handoff of the test chat). Put it in a film-level layer (film.json \"layers\") for one product through the whole film. Rest poses: find them in the render (frames that barely change) and hold only there.",
+ "demo": {
+  "elements": [
+   {
+    "id": "seq",
+    "type": "box",
+    "style": {
+     "left": "760px",
+     "top": "180px",
+     "width": "400px",
+     "height": "720px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "seq",
+    "at": 0.2,
+    "params": {
+     "dir": "assets/lib/motion/image-sequence/demo/f",
+     "ext": ".png",
+     "first": 1,
+     "last": 48,
+     "keys": [
+      [
+       0,
+       1,
+       "lin"
+      ],
+      [
+       0.4,
+       1,
+       "lin"
+      ],
+      [
+       1.2,
+       48,
+       "lin"
+      ],
+      [
+       1.6,
+       48,
+       "lin"
+      ],
+      [
+       2.0,
+       24,
+       "lin"
+      ],
+      [
+       2.8,
+       24,
+       "lin"
+      ]
+     ],
+     "float": [
+      10,
+      2.4
+     ],
+     "sway": [
+      1.5,
+      4.8
+     ],
+     "sweep": [
+      [
+       0.4,
+       0.8,
+       1
+      ],
+      [
+       1.6,
+       0.4,
+       -1
+      ]
+     ],
+     "end": 3.2
+    }
+   }
+  ],
+  "duration": 3.8
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-texture",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: texture",
+ "title_vi": "Phụ đề từng từ phủ vân dung nham / đá / gỗ",
+ "desc_vi": "Mỗi lần một từ theo giọng đọc, chữ hẹp in hoa cỡ rất lớn giữa khung, phủ vân ảnh (dung nham, bê tông, cẩm thạch, kim loại, đá, gỗ) trượt chậm qua chữ trong lúc nói, có quầng sáng ấm; từ phóng vào từ 88 % và phình ra lúc kết thúc.",
+ "params_vi": "words: \"voice\" · keywords: từ màu cam đậm · texture: lava | concrete | marble | metal | rock | wood · size 200 (tự thu nhỏ cho vừa) · upper · color, key, glow",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-texture/caption-texture.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "texture", "mask", "one word"],
+ "notes": "Textures (the source's six PNGs, shipped in assets/), luminance mask 200 % panned 0 -> 100 % with sine.inOut over the word + 0.3 s (at least 0.4 s), contrast 1.2, colours #ffd0a0 / #FFAA44, warm drop-shadow glow, in 0.88 -> 1 (0.18 s power3.out) and out to 1.08 (0.1 s) as in the source. Changed: Anton becomes Roboto Flex at wdth 30 / weight 800 (no network); words from the voice transcript; keywords are words; the out fade is shortened to the gap before the next word (at least 0.02 s) so two words never overlap at the centre (kit rule 1). After Effects: the masked word is a picture sequence.",
+ "demo": {
+  "bg": "#120c0a", "duration": 8.8, "thumb_at": 0.42,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo" } } ]
+ }
+}

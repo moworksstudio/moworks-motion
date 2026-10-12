@@ -1,0 +1,22 @@
+{
+ "name": "ui/typing-indicator",
+ "kind": "block",
+ "group": "ui",
+ "title": "Typing indicator",
+ "title_vi": "Ba chấm \"đang gõ\" của khung chat",
+ "desc_vi": "Bong bóng ba chấm nảy ra (phóng 0,6 lên 1 trong 0,1 giây), ba chấm nhún sóng khi chờ tin trả lời, rồi biến mất khi tin nhắn đến.",
+ "params_vi": "size: bề rộng bong bóng (80 đến 220 px) · tone: dark | light · tail: on | off (đuôi bong bóng) · wave: true | false (ba chấm nhún) · hold: giây trước khi biến mất (null = ở lại) · x, y: vị trí góc trên trái (px), để null thì ở giữa",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/typing-indicator/typing-indicator.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["chat", "typing", "dots", "ios", "bubble", "ui"],
+ "notes": "Geometry (em based on size, default 124 px), colours (dark #242428 / light #e9e9eb, dots #8e8e93), the pop-in (scale 0.6 -> 1, alpha 0.4 -> 1, 0.10 s power2.out) and the bounded dot wave (-9 px at 124 px, scaled with size; 0.28 s sine.inOut, yoyo, repeat 5, dots offset 0.14 s) are the source's; the wave offset (0.15 s after the pop) and the dismiss time come from the source's demo and integration note. Differences: the source is a snippet that the composition drives, the block builds the bubble in the target box (centred, or at x / y) and runs pop-in, wave and the hard-cut dismiss itself (hold param, default 2.2 s as in the source demo, null = stays); an outer box carries the show/hide so the bubble does not flash before `at`. The 'hf-ui' design-token block of the source (unused by this component) is dropped. Imitates the iMessage typing bubble (brand_ui).",
+ "demo": { "bg": "#15171c", "duration": 3.2,
+   "elements": [
+     { "id": "dark", "type": "box", "style": { "left": "360px", "top": "300px", "width": "560px", "height": "480px", "background": "#000000", "border-radius": "40px" } },
+     { "id": "light", "type": "box", "style": { "left": "1000px", "top": "300px", "width": "560px", "height": "480px", "background": "#ffffff", "border-radius": "40px" } }],
+   "motion": [{ "target": "dark", "at": 0.3, "params": { "size": 200, "tone": "dark" } }, { "target": "light", "at": 0.3, "params": { "size": 200, "tone": "light" } }] }
+}

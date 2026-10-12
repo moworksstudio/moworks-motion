@@ -1,0 +1,19 @@
+{
+ "name": "social/spotify-card",
+ "kind": "block",
+ "group": "social",
+ "title": "Now-playing glass card (music app style)",
+ "title_vi": "Thẻ kính đang phát nhạc kiểu ứng dụng nghe nhạc",
+ "desc_vi": "Thẻ kính mờ nổi lên với ảnh bìa vuông lớn, tên bài và nghệ sĩ hiện lần lượt, ảnh bìa thở nhẹ một nhịp, rồi thẻ nhấc lên và mờ đi.",
+ "params_vi": "track, artist: tên bài và nghệ sĩ · brand: tên thương hiệu cạnh logo phía dưới (mặc định Spotify) · image: ảnh bìa (trống = nền gradient) · art: nền gradient bìa khi không có ảnh · scale: phóng to hoặc thu nhỏ cả thẻ · exitAt: giây thẻ ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/spotify-card/spotify-card.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": ["social", "music", "now playing", "glass", "overlay", "card"],
+ "notes": "Layout and colours as in the source (card 780 px wide, radius 28, padding 36, 1 px rgba(255,255,255,.22) border, four-stop 165deg translucent grey gradient, three-part shadow with inner rims, backdrop-filter blur(40px) saturate(180%), specular highlight over the top 55 %, bottom edge shine; cover 708 x 708 px radius 16; track 52 px bold, artist 34 px at 70 %, label 26 px at 55 % with a 32 px glyph). The two pseudo elements (::before specular, ::after edge shine) are real divs. Motion (times relative to `at`, as in the source's own timeline): card y 60, opacity 0, scale 0.94 -> rest over 0.7 s power3.out at 0.1 s; track y 20 over 0.5 s at 0.55 s; artist y 16 over 0.45 s at 0.7 s; label row y 12 over 0.4 s at 0.85 s (power2.out, with opacity); cover scale 1 -> 1.015 over 1.5 s power1.inOut with yoyo and one repeat from 1.2 s; card out y -40, opacity 0, scale 0.96 over 0.5 s power2.in at exitAt (4.2 s). The glass look needs something behind it: backdrop-filter shows the film's picture or video, on a flat colour it only tints. brand_ui: imitates a music app's now-playing card; ae is png because of backdrop-filter. 05/10/2026: source artwork restored as default (user's decision: open-source registry artwork is used as shipped): the green cover gradient (145deg #1db954 -> #17a34a -> #0f7234 -> #191414, param `art`), the platform's round logo glyph (the source's own 16 x 16 SVG path, 32 px, 55 % white) and the brand name text \"Spotify\" (param `brand`). Pass `image` to use your own cover picture, `art` for another gradient, `brand` for another label. The faint music-note line icon over the empty cover is the source's own glyph (hidden when you set an image). Other differences: the source composition is 1080 x 1920 (card centred with fixed margins); the port centres the card in whatever box it is given and adds a static `scale` (CSS scale on a wrapper, default 1; at 1 the 988 px tall card fits a 1080 px film); the font is the film's font (source: Inter from the web). Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#3a3358", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.2, "params": {} }] }
+}

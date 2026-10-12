@@ -1,0 +1,25 @@
+{
+ "name": "text/captions",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions (word pop)",
+ "title_vi": "Phụ đề theo giọng đọc, từng từ nảy lên",
+ "desc_vi": "Phụ đề hiện theo đúng lúc giọng đọc nói từng từ (lấy từ kit.py transcribe), mỗi dòng tối đa 3 từ, mỗi từ nảy lên khi được nói; tô màu từ đang đọc nếu muốn.",
+ "params_vi": "words: \"voice\" (kit.py build tự lấy từ giọng đọc của cảnh) · maxWords 3 · maxSpan 1.2 s · color · accent: màu từ đang đọc (null = không) · pop 0.26 s · gap 0.4 s",
+ "source": { "label": "Moworks v1 (SSPresets.captions)" },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": ["captions", "subtitles", "voice", "karaoke"],
+ "notes": "Port of v1 SSPresets.captions with the same pop (0.26 s, scale 0.7, 0.18 em, back.out(2.2)) and line rule (3 words, 1.2 s). Changed: a line now stays up through pauses shorter than `gap` (v1 blinked off between lines) and goes 0.25 s after its last word; accent is off by default (v1 #FFE45E). The target box gives the font, size and colour. Words come from kit.py transcribe (\"words\": \"voice\"); the demo uses fixed times. After Effects: every word is a live text layer with its pop keys; the accent colour switch is a Source Text key (checked in AE 06/10/2026).",
+ "demo": {
+  "bg": "#111216",
+  "duration": 4.6,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "780px", "width": "1920px", "height": "160px", "font-size": "84px", "font-weight": "760", "color": "#f5f5f2" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "accent": "#ffd84d", "words": [
+   { "text": "Làm", "start": 0.0, "end": 0.28 }, { "text": "phim", "start": 0.3, "end": 0.62 }, { "text": "chuyển", "start": 0.66, "end": 1.0 },
+   { "text": "động", "start": 1.02, "end": 1.36 }, { "text": "ngay", "start": 1.44, "end": 1.7 }, { "text": "trong", "start": 1.72, "end": 1.98 },
+   { "text": "code,", "start": 2.0, "end": 2.4 }, { "text": "khớp", "start": 2.8, "end": 3.1 }, { "text": "giọng", "start": 3.12, "end": 3.42 },
+   { "text": "đọc.", "start": 3.44, "end": 3.9 } ] } } ]
+ }
+}

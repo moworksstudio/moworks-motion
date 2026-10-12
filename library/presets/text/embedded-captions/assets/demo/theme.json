@@ -1,0 +1,11 @@
+{
+ "dna": "ordnance",
+ "lines": [
+  ["Cả", "năm", "trời", "xây", "dựng", "nó."],
+  ["mới", "cuối", "cùng", "đã", "mở,"],
+  ["và", "mỗi", "khung", "hình", "kể", "chuyện."],
+  ["Hãy", "đến", "xem", "tận", "mắt", "nhé."]
+ ],
+ "minors": ["chuyện."],
+ "hero": { "match": "Studio", "text": "STUDIO" }
+}

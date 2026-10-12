@@ -1,0 +1,25 @@
+{
+ "name": "line/hw-underline",
+ "kind": "block",
+ "group": "line",
+ "title": "Hand-drawn underline / strike / bracket",
+ "title_vi": "Gạch chân, gạch bỏ, ngoặc vẽ tay",
+ "desc_vi": "Nét vẽ tay (gạch chân lượn sóng, gạch bỏ hai nét hoặc ngoặc) tự vẽ ra trên chữ rồi rung nhẹ như vẽ tay; ra bằng mờ dần.",
+ "params_vi": "style: underline | strike | bracket · left, top, width, height: khung đặt đè lên chữ (px) · seed: kiểu nét (mỗi nét một seed khác nhau) · color, strokeWidth · drawTime (0.55 s) · boil: bật rung, boilAmp/boilRot: biên độ · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/hw-underline/hw-underline.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": ["underline", "strike", "bracket", "hand-drawn", "boil", "annotation"],
+ "notes": "Path maths (hwMarkPath incl. the sin-hash wobble), draw (strokeDashoffset len -> 0, 0.55 s, power2.inOut) and fade-off (0.3 s, power2.in) are as in the source; the dash length is measured once at build with getTotalLength() and written as a number (rounded up to 0.01), path coordinates are rounded to 3 decimals. The source handwriting font (Caveat) is not shipped: the demo text uses the film's font. Boil (hwBoil) = per-frame x/y/rotation from a hash of floor(time*30/frameDrop): a ctx.code proxy tween (hence ae: expression), time counted from `at` of the mark, element index = the order of marks in the film (as the source's list index), +1e-6 added before floor() so frame boundaries do not depend on float noise; it runs for exitAt + 0.3 s (10 s if there is no exit). The source runs the boil on the whole timeline: no visible difference because the mark is hidden outside its life. The mark is hidden before `at` (source: dash hides it). Colour default = the source fallback --hw-accent-warm #ffb020. Give each mark in a film its own `seed`.",
+ "demo": { "bg": "#17161a", "duration": 4.0,
+   "elements": [
+     { "id": "tx1", "type": "text", "text": "gạch chân ý chính", "style": { "left": "480px", "top": "260px", "font-size": "84px", "font-weight": "700", "color": "#f4f2ec", "white-space": "nowrap" } },
+     { "id": "tx2", "type": "text", "text": "gạch bỏ chỗ này", "style": { "left": "480px", "top": "460px", "font-size": "84px", "font-weight": "700", "color": "#f4f2ec", "white-space": "nowrap" } },
+     { "id": "tx3", "type": "text", "text": "ngoặc phần phụ", "style": { "left": "480px", "top": "660px", "font-size": "84px", "font-weight": "700", "color": "#f4f2ec", "white-space": "nowrap" } },
+     { "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [
+     { "target": "slot", "at": 0.4, "params": { "style": "underline", "left": 470, "top": 350, "width": 730, "height": 34, "seed": 4, "exitAt": 3.1 } },
+     { "target": "slot", "at": 1.0, "params": { "style": "strike", "left": 470, "top": 500, "width": 660, "height": 34, "seed": 6, "exitAt": 2.5 } },
+     { "target": "slot", "at": 1.6, "params": { "style": "bracket", "left": 440, "top": 650, "width": 40, "height": 110, "seed": 8, "exitAt": 1.9 } }] }
+}

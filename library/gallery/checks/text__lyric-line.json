@@ -1,0 +1,19 @@
+{
+ "name": "text/lyric-line",
+ "at": "2026-10-08 23:30",
+ "static": [],
+ "build": "ok",
+ "tweens": 5,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "end": 0.0,
+ "duration": 3.4,
+ "problems": [],
+ "status": "ok",
+ "seconds": 8.3
+}

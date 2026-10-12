@@ -1,0 +1,58 @@
+{
+ "name": "compare/grade-split-reveal",
+ "kind": "block",
+ "group": "compare",
+ "title": "Grade Split Reveal",
+ "title_vi": "So màu trước / sau với đường chia quét",
+ "desc_vi": "Cùng một hình hai lần, một bản phẳng và một bản đã chỉnh màu, đường chia sắc quét giữa hai bản, dừng giữa đủ để so rồi chốt bản đã chỉnh màu.",
+ "params_vi": "look: Look (warm-cinematic | cool-teal | bleach-bypass), mặc định \"warm-cinematic\" · split: Split point, mặc định 62 · edge: Edge (hairline | bold | hidden), mặc định \"hairline\" · labels: Labels (on | off), mặc định \"on\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/grade-split-reveal/grade-split-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "color-grading",
+  "media",
+  "compare",
+  "reveal",
+  "motion-primitive",
+  "grade"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/grade-split-reveal.html) in a kit film, mounted by ctx.hf.  Source: The same picture twice, one flat and one finished, with a hard edge sweeping between them. It stops in the middle long enough to compare, then commits and the graded look takes the frame. Both looks are real HyperFrames color grading run through the WebGL shader, so the preview and the render match. In the kit (no HyperFrames runtime) the grades are approximated by engine/vendor/libs/hf/hf-mount.js: an SVG colour matrix (temperature, tint, saturation, vibrance), CSS brightness / contrast and a vignette overlay; close in feel, not the same pixels, grain left out (10/10/2026: before that both halves showed the same ungraded picture).",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

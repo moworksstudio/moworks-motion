@@ -1,0 +1,61 @@
+{
+ "name": "cursor/text-select",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Text Select Cursor",
+ "title_vi": "Con trỏ bôi chọn chữ rồi bấm in đậm",
+ "desc_vi": "Mũi tên đổi thành con trỏ chữ trên một tài liệu, kéo bôi chọn một cụm từng ký tự, thanh định dạng hiện lên, con trỏ trở lại mũi tên và bấm In đậm.",
+ "params_vi": "title: Heading, mặc định \"Spring release notes\" · text: Paragraph, mặc định \"Our spring release ships on Thursday. Teams can now share a live review link, collect time-stamped comments, and approve the final cut without leaving the editor. Early customers cut their review rounds in half.\" · phrase: Phrase to select, mặc định \"approve the final cut\" · accent: Accent, mặc định \"#0a84ff\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cursor-text-select/cursor-text-select.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "text",
+  "selection",
+  "editor",
+  "toolbar"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cursor-text-select.html) in a kit film, mounted by ctx.hf.  Source: An arrow turns into an I-beam over a document, drags a selection across a phrase character by character, raises a format toolbar, turns back into an arrow and clicks Bold.",
+ "demo": {
+  "duration": 4.2,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "title": "Ghi chú phát hành mùa xuân",
+     "text": "Bản phát hành mùa xuân ra mắt vào thứ Năm. Trước đó nhóm cần duyệt bản dựng cuối và gửi khách hàng.",
+     "phrase": "duyệt bản dựng cuối",
+     "duration": 4.2
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "name": "effect/soft-blob-touch",
+ "kind": "block",
+ "group": "effect",
+ "title": "Soft Blob Touch",
+ "title_vi": "Khối mềm biến dạng khi được chạm",
+ "desc_vi": "Một khối mềm có hạt trôi chậm bên trong; một điểm chạm đi vào, khối phồng về phía đó rồi hồi lại như lò xo. Không có cạnh cứng.",
+ "params_vi": "touch_x: Touch X, mặc định 66 · touch_y: Touch Y, mặc định 38 · touch_at: Touch at, mặc định 1.6 · grain: Grain (fine | coarse), mặc định \"fine\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/soft-blob-touch/soft-blob-touch.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "product-demo",
+  "material",
+  "blob",
+  "touch",
+  "grain"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/soft-blob-touch.html) in a kit film, mounted by ctx.hf.  Source: A granular soft blob idles with slow internal drift; a scripted touch dot decel-arrives, the blob deforms toward it with an attraction bulge, then recovers with a velocity-preserving spring. No hard edges anywhere.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

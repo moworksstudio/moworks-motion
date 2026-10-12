@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-highlight",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: highlight",
+ "title_vi": "Phụ đề nền đỏ chạy theo từ đang đọc",
+ "desc_vi": "Phụ đề theo giọng đọc, theo cụm: nền đỏ bo góc mọc từ trái sang sau từ đang được nói (từ sáng lên một chút), rồi thu lại khi đọc xong từ đó.",
+ "params_vi": "words: \"voice\" · groups hoặc tự gom (maxWords 4, maxSpan 2 s) · size 80 (tự thu nhỏ cho vừa), weight, upper, bottom 140 · color: màu chữ · hl: [màu đầu, màu cuối] của nền",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-highlight/caption-highlight.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "highlight", "karaoke", "social"],
+ "notes": "Look and timing as in the source (highlight 0.15 s power2.out at each word start, brightness 1.05 flash, out 0.1 s at the word end; group fade 0.12 s in, 0.1 s out; fit-to-width down to 45 % of 80 px within 1620 px). Changed: the film's font instead of Montserrat; words from the voice transcript and automatic groups (the source hand-listed both); the highlight shadow follows the second highlight colour.",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo" } } ]
+ }
+}

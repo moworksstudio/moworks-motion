@@ -1,0 +1,56 @@
+{
+ "name": "effect/screen-warp",
+ "kind": "block",
+ "group": "effect",
+ "title": "On-Screen Display Effect",
+ "title_vi": "Hiệu ứng như đang chiếu trên màn hình thật",
+ "desc_vi": "Lớp lưới, dòng quét, viền tối và vệt sáng cùng khối nghiêng 3D khiến hình như đang chiếu trên một màn hình thật.",
+ "params_vi": "duration: độ dài của block (4 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/yt-screen-warp/demo.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "effect",
+  "overlay",
+  "texture"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/demo.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/yt-screen-warp.html. Source: Grid, scanline, vignette, and sheen overlay plus a 3D-warp wrapper class that makes footage read as if playing on a physical display",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

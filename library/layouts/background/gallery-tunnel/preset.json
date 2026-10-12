@@ -1,0 +1,60 @@
+{
+ "name": "background/gallery-tunnel",
+ "kind": "block",
+ "group": "background",
+ "title": "Gallery Tunnel",
+ "title_vi": "Đường hầm vô tận ốp ảnh và khối màu",
+ "desc_vi": "Một hành lang vô tận: đường hầm vuông lùi về điểm tụ, sàn, trần, tường ốp khối màu rực và ảnh, phồng lên khi tới gần máy quay.",
+ "params_vi": "images: Image slots: comma-separated paths, tiled into the panels (e.g. assets/shot-1.png,assets/shot-2.png) · imageMix: Image share of filled slots (0 = all colour, 1 = all images), mặc định 0.5 · speed: Flight speed, mặc định 3 · palette: Slab palette: comma-separated hex colours, mặc định \"#FF6A00,#AB54F7,#EA3737,#0072E3,#00AA3C,#FFB200\" · grid: Grid density: slots per wall face per axis (2 = 4 per face, 16 per segment), mặc định 2 · fill: Slot fill rate, mặc định 0.5 · fog: Fog distance: depth at which the corridor reaches pure backdrop, mặc định 14.25 · edgeColor: Edge line colour, mặc định \"#B0B0B0\" · edgeOpacity: Edge line opacity, mặc định 0.5 · backdrop: Backdrop and fog colour, mặc định \"#000000\" · duration: độ dài của block (12 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/gallery-tunnel/gallery-tunnel.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js",
+  "libs/three-0.147/three.min.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "webgl",
+  "3d",
+  "background",
+  "showcase",
+  "depth",
+  "loop"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/gallery-tunnel.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: An infinite corridor of panels: a square tunnel receding to a vanishing point, its floor, ceiling and walls tiled with saturated colour slabs and caller-supplied images that swell toward camera and exit past you, the far end dissolving into fog.",
+ "demo": {
+  "duration": 12.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 12.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

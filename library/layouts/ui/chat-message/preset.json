@@ -1,0 +1,26 @@
+{
+ "name": "ui/chat-message",
+ "kind": "block",
+ "group": "ui",
+ "title": "Chat message",
+ "title_vi": "Một tin nhắn xuất hiện (bong bóng, emoji, ảnh, thẻ link)",
+ "desc_vi": "Một tin nhắn nảy ra từ góc của người gửi (phóng 0,75 lên 1 trong 0,12 giây): bong bóng nhận hoặc gửi có đuôi, hàng emoji lớn, khung ảnh/video hoặc thẻ link có tiêu đề và tên miền.",
+ "params_vi": "type: recv | sent | emoji | img | card · text: nội dung bong bóng hoặc hàng emoji · card_title, card_domain: thẻ link · tail: on | off (đuôi) · delivered: on | off, delivered_label: dòng \"Đã gửi\" dưới tin gửi đi. Kích thước theo khung chứa (nên dùng khung dọc kiểu điện thoại).",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/chat-message/chat-message.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["chat", "message", "bubble", "emoji", "link card", "ios", "ui"],
+ "notes": "Sizes, colours, radii and the pop-in (scale 0.75, alpha 0.6 -> 1, 0.12 s power2.out, origin at the sender's bottom corner) are the source's. The source sizes are container-query units (cqw / cqh / cqmin of its root); here they are relative to the target box through CSS variables (--cw, --ch, --cm = 1 % of the box width, height, smaller side, set from the box size), so the layout scales with the box exactly as the source scales with its container (the demo uses three 400 x 720 phone-shaped boxes). Differences: font = the film's font (source: --font-body / -apple-system); the arrival is at `at` (the source composition delayed it by 0.4 s: set 0.001 / 0.4 s); the type / text / card / tail / delivered enums are params (Vietnamese defaults: 'Delivered' -> 'Đã gửi'; card title and domain are neutral placeholder text); the media and link-card pictures are the source's plain gradient + play button (no photo). Imitates the iMessage bubbles (brand_ui).",
+ "demo": { "bg": "#15171c", "duration": 2.8,
+   "elements": [
+     { "id": "a", "type": "box", "style": { "left": "320px", "top": "180px", "width": "400px", "height": "720px", "border-radius": "36px" } },
+     { "id": "b", "type": "box", "style": { "left": "760px", "top": "180px", "width": "400px", "height": "720px", "border-radius": "36px" } },
+     { "id": "c", "type": "box", "style": { "left": "1200px", "top": "180px", "width": "400px", "height": "720px", "border-radius": "36px" } }],
+   "motion": [
+     { "target": "a", "at": 0.3, "params": { "type": "recv", "text": "bạn đang dùng gì để làm phim vậy?" } },
+     { "target": "b", "at": 0.8, "params": { "type": "sent", "text": "xem nè 👀" } },
+     { "target": "c", "at": 1.3, "params": { "type": "card" } }] }
+}

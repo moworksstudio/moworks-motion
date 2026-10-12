@@ -1,0 +1,18 @@
+{
+ "name": "card/throw-snap",
+ "at": "2026-10-06 12:17",
+ "static": [],
+ "build": "ok",
+ "tweens": 0,
+ "codes": 1,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.00119,
+ "seek": 2e-05,
+ "bake": 0.0,
+ "duration": 4,
+ "problems": [],
+ "status": "ok",
+ "seconds": 11.6
+}

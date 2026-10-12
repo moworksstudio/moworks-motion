@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="vi" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xem phim</title>
+<!-- Moworks Motion review player (kit.py preview / "1. Preview.bat"). Plays the project's index.html through the kit driver (the same
+     timeline the MOV / MP4 exports render), no HyperFrames needed. Notes at a moment go to <project>/notes/feedback.md: tell Claude "đọc feedback".
+     07/10/2026 (A/B test, user P0-1): the picture follows the SOUND's clock (WebAudio; before, <audio> elements could drift up to 0.12 s
+     from the picture), safe-margin and QA overlays, the issues on the frame you look at (the JS of kit.py collide, red boxes with Khung QA),
+     a lyric tap mode (T on each line start), [ ] scene keys, frame number and ms per frame.
+     09/10/2026 (user, after the 2D rebuild test): the whole window waits while the project opens and while the save dialog is up; the export
+     log; [Phát mượt] plays a small pre-rendered video (kit.py proxy) while the film runs, the live film when stopped or scrubbed.
+     11/10/2026, lean flow (user: "flow này rườm rà phức tạp quá ... ko cần duyệt assets graphic trong player nữa"): the player is the video,
+     the notes and the exports. Design rounds (storyboard, asset sheets) are reviewed in the chat. The version list stays (an older version
+     plays read-only, the export area hides); the film reloads by itself when Claude changes it; the view tools (loop, safe margin, QA boxes,
+     smooth playback, compare, the keys) sit in the ⋯ menu; the lyric tab shows only for a film with lyrics; Blur / 4K / Trong suốt are
+     asked when an export starts and remembered for the film (qa/player.json). -->
+<style>
+  :root { --bg:#141518; --panel:#1d1f24; --line:#2e3139; --ink:#f0eee8; --dim:#9a9ca6; --acc:#ffc400; --note:#6ea8ff; --bad:#ff5c5c; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--ink); font:14px/1.4 "Segoe UI", system-ui, sans-serif; overflow:hidden; }
+  body { display:flex; }
+  #main { flex:1; min-width:0; display:flex; flex-direction:column; }
+  #wrap { flex:1; min-height:0; position:relative; display:flex; align-items:center; justify-content:center; }
+  #box { position:relative; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.55); background:#000; }
+  #film { position:absolute; left:0; top:0; border:0; transform-origin:0 0; }
+  #ov { position:absolute; left:0; top:0; pointer-events:none; }
+  #pv { position:absolute; left:0; top:0; width:100%; height:100%; display:none; background:#000; }
+  #toast { position:absolute; left:50%; top:14px; transform:translateX(-50%); background:rgba(29,31,36,.94); border:1px solid var(--line); border-radius:8px;
+           padding:6px 14px; font-size:13px; display:none; z-index:3; }
+  #wait, #ask { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(14,15,18,.86); z-index:8; padding:24px; }
+  #wait .box, #ask .box { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px 26px; max-width:480px; text-align:center; box-shadow:0 12px 40px rgba(0,0,0,.5); }
+  #wait .ttl, #ask .ttl { font-size:16px; font-weight:600; margin-bottom:6px; }
+  #wait .det { color:var(--dim); font-size:13px; white-space:pre-line; }
+  #wait .spin { width:26px; height:26px; margin:0 auto 12px; border:3px solid #3a3d45; border-top-color:var(--acc); border-radius:50%; animation:spin .9s linear infinite; }
+  #wait button { margin-top:14px; background:var(--acc); border-color:var(--acc); color:#121212; font-weight:600; }
+  #ask .box { text-align:left; min-width:340px; }
+  #ask label { display:flex; align-items:flex-start; gap:8px; margin:10px 0; cursor:pointer; }
+  #ask label span { color:var(--dim); font-size:12.5px; display:block; }
+  #ask .btns { margin:16px 0 0; justify-content:flex-end; }
+  #askGo { background:var(--acc); border-color:var(--acc); color:#121212; font-weight:600; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  #bar { flex:none; background:var(--panel); border-top:1px solid var(--line); padding:10px 16px; display:flex; flex-direction:column; gap:8px; }
+  .row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  button, select { background:#2a2d34; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:6px 11px; font:inherit; cursor:pointer; }
+  button:hover { border-color:#5a5e68; }
+  #play { min-width:90px; background:var(--acc); color:#121212; border-color:var(--acc); font-weight:600; }
+  button.on { border-color:var(--acc); color:var(--acc); }
+  #time { font-variant-numeric:tabular-nums; min-width:250px; color:var(--dim); }
+  #time b { color:var(--ink); }
+  #time .slow { color:var(--bad); }
+  #track { position:relative; flex:1; height:28px; min-width:200px; }
+  #scrub { position:absolute; inset:0; width:100%; margin:0; accent-color:var(--acc); }
+  #pins { position:absolute; left:0; right:0; top:-3px; height:7px; pointer-events:none; }
+  #pins i { position:absolute; top:0; width:3px; height:7px; border-radius:2px; }
+  #pins i.s { background:var(--dim); } #pins i.n { background:var(--note); }
+  #scenes { display:flex; flex-wrap:wrap; gap:6px; max-height:22vh; overflow-y:auto; }
+  #scenes button { padding:3px 9px; font-size:12.5px; color:var(--dim); }
+  #scenes button.on { color:#121212; background:var(--acc); border-color:var(--acc); }
+  .hint { color:var(--dim); font-size:12px; }
+  /* the ⋯ menu: the view tools and the keys */
+  #moreW { position:relative; }
+  #more.on { border-color:var(--acc); color:var(--acc); }
+  #menu { position:absolute; right:0; bottom:calc(100% + 8px); width:300px; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:6px;
+          box-shadow:0 12px 40px rgba(0,0,0,.55); display:none; z-index:5; }
+  #menu.open { display:block; }
+  #menu .mi { display:flex; width:100%; align-items:center; gap:8px; background:none; border:0; border-radius:6px; padding:7px 9px; text-align:left; }
+  #menu .mi:hover { background:#2a2d34; }
+  #menu .mi:disabled { opacity:.4; cursor:default; }
+  #menu .mi .ck { width:16px; color:var(--acc); }
+  #menu .mi .k { margin-left:auto; color:var(--dim); font-size:12px; }
+  #menu .keys { border-top:1px solid var(--line); margin:6px 4px 2px; padding:8px 5px 2px; color:var(--dim); font-size:12px; line-height:1.6; }
+  #side { width:350px; flex:none; background:var(--panel); border-left:1px solid var(--line); display:flex; flex-direction:column; min-height:0; }
+  #vbar { display:flex; align-items:center; gap:8px; margin:12px 14px 0; }
+  #ver { flex:1; min-width:0; }
+  #tabs { display:none; gap:4px; margin:10px 14px 6px; }
+  #tabs.on { display:flex; }
+  #tabs button { flex:1; padding:5px 6px; font-size:13px; }
+  #tabs button.on { background:var(--acc); color:#121212; border-color:var(--acc); font-weight:600; }
+  .pane { flex:1; min-height:0; display:none; flex-direction:column; }
+  .pane.on { display:flex; }
+  #side h2 { font-size:14px; margin:10px 14px 6px; }
+  #side .sub { color:var(--dim); font-size:12px; margin:10px 14px 8px; }
+  #noteBox { margin:0 14px; display:flex; flex-direction:column; gap:6px; }
+  textarea { width:100%; min-height:74px; resize:vertical; background:#111317; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:8px; font:inherit; }
+  #noteBtn { background:var(--note); border-color:var(--note); color:#0b1830; font-weight:600; }
+  .list { flex:1; overflow-y:auto; margin:8px 0 0; padding:0 14px 12px; display:flex; flex-direction:column; gap:6px; }
+  .item { background:#24272e; border:1px solid var(--line); border-radius:8px; padding:7px 9px; cursor:pointer; font-size:13px; }
+  .item:hover { border-color:var(--note); }
+  .item .t { color:var(--note); font-variant-numeric:tabular-nums; font-size:12px; }
+  .item.cur { border-color:var(--acc); }
+  .item.done .t { color:#7fd18b; }
+  .item .hd { display:flex; align-items:center; gap:6px; }
+  .item .hd .t { flex:1; }
+  .item .nb { padding:1px 7px; font-size:11.5px; border-radius:6px; color:var(--dim); }
+  .item .nb.on.done { color:#121212; background:#7fd18b; border-color:#7fd18b; }
+  .item .nb.del:hover { color:var(--bad); border-color:var(--bad); }
+  .item.st-done { opacity:.55; }
+  .item .vt { font-size:11px; padding:0 6px; border-radius:6px; background:#30343c; color:var(--dim); margin-right:4px; }
+  .msg { color:var(--dim); font-size:12px; min-height:16px; margin:4px 14px 0; }
+  .btns { display:flex; gap:6px; margin:0 14px; flex-wrap:wrap; }
+  #exp { flex:none; border-top:1px solid var(--line); padding-bottom:12px; }
+  #exp.hide { display:none; }
+  #expBtns { display:flex; gap:6px; margin:0 14px; }
+  #expBtns button { flex:1; padding:7px 6px; }
+  #expBtns button[data-k="mp4"], #expBtns button[data-k="mov"] { background:var(--acc); border-color:var(--acc); color:#121212; font-weight:600; }
+  #expState.ok { color:#7fd18b; font-weight:600; } #expState.err { color:var(--bad); font-weight:600; }
+  #expWarn { margin:4px 14px 0; padding-left:18px; color:#ff9f5c; font-size:12px; max-height:90px; overflow-y:auto; }
+  #expWarn:empty { display:none; }
+  #gone { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(10,10,12,.86); color:var(--ink); z-index:9;
+          font-size:16px; text-align:center; padding:30px; }
+  #expBtns button:disabled, #expRow button:disabled { opacity:.45; cursor:default; }
+  #expBtns.locked button { filter:grayscale(1); opacity:.3; cursor:not-allowed; }
+  #expLock { display:none; margin:6px 14px 0; font-size:12.5px; color:var(--note); }
+  #expBar { height:6px; margin:8px 14px 0; background:#2a2d34; border-radius:3px; overflow:hidden; display:none; }
+  #expBar i { display:block; height:100%; width:0; background:var(--acc); transition:none; }
+  #expRow { display:flex; gap:6px; margin:6px 14px 0; }
+  #expLog { margin:4px 14px 0; font:11px/1.35 Consolas, monospace; color:var(--dim); }
+  #expLog div { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  @media (max-width: 900px) { body { flex-direction:column; } #side { width:auto; height:42vh; border-left:0; border-top:1px solid var(--line); } }
+</style>
+</head>
+<body>
+<div id="gone">Player đã dừng (máy chủ của nó đã tắt).<br>Đóng cửa sổ này và mở lại 1. Preview.bat.</div>
+<div id="wait"><div class="box"><div class="spin" id="waitSpin"></div><div class="ttl" id="waitT"></div><div class="det" id="waitD"></div><button id="waitBtn" style="display:none"></button></div></div>
+<div id="ask"><div class="box"><div class="ttl" id="askT"></div><div id="askOpts"></div>
+  <div class="hint">Lần sau phim này nhớ lựa chọn này.</div>
+  <div class="btns"><button id="askNo">Huỷ</button><button id="askGo">Chọn chỗ lưu...</button></div></div></div>
+<div id="main">
+  <div id="wrap"><div id="box"><iframe id="film" title="phim"></iframe><video id="pv" muted playsinline preload="auto"></video><canvas id="ov"></canvas><div id="toast"></div></div></div>
+  <div id="bar">
+    <div class="row">
+      <button id="play" title="Phím cách">▶ Play</button>
+      <button id="back" title="← : lùi 1 khung (Shift: 1 giây)">◀ khung</button>
+      <button id="fwd" title="→ : tới 1 khung (Shift: 1 giây)">khung ▶</button>
+      <span id="time"><b>0.00</b> / 0.00 s</span>
+      <select id="rate" title="Tốc độ (1×: hình chạy theo đồng hồ của tiếng; chậm hơn: tiếng giữ cao độ, đồng bộ lỏng hơn)"><option value="1">1×</option><option value="0.5">0.5×</option><option value="0.25">0.25×</option></select>
+      <button id="mute" title="Bật / tắt tiếng (M)" style="display:none">🔊 Tiếng</button>
+      <div id="track"><div id="pins"></div><input id="scrub" type="range" min="0" max="1000" step="1" value="0"></div>
+      <span id="moreW"><button id="more" title="Công cụ xem và phím tắt">⋯</button>
+        <div id="menu">
+          <button class="mi" data-m="loop"><span class="ck"></span>Lặp cảnh đang xem<span class="k">L</span></button>
+          <button class="mi" data-m="safe"><span class="ck"></span>Lề an toàn<span class="k">G</span></button>
+          <button class="mi" data-m="qa" title="Chữ xanh lá, ảnh xanh ngọc, logo vàng, SVG / canvas hồng, credit trắng, lỗi đỏ"><span class="ck"></span>Khung QA<span class="k">Q</span></button>
+          <button class="mi" data-m="smooth" title="Khi chạy, phát một bản render nhỏ của phim (60 fps, không giật trên laptop); khi dừng hoặc tua, hiện phim thật để ghi chú đúng khung. Lần đầu (hoặc sau khi phim sửa) cần render bản đó: vài phút, chạy ngầm."><span class="ck"></span><span class="lb">Phát mượt</span><span class="k">S</span></button>
+          <button class="mi" data-m="cmp" title="Bật qua lại giữa bản đang xem và bản trước, giữ nguyên thời điểm"><span class="ck"></span><span class="lb">So với bản trước</span><span class="k">C</span></button>
+          <div class="keys">Cách = chạy / dừng · ← → = từng khung · Shift + ← → = 1 giây · [ ] = cảnh trước / sau · N = ghi chú · Ctrl + Enter = lưu ghi chú · M = tắt tiếng<span id="keyT"> · T = nhấn mốc lời (tab Canh lời)</span></div>
+        </div></span>
+    </div>
+    <div id="scenes"></div>
+  </div>
+</div>
+<div id="side">
+  <div id="vbar"><select id="ver" title="Version phim: mỗi round Claude gửi duyệt là một version. Bản cũ chỉ để xem lại"></select></div>
+  <div id="tabs"><button data-p="pNotes" class="on">Ghi chú</button><button data-p="pLyr">Canh lời</button></div>
+  <div class="pane on" id="pNotes">
+    <div class="sub">Dừng ở chỗ cần sửa, ghi chú, bấm Lưu, rồi nói với Claude: "đọc feedback và sửa". Phim tự tải lại khi Claude sửa xong.</div>
+    <div id="noteBox"><textarea id="note" placeholder="Ví dụ: chữ vào nhanh quá, cho chậm lại và nảy ít hơn"></textarea><button id="noteBtn">Lưu ghi chú tại 0.00 s</button></div>
+    <div class="msg" id="msg"></div>
+    <div class="list" id="notes"></div>
+  </div>
+  <div class="pane" id="pLyr">
+    <div class="sub">Bấm Play, nhấn <b>T</b> đúng lúc mỗi câu bắt đầu (câu đang chờ có viền vàng). Backspace = bỏ mốc vừa nhấn. Bấm một câu để nghe lại và nhấn lại từ câu đó. Lưu xong, nói với Claude: "canh lại lời theo mốc đã nhấn" (<code>kit.py align</code> dùng các mốc này để ghim câu).</div>
+    <div class="btns"><button id="tapSave">Lưu mốc</button><button id="tapUndo">Bỏ mốc cuối</button><button id="tapClear">Xoá hết</button></div>
+    <div class="msg" id="tapMsg"></div>
+    <div class="list" id="lyr"></div>
+  </div>
+  <div id="exp">
+    <h2>Xuất</h2>
+    <div id="expBtns">
+      <button data-k="mp4" title="Hỏi Blur / 4K, chọn chỗ lưu (mặc định 04_Renders\MP4), render 60 fps rồi mã hoá H.264">MP4 Export</button>
+      <button data-k="mov" title="Hỏi Blur / Trong suốt / 4K, chọn chỗ lưu (mặc định 04_Renders\MOV), render 60 fps rồi mã hoá ProRes 4444 (file vài GB, tiếng bên trong)">MOV Export</button>
+      <button data-k="ae" title="Project After Effects sửa được + mix.wav và stems, vào 05_AE (After Effects phải đang mở)">Port to AE</button>
+    </div>
+    <div id="expLock"></div>
+    <div id="expBar"><i></i></div>
+    <div class="msg" id="expState"></div>
+    <ul id="expWarn"></ul>
+    <div id="expRow"><button id="expCancel" disabled style="display:none">Huỷ</button><button id="expOpen" disabled style="display:none">Mở thư mục</button><button id="expLogBtn" disabled style="display:none" title="Mở toàn bộ nhật ký của việc vừa chạy (Notepad)">Log</button></div>
+    <div id="expLog"></div>
+  </div>
+</div>
+<script>
+(() => {
+  const $ = id => document.getElementById(id), esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const post = (url, body) => fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const film = $("film"); let FPS = 60;              // the kit's only rate; the film root's data-fps wins
+  let A = null, W = null, info = null, T = 0, D = 0, playing = false, last = 0, loop = false, scenes = [], notes = [], busy = false, K = 1;
+  let ms = 0, showSafe = false, showQa = false, flagged = [], qaFn = null, qaTimer = null, tab = "pNotes";
+  let lastF = -1, lastScene = null;                   // the time line and the scene keys change only when the frame / scene does
+  // versions: RV = the version being watched (null = the working film), RI = /__api/rounds, other = the version Compare switches to
+  let RV = null, RI = null, other = null, seen = -1, filmSig = null, pending = false;
+  const vOf = name => { const m = !name ? null : /^v\d+$/.test(name) ? [0, name.slice(1)] : name.match(/Film[-_]v(\d+)$/); return m ? "v" + parseInt(m[1], 10) : ""; };   // Film_v03 (11/10/2026), R05_Film-v3 (older)
+  const curVer = () => RV ? vOf(RV) : (RI && !RI.changed && RI.latest ? "v" + RI.latest : "");
+  const mediaQ = () => RV ? "&r=" + encodeURIComponent(RV) : "";
+
+  // ---------------------------------------------------------------- the whole window waits (opening the project, the save dialog)
+  let waitTimer = null;
+  const waiting = () => $("wait").style.display === "flex" || $("ask").style.display === "flex";
+  function wait(title, detail, btn) {                 // title null: hide; btn {label, fn}: a message with a button (no spinner)
+    clearInterval(waitTimer);
+    if (title == null) { $("wait").style.display = "none"; return; }
+    $("waitT").textContent = title; $("waitD").textContent = typeof detail === "function" ? detail() : (detail || "");
+    if (typeof detail === "function") waitTimer = setInterval(() => { $("waitD").textContent = detail(); }, 1000);
+    $("waitSpin").style.display = btn ? "none" : ""; $("waitBtn").style.display = btn ? "" : "none";
+    if (btn) { $("waitBtn").textContent = btn.label; $("waitBtn").onclick = btn.fn; }
+    $("wait").style.display = "flex";
+  }
+  let toastT = null;
+  function toast(text) { $("toast").textContent = text; $("toast").style.display = "block"; clearTimeout(toastT); toastT = setTimeout(() => { $("toast").style.display = "none"; }, 3500); }
+
+  // ---------------------------------------------------------------- smooth playback: a small pre-rendered video (kit.py proxy) while it runs
+  const pv = $("pv"); let smooth = false, pvState = null, pvWant = false;
+  const pvOn = () => playing && pv.style.display === "block";
+  async function pvCheck() {
+    try { pvState = await (await fetch("/__api/proxy", { cache: "no-store" })).json(); } catch (e) { pvState = null; }
+    const fresh = !!(pvState && pvState.fresh);
+    if (!fresh && smooth) { smooth = false; if (pvOn()) setPlay(true); }
+    if (fresh && pv.dataset.v !== pvState.made) { pv.src = "/__api/pv?v=" + encodeURIComponent(pvState.made); pv.dataset.v = pvState.made; }
+    menuMarks();
+  }
+  async function toggleSmooth() {
+    if (RV) return;                                   // an older version plays live only (the smooth video is the working film's)
+    await pvCheck();
+    if (pvState && pvState.fresh) { smooth = !smooth; if (playing) setPlay(true); pvCheck(); return; }
+    const why = pvState && pvState.ok ? "Bản phát mượt đã cũ: phim vừa được sửa." : "Chưa có bản phát mượt cho phim này.";
+    if (!confirm(why + "\n\nRender một bản nhỏ (540p, 60 fps) để phát không giật trên máy yếu? Chạy ngầm vài phút, tiến độ ở khu Xuất; xong sẽ tự bật.\n" +
+                 "Khi dừng hoặc tua, player vẫn hiện phim thật để ghi chú đúng khung.")) return;
+    pvWant = true; startJob("proxy");
+  }
+
+  // ---------------------------------------------------------------- sound: WebAudio is the clock at 1x (decoded clips, scheduled sample-exact)
+  // Before 07/10/2026 the picture ran on its own frame clock and each <audio> element was pulled back only when it drifted 0.12 s away, so
+  // the preview could show the picture ahead of or behind the song. Now, at 1x with sound, the film time IS the time the speakers play.
+  // At 0.5x / 0.25x (or a clip that cannot be decoded) the old <audio> path plays the sound (pitch kept), loosely synced.
+  let aud = [], muted = false, AC = null, live = [], clock = null;
+  const wantRate = () => +$("rate").value;
+  function ctxNow() {                                 // the context time the speakers play right now (output latency taken out)
+    const ts = AC.getOutputTimestamp ? AC.getOutputTimestamp() : null;
+    if (ts && ts.contextTime > 0 && ts.performanceTime > 0) return ts.contextTime + (performance.now() - ts.performanceTime) / 1000;
+    return AC.currentTime - (AC.outputLatency || AC.baseLatency || 0);
+  }
+  function stopAudio() { for (const s of live) { try { s.stop(); } catch (e) {} } live = []; clock = null; for (const c of aud) if (c.a && !c.a.paused) c.a.pause(); }
+  function startAudio(from) {                         // true = the WebAudio clock now drives the picture
+    stopAudio();
+    if (!AC || muted || wantRate() !== 1 || !aud.length || !aud.some(c => c.buf)) return false;
+    if (AC.state !== "running") AC.resume();
+    const at = AC.currentTime + 0.08;
+    for (const c of aud) {
+      if (!c.buf) continue;
+      const x0 = Math.max(0, from - c.s); if (x0 >= c.d) continue;
+      const when = at + Math.max(0, c.s - from), dur = c.d === Infinity ? undefined : c.d - x0;
+      const g = AC.createGain(), s = AC.createBufferSource(); s.buffer = c.buf; s.connect(g); g.connect(AC.destination);
+      const gain = x => c.v * Math.min(1, c.fi > 0 ? x / c.fi : 1, c.fo > 0 && c.d !== Infinity ? (c.d - x) / c.fo : 1);
+      g.gain.setValueAtTime(Math.max(0, gain(x0)), when);
+      if (c.fi > 0 && x0 < c.fi) g.gain.linearRampToValueAtTime(c.v, when + (c.fi - x0));
+      if (c.fo > 0 && c.d !== Infinity) { const xs = c.d - c.fo; if (xs > x0) g.gain.setValueAtTime(c.v, when + xs - x0); g.gain.linearRampToValueAtTime(0, when + c.d - x0); }
+      s.start(when, c.m + x0, dur); live.push(s);
+    }
+    clock = { ctx0: at, t0: from };
+    return true;
+  }
+  function syncAudioElements() {                      // the fallback path (slow rates, undecodable clips)
+    const rate = wantRate();
+    for (const c of aud) {
+      if (clock && c.buf) continue;
+      if (!c.a) continue;
+      const local = T - c.s, on = playing && !muted && local >= 0 && local < c.d;
+      if (!on) { if (!c.a.paused) c.a.pause(); continue; }
+      const fade = Math.min(1, c.fi > 0 ? local / c.fi : 1, c.fo > 0 ? (c.d - local) / c.fo : 1);
+      c.a.volume = Math.max(0, Math.min(1, c.v * fade)); c.a.playbackRate = rate;
+      const want = c.m + local;
+      if (c.a.paused) { if (!c.go) { c.go = true; c.a.currentTime = want; c.a.play().catch(() => {}).finally(() => { c.go = false; }); } }
+      else if (Math.abs(c.a.currentTime - want) > 0.12) c.a.currentTime = want;
+    }
+  }
+  function loadAudio(w) {
+    stopAudio();
+    aud = [...w.document.querySelectorAll("audio[data-start]")].map(e => {
+      const rel = e.getAttribute("src"), n = k => +e.getAttribute(k) || 0;
+      const c = { rel, s: n("data-start"), d: e.hasAttribute("data-duration") ? n("data-duration") : Infinity, m: n("data-media-start"),
+                  v: e.hasAttribute("data-volume") ? n("data-volume") : 1, fi: n("data-fade-in"), fo: n("data-fade-out"), buf: null, a: null };
+      const url = "/__api/media?f=" + encodeURIComponent(rel) + mediaQ();   // no file extension in the URL: download managers leave it alone
+      const a = new Audio(url); a.preload = "auto"; c.a = a;
+      return c;
+    });
+    $("mute").style.display = aud.length ? "" : "none";
+    if (!aud.length) return;
+    try { AC = AC || new (window.AudioContext || window.webkitAudioContext)({ latencyHint: "interactive" }); } catch (e) { AC = null; }
+    if (!AC) return;
+    $("mute").title = "Đang nạp tiếng...";
+    Promise.all(aud.map(c => fetch("/__api/media?f=" + encodeURIComponent(c.rel) + mediaQ()).then(r => r.arrayBuffer()).then(b => AC.decodeAudioData(b))
+      .then(buf => { c.buf = buf; }).catch(() => { c.buf = null; })))
+      .then(() => { $("mute").title = "Bật / tắt tiếng (M) · " + (aud.every(c => c.buf) ? "hình chạy theo đồng hồ của tiếng" : "một số đoạn tiếng phát kiểu cũ"); if (playing) startAudio(T); });
+  }
+
+  // ---------------------------------------------------------------- picture
+  const sceneAt = t => { let s = null; for (const m of scenes) if (t >= m[1] - 1e-6) s = m; return s; };
+  const sceneEnd = s => { const i = scenes.indexOf(s); return i >= 0 && i + 1 < scenes.length ? scenes[i + 1][1] : D; };
+  function seek(t, live = true) {                     // the clock always moves; the film catches up with the newest time (a slow frame is skipped, not delayed)
+    T = Math.max(0, Math.min(D, t));                  // live false: smooth playback shows the video, the film itself is not drawn
+    if (A && !busy && live) {
+      busy = true; const want = T, t0 = performance.now();
+      A.seek(want).finally(() => {
+        busy = false; ms = ms ? ms * 0.85 + (performance.now() - t0) * 0.15 : performance.now() - t0;
+        if (Math.abs(T - want) > 1e-4 && !playing) seek(T);
+        else if (!playing) afterSeek();
+      });
+    }
+    const f = Math.round(T * FPS), slow = ms > 1000 / FPS;
+    if (f !== lastF || !playing) {
+      lastF = f;
+      $("time").innerHTML = `<b>${T.toFixed(2)}</b> / ${D.toFixed(2)} s · khung ${f} · ` + (live || !playing
+        ? `<span class="${slow ? "slow" : ""}" title="${slow ? "Mỗi khung vẽ mất hơn " + (1000 / FPS).toFixed(1) + " ms: preview bỏ bớt khung khi chạy (file xuất vẫn đủ khung). Thử Phát mượt trong menu ⋯." : "Thời gian vẽ một khung"}">${ms.toFixed(1)} ms</span>`
+        : `<span title="Đang phát bản render nhỏ (Phát mượt); dừng lại để xem phim thật">bản mượt</span>`);
+      $("scrub").value = D ? Math.round(T / D * 1000) : 0;
+      $("noteBtn").textContent = `Lưu ghi chú tại ${T.toFixed(2)} s`;
+    }
+    const s = sceneAt(T);
+    if (s !== lastScene) { lastScene = s; document.querySelectorAll("#scenes button").forEach(b => b.classList.toggle("on", s && b.dataset.t == s[1])); }
+  }
+  function fit() {
+    if (!info) return;
+    const w = info.w, h = info.h, wr = $("wrap").getBoundingClientRect(); K = Math.min((wr.width - 24) / w, (wr.height - 24) / h);
+    Object.assign($("box").style, { width: w * K + "px", height: h * K + "px" });
+    Object.assign(film.style, { width: w + "px", height: h + "px", transform: `scale(${K})` });
+    const ov = $("ov"); ov.width = Math.round(w * K); ov.height = Math.round(h * K); draw();
+  }
+  function tick(now) {
+    if (playing) {
+      let t; const v = pvOn();
+      if (clock) t = clock.t0 + (ctxNow() - clock.ctx0);
+      else if (v && !pv.paused) t = pv.currentTime;   // no sound: the video is the clock
+      else { t = T + (now - last) / 1000 * wantRate(); }
+      last = now;
+      if (loop) { const s = sceneAt(T); if (s && t >= sceneEnd(s)) { t = s[1]; if (clock) startAudio(t); if (v) pv.currentTime = t; } }
+      if (t >= D) { t = D; setPlay(false); }
+      if (v && playing) { if (clock && Math.abs(pv.currentTime - t) > 0.1) pv.currentTime = t; seek(t, false); }
+      else seek(t);                                   // (stopped at the end: the live film's last frame)
+    }
+    syncAudioElements();
+    requestAnimationFrame(tick);
+  }
+  function setPlay(on) {
+    const wasVideo = pvOn();
+    playing = on && D > 0; if (playing && T >= D - 1e-3) T = 0;
+    last = performance.now(); $("play").textContent = playing ? "❚❚ Dừng" : "▶ Play";
+    if (playing && smooth && pvState && pvState.fresh && pv.readyState >= 1) {
+      pv.style.display = "block"; pv.playbackRate = wantRate(); pv.currentTime = T; pv.play().catch(() => {});
+    } else { pv.pause(); pv.style.display = "none"; }
+    if (playing) { if (AC && AC.state !== "running") AC.resume(); startAudio(T); clearOverlay(); }
+    else { stopAudio(); if (wasVideo) seek(T); afterSeek(); if (pending) reloadNow(); }   // back from the video: the live film at the same time
+  }
+
+  // ---------------------------------------------------------------- overlays: safe margin, QA boxes, the frame's issues
+  const ovx = () => $("ov").getContext("2d");
+  function clearOverlay() { flagged = []; draw(); }
+  function stageEl() { return W && info ? W.document.querySelector(info.stage) : null; }
+  function effOp(e) { let o = 1; for (let x = e; x && x !== W.document.documentElement; x = x.parentElement) { const cs = W.getComputedStyle(x); if (cs.visibility === "hidden" || cs.display === "none") return 0; o *= parseFloat(cs.opacity); } return o; }
+  function qaBoxes() {
+    const st = stageEl(); if (!st) return [];
+    const S = st.getBoundingClientRect(), out = [];
+    for (const e of st.querySelectorAll("*")) {
+      const tag = e.tagName; if (tag === "STYLE" || tag === "SCRIPT" || tag === "AUDIO") continue;
+      const own = [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim());
+      const pic = tag === "IMG", gfx = tag === "CANVAS" || tag === "VIDEO" || (tag.toLowerCase() === "svg" && !(e.parentElement && e.parentElement.closest("svg")));
+      if (!own && !pic && !gfx) continue;
+      const r = e.getBoundingClientRect(); if (r.width * r.height < 4 || r.right < S.left || r.left > S.right || r.bottom < S.top || r.top > S.bottom) continue;
+      if (effOp(e) < 0.15) continue;
+      const name = ((e.getAttribute("src") || "") + " " + e.id + " " + (typeof e.className === "string" ? e.className : "")).toLowerCase();
+      const col = /credit/.test(name) ? "#ffffff" : pic && /logo|lettermark/.test(name) ? "#ffd400" : pic ? "#38e0e0" : gfx ? "#ff6ec7" : "#4cd964";
+      out.push({ x: r.left - S.left, y: r.top - S.top, w: r.width, h: r.height, col });
+    }
+    return out;
+  }
+  function draw() {
+    const g = ovx(), cv = $("ov"); g.clearRect(0, 0, cv.width, cv.height);
+    if (!info) return;
+    if (showSafe) {
+      const M = Math.round((info.w + info.h) / 55);
+      g.save(); g.setLineDash([8, 6]); g.lineWidth = 1.5; g.strokeStyle = "rgba(255,196,0,.95)"; g.strokeRect(M * K, M * K, (info.w - 2 * M) * K, (info.h - 2 * M) * K);
+      g.setLineDash([]); g.strokeStyle = "rgba(255,196,0,.5)"; const cx = info.w / 2 * K, cy = info.h / 2 * K; g.beginPath(); g.moveTo(cx - 10, cy); g.lineTo(cx + 10, cy); g.moveTo(cx, cy - 10); g.lineTo(cx, cy + 10); g.stroke(); g.restore();
+    }
+    if (showQa && !playing) { g.save(); g.lineWidth = 1.2; for (const b of qaBoxes()) { g.strokeStyle = b.col; g.strokeRect(b.x * K, b.y * K, b.w * K, b.h * K); } g.restore(); }
+    if (flagged.length && !playing) { g.save(); g.lineWidth = 2.5; g.strokeStyle = "#ff3b3b"; for (const b of flagged) g.strokeRect(b.x * K - 2, b.y * K - 2, b.w * K + 4, b.h * K + 4); g.restore(); }
+  }
+  async function qaNow() {
+    if (!W || !info || playing) return;
+    try {
+      if (!qaFn) {
+        const js = await (await fetch("/__api/qa.js")).text(); qaFn = W.eval("(" + js + ")");
+        const st = W.document.createElement("style"); st.textContent = info.stage + " *{pointer-events:auto!important}"; W.document.head.appendChild(st);   // hit testing sees every element
+      }
+      const res = qaFn([T, info.stage]); const iss = (res && res.issues) || [];
+      const S = stageEl().getBoundingClientRect();
+      flagged = [];
+      for (const it of iss) for (const lab of [it.a, it.kind === "margin" ? null : it.b]) {
+        const m = lab && /^#([^\s"]+)/.exec(lab); const e = m && W.document.getElementById(m[1]); if (!e) continue;
+        const r = e.getBoundingClientRect(); flagged.push({ x: r.left - S.left, y: r.top - S.top, w: r.width, h: r.height });
+      }
+    } catch (e) { flagged = []; }
+    draw();
+  }
+  function afterSeek() {
+    clearTimeout(qaTimer);
+    if (showQa) qaTimer = setTimeout(qaNow, 120); else { flagged = []; draw(); }
+  }
+
+  // ---------------------------------------------------------------- the ⋯ menu (user 11/10/2026: the view tools out of the main row)
+  const menuOpen = () => $("menu").classList.contains("open");
+  function menuMarks() {
+    const versions = (RI ? RI.rounds.length + RI.older.length : 0);
+    const state = { loop, safe: showSafe, qa: showQa, smooth, cmp: !!RV };
+    document.querySelectorAll("#menu .mi").forEach(b => { b.querySelector(".ck").textContent = state[b.dataset.m] ? "✓" : ""; });
+    const sm = document.querySelector('#menu .mi[data-m="smooth"]');
+    sm.disabled = !!RV; sm.querySelector(".lb").textContent = pvState && pvState.ok && !pvState.fresh && !smooth ? "Phát mượt (bản cũ, render lại)" : "Phát mượt";
+    const cm = document.querySelector('#menu .mi[data-m="cmp"]');
+    cm.disabled = versions < (RI && RI.changed ? 1 : 2);
+    cm.querySelector(".lb").textContent = !RV ? "So với bản trước" : RI && RI.changed ? "Về bản đang sửa" : "Về bản mới nhất";
+    $("more").classList.toggle("on", loop || showSafe || showQa || smooth);
+  }
+  const ACT = {
+    loop: () => { loop = !loop; },
+    safe: () => { showSafe = !showSafe; draw(); },
+    qa: () => { showQa = !showQa; afterSeek(); draw(); },
+    smooth: () => toggleSmooth(),
+    cmp: () => compare(),
+  };
+  function act(m) { if (ACT[m]) { ACT[m](); menuMarks(); } }
+  $("more").onclick = e => { e.stopPropagation(); $("menu").classList.toggle("open"); menuMarks(); };
+  $("menu").onclick = e => { e.stopPropagation(); const b = e.target.closest(".mi"); if (b && !b.disabled) act(b.dataset.m); };
+  addEventListener("click", () => $("menu").classList.remove("open"));
+
+  // ---------------------------------------------------------------- lyric tap mode (a film with lyrics only)
+  let lyr = { lines: [], aligned: [], taps: [] }, lyrIdx = 0;
+  async function loadLyrics() {
+    try { lyr = await (await fetch("/__api/lyrics")).json(); } catch (e) { lyr = { lines: [], aligned: [], taps: [] }; }
+    lyr.taps = lyr.lines.map((_, i) => lyr.taps[i] ?? null);
+    lyrIdx = lyr.taps.findIndex(t => t == null); if (lyrIdx < 0) lyrIdx = lyr.lines.length;
+    const song = lyr.lines.length > 0;
+    $("tabs").classList.toggle("on", song); $("keyT").style.display = song ? "" : "none";
+    if (!song && tab === "pLyr") showPane("pNotes");
+    renderLyrics();
+  }
+  function renderLyrics() {
+    $("lyr").innerHTML = lyr.lines.map((l, i) => { const t = lyr.taps[i], a = lyr.aligned[i];
+      return `<div class="item ${i === lyrIdx ? "cur" : ""} ${t != null ? "done" : ""}" data-i="${i}"><div class="t">${i + 1} · ${t != null ? "nhấn " + t.toFixed(2) + " s" : a != null ? "máy canh " + (+a).toFixed(2) + " s" : "chưa có mốc"}</div>${esc(l)}</div>`; }).join("");
+    const cur = $("lyr").querySelector(".item.cur"); if (cur) cur.scrollIntoView({ block: "nearest" });
+  }
+  function tap() {
+    if (lyrIdx >= lyr.lines.length) { $("tapMsg").textContent = "Đã nhấn hết các câu. Bấm Lưu mốc."; return; }
+    lyr.taps[lyrIdx] = +T.toFixed(3); lyrIdx++; renderLyrics(); $("tapMsg").textContent = `Câu ${lyrIdx}: ${T.toFixed(2)} s`;
+  }
+  function untap() { let i = lyrIdx - 1; while (i >= 0 && lyr.taps[i] == null) i--; if (i < 0) return; lyr.taps[i] = null; lyrIdx = i; renderLyrics(); }
+
+  // ---------------------------------------------------------------- notes, load
+  function pins() {
+    $("pins").innerHTML = scenes.map(m => `<i class="s" style="left:${(m[1] / D * 100).toFixed(2)}%"></i>`).join("") +
+      shownNotes().filter(n => n.state !== "done").map(n => `<i class="n" style="left:${(n.t / D * 100).toFixed(2)}%"></i>`).join("");
+  }
+  // the working film shows every note (the place to fix them; each keeps the version it was written on); an older version shows its own
+  const shownNotes = () => RV ? notes.filter(n => n.ver === vOf(RV)) : notes;
+  async function loadNotes() {
+    try { notes = await (await fetch("/__api/notes")).json(); } catch (e) { notes = []; }
+    const ord = { open: 0, done: 1 }, list = shownNotes();   // open notes first, done ones last (dimmed); not done = still to fix (user, 08/10/2026)
+    $("notes").innerHTML = list.length ? list.slice().reverse().sort((a, b) => ord[a.state] - ord[b.state]).map(n =>
+      `<div class="item st-${n.state}" data-t="${n.t}" data-line="${n.line}"><div class="hd"><span class="t">${n.ver ? `<span class="vt">${esc(n.ver)}</span>` : ""}${n.t.toFixed(2)} s${n.scene ? " · " + esc(n.scene) : ""}</span>` +
+      `<button class="nb done${n.state === "done" ? " on" : ""}" data-s="done" title="Đã ưng: đánh dấu xong (ghi - [x] vào feedback.md); bấm lại để mở lại">Done</button>` +
+      `<button class="nb del" data-s="del" title="Xoá ghi chú này (ghi nhầm)">Xoá</button></div>${esc(n.text)}</div>`).join("")
+      : `<div class="hint">${RV ? "Version này chưa có ghi chú." : "Chưa có ghi chú."}</div>`;
+    pins();
+  }
+  function load(keep, quiet) {                        // the whole window waits: a click while a heavy film opened could break the page (user, 09/10/2026)
+    const first = !info, t0 = Date.now();
+    pending = false; setPlay(false); A = null; qaFn = null;   // pending first: setPlay(false) would start this reload again
+    wait(first ? "Đang mở project, chờ chút..." : quiet ? "Phim vừa được sửa: đang tải lại..." : "Đang mở version...",
+         () => `Phim nặng có thể mất vài chục giây. ${Math.round((Date.now() - t0) / 1000)} s`);
+    film.onload = async () => {
+      try {
+        const w = film.contentWindow; for (let i = 0; i < 200 && !w.__aimk; i++) await new Promise(r => setTimeout(r, 25));
+        if (!w.__aimk) throw new Error("trang phim không có driver của kit (index.html chưa build?)");
+        info = await w.__aimk.ready;
+        if (!info || info.error) throw new Error(info ? info.error : "phim không sẵn sàng");
+        A = w.__aimk; W = w; D = info.duration; FPS = info.fps || 60; loadAudio(w);
+        scenes = (info.markers || []).map(m => { const el = w.document.getElementById(m[0]); return [(el && el.getAttribute("data-name")) || m[0], m[1]]; });
+        $("scenes").innerHTML = scenes.map(m => `<button data-t="${m[1]}">${esc(m[0])} · ${(+m[1]).toFixed(1)}s</button>`).join("");
+        lastScene = null; lastF = -1;
+        await A.seek(Math.max(0, Math.min(D, keep ?? 0)));
+        wait(null); fit(); seek(keep ?? 0); await loadRounds(); loadNotes(); pvCheck();
+        if (quiet) toast("Phim vừa được sửa: đã tải bản mới");
+      } catch (e) {
+        info = null;
+        wait("Không mở được phim", e.message + "\n\nNếu Claude đang sửa phim, chờ nó build xong rồi bấm Thử lại.", { label: "Thử lại", fn: () => load(keep) });
+      }
+    };
+    // an older version plays from its round's folder (its own film.json / index.html, the assets it had); smooth playback and the exports
+    // stay with the working film
+    film.src = RV ? `/__round/${encodeURIComponent(RV)}/index.html?aimk=${Date.now()}` : "/index.html?aimk=" + Date.now();
+    if (RV && smooth) smooth = false;
+  }
+  // the working film changed on disk (Claude fixed something): it reloads by itself at the same moment (user 11/10/2026, no Tải lại button),
+  // but never under the user's hands: while it plays, or while a note is being typed, it waits
+  function reloadNow() {
+    if (RV) { pending = false; return; }
+    if (playing || waiting() || (document.activeElement === $("note") && $("note").value.trim())) { pending = true; return; }
+    load(T, true);
+  }
+  $("note").onblur = () => { if (pending) setTimeout(reloadNow, 300); };
+
+  // ---------------------------------------------------------------- versions
+  async function loadRounds() {
+    try { RI = await (await fetch("/__api/rounds", { cache: "no-store" })).json(); } catch (e) { RI = null; }
+    if (RI) seen = RI.rounds.length;
+    renderVer(); expPoll(); menuMarks();
+  }
+  const films = () => RI ? RI.rounds : [];
+  function renderVer() {
+    const fr = films().slice().reverse(), latest = fr[0], older = RI ? RI.older.slice().reverse() : [], opts = [];
+    const day = r => r && r.date ? r.date.slice(0, 5) + " " + r.date.slice(-5) : "";
+    const none = !fr.length && !older.length;
+    if (!none) {
+      if (!RI.changed && latest) opts.push(["", `v${latest.v} · ${day(latest)} · mới nhất`]);
+      else if (!RI.changed) opts.push(["", `v${RI.latest} · mới nhất`]);
+      else opts.push(["", "Bản đang sửa (chưa gửi duyệt)"]);
+      for (const r of fr) if (RI.changed || r !== latest) opts.push([r.name, `v${r.v} · ${day(r)} · bản cũ, chỉ xem`]);
+      for (const k of older) if (RI.changed || latest || k !== RI.latest) opts.push(["v" + k, `v${k} · bản cũ, chỉ xem`]);   // the newest one IS the working film otherwise
+    }
+    $("ver").innerHTML = opts.map(([v, t]) => `<option value="${esc(v)}">${esc(t)}</option>`).join("");
+    $("ver").value = RV || ""; $("vbar").style.display = none ? "none" : "";
+    $("exp").classList.toggle("hide", !!RV);          // an older version: nothing to export (the exports are the working film's)
+    const what = RV ? `${vOf(RV)} (bản cũ)` : none || RI.changed ? "Bản đang sửa" : latest ? `v${latest.v}` : `v${RI.latest}`;
+    fetch("/__api/info").then(x => x.json()).then(x => { document.title = `Xem phim · ${x.name} · ${what}`; }).catch(() => {});
+  }
+  function pick(v) { other = RV; RV = v || null; load(T); }
+  $("ver").onchange = e => pick(e.target.value);
+  function compare() {                                // back and forth between this version and the one before, at the same time
+    if (RV) { other = RV; RV = null; load(T); return; }
+    const fr = films().slice().reverse(), prev = other || (fr[RI && RI.changed ? 0 : 1] || {}).name || (RI && RI.older.length ? "v" + RI.older[RI.older.length - 1] : null);
+    if (prev) { RV = prev; load(T); }
+  }
+
+  const sceneStep = d => { const i = scenes.indexOf(sceneAt(T)); const j = Math.max(0, Math.min(scenes.length - 1, (i < 0 ? 0 : i) + d)); if (scenes[j]) { setPlay(false); seek(scenes[j][1]); } };
+  $("play").onclick = () => setPlay(!playing);
+  $("back").onclick = e => { setPlay(false); seek(T - (e.shiftKey ? 1 : 1 / FPS)); };
+  $("fwd").onclick = e => { setPlay(false); seek(T + (e.shiftKey ? 1 : 1 / FPS)); };
+  $("scrub").oninput = e => { setPlay(false); seek(e.target.value / 1000 * D); };
+  $("rate").onchange = () => { if (playing) { startAudio(T); last = performance.now(); pv.playbackRate = wantRate(); } };
+  $("mute").onclick = () => { muted = !muted; $("mute").textContent = muted ? "🔇 Tắt tiếng" : "🔊 Tiếng"; $("mute").classList.toggle("on", muted); if (playing) { startAudio(T); last = performance.now(); } };
+  $("scenes").onclick = e => { const b = e.target.closest("button"); if (b) { setPlay(false); seek(+b.dataset.t); } };
+  $("notes").onclick = async e => {
+    const n = e.target.closest(".item"); if (!n) return;
+    const b = e.target.closest("button");
+    if (!b) { setPlay(false); seek(+n.dataset.t); return; }
+    const note = notes.find(x => x.line === +n.dataset.line); if (!note) return;
+    let body;
+    if (b.dataset.s === "del") { if (!confirm(`Xoá ghi chú ${note.t.toFixed(2)} s?\n\n${note.text}`)) return; body = { delete: true }; }
+    else body = { state: note.state === b.dataset.s ? "open" : b.dataset.s };     // the same button again = open again
+    try {
+      const r = await post("/__api/note/edit", { line: note.line, text: note.text, ...body });
+      $("msg").textContent = r.ok ? "" : "Không ghi được (feedback.md vừa đổi?): đã tải lại danh sách.";
+    } catch (err) { $("msg").textContent = "Không ghi được: " + err.message; }
+    loadNotes();
+  };
+  $("lyr").onclick = e => { const n = e.target.closest(".item"); if (!n) return; const i = +n.dataset.i; lyrIdx = i; const t = lyr.taps[i] ?? lyr.aligned[i]; renderLyrics(); if (t != null) { setPlay(false); seek(Math.max(0, t - 1)); } };
+  $("tapSave").onclick = async () => {
+    try { const r = await (await post("/__api/taps", { taps: lyr.taps })).json();
+      $("tapMsg").textContent = `Đã lưu ${r.n} mốc vào notes\\lyric-taps.json.`; } catch (e) { $("tapMsg").textContent = "Không lưu được: " + e.message; }
+  };
+  $("tapUndo").onclick = untap;
+  $("tapClear").onclick = () => { if (!confirm("Xoá hết các mốc đã nhấn (chưa lưu thì mất)?")) return; lyr.taps = lyr.lines.map(() => null); lyrIdx = 0; renderLyrics(); };
+  function showPane(p) {
+    tab = p;
+    document.querySelectorAll("#tabs button").forEach(x => x.classList.toggle("on", x.dataset.p === p)); document.querySelectorAll(".pane").forEach(x => x.classList.toggle("on", x.id === p));
+    afterSeek();
+  }
+  $("tabs").onclick = e => { const b = e.target.closest("button"); if (b) showPane(b.dataset.p); };
+  $("noteBtn").onclick = async () => {
+    const text = $("note").value.trim(); if (!text) { $("msg").textContent = "Gõ ghi chú trước đã."; return; }
+    const s = sceneAt(T);
+    try {
+      const r = await post("/__api/note", { t: +T.toFixed(2), scene: s ? s[0] : "", text, ver: curVer() });
+      if (!r.ok) throw new Error(r.status);
+      $("note").value = ""; $("msg").textContent = "Đã lưu vào feedback.md lúc " + new Date().toLocaleTimeString("vi-VN"); loadNotes();
+      if (pending) reloadNow();
+    } catch (e) { $("msg").textContent = "Không lưu được: " + e.message; }
+  };
+  addEventListener("keydown", e => {
+    if ($("ask").style.display === "flex") { if (e.key === "Escape") $("askNo").click(); else if (e.key === "Enter") $("askGo").click(); return; }
+    if (waiting()) { if (e.key !== "Tab") e.preventDefault(); return; }
+    if (e.key === "Escape" && menuOpen()) { $("menu").classList.remove("open"); return; }
+    if (e.target.tagName === "TEXTAREA") { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) $("noteBtn").click(); return; }
+    if (e.target.tagName === "SELECT") return;
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    if (e.code === "Space") { e.preventDefault(); setPlay(!playing); }
+    else if (k === "ArrowLeft") { setPlay(false); seek(T - (e.shiftKey ? 1 : 1 / FPS)); }
+    else if (k === "ArrowRight") { setPlay(false); seek(T + (e.shiftKey ? 1 : 1 / FPS)); }
+    else if (k === "[") sceneStep(-1);
+    else if (k === "]") sceneStep(1);
+    else if (k === "n") { e.preventDefault(); setPlay(false); showPane("pNotes"); $("note").focus(); }
+    else if (k === "m") $("mute").click();
+    else if (k === "l") act("loop");
+    else if (k === "g") act("safe");
+    else if (k === "q") act("qa");
+    else if (k === "s") act("smooth");
+    else if (k === "c") { if (!document.querySelector('#menu .mi[data-m="cmp"]').disabled) act("cmp"); }
+    else if (k === "t" && tab === "pLyr") { e.preventDefault(); tap(); }
+    else if (k === "Backspace" && tab === "pLyr") { e.preventDefault(); untap(); }
+  });
+
+  // ---------------------------------------------------------------- export panel (one job at a time on the server)
+  let expTimer = null, expOut = null, expLogF = null;
+  const fmt = s => s >= 60 ? `${Math.floor(s / 60)} ph ${String(s % 60).padStart(2, "0")} s` : `${s} s`;
+  async function expPoll() {
+    let st; try { st = await (await fetch("/__api/export")).json(); } catch (e) { return; }
+    const busyJob = !!st.busy, ended = !busyJob && st.rc !== undefined && st.rc !== null;
+    // one job at a time: while one runs every export button is locked and says why (user 11/10/2026: "khoá các nút export mp4 mov khi đang port")
+    const lockWhy = busyJob ? `Đang chạy ${st.label}: các nút xuất mở lại khi xong` : "";
+    document.querySelectorAll("#expBtns button").forEach(b => { b.disabled = busyJob; b.dataset.t0 = b.dataset.t0 ?? b.title; b.title = lockWhy || b.dataset.t0; });
+    $("expBtns").classList.toggle("locked", !!lockWhy); $("expLock").textContent = lockWhy ? "🔒 " + lockWhy : ""; $("expLock").style.display = lockWhy ? "block" : "none";
+    $("expCancel").disabled = !busyJob; $("expCancel").style.display = busyJob ? "" : "none";
+    $("expBar").style.display = busyJob ? "block" : "none";
+    $("expBar").firstElementChild.style.width = (st.total ? Math.min(100, st.done / st.total * 100) : 0) + "%";
+    if (st.kind) {
+      // two live lines only (user 11/10/2026: "chỉ nên có 1 2 dòng thông báo tiến độ realtime"); the whole log: [Log] once the job ends
+      $("expLog").innerHTML = busyJob ? (st.lines || []).slice(-2).map(x => `<div>${esc(x.trim())}</div>`).join("") : "";
+      expLogF = st.log || null; $("expLogBtn").disabled = !expLogF; $("expLogBtn").style.display = expLogF ? "" : "none";
+      expOut = st.out || null; $("expOpen").disabled = !expOut; $("expOpen").style.display = expOut || busyJob ? "" : "none";
+      const ok = st.rc === 0;
+      $("expState").className = "msg" + (ended && !st.cancelled ? (ok ? " ok" : " err") : "");
+      const m = expOut && expOut.match(/((?:04_)?renders[\\/][^\\/]+|05_AE)/i), where = m ? " · " + m[1] : "";
+      $("expState").textContent = busyJob
+        ? `${st.label} · bước ${st.step}/${st.steps}: ${st.phase}${st.total ? " " + st.done + "/" + st.total : ""} · ${fmt(st.elapsed)}`
+        : st.cancelled ? `${st.label}: đã huỷ.`
+        : ok ? `✓ ${st.label} xong · ${fmt(st.elapsed)}${(st.bits || []).map(x => " · " + x).join("")}${where}`
+        : `✗ ${st.label} lỗi · bấm Log để xem (dòng cuối)`;
+      $("expWarn").innerHTML = ended ? (st.warn || []).map(w => `<li>${esc(w)}</li>`).join("") : "";
+      if (ended && st.kind === "proxy" && pvWant) { pvWant = false; if (ok) { await pvCheck(); if (pvState && pvState.fresh && !smooth) { smooth = true; pvCheck(); } } }
+    }
+    clearTimeout(expTimer); if (busyJob) expTimer = setTimeout(expPoll, 1000);
+  }
+  // the options of an export are asked when it starts (user 11/10/2026: no ticks under the buttons) and remembered for this film
+  const OPTS = {
+    mp4: [["blur", "Blur", "Motion blur 180° như máy quay. Lâu hơn nhiều với phim chuyển động liên tục. Tắt cho phim pixel art / vẽ tay.", false],
+          ["uhd", "4K", "Gấp đôi điểm ảnh trên cùng bố cục (3840×2160 với 16:9). Chữ và hình vector nét hơn; render lâu hơn khoảng 3-4 lần.", false]],
+    mov: [["blur", "Blur", "Motion blur 180° như máy quay. Lâu hơn nhiều với phim chuyển động liên tục. Tắt cho phim pixel art / vẽ tay.", true],
+          ["alpha", "Trong suốt", "Nền trong suốt ở chỗ phim không có nền (ProRes 4444 có kênh alpha).", false],
+          ["uhd", "4K", "Gấp đôi điểm ảnh (3840×2160 với 16:9). File MOV 4K rất nặng.", false]],
+  };
+  let prefs = {};
+  fetch("/__api/prefs").then(r => r.json()).then(x => { prefs = x || {}; }).catch(() => {});
+  function askOpts(k) {
+    return new Promise(done => {
+      const saved = prefs[k] || {};
+      $("askT").textContent = `Xuất ${k.toUpperCase()}`;
+      $("askOpts").innerHTML = OPTS[k].map(([id, lab, help, def]) =>
+        `<label><input type="checkbox" data-o="${id}" ${(saved[id] ?? def) ? "checked" : ""}><div>${lab}<span>${help}</span></div></label>`).join("");
+      $("ask").style.display = "flex"; $("askGo").focus();
+      const end = go => {
+        $("ask").style.display = "none";
+        if (!go) return done(null);
+        const o = {}; $("askOpts").querySelectorAll("input").forEach(i => { o[i.dataset.o] = i.checked; });
+        prefs[k] = o; post("/__api/prefs", prefs).catch(() => {});
+        done(o);
+      };
+      $("askGo").onclick = () => end(true); $("askNo").onclick = () => end(false);
+    });
+  }
+  let starting = false;                               // one request at a time: a second click never queues a second dialog
+  async function startJob(k, o = {}) {
+    if (starting) return; starting = true;
+    setPlay(false); $("expState").className = "msg"; $("expWarn").innerHTML = "";
+    const save = k === "mp4" || k === "mov";
+    $("expState").textContent = save ? `Chọn chỗ lưu ${k.toUpperCase()} trong hộp thoại...` : "Đang bắt đầu...";
+    if (save) wait(`Chọn chỗ lưu file ${k.toUpperCase()}`, "Hộp thoại Lưu của Windows vừa mở ở trên cùng.\nKhông thấy? Bấm biểu tượng Python trên thanh taskbar.\nBấm Cancel trong hộp thoại để huỷ.");
+    try {
+      const r = await (await post("/__api/export", { kind: k, blur: save ? !!o.blur : undefined, alpha: k === "mov" && !!o.alpha, uhd: save && !!o.uhd })).json();
+      if (r.msg) $("expState").textContent = r.msg;
+      if (r.ok) expPoll();
+      else if (k === "proxy") pvWant = false;
+    } catch (err) { $("expState").textContent = "Không bắt đầu được: " + err.message; }
+    finally { starting = false; if (save) wait(null); }
+  }
+  $("expBtns").onclick = async e => {
+    const b = e.target.closest("button"); if (!b || b.disabled || starting) return; const k = b.dataset.k;
+    if (k === "ae") { if (confirm("Port to AE: After Effects phải đang mở và không có hộp thoại nào.\n\nLưu việc đang làm trong AE trước: port dọn bộ nhớ của AE cho nhanh, mất lịch sử Undo (Ctrl+Z) trước đó.\n\nBắt đầu?")) startJob(k); return; }
+    setPlay(false);
+    const o = await askOpts(k); if (o) startJob(k, o);
+  };
+  $("expCancel").onclick = async () => { if (!confirm("Huỷ việc đang chạy?")) return; await post("/__api/export/cancel", {}); expPoll(); };
+  $("expLogBtn").onclick = () => { if (expLogF) post("/__api/open", { path: expLogF, view: true }); };
+  $("expOpen").onclick = () => { if (expOut) post("/__api/open", { path: expOut }); };
+  expPoll();
+  let miss = 0;                                      // the server is gone (window of an old launch, Test 1 U4): say so instead of a dead page
+  // the server is polled every 4 s: a new round updates the version list; the working film changed on disk: it reloads (reloadNow)
+  setInterval(async () => { try { const x = await (await fetch("/__api/info", { cache: "no-store" })).json(); miss = 0; $("gone").style.display = "none";
+      if (seen >= 0 && x.rounds !== seen) await loadRounds();
+      if (info && (pending || (filmSig !== null && x.film && x.film !== filmSig))) reloadNow();   // a reload put off: tried again each time
+      if (x.film) filmSig = x.film; }
+    catch (e) { if (++miss >= 2) { $("gone").style.display = "flex"; setPlay(false); } } }, 4000);
+  addEventListener("resize", fit);
+  fetch("/__api/info").then(r => r.json()).then(x => { document.title = "Xem phim · " + x.name; filmSig = x.film || null; }).catch(() => {});
+  loadLyrics();
+  requestAnimationFrame(tick); load(0);
+})();
+</script>
+</body>
+</html>

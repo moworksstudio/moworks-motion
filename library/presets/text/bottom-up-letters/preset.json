@@ -1,0 +1,29 @@
+{
+ "name": "text/bottom-up-letters",
+ "kind": "effect",
+ "group": "text",
+ "title": "Bottom up letters",
+ "title_vi": "Từng chữ cái bật lên từ dưới",
+ "desc_vi": "Từng chữ cái (hoặc từng từ) bật lên từ dưới dòng và nảy nhẹ khi vào chỗ, cách nhau 0.025 giây.",
+ "params_vi": "unit: letter | word · direction: up | down · travel: close | standard | far (0.45 / 0.85 / 1.5 em) · duration 0.48 · stagger 0.025",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/bottom-up-letters/bottom-up-letters.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "check_end": false,
+ "tags": [
+  "reveal",
+  "letters",
+  "stagger",
+  "bounce"
+ ],
+ "notes": "Motion as the source's timeline integration (opacity 0 -> 1, y travel -> 0, 0.48 s back.out(1.7), stagger 0.025). The travel is converted from em to px at the element's font size (the source used a custom property in em). Letters come from the kit's splitter on NFC text, so a Vietnamese letter and its marks stay one unit. End check off: splitting into letters loses the font's pair kerning (0.4 % of the frame differs from the plain line; the source splits the same way).",
+ "demo": {
+  "hold": 1.0
+ }
+}

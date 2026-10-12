@@ -1,0 +1,190 @@
+{
+ "name": "house/kv-burst",
+ "kind": "effect",
+ "group": "house",
+ "title": "KV burst",
+ "title_vi": "Cả nhóm bật sống dậy",
+ "desc_vi": "Người nhảy lên từ sau bàn, bàn trượt lên, món ăn bật ra, icon bật cuối; rồi người nhảy cẫng, món nhấp nhô, icon trôi.",
+ "params_vi": "target = các nhân vật · table, items, icons: id (một hoặc mảng) · ambient: true/false · ambientDur (30 s)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "composite",
+  "key visual",
+  "pop",
+  "ambient",
+  "house"
+ ],
+ "notes": "Port of P.kvBurst. Composite: the pop-cute / hop / bob / deco-float logic is inlined (a preset cannot call another preset). Target = the people; table, items and icons are named by id in params. Ambient motion starts at the preset's `at` (v1: film time 0) and runs `ambientDur` seconds. Demo uses generated figures and dishes, a CSS table.",
+ "demo": {
+  "bg": "#fdf0d5",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "k0",
+    "type": "image",
+    "src": "assets/demo/house-person-1.png",
+    "style": {
+     "left": "560px",
+     "top": "380px",
+     "width": "146px",
+     "height": "300px"
+    }
+   },
+   {
+    "id": "k1",
+    "type": "image",
+    "src": "assets/demo/house-person-2.png",
+    "style": {
+     "left": "760px",
+     "top": "380px",
+     "width": "146px",
+     "height": "300px"
+    }
+   },
+   {
+    "id": "k2",
+    "type": "image",
+    "src": "assets/demo/house-person-3.png",
+    "style": {
+     "left": "960px",
+     "top": "380px",
+     "width": "146px",
+     "height": "300px"
+    }
+   },
+   {
+    "id": "k3",
+    "type": "image",
+    "src": "assets/demo/house-person-4.png",
+    "style": {
+     "left": "1160px",
+     "top": "380px",
+     "width": "146px",
+     "height": "300px"
+    }
+   },
+   {
+    "id": "ktable",
+    "type": "box",
+    "style": {
+     "left": "480px",
+     "top": "640px",
+     "width": "960px",
+     "height": "200px",
+     "background": "#8d5524",
+     "border-radius": "20px"
+    }
+   },
+   {
+    "id": "ki0",
+    "type": "image",
+    "src": "assets/demo/house-dish-1.png",
+    "style": {
+     "left": "590px",
+     "top": "560px",
+     "width": "100px",
+     "height": "100px"
+    }
+   },
+   {
+    "id": "ki1",
+    "type": "image",
+    "src": "assets/demo/house-dish-2.png",
+    "style": {
+     "left": "760px",
+     "top": "560px",
+     "width": "100px",
+     "height": "100px"
+    }
+   },
+   {
+    "id": "ki2",
+    "type": "image",
+    "src": "assets/demo/house-dish-3.png",
+    "style": {
+     "left": "930px",
+     "top": "560px",
+     "width": "100px",
+     "height": "100px"
+    }
+   },
+   {
+    "id": "ki3",
+    "type": "image",
+    "src": "assets/demo/house-dish-4.png",
+    "style": {
+     "left": "1100px",
+     "top": "560px",
+     "width": "100px",
+     "height": "100px"
+    }
+   },
+   {
+    "id": "ki4",
+    "type": "image",
+    "src": "assets/demo/house-dish-5.png",
+    "style": {
+     "left": "1270px",
+     "top": "560px",
+     "width": "100px",
+     "height": "100px"
+    }
+   },
+   {
+    "id": "kc0",
+    "type": "image",
+    "src": "assets/demo/house-sticker-flower.png",
+    "style": {
+     "left": "480px",
+     "top": "280px",
+     "width": "90px",
+     "height": "90px"
+    }
+   },
+   {
+    "id": "kc1",
+    "type": "image",
+    "src": "assets/demo/house-sticker-heart.png",
+    "style": {
+     "left": "1350px",
+     "top": "290px",
+     "width": "90px",
+     "height": "90px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "k0",
+     "k1",
+     "k2",
+     "k3"
+    ],
+    "at": 0.2,
+    "params": {
+     "table": [
+      "ktable"
+     ],
+     "items": [
+      "ki0",
+      "ki1",
+      "ki2",
+      "ki3",
+      "ki4"
+     ],
+     "icons": [
+      "kc0",
+      "kc1"
+     ]
+    }
+   }
+  ]
+ }
+}

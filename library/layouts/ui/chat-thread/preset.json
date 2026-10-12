@@ -1,0 +1,20 @@
+{
+ "name": "ui/chat-thread",
+ "kind": "block",
+ "group": "ui",
+ "title": "Chat thread",
+ "title_vi": "Cả cuộc trò chuyện trên điện thoại (khung chat đầy đủ)",
+ "desc_vi": "Màn hình chat đầy đủ: thanh trạng thái, avatar, tên, bong bóng có đuôi, \"Đã gửi\", hàng emoji, khung ảnh, thẻ link, ba chấm đang gõ; tin nhắn đến theo nhịp và đẩy cuộc chat lên.",
+ "params_vi": "contact, unread, time, placeholder, receipt_label: phần khung chat · messages: danh sách tin, mỗi tin có tiền tố: \"recv:\" / \"sent:\" (bong bóng, xuống dòng bằng \n), \"emoji:\" (hàng emoji), \"img\" (khung ảnh), \"card:Tiêu đề~tên miền\" (thẻ link), tối đa 12 · beat: giây giữa 2 tin (0,8 đến 3) · dots: on | off (ba chấm trước tin nhận) · receipt: on | off · duration: độ dài gốc 12 s (nén nhịp nếu quá dài) · lead: giây chờ trước tin đầu (0,4)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/chat-thread/chat-thread.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["chat", "thread", "messages", "ios", "phone", "typing dots", "ui"],
+ "notes": "Layout, sizes, colours, pop-in (scale 0.75, alpha 0.6 -> 1, 0.12 s power2.out), push (1.0 s expo.out), gap 1.8 % of the view height, first message at 0.4 s, `beat` spacing, the typing-dots rule (appear at max(previous + 0.35 s, arrival - 0.55 x beat) and vanish when the message lands) and the duration squeeze are the source's. Differences: container units (cqw / cqh / cqmin) are relative to the target box through CSS variables (--cw, --ch, --cm); the source measured each item's height at mount (offsetHeight), but fonts are not loaded when a preset builds, so the heights are computed from the fixed CSS metrics (bubble line = 1.35 x 3.3 cqmin, padding 1.2 cqh x 2, one line unless the text holds a newline (white-space: pre instead of wrapping), emoji row 13 cqmin, media 52 cqw x 3/4, link card = 55 cqw / 1.02 + a meta block with a fixed two-line title area (the source's meta height followed the title wrap), receipt line) and rounded like offsetHeight; the dots height is 6.5 cqmin; the pipe-separated messages string is an array of the same prefixed strings; the 'unread' badge, the composer and the status bar are as in the source; font = the film's font (source: --font-body / -apple-system); texts are Vietnamese params (Delivered -> Đã gửi, Message -> Tin nhắn; card title and domain are neutral placeholder text); the media / card pictures are the source's plain gradient + play button; the source's rebuild after document.fonts.ready is not needed (no measurement); the lead (0.4 s) is a param. Imitates the iMessage UI (brand_ui).",
+ "demo": { "bg": "#15171c", "duration": 12,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "656px", "top": "0px", "width": "608px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0, "params": {} }] }
+}

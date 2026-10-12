@@ -1,0 +1,59 @@
+{
+ "name": "data/exploded-stack",
+ "kind": "block",
+ "group": "data",
+ "title": "Exploded Stack",
+ "title_vi": "Các lớp xếp chồng tách ra có nhãn rồi gộp lại",
+ "desc_vi": "Các tấm lớp isometric tách rời nhau, mỗi lớp có nhãn bên cạnh, giữ rồi gộp lại thành một khối. Cho sơ đồ kiến trúc, hệ thống.",
+ "params_vi": "duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/exploded-stack/exploded-stack.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "3d-object",
+  "three-js",
+  "webgl",
+  "isometric",
+  "exploded-view",
+  "layers"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/exploded-stack.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Isometric layer plates explode apart with a label beside each layer, hold, then collapse back into one stack. Built for architecture and system diagrams.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

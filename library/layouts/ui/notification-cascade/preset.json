@@ -1,0 +1,54 @@
+{
+ "name": "ui/notification-cascade",
+ "kind": "block",
+ "group": "ui",
+ "title": "Notification cascade",
+ "title_vi": "Thông báo xếp tầng (dọc 9:16)",
+ "desc_vi": "Bốn thông báo điện thoại lần lượt rơi xuống, đẩy nhau lên; cả cụm bay đi rồi hiện thẻ kết có tiêu đề, logo và dòng chân.",
+ "params_vi": "title: dòng đậm của mọi thông báo · messages: 4 dòng phụ · app_name, now_label, less_label, icon_letter (trống = biểu tượng bong bóng chat gốc), icon_from, icon_to: chữ và màu icon · headline_top, headline_accent, footer: thẻ kết · logo: ảnh logo trong suốt (đường dẫn) · bg_from, bg_mid, bg_to: nền · end_ink, end_accent: màu chữ thẻ kết",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/notification-cascade/notification-cascade.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": [
+  "notification",
+  "phone",
+  "ios",
+  "stack",
+  "vertical",
+  "end card",
+  "ui"
+ ],
+ "notes": "Portrait design 1080 x 1920: the block builds the design at those pixels and fits it (contain, centred) to the target box with one static CSS scale (1 in a 1080 x 1920 film; 0.5625 in the 608 x 1080 demo slot), so every size and tween value is the source pixel value. Timings, pitch (214 px), eases and colours as in the source. Differences: the backdrop photograph (a desk photo, unclear licence) is a generated warm gradient (bg_from / bg_mid / bg_to) with the same slow push-in; the HyperFrames logo on the end card is an image param (default: a generated neutral mark, ui-logo-light.png in demo-assets); end-card headline font Georgia bold serif -> the film's font bold (no system fonts in films), font = the film's font everywhere else (source: -apple-system / Helvetica Neue); texts are params with Vietnamese defaults (NOW -> BÂY GIỜ, Show less -> Thu gọn); the 14 s composition length is the demo duration; the source's section wrappers (data-start 1.59 / 9.89) are not needed because the tweens carry the timing. Imitates the iOS notification centre (brand_ui). 05/10/2026: the source's own assets are back as defaults (user's decision: open-source assets are used as shipped); pass a param to use your own. Banner app icon: the source's own 100 px green gradient squircle (#5ae458 -> #1fc83f, radius 24) with the white speech-bubble glyph (64 x 60 SVG at left 18, top 20) is the default; set `icon_letter` to a letter to get a one-letter mark instead, `icon_from` / `icon_to` for other colours.",
+ "demo": {
+  "bg": "#1b1d22",
+  "duration": 14,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "656px",
+     "top": "0px",
+     "width": "608px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {}
+   }
+  ],
+  "thumb_at": 0.42
+ }
+}

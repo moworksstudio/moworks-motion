@@ -1,0 +1,58 @@
+{
+ "name": "line/stroke-trace",
+ "kind": "block",
+ "group": "line",
+ "title": "SVG Stroke Trace",
+ "title_vi": "Nét SVG tự vẽ rồi tô kín",
+ "desc_vi": "Một đường SVG cho sẵn tự vẽ theo chiều dài đo được, giữ và trôi nhẹ, và tô kín nếu là đường khép.",
+ "params_vi": "path: Path, mặc định \"M 92 328 C 178 142 292 138 366 276 C 430 396 500 414 558 262 C 622 94 724 112 786 274 C 836 406 894 376 930 194\" · stroke_width: Stroke width, mặc định 12 · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/svg-stroke-trace/svg-stroke-trace.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "intro",
+  "reveal",
+  "svg",
+  "stroke",
+  "line-draw"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/svg-stroke-trace.html) in a kit film, mounted by ctx.hf.  Source: An authored SVG path draws from its measured length, holds with subtle drift, and optionally fills when the path is closed.",
+ "demo": {
+  "duration": 3.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 3.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

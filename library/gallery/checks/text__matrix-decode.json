@@ -1,0 +1,18 @@
+{
+ "name": "text/matrix-decode",
+ "at": "2026-10-10 01:57",
+ "static": [],
+ "build": "ok",
+ "tweens": 54,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 2.3,
+ "problems": [],
+ "status": "ok",
+ "seconds": 6.1
+}

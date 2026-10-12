@@ -1,0 +1,17 @@
+{
+ "name": "text/morph-text",
+ "kind": "effect",
+ "group": "text",
+ "title": "Morph text",
+ "title_vi": "Câu chữ tan chảy thành câu khác",
+ "desc_vi": "Một câu tan ra như chất lỏng rồi kết lại thành câu tiếp theo (hiệu ứng gooey), mỗi lần đổi 1 giây, giữ 1.5 giây rồi đổi tiếp, dừng ở câu cuối. Chữ của phần tử là câu đầu.",
+ "params_vi": "phrases: các câu tiếp theo, cách nhau dấu | · speed: thời gian mỗi lần tan (1 s) · pause: thời gian giữ mỗi câu (1.5 s)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/morph-text/morph-text.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["morph", "gooey", "liquid", "swap", "phrases"],
+ "check_end": false,
+ "notes": "Morph maths as in the source (threshold feColorMatrix, blur 8 / f - 8 and 8 / (1 - f) - 8 px capped at 100, opacity f and 1 - f, 1 s morph + 1.5 s hold). The source looped through its list (back to the first phrase) for its whole 15 s; here the morphs run once, from `at`, and stop on the last phrase. Its drop shadows and Figtree face belong to the film element. End check off: the end shows the last phrase.",
+ "demo": { "duration": 8.3, "hold": 0.3, "elements": [{ "id": "t1", "type": "text", "text": "Làm ít, được nhiều.", "style": { "color": "#111111", "font-weight": "900", "font-size": "150px", "line-height": "1", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.5 }], "bg": "#f4f1ea" }
+}

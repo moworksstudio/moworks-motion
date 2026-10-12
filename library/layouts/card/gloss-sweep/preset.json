@@ -1,0 +1,18 @@
+{
+ "name": "card/gloss-sweep",
+ "kind": "block",
+ "group": "card",
+ "title": "Gloss sweep card",
+ "title_vi": "Thẻ nhãn có vệt bóng quét chéo",
+ "desc_vi": "Thẻ nhãn gọn đáp xuống mạnh dứt khoát, một vệt bóng chéo quét qua đúng một lần, rồi đứng yên hoàn toàn.",
+ "params_vi": "text: chữ trên thẻ · accent: green | blue | violet (bộ màu thẻ) · sweepAngle: góc vệt bóng, -60 đến 60 độ · duration: độ dài gốc 2.5 s (chỉ ảnh hưởng khi ngắn hơn 1.35 s) · bg: màu bóng đổ · fg: màu chữ gốc",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/gloss-sweep/gloss-sweep.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["card", "gloss", "shine", "celebration", "badge", "label"],
+ "notes": "Layout, colours and motion as in the source: card min-width 48cqw, max-width 78cqw, min-height 34cqh, padding 7cqh 9cqw, border 0.22cqmin in the edge colour, radius 5cqmin, 145deg gradient bright -> surface, shadow 0 3cqh 8cqh plus a 0.12cqmin white inset ring; label 15cqmin weight 780 tracking -0.04em; the three palettes green / blue / violet (surface, bright, edge, label colours) are the source's. Motion: card y -5cqh -> 0 and scale 1.06 -> 1 over 0.5 s expo.out; the gloss layer (opacity 0 outside the sweep) is shown at 0.65 s, its custom property --gs-sweep tweens -30 -> 130 over 0.7 s power2.out (it moves the five gradient stops across the card at the given angle), then it is hidden again; when `duration` is shorter than 1.35 s the phases compress together. The gradient is driven by a CSS custom property, so ae is png. Differences: the label gets 0.15em vertical padding (cancelled by a negative margin) so Vietnamese stacked diacritics are not clipped by the source's overflow hidden at line-height 1; the card shadow colour comes from the param bg (the source's --bg token, default #05070d); the source's `clamp(8cqmin, 15cqmin, 18cqmin)` is written as the resolved 15cqmin; the source's full-box transparent background stays transparent. Default text is Vietnamese (source: Pro).",
+ "demo": { "bg": "#0b0c0e", "duration": 3.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": { "accent": "violet", "sweepAngle": 38 } }] }
+}

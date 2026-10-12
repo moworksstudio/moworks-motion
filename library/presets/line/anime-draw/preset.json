@@ -1,0 +1,59 @@
+{
+ "name": "line/anime-draw",
+ "kind": "effect",
+ "group": "line",
+ "title": "Stroke draw (anime.js createDrawable)",
+ "title_vi": "Nét SVG tự vẽ ra (anime.js createDrawable)",
+ "desc_vi": "Từng nét (path, vòng tròn, đường thẳng) tự vẽ ra theo thứ tự, hoặc chạy như vệt, hoặc xoá đi.",
+ "params_vi": "paths: phần tử trong svg (mặc định mọi hình) · from (\"0 0\") · to (\"0 1\" vẽ hết, \"1 1\" xoá tới) · duration (1.2) · ease · each: giây giữa các nét (0.15)",
+ "ae": "png",
+ "tags": [
+  "anime.js",
+  "svg",
+  "draw",
+  "line",
+  "stroke"
+ ],
+ "source": {
+  "label": "anime.js 4.5.0 (Julian Garnier, MIT)",
+  "repo": "juliangarnier/anime",
+  "commit": "v4.5.0",
+  "path": "src/ (npm animejs@4.5.0, engine/vendor/libs/anime)"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/anime/anime.umd.min.js",
+  "libs/aimk/anime-sync.js"
+ ],
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Kit code (preset.js + engine/vendor/libs/aimk/anime-sync.js) calling anime.js 4.5.0 as shipped (engine/vendor/libs/anime, MANIFEST.json sha256). anime.js's own loop is off: the film's GSAP timeline seeks it every frame; randomness seeded. The bake puts back what anime.js wrote (build.py BAKE_JS + AIMKAnime.reverts).",
+ "demo": {
+  "duration": 2.4,
+  "hold": 0.6,
+  "elements": [
+   {
+    "id": "dbox",
+    "type": "box",
+    "style": {
+     "left": "360px",
+     "top": "240px",
+     "width": "1200px",
+     "height": "600px"
+    },
+    "html": "<svg viewBox=\"0 0 1200 600\" width=\"1200\" height=\"600\" fill=\"none\" stroke-linecap=\"round\" stroke-width=\"14\"><path d=\"M80 420 C 240 120, 420 120, 560 300 S 900 520, 1120 200\" stroke=\"#ff6a2b\"/><path d=\"M120 520 L 1080 520\" stroke=\"#3a86ff\"/><circle cx=\"900\" cy=\"230\" r=\"120\" stroke=\"#ffb400\"/></svg>"
+   }
+  ],
+  "motion": [
+   {
+    "target": "dbox",
+    "at": 0.3
+   }
+  ]
+ },
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

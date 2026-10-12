@@ -1,0 +1,7 @@
+{
+  "_about": "HyperFrames version the kit uses on every machine (installed under %USERPROFILE%\\.aimotionkit\\hyperframes\\<version> by install.bat / kit.py hf; not carried in the kit). kit.py hf update writes current after the smoke test passes; previous = rollback target; projects pin their own version in <project>/hf.json.",
+  "current": "0.8.139",
+  "previous": "0.8.130",
+  "tested": "2026-10-07: smoke test ok in 10 s",
+  "checked": "2026-10-07 11:09"
+}

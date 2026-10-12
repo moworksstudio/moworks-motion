@@ -1,0 +1,128 @@
+{
+ "name": "house/glow-card",
+ "kind": "effect",
+ "group": "house",
+ "title": "Glow card",
+ "title_vi": "Quầng sáng ấm quanh thẻ",
+ "desc_vi": "Quầng sáng ấm ba lớp (lõi, giữa, quầng rộng) quanh thẻ; có thể cho quầng hiện dần.",
+ "params_vi": "size: cỡ quầng (54) · strength: 0..1 · color / bloom: 'r,g,b' · fade: giây hiện dần (0 = tĩnh)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "glow",
+  "halo",
+  "card",
+  "house"
+ ],
+ "notes": "Port of P.glowCard / glowCss: it only sets el.style.filter (three drop-shadows), no tween. v2 addition: `fade` > 0 adds one filter tween (alpha 0 -> strength) at `at`. The filter has no After Effects keyframe equivalent (png).",
+ "demo": {
+  "bg": "#2b1d0e",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "c0",
+    "type": "text",
+    "text": "Tĩnh",
+    "style": {
+     "left": "280px",
+     "top": "280px",
+     "font-size": "40px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#ff6b6b,#feca57)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "360px",
+     "height": "480px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "c1",
+    "type": "text",
+    "text": "Nhẹ 0,6",
+    "style": {
+     "left": "740px",
+     "top": "280px",
+     "font-size": "40px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#48dbfb,#5f27cd)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "360px",
+     "height": "480px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "c2",
+    "type": "text",
+    "text": "Hiện dần",
+    "style": {
+     "left": "1200px",
+     "top": "280px",
+     "font-size": "40px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#1dd1a1,#10ac84)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "360px",
+     "height": "480px",
+     "text-align": "center"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "c0",
+    "at": 0.0
+   },
+   {
+    "target": "c1",
+    "at": 0.0,
+    "params": {
+     "strength": 0.6
+    }
+   },
+   {
+    "target": "c2",
+    "at": 0.6,
+    "params": {
+     "fade": 1.2
+    }
+   }
+  ]
+ }
+}

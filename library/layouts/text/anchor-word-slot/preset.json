@@ -1,0 +1,68 @@
+{
+ "name": "text/anchor-word-slot",
+ "kind": "block",
+ "group": "text",
+ "title": "Split Anchor, Word Slot",
+ "title_vi": "Cột chữ neo bên trái, ô chữ xé giấy đổi từ bên phải",
+ "desc_vi": "Cột chữ cố định bên trái (tên, thương hiệu) cạnh một ô chữ viền giấy xé bên phải; các nhóm từ vào / ra trong ô theo nhịp, nền đổi màu cả cảnh, rung theo đoạn dồn, ô phóng to xoá cảnh ở cú drop. 3-6 s.",
+ "params_vi": "bgColor: Stage background (theme 0), mặc định \"#0a84ff\" · anchors: Left anchor column (comma list = rows), mặc định \"studio,contre,courant\" · theme: Base theme index, mặc định 0 · showText: Show text (false = blocks only), mặc định true · program: Program JSON (empty = built-in group_6 score) · duration: độ dài của block (5.41 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/templates/split-anchor-word-slot/index.html",
+  "sha256": {
+   "index.html": "dbd8dba3ca08d9ea2a8eca7cd23b9f2c9da27a4b8c092271534e1377270f0b83",
+   "program.json": "90096a51480803d04dc5a163fe1abfd4efeb936bb55d59b8e4a60f0bab98f955"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "anchor",
+  "slot",
+  "type"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/index.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\"). Source:",
+ "demo": {
+  "duration": 5.41,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.41
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "times": [
+  "program"
+ ],
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

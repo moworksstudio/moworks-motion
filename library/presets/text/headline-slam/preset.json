@@ -1,0 +1,52 @@
+{
+ "name": "text/headline-slam",
+ "kind": "effect",
+ "group": "text",
+ "title": "Headline Slam",
+ "title_vi": "Tiêu đề đập xuống, rung nhẹ khi chạm",
+ "desc_vi": "Tiêu đề thu từ 1.6 lần về đúng cỡ rất dứt khoát, khung rung ba nhịp lúc chạm, rồi trôi khẽ; có thể hất bay lên ở cuối.",
+ "params_vi": "landAt: thời gian đập (0.58 s) · scale: cỡ đầu (1.6) · accentWord: chỉ số từ tô màu (1, -1 = không tô) · accent: màu tô · hold: thời gian giữ có trôi (2.32 s) · drift · exit: none | up",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/headline-slam/headline-slam.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "slam",
+  "impact",
+  "shake",
+  "headline"
+ ],
+ "notes": "Motion ported 1:1 (slam 1.6 -> 1 expo.out over 0.58 s with opacity, shake of three 1/30 s steps at the landing: +0.55 % w / -0.3 % h, -0.38 % w / +0.2 % h, 0; drift -0.55 % h; exit y -120 % h power4.in 0.46 s; cqw/cqh -> px from ctx.W/H). NOT ported: the font fitting from the character count, the weight 900 / line-height / negative letter-spacing and the drop shadow (film's text style), the green/blue/violet token map (the accent colour is the param `accent`, default the source's green #71f5a7; `accentWord` = the source's accent_word_index, default 1, -1 = none), the flex row with 2cqw gap (words are inline-block spans separated by normal spaces). The source envelope depends on the clip duration D (default 3.5 s) and compresses IN/OUT if D < 1.18 s; here the hold is the param `hold` (default 2.32 s = 3.5 - 0.72 - 0.46) and the compression is not ported. The exit is off by default so the headline holds until the cut (the source always exits; set exit: 'up' and a matching hold for that). The effect wraps the target's text in two inline-block spans (stage for the shake, headline for scale/opacity/drift/exit). The demo's plain reference carries the same accent colour in its markup, so the end check compares like with like.",
+ "demo": {
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Làm ngay hôm nay",
+    "style": {
+     "color": "#f5f5f2",
+     "font-weight": "900",
+     "font-size": "140px",
+     "letter-spacing": "-0.02em",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)"
+    },
+    "html": "Làm <span style=\"color:#71f5a7\">ngay</span> hôm nay"
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3
+   }
+  ]
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "name": "text/math-write",
+ "kind": "effect",
+ "group": "text",
+ "title": "Math write and morph",
+ "title_vi": "Công thức toán tự viết ra, biến sang công thức khác",
+ "desc_vi": "Một công thức toán (dàn trang chuẩn như LaTeX) tự viết ra từ trái sang phải hoặc hiện từng số hạng, rồi có thể biến sang công thức thứ hai: các ký hiệu có ở cả hai trượt sang chỗ mới, phần khác mờ ra / hiện vào, kiểu Manim. Hợp video giáo dục, giải thích.",
+ "params_vi": "Chữ của phần tử là mã TeX (ví dụ a^2 + b^2 = c^2; tô màu bằng \\textcolor{#ffd60a}{...}) · mode: write | terms · duration: thời gian viết (1.2 s) · stagger: cách nhau khi hiện từng số hạng (0.08) · to: công thức thứ hai (trống = không biến) · morphAt: lúc bắt đầu biến (2 s sau at) · morph: thời gian biến (1 s)",
+ "source": {
+  "label": "iart-ai motion skills (MIT)",
+  "repo": "iart-ai/manim-skills",
+  "path": "skills/manim/references/math-and-text.md"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/katex/katex.min.js"
+ ],
+ "vendor": [
+  "libs/katex"
+ ],
+ "ae": "png",
+ "brand_safe": true,
+ "tags": [
+  "math",
+  "equation",
+  "latex",
+  "education",
+  "morph"
+ ],
+ "check_end": false,
+ "notes": "Manim's Write / TransformMatchingTex approximated in the browser: KaTeX typesets the TeX at build time (the film keeps the HTML, the KaTeX CSS and fonts); write = a soft clip reveal with a short blur; morph = glyphs matched by their text in reading order fly from the old place and size to the new (FLIP), unmatched ones fade. Manim's stroke-then-fill drawing is not reproduced. KaTeX's main fonts are declared as preset fonts, so they are loaded before the preset measures the glyphs (the morph positions); the KaTeX CSS goes into the film's preset styles with its font paths pointed at assets/vendor/libs/katex/fonts.",
+ "demo": {
+  "duration": 4.6,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "a^2 + b^2 = \\textcolor{#ffd60a}{c^2}",
+    "style": {
+     "color": "#f5f5f2",
+     "font-size": "120px",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.2,
+    "params": {
+     "to": "\\textcolor{#ffd60a}{c^2} = a^2 + b^2",
+     "morphAt": 2.0
+    }
+   }
+  ],
+  "bg": "#101418"
+ },
+ "fonts": [
+  {
+   "family": "KaTeX_Main",
+   "vendor": "libs/katex/fonts/KaTeX_Main-Regular.woff2",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "KaTeX_Main",
+   "vendor": "libs/katex/fonts/KaTeX_Main-Bold.woff2",
+   "weight": "700",
+   "style": "normal"
+  },
+  {
+   "family": "KaTeX_Main",
+   "vendor": "libs/katex/fonts/KaTeX_Main-Italic.woff2",
+   "weight": "400",
+   "style": "italic"
+  },
+  {
+   "family": "KaTeX_Math",
+   "vendor": "libs/katex/fonts/KaTeX_Math-Italic.woff2",
+   "weight": "400",
+   "style": "italic"
+  },
+  {
+   "family": "KaTeX_Size1",
+   "vendor": "libs/katex/fonts/KaTeX_Size1-Regular.woff2",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "KaTeX_Size2",
+   "vendor": "libs/katex/fonts/KaTeX_Size2-Regular.woff2",
+   "weight": "400",
+   "style": "normal"
+  },
+  {
+   "family": "KaTeX_AMS",
+   "vendor": "libs/katex/fonts/KaTeX_AMS-Regular.woff2",
+   "weight": "400",
+   "style": "normal"
+  }
+ ]
+}

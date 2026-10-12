@@ -1,0 +1,112 @@
+{
+ "name": "house/tag-pop",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop (tag)",
+ "title_vi": "Nhãn màu mọc từ mép trái",
+ "desc_vi": "Nhãn màu phình ra từ cạnh trái, nảy nhẹ.",
+ "params_vi": "Giống pop-cute; mặc định rot 0, ease back.out(2), dur 0.55, origin 0% 50%",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "tag",
+  "label",
+  "house"
+ ],
+ "notes": "Port of P.tagPop (popCute with rot 0, back.out(2), 0.55 s, origin 0% 50%).",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "g0",
+    "type": "text",
+    "text": "GIAI ĐOẠN 1: Ý TƯỞNG",
+    "style": {
+     "left": "320px",
+     "top": "230px",
+     "font-size": "54px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap",
+     "padding": "14px 34px",
+     "border-radius": "12px",
+     "background": "#fd5900"
+    }
+   },
+   {
+    "id": "g1",
+    "type": "text",
+    "text": "GIAI ĐOẠN 2: SẢN XUẤT",
+    "style": {
+     "left": "320px",
+     "top": "380px",
+     "font-size": "54px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap",
+     "padding": "14px 34px",
+     "border-radius": "12px",
+     "background": "#3a86ff"
+    }
+   },
+   {
+    "id": "g2",
+    "type": "text",
+    "text": "GIAI ĐOẠN 3: HẬU KỲ",
+    "style": {
+     "left": "320px",
+     "top": "530px",
+     "font-size": "54px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap",
+     "padding": "14px 34px",
+     "border-radius": "12px",
+     "background": "#8338ec"
+    }
+   },
+   {
+    "id": "g3",
+    "type": "text",
+    "text": "GIAI ĐOẠN 4: GIAO PHIM",
+    "style": {
+     "left": "320px",
+     "top": "680px",
+     "font-size": "54px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap",
+     "padding": "14px 34px",
+     "border-radius": "12px",
+     "background": "#06a77d"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "g0",
+     "g1",
+     "g2",
+     "g3"
+    ],
+    "at": 0.2,
+    "params": {
+     "stagger": 0.25
+    }
+   }
+  ]
+ }
+}

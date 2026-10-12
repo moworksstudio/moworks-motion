@@ -1,0 +1,20 @@
+{
+ "name": "compare/comparison-split",
+ "kind": "block",
+ "group": "compare",
+ "title": "Comparison split",
+ "title_vi": "So sánh hai nửa có thanh chia",
+ "desc_vi": "Hai khung chung một cảnh: khung \"trước\" mờ nằm dưới, khung \"sau\" rực rỡ quét lên từ mép, thanh chia có núm tròn dừng ở vị trí chia và giữ nguyên.",
+ "params_vi": "split: vị trí chia, % (50) · orientation: horizontal | vertical · labelA, labelB: nhãn hai bên (tự viết hoa) · imageA, imageB: ảnh từng bên (rỗng = cửa sổ khung xương) · duration: độ dài gốc 4 s · bg, fg, surface, border, muted, accent: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/comparison-split/comparison-split.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["compare", "before after", "split", "wipe", "divider"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, sizes, envelope and eases as in the source (panels with a 5 cqw grid on the before side, wireframe window 72 cqw x 64 cqh with toolbar dots, three text lines and a blob, label chips, divider 0.45 cqw with a glow and a round handle of min(5 cqw, 7 cqh); stage 0.32 s power2.out, wipe 1.05 s sine.inOut from 0.25 s, release fade 0.5 s power2.out at duration - 0.5 s; the phases shrink together when the duration is below 1.9 s; horizontal and vertical orientation). cqw / cqh are taken from the target box (the gallery demo uses the same 72 % x 68 % card as the source demo). The wipe was one CSS custom property (--cs-split) driving a clip-path calc and the divider's left; it is now two tweens with the same ease and time: the after panel's clip-path inset (100 % -> 100 - split %) and the divider's x (0 -> split % of the box), so the film holds plain keyframes. The divider handle (::after) is a real child span; no visibility or aria changes, the hf:sfx 'wipe-land-soft' event is dropped (no audio in the kit). The spacing tokens use the values of the source demo's theme (--space-1 / 2 / 3 = 1.2 / 2.4 / 4 cqw) and its colours (bg #07111f, surface #172033, border #40506b, accent #e4e4e7), which are also the source's own fallbacks except the border and the accent. Labels are upper-cased in code (source: text-transform) and are Vietnamese by default (source: Before / After). Extension: imageA / imageB (default empty = the wireframe windows) put a full-bleed picture on a side, covering the window; the label chips stay on top. Font: the film's font instead of Inter. The root takes the radius of its target (border-radius: inherit).",
+ "demo": { "bg": "radial-gradient(ellipse at 50% 42%, #14213b 0%, #050812 72%)", "duration": 4,
+   "elements": [{ "id": "card", "type": "box", "style": { "left": "269px", "top": "173px", "width": "1382px", "height": "734px", "overflow": "hidden", "border-radius": "32px", "border": "1px solid rgba(64,80,107,.28)", "box-shadow": "0 44px 110px rgba(0,0,0,.48)" } }],
+   "motion": [{ "target": "card", "at": 0, "params": { "split": 64, "orientation": "horizontal", "labelA": "Thủ công", "labelB": "Tự động", "duration": 4 } }] }
+}

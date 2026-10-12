@@ -1,0 +1,58 @@
+{
+ "name": "cursor/zoom-follow",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Zoom Follow Cursor",
+ "title_vi": "Tự phóng to theo con trỏ như quay màn hình",
+ "desc_vi": "Kiểu tự zoom của phần mềm quay màn hình: máy quay đẩy vào trước mỗi cú bấm sắp tới, bám theo con trỏ mềm mại, đánh dấu từng cú bấm bằng vòng tròn, rồi lùi ra toàn màn hình khi con trỏ rời đi.",
+ "params_vi": "image: Screenshot · zoom: Zoom, mặc định 1.8 · click1_x: Click 1 X, mặc định 68.5 · click1_y: Click 1 Y, mặc định 7.5 · click2_x: Click 2 X, mặc định 50 · click2_y: Click 2 Y, mặc định 48.5 · click3_x: Click 3 X, mặc định 90.5 · click3_y: Click 3 Y, mặc định 7.5 · accent: Ripple, mặc định \"#0a84ff\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cursor-zoom-follow/cursor-zoom-follow.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "camera",
+  "zoom",
+  "screen-recording",
+  "click",
+  "product-demo"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cursor-zoom-follow.html) in a kit film, mounted by ctx.hf.  Source: Screen-recording auto-zoom: the camera pushes in toward each upcoming click, trails the cursor on a smooth spring, marks every click with a press and a ring, then eases back out to the full screen as the cursor leaves.",
+ "demo": {
+  "duration": 5.8,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.8
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

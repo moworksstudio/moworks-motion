@@ -1,0 +1,59 @@
+{
+ "name": "cursor/dart",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Dart Cursor",
+ "title_vi": "Mũi tên phóng từ chiều sâu, bấm hai lần",
+ "desc_vi": "Một mũi tên viền đậm lao ra từ chiều sâu, bay mũi trước có nhoè chuyển động, bẹp xuống ở hai cú bấm rồi vụt ra khỏi khung.",
+ "params_vi": "tone: Tone (dark | light), mặc định \"dark\" · target_x: First click X, mặc định 34 · target_y: First click Y, mặc định 58 · target2_x: Second click X, mặc định 64 · target2_y: Second click Y, mặc định 46 · enter_from: Enter from (right | left | top | bottom), mặc định \"right\" · exit_to: Exit to (right | left | top | bottom), mặc định \"right\" · blur: Motion blur, mặc định 1 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/dart-cursor/dart-cursor.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "pointer",
+  "click",
+  "motion-blur",
+  "depth"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/dart-cursor.html) in a kit film, mounted by ctx.hf.  Source: A bold outlined arrowhead that dives in from camera depth, flies nose-first with motion blur along its path, squashes on two clicks, and whips out of frame.",
+ "demo": {
+  "duration": 3.6,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 3.6
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.5
+ }
+}

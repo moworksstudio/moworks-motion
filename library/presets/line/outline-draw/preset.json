@@ -1,0 +1,21 @@
+{
+ "name": "line/outline-draw",
+ "kind": "block",
+ "group": "line",
+ "title": "Outline Draw",
+ "title_vi": "Viền bo góc tự vẽ vòng quanh",
+ "desc_vi": "Một viền bo góc tự vẽ theo chiều kim đồng hồ từ giữa cạnh trên, ruột trong suốt nên chữ hoặc hình bên dưới vẫn hiện; tự mờ ra ở giây 3.6.",
+ "params_vi": "progress: % viền được vẽ (0-100) · thickness: độ dày, đơn vị 0.1 % chiều rộng khung (6) · radius: bo góc, đơn vị 0.1 % cạnh ngắn (24) · inset: cách mép khung, % cạnh ngắn (8) · accent: màu viền · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/outline-draw/outline-draw.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["outline", "border", "frame", "draw", "conic"],
+ "notes": "Same mechanic as the source (conic-gradient sector, padding-box/border-box mask with exclude, 0.5 deg seam overlap); the registered property --od-progress is tweened as a literal custom-property tween (0 -> progress, 0.8 s, power2.out), so it is an angular sweep from the top centre like the source, not a path-length draw (it differs on a wide frame). Sizes: inset 8cqmin, stroke thickness*0.1cqw, radius radius*0.1cqmin converted with ctx.W/ctx.H; the mask uses -webkit-mask-composite: xor plus the standard mask-composite: exclude. ae is 'png' because the angular sweep + exclude mask has no keyframe equivalent. Accent is a hex param (--accent #38bdf8). The source outline exists for the whole composition: here it appears at `at` (hard cut) and the exit is the source's 0.4 s fade 3.6 s after `at`. The source compresses IN/OUT below 1.2 s: not ported.",
+ "demo": { "bg": "#05070d", "duration": 4.6,
+   "elements": [
+     { "id": "panel", "type": "box", "style": { "left": "345px", "top": "238px", "width": "1230px", "height": "604px", "border-radius": "30px", "background": "#131b2e" } },
+     { "id": "proof", "type": "text", "text": "Được kiểm chứng", "style": { "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)", "color": "#f8fafc", "font-size": "110px", "font-weight": "760", "white-space": "nowrap" } },
+     { "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": { "exitAt": null } }] }
+}

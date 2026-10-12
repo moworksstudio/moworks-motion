@@ -1,0 +1,65 @@
+{
+ "name": "text/number-bar",
+ "kind": "effect",
+ "group": "text",
+ "title": "Colour bar under a number",
+ "title_vi": "Thanh màu quét sau con số",
+ "desc_vi": "Một thanh màu quét vào phía sau nửa dưới con số chính (5,5\", 120 Hz...), cỡ theo chính con số; nằm dưới số ở mọi nơi, kể cả khi port AE. Khác text/marker-highlight (nét bút dạ quang ngang dòng chữ).",
+ "params_vi": "target: chữ số · color · dur · ease · top: 0-1 chiều cao chữ · height: 0-1 · pad: px mỗi bên",
+ "ae": "keyframes",
+ "tags": [
+  "number",
+  "highlight",
+  "bar",
+  "data"
+ ],
+ "notes": "Viết cho một phim lời bài hát của studio (08/10/2026). Kiểm khung cuối tắt: mẫu cố ý làm khung cuối khác layout (chữ ra / thanh thêm vào).",
+ "demo": {
+  "bg": "#f4f1ea",
+  "duration": 2.6,
+  "elements": [
+   {
+    "id": "n1",
+    "type": "text",
+    "text": "120 Hz",
+    "style": {
+     "left": "620px",
+     "top": "380px",
+     "font": "800 220px RFlex",
+     "color": "#14213d",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "c1",
+    "type": "text",
+    "text": "Màn hình mượt hơn",
+    "style": {
+     "left": "640px",
+     "top": "650px",
+     "font": "600 64px RFlex",
+     "color": "#14213d",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "n1",
+    "at": 0.5,
+    "params": {
+     "color": "#ffd166"
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "check_end": false,
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

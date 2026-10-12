@@ -1,0 +1,22 @@
+{
+ "name": "device/multi-device-splay",
+ "kind": "block",
+ "group": "device",
+ "title": "Multi Device Splay",
+ "title_vi": "Ba thiết bị xòe ra (điện thoại, máy tính bảng, màn hình)",
+ "desc_vi": "Điện thoại, máy tính bảng và màn hình máy tính (khung CSS, màn hình giao diện khung xương) xòe ra từ một điểm thành hình quạt có nảy nhẹ, lơ lửng ngược nhịp nhau khi giữ, rồi cùng rơi xuống và mờ đi.",
+ "params_vi": "accent: màu nhấn trên ba màn hình · duration: độ dài (4,5 s; vào 1,35 s và ra 0,55 s cố định, phần giữ co giãn).",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/multi-device-splay/multi-device-splay.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": ["device", "phone", "tablet", "desktop", "splay", "fan", "product"],
+ "notes": "Faithful port: same CSS (container units of the target box, skeleton screens, monitor stand, island / camera) and the same envelope written as literal tweens: fan from x 0 / y 9cqh / scale 0.9 / opacity 0 to phone (-30cqw, 3.5cqh, -12 deg), tablet (-5cqw, -1cqh, 0), desktop (24cqw, 2cqh, 12 deg), 0.9 s back.out(1.7), 0.12 s cascade; hold float (phone -0.65cqh / -0.55 deg, tablet +0.7cqh / +0.35 deg, desktop -0.5cqh / +0.5 deg) out and back, sine.inOut; out +5cqh, scale 0.96, opacity 0, power2.in; IN / OUT shrink below 1.9 s. cqw / cqh tween values are converted to px of the target box (the CSS keeps container units). Differences: the accent is a colour param (source: an enum riding theme tokens; default = the violet fallback #8b5cf6 the source demo shows). The mobile rows' text lines are inline spans and render empty, exactly as in the source. Demo = the source demo (88 % x 76 % mount card on the dark radial backdrop).",
+ "demo": { "bg": "#0b0c0e", "duration": 4.5, "hold": 0,
+   "elements": [{ "id": "back", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px", "background": "radial-gradient(ellipse at 50% 42%, rgba(139, 92, 246, 0.13), transparent 44%), radial-gradient(ellipse at 50% 55%, #1a1d24, #0b0c0e 68%)" } },
+                { "id": "slot", "type": "box", "style": { "left": "115px", "top": "130px", "width": "1690px", "height": "821px", "overflow": "hidden", "border": "1px solid rgba(226, 232, 240, 0.08)", "border-radius": "30px",
+                  "background": "rgba(255, 255, 255, 0.018)", "box-shadow": "0 50px 120px rgba(0, 0, 0, 0.34)" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

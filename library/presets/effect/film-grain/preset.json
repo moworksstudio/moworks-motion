@@ -1,0 +1,64 @@
+{
+ "name": "effect/film-grain",
+ "kind": "effect",
+ "group": "effect",
+ "title": "Film grain on a box",
+ "title_vi": "Hạt phim trên khung",
+ "desc_vi": "Hạt phim mịn phủ lên một ảnh / footage (ô nhiễu lặp, hoà overlay, đổi vị trí 24 lần / giây như phim nhựa). Đi cùng chỉnh màu + vignette thành \"filter điện ảnh\". Khác effect/grain-overlay: gắn vào một khung, chỉnh được độ đậm.",
+ "params_vi": "src: ô nhiễu (mặc định ô kèm preset) · size: px · opacity · fps (24) · dur · seed",
+ "ae": "expression",
+ "tags": [
+  "grain",
+  "film",
+  "cinematic",
+  "footage"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026). Ô nhiễu assets/grain.png tự tạo (nhiễu xám 256 px).",
+ "demo": {
+  "bg": "#111216",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "pic",
+    "type": "image",
+    "src": "assets/demo/flow-before.png",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px",
+     "filter": "contrast(1.08) saturate(1.12) brightness(0.97)"
+    }
+   },
+   {
+    "id": "gr",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "gr",
+    "at": 0,
+    "params": {
+     "dur": 3,
+     "opacity": 0.45,
+     "size": 192
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

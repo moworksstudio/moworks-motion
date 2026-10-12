@@ -1,0 +1,18 @@
+{
+ "name": "logo/logo-sting",
+ "kind": "block",
+ "group": "logo",
+ "title": "Logo Sting",
+ "title_vi": "Logo giáng xuống, vòng sáng và một khung hình trắng",
+ "desc_vi": "Logo (hoặc chữ) rơi vào từ scale 1.15 rất dứt khoát; ngay lúc chạm có một vòng màu nở ra rồi tan và đúng một khung hình trắng, sau đó đứng yên hẳn.",
+ "params_vi": "wordmark: chữ thay logo (mặc định LOGO) · image: đường dẫn ảnh logo, ví dụ assets/logo.png (nếu có thì thay chữ) · imageHeight: cao ảnh (px) · accent: màu vòng · fg: màu chữ",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/logo-sting/logo-sting.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["logo", "sting", "impact", "ring", "flash"],
+ "notes": "Timings, distances and eases as in the source (land 0.55 s expo.out from scale 1.15; ring scale 0.34 -> 2.4 and opacity 0.92 -> 0 over 0.4 s power3.out; flash opacity 1 for 1/30 s). Sizes from the source converted with ctx.W/ctx.H: wordmark min(10.5cqw,18cqh), ring min(42cqw,72cqh), ring border min(0.34cqw,0.62cqh). The source wordmark default (a brand name) is replaced by the neutral word LOGO, and an optional params.image path swaps in a real logo (no brand asset is shipped). The source root paints a solid #0b0c0e background: not ported (the film or scene background shows through; the flash is a full-frame white layer as in the source). Accent is a hex param (source: green --brand #5df28b, blue #4da3ff, violet #a978ff). The source shows the wordmark from time 0 of its composition: here it is hidden until `at`. The single-frame flash is 1/30 s long (exactly one frame at 30 fps, two at 60 fps). Source compression for compositions shorter than 0.95 s is not ported. The source ring `set opacity 0.92` + `to` pair is kept as set + to.",
+ "demo": { "bg": "#0b0c0e", "duration": 2.6,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.4, "params": { "wordmark": "LOGO" } }] }
+}

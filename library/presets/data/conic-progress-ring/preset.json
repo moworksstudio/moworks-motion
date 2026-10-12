@@ -1,0 +1,18 @@
+{
+ "name": "data/conic-progress-ring",
+ "kind": "block",
+ "group": "data",
+ "title": "Conic Progress Ring",
+ "title_vi": "Vòng tiến độ, số đếm cùng nhịp",
+ "desc_vi": "Vòng tròn đầy dần theo chiều kim đồng hồ từ đỉnh, số ở giữa đếm lên cùng một nhịp rồi đứng yên; tự mờ ra ở giây 3.5.",
+ "params_vi": "progress: % vòng đầy (0-100) · thickness: độ dày (% bán kính, 4-30) · label: số đích ở giữa, ví dụ \"85%\" · brand, surface, fg: màu · exitAt: giây ra (null = không ra) · fade: giây hiện (0 = cắt vào)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/conic-progress-ring/conic-progress-ring.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": ["progress", "ring", "counter", "data"],
+ "notes": "The source paints the ring with a CSS conic-gradient + radial mask and a registered @property tweened by GSAP; here the same ring is an SVG circle (r = R - thickness/2, stroke = thickness % of R, butt caps, starts at the top, clockwise) whose strokeDashoffset goes 100 -> 100 - progress with the same ease (power2.out) and duration (1.4 s): same angle at every frame, so it is a literal tween (AE trim path). The centre number follows the fill: round(labelTarget * easedProgress) + the text suffix, in a ctx.code proxy tween with the same ease/start (hence ae: expression). Colours (--brand #35d6a0, --surface #1b2938, --fg #f4f7fb) are params with the source fallbacks; font = the film's font. The source stage is visible for the whole composition: here it appears at `at` (hard cut, or a fade of params.fade seconds). The exit is the source's 0.5 s fade, 3.5 s after `at` (source: duration 4 s). The source compresses IN/OUT when the composition is shorter than 1.9 s: not ported.",
+ "demo": { "bg": "#0b0f17", "duration": 5.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": { "progress": 85, "label": "85%", "exitAt": null } }] }
+}

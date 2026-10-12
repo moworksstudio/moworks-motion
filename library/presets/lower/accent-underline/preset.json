@@ -1,0 +1,28 @@
+{
+ "name": "lower/accent-underline",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: accent underline",
+ "title_vi": "Lower third tên, gạch chân màu",
+ "desc_vi": "Tên trượt lên, gạch màu vẽ từ trái sang dưới tên, chức danh hiện lên bên dưới; tự ra ở giây 4.25.",
+ "params_vi": "name, role: chữ · accent: màu gạch · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/lt-accent-underline/lt-accent-underline.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "lower third",
+  "name",
+  "underline"
+ ],
+ "notes": "Fonts: the film's font (name at weight 700, uppercase, instead of Oswald; role instead of Space Mono) because films have no network. The source's final hard-kill (visibility hidden at 4.75 s) is not needed: everything is at opacity 0 or scale 0 after the exit. Exit tweens use explicit from values.",
+ "demo": {
+  "bg": "#2b3a55",
+  "duration": 5.2
+ }
+}

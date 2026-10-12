@@ -1,0 +1,19 @@
+{
+ "name": "social/reddit-post",
+ "kind": "block",
+ "group": "social",
+ "title": "Forum post card (Reddit style)",
+ "title_vi": "Thẻ bài đăng diễn đàn kiểu Reddit",
+ "desc_vi": "Thẻ bài đăng tối trượt từ dưới lên, nút upvote bị nhấn rồi nảy lò xo, mũi tên và số phiếu chuyển cam và tăng thêm một; cuối cùng thẻ trượt xuống biến mất.",
+ "params_vi": "community: tên cộng đồng · author: người đăng · icon: chữ trong ô tròn cộng đồng · title, text: tiêu đề và nội dung · votes, votesAfter: số phiếu trước và sau khi bấm · comments: số bình luận · share: chữ nút chia sẻ · accent: màu sau khi upvote · iconColor: màu ô cộng đồng · exitAt: giây thẻ trượt ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/reddit-post/reddit-post.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": ["social", "post", "forum", "upvote", "overlay", "card"],
+ "notes": "Layout and colours as in the source (card 860 px wide, #1a1a2e, 16 px radius, 32 px padding, shadow 0 12 60; header with a 48 px community disc, 28 px community name, 24 px author line; title 38 px bold clamped to 3 lines; body 28 px clamped to 3 lines; action bar with a 1 px rule, a vote pill (up arrow, count, down arrow) and two action pills (comments, share) on #272729 with 24 px radius). Motion (times relative to `at`, as in the source's own timeline): card y 400 and opacity 0 -> 0 and 1 over 0.6 s power3.out at 0.1 s; upvote button scale 0.85 over 0.12 s power2.out at 1.5 s, back to 1 over 0.4 s elastic.out(1, 0.4) at 1.62 s; arrow fill #818384 -> accent over 0.12 s at 1.62 s; vote count colour -> accent over 0.12 s at 1.62 s with the text going from the old to the new number; card out y 0 -> 400, opacity 1 -> 0 over 0.3 s power3.in at exitAt (4.2 s). brand_ui: imitates a real forum platform's post card; the accent default #ff4500 is that platform's orange (a colour param, change it freely). Differences: the arrow colour change that the source did with the attr plugin on the SVG fill attribute is a tween of the CSS fill (same colours); the count text swap done in an onStart callback is two overlapping texts (old and new) switched at the same time, so it needs no code; the card is centred in the target box by the grid instead of a CSS translate; the font is the film's font (source: DM Sans from the web). 05/10/2026: source artwork restored as default (user's decision: open-source registry artwork is used as shipped): the community icon is the source's own 48 x 48 SVG (disc #4A90D9 with the bold \"r/\" text drawn as SVG text; params `icon` = the text, `iconColor` = the disc colour); the vote arrows and the comment / share glyphs are the source's own paths. Default texts are Vietnamese (source: English placeholders); the placeholder community and user are made up.",
+ "demo": { "bg": "#0e1113", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.2, "params": {} }] }
+}

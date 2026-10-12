@@ -1,0 +1,21 @@
+{
+ "name": "text/caption-camera-follow",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: camera follow",
+ "title_vi": "Phụ đề máy quay lùi theo từng từ",
+ "desc_vi": "Chữ đứng yên, máy quay di chuyển: mỗi từ mới nhỏ hơn khối chữ đã viết và đặt bên phải hoặc xuống dòng, máy quay lùi dần (có nhoè chuyển động toả tròn) để mỗi từ hiện ra cùng cỡ trên màn hình; cuối cùng lùi hẳn ra cho thấy cả câu.",
+ "params_vi": "words: \"voice\" hoặc danh sách từ (không có thời điểm thì mỗi step giây một từ, 0.52) · keywords: từ tô màu nhấn · accent: gold | green | blue | violet hoặc mã màu · framing: tight | standard | wide · smear: off | subtle | standard | heavy · upper: in hoa · vignette · markRoom: khoảng chừa cho dấu khi xuống dòng (0.25 em)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-camera-follow/caption-camera-follow.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "kinetic type", "camera", "zoom", "voice", "motion blur"],
+ "notes": "Layout rule (base size 16 % of the frame's long side, ratio 0.72, gap 0.07 em, grow sideways while the block is narrower than the frame), poses (margin 1.36, closing 1.2), moves 0.4 s, ink 0.16 s, radial smear (peak 2.6 % of frame width, per-word share 0.2 + 1.15 x distance) and the five hand-written cubic-bezier eases as in the source (written as custom() eases, the same curves). Changed: the film's font instead of Helvetica Neue; words land at their voice times when given (the source used a fixed 0.52 s cadence, kept for words without times); keywords instead of per-word accent flags. The rest pose is pinned in the markup as in the source (outside the timeline). Vietnamese: a word that starts a new line sits markRoom (0.25 em) lower than in the source, so stacked marks on capitals (Ừ, Ể, Ậ) do not touch the line above; 0 = the source's spacing.",
+ "demo": {
+  "bg": "#0e1116", "duration": 9.5, "thumb_at": 0.55,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "keywords": ["máy", "quay", "cả", "câu"],
+   "words": ["Chữ", "đứng", "yên,", "máy", "quay", "đi", "theo", "từng", "từ", "cho", "tới", "khi", "cả", "câu", "hiện", "ra."] } } ]
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "name": "house/breathe",
+ "kind": "effect",
+ "group": "house",
+ "title": "Breathe",
+ "title_vi": "Thở nhẹ",
+ "desc_vi": "Scale chậm 1 rồi về 1, chân giữ nguyên nên nhân vật thở mà không rời mặt đất; dùng được cho sao nổ sau con số.",
+ "params_vi": "amp (0.03) · origin (50% 100%) · period (5 s) · dur (30 s)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "breathe",
+  "character",
+  "house"
+ ],
+ "notes": "Port of P.breathe. Ambient formula via ctx.code on the float layer; the origin is written into the layer's style. The demo shows the people and a starburst (amp 0.02, origin 50% 60%, period 4) and a floor line so the fixed feet are visible.",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "bst",
+    "type": "image",
+    "src": "assets/demo/house-burst.png",
+    "style": {
+     "left": "1400px",
+     "top": "120px",
+     "width": "380px",
+     "height": "380px"
+    }
+   },
+   {
+    "id": "q0",
+    "type": "image",
+    "src": "assets/demo/house-person-1.png",
+    "style": {
+     "left": "420px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "q1",
+    "type": "image",
+    "src": "assets/demo/house-person-2.png",
+    "style": {
+     "left": "720px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "q2",
+    "type": "image",
+    "src": "assets/demo/house-person-3.png",
+    "style": {
+     "left": "1020px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "q3",
+    "type": "image",
+    "src": "assets/demo/house-person-4.png",
+    "style": {
+     "left": "1320px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "floor",
+    "type": "box",
+    "style": {
+     "left": "360px",
+     "top": "708px",
+     "width": "1200px",
+     "height": "6px",
+     "background": "#264653"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "q0",
+     "q1",
+     "q2",
+     "q3"
+    ],
+    "at": 0.0,
+    "params": {
+     "amp": 0.05
+    }
+   },
+   {
+    "target": "bst",
+    "at": 0.0,
+    "params": {
+     "amp": 0.04,
+     "origin": "50% 60%",
+     "period": 4
+    }
+   }
+  ]
+ }
+}

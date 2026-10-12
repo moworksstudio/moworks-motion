@@ -1,0 +1,21 @@
+{
+ "name": "glass/notifications",
+ "kind": "block",
+ "group": "glass",
+ "title": "Liquid Glass Notifications",
+ "title_vi": "Thông báo kính lỏng trượt vào",
+ "desc_vi": "Hai thẻ thông báo kính lỏng trượt vào từ phải trên nền lụa chuyển động: thẻ xuất video có chấm trạng thái, thanh tiến trình và chữ đổi sang hoàn tất; thẻ tin nhắn có chấm đang gõ và nút trả lời; cuối cùng trượt ra.",
+ "params_vi": "logo: ảnh trong ô tối của thẻ 1 · title1, status1 → status1_done, text1 → text1_done: chữ thẻ 1 (đổi lúc 4,25 s) · avatar2, avatar2_bg: chữ và nền ảnh đại diện thẻ 2 · title2, time2, text2: chữ thẻ 2 · chip1, chip2: hai nút · duration: độ dài nền chuyển động (8 s). Thiết kế cho khung 1920×1080.",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/liquid-glass-notification/liquid-glass-notification.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": ["webgl"],
+ "scripts": ["libs/three-0.147/three.min.js"],
+ "tags": ["notification", "liquid glass", "toast", "progress", "message", "ui"],
+ "notes": "Same layout, texts slots, timings and eases as the source (text cards: literal tweens; the source's gsap.set start states become fromTo; the typing-dot stagger 0.08 is written as three tweens; the status dot colour tween gets the GSAP default ease power1.out written out). Differences: (1) The glass: the source draws its two panels with lib/liquid-glass.iife.js, which needs WebGPU; the kit's Chromium has no usable WebGPU (navigator.gpu.requestAdapter() returns null on a 127.0.0.1 page, also with --enable-unsafe-webgpu; measured), so in the kit the source shows no glass at all. The library's passes are ported to GLSL on three.js 0.147 with the same maths and the source's --lg-* values (blur 0.22, refraction 0.6, radius 36, z-radius 38, specular 0.2, fresnel 0.9, edge 0.1, chroma 0.05, saturation 0.25, shadow 0.35/14/4): region + 20 px pad copied from the frame (white outside it), 6 x 9-tap blur, glass shader blended over; reversed-edge smoothstep written out (defined in WGSL, undefined in GLSL); device pixel ratio fixed at 1. The panel's own CSS background (6 % white, square corners, times its opacity) is drawn over the glass as in the source's drawElementImage pass. (2) Seek-safety: the source rendered the glass asynchronously in canvas.onpaint and swapped texts with tl.call (not reversible); here the backdrop, both glass panels (left/top/opacity computed from time with the same eases as the text cards: power3.out in, power2.out settle and bumps with yoyo, power2.in out) and the text swap at 4.25 s are one pure function of time in ctx.code. Editing the text-card tweens in Studio does not move the glass panels (they follow the source numbers). (3) three r128 from a CDN -> the kit's vendored three 0.147 (the backdrop GLSL is unchanged). (4) The first card shows the source's own HyperFrames logo (assets/hyperframes-logo-dark.svg, param logo); texts are Vietnamese params (Miguel -> Minh); text uses the film's font (source: Inter). (5) Kit runtime quirk handled: a fresh kit Chromium loses its first WebGL context ~0.15 s after creation and restores it ~1 s later; the readiness promise waits for it and the frame is redrawn on restore. Designed for a 1920 x 1080 target (source px positions). 05/10/2026: source artwork restored as default (user's decision).",
+ "demo": { "bg": "#000000", "duration": 8, "hold": 0,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

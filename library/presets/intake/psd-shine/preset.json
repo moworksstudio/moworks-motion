@@ -1,0 +1,61 @@
+{
+ "name": "intake/psd-shine",
+ "kind": "effect",
+ "group": "intake",
+ "title": "Light across PSD letters",
+ "title_vi": "Vệt sáng lướt trong chữ PSD",
+ "desc_vi": "Một dải sáng chạy ngang qua nét chữ PSD (chỉ trong chữ), giữ nguyên màu, viền, bóng của thiết kế; nhiều lượt, nhiều chữ lệch nhau. Khác text/shimmer-sweep: dùng cho chữ PSD nhiều lớp.",
+ "params_vi": "target: lớp mặt chữ (id kết thúc _face) · passes: [[giây, thời lượng], ...] · color · width: % · angle: độ · stagger: giây giữa các chữ",
+ "ae": "png",
+ "tags": [
+  "light",
+  "shine",
+  "text",
+  "psd"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026). Dải vàng cho chữ trắng, trắng cho chữ màu / gradient. Demo dựng lại cấu trúc lớp của psd-frame.",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "u1",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    },
+    "html": "<div id='u1_rot' style='position:absolute;left:330px;top:420px;width:0px;height:0px'><div id='u1_rot_in' style='position:absolute;left:0px;top:0px'><div id='u1_shadow' style='position:absolute;left:0px;top:0px;white-space:nowrap;font:800 200px RFlex;color:#000;opacity:.45;transform:translate(8px,10px)'>Ánh sáng</div><div id='u1_face' style='position:absolute;left:0px;top:0px;white-space:nowrap;font:800 200px RFlex;color:#ff8a3d'>Ánh sáng</div></div></div>"
+   }
+  ],
+  "motion": [
+   {
+    "target": "u1_face",
+    "at": 0.3,
+    "params": {
+     "passes": [
+      [
+       0,
+       0.9
+      ],
+      [
+       1.3,
+       0.9
+      ]
+     ]
+    }
+   }
+  ],
+  "thumb_at": 0.3
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

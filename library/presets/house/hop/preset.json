@@ -1,0 +1,98 @@
+{
+ "name": "house/hop",
+ "kind": "effect",
+ "group": "house",
+ "title": "Hop",
+ "title_vi": "Nhảy cẫng",
+ "desc_vi": "Nhân vật thỉnh thoảng nhảy lên 12 px (mỗi 2,2 đến 3 giây, mỗi người một lúc) và thở nhẹ.",
+ "params_vi": "height: độ cao nhảy (12 px) · dur (30 s)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "hop",
+  "character",
+  "house"
+ ],
+ "notes": "Port of P.hop. Ambient formula via ctx.code on the float layer (origin 50% 100%). Phase and period come from ctx.hash.",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": 6,
+  "elements": [
+   {
+    "id": "h0",
+    "type": "image",
+    "src": "assets/demo/house-person-1.png",
+    "style": {
+     "left": "420px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "h1",
+    "type": "image",
+    "src": "assets/demo/house-person-2.png",
+    "style": {
+     "left": "720px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "h2",
+    "type": "image",
+    "src": "assets/demo/house-person-3.png",
+    "style": {
+     "left": "1020px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "h3",
+    "type": "image",
+    "src": "assets/demo/house-person-4.png",
+    "style": {
+     "left": "1320px",
+     "top": "380px",
+     "width": "160px",
+     "height": "330px"
+    }
+   },
+   {
+    "id": "floor",
+    "type": "box",
+    "style": {
+     "left": "360px",
+     "top": "708px",
+     "width": "1200px",
+     "height": "6px",
+     "background": "#264653"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "h0",
+     "h1",
+     "h2",
+     "h3"
+    ],
+    "at": 0.0,
+    "params": {
+     "height": 24
+    }
+   }
+  ]
+ }
+}

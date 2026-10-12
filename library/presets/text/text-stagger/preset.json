@@ -1,0 +1,17 @@
+{
+ "name": "text/text-stagger",
+ "kind": "effect",
+ "group": "text",
+ "title": "Text stagger",
+ "title_vi": "Từng từ trồi lên rồi ánh màu quét qua",
+ "desc_vi": "Các từ lần lượt trồi lên 48 px từ vùng nhoè, sau đó một vệt màu nhấn (xanh trời mặc định) quét qua từng từ. Kết thúc chữ còn vương chút màu nhấn ở mép.",
+ "params_vi": "accent: blue | green | violet hoặc mã màu · rise 48 px · blur 14 px · duration 0.54 · stagger 0.09 · shimmerAt: lúc bắt đầu quét (0.7 s sau khi trồi) · shimmer 0.72 · shimmerStagger 0.04",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/text-stagger/text-stagger.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["reveal", "words", "blur", "shimmer", "gradient"],
+ "check_end": false,
+ "notes": "Motion as the source's timeline integration (rise: opacity 0 -> 1, y 48 -> 0, blur 14 px -> 0, 0.54 s power3.out, stagger 0.09; sweep: background-position 0 % -> 100 %, 0.72 s power2.inOut, stagger 0.04, 0.7 s after the rise starts as in the source's 0.35 / 1.05). Gradient and 240 % size as in the source; the ink stops are the film element's colour (the source's tone variable). End check off: the sweep leaves the accent on part of each word (same as the source). AE: png (gradient clipped to text).",
+ "demo": { "hold": 1.0 }
+}

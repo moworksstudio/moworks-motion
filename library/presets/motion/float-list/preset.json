@@ -1,0 +1,117 @@
+{
+ "name": "motion/float-list",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Float list",
+ "title_vi": "Trôi lắc từng món",
+ "desc_vi": "Sticker, icon, thẻ trôi và lắc nhẹ theo sóng sin của thời gian phim, mỗi món một biên độ, chu kỳ, pha riêng; biên độ tăng dần 0,6 s đầu. Khác house/deco-float: thông số riêng cho từng phần tử.",
+ "params_vi": "items: [[id, biên độ x px, biên độ y px, xoay độ, chu kỳ s, pha 0-1], ...] · dur: số giây chạy · ramp: giây tăng biên độ",
+ "ae": "expression",
+ "tags": [
+  "ambient",
+  "float",
+  "sticker"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026). Đặt lên lớp ngoài của phần tử (entrance dùng lớp trong).",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "f0",
+    "type": "image",
+    "src": "assets/demo/house-sticker-heart.png",
+    "style": {
+     "left": "380px",
+     "top": "260px",
+     "width": "200px",
+     "height": "200px"
+    }
+   },
+   {
+    "id": "f1",
+    "type": "image",
+    "src": "assets/demo/house-sticker-star.png",
+    "style": {
+     "left": "760px",
+     "top": "560px",
+     "width": "160px",
+     "height": "160px"
+    }
+   },
+   {
+    "id": "f2",
+    "type": "image",
+    "src": "assets/demo/house-sticker-spark.png",
+    "style": {
+     "left": "1100px",
+     "top": "250px",
+     "width": "220px",
+     "height": "220px"
+    }
+   },
+   {
+    "id": "f3",
+    "type": "image",
+    "src": "assets/demo/house-sticker-flower.png",
+    "style": {
+     "left": "1420px",
+     "top": "580px",
+     "width": "170px",
+     "height": "170px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "f0",
+    "at": 0.2,
+    "params": {
+     "dur": 4.6,
+     "items": [
+      [
+       "f0",
+       18,
+       26,
+       6,
+       2.4,
+       0
+      ],
+      [
+       "f1",
+       30,
+       12,
+       -9,
+       3.1,
+       0.35
+      ],
+      [
+       "f2",
+       10,
+       34,
+       4,
+       1.9,
+       0.6
+      ],
+      [
+       "f3",
+       24,
+       20,
+       -6,
+       2.7,
+       0.15
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

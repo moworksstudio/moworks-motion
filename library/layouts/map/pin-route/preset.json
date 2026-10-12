@@ -1,0 +1,20 @@
+{
+ "name": "map/pin-route",
+ "kind": "block",
+ "group": "map",
+ "title": "Map pins and routes",
+ "title_vi": "Bản đồ thế giới: zoom tới vùng, ghim địa điểm, đường bay",
+ "desc_vi": "Bản đồ vector thế giới: máy quay bay tới vùng cần nói, quốc gia được tô sáng, các ghim địa điểm rơi xuống nảy nhẹ kèm nhãn, rồi đường bay tự vẽ theo cung tròn lớn giữa các điểm. Hợp video du lịch, logistics, mở rộng thị trường.",
+ "params_vi": "places: các điểm \"Tên:kinh độ,vĩ độ\", cách nhau | · routes: đường bay \"Từ>Đến\" theo tên điểm, cách nhau | · highlight: tên quốc gia tô sáng (tiếng Anh, ví dụ Vietnam), cách nhau | · focus: tâm zoom \"kinh độ,vĩ độ\" (trống = cả thế giới) · zoom: độ phóng (2.6) · land, edge, lit, pin, route, label, ocean: màu · camera: thời gian bay tới (2 s) · pinStagger: cách nhau giữa các ghim (0.25 s) · draw: thời gian vẽ mỗi đường (1.2 s)",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/map-animation-skills", "path": "skills/map-animation/references/vector-maps.md" },
+ "license": "MIT; map: Natural Earth (public domain) via world-atlas",
+ "scripts": ["libs/d3.min.js", "libs/topojson-client.min.js"],
+ "ae": "png",
+ "brand_safe": true,
+ "tags": ["map", "pins", "routes", "travel", "geography"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Recipes 3-7 of vector-maps (camera transform on one group, counter-scaled pins and labels, pin drop 40 px with an overshoot settle: the spring damping 12 / stiffness 120 is written as back.out(1.7), great-circle routes with geoInterpolate drawn on with pathLength 1, focus country lit and the rest muted). The 12 fps stutter of recipe 2 is left out (render at the film's rate). Natural Earth 1 projection fitted to the box. Country names are Natural Earth's English names.",
+ "demo": { "duration": 6, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0 }], "bg": "#0b0f14" }
+}

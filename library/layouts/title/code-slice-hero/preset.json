@@ -1,0 +1,59 @@
+{
+ "name": "title/code-slice-hero",
+ "kind": "block",
+ "group": "title",
+ "title": "Code Slice Hero",
+ "title_vi": "Mặt tiêu đề lật từng ô lộ tiêu đề phía sau",
+ "desc_vi": "Một mặt tiêu đề chia ô lật từng ô dưới một trường độ sâu quét qua, lộ ra tiêu đề phía sau.",
+ "params_vi": "duration: độ dài của block (8 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-slice-hero/code-slice-hero.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "3d-motion",
+  "transition",
+  "typography",
+  "tiles",
+  "flip",
+  "webgl2"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/code-slice-hero.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A tiled headline surface flips cell by cell under a sweeping depth field to reveal the rear headline.",
+ "demo": {
+  "duration": 8.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 8.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

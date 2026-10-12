@@ -1,0 +1,20 @@
+{
+ "name": "text/scramble-reveal",
+ "kind": "effect",
+ "group": "text",
+ "title": "Scramble Reveal",
+ "title_vi": "Chữ nhiễu rồi chốt dần từ trái sang",
+ "desc_vi": "Dòng chữ bắt đầu là các ký tự nhiễu, rồi chốt từng ký tự từ trái sang phải; vào bằng một đường cong nhẹ rồi trôi rất khẽ.",
+ "params_vi": "glyphs: bộ ký tự nhiễu · seed: hạt giống cố định · inDur: thời gian vào (1.65 s) · lockTail, firstLock: nhịp chốt · hold: thời gian giữ (1.35 s) · drift: biên độ trôi (0.55 % chiều cao) · exit: none | fade | up",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/scramble-reveal/scramble-reveal.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": ["scramble", "decode", "per-frame", "left-to-right"],
+ "notes": "Only the motion is ported. NOT ported: the terminal frame (bordered shell with '>_' prefix), the monospace font, the accent colours and the font fitting (all belong to the film; the source's style=clean is what this effect does). The glyph pool, the LCG (seed 0x27c0ffee, glyph = state % 44, skip the glyph equal to the target), the 30 fps rows and the left-to-right lock frames (first lock frame 6, last = round(1.5 x 30) = 45) are the source's, computed at build time and written into the film as a literal table; the proxy tween reads row floor(progress x 30). Because the film font is proportional (the source's is monospace), the scrambled glyphs are an overlay left-aligned over an invisible copy of the real text: the locked prefix is exactly in its final place, only the unlocked tail changes width. The source centres a constant-width mono string, so there the whole string does not shift; here the left edge stays fixed instead. Intended for one-line text. Source envelope depends on the clip duration D (default 3 s); here hold is a param (default 1.35 s = 3 - 1.65) and the IN/OUT compression for D < 2.1 s is not ported. Arrival x/y are 4 % of the frame width and 2.4 % of the height (cqw/cqh -> px from ctx.W/H); drift -0.55 % of the height with 0.3 s of stillness at the end of the hold. Exit up: x +5 %, y -3.5 %, opacity 0 over 0.45 s (default none, as in the source).",
+ "demo": {
+  "hold": 1.0,
+  "elements": [ { "id": "t1", "type": "text", "text": "GIẢI MÃ CHUYỂN ĐỘNG", "style": { "color": "#71f5a7", "font-weight": "780", "font-size": "110px", "letter-spacing": "0.055em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } } ],
+  "motion": [ { "target": "t1", "at": 0.3 } ]
+ }
+}

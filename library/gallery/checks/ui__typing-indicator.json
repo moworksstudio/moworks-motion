@@ -1,0 +1,17 @@
+{
+ "name": "ui/typing-indicator",
+ "at": "2026-10-05 22:33",
+ "static": [],
+ "build": "ok",
+ "tweens": 14,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 1e-05,
+ "seek": 1e-05,
+ "bake": 0.0,
+ "duration": 3.2,
+ "problems": [],
+ "status": "ok",
+ "seconds": 4.7
+}

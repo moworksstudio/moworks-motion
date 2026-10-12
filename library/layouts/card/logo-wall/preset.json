@@ -1,0 +1,18 @@
+{
+ "name": "card/logo-wall",
+ "kind": "block",
+ "group": "card",
+ "title": "Logo wall",
+ "title_vi": "Tường logo khách hàng (ký hiệu thay thế)",
+ "desc_vi": "Một tường các ô logo thay thế (hai chữ cái) hiện lần lượt theo thứ tự, mỗi ô mờ rồi phóng nhẹ vào đúng chỗ; giữ yên, cuối clip mờ đi.",
+ "params_vi": "heading: dòng tiêu đề trên tường · rows: 2 đến 4 hàng · cols: 3 đến 6 cột · stagger: ms giữa hai ô (20 đến 75) · marks: các ký hiệu, cách nhau dấu phẩy (hai chữ cái, thay bằng logo của khách) · duration: độ dài gốc 5 s · bg, fg, muted, surface, border: màu · radius: bo góc ô (px)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/logo-wall/logo-wall.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["logo wall", "trusted by", "grid", "social proof", "stagger"],
+ "notes": "Layout and motion as in the source: stage 86cqw x 82cqh with 3cqh gap and padding, heading min(2.6cqw, 4.4cqh) weight 650 tracking .08em uppercase with a 8cqw x 0.14cqw rule on both sides (the source's ::before / ::after, here two real spans), grid rows x cols with a 1.6cqh gap, cells with a 0.14cqw border, surface fill and a 0 1.2cqh 3cqh shadow, lettermark tile min(5.5cqw, 9.5cqh) with radius x 0.72, text min(2.2cqw, 4cqh) weight 800; cells opacity 0 -> 1 and scale 0.94 -> 1 over 0.55 s power2.out in DOM order, `stagger` ms apart, from 0.15 s (one tween per cell: the source used one tween with stagger { each, from: start }, which the builder cannot write out, it reads the stagger total back as the duration); the stage fades out over 0.5 s power2.in at `duration` - 0.5 s; IN 2.5 s and OUT 0.5 s scale together (stagger too) when `duration` is below 3 s. All cqw / cqh converted to px from the target box. Differences: the lettermarks are the source's own placeholders (AX, BL, CY ... 24 of them, a param list; more cells than marks get generated lettermarks); the cell radius is a px param (default 18, the source demo theme; the source fallback 2cqw is huge in a full-frame box); theme tokens bg, fg, muted, surface, border are params with the source demo theme as default (bg only tints the cell shadow and the mark text); the source's full-box background is not painted; color-mix(fg 72%, transparent) written as rgba. The demo shows 4 x 6 cells at 75 ms (the source demo's values). Default heading is Vietnamese (source: Trusted by teams).",
+ "demo": { "bg": "#080b13", "duration": 5.6,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": { "rows": 4, "cols": 6, "stagger": 75 } }] }
+}

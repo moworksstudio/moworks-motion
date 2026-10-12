@@ -1,0 +1,18 @@
+{
+ "name": "text/words-rise",
+ "kind": "effect",
+ "group": "text",
+ "title": "Words rise",
+ "title_vi": "Từng từ trồi lên khỏi mặt nạ",
+ "desc_vi": "Mỗi từ trồi lên khỏi mặt nạ riêng, lần lượt.",
+ "params_vi": "duration 0.7 · stagger 0.06 · from 135",
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": [],
+ "notes": "Written for v2 (MotionSpec test set).",
+ "demo": {}
+}

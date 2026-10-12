@@ -1,0 +1,57 @@
+{
+ "name": "data/mk-line-graph",
+ "kind": "block",
+ "group": "data",
+ "title": "Minimal Line Graph",
+ "title_vi": "Biểu đồ đường tối giản",
+ "desc_vi": "Một hoặc hai đường số liệu tự vẽ, chấm bật lên, nhãn giá trị chạy theo đầu nét, trục mờ, chú giải chấm màu.",
+ "params_vi": "duration: độ dài của block (7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/mk-line-graph/mk-line-graph.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "data-viz",
+  "chart",
+  "graph",
+  "minimal"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/mk-line-graph.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: One or two SVG series draw on with dots popping and value labels riding the draw front; dim baseline axis, x-labels, color-dot legend",
+ "demo": {
+  "duration": 7.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

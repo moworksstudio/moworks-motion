@@ -1,0 +1,59 @@
+{
+ "name": "transition/match-cut",
+ "kind": "block",
+ "group": "transition",
+ "title": "Match Cut",
+ "title_vi": "Cắt khớp hình tròn sang cảnh mới",
+ "desc_vi": "Một hình tròn tăng tốc vào cú cắt một khung hình, khớp đúng hình tròn của cảnh mới rồi tiếp tục về tư thế nghỉ nhỏ hơn.",
+ "params_vi": "accent: Accent (green | blue | violet), mặc định \"green\" · label_a: Scene A label, mặc định \"Start\" · label_b: Scene B label, mặc định \"Done\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/match-cut/match-cut.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "transition",
+  "match-cut",
+  "hard-cut",
+  "continuity"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/match-cut.html) in a kit film, mounted by ctx.hf.  Source: A circle accelerates into a hard single-frame scene swap, matches the incoming circle exactly, and continues into a smaller resting pose.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "label_a": "Bắt đầu",
+     "label_b": "Xong",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

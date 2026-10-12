@@ -1,0 +1,17 @@
+{
+ "name": "ui/message-thread-reveal",
+ "at": "2026-10-05 22:32",
+ "static": [],
+ "build": "ok",
+ "tweens": 343,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 25.77,
+ "problems": [],
+ "status": "ok",
+ "seconds": 16.5
+}

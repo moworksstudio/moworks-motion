@@ -1,0 +1,58 @@
+{
+ "name": "transition/cut-the-curve",
+ "kind": "block",
+ "group": "transition",
+ "title": "Cut the Curve",
+ "title_vi": "Cắt cảnh khớp vận tốc theo hướng",
+ "desc_vi": "Cú cắt cứng khớp vận tốc: vật cũ tăng tốc ra, đổi cảnh đúng lúc nhanh nhất, vật mới tiếp tục cùng hướng và chậm dần vào chỗ.",
+ "params_vi": "subject: Subject (cursor | card | scene), mặc định \"cursor\" · direction: Direction (left | right | up | down), mặc định \"left\" · cutFraction: Cut fraction, mặc định 0.33 · blurPx: Cut blur, mặc định 12 · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cut-the-curve/cut-the-curve.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "transition",
+  "directional-cut",
+  "velocity-match",
+  "whip",
+  "bridge",
+  "demonstrate"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cut-the-curve.html) in a kit film, mounted by ctx.hf.  Source: A velocity-matched directional hard cut: the outgoing subject accelerates with power4.in, swaps at peak velocity, and the incoming subject continues in the same direction with power4.out.",
+ "demo": {
+  "duration": 1.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 1.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

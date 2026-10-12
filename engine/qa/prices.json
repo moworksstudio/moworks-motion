@@ -1,0 +1,15 @@
+{
+ "_about": "API prices in USD per million tokens, for kit.py track report (the user's A/B tests compare cost, 07/10/2026). in = input, out = output (thinking included), w5 / w1h = cache writes with a 5-minute / 1-hour lifetime (1.25x / 2x input), read = cache reads. fast = price multiplier when a reply was made in fast mode (usage.speed = \"fast\"). A model missing here: look its price up with the claude-api skill (never from memory) and add it with the date. Anthropic first-party API rates; a Claude subscription bills differently.",
+ "source": "claude-api skill, models table cached 2026-09-25, and its prompt-caching page (writes 1.25x for 5 min, 2x for 1 h)",
+ "checked": "2026-10-07",
+ "models": {
+  "claude-opus-5-5": { "in": 4.0, "out": 20.0, "w5": 5.0, "w1h": 8.0, "read": 0.20, "fast": 2.0 },
+  "claude-opus-5": { "in": 5.0, "out": 25.0, "w5": 6.25, "w1h": 10.0, "read": 0.50, "fast": 2.0 },
+  "claude-opus-4-8": { "in": 5.0, "out": 25.0, "w5": 6.25, "w1h": 10.0, "read": 0.50 },
+  "claude-sonnet-5-5": { "in": 2.0, "out": 10.0, "w5": 2.5, "w1h": 4.0, "read": 0.20 },
+  "claude-sonnet-5": { "in": 2.0, "out": 10.0, "w5": 2.5, "w1h": 4.0, "read": 0.20 },
+  "claude-fable-5-1": { "in": 10.0, "out": 50.0, "w5": 12.5, "w1h": 20.0, "read": 0.25 },
+  "claude-fable-5": { "in": 10.0, "out": 50.0, "w5": 12.5, "w1h": 20.0, "read": 1.00 },
+  "claude-haiku-4-5": { "in": 1.0, "out": 5.0, "w5": 1.25, "w1h": 2.0, "read": 0.10 }
+ }
+}

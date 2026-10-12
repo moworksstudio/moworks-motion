@@ -1,0 +1,59 @@
+{
+ "name": "title/glass-hero",
+ "kind": "block",
+ "group": "title",
+ "title": "Glass Hero",
+ "title_vi": "Khối thuỷ tinh xoay trước tiêu đề khổng lồ",
+ "desc_vi": "Một khối thuỷ tinh đặc trồi lên trước tiêu đề khổng lồ và xoay mãi, chữ bị bẻ cong và tách màu qua nó.",
+ "params_vi": "duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/glass-hero/glass-hero.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "3d-object",
+  "three-js",
+  "webgl",
+  "glass",
+  "refraction",
+  "hero"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/glass-hero.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A solid glass object rises in front of a giant headline and keeps turning, so the type bends and splits into colour through it.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

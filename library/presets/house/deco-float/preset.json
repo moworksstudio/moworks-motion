@@ -1,0 +1,123 @@
+{
+ "name": "house/deco-float",
+ "kind": "effect",
+ "group": "house",
+ "title": "Deco float",
+ "title_vi": "Trang trí trôi lơ lửng",
+ "desc_vi": "Icon và sticker không đứng yên: trôi lên xuống và nghiêng nhẹ, mỗi cái một chu kỳ riêng.",
+ "params_vi": "amp: biên độ (6 px) · tilt: góc nghiêng (2.5°) · dur: số giây chuyển động (30)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "float",
+  "decoration",
+  "house"
+ ],
+ "notes": "Port of P.decoFloat. Ambient formula via ctx.code (proxy tween 0 -> dur, ease none), applied to the float layer (ctx.layer = v1 P.floatLayer). v1 ran for 600 s; here `dur` defaults to 30 s after `at` and the motion is frozen at its start pose before `at` (v1 kept running backwards in time). Period and phase come from ctx.hash (rounded to 5 decimals in the written values).",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "f0",
+    "type": "image",
+    "src": "assets/demo/house-sticker-heart.png",
+    "style": {
+     "left": "300px",
+     "top": "200px",
+     "width": "180px",
+     "height": "180px"
+    }
+   },
+   {
+    "id": "f1",
+    "type": "image",
+    "src": "assets/demo/house-sticker-star.png",
+    "style": {
+     "left": "600px",
+     "top": "500px",
+     "width": "140px",
+     "height": "140px"
+    }
+   },
+   {
+    "id": "f2",
+    "type": "image",
+    "src": "assets/demo/house-sticker-spark.png",
+    "style": {
+     "left": "900px",
+     "top": "220px",
+     "width": "200px",
+     "height": "200px"
+    }
+   },
+   {
+    "id": "f3",
+    "type": "image",
+    "src": "assets/demo/house-sticker-flower.png",
+    "style": {
+     "left": "1250px",
+     "top": "520px",
+     "width": "160px",
+     "height": "160px"
+    }
+   },
+   {
+    "id": "f4",
+    "type": "image",
+    "src": "assets/demo/house-sticker-bolt.png",
+    "style": {
+     "left": "1500px",
+     "top": "220px",
+     "width": "140px",
+     "height": "140px"
+    }
+   },
+   {
+    "id": "f5",
+    "type": "image",
+    "src": "assets/demo/house-sticker-ring.png",
+    "style": {
+     "left": "1650px",
+     "top": "600px",
+     "width": "150px",
+     "height": "150px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "f0",
+     "f1",
+     "f2",
+     "f3",
+     "f4",
+     "f5"
+    ],
+    "at": 0.2
+   },
+   {
+    "target": [
+     "f0",
+     "f1",
+     "f2",
+     "f3",
+     "f4",
+     "f5"
+    ],
+    "at": 0.2,
+    "params": {
+     "spread": 0.6
+    },
+    "preset": "house/pop-cute"
+   }
+  ]
+ }
+}

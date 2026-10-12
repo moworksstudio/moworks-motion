@@ -1,0 +1,138 @@
+{
+ "name": "card/talking-card",
+ "kind": "block",
+ "group": "card",
+ "title": "Talking-head Card",
+ "title_vi": "Thẻ đồ hoạ cho video người nói (10 phong cách)",
+ "desc_vi": "Thẻ thông tin đặt lên video phỏng vấn / podcast / người nói: 10 phong cách (học thuật, kiểm toán, tạp chí, hình khối, tối giản, ánh đèn, Thuỵ Sĩ, terminal, bảng trắng, mạng xã hội), chữ đổi bằng replace, chuyển động có sẵn trong từng phong cách. Đi cùng motion/talking-layout (video dời sang chia đôi / chồng / góc nhỏ / toàn khung).",
+ "params_vi": "style: academic | audit | editorial | geom | minimal | spotlight | swiss | terminal | whiteboard | xhs (assets/DESIGN_INDEX.md: hợp giọng nào) · replace: các cặp [chữ gốc, chữ mới] (chữ mẫu là tiếng Trung, luôn thay) · size: khung thiết kế [1920, 1080], thu phóng vừa ô · duration: thẻ ở bao lâu (0 = ở mãi) · enter / exit: mờ vào / ra (0.4 / 0.35 s)",
+ "source": {
+  "label": "HyperFrames skill talking-head-recut (adapted there from vtake-skills by leeoxiang, MIT)",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/talking-head-recut/references/",
+  "sha256": {
+   "DESIGN_INDEX.md": "25fa72902a37cafb764f86d909e72dbf1c6b44ff3494d1c3da24c4a4a819ce16",
+   "frames/clean.html": "10c18a856b9b3430075b14eaaa346fd953827c158c6640cc19d94e1ad622bb0f",
+   "frames/hairline.html": "41f083f994fc8e7672f26f02d4afac0b14acf09be2ec816bb86b15c1722e416f",
+   "frames/polaroid.html": "6e031ce943bbc47891ff5bdc7ae5ac22c9b85ba6dc838f9ba06175e979dd54d9",
+   "layouts/overlay.html": "d8a44b6b0075b194b70e4df22b34c07d9bd4a41bd14017ef2c126eda37d91a26",
+   "layouts/pip.html": "3fc7da10775d5ac6caeca78482939d5a6afad6f1637c0190beb023ebfca0a4f0",
+   "layouts/split.html": "6078dba9780e850f1d21cd29fbc27f6dcf69ced3f8559e7db115d16d0ab41b7e",
+   "layouts/stack.html": "054d1ec184f53bc6d8ca2a3effc6f8f19a98d29d6c4ab6d3cbf6f9bd4f5b4cb7",
+   "NOTICE.md": "0e0a88d4eb584a1a0805930d30918ceebf0824fbb594731ebaa069eea9849995",
+   "styles/academic.html": "aae0f6b167f6a09a02622f1e785aa9b06f0d96382aba9f4cabcb89250747d5a6",
+   "styles/audit.html": "2edbd5cfdd9bd3bd6789ac2a6bea9555187f65b03485dc58771b4bdf982a7c7d",
+   "styles/editorial.html": "f59b3ef3edb66c523270179a59b1efd0b0183d8d4e871958142c99c6447f5710",
+   "styles/geom.html": "4d4e5cdf29ee8082c181f2001c00764355d2a408605ecda87bacc7d1fb48b7c1",
+   "styles/minimal.html": "cb161810bad03c9f8e2ed68a6bd300dafc52d184ff214a5e7933d0a0676e1a7f",
+   "styles/spotlight.html": "91f2a516f947eab9f40f112f13185724e2cfbeaffb99786ab14ea13629bc38a5",
+   "styles/swiss.html": "5c44a617334fb4f7bd4aaad23a2bea2231285ab25e80c952abaf72e9a5f4ac17",
+   "styles/terminal.html": "a81c69499a4af4df9c8b1b2b81ffbc7eb467e27b3107fa3adf34bb406b17b72d",
+   "styles/whiteboard.html": "5b01baa63fb41e39e8095da5397589489b2cfe328a3b2748a6f83ccd0f0ebb28",
+   "styles/xhs.html": "47af8ffdcab845deec36d7d39913ef230a54ddc28c6cd95a5f67f4d50899680b"
+  }
+ },
+ "license": "Apache-2.0 (HyperFrames) + MIT (vtake-skills, assets/NOTICE.md)",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "talking-head",
+  "card",
+  "overlay",
+  "interview",
+  "podcast"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "fonts": [
+  {
+   "family": "Caveat",
+   "vendor": "fonts/google/PatrickHand/PatrickHand-Regular.ttf",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Virgil",
+   "vendor": "fonts/google/PatrickHand/PatrickHand-Regular.ttf",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "LXGW WenKai TC",
+   "vendor": "fonts/google/PatrickHand/PatrickHand-Regular.ttf",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Inter",
+   "vendor": "fonts/google/Inter/Inter[opsz,wght].ttf",
+   "weight": "100 900",
+   "style": "normal"
+  },
+  {
+   "family": "Inter",
+   "vendor": "fonts/google/Inter/Inter-Italic[opsz,wght].ttf",
+   "weight": "100 900",
+   "style": "italic"
+  }
+ ],
+ "notes": "Kit code (preset.js) mounting the style files as shipped; the data-anim table and the timings are HyperFrames'. Made for a full-frame card (pip / overlay layouts); on a split or stack layout give it a box of that size and restyle its CSS in the film if it crowds.",
+ "demo": {
+  "duration": 3.5,
+  "hold": 0.6,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0.2,
+    "params": {
+     "style": "editorial",
+     "replace": [
+      [
+       "TAKEAWAY",
+       "ĐIỀU ĐỌNG LẠI"
+      ],
+      [
+       "<span class=\"first\">真</span>正的创造，从拒绝套路开始。",
+       "<span class=\"first\">S</span>áng tạo thật bắt đầu từ việc bỏ lối mòn."
+      ],
+      [
+       "停止模仿、停止套模板，把每一个想法都当作",
+       "Đừng bắt chước, đừng dùng khuôn: hãy coi mỗi ý tưởng là "
+      ],
+      [
+       "第一次表达",
+       "lần đầu được nói ra"
+      ],
+      [
+       "</span>。",
+       "</span>."
+      ],
+      [
+       "只有这样，作品才会带上你的体温。",
+       "Chỉ khi đó tác phẩm mới mang hơi ấm của bạn."
+      ]
+     ]
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

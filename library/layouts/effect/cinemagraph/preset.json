@@ -1,0 +1,58 @@
+{
+ "name": "effect/cinemagraph",
+ "kind": "block",
+ "group": "effect",
+ "title": "Cinemagraph",
+ "title_vi": "Cinemagraph: ảnh tĩnh với một vùng chuyển động",
+ "desc_vi": "Một tấm ảnh đứng yên với một vùng duy nhất còn sống (khói bốc lên trên tách cà phê), lặp liền mạch.",
+ "params_vi": "duration: độ dài của block (10 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/cinemagraph/cinemagraph.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "effect",
+  "cinemagraph",
+  "photo",
+  "loop",
+  "freeze-frame"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/cinemagraph.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A still photograph with one living region: the frame is frozen while a single feathered window keeps moving - here, steam rising over a cup - drawn from the seek time alone with a period that divides the duration, so the render loops seamlessly. Swap the placeholder scene for a freeze-frame still masked over a looping video to cinemagraph real footage.",
+ "demo": {
+  "duration": 10.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 10.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

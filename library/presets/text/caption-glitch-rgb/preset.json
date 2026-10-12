@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-glitch-rgb",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: glitch RGB",
+ "title_vi": "Phụ đề nhiễu tách màu đỏ xanh",
+ "desc_vi": "Phụ đề theo giọng đọc kiểu cyber trên lớp tối dần và vân quét: mỗi từ khi được nói giật ngang với bóng tách đỏ / xanh rồi bật về, từ dài và con số còn giật dư chấn nhỏ tới từ kế tiếp.",
+ "params_vi": "words: \"voice\" · size 88 (tự thu nhỏ cho vừa), upper, bottom 120 · color, red, cyan: màu chữ và hai màu tách · overlay, scanlines: lớp tối và vân quét (bật / tắt)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-glitch-rgb/caption-glitch-rgb.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "glitch", "cyber", "rgb split"],
+ "notes": "Look, grouping (sentence mark, 0.28 s pause, 4 words or 21 characters), per-word glitch plan (35 / 65 % of up to 0.24 s, seeded travel 8-16 px and split 5-12 px with the source's mulberry32 seeds), aftershocks (words of 7+ letters or with figures, 0.045 + 0.075 s pulses every 0.24 / 0.18 s) and timing as in the source. Changed: the film's font instead of Space Grotesk; words from the voice transcript. The rest shadow is written as three shadows (two transparent, zero offset) so GSAP can interpolate it with the split: the source tweened between a three-shadow and a one-shadow string, which GSAP cannot interpolate, and the result then depended on the seek path. After Effects: the moving RGB split is a text-shadow animation; the AE port keeps the text and its position keys, the split shadows are not keyed (static shadow).",
+ "demo": {
+  "bg": "#22303c", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo" } } ]
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "name": "lower/dark-card",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: dark card",
+ "title_vi": "Lower third thẻ tối, gạch chân vàng",
+ "desc_vi": "Thẻ tối bo góc trượt lên, tên trồi lên, gạch chân màu vẽ từ trái sang, chức danh hiện dần; tự ra ở giây 4.3.",
+ "params_vi": "name, role: chữ · card, accent: màu thẻ và gạch chân · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-dark-card/lt-dark-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super", "underline"],
+ "notes": "Font: the film's font instead of Montserrat from the web (no network in films). Source hard kill at 4.75 s not needed (the card is at opacity 0).",
+ "demo": { "bg": "#5b6b82", "duration": 5.2 }
+}

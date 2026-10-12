@@ -1,0 +1,61 @@
+{
+ "name": "logo/brand-close",
+ "kind": "block",
+ "group": "logo",
+ "title": "Logo Brand Close",
+ "title_vi": "Chữ thương hiệu đổ từng chữ cái, kết phim",
+ "desc_vi": "Chữ thương hiệu cỡ lớn đổ xuống từng chữ cái vào giữa khung, dấu chấm màu thương hiệu rơi cuối cùng, khẩu hiệu và địa chỉ web chữ máy giãn rộng hiện bên dưới, rồi đứng yên tới hết.",
+ "params_vi": "wordmark: Wordmark, mặc định \"HYPERFRAMES\" · tagline: Tagline, mặc định \"Write HTML. Render video.\" · url: URL, mặc định \"hyperframes.heygen.com\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/logo-brand-close/logo-brand-close.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "typography",
+  "brand",
+  "logo",
+  "end-card",
+  "close"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/logo-brand-close.html) in a kit film, mounted by ctx.hf.  Source: A display-scale wordmark cascades letter by letter into a centered lockup, the accent brand period lands last, an optional tagline and wide-tracked mono URL settle beneath, and the finished identity holds dead still to the end of the film.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "wordmark": "MOWORKS",
+     "tagline": "Viết HTML. Xuất video.",
+     "url": "moworks.vn",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

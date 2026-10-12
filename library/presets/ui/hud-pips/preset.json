@@ -1,0 +1,60 @@
+{
+ "name": "ui/hud-pips",
+ "kind": "effect",
+ "group": "ui",
+ "title": "HUD pips, one per word",
+ "title_vi": "Ô đếm HUD sáng từng ô",
+ "desc_vi": "Một hàng ô nhỏ kiểu game sáng lần lượt, mỗi chữ hát / mỗi phách một ô, sáng rồi giữ. Hợp với phim 8-bit, đếm bước, tiến độ.",
+ "params_vi": "n: số ô · times: [giây từ at] · on / off: màu · size: px · gap: px · round: ô tròn",
+ "ae": "keyframes",
+ "tags": [
+  "hud",
+  "pips",
+  "counter",
+  "8-bit",
+  "game"
+ ],
+ "notes": "Viết cho một phim lời bài hát 8-bit của studio (08/10/2026).",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "hp",
+    "type": "box",
+    "style": {
+     "left": "830px",
+     "top": "520px",
+     "width": "260px",
+     "height": "34px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "hp",
+    "at": 0.3,
+    "params": {
+     "n": 6,
+     "times": [
+      0,
+      0.3,
+      0.6,
+      0.9,
+      1.2,
+      1.5
+     ],
+     "on": "#ffd166"
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

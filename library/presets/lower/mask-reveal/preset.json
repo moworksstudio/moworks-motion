@@ -1,0 +1,28 @@
+{
+ "name": "lower/mask-reveal",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: mask reveal",
+ "title_vi": "Lower third không thẻ, quét lộ tên",
+ "desc_vi": "Vạch vàng quét từ trái sang, tên đậm được lộ ra bằng clip-path phía sau vạch, chức danh hiện lên; tự ra ở giây 4.25.",
+ "params_vi": "name, role: chữ · accent: màu vạch · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/lt-mask-reveal/lt-mask-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "lower third",
+  "name",
+  "wipe"
+ ],
+ "notes": "Font: the film's font (name at weight 900, role 500) instead of Montserrat from the web. The sweep bar travels the width of the name measured at build time (the source hard-codes 536 px for its demo text), written into the film as a literal px value. The source's final hard-kill (visibility hidden at 4.75 s) is not needed: the name is clipped away and the role is at opacity 0 after the exit. Exit tweens use explicit from values.",
+ "demo": {
+  "bg": "#2b3a55",
+  "duration": 5.2
+ }
+}

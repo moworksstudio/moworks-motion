@@ -1,0 +1,21 @@
+{
+ "name": "text/marker-highlight",
+ "kind": "effect",
+ "group": "text",
+ "title": "Marker Highlight",
+ "title_vi": "Nét bút dạ vẽ lên từ nhấn mạnh",
+ "desc_vi": "Dòng chữ nổi lên, rồi một nét bút dạ vẽ tay chạy qua từ cần nhấn mạnh, từ đó nảy nhẹ khi mực chạm.",
+ "params_vi": "word: từ cần nhấn (khớp đầu tiên, không phân biệt hoa thường) · style: highlight | circle | underline | scribble · accent: màu mực (#71f5a7) · drawAt: lúc bắt đầu vẽ (0.9 s) · draw (0.6 s) · exit: none | fade | up · exitAt",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/marker-highlight/marker-highlight.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["emphasis", "marker", "svg", "stroke-draw", "highlight"],
+ "notes": "Motion and the four stroke paths are the source's (viewBox, path data, stroke widths 26 / 2.8 / 4.5 / 5, ink opacities 0.5 / 1 / 1 / 0.65, the per-style boxes around the word, preserveAspectRatio none). Timings: rise 0.55 s power3.out from 6 % of the frame height (65 px), draw 0.6 s power2.inOut at drawAt (0.9 s, relative to the effect start), pop to 1.045 over 2 x 0.16 s at 70 % of the draw, ink hidden (opacity 0) until the cue, exit fade / up 0.45 s. Differences: the source's variables text/emphasis_word become the target's own text and the param `word`; the source's text block (max-width 86cqw, centring, 600 weight, font fitting) and background belong to the film; the ink colour is a param (default the source's green fallback #71f5a7, no theme tokens). The dash length is measured with getTotalLength at build time and written as a literal. The source's envelope depends on the clip duration D (default 3.5 s) and compresses phases when D is short; here exit is off by default and exitAt (3.05 s = 3.5 - 0.45) is a param; with an exit, drawAt is clamped so stroke and pop finish before it, as in the source. The check 'end' is disabled: the final frame carries the drawn marker, so it intentionally differs from the plain text layout.",
+ "check_end": false,
+ "demo": {
+  "hold": 1.0,
+  "elements": [ { "id": "t1", "type": "text", "text": "Chốt phim với sự tự tin", "style": { "color": "#f5f5f2", "font-weight": "700", "font-size": "110px", "letter-spacing": "-0.03em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } } ],
+  "motion": [ { "target": "t1", "at": 0.3, "params": { "word": "tự tin" } } ]
+ }
+}

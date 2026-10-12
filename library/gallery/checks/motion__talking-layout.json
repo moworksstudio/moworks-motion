@@ -1,0 +1,18 @@
+{
+ "name": "motion/talking-layout",
+ "at": "2026-10-11 21:15",
+ "static": [],
+ "build": "ok",
+ "tweens": 8,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 4.2,
+ "problems": [],
+ "status": "ok",
+ "seconds": 9.8
+}

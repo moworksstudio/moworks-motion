@@ -1,0 +1,18 @@
+{
+ "name": "card/spotlight-card",
+ "kind": "block",
+ "group": "card",
+ "title": "Spotlight card",
+ "title_vi": "Thẻ đèn rọi trên nền ánh sáng",
+ "desc_vi": "Thẻ kính tối trên nền ánh sáng mờ trôi chậm, một vệt đèn rọi chạy chéo qua thẻ.",
+ "params_vi": "title, text: tiêu đề và mô tả · scale: độ phóng to (1.65 như bản demo gốc, thẻ gốc 760 x 428 px) · bg: màu nền thẻ · fg: màu chữ · radius: bo góc thẻ",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/spotlight-card/spotlight-card.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["card", "spotlight", "glow", "mesh", "blur"],
+ "notes": "Layout, sizes, colours and motion as in the source (card 760 x 428 px, radius 30; inner card inset 74 / 92 px, radius 26, 1 px rgba(255,255,255,.16) border, rgba(255,255,255,.08) fill; mesh inset -22 %, blur 44 px, opacity .88, three radial gradients; spotlight 260 px radial disc with mix-blend-mode screen). Motion kept: mesh custom properties --hf-x1/y1/x2/y2/x3/y3 from 18/28, 78/46, 44/80 % to 34/42, 62/60, 58/64 % over 4 s sine.inOut; spotlight --hf-spot-x/y from (-120, -70) px to (190, 90) px over 3 s sine.inOut; both start at `at`. The motion is CSS custom property tweens on a blurred gradient with a blend mode, so ae is png. Differences: the source demo wrapped the card in a scale(1.65) frame; here that is the param `scale` (default 1.65) and every px size is multiplied by it, so the card is crisp at any size; the card is centred in the target box; the spotlight is centred with margin auto instead of the source's grid static position; the paragraph size 18 px comes from the source demo (the component itself left it at the browser default); the source's .particle hook (CSS only, no markup in the file; a timeline stub that animates particles if they exist) is not ported. Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#f7f7f8", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.5, "params": {} }] }
+}

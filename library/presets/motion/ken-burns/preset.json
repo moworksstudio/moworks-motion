@@ -1,0 +1,21 @@
+{
+ "name": "motion/ken-burns",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Ken Burns (seeded)",
+ "title_vi": "Ảnh trôi và phóng chậm (Ken Burns), mỗi ảnh một kiểu",
+ "desc_vi": "Mỗi ảnh trôi và phóng (hoặc lùi) chậm liên tục suốt thời gian, mỗi ảnh một kiểu khác nhau theo thứ tự nhưng lần nào render cũng giống nhau. Hợp slideshow ảnh, ảnh sản phẩm, ảnh sự kiện.",
+ "params_vi": "duration: thời gian chuyển động (5 s, thường bằng thời gian ảnh trên màn) · anchor: tâm phóng (\"50% 50%\"; ảnh chân dung nên \"50% 30%\") · seed: đổi bộ kiểu chuyển động",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/ecommerce-video-skills", "path": "skills/photo-slideshow/references/ken-burns.md" },
+ "license": "MIT",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "tags": ["ken-burns", "photo", "slideshow", "pan", "zoom"],
+ "check_end": false,
+ "notes": "Moves, seeded PRNG (mulberry32), amounts, base scale and easing as in the recipe (Remotion interpolate with Easing.inOut(Easing.sin) = GSAP sine.inOut). The recipe's transform order scale() translate() is GSAP's own x / y with scale (drift in screen px). Pictures keep their layout box; the move happens inside it.",
+ "demo": { "duration": 5, "hold": 0, "elements": [
+   { "id": "p1", "type": "image", "src": "assets/demo/house-dish-1.png", "style": { "left": "80px", "top": "190px", "width": "560px", "height": "700px", "object-fit": "cover", "border-radius": "18px" } },
+   { "id": "p2", "type": "image", "src": "assets/demo/house-dish-2.png", "style": { "left": "680px", "top": "190px", "width": "560px", "height": "700px", "object-fit": "cover", "border-radius": "18px" } },
+   { "id": "p3", "type": "image", "src": "assets/demo/house-dish-3.png", "style": { "left": "1280px", "top": "190px", "width": "560px", "height": "700px", "object-fit": "cover", "border-radius": "18px" } }],
+  "motion": [{ "target": ["p1", "p2", "p3"], "at": 0, "params": { "duration": 5 } }], "bg": "#14110f" }
+}

@@ -1,0 +1,36 @@
+{
+ "name": "text/anime-scramble",
+ "kind": "effect",
+ "group": "text",
+ "title": "Scramble text (anime.js)",
+ "title_vi": "Chữ nhiễu ký tự rồi chốt dần (anime.js scrambleText)",
+ "desc_vi": "Chữ chạy qua bộ ký tự (khối, chữ nổi braille, bóng mờ, chữ hoa, số...) rồi chốt từng chữ; chỉnh tốc độ lộ, thời gian lắng, độ nhiễu, hướng, con trỏ.",
+ "params_vi": "chars: blocks | braille | shades | uppercase | numbers | symbols | chuỗi riêng · text: chữ đích (mặc định chữ của nó) · cursor · revealRate: chữ/giây (24) · settleDuration (0.35 s) · perturbation (0-1) · from: left | right | center | random · seed",
+ "ae": "keyframes",
+ "tags": [
+  "anime.js",
+  "text",
+  "scramble",
+  "decode"
+ ],
+ "source": {
+  "label": "anime.js 4.5.0 (Julian Garnier, MIT)",
+  "repo": "juliangarnier/anime",
+  "commit": "v4.5.0",
+  "path": "src/ (npm animejs@4.5.0, engine/vendor/libs/anime)"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/anime/anime.umd.min.js",
+  "libs/aimk/anime-sync.js"
+ ],
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Kit code (preset.js + engine/vendor/libs/aimk/anime-sync.js) calling anime.js 4.5.0 as shipped (engine/vendor/libs/anime, MANIFEST.json sha256). anime.js's own loop is off: the film's GSAP timeline seeks it every frame; randomness seeded. The bake puts back what anime.js wrote (build.py BAKE_JS + AIMKAnime.reverts).",
+ "check_end": true,
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

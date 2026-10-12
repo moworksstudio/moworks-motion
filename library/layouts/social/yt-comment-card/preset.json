@@ -1,0 +1,19 @@
+{
+ "name": "social/yt-comment-card",
+ "kind": "block",
+ "group": "social",
+ "title": "Typed comment cards (video site style)",
+ "title_vi": "Thẻ bình luận gõ chữ trên nền video",
+ "desc_vi": "Các bình luận lần lượt hiện: avatar chữ cái nảy ra, tên và thời gian mờ vào, nội dung được gõ từng ký tự, rồi hàng thích và trả lời mờ vào; cuối cùng cả cột mờ đi.",
+ "params_vi": "comments: danh sách bình luận { initials, avatarHue, avatar (đường dẫn ảnh, hoặc null), username, time, text, likes } · scheme: overlay (chữ trắng trên video) | light (chữ đậm trên nền sáng) · x: lề trái (px) · y: vị trí dọc (null = giữa khung) · typeCharDelay: giây mỗi ký tự (0.024) · scanlines: lớp vằn LCD · animationIn, animationOut: true | false · duration: độ dài gốc 8 s · reply: chữ nút trả lời",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/yt-comment-card/yt-comment-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": ["social", "comments", "typing", "overlay", "subtitle style"],
+ "notes": "Layout, colours and motion as in the source (column gap 40 px, card gap 22 px, avatar 64 px chip with a 135deg two-hue gradient from hsl(h, 62%, 52%) to hsl(h + 40, 62%, 42%), user 27 px bold, time 23 px, text 34 px weight 500 line-height 1.35 max-width 860 px, like / reply row 22 px with a 24 px stroke icon; the overlay scheme has white text with a soft text shadow, the light scheme ink #1d1d1f and #5a5a5f; optional full-frame LCD scanline layer). Motion (times relative to `at`): first comment at 0.3 s (0 when animationIn is false); per comment the avatar opacity 0 -> 1 and scale 0.5 -> 1 over 0.45 s back.out(1.6), the name row opacity and y 10 -> 0 over 0.4 s power2.out 0.12 s later, then 0.4 s after the comment start every character fades in over 0.02 s one after another at min(typeCharDelay, 2.2 s / characters), the like row fades in over 0.35 s power2.out 0.15 s after the last character, the next comment 0.5 s later; at duration - OUT - 0.05 s the column fades to 0 and rises 18 px over OUT = clamp(6 % of the duration, 0.25 s, 0.6 s) power2.in, and the whole layer is set to visibility hidden 0.02 s before the end (the source's hard kill). brand_ui: imitates a real video site's comment card. Differences: the source's typing used one tween with stagger over all characters (which the builder cannot write out, it reads the stagger total back as the duration), so there is one tiny tween per character; the character spans are plain inline spans (not inline-block), so lines wrap at spaces like the source; the column is centred vertically by a flex wrapper when y is null (the source measured the column and set its top; same result without measuring, which would depend on the film font being loaded); the source's CONFIG object is the params (comments, x, y, typeCharDelay, scanlines, animationIn, animationOut); the thumb icon is the source's own path (05/10/2026: source artwork restored as default, user's decision: open-source registry artwork is used as shipped; replaces the plain stroke thumb drawn for the earlier port); avatars are the source's own initials chips (or your pictures via `avatar`); the REPLY label is a param (default TRẢ LỜI) and the likes are a number; the source's two accent tokens (--yt-red, --yt-cyan) are not used by the card and are dropped; the font is the film's font (source: Inter). Default texts are Vietnamese (source: English, one comment ended with an emoji, not kept so the default does not depend on an emoji font); the placeholder usernames are made up.",
+ "demo": { "bg": "#27344a", "duration": 8.4,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.2, "params": {} }] }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "card/tilt-card",
+ "kind": "block",
+ "group": "card",
+ "title": "Tilt card",
+ "title_vi": "Thẻ nghiêng với vầng sáng góc",
+ "desc_vi": "Thẻ gradient nổi lên, rồi nghiêng nhẹ trong khi vầng sáng ở góc trôi theo hướng ngược lại.",
+ "params_vi": "eyebrow: dòng nhỏ viết hoa phía trên · headline: tiêu đề lớn · glow: tight | standard | wide (vầng sáng rộng cỡ nào) · accent: indigo | emerald | violet (bộ màu thẻ) · scale: độ phóng to (2.5 như bản demo gốc, thẻ gốc 420 x 260 px)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/tilt-card/tilt-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["card", "tilt", "3d", "glow", "gradient"],
+ "notes": "Layout, colours and motion as in the source (card 420 x 260 px, radius 30, 1 px rgba(255,255,255,.18) border, 135deg gradient #18181b -> accent, drop shadow 0 32 90 px in the accent colour at .34; corner glow radial-gradient(circle at 30% 20%) with inset -18 / -30 / -46 % for tight / standard / wide; content padding 34 px, eyebrow 13 px weight 900 tracking .12em uppercase, headline 34 px line-height .96 max-width 280 px). The three accent palettes (indigo, emerald, violet: card colour, glow, label, shadow) are the source's. Motion: rise from opacity 0 and y 30 over 0.38 s power2.out; then rotateX 0 -> -7 and rotateY 0 -> 10 over 0.72 s power3.inOut, with the glow xPercent 0 -> 12 and yPercent 0 -> 10, starting 0.45 s after the rise (source: rise at 0.3 s, tilt at 0.75 s in its demo timeline). Like the source there is no perspective, so the tilt is an orthographic squeeze (the card has overflow hidden, which flattens preserve-3d anyway); translateZ(38px) on the content is kept as written. Differences: the source demo wrapped the card in a scale(2.5) frame; here that is the param `scale` (default 2.5) and every px size (including the y 30 offset) is multiplied by it; the card is centred in the target box; the source's script reading variables becomes params. Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#eef2ff", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

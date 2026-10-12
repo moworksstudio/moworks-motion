@@ -1,0 +1,16 @@
+{
+ "name": "lower/soft-pill",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: soft pill",
+ "title_vi": "Lower third viên thuốc trắng, chấm màu",
+ "desc_vi": "Viên thuốc trắng phóng lên từ góc dưới trái và nảy nhẹ, chấm màu bật ra, tên và chức danh trượt vào; tự ra ở giây 4.3.",
+ "params_vi": "name, role: chữ · pill, dot: màu nền và chấm · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-soft-pill/lt-soft-pill.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super", "pill"],
+ "notes": "Font: the film's font instead of Montserrat from the web (no network in films). Source hard kill at 4.75 s not needed (the pill is at opacity 0).",
+ "demo": { "bg": "#2b3a55", "duration": 5.2 }
+}

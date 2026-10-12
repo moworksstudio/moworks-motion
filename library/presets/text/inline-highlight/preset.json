@@ -1,0 +1,17 @@
+{
+ "name": "text/inline-highlight",
+ "kind": "effect",
+ "group": "text",
+ "title": "Inline highlight",
+ "title_vi": "Dải bút dạ phẳng kẻ sau chữ",
+ "desc_vi": "Một dải màu bút dạ phẳng mọc từ mép trái kẻ ngang phía sau chữ (cả dòng, hoặc chỉ một từ). Nhiều phần tử thì lần lượt cách 0.12 giây.",
+ "params_vi": "word: chỉ tô từ này (trống = cả dòng) · tint: yellow | green | blue | violet hoặc mã màu · thickness: thin | standard | thick · origin: left | right | center · duration 0.55 · stagger 0.12",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/inline-highlight/inline-highlight.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["highlight", "marker", "emphasis", "word"],
+ "check_end": false,
+ "notes": "Band geometry, colours and the scaleX 0 -> 1 (0.55 s power2.out, stagger 0.12) as in the source; its ::after band is a real span here (written into the film). Green / blue / violet are the source's fallbacks for --brand / --accent / --accent-2. End check off: the band is part of the end picture. For a hand-drawn marker stroke see text/marker-highlight.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "Điều quan trọng nhất", "style": { "color": "#111216", "font-weight": "800", "font-size": "120px", "letter-spacing": "-0.03em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.3, "params": { "word": "quan trọng" } }], "bg": "#f6f4ee" }
+}

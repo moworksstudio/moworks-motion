@@ -1,0 +1,20 @@
+{
+ "name": "ui/native-notification-pop",
+ "kind": "block",
+ "group": "ui",
+ "title": "Native notification pop",
+ "title_vi": "Banner thông báo hệ điều hành rơi xuống (iOS hoặc macOS)",
+ "desc_vi": "Một banner thông báo kiểu iOS hoặc macOS rơi vào bằng lò xo: nhanh, vọt nhẹ, rồi đứng yên; nền kính mờ, chấm app, tên app, tiêu đề, một dòng nội dung. Chỉ rút lên hoặc mờ đi khi chọn exit.",
+ "params_vi": "title, body, app_label: chữ (app_label rỗng thì ẩn dòng tên app) · os: ios | macos · accent: màu chấm app (hex, #22c55e xanh lá, #38bdf8 xanh dương, #c5a3ff tím) · exit: none | up | fade, exitAt: giây từ lúc rơi tới lúc rút · backdrop: true | false (nền mẫu để thấy hiệu ứng mờ; false = đặt banner lên cảnh của bạn) · bg, fg, surface, border, muted, brand, accent2: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/native-notification-pop/native-notification-pop.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["notification", "ios", "macos", "spring", "banner", "overlay", "blur", "ui"],
+ "notes": "The spring law (omega 15, zeta 0.74, closed form y = -offset x envelope(t), 0.9 s drop, first contact at about 0.31 s), the iOS / macOS geometry, type sizes, colours (token fallbacks: bg #07111f, fg #f8fafc, surface #172033, border #334155, muted #94a3b8, brand #22c55e, accent #38bdf8, accent-2 #c5a3ff), backdrop-filter blur(3.2 cqmin) saturate(140 %) and the exit tween (0.45 s power2.in, up or fade) are the source's. Differences: container units become px of the target box; the spring is sampled by ctx.code from a linear driver, exactly as in the source (gsap.set in onUpdate), so ae is png (a backdrop blur has no After Effects equivalent; the motion alone would be an expression); the banner's start offset (the source measured the banner rect) is computed from the fixed line heights; the drop starts at `at` (the source param `at`, default 0.3 s, is the call's `at` here) and the exit starts `exitAt` seconds later (default 2.25 s = the source's 3 s composition minus 0.45 s minus 0.3 s); the source's scene slot becomes the `backdrop` param (its token backdrop: colour fields + skeleton card; false leaves the box empty so the banner drops over your own scene); the app dot colour is a hex param (the source mapped green / blue / violet to theme tokens, its fallbacks are the defaults named in params_vi); every color-mix() is resolved to rgb / rgba in JS; the hf:sfx cue dispatched at first contact (tl.call) is not ported; font = the film's font (source: Inter / --font-body); Vietnamese default texts, app label HyperFrames as in the source. Imitates iOS / macOS notification banners (brand_ui). 05/10/2026: source artwork check: the source has no logo or icon artwork (the app dot is a plain CSS gradient tile, as here, and the app label is the text HyperFrames), so nothing needed restoring; the source artwork is the default.",
+ "demo": { "bg": "#07111f", "duration": 3.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

@@ -1,0 +1,28 @@
+{
+ "name": "lower/kicker-name",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: kicker + name",
+ "title_vi": "Lower third thẻ nhỏ, tên lớn, vạch dưới",
+ "desc_vi": "Thẻ nhỏ màu rơi xuống, tên bật lên có nảy nhẹ, vạch màu vẽ ra bên dưới; tự ra ở giây 4.25.",
+ "params_vi": "kicker, name: chữ · accent: màu thẻ và vạch · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/lt-kicker-name/lt-kicker-name.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "lower third",
+  "name",
+  "kicker"
+ ],
+ "notes": "Fonts: the film's font instead of Space Mono (kicker, weight 700) and Archivo Black (name, set at weight 900); no network in films. The source's final hard-kill (visibility hidden at 4.75 s) is not needed: every element is already invisible after the exit tweens. Exit tweens use explicit from values.",
+ "demo": {
+  "bg": "#2b3a55",
+  "duration": 5.2
+ }
+}

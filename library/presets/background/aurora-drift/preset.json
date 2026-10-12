@@ -1,0 +1,65 @@
+{
+ "name": "background/aurora-drift",
+ "kind": "block",
+ "group": "background",
+ "title": "Aurora Drift",
+ "title_vi": "Nền cực quang trôi chậm",
+ "desc_vi": "Ba vùng màu mờ, rất lớn, trôi chậm theo đường sin trên nền tối có vignette; lặp khít một vòng. Bản gốc rất nhẹ: muốn thấy rõ thì tăng amount.",
+ "params_vi": "accent: green | blue | violet hoặc mã màu · mood: deep | bright · length: số giây cho một vòng (30) · amount: độ trôi so với bản gốc (1 = rất nhẹ như HF; demo dùng 3)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/aurora-drift/aurora-drift.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "gradient",
+  "loop",
+  "background"
+ ],
+ "notes": "The source drives x/y per frame (gsap.set in an onUpdate, sin of a phase that runs 0 -> 2 pi once over the whole length). Here the same path is literal tweens: every blob has an outer box that moves in x and an inner box that moves in y, each cut where the sine reverses (a half wave is exactly sine.inOut; the two partial waves at the cut ends use one fitted cubic Bezier, see ease_fit). Amplitudes, phase offsets (0, 120, 240 deg), sizes, positions, blur 12 % of the short side, saturate 0.84, screen blend, per-blob opacity, mood table and vignette are as in the source; accent colours are the source token fallbacks (#34d399, #38bdf8, #a78bfa). The loop length is param length (default 30 s) instead of the composition duration: make the scene at least that long, or pass a shorter length. The accent mixing (color-mix) is kept as CSS. Source variable accent is a name or a hex colour here. Gallery review 05/10: the source drift is barely visible (mean pixel change 2-3/255), so a param amount (amplitude x, default 1 = source) was added; the demo uses amount 3, length 6.",
+ "demo": {
+  "bg": "#050711",
+  "duration": 8,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   },
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Màu sắc dịu nhẹ, chuyển động chậm",
+    "style": {
+     "color": "#f5f5f2",
+     "font-weight": "760",
+     "font-size": "110px",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "length": 6,
+     "amount": 3
+    }
+   }
+  ]
+ }
+}

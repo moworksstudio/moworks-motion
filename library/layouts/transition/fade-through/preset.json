@@ -1,0 +1,58 @@
+{
+ "name": "transition/fade-through",
+ "kind": "block",
+ "group": "transition",
+ "title": "Fade Through",
+ "title_vi": "Chuyển cảnh mờ qua một lớp màu",
+ "desc_vi": "Chuyển cảnh nhẹ nhàng: lớp cũ mờ đi, đi qua một lớp màu, rồi lộ lớp mới.",
+ "params_vi": "wash: Wash (paper | white | ink | accent), mặc định \"paper\" · strength: Strength, mặc định 1 · shape: Shape (flat | bloom), mặc định \"flat\" · duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/fade-through/demo.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "transition",
+  "fade",
+  "crossfade",
+  "scene"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/demo.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/fade-through.html. Source: A calm transition primitive that fades one layer out, passes through a wash, and reveals the next layer",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

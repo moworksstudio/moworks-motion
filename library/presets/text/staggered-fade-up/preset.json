@@ -1,0 +1,38 @@
+{
+ "name": "text/staggered-fade-up",
+ "kind": "effect",
+ "group": "text",
+ "title": "Staggered Fade Up",
+ "title_vi": "Từng từ nổi lên, phóng nhẹ, rõ dần",
+ "desc_vi": "Từng từ lần lượt nổi lên 22 px, từ mờ 5 px và nhỏ 0.92 lần về đúng cỡ; đổi được hướng vào.",
+ "params_vi": "duration (0.3 s) · stagger (0.055 s) · offset: quãng nổi (22 px) · reach: nhân quãng (close 0.5, far 1.85) · direction: up | down | left | right · scale (0.92) · blur (5 px)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "paths": [
+   "registry/components/staggered-fade-up/staggered-fade-up.html",
+   "registry/components/blur-out-up/blur-out-up.html",
+   "registry/components/per-word-crossfade/per-word-crossfade.html"
+  ]
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "reveal",
+  "stagger",
+  "blur",
+  "scale"
+ ],
+ "notes": "Only the motion is ported (the source's tone colour, 56 px size and 12 px word gap belong to the film). The source drives CSS variables (--hf-word-y, --hf-word-scale, --hf-word-blur) that a transform / filter read; here x, y, scale and filter are tweened directly with the same values. Variables direction and distance map to the params direction and reach (offset = 22 x reach, x or y by direction). The stagger is explicit start times (at + index x 0.055) across all words of all targets, as the source's selector does. The source's `words` variable (replace the words) is not a motion: put the text in the target. The registry components blur-out-up and per-word-crossfade use the same recipe (22 px, 0.92, 5 px blur, 0.3 s, stagger 0.055, power3.out), so this preset covers them too.",
+ "demo": {
+  "hold": 1.0,
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3
+   }
+  ]
+ }
+}

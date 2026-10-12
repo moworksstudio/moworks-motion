@@ -1,0 +1,19 @@
+{
+ "name": "title/yt-end-screen",
+ "kind": "block",
+ "group": "title",
+ "title": "YouTube end screen plate",
+ "title_vi": "Khung màn hình kết YouTube (chừa chỗ thẻ video, nút đăng ký)",
+ "desc_vi": "Khung kết video YouTube 16:9 đúng chuẩn: thương hiệu nằm gọn bên trái (logo, tên kênh, dòng kêu gọi đăng ký), hai phần ba bên phải để trống đúng chỗ cho thẻ video tiếp theo và nút đăng ký của YouTube, chừa đáy cho thanh điều khiển điện thoại. Bật guides để xem vùng khi duyệt.",
+ "params_vi": "logo: ảnh logo (trống = không) · name: tên kênh · cta: dòng kêu gọi · bg, fg, accent: màu · guides: vẽ khung nét đứt các vùng YouTube (chỉ để duyệt, tắt khi xuất) · fade: thời gian hiện (0.6 s)",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/youtube-video-skills", "path": "skills/youtube-intro-outro/references/intro-outro.md" },
+ "license": "MIT",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "tags": ["youtube", "end-screen", "outro", "subscribe", "layout"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Coordinate map and the EndScreen component of the recipe (left-third brand at 80 / 90, 560 wide; 615 x 345 card at right 90 / top 110; 294 x 294 circle at right 250 / bottom 150; 18-frame fade). YouTube shows end-screen elements only in the last 5-20 s of videos of 25 s or more, at most 4; the recipe recommends one video card + subscribe.",
+ "demo": { "duration": 2.5, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0.1, "params": { "logo": "assets/demo/ui-logo-light.png", "guides": true } }], "bg": "#000000" }
+}

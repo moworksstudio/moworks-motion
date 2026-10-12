@@ -1,0 +1,18 @@
+{
+ "name": "flow/onboarding-stepper-flow",
+ "kind": "block",
+ "group": "flow",
+ "title": "Onboarding stepper flow",
+ "title_vi": "Bước hướng dẫn có thanh mốc",
+ "desc_vi": "Dãy mốc tròn nảy vào lần lượt, thẻ bước trồi lên bên dưới, mốc đang chọn nhấp nhẹ một lần.",
+ "params_vi": "steps: số mốc · active: mốc đang chọn (từ 1) · small, title, text, button: chữ trong thẻ · ink, onInk, muted, border, surface: màu · scale: độ phóng to (2.3)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/onboarding-stepper-flow/onboarding-stepper-flow.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["onboarding", "stepper", "ui flow", "card"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, radii, spacing and the three tweens are as in the source (steps scale 0.7 -> 1 + opacity, 0.28 s back.out(1.8), stagger 0.08 at 0.3 s; card y 28 -> 0 + opacity, 0.42 s power3.out at 0.62 s; active step scale 1 -> 1.16 yoyo repeat 1, 0.16 s power1.inOut at 1.1 s). The values of the source demo are used where the demo differs from the snippet (font sizes 15/11/30/16/15 px, weights 600/600/700/600, shadow 0 24px 70px, button padding 0 22px radius 12px), and the demo's 2.3x enlargement is the param `scale` (a wrapper with transform: scale that is never tweened). Font: the film's font instead of Inter. Content as params with Vietnamese defaults (source: English); the small label is upper-cased in code instead of text-transform. The number of steps and the active step are params (source: fixed 3 steps, step 2 active); a step before the active one is filled like the active one, as in the source. The pulse is written as a fromTo (explicit start scale 1) instead of a to.",
+ "demo": { "bg": "#fafafa", "duration": "auto", "hold": 1.2 }
+}

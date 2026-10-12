@@ -1,0 +1,57 @@
+{
+ "name": "flow/modal-morph",
+ "kind": "block",
+ "group": "flow",
+ "title": "Modal morph",
+ "title_vi": "Thẻ nhỏ phình thành bảng lớn",
+ "desc_vi": "Một thẻ nhỏ giữa khung phình ra thành bảng lớn; các phần tử bên trong dịch chuyển và co giãn liền mạch thay vì bị kéo méo, phần phụ của bảng mờ hiện ở nửa sau.",
+ "params_vi": "expandAt: giây bắt đầu phình (1.2) · register: calm | snappy · fromScale: cỡ thẻ nhỏ (0.5 - 1.5) · accent: màu nhấn · exit: none | fade | up · duration: độ dài gốc 4 s · chipLead, chip: chữ hai nút nhỏ · bg, fg, muted, surface, border, shadow: màu · radius: bo góc (px, 0 = 2.4 % cạnh nhỏ)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/modal-morph/modal-morph.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "modal",
+  "morph",
+  "shared element",
+  "flip",
+  "panel"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Same FLIP method, geometry and envelope as the source (card width 36 % of the short side x fromScale, panel 14 % / 13 % inset, calm = cubic inOut over 0.95 s, snappy = back.out with c1 = 0.7 over 0.6 s, card enter 0.3 s, crossfade in the first 30 % of the morph, panel furniture fading up over the back half with a 12 px rise, expandAt 1.2 s, exit 0.45 s, the envelope shrinks together if the duration is short). cqw / cqh / cqmin are taken from the target box. The per-frame part (container transform, counter-scaled children, opacities) is a pure function of time written through ctx.code: one proxy tween drives it, the two layouts are measured once when the block is built and the rects are written into the code as numbers (the source measured at mount in the page). The transforms are written as plain CSS transform strings on the elements (translate + scale from the top-left corner), not as GSAP tweens, so the film has no tween to bake for the morph itself; ae is expression, After Effects gets the sampled result. Source variables: accent green / blue / violet (theme tokens) is a hex colour, exit and register kept. The source's card slot (template with data-morph-key) is not ported: the keyed children are the source's own defaults (accent-free dot, title bar, meta bar, as in the source without a slot); the chip labels (OPEN / DETAILS in the source) are params with Vietnamese defaults and are upper-cased in code. The chips use the system monospace stack (Consolas / Cascadia Mono / Menlo), no font file ships. color-mix() is written as rgba. Theme tokens became params (source fallbacks: fg #f8fafc, muted #94a3b8, surface #14171c, border #475569, accent #52525b, bg transparent, shadow base #000000). The root takes the radius of its target (border-radius: inherit). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "#0b0c0e",
+  "duration": 4,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "register": "snappy",
+     "fromScale": 0.8,
+     "accent": "#61a8ff",
+     "expandAt": 0.9,
+     "duration": 4
+    }
+   }
+  ]
+ }
+}

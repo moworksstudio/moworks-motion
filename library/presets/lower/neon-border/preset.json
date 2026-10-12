@@ -1,0 +1,16 @@
+{
+ "name": "lower/neon-border",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: neon border",
+ "title_vi": "Lower third khung neon, hai vệt sáng chạy góc",
+ "desc_vi": "Khung kính tối bo góc chứa tên và chức danh; hai vệt sáng neon ở hai góc đối diện nhảy từ góc này sang góc kia (bật nảy hoặc lướt), có đuôi mờ dần và quầng sáng ba lớp.",
+ "params_vi": "name, role: chữ · accent: màu neon · movement: step (bật ở góc) | glide (lướt) · speed: số góc mỗi giây (1.6) · cornerRadius, thickness, arcLength (% chu vi), glow · left, bottom · runFor: số giây vệt sáng chạy (4.8) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-neon-border/lt-neon-border.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "neon", "glow", "loop", "over footage"],
+ "notes": "Geometry, bloom (three blurred under-layers + hot core + white filament), corner easing (step: cubic-bezier 0.72,0.16,0.18,1.05; glide: 0.65,0,0.35,1), the second arc half a lap behind, and timing as in the source. The light is a per-frame formula (ctx.code proxy tween), so in After Effects the frame becomes a PNG sequence; panel, name and role keep their keyframes. Font: the film's font instead of Inter (no network). The source's light ran for the whole clip (4.8 s): params.runFor. Source hard kill at 4.76 s not needed.",
+ "demo": { "bg": "#1d2733", "duration": 5.2 }
+}

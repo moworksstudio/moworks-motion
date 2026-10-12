@@ -1,0 +1,84 @@
+{
+ "name": "motion/anime",
+ "kind": "effect",
+ "group": "motion",
+ "title": "anime.js animation",
+ "title_vi": "Animation anime.js viết thẳng (mọi tính năng của anime.js)",
+ "desc_vi": "Viết thẳng một animation anime.js trong film.json: stagger lưới / jitter, tách chữ (dòng, từ, chữ, clone), scrambleText, morph / vẽ nét / đi theo đường SVG, ease spring / irregular / steps, keyframes, timeline, đổi bố cục. Chạy theo đồng hồ phim, port AE đọc được.",
+ "params_vi": "targets: self | chars | words | lines | selector · split: tuỳ chọn splitText · anim: tham số anime.js (+ dạng JSON của kit: {stagger}, {spring}, {irregular}, {morphTo}, {scramble}, drawable, motionPath, waapi) · timeline: [...] · layout: {changes, spec} · seed · window",
+ "ae": "keyframes",
+ "tags": [
+  "anime.js",
+  "utility",
+  "stagger",
+  "split",
+  "svg",
+  "timeline"
+ ],
+ "source": {
+  "label": "anime.js 4.5.0 (Julian Garnier, MIT)",
+  "repo": "juliangarnier/anime",
+  "commit": "v4.5.0",
+  "path": "src/ (npm animejs@4.5.0, engine/vendor/libs/anime)"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/anime/anime.umd.min.js",
+  "libs/aimk/anime-sync.js"
+ ],
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Kit code (preset.js + engine/vendor/libs/aimk/anime-sync.js) calling anime.js 4.5.0 as shipped (engine/vendor/libs/anime, MANIFEST.json sha256). anime.js's own loop is off: the film's GSAP timeline seeks it every frame; randomness seeded. The bake puts back what anime.js wrote (build.py BAKE_JS + AIMKAnime.reverts).",
+ "demo": {
+  "duration": 2.6,
+  "hold": 0.6,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Chuyển động mượt mà",
+    "style": {
+     "color": "#f5f5f2",
+     "font-weight": "760",
+     "font-size": "120px",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3,
+    "params": {
+     "split": {
+      "chars": {
+       "wrap": "clip"
+      },
+      "includeSpaces": true
+     },
+     "targets": "chars",
+     "anim": {
+      "y": [
+       "110%",
+       "0%"
+      ],
+      "duration": 0.7,
+      "ease": "outExpo",
+      "delay": {
+       "stagger": 0.035,
+       "from": "center"
+      }
+     }
+    }
+   }
+  ]
+ },
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

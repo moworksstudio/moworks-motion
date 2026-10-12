@@ -1,0 +1,24 @@
+{
+ "name": "text/line-by-line-slide",
+ "kind": "effect",
+ "group": "text",
+ "title": "Line by Line Slide",
+ "title_vi": "Từng dòng trượt vào từ bên",
+ "desc_vi": "Các dòng chữ lần lượt trượt vào từ một bên, nổi lên 18 px và rõ dần từ vùng mờ nhẹ.",
+ "params_vi": "mỗi phần tử là một dòng · duration (0.34 s) · stagger (0.08 s) · x: quãng trượt (36 px) · y (18 px) · blur (6 px) · direction: left | right",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/line-by-line-slide/line-by-line-slide.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "stagger", "lines", "slide"],
+ "notes": "Only the motion is ported (the source's size, tone and density variables, and the grid container with overflow hidden, belong to the film; the 36 px side slide is therefore not cropped by a container). Source values kept: x 36 px (direction left starts at -36, right at +36), y 18 px, blur 6 px, 0.34 s, stagger 0.08 s, power3.out. The source animates the child spans of one container: here each target element is a line (call with a list of targets), or one target whose text has line breaks is split into block lines. The stagger is written as explicit start times.",
+ "demo": {
+  "hold": 1.0,
+  "elements": [
+   { "id": "t1", "type": "text", "text": "Thiết kế nhanh hơn", "style": { "color": "#f5f5f2", "font-weight": "900", "font-size": "96px", "letter-spacing": "-0.04em", "white-space": "nowrap", "left": "460px", "top": "330px" } },
+   { "id": "t2", "type": "text", "text": "Dựng phim gọn hơn", "style": { "color": "#f5f5f2", "font-weight": "900", "font-size": "96px", "letter-spacing": "-0.04em", "white-space": "nowrap", "left": "460px", "top": "450px" } },
+   { "id": "t3", "type": "text", "text": "Giao hàng sớm hơn", "style": { "color": "#f5f5f2", "font-weight": "900", "font-size": "96px", "letter-spacing": "-0.04em", "white-space": "nowrap", "left": "460px", "top": "570px" } }
+  ],
+  "motion": [ { "target": ["t1", "t2", "t3"], "at": 0.3 } ]
+ }
+}

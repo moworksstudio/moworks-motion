@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thư viện chuyển động</title>
+<!-- Moworks Motion preset gallery. Open with gallery.bat in the kit root (kit.py gallery open). Data comes from data.js, written by `kit.py gallery build`.
+     The review is finished (user, 06/10/2026: every preset kept), so the Keep / Drop / Note buttons are gone. "Copy" puts a one-line brief on the
+     clipboard ("Dùng hiệu ứng thư viện "<name>" (<title>)") to paste into a chat; notes written during the review still show, read-only.
+     "Mới nhập" (E5, 08/10/2026): presets a film imported (kit.py library import) wait there with GIỮ (into the library) / BỎ (Recycle Bin). -->
+<style>
+  :root { --bg: #0f1013; --panel: #17181d; --line: #262830; --fg: #ececea; --dim: #8d8f99; --keep: #2fbf71; --drop: #e5484d; --warn: #f5a524; --acc: #6ea8ff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font: 14px/1.45 "Segoe UI", system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: rgba(15,16,19,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); padding: 14px 20px 10px; }
+  h1 { font-size: 18px; font-weight: 650; display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+  h1 small { color: var(--dim); font-weight: 400; font-size: 13px; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+  .bar input { background: var(--panel); border: 1px solid var(--line); color: var(--fg); border-radius: 8px; padding: 6px 10px; min-width: 200px; font: inherit; }
+  .chips { display: flex; gap: 4px; flex-wrap: wrap; }
+  .chip { background: var(--panel); border: 1px solid var(--line); color: var(--dim); border-radius: 99px; padding: 3px 10px; cursor: pointer; font-size: 12.5px; user-select: none; }
+  .chip.on { color: var(--fg); border-color: var(--acc); background: #1c2536; }
+  .sep { width: 1px; height: 20px; background: var(--line); margin: 0 4px; }
+  .lbl { color: var(--dim); font-size: 12px; min-width: 64px; }
+  .bar + .bar { margin-top: 6px; }
+  .bar.row { flex-wrap: nowrap; align-items: flex-start; } .bar.row .chips { flex: 1; min-width: 0; } .bar.row .lbl { padding-top: 4px; }
+  main { padding: 18px 20px 60px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .media { position: relative; aspect-ratio: 16 / 9; background: #000; cursor: zoom-in; }
+  .media video, .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media .none { position: absolute; inset: 0; display: grid; place-items: center; color: var(--dim); font-size: 12px; }
+  .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .name { font: 600 13.5px/1.3 Consolas, monospace; color: var(--fg); word-break: break-all; }
+  .vi { color: #cfd0d6; }
+  .meta { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 11.5px; padding: 1px 7px; border-radius: 5px; background: #22242c; color: var(--dim); }
+  .tag.ok { color: var(--keep); } .tag.warn { color: var(--warn); } .tag.fail { color: var(--drop); }
+  .probs { font-size: 12px; color: var(--warn); }
+  .note { font-size: 12px; color: var(--acc); }
+  .acts { display: flex; gap: 6px; margin-top: auto; padding-top: 6px; }
+  .acts button, .modal .cp { flex: 1; background: #22242c; color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 0; cursor: pointer; font: inherit; font-weight: 600; letter-spacing: .04em; }
+  .acts button:hover, .modal .cp:hover { border-color: var(--acc); }
+  .acts button.done, .modal .cp.done { background: var(--keep); border-color: var(--keep); color: #04120a; }
+  .acts button.keep { border-color: var(--keep); color: var(--keep); } .acts button.drop { border-color: var(--drop); color: var(--drop); }
+  .acts button:disabled { opacity: .45; cursor: default; }
+  .chip.inc { border-color: var(--warn); color: var(--warn); }
+  .modal { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; z-index: 20; align-items: center; justify-content: center; flex-direction: column; gap: 12px; padding: 24px; }
+  .modal.show { display: flex; }
+  .modal video { max-width: min(1280px, 94vw); max-height: 72vh; border-radius: 8px; background: #000; }
+  .modal .info { max-width: min(1280px, 94vw); width: 100%; color: #d8d9de; font-size: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+  .modal .info b { color: var(--fg); }
+  .modal .cp { flex: none; width: 160px; padding: 7px 0; }
+  .modal .x { position: absolute; top: 14px; right: 20px; font-size: 28px; color: #fff; cursor: pointer; }
+  .empty { color: var(--dim); padding: 40px; }
+  @media (max-width: 700px) { .modal .info { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Thư viện chuyển động <small id="count"></small><small id="gen"></small></h1>
+  <div class="bar">
+    <div class="chips" id="f-lib"></div><div class="sep"></div>
+    <input id="q" placeholder="Tìm tên, mô tả..." autocomplete="off">
+  </div>
+  <div class="bar row"><span class="lbl">Danh mục</span><div class="chips" id="f-cat"></div></div>
+  <div class="bar row" id="row-group"><span class="lbl">Nhóm</span><div class="chips" id="f-group"></div></div>
+  <div class="bar">
+    <span class="lbl">Dùng cho</span><div class="chips" id="f-use"></div><div class="sep"></div>
+    <span class="lbl">Nguồn</span><div class="chips" id="f-source"></div><div class="sep"></div>
+    <span class="lbl">Máy kiểm</span><div class="chips" id="f-check"></div>
+  </div>
+</header>
+<main id="grid"></main>
+<div class="modal" id="modal"><span class="x" id="mx">×</span><video id="mv" controls loop muted playsinline></video><div class="info" id="mi"></div><button class="cp" id="mcp">COPY</button></div>
+<script src="data.js"></script>
+<script src="incoming/incoming.js"></script>
+<script>
+(() => {
+  const G = window.GALLERY || { presets: [] }, P = G.presets.concat((window.GALLERY_INCOMING || { presets: [] }).presets);
+  let D = {}, cur = null;
+  const online = location.protocol.startsWith("http");
+  const $ = id => document.getElementById(id), esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const srcOf = p => (p.source && p.source.label) || (p.source && p.source.repo) || "Moworks Motion";
+  // the page's filters (11/10/2026, the user: "hơi messy"): one category per preset by what it is for (gallery.py category()), its folder
+  // groups under the chosen category, the skillsets it serves (gallery.py uses()), and the source family (the full credit stays on the card)
+  const srcShort = p => { const s = srcOf(p); return /hyperframes/i.test(s) ? "HyperFrames" : /moworks v1/i.test(s) ? "Moworks v1" : /^iart/i.test(s) ? "iart-ai (MIT)"
+                                                     : /^claude-animation/i.test(s) ? "claude-animation (MIT)" : /^anime\.js/i.test(s) ? "anime.js (MIT)" : "Moworks"; };
+  const CAT_VI = { "text-in": "Chữ hiện ra", captions: "Phụ đề", emphasis: "Nhấn & đổi chữ", title: "Tiêu đề", lower: "Lower third", numbers: "Số liệu & biểu đồ",
+    logo: "Logo & kết phim", transition: "Chuyển cảnh", pop: "Bật / trượt / nảy", ambient: "Chuyển động nền, lặp", impact: "Va chạm & rung",
+    hand: "Vẽ tay & đường nét", background: "Nền & ánh sáng", effect: "Hiệu ứng hình", ui: "Giao diện app & thiết bị", cards: "Thẻ, carousel, mạng xã hội",
+    code: "Code", map: "Bản đồ", camera: "Máy quay", talking: "Video người nói", intake: "Dựng từ PSD / slide", character: "Nhân vật", tool: "Công cụ" };
+  const CAT_ORDER = Object.keys(CAT_VI);
+  const USE_VI = { talking: "Talking head", song: "Phim nhạc", keep: "Giữ thiết kế", product: "Sản phẩm / app", code: "Code / PR", deck: "Deck trình chiếu", character: "Nhân vật / vẽ tay" };
+  const GROUP_VI = { glass: "Kính (glass)", device: "Thiết bị", ui: "Giao diện app", card: "Card", social: "Mạng xã hội", flow: "Luồng app", title: "Tiêu đề", compare: "So sánh", code: "Code", carousel: "Carousel", map: "Bản đồ", intake: "PSD", text: "Chữ", transition: "Chuyển cảnh", background: "Nền", data: "Số liệu", lower: "Lower third", logo: "Logo / end tag", shape: "Hình", motion: "Di chuyển", line: "Đường kẻ", house: "Moworks", ambient: "Chuyển động nền", block: "Khối", camera: "Máy quay", cursor: "Con trỏ / cử chỉ", effect: "Hiệu ứng", hand: "Vẽ tay", character: "Nhân vật" };
+  const AE_VI = { keyframes: "AE: keyframe", expression: "AE: expression", png: "AE: PNG" };
+  const LIBQ = new URLSearchParams(location.search).get("lib");
+  const state = { lib: LIBQ === "layout" ? "layout" : "motion", cat: null, group: null, use: null, source: null, check: null, q: "" };
+  // the line the Copy button puts on the clipboard: the exact preset name (Claude uses a name it is given as it is) + its Vietnamese title
+  const brief = p => `Dùng ${(p.lib || "motion") === "layout" ? "layout" : "hiệu ứng"} thư viện "${p.name}" (${p.title_vi || p.title || ""})`;
+  async function copyText(text) {
+    try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; } } catch (e) {}
+    const t = document.createElement("textarea"); t.value = text; t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+    let ok = false; try { ok = document.execCommand("copy"); } catch (e) {} t.remove(); return ok;
+  }
+  async function copyBtn(btn, p) {
+    const ok = await copyText(brief(p));
+    btn.textContent = ok ? "ĐÃ COPY" : "KHÔNG COPY ĐƯỢC"; btn.classList.toggle("done", ok);
+    clearTimeout(btn._t); btn._t = setTimeout(() => { btn.textContent = "COPY"; btn.classList.remove("done"); }, 1400);
+  }
+  function chips(id, items, key, after) {
+    $(id).innerHTML = items.map(([v, l]) => `<span class="chip" data-v="${esc(v)}">${esc(l)}</span>`).join("");
+    $(id).onclick = e => { const c = e.target.closest(".chip"); if (!c) return; state[key] = state[key] === c.dataset.v ? null : c.dataset.v; if (after) after(); render(); };
+  }
+  const inLib = p => state.lib === "incoming" ? !!p.incoming : !p.incoming && (p.lib || "motion") === state.lib;
+  const catOf = p => p.cat || p.group;
+  function filters() {
+    const lib = P.filter(p => !p.incoming), nm = lib.filter(p => (p.lib || "motion") === "motion").length, nl = lib.length - nm, ni = P.length - lib.length;
+    $("f-lib").innerHTML = [["motion", `Thư viện chuyển động ${nm}`], ["layout", `Thư viện layout ${nl}`]].concat(ni ? [["incoming", `Mới nhập ${ni}`]] : [])
+      .map(([v, l]) => `<span class="chip${v === "incoming" ? " inc" : ""}" data-v="${v}">${l}</span>`).join("");
+    $("f-lib").onclick = e => { const c = e.target.closest(".chip"); if (!c) return; state.lib = c.dataset.v; state.cat = state.group = state.use = state.source = null; filters(); render(); };
+    const L = P.filter(inLib), count = f => L.filter(f).length;
+    const cats = [...new Set(L.map(catOf))].sort((a, b) => (CAT_ORDER.indexOf(a) + 1 || 99) - (CAT_ORDER.indexOf(b) + 1 || 99));
+    if (!cats.includes(state.cat)) state.cat = null;                 // the last of a category was kept / dropped: show the rest
+    chips("f-cat", cats.map(c => [c, `${CAT_VI[c] || GROUP_VI[c] || c} ${count(p => catOf(p) === c)}`]), "cat", () => { state.group = null; groupRow(); });
+    groupRow();
+    const usesIn = [...new Set(L.flatMap(p => p.uses || []))].sort((a, b) => Object.keys(USE_VI).indexOf(a) - Object.keys(USE_VI).indexOf(b));
+    if (!usesIn.includes(state.use)) state.use = null;
+    chips("f-use", usesIn.map(u => [u, `${USE_VI[u] || u} ${count(p => (p.uses || []).includes(u))}`]), "use");
+    const srcs = [...new Set(L.map(srcShort))];
+    if (!srcs.includes(state.source)) state.source = null;
+    chips("f-source", srcs.map(s => [s, `${s} ${count(p => srcShort(p) === s)}`]), "source");
+    chips("f-check", [["ok", "đạt"], ["warn", "cảnh báo"], ["fail", "lỗi"]], "check");
+  }
+  function groupRow() {                                                // the folders inside the chosen category, when there are several
+    const gs = state.cat ? [...new Set(P.filter(p => inLib(p) && catOf(p) === state.cat).map(p => p.group))].sort() : [];
+    if (!gs.includes(state.group)) state.group = null;
+    $("row-group").style.display = gs.length > 1 ? "" : "none";
+    chips("f-group", gs.map(g => [g, `${GROUP_VI[g] || g} ${P.filter(p => inLib(p) && catOf(p) === state.cat && p.group === g).length}`]), "group");
+  }
+  function visible(p) {
+    if (!inLib(p)) return false;
+    if (state.cat && catOf(p) !== state.cat) return false;
+    if (state.group && p.group !== state.group) return false;
+    if (state.use && !(p.uses || []).includes(state.use)) return false;
+    if (state.source && srcShort(p) !== state.source) return false;
+    if (state.check && ((p.check && p.check.status) || "none") !== state.check) return false;
+    if (state.q) { const s = (p.name + " " + (p.title || "") + " " + (p.title_vi || "") + " " + (p.desc_vi || "") + " " + (p.tags || []).join(" ")).toLowerCase(); if (!s.includes(state.q)) return false; }
+    return true;
+  }
+  function card(p) {
+    const c = p.check || {}, note = (D[p.name] || {}).note;
+    const st = c.status ? `<span class="tag ${c.status}">${{ ok: "máy kiểm: đạt", warn: "máy kiểm: cảnh báo", fail: "máy kiểm: lỗi" }[c.status]}</span>` : `<span class="tag">chưa kiểm</span>`;
+    const media = p.clip ? `<video muted loop playsinline preload="none" poster="${esc(p.thumb || "")}" src="${esc(p.clip)}"></video>` : (p.thumb ? `<img src="${esc(p.thumb)}">` : `<div class="none">chưa có clip</div>`);
+    return `<div class="card" data-n="${esc(p.name)}">
+      <div class="media">${media}</div>
+      <div class="body">
+        <div class="name">${esc(p.name)}</div>
+        <div class="vi">${esc(p.title_vi || p.title || "")}</div>
+        ${p.desc_vi ? `<div style="color:var(--dim);font-size:12.5px">${esc(p.desc_vi)}</div>` : ""}
+        <div class="meta"><span class="tag" title="${esc(srcOf(p))}">${esc(srcShort(p))}</span><span class="tag">${esc(CAT_VI[catOf(p)] || catOf(p))}</span>${p.kind === "block" ? '<span class="tag">khối</span>' : ""}${p.ae ? `<span class="tag">${esc(AE_VI[p.ae] || p.ae)}</span>` : ""}${p.brand_safe ? '<span class="tag ok" title="không méo logo / chữ theo cách guideline cấm: dùng được cho job có guideline chặt">hợp guideline</span>' : ""}${p.brand_ui ? '<span class="tag warn">giao diện thương hiệu</span>' : ""}${st}</div>
+        ${c.problems && c.problems.length ? `<div class="probs">${esc(c.problems.join(" · "))}</div>` : ""}
+        ${c.build && c.build !== "ok" ? `<div class="probs" style="color:var(--drop)">${esc(c.build)}</div>` : ""}
+        ${c.render ? `<div class="probs" style="color:var(--drop)">${esc(c.render)}</div>` : ""}
+        ${note ? `<div class="note">Ghi chú của bạn: ${esc(note)}</div>` : ""}
+        ${p.incoming ? `<div class="note">Mới nhập${p.incoming === true ? "" : " ngày " + esc(p.incoming)} (${p.lib === "layout" ? "layout" : "chuyển động"}): phim chưa dùng được cho tới khi bạn bấm GIỮ.</div>` : ""}
+        <div class="acts">${p.incoming ? `<button class="keep"${online ? "" : " disabled title=\"mở bằng gallery.bat\""}>GIỮ</button><button class="drop"${online ? "" : " disabled"}>BỎ</button>`
+                                        : `<button class="cp" title="${esc(brief(p))}">COPY</button>`}</div>
+      </div></div>`;
+  }
+  function render() {
+    document.querySelectorAll(".chip").forEach(c => { const k = { "f-lib": "lib", "f-cat": "cat", "f-group": "group", "f-use": "use", "f-source": "source", "f-check": "check" }[c.parentElement.id]; c.classList.toggle("on", state[k] === c.dataset.v); });
+    const L = P.filter(visible);
+    $("grid").innerHTML = L.length ? L.map(card).join("") : `<div class="empty">Không có mẫu nào khớp bộ lọc.</div>`;
+    $("count").textContent = `${L.length}/${P.length} mẫu`;
+  }
+  $("grid").addEventListener("click", e => {
+    const el = e.target.closest(".card"); if (!el) return; const p = P.find(x => x.name === el.dataset.n);
+    if (e.target.closest(".media")) return openModal(p);
+    const b = e.target.closest("button.cp"); if (b) copyBtn(b, p);
+    const k = e.target.closest("button.keep, button.drop"); if (k && !k.disabled) decide(k, p, k.classList.contains("keep"));
+  });
+  $("grid").addEventListener("mouseover", e => { const v = e.target.closest(".media")?.querySelector("video"); if (v && v.paused) { v.currentTime = 0; v.play().catch(() => {}); } });
+  $("grid").addEventListener("mouseout", e => { const m = e.target.closest(".media"); if (m && !m.contains(e.relatedTarget)) { const v = m.querySelector("video"); if (v) { v.pause(); v.currentTime = 0; v.load(); } } });
+  async function decide(btn, p, keepIt) {                // GIỮ: into the library (films can use it); BỎ: to the Recycle Bin
+    if (!keepIt && !confirm(`Bỏ "${p.name}"? (vào Thùng rác, khôi phục được)`)) return;
+    btn.disabled = true; btn.textContent = "...";
+    try {
+      const r = await fetch(`api/incoming/${keepIt ? "keep" : "drop"}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: p.name }) });
+      const j = await r.json(); if (!j.ok) throw new Error(j.msg);
+      // the page stays where it is (no reload: the user lost "Mới nhập" after every GIỮ, 11/10/2026): a kept preset joins its library with
+      // its clip and picture at their new place (gallery.py keep moves incoming/clips|thumbs -> clips|thumbs); a dropped one leaves the list
+      if (keepIt) { p.incoming = false; for (const k of ["clip", "thumb"]) if (p[k]) p[k] = p[k].replace(/^incoming\//, ""); }
+      else P.splice(P.indexOf(p), 1);
+      if (state.lib === "incoming" && !P.some(x => x.incoming)) state.lib = p.lib || "motion";
+      const y = scrollY; filters(); render(); scrollTo(0, y);
+    } catch (err) { btn.disabled = false; btn.textContent = keepIt ? "GIỮ" : "BỎ"; alert("Không được: " + err.message); }
+  }
+  function openModal(p) {
+    if (!p.clip) return; cur = p; $("mv").src = p.clip; $("mv").play().catch(() => {});
+    const c = p.check || {}, s = p.source || {};
+    $("mi").innerHTML = `<div><b>${esc(p.name)}</b><br>${esc(p.title_vi || p.title || "")}<br><span style="color:var(--dim)">${esc(p.desc_vi || "")}</span></div>
+      <div><b>Nguồn:</b> ${esc(srcOf(p))}${s.path ? `<br><span style="color:var(--dim)">${esc(s.path)}${s.commit ? " @ " + esc(s.commit.slice(0, 7)) : ""}</span>` : ""}${p.license ? `<br><b>License:</b> ${esc(p.license)}` : ""}</div>
+      <div><b>Máy kiểm:</b> ${esc(c.status || "chưa")} · seek ${c.seek === 0 ? "ổn định" : esc(c.seek)} · bake lệch ${c.bake != null ? (c.bake * 100).toFixed(2) + "%" : "-"}${c.end != null ? " · cuối so layout " + (c.end * 100).toFixed(2) + "%" : ""}${c.ease_fit ? " · ease fit " + c.ease_fit : ""} · ${c.tweens ?? "-"} tween${c.codes ? ", " + c.codes + " code" : ""}</div>
+      <div>${p.params_vi ? "<b>Tham số:</b> " + esc(p.params_vi) : ""}${p.notes ? "<br><b>Ghi chú port:</b> " + esc(p.notes) : ""}</div>`;
+    $("modal").classList.add("show");
+  }
+  $("mcp").onclick = () => { if (cur) copyBtn($("mcp"), cur); };
+  const close = () => { $("modal").classList.remove("show"); $("mv").pause(); };
+  $("mx").onclick = close; $("modal").onclick = e => { if (e.target.id === "modal") close(); }; addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  $("q").oninput = e => { state.q = e.target.value.trim().toLowerCase(); render(); };
+  $("gen").textContent = G.generated ? "· dữ liệu " + G.generated : "";
+  filters();
+  (online ? fetch("api/decisions").then(r => r.json()).catch(() => ({})) : Promise.resolve({})).then(d => { D = d || {}; render(); });
+})();
+</script>
+</body>
+</html>

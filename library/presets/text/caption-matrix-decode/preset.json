@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-matrix-decode",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: matrix decode",
+ "title_vi": "Phụ đề giải mã kiểu Matrix, chữ xanh lá",
+ "desc_vi": "Phụ đề theo giọng đọc chữ xanh lá kiểu terminal: khi một từ được nói, hai chuỗi ký tự ngẫu nhiên cùng độ dài loé 0.1 giây mỗi chuỗi rồi chữ thật hiện ra.",
+ "params_vi": "words: \"voice\" · groups hoặc tự gom (maxWords 4, maxSpan 2 s) · size 96 (tự thu nhỏ cho vừa), bottom 120 · color: màu chữ",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-matrix-decode/caption-matrix-decode.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "matrix", "scramble", "terminal"],
+ "notes": "Colour #00ff41, 96 px fitted to 1760 px, seeded scrambles (mulberry32, seeds word x 1000 and + 1, the word's length), 0.1 s per scramble, group fade 0.1 s in / 0.12 s out as in the source. Changed: the film's font instead of Space Grotesk; words and groups from the voice transcript (the source hand-listed groups); the fades get an explicit ease (power1.out, GSAP's default). The scrambles use ASCII letters and digits as in the source; the real word keeps its Vietnamese marks.",
+ "demo": {
+  "bg": "#06120a", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo" } } ]
+ }
+}

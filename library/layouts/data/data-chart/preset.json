@@ -1,0 +1,56 @@
+{
+ "name": "data/data-chart",
+ "kind": "block",
+ "group": "data",
+ "title": "Data Chart",
+ "title_vi": "Biểu đồ cột + đường kiểu báo NYT",
+ "desc_vi": "Biểu đồ cột kết hợp đường, hiện lần lượt, chữ kiểu báo New York Times, có nhãn giá trị.",
+ "params_vi": "duration: độ dài của block (15 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/data-chart/data-chart.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "data",
+  "chart",
+  "statistics"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/data-chart.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Animated bar + line chart with staggered reveal, NYT-style typography, and value labels",
+ "demo": {
+  "duration": 15.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 15.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

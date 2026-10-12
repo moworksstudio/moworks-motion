@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-gradient-fill",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: gradient fill",
+ "title_vi": "Phụ đề từ đang đọc phủ dải màu Siri",
+ "desc_vi": "Phụ đề theo giọng đọc chữ trắng đậm: từ đang được nói phủ dải màu chạy (cam, san hô, hồng, tím) đúng bằng thời gian nói và phóng nhẹ 1.04, đọc xong trở lại trắng.",
+ "params_vi": "words: \"voice\" · groups hoặc tự gom (maxWords 4, maxSpan 2 s) · size 100 (tự thu nhỏ cho vừa), bottom 120 · gradient: dải màu (nửa trái màu, nửa phải trắng)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-gradient-fill/caption-gradient-fill.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "gradient", "karaoke", "colorful"],
+ "notes": "Gradient, background size 350 %, positions (100 % rest, 45 -> 0 % while spoken), scale 1.04 -> 1 in 0.15 s, group fade min(0.25, 80 % of the gap) and sizes as in the source. Changed: the film's font at weight 900 instead of Montserrat; words and groups from the voice transcript (the source hand-listed both); each word gets 0.15 em more room on top (cancelled by margin) because background-clip: text paints nothing outside the box and Vietnamese stacked marks rise above line-height 1.15. After Effects: background-clip text becomes a picture sequence of the word.",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo" } } ]
+ }
+}

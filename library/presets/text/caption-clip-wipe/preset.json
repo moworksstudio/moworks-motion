@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-clip-wipe",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: clip wipe",
+ "title_vi": "Phụ đề quét từng từ, từ khoá vàng",
+ "desc_vi": "Phụ đề theo giọng đọc, theo cụm: mỗi từ quét hiện từ trái sang khi được nói, từ khoá loé vàng, từ đã nói mờ xuống 40 %, cả cụm quét đi trước cụm sau.",
+ "params_vi": "words: \"voice\" (lấy từ giọng đọc) · groups: [[từ đầu, từ cuối]] hoặc tự gom (maxWords 4, maxSpan 2 s) · keywords: các từ tô vàng · size 88 (tự thu nhỏ cho vừa), weight, upper (in hoa), bottom 120 · color, key, spoken: màu chữ, từ khoá, từ đã nói",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-clip-wipe/caption-clip-wipe.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "wipe", "keywords"],
+ "notes": "Timing and look as in the source (wipe 0.3 s power2.out at each word, keyword gold after 0.1 s, spoken words to 40 % white, group wipe-off 0.25 s stagger 0.04 from 0.2 s before the group ends; fit-to-width down to 45 % of 88 px). Changed: the film's font instead of Poppins (no network); words come from the voice transcript (\"words\": \"voice\") instead of the source's fixed WORDS list; groups are automatic unless params.groups is given (the source hand-listed them); keywords are words instead of word indexes.",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo" } } ]
+ }
+}

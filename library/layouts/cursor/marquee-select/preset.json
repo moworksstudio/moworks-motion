@@ -1,0 +1,59 @@
+{
+ "name": "cursor/marquee-select",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Marquee Select Cursor",
+ "title_vi": "Con trỏ kéo khung chọn nhiều ảnh",
+ "desc_vi": "Con trỏ kéo một khung chọn qua lưới ảnh; ô nào khung chạm tới thì có viền và dấu tích bật lên, nhãn đếm số ảnh đã chọn tăng dần.",
+ "params_vi": "accent: Accent, mặc định \"#0a84ff\" · start_x: Drag start X, mặc định 20.5 · start_y: Drag start Y, mặc định 25.5 · end_x: Drag end X, mặc định 57 · end_y: Drag end Y, mặc định 52 · pill_label: Pill label, mặc định \"selected\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cursor-marquee-select/cursor-marquee-select.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "select",
+  "marquee",
+  "grid",
+  "product-demo"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cursor-marquee-select.html) in a kit film, mounted by ctx.hf.  Source: A cursor drags a selection rectangle across a photo grid; each tile rings and pops a check the frame the rectangle touches it, while a pill counts the selection up.",
+ "demo": {
+  "duration": 3.4,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "pill_label": "đã chọn",
+     "duration": 3.4
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

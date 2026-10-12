@@ -1,0 +1,59 @@
+{
+ "name": "ui/camera-scan-gate",
+ "kind": "block",
+ "group": "ui",
+ "title": "Camera Scan Gate",
+ "title_vi": "Khung quét camera nhận mã QR",
+ "desc_vi": "Khoảnh khắc camera quét mã: vệt quét chạy qua khung ngắm, bốn góc khoá lại, nháy xác nhận rồi hiện bước tiếp theo đã xác minh.",
+ "params_vi": "scanColor: Scan color, mặc định \"var(--brand)\" · targetLabel: Target label, mặc định \"Verified\" · sweepSpeed: Sweep speed, mặc định 1 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/camera-scan-gate/camera-scan-gate.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "prop",
+  "ui-props",
+  "camera",
+  "qr",
+  "scan",
+  "recognition"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/camera-scan-gate.html) in a kit film, mounted by ctx.hf.  Source: A camera and QR recognition moment with a viewfinder sweep, bracket lock, confirmation pulse, and verified next beat.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "targetLabel": "Đã xác minh",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

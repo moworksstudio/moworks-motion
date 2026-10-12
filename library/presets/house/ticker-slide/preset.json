@@ -1,0 +1,81 @@
+{
+ "name": "house/ticker-slide",
+ "kind": "effect",
+ "group": "house",
+ "title": "Ticker slide",
+ "title_vi": "Chữ đầu / chân trang trượt vào",
+ "desc_vi": "Chữ nhỏ đầu trang trượt vào từ trái, chữ chân trang từ phải, kèm hiện dần.",
+ "params_vi": "dist (160 px) · dir (null = theo nửa trên/dưới của khung) · stagger (0)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "slide",
+  "header",
+  "footer",
+  "house"
+ ],
+ "notes": "Port of P.tickerSlide. The vertical centre comes from layout offsets (v1 used getBoundingClientRect). The opacity tween is written first.",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "hd",
+    "type": "text",
+    "text": "CHUYÊN ĐỀ  ·  CÂU CHUYỆN THƯƠNG HIỆU",
+    "style": {
+     "left": "120px",
+     "top": "70px",
+     "font-size": "40px",
+     "color": "#1d1d1d",
+     "font-weight": "400",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "ft",
+    "type": "text",
+    "text": "MOWORKS  ·  2026",
+    "style": {
+     "left": "1380px",
+     "top": "950px",
+     "font-size": "40px",
+     "color": "#1d1d1d",
+     "font-weight": "400",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "mid",
+    "type": "text",
+    "text": "Nội dung chính",
+    "style": {
+     "left": "640px",
+     "top": "470px",
+     "font-size": "110px",
+     "color": "#1d1d1d",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "hd",
+     "ft"
+    ],
+    "at": 0.3
+   }
+  ]
+ }
+}

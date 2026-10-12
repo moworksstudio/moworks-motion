@@ -1,0 +1,57 @@
+{
+ "name": "data/oscilloscope",
+ "kind": "block",
+ "group": "data",
+ "title": "Oscilloscope Trace",
+ "title_vi": "Máy hiện sóng CRT vẽ dạng sóng",
+ "desc_vi": "Tia máy hiện sóng CRT quét một dạng sóng trên lưới 10x8, vệt phốt pho mờ dần và sáng hơn ở chỗ tia đi chậm.",
+ "params_vi": "waveform: Waveform (sine | square | triangle | data), mặc định \"sine\" · frequency: Signal frequency, mặc định 12 · amplitude: Amplitude, mặc định 3 · persistenceMs: Phosphor persistence (tau), mặc định 100 · phosphorColor: Phosphor colour, mặc định \"#5dff8f\" · sweepRate: Sweep rate, mặc định 5 · dataSeries: Data series (waveform=data) · duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/oscilloscope-trace/oscilloscope-trace.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "instrument",
+  "data",
+  "showcase",
+  "retro"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/oscilloscope-trace.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: CRT oscilloscope beam sweeping a waveform across a 10x8 graticule, with closed-form phosphor persistence: the tail decays as exp(-age/tau) and brightens where the beam slows",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

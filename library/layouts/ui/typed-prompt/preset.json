@@ -1,0 +1,54 @@
+{
+ "name": "ui/typed-prompt",
+ "kind": "block",
+ "group": "ui",
+ "title": "Typed prompt",
+ "title_vi": "Ô nhập lệnh tự gõ, nhịp gõ như người",
+ "desc_vi": "Một ô nhập lệnh tối, câu lệnh tự gõ theo nhịp như người (từng cụm 1–3 ký tự, nhanh chậm khác nhau) sau con trỏ màu nhấp nháy; có thể gõ sai từ cuối, xoá rồi gõ lại. Hợp demo sản phẩm AI.",
+ "params_vi": "text: câu lệnh · glyph: ký tự đầu dòng (\">\"; trống = ẩn) · cadence: human | uniform · caret: blink | solid · correction: từ gõ sai thay cho từ cuối (trống = không) · cues: mốc bắt đầu từng từ (giây, dấu phẩy) · accent: green | blue | violet hoặc mã màu · duration: độ dài gốc 4 s · exit: none | fade | up · fg, surface, border, shadow: màu",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/typed-prompt/typed-prompt.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "typing",
+  "prompt",
+  "ai",
+  "input",
+  "caret"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Text table, seeded cadence, correction, compression, caret law, panel and envelope as in the source (see preset.js). The caret's integer sine cycles are written as on / off sets (the same frames). Characters are counted as code points on NFC text, so Vietnamese letters type as one key. The source's theme tokens are params. Default text is Vietnamese (source: Generate a product launch video).",
+ "demo": {
+  "duration": 4.2,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0.1,
+    "params": {
+     "correction": "phẫm"
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

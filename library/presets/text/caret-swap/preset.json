@@ -1,0 +1,17 @@
+{
+ "name": "text/caret-swap",
+ "kind": "effect",
+ "group": "text",
+ "title": "Caret swap",
+ "title_vi": "Con trỏ màu quét xoá dòng cũ, gõ dòng mới",
+ "desc_vi": "Một con trỏ màu hồng tím hiện ở cuối dòng, quét ngược qua dòng như bôi đen rồi xoá chữ, thu lại thành con trỏ ở đầu dòng, sau đó dòng mới tự gõ ra (càng lúc càng nhanh) và trượt dần vào giữa; con trỏ nhấp nháy khi xong. Chữ của phần tử là dòng cũ, to là dòng mới.",
+ "params_vi": "to: dòng mới · caretColor, caretColorEnd: hai màu dải của con trỏ · duration: độ dài cả hiệu ứng (3.33 s; con trỏ nhấp nháy tới hết)",
+ "source": { "label": "HyperFrames registry (from remocn, MIT)", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caret-swap/caret-swap.html" },
+ "license": "MIT (remocn) via Apache-2.0 registry",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["swap", "caret", "typing", "selection"],
+ "check_end": false,
+ "notes": "Frame plan as in the source (30 fps clock: cover at 13, expand 20-26, old text off at 26, collapse 26-33, typing from 40 with the 0.96 decay, blink every 8 frames; both eases are the source's CustomEase curves as custom() eases; the timing shrinks when duration is shorter than typing + 8 frames). The typed text is one span per grapheme switched on in turn (the source rewrote textContent), so Vietnamese letters with marks type as one key. The source's fit-to-host font scaling is the film element's size. End check off: the end shows the new line. AE: png (the cover uses a CSS mask).",
+ "demo": { "duration": 3.4, "hold": 0.3, "elements": [{ "id": "t1", "type": "text", "text": "Bắt tay vào làm?", "style": { "color": "#f5f5f2", "font-weight": "500", "font-size": "104px", "letter-spacing": "-0.02em", "line-height": "1.15", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.1 }] }
+}

@@ -1,0 +1,16 @@
+{
+ "name": "text/shimmer-sweep",
+ "kind": "effect",
+ "group": "text",
+ "title": "Shimmer sweep",
+ "title_vi": "Vệt sáng lướt chéo qua phần tử",
+ "desc_vi": "Một vệt sáng chéo mềm lướt qua phần tử một lần (1.2 giây), hoà trộn kiểu overlay nên làm sáng màu nó đi qua. Dùng cho thẻ, nút, ảnh hoặc chữ; nhiều phần tử thì lần lượt cách 0.15 giây.",
+ "params_vi": "color: màu vệt sáng (trắng 60 %) · width: bề rộng vệt (20 %) · angle: góc (120°) · duration 1.2 · stagger 0.15",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/shimmer-sweep/shimmer-sweep.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["shimmer", "light", "sweep", "gloss"],
+ "notes": "Gradient, overlay blend and the -20 % -> 120 % sweep (1.2 s power2.inOut, stagger 0.15) as in the source. On plain text the band is a copy of the text with the gradient clipped to the letters (inside an element that makes its own stacking context the overlay would otherwise show over the transparent box). The demo is a coloured card, where the overlay reads best.",
+ "demo": { "hold": 0.8, "elements": [{ "id": "c1", "type": "box", "style": { "left": "560px", "top": "340px", "width": "800px", "height": "400px", "border-radius": "36px", "background": "linear-gradient(135deg, #3b5bdb, #7048e8)" } }, { "id": "t1", "type": "text", "text": "Ánh sáng lướt qua", "style": { "color": "#e9ecff", "font-weight": "800", "font-size": "92px", "letter-spacing": "-0.03em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "c1", "at": 0.3 }, { "target": "t1", "at": 0.45 }] }
+}

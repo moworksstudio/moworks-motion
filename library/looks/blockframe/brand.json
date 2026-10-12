@@ -1,0 +1,83 @@
+{
+ "_about": "Public look 'blockframe' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "blockframe",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/blockframe/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "ef8d9d47a209bed4ccc2d928c14a81cdaecb5129f5dc0cdc0dc40afc7ef92931",
+   "frame-showcase.html": "8d2e4963713928b353d0aa28c2c83fce415df81b66a500c192b602c0aaf4ddf2",
+   "caption-skin.html": "85ef2bf1579587b97e26b617ea0c957329879e8413c2875605a278ad947c7d26"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Inter",
+   "family": "Inter",
+   "dir": "google/Inter",
+   "files": {
+    "400": "Inter[opsz,wght].ttf",
+    "700": "Inter[opsz,wght].ttf",
+    "900": "Inter[opsz,wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Inter",
+   "family": "Inter",
+   "dir": "google/Inter",
+   "files": {
+    "400": "Inter[opsz,wght].ttf",
+    "500": "Inter[opsz,wght].ttf",
+    "600": "Inter[opsz,wght].ttf",
+    "700": "Inter[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 96.0,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.23,
+    "body": 0.19,
+    "disclaimer": 0.135
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 900
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 700,
+    "weightTwoLines": 700
+   },
+   "body": {
+    "family": "body",
+    "weight": 500
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 600
+   }
+  }
+ },
+ "color": {
+  "black": "#000000",
+  "white": "#FFFFFF",
+  "offwhite": "#FFFDF5",
+  "pink": "#FE90E8",
+  "blue": "#C0F7FE",
+  "green": "#99E885",
+  "yellow": "#F7CB46",
+  "cream": "#FFDC8B"
+ },
+ "kit": {
+  "accent": "yellow"
+ }
+}

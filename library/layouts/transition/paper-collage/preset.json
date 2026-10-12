@@ -1,0 +1,59 @@
+{
+ "name": "transition/paper-collage",
+ "kind": "block",
+ "group": "transition",
+ "title": "Paper Collage Reveal",
+ "title_vi": "Mảnh giấy xé bay đi lộ nội dung",
+ "desc_vi": "Một tấm ghép các mảnh giấy xé, mỗi mảnh một vân và một độ nghiêng, lần lượt bay đi để lộ nội dung bên dưới.",
+ "params_vi": "panels: Panels, mặc định 6 · tone: Paper tone (cream | kraft | mixed), mặc định \"mixed\" · spread: Spread (outward | scatter), mặc định \"outward\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: paper-collage-reveal-content), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/paper-collage-reveal/paper-collage-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "collage",
+  "scrapbook",
+  "torn paper",
+  "reveal",
+  "transition",
+  "motion-primitive"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/paper-collage-reveal.html) in a kit film, mounted by ctx.hf.  Source: A scrapbook patchwork of torn paper scraps, each with its own texture and tilt, flutters away in a staggered scatter to reveal the content underneath.",
+ "demo": {
+  "duration": 2.6,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 2.6
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.5
+ }
+}

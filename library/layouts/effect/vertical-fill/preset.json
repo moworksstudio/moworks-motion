@@ -1,0 +1,56 @@
+{
+ "name": "effect/vertical-fill",
+ "kind": "block",
+ "group": "effect",
+ "title": "Vertical Media Filler",
+ "title_vi": "Video dọc lấp đầy khung ngang",
+ "desc_vi": "Video / ảnh dọc lấp đầy khung ngang bằng hai bên nhoè phóng to, soi gương hoặc nhân bản, có vân lưới và tăng tương phản.",
+ "params_vi": "duration: độ dài của block (8 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/yt-vertical-fill/yt-vertical-fill.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "placeholder",
+  "vertical",
+  "media"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/yt-vertical-fill.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Portrait media filling a widescreen frame via blurred-scale, mirror, or copy side fills; grid texture and foreground contrast lift (images inside the block; keep live footage in the host)",
+ "demo": {
+  "duration": 8.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 8.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

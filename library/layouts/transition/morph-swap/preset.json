@@ -1,0 +1,58 @@
+{
+ "name": "transition/morph-swap",
+ "kind": "block",
+ "group": "transition",
+ "title": "Morph Swap",
+ "title_vi": "Hai vật cùng tâm: co lại / biến dáng sang vật kia",
+ "desc_vi": "Hai vật xếp chồng cùng tâm: A đứng yên rồi co mờ đúng lúc B phóng lên, hoặc biến dáng sang B quanh cùng một tâm.",
+ "params_vi": "swap_at: Swap start, mặc định 1.4 · register: Register (condense | reshape), mặc định \"condense\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: a, b), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/morph-swap/morph-swap.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "transition",
+  "morph",
+  "swap",
+  "condense",
+  "reshape",
+  "holdable"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/morph-swap.html) in a kit film, mounted by ctx.hf.  Source: Two slotted siblings stacked at one shared center: A holds, then condenses or reshapes into B on a shared 50% 50% transform origin. Condense shrink-fades A exactly as B scales up; reshape morphs the silhouette on scaleX/scaleY, never width or height tweens. Token card defaults render when a slot is left empty.",
+ "demo": {
+  "duration": 3.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 3.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

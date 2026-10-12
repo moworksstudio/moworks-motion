@@ -1,0 +1,19 @@
+{
+ "name": "social/x-post",
+ "kind": "block",
+ "group": "social",
+ "title": "Social post card (X style)",
+ "title_vi": "Thẻ bài đăng mạng xã hội kiểu X",
+ "desc_vi": "Thẻ bài đăng tối trượt từ dưới lên, nút thích bị nhấn rồi nảy lò xo, tim chuyển hồng và số lượt thích tăng thêm một; cuối cùng thẻ trượt xuống biến mất.",
+ "params_vi": "name, handle: tên và tài khoản · verified: yes | no (dấu tick) · text, tag: nội dung và hashtag màu xanh · time: dòng thời gian · replies, reposts, likes, likesAfter (số lượt thích sau khi bấm), views: các con số · avatar: silhouette | initials (hình bóng hoặc chữ cái) · avatarColor: màu nền avatar · exitAt: giây thẻ trượt ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/x-post/x-post.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": ["social", "post", "tweet", "like", "overlay", "card"],
+ "notes": "Layout and colours as in the source (card 880 px wide, #15202b, 20 px radius, 36 / 36 / 28 px padding, 1 px #38444d border, 0 8 40 shadow, bottom glow 80 px; header with 52 px avatar, 26 px name, 22 px verified tick and 22 px handle; post text 30 px / 1.45 line-height clamped to 4 lines with a #1d9bf0 hashtag; 22 px time line with a rule; metrics row 35 px icons, 20 px counts, left group space-between with 60 px right padding, bookmark and share on the right). Motion (times relative to `at`, as in the source's own timeline): card y 400 and opacity 0 -> 0 and 1 over 0.6 s power3.out at 0.1 s; like button scale 0.85 over 0.12 s power2.out at 1.5 s, back to 1 over 0.4 s elastic.out(1, 0.4) at 1.62 s; outline heart opacity 1 -> 0 over 0.01 s, filled heart 0 -> 1 over 0.12 s at 1.62 s; like count colour #8b98a5 -> #f91880 over 0.12 s at 1.62 s with the text going from the old to the new number; card out y 0 -> 400, opacity 1 -> 0 over 0.3 s power3.in at exitAt (4.2 s). brand_ui: imitates a real social platform's post card. 05/10/2026: source artwork restored as default (user's decision: open-source registry artwork is used as shipped): the platform logo at the top right, the six action icons (reply, repost, like outline + filled heart, views, bookmark, share) with the source's own SVG paths at 35 px, and the grey avatar silhouette (circle #536471 + head + shoulders #8b98a5); the verified tick is the source's blue circle with a check mark and can be turned off. Params to use your own: `avatar` = \"initials\" gives an initials disc instead of the silhouette, `avatarColor` sets the disc colour, `verified` = \"no\" removes the tick. Other differences: the like count text swap that the source did in an onStart callback is two overlapping texts (old and new) switched at the same time, so it needs no code; the card is centred in the target box by the grid instead of a CSS translate; the font is the film's font (source: Inter from the web); the source's 1:1 `transform: translate(-50%, -50%)` centring is replaced, so the y tweens never fight it. Default texts are Vietnamese (source: English placeholders); the placeholder account is made up.",
+ "demo": { "bg": "#1c2733", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.2, "params": {} }] }
+}

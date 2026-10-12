@@ -1,0 +1,62 @@
+{
+ "name": "social/ai-chat-reveal",
+ "kind": "block",
+ "group": "social",
+ "title": "AI Chat Reveal",
+ "title_vi": "Hỏi AI trên điện thoại, câu trả lời chạy từng cụm",
+ "desc_vi": "Câu hỏi được gõ trên bàn phím điện thoại trồi lên, gửi đi, AI trả lời từng cụm từ theo nhịp thật (chấm suy nghĩ, cụm không đều, danh sách gạch đầu dòng) rồi cắt sang cảnh khác. Khung dọc.",
+ "params_vi": "botName: Assistant name, mặc định \"Assistant\" · userMessage: User message, mặc định \"How do I turn my HTML into real video?\" · answer1: Answer paragraph 1, mặc định \"You do not need an editor. HyperFrames renders the HTML you already write into deterministic, pixel-perfect video.\" · answer2: Answer paragraph 2, mặc định \"It is markup, not magic.\" · answer3: Answer paragraph 3, mặc định \"What you get out of the box:\" · bullet1: Bullet 1, mặc định \"A catalog of motion primitives you install and own\" · bullet2: Bullet 2, mặc định \"GSAP timelines that seek to any frame\" · bullet3: Bullet 3, mặc định \"4K renders from a single CLI command\" · ecHeadline: End-card headline, mặc định \"It's not magic.|It's HTML.\" · ecSub: End-card subline, mặc định \"Open-source video rendering — write HTML, ship pixel-perfect video.\" · ecCta: End-card CTA, mặc định \"Try HyperFrames\" · ecFooter: End-card footer, mặc định \"HYPERFRAMES.HEYGEN.COM\" · duration: độ dài của block (19.3333 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt) · images: danh sách ảnh của job cho các ô ảnh, theo thứ tự (trống = ảnh giữ chỗ của kit; ít ảnh thì lặp lại)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/ai-chat-reveal/ai-chat-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "vendor": [
+  "data/placeholders"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "showcase",
+  "mock-ui",
+  "ai",
+  "chat",
+  "vertical",
+  "ad-template"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/ai-chat-reveal.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A question is typed on a rising keyboard, sent, and answered by an AI that streams its reply word by word on a measured token rhythm - thinking dot, uneven bursts, bulleted list - before the app cuts to a branded closing card",
+ "demo": {
+  "duration": 19.3333,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 19.3333
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

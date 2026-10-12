@@ -1,0 +1,59 @@
+{
+ "name": "card/throw-snap",
+ "kind": "block",
+ "group": "card",
+ "title": "Velocity Throw Snap",
+ "title_vi": "Dải ảnh vụt qua rồi bám ảnh chính giữa",
+ "desc_vi": "Một dải năm ảnh vụt qua theo đường giảm tốc nhanh, vượt quá rồi bám đúng ảnh chính vào giữa khung.",
+ "params_vi": "hero_index: Hero index, mặc định 2 · accent: Accent (green | blue | violet), mặc định \"green\" · card_label_prefix: Card label prefix, mặc định \"Shot\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/velocity-throw-snap/velocity-throw-snap.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "feature-tour",
+  "rail",
+  "velocity",
+  "throw",
+  "snap"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/velocity-throw-snap.html) in a kit film, mounted by ctx.hf.  Source: A five-shot rail whips past on a fast decaying curve, then overshoots and snaps the selected hero shot exactly to center.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "card_label_prefix": "Cảnh",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

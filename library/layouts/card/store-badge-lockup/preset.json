@@ -1,0 +1,19 @@
+{
+ "name": "card/store-badge-lockup",
+ "kind": "block",
+ "group": "card",
+ "title": "Store badge lockup",
+ "title_vi": "Khối tải ứng dụng hai nút cửa hàng",
+ "desc_vi": "Dòng kêu gọi hiện trước, rồi hai nút tải app trồi lên và rõ dần lần lượt, giữ yên; cuối clip cả khối mờ đi.",
+ "params_vi": "headline: dòng kêu gọi · showA, showB: yes | no (hiện từng nút) · microA, labelA, glyphA: chữ nhỏ, chữ lớn, ký hiệu nút A (glyph là một ký tự hoặc \"play\") · microB, labelB, glyphB: như vậy cho nút B · duration: độ dài gốc 4 s · bg, fg, muted, surface, border, brand: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/store-badge-lockup/store-badge-lockup.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": ["app", "download", "end card", "cta", "badge", "store"],
+ "notes": "Layout, sizes and motion as in the source: lockup width min(88cqw, 154cqh), gap min(6cqw, 7cqh); headline min(8.2cqw, 12.5cqh) weight 750 tracking -0.045em, max-width 82cqw, balanced; badges width min(40cqw, 67cqh), aspect 3.12 / 1, radius 4 x the card radius (2.4cqh), padding min(2.2cqw, 3.2cqh) min(3cqw, 4.8cqh), glyph tile min(6.7cqw, 10.5cqh), micro text min(1.65cqw, 2.65cqh), label min(3.75cqw, 5.8cqh); headline yPercent 22 -> 0 with opacity 0 -> 1 over 0.48 s power2.out at 0.05 s; badges yPercent 28 -> 0 with opacity, 0.68 s power2.out each, 0.1 s apart from 0.22 s (one tween per badge: the source used one tween with stagger 0.1, which the builder cannot write out, it reads the stagger total back as the duration); lockup opacity 1 -> 0 over 0.45 s power2.in at `duration` - 0.45 s (source: the composition length 4 s); IN and OUT scale together when `duration` is below 1.65 s. Colours are the source demo theme (bg #080b13, fg #f7f9fc, muted #aab4c5, surface #151c29, border #3b4659, brand #7c6cff for the glyph tint). brand_ui: the layout imitates the two app-store download badges. No store artwork is used: the source already drew generic glyphs (the letter A in a rounded tile, a CSS play triangle); here the glyph (a character or the word play) and both text lines of each badge are params, and the two badges can be hidden separately (source variables showApple / showGoogle become showA / showB). Differences: the source's full-box background is not painted (the film shows through; bg only tints the badge shadow); the source padded the clip by the --space-3 token (4.8cqh in its demo theme), the port pads the box by 4.8cqh; the gap between badges is 2.4cqh and the glyph / copy gap 1.2cqh (the source's --space-2 / --space-1 demo values); the source heading font is the film's font. Default texts are Vietnamese (source: English); the store names are plain text content you can change.",
+ "demo": { "bg": "#080b13", "duration": 4.4,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

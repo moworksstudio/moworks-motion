@@ -1,0 +1,78 @@
+{
+ "name": "motion/object-sweep",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Light sweep on an object",
+ "title_vi": "Vệt sáng chỉ trên vật",
+ "desc_vi": "Dải sáng lướt qua MỘT vật (thẻ, ảnh, sticker, sản phẩm tách nền) và chỉ nằm trong hình của nó (mặt nạ = chính ảnh đó, nên PNG trong suốt giữ đúng viền); nhiều vật lệch nhau. Khác background/light-sweep-pass: không quét cả khung.",
+ "params_vi": "target: khung chứa <img> · passes: [[giây, thời lượng], ...] · color · width: % · angle: độ · stagger: giây · blend (screen)",
+ "ae": "expression",
+ "tags": [
+  "light",
+  "sweep",
+  "product",
+  "card"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026).",
+ "demo": {
+  "bg": "#1a1d29",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "o1",
+    "type": "box",
+    "style": {
+     "left": "300px",
+     "top": "190px",
+     "width": "700px",
+     "height": "601px"
+    },
+    "html": "<img src='assets/demo/house-arch.png' style='position:absolute;left:0px;top:0px;width:100%;height:100%'>"
+   },
+   {
+    "id": "o2",
+    "type": "box",
+    "style": {
+     "left": "1100px",
+     "top": "250px",
+     "width": "540px",
+     "height": "526px",
+     "border-radius": "28px",
+     "overflow": "hidden"
+    },
+    "html": "<img src='assets/demo/ui-card-image.png' style='position:absolute;left:0px;top:0px;width:100%;height:100%'>"
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "o1",
+     "o2"
+    ],
+    "at": 0.3,
+    "params": {
+     "passes": [
+      [
+       0,
+       1.0
+      ],
+      [
+       1.4,
+       1.0
+      ]
+     ],
+     "stagger": 0.25
+    }
+   }
+  ],
+  "thumb_at": 0.3
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

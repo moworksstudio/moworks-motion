@@ -1,0 +1,62 @@
+{
+ "name": "carousel/orbit-3",
+ "kind": "block",
+ "group": "carousel",
+ "title": "Orbit Carousel 3",
+ "title_vi": "Quả cầu ảnh xoay 3D, kiểu 3",
+ "desc_vi": "Các thẻ ảnh trên một quả cầu Fibonacci 3D đang xoay, luôn quay mặt về máy quay, cỡ theo khoảng cách. 24 ô ảnh.",
+ "params_vi": "speed: Speed, mặc định 1 · background: Background, mặc định \"#EDEDEF\" · background có hiệu lực (kit vá lúc build; \"transparent\" = nền trong suốt) · cardBg: nền thẻ, mặc định #fff (\"transparent\" cho ảnh PNG trong suốt) · card: [rộng, cao] cho mọi thẻ (trống = cỡ thẻ mẫu, vd [404, 640] thẻ dọc) · duration: độ dài của block (6 s; dài hơn thì block chạy chậm lại cho vừa cảnh) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt) · images: danh sách ảnh của job cho các ô ảnh, theo thứ tự (trống = ảnh giữ chỗ của kit; ít ảnh thì lặp lại)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/carousel-orbit-3/carousel-orbit-3.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "vendor": [
+  "data/placeholders"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "carousel",
+  "gallery",
+  "images",
+  "showcase",
+  "orbit",
+  "3d"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/carousel-orbit-3.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Image cards on a spinning 3D Fibonacci sphere, billboarded to the camera, sized by camera distance (Orbit style 3); 24 image slots.",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

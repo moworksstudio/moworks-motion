@@ -1,0 +1,99 @@
+{
+ "name": "house/bob",
+ "kind": "effect",
+ "group": "house",
+ "title": "Bob",
+ "title_vi": "Nhấp nhô",
+ "desc_vi": "Món nhỏ nổi lên xuống nhẹ nhàng, mỗi món một pha riêng.",
+ "params_vi": "amp: biên độ (3 px) · period (2.6 s) · dur (30 s)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "bob",
+  "float",
+  "house"
+ ],
+ "notes": "Port of P.bob. Ambient formula via ctx.code on the float layer. Demo uses amp 8 so it reads in a small preview (v1 default is 3 px).",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "b0",
+    "type": "image",
+    "src": "assets/demo/house-dish-1.png",
+    "style": {
+     "left": "360px",
+     "top": "420px",
+     "width": "180px",
+     "height": "180px"
+    }
+   },
+   {
+    "id": "b1",
+    "type": "image",
+    "src": "assets/demo/house-dish-2.png",
+    "style": {
+     "left": "600px",
+     "top": "420px",
+     "width": "180px",
+     "height": "180px"
+    }
+   },
+   {
+    "id": "b2",
+    "type": "image",
+    "src": "assets/demo/house-dish-3.png",
+    "style": {
+     "left": "840px",
+     "top": "420px",
+     "width": "180px",
+     "height": "180px"
+    }
+   },
+   {
+    "id": "b3",
+    "type": "image",
+    "src": "assets/demo/house-dish-4.png",
+    "style": {
+     "left": "1080px",
+     "top": "420px",
+     "width": "180px",
+     "height": "180px"
+    }
+   },
+   {
+    "id": "b4",
+    "type": "image",
+    "src": "assets/demo/house-dish-5.png",
+    "style": {
+     "left": "1320px",
+     "top": "420px",
+     "width": "180px",
+     "height": "180px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "b0",
+     "b1",
+     "b2",
+     "b3",
+     "b4"
+    ],
+    "at": 0.0,
+    "params": {
+     "amp": 8
+    }
+   }
+  ]
+ }
+}

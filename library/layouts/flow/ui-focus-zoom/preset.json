@@ -1,0 +1,20 @@
+{
+ "name": "flow/ui-focus-zoom",
+ "kind": "block",
+ "group": "flow",
+ "title": "UI focus zoom",
+ "title_vi": "Camera phóng vào một vùng giao diện",
+ "desc_vi": "Màn hình ứng dụng hiện ra một nhịp, rồi camera phóng to và lia tới vùng được chọn và giữ nguyên; một quầng sáng nở ra tại điểm nhấn khi camera tới.",
+ "params_vi": "anchorX, anchorY: điểm nhấn, % từ mép trái / trên (64, 36) · zoom: độ phóng (1 - 3) · zoomAt: giây camera xuất phát (1.4) · halo: bật quầng sáng · image: ảnh màn hình (rỗng = màn khung xương) · accent: màu nhấn · exit: none | fade | up · duration: độ dài gốc 4.5 s · bg, base, fg, surface, border, shadow: màu · radius: bo góc (px, 0 = mặc định)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/ui-focus-zoom/ui-focus-zoom.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["camera", "zoom", "focus", "product demo", "app screen"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Camera law, clamp, envelope and eases as in the source (world wrapper transform translate(x %, y %) scale(S) with T = -(anchor - 50) x S clamped to 50 (S - 1) - 0.36; settle 0.9 s power3.out with rise 4.5 cqh and scale 0.965 -> 1 around 50 % 60 %; camera 1.1 s power2.inOut at zoomAt clamped inside [IN, D - OUT - move - 0.05]; halo 0.75 s power2.out from the middle of the camera move, 0.55 -> 1 scale, 0 -> 0.85 opacity; exit fade / up 0.5 s; phases shrink together when the duration is short). The camera was a proxy object repainted by an onUpdate writer; it is one ordinary tween on the world wrapper (scale, xPercent, yPercent = the same translate(%) scale(S) matrix), so the film has plain keyframes. DROPPED: the micro-drift (sine cycles of 0.16 % and 0.11 % of the frame, i.e. 0.3 px and 0.12 px at 1920 x 1080, ending at exactly zero): it is invisible and would turn the whole preset into per-frame code; the pan clamp keeps its 0.16 + 0.2 margin so the camera targets are identical. cqw / cqh / cqmin are taken from the target box (custom property --cm holds one percent of its short side; the source demo mounted it in a 72 % x 64 % card, as the gallery demo does). The surface is the source's token-styled skeleton app (header bar, sidebar, three cards) unless `image` is set (source: a slot template; a direct img is covered); in the source the second header line never got a width (nth-of-type counted the mark span) and so was invisible, only the first line (6.5 cqmin) is drawn. Source variables: anchor_x / anchor_y / zoom / zoom_at / halo / exit kept (halo as true / false); accent is a hex colour (source: green / blue / violet reading theme tokens); theme tokens became params with the source fallbacks (fg #f8fafc, surface #0b1016, border #475569, bg transparent, base #05070c for the mixes). color-mix() is written as rgba / computed hex. The root takes the radius of its target (border-radius: inherit).",
+ "demo": { "bg": "radial-gradient(ellipse at 50% 44%, #171a20 0%, #0b0c0e 72%)", "duration": 4.5,
+   "elements": [{ "id": "card", "type": "box", "style": { "left": "269px", "top": "194px", "width": "1382px", "height": "691px", "overflow": "hidden", "border-radius": "30px", "border": "1px solid rgba(52,58,70,.2)", "background": "rgba(20,23,28,.72)", "box-shadow": "0 40px 100px rgba(0,0,0,.48)" } }],
+   "motion": [{ "target": "card", "at": 0, "params": { "anchorX": 30, "anchorY": 60, "zoom": 2, "zoomAt": 1.2, "accent": "#61a8ff", "surface": "#14171c", "border": "#343a46", "duration": 4.5 } }] }
+}

@@ -1,0 +1,55 @@
+{
+ "name": "ui/notes-reveal",
+ "kind": "block",
+ "group": "ui",
+ "title": "Notes reveal",
+ "title_vi": "Ghi chú được gõ từng chữ + thẻ kết viết tay (dọc 9:16)",
+ "desc_vi": "Ứng dụng ghi chú trên điện thoại: tiêu đề và 7 dòng được gõ từng chữ, ghi chú cuộn lên; cuối cùng màn hình mờ đi để lộ thẻ kết viết tay có gạch chân, vòng tròn, bảng 3 dòng tick.",
+ "params_vi": "title_l1, title_l2: tiêu đề ghi chú · lines: 7 dòng gõ (ngắn, tối đa khoảng 36 ký tự) · card_top, card_mid, card_bottom: 3 dòng chữ viết tay (từ cuối của dòng trên được gạch chân, từ đầu của dòng dưới được khoanh) · checks: 3 cặp [nhãn, giá trị] · brand_logo, brand_domain: dòng ký tên · time, suggestions, space_label: chữ trên bàn phím",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/notes-reveal/notes-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": [
+  "notes",
+  "typing",
+  "ios",
+  "keyboard",
+  "phone",
+  "handwriting",
+  "vertical",
+  "end card",
+  "ui"
+ ],
+ "notes": "Portrait design 1080 x 1920 built at source pixels and fitted (contain, centred) to the target box with one static CSS scale (1 in a 1080 x 1920 film, 0.5625 in the 608 x 1080 demo slot). Typing rhythm (frames at 30 fps), the 5 per-frame scroll curves, caret jumps and the 0.2833 s crossfade at 21.375 s are the source's values, written as literal tl.set steps (about 700). Differences: (1) fonts: Permanent Marker (Apache-2.0) and Courier Prime (OFL) are shipped in assets/ as in the source; the UI font is the film's font (source: -apple-system); neither shipped font has Vietnamese accents, so accented letters in the hand-lettered card / checklist / domain fall back to the film's font per glyph (the defaults use unaccented words there, plus one accented letter, CODE SẠCH); (2) measurements are impossible at build time (fonts load after the preset runs), so the source's runtime fitting and positioning is replaced: the caret is a child of every typed character (rides the character by layout, shown/hidden with the same per-character tl.set times) plus a line-start caret per line, the underline and ring are positioned in em from their word by CSS (same geometry as the source for the default text), and the source's width fit (shrink to fit, floor 45 %) is an estimate from the character count and the font's average glyph width (it only shrinks, and keeps the designed size for text of default length); (3) the per-character 'hide at 0' sets are not needed (characters start hidden by CSS); (4) the hl3 ring is a bordered ellipse instead of an SVG ellipse; (5) the sign-off logo is an image param defaulting to a generated neutral mark (ui-logo-dark.png in demo-assets) instead of the HyperFrames logo; the green video thumbnail on the closing card is the source's plain gradient + play button; (6) all texts are params with Vietnamese defaults (the source's seven body lines are about video making; defaults are a Vietnamese first-person note); keyboard keys stay QWERTY; (7) composition length 24.85 s is the demo duration. Imitates the iOS Notes app and keyboard (brand_ui). 05/10/2026: the source's own assets are back as defaults (user's decision: open-source assets are used as shipped); pass a param to use your own.",
+ "demo": {
+  "bg": "#1b1d22",
+  "duration": 24.85,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "656px",
+     "top": "0px",
+     "width": "608px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {}
+   }
+  ]
+ }
+}

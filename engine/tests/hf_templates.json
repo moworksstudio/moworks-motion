@@ -1,0 +1,735 @@
+{
+ "push-in": {
+  "name": "camera/push-in",
+  "title_vi": "Máy quay đẩy chậm vào tiêu đề",
+  "desc_vi": "Tiêu đề ở giữa khung được máy quay đẩy vào chậm, liên tục, rồi mờ ra nhẹ nhàng. Một động tác camera duy nhất để nhấn mạnh.",
+  "demo": {
+   "text": "Tập trung"
+  }
+ },
+ "spring-pop": {
+  "name": "motion/spring-pop",
+  "title_vi": "Bật nảy như lò xo",
+  "desc_vi": "Một nhãn bật ra từ cỡ gần đúng, vượt quá một lần rồi nảy về đúng cỡ như lò xo.",
+  "demo": {
+   "text": "Mới"
+  }
+ },
+ "vox-annotate": {
+  "name": "text/vox-annotate",
+  "title_vi": "Chú thích kiểu Vox: tô từ khoá, kẻ dây, nhãn",
+  "desc_vi": "Một câu đứng yên; đúng nhịp, từ khoá được tô bằng bút dạ trong khi một dây nối mảnh kẻ từ đó lên một nhãn chú thích chữ máy. Tô, kẻ dây và nhãn là một nhịp duy nhất.",
+  "demo": {
+   "text": "Kể chuyện, đừng kể số liệu",
+   "keyword": "chuyện",
+   "note": "nhịp chú thích"
+  }
+ },
+ "code-snippet-dark-2026": {
+  "name": "code/code-snippet-dark-2026",
+  "title_vi": "VS Code Dark 2026 gõ code từng ký tự",
+  "desc_vi": "Giao diện VS Code đầy đủ (thanh hoạt động, cây thư mục, tab, terminal, thanh trạng thái) theo theme Dark 2026, code được gõ ra từng ký tự."
+ },
+ "agent-cursor": {
+  "name": "cursor/agent-cursor",
+  "title_vi": "Con trỏ tác tử AI thao tác giao diện",
+  "desc_vi": "Một con trỏ có nhãn tên màu nhấn đang thao tác giao diện: gõ ra từng bước đang làm, bấm từng mục tiêu (vòng tròn nhỏ), kết thúc bằng dấu tích.",
+  "demo": {
+   "agent_name": "Trợ lý",
+   "steps": "Đọc trang,Mở Cài đặt,Bật chế độ tối"
+  },
+  "thumb_at": 0.5
+ },
+ "ascii-render-pass": {
+  "name": "effect/ascii-render-pass",
+  "title_vi": "Cảnh hiện thành chữ ASCII rồi rõ dần",
+  "desc_vi": "Nội dung trong khung được vẽ lại bằng ký tự ASCII theo độ sáng; lưới đi từ thô đến mịn cho tới khi hình hiện rõ. Nội dung đưa vào qua slots (ô ascii-render-pass-scene); mặc định là một bảng chữ mẫu.",
+  "thumb_at": 0.5,
+  "defaults": {
+   "slots": {
+    "ascii-render-pass-scene": "<div style=\"display:grid;place-items:center;gap:16px;width:860px;height:460px;border-radius:32px;background:#2a3140\"><span style=\"color:#ffffff;font:600 132px system-ui,sans-serif;letter-spacing:-0.01em\">MOWORKS</span><span style=\"color:#9aa5b4;font:30px ui-monospace,Consolas,monospace;letter-spacing:0.16em\">BẢN 4.2</span></div>"
+   }
+  },
+  "notes": "Always give slots[\"ascii-render-pass-scene\"]: without a slot the component draws nothing (in the source the no-slot path never marks its raster ready), so the preset's default slot is a sample panel."
+ },
+ "ascii-trail-reveal": {
+  "name": "effect/ascii-trail-reveal",
+  "title_vi": "Vệt chữ ASCII cong quét lộ bảng",
+  "desc_vi": "Một đường cong chữ S quét qua lưới ký tự ASCII, lật các ô đi để lộ ra một bảng có nhãn bên dưới.",
+  "demo": {
+   "label": "Màn ra mắt"
+  },
+  "thumb_at": 0.5,
+  "css": "[data-composition-id=\"ascii-trail-reveal\"] .atr-grid { background: transparent; }",
+  "notes": "Kit-side CSS fix: in the source the grid overlay keeps an opaque background (#0b1016) after its cells flip away, so the panel and its label never show; the preset makes the grid background transparent (the HF file is unchanged)."
+ },
+ "avatar-cloud": {
+  "name": "effect/avatar-cloud",
+  "title_vi": "Đám mây avatar nối về nhãn trung tâm",
+  "desc_vi": "Các avatar chữ cái hiện dần thành một đám mây hình elip, các đường nối mảnh vẽ từ cộng đồng về nhãn chứng thực ở giữa.",
+  "demo": {
+   "label": "50 nghìn nhà sáng tạo"
+  },
+  "seek_tolerance": 0.003,
+  "notes": "Re-seeking leaves every element in the same state (checked 06/10/2026); the few differing pixels are the browser paint of its soft links, so the seek limit is raised for this demo."
+ },
+ "beat-accent": {
+  "name": "effect/beat-accent",
+  "title_vi": "Nhịp nhấn theo nhạc: loé sáng và phồng nhẹ",
+  "desc_vi": "Một cú nhấn theo phách nhạc: loé sáng, chữ phồng nhẹ một nhịp rồi tắt ngay.",
+  "demo": {
+   "text": "BÙM"
+  }
+ },
+ "beat-pulse-background": {
+  "name": "background/beat-pulse",
+  "title_vi": "Nền phát sáng theo phách nhạc",
+  "desc_vi": "Nền màu nhấn phập phồng độ sáng và độ rực đúng theo danh sách phách nhạc cho sẵn."
+ },
+ "beat-timeline": {
+  "name": "motion/beat-timeline",
+  "title_vi": "Các hàng tiêu đề vào theo nhịp đều",
+  "desc_vi": "Một chuỗi hàng tiêu đề vào lần lượt theo các mốc cách đều, giữ cùng nhau rồi ra cùng lúc. Bộ xương sắp nhịp cho một đoạn nhiều ý.",
+  "demo": {
+   "labels": "Một,Hai,Ba,Bốn"
+  }
+ },
+ "camera-scan-gate": {
+  "name": "ui/camera-scan-gate",
+  "title_vi": "Khung quét camera nhận mã QR",
+  "desc_vi": "Khoảnh khắc camera quét mã: vệt quét chạy qua khung ngắm, bốn góc khoá lại, nháy xác nhận rồi hiện bước tiếp theo đã xác minh.",
+  "demo": {
+   "targetLabel": "Đã xác minh"
+  }
+ },
+ "chart-story": {
+  "name": "data/chart-story",
+  "title_vi": "Biểu đồ dựng theo thứ tự đọc, có chú thích số",
+  "desc_vi": "Một biểu đồ dựng từ dữ liệu theo thứ tự đọc và dừng đúng số liệu: cột lần lượt, đường kẻ trái sang phải có vùng tô, vòng donut quét, hoặc thanh tiến độ; cột được nhấn có nhãn giá trị màu.",
+  "demo": {
+   "labels": "Q1, Q2, Q3, Q4"
+  }
+ },
+ "constellation-hub": {
+  "name": "data/constellation-hub",
+  "title_vi": "Các nút tính năng sáng dần quanh lõi trung tâm",
+  "desc_vi": "Các nút tính năng sáng lần lượt theo lời dẫn, dây nối thật vẽ ra từ một lõi cố định ở giữa, cuối cùng gom thành một cụm.",
+  "demo": {
+   "hub_label": "Sản phẩm",
+   "nodes": "Ghi hình,Dựng,Xuất,Chia sẻ"
+  },
+  "seek_tolerance": 0.005,
+  "notes": "Re-seeking leaves every element in the same state (checked 06/10/2026); the few pixels that differ are the browser's paint of its glow layers, so the gallery's seek limit is raised for this demo."
+ },
+ "cursor-annotate": {
+  "name": "cursor/annotate",
+  "title_vi": "Bút dạ bay vào khoanh, gạch, vẽ mũi tên",
+  "desc_vi": "Một cây bút dạ lướt vào khung và vẽ tay một vòng khoanh, một nét gạch chân hoặc một mũi tên quanh vùng chỉ định, mực nằm đúng dưới ngòi, rồi nhấc lên đi ra."
+ },
+ "cursor-context-menu": {
+  "name": "cursor/context-menu",
+  "title_vi": "Con trỏ chuột phải, menu bung ra",
+  "desc_vi": "Con trỏ bấm chuột phải vào một tệp, menu bung ra từ đầu con trỏ, vệt chọn chạy theo mục đang trỏ, rồi thao tác được chọn diễn ra: nhân bản, đổi tên, bỏ vào thùng rác hoặc thông báo xác nhận.",
+  "demo": {
+   "items": "Mở,Đổi tên,Nhân bản,Chia sẻ,Bỏ vào thùng rác"
+  }
+ },
+ "cursor-drag-drop": {
+  "name": "cursor/drag-drop",
+  "title_vi": "Con trỏ kéo thả thẻ công việc",
+  "desc_vi": "Con trỏ nắm một thẻ công việc, nhấc lên hơi nghiêng theo hướng kéo, mang sang cột trống, thả xuống có nhún nhẹ, danh sách cũ khép lại chỗ trống.",
+  "demo": {
+   "card_label": "Sửa lỗi kiểm tra thanh toán"
+  }
+ },
+ "cursor-glyph-trail": {
+  "name": "cursor/glyph-trail",
+  "title_vi": "Con trỏ hướng dẫn để lại vệt chấm và số bước",
+  "desc_vi": "Đường đi của con trỏ hướng dẫn trên màn hình cài đặt: bấm qua ba bước, để lại vệt chấm cách đều và số thứ tự ở mỗi lần bấm; vệt của bước trước mờ đi khi bước sau bắt đầu."
+ },
+ "cursor-marquee-select": {
+  "name": "cursor/marquee-select",
+  "title_vi": "Con trỏ kéo khung chọn nhiều ảnh",
+  "desc_vi": "Con trỏ kéo một khung chọn qua lưới ảnh; ô nào khung chạm tới thì có viền và dấu tích bật lên, nhãn đếm số ảnh đã chọn tăng dần.",
+  "demo": {
+   "pill_label": "đã chọn"
+  }
+ },
+ "cursor-text-select": {
+  "name": "cursor/text-select",
+  "title_vi": "Con trỏ bôi chọn chữ rồi bấm in đậm",
+  "desc_vi": "Mũi tên đổi thành con trỏ chữ trên một tài liệu, kéo bôi chọn một cụm từng ký tự, thanh định dạng hiện lên, con trỏ trở lại mũi tên và bấm In đậm.",
+  "demo": {
+   "title": "Ghi chú phát hành mùa xuân",
+   "text": "Bản phát hành mùa xuân ra mắt vào thứ Năm. Trước đó nhóm cần duyệt bản dựng cuối và gửi khách hàng.",
+   "phrase": "duyệt bản dựng cuối"
+  }
+ },
+ "cursor-zoom-follow": {
+  "name": "cursor/zoom-follow",
+  "title_vi": "Tự phóng to theo con trỏ như quay màn hình",
+  "desc_vi": "Kiểu tự zoom của phần mềm quay màn hình: máy quay đẩy vào trước mỗi cú bấm sắp tới, bám theo con trỏ mềm mại, đánh dấu từng cú bấm bằng vòng tròn, rồi lùi ra toàn màn hình khi con trỏ rời đi."
+ },
+ "cut-the-curve": {
+  "name": "transition/cut-the-curve",
+  "title_vi": "Cắt cảnh khớp vận tốc theo hướng",
+  "desc_vi": "Cú cắt cứng khớp vận tốc: vật cũ tăng tốc ra, đổi cảnh đúng lúc nhanh nhất, vật mới tiếp tục cùng hướng và chậm dần vào chỗ."
+ },
+ "dart-cursor": {
+  "name": "cursor/dart",
+  "title_vi": "Mũi tên phóng từ chiều sâu, bấm hai lần",
+  "desc_vi": "Một mũi tên viền đậm lao ra từ chiều sâu, bay mũi trước có nhoè chuyển động, bẹp xuống ở hai cú bấm rồi vụt ra khỏi khung.",
+  "thumb_at": 0.5
+ },
+ "decline-chart": {
+  "name": "data/decline-chart",
+  "title_vi": "Đường chỉ số đi xuống, nền tối dần",
+  "desc_vi": "Một đường chỉ số vẽ đi xuống trong khi con số đếm lùi và nền tối dần cùng nhịp.",
+  "demo": {
+   "label": "Tỉ lệ giữ chân"
+  }
+ },
+ "drift-hold": {
+  "name": "camera/drift-hold",
+  "title_vi": "Thẻ nội dung đứng yên mà vẫn sống",
+  "desc_vi": "Một thẻ nội dung ở giữa khung vẫn sống động nhờ xoay rất nhẹ theo vòng lặp, phập phồng cỡ và một vệt sáng quét chậm.",
+  "demo": {
+   "text": "Luôn sống động"
+  }
+ },
+ "echo-trail": {
+  "name": "motion/echo-trail",
+  "title_vi": "Vật di chuyển kèm bóng mờ phía sau",
+  "desc_vi": "Một vật di chuyển kèm vài bản sao mờ dần theo thời gian phía sau (kiểu da hành), một lượt đi, các bóng thu về khi vật dừng."
+ },
+ "facet-morph": {
+  "name": "effect/facet-morph",
+  "title_vi": "Khối đa giác low-poly biến hình",
+  "desc_vi": "Một khối low-poly 36 tam giác liên tục biến hình giữa ba dáng (giọt, dấu, huy hiệu), mỗi mặt được tô sáng tối phẳng tính lại khi các đỉnh di chuyển."
+ },
+ "focus-rack": {
+  "name": "camera/focus-rack",
+  "title_vi": "Chuyển nét giữa hai thẻ ở hai độ sâu",
+  "desc_vi": "Tiêu điểm chuyển một lần giữa hai thẻ nằm ở hai độ sâu: nhoè, tối, cỡ và thị sai thay đổi đồng bộ như ống kính chuyển nét.",
+  "demo": {
+   "label_a": "Bản nháp",
+   "label_b": "Đã đăng"
+  }
+ },
+ "focus-swap": {
+  "name": "ui/focus-swap",
+  "title_vi": "Chuyển sự chú ý giữa hai thẻ cạnh nhau",
+  "desc_vi": "Hai thẻ cạnh nhau: một thẻ lùi lại (nhỏ, nhoè, tối) trong khi thẻ kia tiến lên rõ nét, kéo sự chú ý sang.",
+  "thumb_at": 0.5
+ },
+ "gesture-tap": {
+  "name": "cursor/gesture-tap",
+  "title_vi": "Ngón tay chạm nút, nút đổi trạng thái",
+  "desc_vi": "Một vòng chạm ấn vào nút trên điện thoại, nhả ra thì nút chuyển sang trạng thái mới có màu nhấn, rồi ngón tay nhấc lên.",
+  "demo": {
+   "tap_label": "Theo dõi",
+   "response_label": "Đang theo dõi"
+  }
+ },
+ "grade-split-reveal": {
+  "name": "compare/grade-split-reveal",
+  "title_vi": "So màu trước / sau với đường chia quét",
+  "desc_vi": "Cùng một hình hai lần, một bản phẳng và một bản đã chỉnh màu, đường chia sắc quét giữa hai bản, dừng giữa đủ để so rồi chốt bản đã chỉnh màu."
+ },
+ "grain-field": {
+  "name": "background/grain-field",
+  "title_vi": "Nền chấm hạt trôi lặp vô tận",
+  "desc_vi": "Một lớp chấm hạt màu nhấn trôi trên nền gradient sáng nhẹ, lặp liền mạch."
+ },
+ "halftone-dissolve": {
+  "name": "transition/halftone-dissolve",
+  "title_vi": "Chuyển cảnh bằng lưới chấm halftone",
+  "desc_vi": "Cảnh A tan sang cảnh B qua một lưới chấm halftone lớn dần: chấm mực bật lên từ nhỏ đến lớn, mỗi chấm mở ra cửa sổ nhìn sang B cho tới khi B thay hẳn A."
+ },
+ "icon-morph-beat": {
+  "name": "ui/icon-morph-beat",
+  "title_vi": "Biểu tượng biến hình sang trạng thái mới",
+  "desc_vi": "Một biểu tượng biến hình giữa hai dáng trạng thái (ví dụ micro thành dấu tích), đổi sang màu nhấn và đánh dấu hoàn tất bằng một nhịp phồng nhẹ."
+ },
+ "ink-bleed-reveal": {
+  "name": "effect/ink-bleed-reveal",
+  "title_vi": "Mực loang trên giấy lộ ra dấu hiệu",
+  "desc_vi": "Mực lỏng loang qua giấy (hiệu ứng gooey), các vết hoà vào nhau rồi co lại để lộ một dấu hiệu sắc nét bên dưới, có vân giấy.",
+  "bg": "#f7f4ee"
+ },
+ "locked-nucleus-orbit": {
+  "name": "effect/nucleus-orbit",
+  "title_vi": "Các vệ tinh xoay quanh lõi rồi khoá lại",
+  "desc_vi": "Một lõi cố định ở giữa, các vệ tinh xoay quanh theo quỹ đạo rồi dừng lại thành một cụm cân đối.",
+  "demo": {
+   "label": "lõi"
+  }
+ },
+ "logo-brand-close": {
+  "name": "logo/brand-close",
+  "title_vi": "Chữ thương hiệu đổ từng chữ cái, kết phim",
+  "desc_vi": "Chữ thương hiệu cỡ lớn đổ xuống từng chữ cái vào giữa khung, dấu chấm màu thương hiệu rơi cuối cùng, khẩu hiệu và địa chỉ web chữ máy giãn rộng hiện bên dưới, rồi đứng yên tới hết.",
+  "demo": {
+   "wordmark": "MOWORKS",
+   "tagline": "Viết HTML. Xuất video.",
+   "url": "moworks.vn"
+  }
+ },
+ "magnetic-cursor": {
+  "name": "cursor/magnetic",
+  "title_vi": "Con trỏ chấm hút vào nút",
+  "desc_vi": "Một con trỏ chấm mềm lướt trên thanh công cụ, bị hút vào từng nút và biến thành nền hover bo tròn, biểu tượng nghiêng về phía nó, bấm một nút rồi rời đi thành chấm."
+ },
+ "marker-checklist-card": {
+  "name": "card/marker-checklist",
+  "title_vi": "Thẻ giấy viết tay bút dạ, danh sách tích",
+  "desc_vi": "Một thẻ giấy viết tay: tiêu đề bút dạ có gạch chân và một vòng khoanh quanh một từ, rồi ba dòng danh sách tự vẽ dấu tích, nhãn chữ máy chữ, giá trị bút dạ.",
+  "demo": {
+   "top": "SỨC MẠNH",
+   "mid": "CỦA",
+   "circled": "MỘT",
+   "rest": "TỆP",
+   "l1": "VIẾT",
+   "v1": "HTML",
+   "l2": "XUẤT",
+   "v2": "4K",
+   "l3": "GIAO",
+   "v3": "HÔM NAY"
+  },
+  "notes": "Its fonts (Permanent Marker, Courier Prime, shipped in assets/assets/fonts) have no Vietnamese marks: Vietnamese letters fall back to another face. Use short unaccented words or ask Claude to swap the fonts."
+ },
+ "match-cut": {
+  "name": "transition/match-cut",
+  "title_vi": "Cắt khớp hình tròn sang cảnh mới",
+  "desc_vi": "Một hình tròn tăng tốc vào cú cắt một khung hình, khớp đúng hình tròn của cảnh mới rồi tiếp tục về tư thế nghỉ nhỏ hơn.",
+  "demo": {
+   "label_a": "Bắt đầu",
+   "label_b": "Xong"
+  }
+ },
+ "morph-swap": {
+  "name": "transition/morph-swap",
+  "title_vi": "Hai vật cùng tâm: co lại / biến dáng sang vật kia",
+  "desc_vi": "Hai vật xếp chồng cùng tâm: A đứng yên rồi co mờ đúng lúc B phóng lên, hoặc biến dáng sang B quanh cùng một tâm."
+ },
+ "multiplayer-cursors": {
+  "name": "cursor/multiplayer",
+  "title_vi": "Nhiều con trỏ cộng tác dồn về giữa",
+  "desc_vi": "Các con trỏ cộng tác có nhãn tên và màu riêng, quầng sáng mềm, trôi từ nhiều phía về một vùng chung ở giữa: bằng chứng làm việc nhóm trực tiếp.",
+  "demo": {
+   "labels": "An,Khoa,Vy,Minh"
+  }
+ },
+ "notes-typing": {
+  "name": "ui/notes-typing",
+  "title_vi": "Ứng dụng ghi chú tự gõ lời tâm sự",
+  "desc_vi": "Cảnh ứng dụng ghi chú: tiêu đề đậm, rồi các dòng nội dung tự gõ từng ký tự theo nhịp gõ của người, con trỏ chạy theo và xuống dòng ở mỗi đoạn.",
+  "demo": {
+   "title": "Những điều không ai nói|về làm video.",
+   "lines": "video của tôi rất tệ|công cụ thì đắt đỏ|và mất cả tuần"
+  }
+ },
+ "offset-path-traveler": {
+  "name": "motion/path-traveler",
+  "title_vi": "Vật chạy theo đường cong, xoay theo hướng",
+  "desc_vi": "Một vật chạy theo một đường cong cho sẵn, tự xoay theo hướng đi, vào và ra theo đường cong.",
+  "demo": {
+   "traveler_label": "Xem trước trực tiếp"
+  }
+ },
+ "ordered-dither-pass": {
+  "name": "effect/dither-pass",
+  "title_vi": "Hình hiện ra từ nhiễu dither 2 màu",
+  "desc_vi": "Nội dung trong khung được lượng tử hoá bằng dither ma trận Bayer: hình hiện từ nhiễu hai màu thành rõ nét, hoặc tan ngược lại."
+ },
+ "oversized-cursor": {
+  "name": "cursor/oversized",
+  "title_vi": "Con trỏ macOS khổng lồ chỉ và bấm",
+  "desc_vi": "Con trỏ mũi tên macOS phóng to 3.5 lần đáp đầu nhọn vào một nút, bấm bật nó, nằm ngay dưới để kết quả vẫn thấy được, rồi đi ra ngoài khung.",
+  "demo": {
+   "click_label": "Tạo"
+  },
+  "thumb_at": 0.5
+ },
+ "overwhelm-surround": {
+  "name": "effect/overwhelm-surround",
+  "title_vi": "Việc, tab, thông báo dồn ép quanh một người",
+  "desc_vi": "Công việc, tab, tiếng ping và bong bóng thông báo tăng tốc dồn vào quanh một chủ thể bình tĩnh ở giữa, biến sự quá tải thành áp lực nhìn thấy được.",
+  "demo": {
+   "centerLabel": "Bạn"
+  }
+ },
+ "pan-stations": {
+  "name": "camera/pan-stations",
+  "title_vi": "Máy quay lia ngang qua các trạm tính năng",
+  "desc_vi": "Máy quay lia ngang dọc một hàng trạm tính năng có nhãn, dừng một nhịp ở mỗi trạm rồi lia tiếp.",
+  "demo": {
+   "labels": "Ghi hình,Biên tập,Xuất,Chia sẻ"
+  }
+ },
+ "paper-collage-reveal": {
+  "name": "transition/paper-collage",
+  "title_vi": "Mảnh giấy xé bay đi lộ nội dung",
+  "desc_vi": "Một tấm ghép các mảnh giấy xé, mỗi mảnh một vân và một độ nghiêng, lần lượt bay đi để lộ nội dung bên dưới.",
+  "thumb_at": 0.5
+ },
+ "particle-image-reveal": {
+  "name": "effect/particle-image-reveal",
+  "title_vi": "Hạt hội tụ, hình hiện ra bên dưới",
+  "desc_vi": "Một trường hạt hội tụ rồi lắng xuống trong khi hình bên dưới hiện ra, vệt hạt mỏng dần cho tới khi hình rõ."
+ },
+ "particle-text-dissolve": {
+  "name": "text/particle-dissolve",
+  "title_vi": "Chữ kết lại từ đám hạt (hoặc tan thành hạt)",
+  "desc_vi": "Chữ kết lại từ một đám mây hạt (hoặc tan vào đó): mỗi hạt có đích lấy mẫu từ ảnh chữ, vẽ bằng canvas.",
+  "demo": {
+   "text": "Tan biến"
+  }
+ },
+ "physical-exit": {
+  "name": "motion/physical-exit",
+  "title_vi": "Thẻ ra khỏi khung có quán tính",
+  "desc_vi": "Một thẻ rời khung có đà thật: ném, rơi hoặc trượt, giữ gia tốc và độ xoay tới khi ra hẳn ngoài khung, không mờ dần.",
+  "demo": {
+   "text": "Để sau"
+  }
+ },
+ "press-ripple": {
+  "name": "cursor/press-ripple",
+  "title_vi": "Con trỏ bấm nút, gợn sóng và đổi nhãn",
+  "desc_vi": "Con trỏ giảm tốc đi vào, đáp lệch tâm nhẹ trên nút, nút lún xuống cùng nhịp, nhả ra với hai vòng gợn và nhãn đổi thành dấu tích, rồi con trỏ đi ra.",
+  "demo": {
+   "label": "Bắt đầu",
+   "done_label": "Đã lưu"
+  }
+ },
+ "pull-back-reveal": {
+  "name": "camera/pull-back-reveal",
+  "title_vi": "Máy quay lùi ra, con số hoá bối cảnh",
+  "desc_vi": "Một chi tiết số liệu cận cảnh đứng yên, rồi máy quay lùi ra một lần, chậm dần, lộ tiêu đề và các thẻ xung quanh đặt con số vào bối cảnh.",
+  "demo": {
+   "headline": "Tăng trưởng cộng dồn"
+  }
+ },
+ "pull-to-refresh": {
+  "name": "ui/pull-to-refresh",
+  "title_vi": "Kéo để làm mới trên điện thoại",
+  "desc_vi": "Danh sách trên điện thoại bị kéo xuống với lực cản như dây chun, vượt ngưỡng thì vào trạng thái tải, rồi bật về đúng vị trí."
+ },
+ "radial-surround": {
+  "name": "data/radial-surround",
+  "title_vi": "Các nhãn bao quanh chủ thể trên vòng elip",
+  "desc_vi": "Các nhãn viền mảnh tụ lại quanh chủ thể ở giữa trên một vòng elip, có thể siết vào kèm viền tối nhẹ. Chủ thể đứng yên: bị bao vây chứ không phóng to.",
+  "demo": {
+   "center_label": "Đội của bạn",
+   "chips": "Tài liệu,Phiếu việc,Báo cáo,Hộp thư,Chat,Bảng tính"
+  }
+ },
+ "rubber-band-bumper": {
+  "name": "transition/rubber-band",
+  "title_vi": "Chuyển cảnh dây chun: kéo căng rồi bật",
+  "desc_vi": "Bảng cũ bị kéo chống lại lực cản tăng dần, giữ căng một nhịp rồi bật qua mép có vượt đà, bảng mới lắng vào phía sau."
+ },
+ "scroll-camera-story": {
+  "name": "camera/scroll-story",
+  "title_vi": "Cuộn trang điện ảnh nhiều lớp thị sai",
+  "desc_vi": "Một lượt cuộn ép nhịp kiểu điện ảnh: cảnh dài nhiều phần trôi qua máy quay từ trên xuống, các lớp chiều sâu thị sai khác nhau, mỗi phần trồi lên khi máy quay tới."
+ },
+ "scroll-feed": {
+  "name": "ui/scroll-feed",
+  "title_vi": "Bảng tin cuộn liên tục (lướt vô tận)",
+  "desc_vi": "Một cột thẻ bài đăng dạng khung xương cuộn lên liên tục, có vệt chuyển động nhẹ và nhịp gấp gáp, lặp được."
+ },
+ "segmentation-flood": {
+  "name": "effect/segmentation-flood",
+  "title_vi": "Máy nhìn phân vùng: mặt nạ màu và nhãn HUD",
+  "desc_vi": "Máy đọc hình: các mặt nạ phân vùng màu nhấn trong mờ tràn lên theo từng bậc dòng quét, mỗi vùng có khung mảnh và nhãn chữ máy, HUD nháy nhẹ.",
+  "demo": {
+   "regions": "Người, Tín hiệu, Nền"
+  }
+ },
+ "shutter-slam": {
+  "name": "text/shutter-slam",
+  "title_vi": "Một từ bị ném qua 6 nhịp có nhoè màn trập",
+  "desc_vi": "Một từ bị ném qua sáu nhịp, mỗi nhịp một thuộc tính, có nhoè màn trập tích hợp: hai cú trượt đập, một cú phóng, rồi lật trọn một vòng quanh mỗi trục, theo đường ease đo từ After Effects."
+ },
+ "slit-scan-reveal": {
+  "name": "effect/slit-scan",
+  "title_vi": "Slit-scan: các dòng ảnh lệch thời gian",
+  "desc_vi": "Mỗi dòng của khung lấy mẫu chủ thể ở một thời điểm lệch nhau, kéo vệt sự xuất hiện qua thời gian cho tới khi độ lệch thu về không."
+ },
+ "soft-blob-touch": {
+  "name": "effect/soft-blob-touch",
+  "title_vi": "Khối mềm biến dạng khi được chạm",
+  "desc_vi": "Một khối mềm có hạt trôi chậm bên trong; một điểm chạm đi vào, khối phồng về phía đó rồi hồi lại như lò xo. Không có cạnh cứng."
+ },
+ "spring-stack-shuffle": {
+  "name": "card/stack-shuffle",
+  "title_vi": "Chồng thẻ xáo lại có trọng lượng",
+  "desc_vi": "Một chồng 3–5 thẻ xáo lại theo nhịp: thẻ sau cùng bị ném qua đầu và đáp xuống trước có trọng lượng thật, các thẻ khác nén rồi lắng lại."
+ },
+ "stagger-cascade": {
+  "name": "card/stagger-cascade",
+  "title_vi": "Lưới thẻ lần lượt bay vào chỗ",
+  "desc_vi": "Một lưới thẻ hiện dần và trượt vào chỗ theo thứ tự, cách nhau đều đặn.",
+  "thumb_at": 0.5
+ },
+ "state-chip-rail": {
+  "name": "ui/state-chip-rail",
+  "title_vi": "Dải nhãn trạng thái chạy qua từng bước",
+  "desc_vi": "Một dải nhãn trạng thái chữ máy tiến qua từng bước theo lịch: nhãn đang chạy đậm, nhãn xong mờ, nhãn chờ rỗng, có thể bật huy hiệu cạnh một trạng thái.",
+  "demo": {
+   "states": "Chờ,Đang đọc,Đang viết,Xong"
+  }
+ },
+ "sticky-mock-swap": {
+  "name": "ui/sticky-mock-swap",
+  "title_vi": "Màn hình sản phẩm đổi trạng thái, chú thích chạy cạnh",
+  "desc_vi": "Một màn hình sản phẩm cố định chuyển mờ qua các trạng thái tính năng có màu nhấn, các chú thích tương ứng trồi lên, giữ và ra bên cạnh.",
+  "demo": {
+   "captions": "Xem trước tức thì,Không cần cài đặt,Phát hành thứ Sáu"
+  }
+ },
+ "stop-motion-cadence": {
+  "name": "motion/stop-motion",
+  "title_vi": "Nhịp stop-motion: hình giấy cắt nhảy bậc",
+  "desc_vi": "Thời gian bị lượng tử hoá theo số khung (mặc định 10 hình/giây): bốn hình giấy cắt bị ném và đáp xuống có bẹp, run nhẹ mỗi hai khung như phim stop-motion."
+ },
+ "svg-mask-reveal": {
+  "name": "text/svg-mask-reveal",
+  "title_vi": "Hình nền hiện qua mặt nạ chữ",
+  "desc_vi": "Một vệt quét mềm màu thương hiệu làm lộ hình nền chỉ qua mặt nạ là một chữ lớn.",
+  "demo": {
+   "text": "LỘ DIỆN"
+  },
+  "thumb_at": 0.5
+ },
+ "svg-stroke-trace": {
+  "name": "line/stroke-trace",
+  "title_vi": "Nét SVG tự vẽ rồi tô kín",
+  "desc_vi": "Một đường SVG cho sẵn tự vẽ theo chiều dài đo được, giữ và trôi nhẹ, và tô kín nếu là đường khép."
+ },
+ "swipe-rail": {
+  "name": "cursor/swipe-rail",
+  "title_vi": "Vuốt dải thẻ có quán tính rồi bám thẻ",
+  "desc_vi": "Một vòng chạm kéo dải thẻ ngang thật nhanh, dải trôi tiếp theo quán tính rồi bám đúng vào thẻ kế tiếp.",
+  "demo": {
+   "card_label_prefix": "Tính năng"
+  }
+ },
+ "telemetry-hud": {
+  "name": "ui/telemetry-hud",
+  "title_vi": "Khung HUD số đo kỹ thuật quanh chủ thể",
+  "desc_vi": "Các dòng số đo chữ máy kiểu HUD gỡ lỗi bao quanh chủ thể: bốn góc vẽ ra, các giá trị nhảy theo nhịp, một dòng được nhấn màu. Chủ thể đứng yên."
+ },
+ "text-match-cut": {
+  "name": "transition/text-match-cut",
+  "title_vi": "Dòng chữ biến thành dòng khác giữa chuyển động",
+  "desc_vi": "Một dòng chữ thành dòng khác giữa chuyển động: cả hai đi trên cùng một đường cong ease 85 % và đổi cứng ở lúc nhanh nhất, theo kiểu thu nhỏ, giãn chữ hoặc trượt cùng hướng.",
+  "demo": {
+   "text_a": "Giao diện cơ bản",
+   "text_b": "Trải nghiệm chu đáo"
+  }
+ },
+ "torn-paper-rip": {
+  "name": "transition/torn-paper",
+  "title_vi": "Xé giấy ngang khung lộ cảnh sau",
+  "desc_vi": "Một vết xé giấy xơ sợi chạy ngang khung: mép giấy lộ lõi trắng, tờ giấy nhấc lên trên bóng mềm, để lại cảnh tiếp theo.",
+  "thumb_at": 0.5
+ },
+ "touch-indicator": {
+  "name": "cursor/touch",
+  "title_vi": "Vòng chạm cho cảnh giao diện điện thoại",
+  "desc_vi": "Một vòng chạm trong mờ cho cảnh giao diện điện thoại: chạm vào kính đúng khung hình mục tiêu phản hồi rồi nhấc lên. Chạm hoặc vuốt.",
+  "thumb_at": 0.5,
+  "demo_multi": [
+   {
+    "at": 0.3,
+    "params": {
+     "gesture": "tap",
+     "targetX": 32,
+     "targetY": 40
+    },
+    "duration": 0.6
+   },
+   {
+    "at": 1.1,
+    "params": {
+     "gesture": "tap",
+     "targetX": 68,
+     "targetY": 62
+    },
+    "duration": 0.6
+   },
+   {
+    "at": 1.9,
+    "params": {
+     "gesture": "swipe",
+     "targetX": 50,
+     "targetY": 55
+    },
+    "duration": 0.8
+   },
+   {
+    "at": 2.9,
+    "params": {
+     "gesture": "tap",
+     "targetX": 45,
+     "targetY": 30
+    },
+    "duration": 0.6
+   }
+  ]
+ },
+ "tracing-beam": {
+  "name": "ui/tracing-beam",
+  "title_vi": "Vệt sáng chạy qua các thành phần giao diện",
+  "desc_vi": "Một vệt sáng chạy theo một đường SVG qua ba thành phần giao diện, lần lượt nâng và làm sáng từng cái.",
+  "demo": {
+   "labels": "Tìm kiếm,Xem trước,Xuất"
+  },
+  "seek_tolerance": 0.002,
+  "notes": "Re-seeking leaves every element in the same state (checked 06/10/2026); the few pixels that differ are the browser's paint of its glow layers, so the gallery's seek limit is raised for this demo."
+ },
+ "type-match-cut": {
+  "name": "transition/type-match-cut",
+  "title_vi": "Tiêu đề tách đôi, khung mới lớn lên ở giữa",
+  "desc_vi": "Tiêu đề tách đôi theo chiều dọc quanh một khung mới mọc ra từ khoảng trống, khung lớn dần chiếm cả khung hình trong khi chữ đi ra hai mép.",
+  "demo": {
+   "text": "Gặp trình biên tập mới"
+  }
+ },
+ "vector-editor-rig": {
+  "name": "ui/vector-editor",
+  "title_vi": "Phần mềm vẽ vector đang vẽ bằng bút",
+  "desc_vi": "Giao diện phần mềm thiết kế tối, một đường bút vector đang vẽ: các điểm neo lần lượt, tay nắm bezier, khung chọn, màu nhấn xanh."
+ },
+ "velocity-throw-snap": {
+  "name": "card/throw-snap",
+  "title_vi": "Dải ảnh vụt qua rồi bám ảnh chính giữa",
+  "desc_vi": "Một dải năm ảnh vụt qua theo đường giảm tốc nhanh, vượt quá rồi bám đúng ảnh chính vào giữa khung.",
+  "demo": {
+   "card_label_prefix": "Cảnh"
+  }
+ },
+ "whiteboard-ink": {
+  "name": "line/whiteboard-ink",
+  "title_vi": "Bảng trắng vẽ phác từng nét, có ngòi bút",
+  "desc_vi": "Một bản phác trên bảng trắng vẽ từng nét một, ngòi bút đi theo đầu nét. Có sẵn bóng đèn, sơ đồ, tên lửa hoặc nét SVG của bạn.",
+  "demo": {
+   "caption": "Vẽ ý tưởng"
+  }
+ },
+ "datamosh-smear": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/motion-primitives",
+  "file": "scene.html",
+  "incoming": true,
+  "notes": "A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words.",
+  "name": "effect/datamosh-smear",
+  "title": "Datamosh Smear",
+  "tags": [
+   "music",
+   "glitch",
+   "smear",
+   "transition"
+  ],
+  "about": "Datamosh / motion smear on a word, for a glitch or a transition.",
+  "replace": [
+   [
+    ">SMEAR<",
+    ">NHÒE<"
+   ]
+  ],
+  "title_vi": "Chữ nhoè kiểu datamosh",
+  "desc_vi": "Một từ bị kéo nhoè, vỡ khối kiểu lỗi nén video (datamosh), dùng cho cú glitch hoặc chuyển cảnh trên nhạc. 0.4-1.2 s."
+ },
+ "text-spectral-rays": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/motion-primitives",
+  "file": "scene.html",
+  "incoming": true,
+  "notes": "A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words.",
+  "name": "title/spectral-rays",
+  "title": "Text Spectral Rays",
+  "tags": [
+   "music",
+   "light",
+   "rays",
+   "webgl",
+   "title"
+  ],
+  "about": "Volumetric light rays cast by a wordmark toward a sweeping light cursor; the shader draws the word itself.",
+  "title_vi": "Tia sáng toả ra từ chữ",
+  "desc_vi": "Chữ lớn phát ra những tia sáng thể tích về phía một đốm sáng quét ngang; chính shader vẽ chữ (không đặt thêm chữ khác lên cùng từ đó). Cho tiêu đề chính 2.5-5 s.",
+  "defaults": {
+   "text": "ÁNH SÁNG"
+  }
+ },
+ "electric-arc": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/motion-primitives",
+  "file": "scene.html",
+  "incoming": true,
+  "notes": "A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words.",
+  "name": "effect/electric-arc",
+  "title": "Electric Arc",
+  "tags": [
+   "music",
+   "electric",
+   "accent",
+   "glitch"
+  ],
+  "about": "An electric arc / lightning accent on a word.",
+  "replace": [
+   [
+    ">CHARGE<",
+    ">TĂNG TỐC<"
+   ]
+  ],
+  "title_vi": "Tia điện chớp quanh chữ",
+  "desc_vi": "Một tia điện / tia chớp loé quanh một từ, làm điểm nhấn trên tiếng snare hoặc cú glitch. 0.1-0.6 s."
+ },
+ "mosaic-pack": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/motion-primitives",
+  "file": "scene.html",
+  "incoming": true,
+  "notes": "A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words.",
+  "name": "card/mosaic-pack",
+  "title": "Mosaic Pack",
+  "tags": [
+   "music",
+   "mosaic",
+   "tiles",
+   "build"
+  ],
+  "about": "Scattered tiles fly in and pack into a grid.",
+  "title_vi": "Ô vuông bay vào xếp kín thành lưới",
+  "desc_vi": "Các ô rải rác bay vào rồi xếp khít thành một lưới, cho đoạn nhạc đang dồn lên. 1.5-3.5 s."
+ },
+ "outline-to-fill": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/motion-primitives",
+  "file": "scene.html",
+  "incoming": true,
+  "notes": "A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words.",
+  "name": "text/outline-to-fill",
+  "title": "Outline to Fill",
+  "tags": [
+   "music",
+   "outline",
+   "fill",
+   "type"
+  ],
+  "about": "A word drawn as a stroke outline, then filled solid.",
+  "replace": [
+   [
+    ">Premium<",
+    ">Cao cấp<"
+   ]
+  ],
+  "title_vi": "Chữ viền nét rồi tô đặc",
+  "desc_vi": "Một từ hiện bằng nét viền trước, rồi tô đặc lại trên phách mạnh. 0.8-1.8 s."
+ }
+}

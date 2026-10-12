@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-emoji-pop",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: emoji pop",
+ "title_vi": "Phụ đề mạng xã hội, viền đen, emoji",
+ "desc_vi": "Phụ đề theo giọng đọc kiểu mạng xã hội: tối đa 3 từ một cụm, chữ in hoa đậm viền đen, màu trắng hoặc hồng / đỏ / xanh băng có quầng sáng cùng màu, cụm có từ gắn emoji thì emoji hiện phía trên; cụm bật vào (4 khung) và ép ra (3 khung).",
+ "params_vi": "words: \"voice\" · keywords: từ luôn tô màu · emoji: { từ: emoji } · emojiLift: độ cao emoji trên dòng (96 px) · maxWords 3, pause 0.1 s · size 72, width 1400, bottom 80 · primary, accents: màu chữ",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-emoji-pop/caption-emoji-pop.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "social", "emoji", "tiktok"],
+ "notes": "Look and timing as in the source (3 px black stroke under the fill, per-colour glow, accents #FF76FF #FF0002 #B2F7FF picked by the source's seeded formula, function words white, group pop scaleX 0.8 -> 1 in 4 frames power3.out, squash to 0.75 / opacity 0.8 in the last 3 frames, grouping: 3 words, fits 1400 px with the 1.14 width safety, a mark or a 0.1 s pause ends a group). Changed: the film's font at weight 900 instead of Gabarito (no network); words from the voice transcript; keywords and emoji are params (the source hard-coded its English words); the function-word list also has Vietnamese words; the last group holds 0.5 s after its last word (source: the clip end). Emoji use the system colour emoji font (Segoe UI Emoji on Windows). The emoji sits 96 px above the line centre (source 70 px), so it clears the marks of Vietnamese capitals (params.emojiLift).",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo", "emoji": { "video": "📹", "HTML": "💻", "code": "⌨️", "hình": "🖼️", "ảnh": "🎥" } } } ]
+ }
+}

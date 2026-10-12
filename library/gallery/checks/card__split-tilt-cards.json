@@ -1,0 +1,17 @@
+{
+ "name": "card/split-tilt-cards",
+ "at": "2026-10-05 22:10",
+ "static": [],
+ "build": "ok",
+ "tweens": 10,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 7e-05,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 5,
+ "problems": [],
+ "status": "ok",
+ "seconds": 7.9
+}

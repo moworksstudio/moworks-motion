@@ -1,0 +1,20 @@
+{
+ "name": "ui/notification-pileup",
+ "kind": "block",
+ "group": "ui",
+ "title": "Notification pileup",
+ "title_vi": "Thông báo dồn dập chất thành tháp",
+ "desc_vi": "Các thẻ thông báo điện thoại rơi vào nhanh dần, mỗi thẻ mới đẩy chồng cũ xuống, thành một tháp dày và căng thẳng; tháp nhấp nhô nhẹ rồi mờ dần.",
+ "params_vi": "count: số thẻ (4 đến 10) · speed: tốc độ (0,5 đến 2) · showBadges: yes | no (số chưa đọc) · duration: độ dài gốc 8 s (quyết định thời gian giữ và lúc mờ) · items: danh sách {icon, title, body, badge} · bg, fg, surface, accent, brand, border, muted: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/notification-pileup/notification-pileup.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": ["notification", "pileup", "overload", "mobile", "loop", "ui"],
+ "notes": "Timings (IN 3.3 s, gaps 0.78 x 0.78^n / speed with floor 0.09 s squeezed to fit, entry 0.38 s back.out(1.7), push 0.24 s power2.out, stage settle 0.34 s, breathing 0.9 s sine.inOut half-cycles, fade-out 0.5 s power2.in), the stack step min(9.6, 68 / (count - 1)) cqh and all eases are the source's. Differences: container units (cqw / cqh / cqmin) become px of the target box, computed when the block is built (the source tweened 'cqh' strings); the theme tokens are params with the source's fallback values (bg #0b1120, fg #f8fafc, surface #1e293b, accent #38bdf8, brand #22c55e, border #334155, muted #94a3b8) and every color-mix() is resolved to rgb / rgba in JS; the --dur-beat token is its 0.5 s fallback (breathing half-cycle 0.9 s); font = the film's font (source: Inter / --font-body); the ten cards are an items param with Vietnamese texts; the source dispatched an hf:sfx CustomEvent per arrival (tl.call, a cue only, never audio): not ported (a callback cannot be baked); the 8 s authored length is the `duration` param and the demo duration.",
+ "demo": { "bg": "#0b1120", "duration": 8,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0, "params": {} }] }
+}

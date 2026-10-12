@@ -1,0 +1,67 @@
+{
+ "name": "glass/vfx-glass",
+ "kind": "block",
+ "group": "glass",
+ "title": "Liquid Glass Shards (VFX)",
+ "title_vi": "Tường kính vỡ lộ tiêu đề",
+ "desc_vi": "Một trang tiêu đề (nhãn, tiêu đề lớn hai màu, phụ đề, ba con số) nằm sau bức tường ~50 mảnh kính vỡ trong suốt; một con trỏ ảo đi vòng 20 giây, mảnh kính gần nó nhô lên, tách ra và nghiêng đi để lộ chữ, camera và lớp chữ trượt thị sai, có bloom và hạt phim.",
+ "params_vi": "badge, title, title_accent (phần tiêu đề màu chuyển), subtitle, stats [{value, label}] ×3: nội dung trang sau kính · bg: màu nền · accent: màu nhấn (nhãn, số, đầu dải màu tiêu đề) · duration: độ dài (20 s, đường đi con trỏ của bản gốc kết thúc ở 20 s).",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/vfx-liquid-glass/vfx-liquid-glass.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [
+  "webgl",
+  "html-in-canvas"
+ ],
+ "scripts": [
+  "libs/three-0.147/three.min.js",
+  "libs/three-0.147/shaders/CopyShader.js",
+  "libs/three-0.147/shaders/LuminosityHighPassShader.js",
+  "libs/three-0.147/postprocessing/EffectComposer.js",
+  "libs/three-0.147/postprocessing/RenderPass.js",
+  "libs/three-0.147/postprocessing/ShaderPass.js",
+  "libs/three-0.147/postprocessing/MaskPass.js",
+  "libs/three-0.147/postprocessing/UnrealBloomPass.js"
+ ],
+ "tags": [
+  "glass",
+  "shatter",
+  "voronoi",
+  "parallax",
+  "headline",
+  "vfx",
+  "bloom",
+  "3d"
+ ],
+ "notes": "Faithful port: same three.js 0.147 scene (renderer settings, procedural env map, seeded Voronoi layout seed 5297 -> same shards, ExtrudeGeometry bevels, MeshPhysicalMaterial transmission glass, triple edge lines, light bands, lights), the same renderScene() maths and the same pointer path (sine.inOut keys at 0.5/4/7.5/10.5/13.5/16.5 s, power2.inOut back at 19 s, computed from time instead of GSAP-tweened fields). Differences: (1) Post-processing: the source's own three r147 passes (EffectComposer, RenderPass, UnrealBloomPass(0.32, 0.4, 0.86), ShaderPass for the grain, with CopyShader and LuminosityHighPassShader), vendored in engine/vendor/libs/three-0.147 on 05/10/2026 and listed in \"scripts\"; before that the same chain was written out by hand (same picture: thumbnail max 4/255). (2) The headline HTML is captured once at load (window.__hf.buildReady waits for it); the source captured it in a setTimeout(0) before any paint, where drawElementImage can fail. (3) Texts are Vietnamese params (source: HyperFrames marketing copy); bg / accent params (the source registry lists --bg-color #030407 and --accent-color #00d4ff but its HTML hard-codes them); text uses the film's font (source: Inter from Google Fonts, removed: no network). (4) The block sizes its renderer to the target box. (5) Kit runtime quirk handled: a fresh kit Chromium loses its first WebGL context ~0.15 s after creation and restores it ~1 s later; readiness waits for it, the env map is rebuilt on restore. Heavy in software GL (transmission + bloom at 1920x1080).",
+ "demo": {
+  "bg": "#030407",
+  "duration": 20,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0
+   }
+  ]
+ }
+}

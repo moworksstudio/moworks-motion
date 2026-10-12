@@ -1,0 +1,58 @@
+{
+ "name": "hand/write-title",
+ "kind": "block",
+ "group": "hand",
+ "title": "Handwritten Write-On Title",
+ "title_vi": "Tiêu đề tự viết ra từng nét",
+ "desc_vi": "Chữ viết tay thật sự được viết ra: từng chữ cái Caveat hiện theo nét bút đúng thứ tự, bút nhanh ở nét thẳng, chậm ở nét cong.",
+ "params_vi": "duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/hw-write-title/hw-write-title.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "handwritten",
+  "typography",
+  "title-card",
+  "write-on",
+  "overlay"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/hw-write-title.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: True glyph write-on: filled Caveat letterforms revealed by baked per-glyph centerline strokes traced in real stroke order with a curvature-adaptive pen-velocity ease (fast on straights, slow into curves, inter-stroke pen lifts); optional squiggle underline; boils",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

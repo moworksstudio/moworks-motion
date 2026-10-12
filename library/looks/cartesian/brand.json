@@ -1,0 +1,81 @@
+{
+ "_about": "Public look 'cartesian' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "cartesian",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/cartesian/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "3dc6a31813a333b2a7a1509ddbd3b4dabbbd7e12e6479b6cff10d69c185fec95",
+   "frame-showcase.html": "d7867cee5e07c4f22345c566071f2ce0261b3fccca111a94dfbec5fde64f3e55",
+   "caption-skin.html": "48f7b844d2936e0e0fc142605ec627adadc12120691bacb50dba7390d8706137"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Playfair Display",
+   "family": "Playfair Display",
+   "dir": "google/PlayfairDisplay",
+   "files": {
+    "400": "PlayfairDisplay[wght].ttf",
+    "700": "PlayfairDisplay[wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Inter",
+   "family": "Inter",
+   "dir": "google/Inter",
+   "files": {
+    "400": "Inter[opsz,wght].ttf",
+    "500": "Inter[opsz,wght].ttf",
+    "700": "Inter[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 153.6,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.163,
+    "body": 0.125,
+    "disclaimer": 0.091
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 500
+   }
+  }
+ },
+ "color": {
+  "bg-primary": "#EDE8E0",
+  "bg-secondary": "#E2DBD1",
+  "text-primary": "#1A1A1A",
+  "text-secondary": "#5A5A5A",
+  "accent": "#8A8178",
+  "line": "#B8B0A4",
+  "black": "#1A1A1A",
+  "white": "#EDE8E0"
+ },
+ "kit": {
+  "accent": "line"
+ }
+}

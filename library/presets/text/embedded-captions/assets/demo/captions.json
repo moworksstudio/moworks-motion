@@ -1,0 +1,32 @@
+{
+ "about": "the gallery demo of text/embedded-captions: HF's ordnance theme on a HyperFrames registry avatar clip (HeyGen sample media), Vietnamese words",
+ "skill": "7c055dc226",
+ "authored": "theme.json",
+ "clip": "talk",
+ "w": 1280,
+ "h": 720,
+ "duration": 9.483311,
+ "fps": 25,
+ "frames": 155,
+ "footage": "assets/lib/text/embedded-captions/demo/frames/f",
+ "person": "assets/lib/text/embedded-captions/demo/person/f",
+ "pages": {
+  "index": "index.html",
+  "rail": "rail.html",
+  "fg": null
+ },
+ "layer": "bg",
+ "plate": {
+  "z": "1+0.045*Math.exp(-9*(t-2.505))*B(t,2.505,2.505+0.6)",
+  "x": "IW/2-(IW/Z/2)+14*Math.exp(-7*(t-2.505))*Math.sin(2*Math.PI*12*(t-2.505))*B(t,2.505,2.505+0.6)",
+  "y": "IH/2-(IH/Z/2)+10*Math.exp(-7*(t-2.505))*Math.cos(2*Math.PI*15.72*(t-2.505))*B(t,2.505,2.505+0.6)",
+  "iw": 2560,
+  "ih": 1440,
+  "grain": 6.0
+ },
+ "gates": [
+  "overflow(index) PASS",
+  "overflow(rail) PASS",
+  "rail-climax PASS"
+ ]
+}

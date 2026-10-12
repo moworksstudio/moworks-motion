@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-weight-shift",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: weight shift",
+ "title_vi": "Phụ đề tối giản, dòng đang đọc in đậm",
+ "desc_vi": "Phụ đề theo giọng đọc chữ thường tối giản trên một hoặc hai dòng cân nhau: dòng đang đọc đậm, dòng kia mảnh; khi giọng đọc sang dòng thứ hai thì hai dòng đổi độ đậm cho nhau.",
+ "params_vi": "words: \"voice\" · maxWords 4, pause 0.1 s · size 72, width 1400, bottom 100 · color · light 300, bold 700: hai độ đậm",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-weight-shift/caption-weight-shift.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "minimal", "variable font", "weight"],
+ "notes": "Sizes, shadow, grouping (4 words within 1.8 lines of 1360 px, a mark or a 0.1 s pause ends a group, single-word groups merged into a neighbour), line balancing, group pop from 0.85 (0.1 s), weight swap 700 <-> 300 in 0.1 s when the second line's first word is said, as in the source. Changed: Roboto Flex (variable, so the weight change is continuous) instead of Montserrat; words from the voice transcript; the last group holds 0.5 s after its last word. After Effects: the weight change is not keyed (AE text has named weights); each line keeps its starting weight.",
+ "demo": {
+  "bg": "#3a4a5e", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo" } } ]
+ }
+}

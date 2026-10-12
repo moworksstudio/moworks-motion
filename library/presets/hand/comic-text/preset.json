@@ -1,0 +1,55 @@
+{
+ "name": "hand/comic-text",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Comic sound word",
+ "title_vi": "Chữ tượng thanh kiểu truyện tranh",
+ "desc_vi": "Chữ kiểu truyện tranh (\"BAM!\", \"RẦM!\"): chữ nghiêng đậm, viền mực dày, bóng đổ cứng, trên nền sao nổ chấm halftone; đập vào theo từng khung như vẽ tay, rồi rung nhẹ.",
+ "params_vi": "color · ink (viền, bóng) · burst (màu sao nổ, rỗng = không có) · dots (màu chấm) · outline · shadow · tilt · points · duration (0,16) · steps (đập theo từng khung) · hold_wobble",
+ "source": {
+  "label": "Moworks Motion; slam timing from claude-animation (Hanif, MIT) lib/fx.mjs comicText()",
+  "url": "https://github.com/buildwithhanif/claude-animation-skill"
+ },
+ "license": "kit",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "hand-drawn",
+  "comic",
+  "sound word",
+  "impact"
+ ],
+ "notes": "Outlined text with a shadow and a dotted clip-path burst: AE gets pictures. Pair with hand/shake on the scene for the hit.",
+ "demo": {
+  "bg": "#2f5bd3",
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "RẦM!",
+    "style": {
+     "left": "690px",
+     "top": "390px",
+     "font-size": "200px",
+     "letter-spacing": "4px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.4,
+    "params": {}
+   },
+   {
+    "preset": "hand/shake",
+    "target": "s1in",
+    "at": 0.5,
+    "params": {
+     "amp": 14
+    }
+   }
+  ],
+  "duration": 2.4
+ }
+}

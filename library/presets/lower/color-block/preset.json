@@ -1,0 +1,16 @@
+{
+ "name": "lower/color-block",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: color block",
+ "title_vi": "Lower third khối màu, tên chữ hẹp",
+ "desc_vi": "Khối xanh trượt vào từ trái và vượt nhẹ, tên chữ hẹp in hoa và chức danh chữ mono trồi lên trong khối; tự ra ở giây 4.3.",
+ "params_vi": "name, role: chữ · color: màu khối (bóng đổ theo màu này) · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-color-block/lt-color-block.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super", "condensed"],
+ "notes": "Fonts: League Gothic (condensed) becomes the film's font Roboto Flex on its narrowest width axis (font-variation-settings wdth 25, weight 600); Space Mono becomes the kit's Roboto Mono (no network in films). After Effects has no width axis: the AE port fits the line's tracking to the browser width, so the name is condensed there by tracking only. The block shadow follows the color param (source: rgba of #2756ff at 0.34). Source hard kill at 4.75 s not needed.",
+ "demo": { "bg": "#1c1f26", "duration": 5.2 }
+}

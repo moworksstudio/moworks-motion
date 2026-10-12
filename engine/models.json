@@ -1,0 +1,29 @@
+{
+ "_about": "AI models the kit runs on this machine (nothing is uploaded). Not in the git repo: install.bat / update.bat download the missing ones into engine/models/ after asking (sizes checked 08/10/2026).",
+ "models": [
+  {
+   "id": "whisper-small",
+   "name": "Whisper small (faster-whisper)",
+   "use": "chép lời giọng đọc / bài hát kèm thời điểm từng chữ (kit.py transcribe, align)",
+   "package": "faster-whisper",
+   "licence": "MIT (OpenAI Whisper weights, converted by Systran)",
+   "files": [
+    {"url": "https://huggingface.co/Systran/faster-whisper-small/resolve/main/config.json", "to": "faster-whisper-small/config.json", "size": 2370},
+    {"url": "https://huggingface.co/Systran/faster-whisper-small/resolve/main/model.bin", "to": "faster-whisper-small/model.bin", "size": 483546902},
+    {"url": "https://huggingface.co/Systran/faster-whisper-small/resolve/main/tokenizer.json", "to": "faster-whisper-small/tokenizer.json", "size": 2203239},
+    {"url": "https://huggingface.co/Systran/faster-whisper-small/resolve/main/vocabulary.txt", "to": "faster-whisper-small/vocabulary.txt", "size": 459861}
+   ]
+  },
+  {
+   "id": "rembg",
+   "name": "rembg (isnet-general-use, u2net_human_seg)",
+   "use": "tách nền ảnh (kit.py cutout)",
+   "package": "rembg",
+   "licence": "rembg MIT; the weights Apache-2.0 (U-2-Net, DIS)",
+   "files": [
+    {"url": "https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-general-use.onnx", "to": "rembg/models/isnet-general-use/isnet-general-use.onnx", "size": 178648008},
+    {"url": "https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx", "to": "rembg/models/u2net_human_seg/u2net_human_seg.onnx", "size": 175997641}
+   ]
+  }
+ ]
+}

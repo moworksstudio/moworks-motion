@@ -1,0 +1,68 @@
+{
+ "name": "card/poster-tile-mosaic",
+ "kind": "block",
+ "group": "card",
+ "title": "Poster Tile Mosaic",
+ "title_vi": "Tường ô màu ghép kín khung, đổi theo nhịp",
+ "desc_vi": "Các ô màu đủ cỡ ghép kín khung (không chồng nhau), chạy theo các thao tác bám nhịp: vào / ra so le, đổi màu cả tường trên đoạn trống dồn, tô kín dạng rắn rồi phủ lớp. 4-7 s, cho đoạn nhạc dày nhiều mốc.",
+ "params_vi": "bgColor: Stage background, mặc định \"#e9e9e9\" · tiles: Tile count (mosaic), mặc định 12 · bands: Snake-fill row bands, mặc định 3 · gap: Seam / gap (px), mặc định 10 · showText: Show tile labels, mặc định true · labels: Tile labels (comma list), mặc định \"DARE TO BE BOLD,NEW DROP,WALK THE TALK,STAND OUT,PUCKER UP,SUPER SONIC,IN TECHNICOLOUR,BOLD PRINTS,NEW SCENTS,TIME TO MOVE,CRAZY FUNKY COOL,BEAUTY INSIDE\" · program: Program JSON (empty = built-in group_5 score) · duration: độ dài của block (5.75 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/templates/poster-tile-mosaic/index.html",
+  "sha256": {
+   "index.html": "5d4d85c626f79bf443ad8d76ac98b1b106ffc99408128b767475ce91a5cac85f",
+   "program.json": "99d840406246a1237c602362579b19c6d7e88d41607bfe6c5190221abec15519"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "mosaic",
+  "tiles",
+  "poster"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/index.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\"). Source:",
+ "demo": {
+  "duration": 5.75,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.75
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "times": [
+  "program"
+ ],
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "name": "title/titlecard-lockup",
+ "kind": "block",
+ "group": "title",
+ "title": "Titlecard lockup",
+ "title_vi": "Thẻ tiêu đề có tên thương hiệu và đường kẻ",
+ "desc_vi": "Nhãn nhỏ hiện lên, tên thương hiệu lắng xuống giữa khung với một nhịp phóng nhẹ, đường kẻ mảnh vẽ từ trái sang phải, dòng mô tả hiện bên dưới rồi cả khối đứng im.",
+ "params_vi": "wordmark: tên thương hiệu (tự co vừa một dòng) · label: dòng mô tả dưới đường kẻ (rỗng = ẩn) · kicker: nhãn nhỏ phía trên (rỗng = ẩn) · rule: bật / tắt đường kẻ · accent: màu đường kẻ · exit: none | fade | up · duration: độ dài gốc 4 s · bg, fg: màu",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/titlecard-lockup/titlecard-lockup.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "title card",
+  "wordmark",
+  "intro",
+  "rule",
+  "lockup"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Order, timings, sizes and eases as in the source (kicker 0.45 s power2.out from 2.2 cqh at 0; wordmark scale 0.96 -> 1 + opacity 0.85 s power3.out at 0.25 s; hairline rule 0.55 s power2.out at 0.9 s; label 0.5 s power2.out from 1.8 cqh at 1.3 s; optional exit fade / up (-2.4 cqh) 0.5 s power2.in at D - 0.5; the phases shrink together when D is short; wordmark size min(min(12, 84 / (0.78 x characters)) cqw, 22 cqh); kicker 2.6 cqmin tracking 0.3em, label 2.2 cqmin tracking 0.34em, both mono 600 with the ink = 62 % fg over bg; rule width 34 cqw, height max(1 px, 0.2 cqmin), colour = 60 % accent over fg at 0.62 opacity). cqw / cqh / cqmin are taken from the target box. The rule was an SVG line drawn with stroke-dashoffset (getTotalLength); it is a div revealed by scaleX 0 -> 1 from the left with the same ease and timing (the same pixels for a straight line, and a real layer for After Effects instead of an SVG). autoAlpha is plain opacity (no visibility toggle, so every layer exists for the whole film). The kicker and label use the system monospace stack (Consolas / Cascadia Mono / Menlo), no font file ships, and are upper-cased in code instead of text-transform. accent is a hex colour (source: green / blue / violet reading theme tokens). Source default exit none = the held lockup is the last frame. Defaults: the wordmark is the source's (HYPERFRAMES), label and kicker are Vietnamese (source: WRITE HTML. RENDER VIDEO. / INTRODUCING). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "#0b0c0e",
+  "duration": 4,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "wordmark": "BẮC PHONG",
+     "label": "NỀN TẢNG ĐẠI LÝ AN TOÀN",
+     "kicker": "GẶP GỠ",
+     "accent": "#71f5a7",
+     "duration": 4
+    }
+   }
+  ]
+ }
+}

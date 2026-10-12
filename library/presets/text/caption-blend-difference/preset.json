@@ -1,0 +1,24 @@
+{
+ "name": "text/caption-blend-difference",
+ "kind": "effect",
+ "group": "text",
+ "title": "Captions: blend difference",
+ "title_vi": "Phụ đề tự đổi màu theo nền",
+ "desc_vi": "Chữ trắng tự đảo màu theo phần nền phía sau (mix-blend-mode difference): trắng trên nền tối, đen trên nền sáng, màu bù trên nền màu; kèm chuyển động vào trồi lên.",
+ "params_vi": "mode: difference | exclusion (dịu hơn) | screen (sáng lên trên nền tối) · color: màu gốc của chữ (trắng) · entrance: có chuyển động vào không · duration, y",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-blend-difference/caption-blend-difference.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "blend mode", "invert", "over footage"],
+ "notes": "The source is a CSS treatment (classes blend-difference / -soft / -screen) plus an example entrance; here it is an effect on the target element: the blend mode and white colour go on the element, isolation: isolate on the scene's inner box (the source required it on a shared ancestor of the video and the caption). The entrance is the source's example (y 50 -> 0, opacity, 0.6 s expo.out). After Effects: the layer gets the matching blend mode (Difference / Exclusion / Screen). Gallery check 'end' warns (about 2.5 %): the plain layout it compares with has no blend mode, so the inverted half of the text differs by design.",
+ "demo": {
+  "bg": "#101418",
+  "duration": 2.4,
+  "elements": [
+   { "id": "half", "type": "box", "style": { "left": "960px", "top": "0px", "width": "960px", "height": "1080px", "background": "#f2efe6" } },
+   { "id": "t1", "type": "text", "text": "Chữ tự đổi màu theo nền", "style": { "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)", "font-size": "120px", "font-weight": "800", "text-transform": "uppercase", "white-space": "nowrap" } }
+  ],
+  "motion": [ { "target": "t1", "at": 0.3 } ]
+ }
+}

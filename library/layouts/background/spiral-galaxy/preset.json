@@ -1,0 +1,59 @@
+{
+ "name": "background/spiral-galaxy",
+ "kind": "block",
+ "group": "background",
+ "title": "Spiral Galaxy",
+ "title_vi": "Thiên hà xoắn ốc xoay thật",
+ "desc_vi": "Một thiên hà xoắn ốc nhìn từ ngoài, xoay vi sai thật: sao phía trong quay nhanh hơn phía ngoài nên các nhánh cuộn lại dần. 20.000 hạt GPU cộng sáng.",
+ "params_vi": "stars: Star count, mặc định 20000 · arms: Arm count, mặc định 3 · rate: Rotation rate, mặc định 0.25 · glow: Core brightness, mặc định 1.9 · size: Star size, mặc định 10 · core: Core colour, mặc định \"#ffa575\" · rim: Rim colour, mặc định \"#311599\" · duration: độ dài của block (10 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/spiral-galaxy/spiral-galaxy.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js",
+  "libs/three-0.147/three.min.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "hero",
+  "space",
+  "particles",
+  "webgl",
+  "background"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/spiral-galaxy.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A spiral galaxy seen from outside, turning with real differential rotation: inner stars orbit faster than outer ones, so the arms wind up over the shot instead of spinning rigidly. 20,000 additive GPU sprites, seeded once and solved directly from time, so any frame can be rendered on its own.",
+ "demo": {
+  "duration": 10.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 10.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "name": "ui/success-check",
+ "kind": "block",
+ "group": "ui",
+ "title": "Success Check",
+ "title_vi": "Dấu tích thành công",
+ "desc_vi": "Vòng tròn bật ra, dấu tích tự vẽ, xoay nhẹ có nhoè.",
+ "params_vi": "tint: Tint (green | blue | violet | amber), mặc định \"green\" · size: Size (small | standard | large), mặc định \"standard\" · ring: Ring (subtle | standard | bold), mặc định \"standard\" · spin: Spin (subtle | standard | bold), mặc định \"standard\" · duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/success-check/demo.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "video-primitive",
+  "transition-primitive",
+  "transitions-dev-port",
+  "success",
+  "check"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/demo.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/success-check.html. Source: A success check primitive with ring pop, path draw, and subtle rotate blur",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

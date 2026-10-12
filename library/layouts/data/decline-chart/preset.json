@@ -1,0 +1,59 @@
+{
+ "name": "data/decline-chart",
+ "kind": "block",
+ "group": "data",
+ "title": "Decline Chart",
+ "title_vi": "Đường chỉ số đi xuống, nền tối dần",
+ "desc_vi": "Một đường chỉ số vẽ đi xuống trong khi con số đếm lùi và nền tối dần cùng nhịp.",
+ "params_vi": "label: Metric label, mặc định \"Retention\" · start_value: Start value, mặc định 82 · end_value: End value, mặc định 34 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/decline-chart/decline-chart.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "data",
+  "chart",
+  "decline",
+  "metric",
+  "problem"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/decline-chart.html) in a kit film, mounted by ctx.hf.  Source: A metric line draws downward as its value counts down and the ambient background darkens in lockstep.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "label": "Tỉ lệ giữ chân",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "name": "text/char-slam",
+ "kind": "effect",
+ "group": "text",
+ "title": "Char slam explode",
+ "title_vi": "Chữ cái nổ tung rồi đập về thành chữ",
+ "desc_vi": "Tiêu đề bắt đầu là các chữ cái văng tứ tung, nghiêng ngả; giữ một nhịp rồi các chữ cái đập về đúng chỗ (từ giữa ra hai bên), nảy quá đà, cả dòng rung 3 khung hình khi chạm. Mặc định màu xanh lá phát sáng như bản gốc.",
+ "params_vi": "spread: tight | wild (văng gần / xa) · accent: green | blue | violet | mã màu | inherit (giữ màu phần tử) · glow: quầng sáng + bóng đổ · duration: độ dài cả hiệu ứng (3.5 s) · exit: none | fade",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/char-slam-explode/char-slam-explode.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["slam", "letters", "scatter", "shake", "impact"],
+ "check_end": false,
+ "notes": "Envelope, table and eases as in the source (see the header of preset.js). cqw / cqh of the source are the frame (the source's root is full frame). The source's stagger { amount 0.28, from center } is written out as one start time per letter. The source always faded out; here exit is a param (default none, the film's scene handles the cut). The source's 1-em-per-letter font fit is the film element's size. End check off: splitting into letters loses the font's pair kerning.",
+ "demo": { "duration": 3.5, "hold": 0.2, "elements": [{ "id": "t1", "type": "text", "text": "Bùng nổ", "style": { "color": "#f8fafc", "font-weight": "900", "font-size": "200px", "letter-spacing": "-0.045em", "line-height": "0.9", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.1 }] }
+}

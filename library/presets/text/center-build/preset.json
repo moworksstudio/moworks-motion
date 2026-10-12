@@ -1,0 +1,16 @@
+{
+ "name": "text/center-build",
+ "kind": "effect",
+ "group": "text",
+ "title": "Kinetic center build",
+ "title_vi": "Câu ghép dần từng từ, luôn ở giữa",
+ "desc_vi": "Từng từ trượt vào từ bên phải, các từ đã có dạt sang trái nhường chỗ, nên câu luôn nằm giữa khung cho tới khi đủ cả dòng. Dùng cho một dòng chữ.",
+ "params_vi": "entry: từ mới vào từ bao xa bên phải (88 px) · first: thời gian từ đầu (0.333 s) · push: thời gian mỗi từ sau (0.433 s)",
+ "source": { "label": "HyperFrames registry (from remocn, MIT)", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/kinetic-center-build/kinetic-center-build.html" },
+ "license": "MIT (remocn) via Apache-2.0 registry",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["build", "words", "centered", "kinetic"],
+ "notes": "Timing as in the source (first word 10 frames, each next 13 frames at 30 fps; ease M0,0 C0.2,0.8 0.2,1 1,1; entry 88 px, blur 3.5 px, scale 0.992, first word from 6 px below; pushed words blur 0 -> 0.8 -> 0 px linearly over each push). The source compressed the build when its mount was shorter than the words; here first / push are params. The source measured words on a canvas in a system font and placed them absolutely; here the words keep the film element's own layout and only their x moves, so the last step equals the plain line.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "Từng từ đẩy câu sang trái.", "style": { "color": "#f5f5f2", "font-weight": "600", "font-size": "112px", "letter-spacing": "-0.03em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.2 }] }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "flow/tabs-slide-indicator",
+ "kind": "block",
+ "group": "flow",
+ "title": "Tabs slide indicator",
+ "title_vi": "Thanh tab có viên thuốc trượt",
+ "desc_vi": "Viên thuốc tối trượt từ tab này sang tab kế bên, chữ nhãn đổi sang trắng đúng phần viên thuốc phủ lên.",
+ "params_vi": "labels: tên các tab (mảng hoặc chuỗi cách nhau dấu phẩy) · accent: màu viên thuốc · width: bề rộng một tab (px) · radius: bo góc (999 = tròn, 12, 4) · from, slides: tab bắt đầu và danh sách tab sẽ trượt tới · slideAt, slideDur, every: nhịp trượt · scale: độ phóng to (3.5)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/tabs-slide-indicator/tabs-slide-indicator.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["tabs", "indicator", "slide", "ui flow"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, radii and timing are as in the source (track padding 4 px + 1 px border, tab height 36 px, pill shadow 0 12px 26px, label weight 850 at 13.333 px, grey #6f6f78 and white labels, one slide of 0.42 s power3.inOut at 0.5 s). The source drives one CSS custom property (--hf-tab-x) that moves the pill and, through calc / clamp, cuts a text-clipped gradient on every label; custom properties and background-clip text do not reach After Effects as keyframes, so the pill is a plain x tween and each label has a white copy on top of the grey one that is cut by a clip-path inset tween (same start / end / ease, so the highlight sweeps through the text exactly as the gradient did). Only the two tabs touched by a slide are tweened; the others keep a constant clip. A white copy over the grey label leaves a hair of grey on glyph edges inside the pill (anti-aliasing), the source gradient had none. The demo's 3.5x enlargement is the param `scale` (a wrapper with transform: scale that is never tweened). Font: the film's font instead of Inter. Source variables width (compact 72 / standard 86 / wide 104) and shape (pill 999 / rounded 12 / square 4) are the numeric params `width` and `radius`; accent is a hex colour (the source named ink / green / blue / violet and read theme tokens); labels may be an array or a comma string and fewer than two labels fall back to the defaults. Extension: `slides` (array of tab indexes to visit, default [1] = the source's single slide) with `every` seconds between slides; every slide moves one tab, a longer jump is split into one-tab slides. Defaults are Vietnamese (source: Plan, Debug, Ask).",
+ "demo": { "bg": "#f7f7f8", "duration": "auto", "hold": 1.3 }
+}

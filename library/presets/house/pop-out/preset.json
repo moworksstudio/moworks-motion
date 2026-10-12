@@ -1,0 +1,138 @@
+{
+ "name": "house/pop-out",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop out",
+ "title_vi": "Thu nhỏ biến mất",
+ "desc_vi": "Những món nhỏ rời đi bằng cách thu nhỏ về 0, hơi lùi trước khi biến.",
+ "params_vi": "stagger: giây giữa các phần tử (0) · dur (0.35) · ease (back.in(2)) · origin",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "exit",
+  "house"
+ ],
+ "notes": "Port of P.popOut. Written as fromTo with immediateRender:false like v1; the baker adds the flag in the film when the element already has an earlier tween. The demo pops stickers in with house/pop-cute first.",
+ "demo": {
+  "bg": "#1b1b2f",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "panel",
+    "type": "box",
+    "style": {
+     "left": "360px",
+     "top": "202px",
+     "width": "1200px",
+     "height": "675px",
+     "background": "#fff7e6",
+     "border-radius": "18px"
+    }
+   },
+   {
+    "id": "st0",
+    "type": "image",
+    "src": "assets/demo/house-sticker-heart.png",
+    "style": {
+     "left": "440px",
+     "top": "250px",
+     "width": "190px",
+     "height": "190px"
+    }
+   },
+   {
+    "id": "st1",
+    "type": "image",
+    "src": "assets/demo/house-sticker-star.png",
+    "style": {
+     "left": "720px",
+     "top": "420px",
+     "width": "150px",
+     "height": "150px"
+    }
+   },
+   {
+    "id": "st2",
+    "type": "image",
+    "src": "assets/demo/house-sticker-spark.png",
+    "style": {
+     "left": "930px",
+     "top": "240px",
+     "width": "210px",
+     "height": "210px"
+    }
+   },
+   {
+    "id": "st3",
+    "type": "image",
+    "src": "assets/demo/house-sticker-flower.png",
+    "style": {
+     "left": "1210px",
+     "top": "420px",
+     "width": "170px",
+     "height": "170px"
+    }
+   },
+   {
+    "id": "st4",
+    "type": "image",
+    "src": "assets/demo/house-sticker-bolt.png",
+    "style": {
+     "left": "520px",
+     "top": "540px",
+     "width": "140px",
+     "height": "140px"
+    }
+   },
+   {
+    "id": "st5",
+    "type": "image",
+    "src": "assets/demo/house-sticker-ring.png",
+    "style": {
+     "left": "1340px",
+     "top": "260px",
+     "width": "160px",
+     "height": "160px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "st0",
+     "st1",
+     "st2",
+     "st3",
+     "st4",
+     "st5"
+    ],
+    "at": 0.3,
+    "params": {
+     "spread": 0.6
+    },
+    "preset": "house/pop-cute"
+   },
+   {
+    "target": [
+     "st0",
+     "st1",
+     "st2",
+     "st3",
+     "st4",
+     "st5"
+    ],
+    "at": 2.6,
+    "params": {
+     "stagger": 0.12
+    }
+   }
+  ]
+ }
+}

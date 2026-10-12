@@ -1,0 +1,30 @@
+{
+ "name": "text/top-down-letters",
+ "kind": "effect",
+ "group": "text",
+ "title": "Top-down letters",
+ "title_vi": "Từng chữ cái rơi xuống vào chỗ",
+ "desc_vi": "Các chữ cái của một từ lần lượt rơi từ trên xuống vào chỗ, hiện ra từ sau mép trên của dòng, cách nhau 0.035 giây.",
+ "params_vi": "distance: close | standard | far · drop 42 px · duration 0.22 · stagger 0.035 · pad: khoảng chừa trên dưới cho dấu (0.3 em)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/top-down-letters/top-down-letters.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "check_end": false,
+ "tags": [
+  "reveal",
+  "letters",
+  "drop",
+  "mask",
+  "stagger"
+ ],
+ "notes": "Motion as the source's timeline integration (opacity 0 -> 1, y -42 px x distance -> 0, 0.22 s power3.out, stagger 0.035). The source's own markup (CASCADE, Inter 900 74 px, 1 px gap) is the film's element. Clip: the source's overflow: hidden row at line-height 0.9 would cut Vietnamese marks; the kit's ctx.mask with 0.3 em room keeps them (the letters therefore appear a little higher than the line's cap top). End check off: splitting into letters loses the font's pair kerning (0.4 % of the frame differs from the plain line; the source splits the same way).",
+ "demo": {
+  "hold": 1.0
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "name": "line/whiteboard-ink",
+ "kind": "block",
+ "group": "line",
+ "title": "Whiteboard Ink",
+ "title_vi": "Bảng trắng vẽ phác từng nét, có ngòi bút",
+ "desc_vi": "Một bản phác trên bảng trắng vẽ từng nét một, ngòi bút đi theo đầu nét. Có sẵn bóng đèn, sơ đồ, tên lửa hoặc nét SVG của bạn.",
+ "params_vi": "sketch: Sketch (bulb | flow | rocket), mặc định \"bulb\" · caption: Caption, mặc định \"Draw the idea\" · pen: Pen (show | hide), mặc định \"show\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: strokes), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/whiteboard-ink/whiteboard-ink.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "intro",
+  "reveal",
+  "svg",
+  "whiteboard",
+  "line-draw"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/whiteboard-ink.html) in a kit film, mounted by ctx.hf.  Source: A whiteboard sketch draws one measured stroke at a time while a pen nib follows the active tip. Preset sketches (bulb, flow, rocket) or your own multi-stroke SVG paths via the strokes slot; a path marked data-ink=accent rides the accent token.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "caption": "Vẽ ý tưởng",
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

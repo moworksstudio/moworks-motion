@@ -1,0 +1,82 @@
+{
+ "name": "house/super-slide",
+ "kind": "effect",
+ "group": "house",
+ "title": "Super slide",
+ "title_vi": "Dòng tít trượt luân phiên",
+ "desc_vi": "Các dòng tít vào từ trên xuống, dòng trên từ trái, dòng kế từ phải, cứ thế luân phiên.",
+ "params_vi": "first: -1 dòng đầu từ trái / 1 từ phải · stagger (0.12) · dist (520 px) · dur (0.85) · ease (expo.out)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "slide",
+  "headline",
+  "super",
+  "house"
+ ],
+ "notes": "Port of P.superSlide. Lines are sorted by their top edge as in v1 (getBoundingClientRect). The opacity tween is written first. For rotated text target the inner element of a rotated wrapper (v1 advice).",
+ "demo": {
+  "bg": "#1b1b1b",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "l1",
+    "type": "text",
+    "text": "2,450,000 LƯỢT XEM",
+    "style": {
+     "left": "260px",
+     "top": "330px",
+     "font-size": "110px",
+     "color": "#ffc708",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "l2",
+    "type": "text",
+    "text": "TRONG 2 TUẦN",
+    "style": {
+     "left": "260px",
+     "top": "470px",
+     "font-size": "110px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "l3",
+    "type": "text",
+    "text": "NHỜ MỘT CHIẾN DỊCH",
+    "style": {
+     "left": "260px",
+     "top": "610px",
+     "font-size": "110px",
+     "color": "#ffc708",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "l1",
+     "l2",
+     "l3"
+    ],
+    "at": 0.3
+   }
+  ]
+ }
+}

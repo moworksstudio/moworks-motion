@@ -1,0 +1,80 @@
+{
+ "name": "effect/circle-highlight",
+ "kind": "block",
+ "group": "effect",
+ "title": "Circle Highlight",
+ "title_vi": "Khoanh một vật trong ảnh thật: vòng tròn, đường nối, nhãn",
+ "desc_vi": "Khoanh một vật trong ảnh: làm tối quanh vật, vòng tròn nét đôi, đường nối tới nhãn, khung góc ngắm, vệt quét. Vị trí vật lấy từ kit.py measure <ảnh> --locate (không đoán bằng mắt). Ảnh phải đúng cỡ chẵn của trang (mặc định 1998 x 1368): đổi bằng replace cùng lúc asset, W, H, box, label và data-width / data-height.",
+ "params_vi": "duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/motion-graphics/samples/asset-fusion/_ref-circle-highlight.html",
+  "sha256": {
+   "_ref-circle-highlight.html": "1c6d33b1fc191735fe035a9a104be58236f9cb1fde33a0445ae08808204118b5"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "highlight",
+  "annotation",
+  "ring",
+  "callout",
+  "photo"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/_ref-circle-highlight.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. The page as shipped (HyperFrames motion-graphics asset-fusion sample); its CFG is set with replace pairs, e.g. [\"asset: \\\"assets/shot.png\\\"\", \"asset: \\\"assets/images/x.jpg\\\"\"], [\"box: [0.244, 0.277, 0.607, 0.425]\", \"box: [x0, y0, x1, y1]\"], [\"label: \\\"HyperFrames\\\"\", \"label: \\\"...\\\"\"]; the picture at the page's size (even width and height), box from kit.py measure --locate. Source: Ring / spotlight one object in a real picture: radial wash, double over-stroke ring, connector, callout label, corner-bracket reticle, all computed from the object's box.",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0,
+     "replace": [
+      [
+       "asset: \"assets/shot.png\"",
+       "asset: \"assets/demo/locate-demo.jpg\""
+      ],
+      [
+       "box: [0.244, 0.277, 0.607, 0.425]",
+       "box: [0.36, 0.30, 0.64, 0.70]"
+      ],
+      [
+       "label: \"HyperFrames\"",
+       "label: \"Điểm nhấn\""
+      ]
+     ]
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.6
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

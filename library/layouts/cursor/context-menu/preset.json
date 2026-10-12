@@ -1,0 +1,59 @@
+{
+ "name": "cursor/context-menu",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Context Menu Cursor",
+ "title_vi": "Con trỏ chuột phải, menu bung ra",
+ "desc_vi": "Con trỏ bấm chuột phải vào một tệp, menu bung ra từ đầu con trỏ, vệt chọn chạy theo mục đang trỏ, rồi thao tác được chọn diễn ra: nhân bản, đổi tên, bỏ vào thùng rác hoặc thông báo xác nhận.",
+ "params_vi": "items: Menu items, mặc định \"Open,Rename,Duplicate,Share,Move to Trash\" · pick: Chosen item (0 = first), mặc định 2 · tone: Tone (light | dark), mặc định \"light\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cursor-context-menu/cursor-context-menu.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "menu",
+  "right-click",
+  "desktop",
+  "files"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cursor-context-menu.html) in a kit film, mounted by ctx.hf.  Source: A cursor right-clicks a file, a context menu blooms from its tip, the hover highlight tracks the item under it, and the chosen action plays out: duplicate, rename, move to trash, or a confirmation toast.",
+ "demo": {
+  "duration": 3.9,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "items": "Mở,Đổi tên,Nhân bản,Chia sẻ,Bỏ vào thùng rác",
+     "duration": 3.9
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "name": "motion/anime-stagger-grid",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Grid stagger wave (anime.js)",
+ "title_vi": "Lưới phần tử hiện theo sóng từ tâm (anime.js stagger)",
+ "desc_vi": "Các phần tử con của một khung hiện ra theo sóng lan trên lưới đo từ vị trí thật (bố cục nào cũng được), từ tâm / góc / ngẫu nhiên, có rung lệch nhẹ theo seed và ease lò xo.",
+ "params_vi": "props: giá trị anime.js ({scale: [0,1], opacity: [0,1]}) · each (0.06 s) · from: center | first | last | random | [cột, hàng] · grid: true (đo) | [cột, hàng] · axis: x | y · jitter (0.02 s) · duration · ease (spring bounce 0.45) · seed",
+ "ae": "keyframes",
+ "tags": [
+  "anime.js",
+  "stagger",
+  "grid",
+  "wave",
+  "spring"
+ ],
+ "source": {
+  "label": "anime.js 4.5.0 (Julian Garnier, MIT)",
+  "repo": "juliangarnier/anime",
+  "commit": "v4.5.0",
+  "path": "src/ (npm animejs@4.5.0, engine/vendor/libs/anime)"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/anime/anime.umd.min.js",
+  "libs/aimk/anime-sync.js"
+ ],
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Kit code (preset.js + engine/vendor/libs/aimk/anime-sync.js) calling anime.js 4.5.0 as shipped (engine/vendor/libs/anime, MANIFEST.json sha256). anime.js's own loop is off: the film's GSAP timeline seeks it every frame; randomness seeded. The bake puts back what anime.js wrote (build.py BAKE_JS + AIMKAnime.reverts).",
+ "demo": {
+  "duration": 3.2,
+  "hold": 0.6,
+  "elements": [
+   {
+    "id": "grid",
+    "type": "box",
+    "style": {
+     "left": "380px",
+     "top": "250px",
+     "width": "1160px",
+     "height": "580px",
+     "display": "grid",
+     "grid-template-columns": "repeat(8, 120px)",
+     "gap": "28px 28px",
+     "justify-content": "center",
+     "align-content": "center"
+    },
+    "html": "<div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ff6a2b\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#ffb400\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#3a86ff\"></div><div style=\"width:120px;height:120px;border-radius:24px;background:#00a699\"></div>"
+   }
+  ],
+  "motion": [
+   {
+    "target": "grid",
+    "at": 0.3
+   }
+  ]
+ },
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

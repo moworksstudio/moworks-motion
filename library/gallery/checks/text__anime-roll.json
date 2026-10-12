@@ -1,0 +1,21 @@
+{
+ "name": "text/anime-roll",
+ "at": "2026-10-12 01:38",
+ "static": [],
+ "build": "ok",
+ "tweens": 0,
+ "codes": 1,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "end": 0.0044,
+ "duration": 2.53333,
+ "problems": [
+  "end differs from layout 0.44%"
+ ],
+ "status": "warn",
+ "seconds": 13.4
+}

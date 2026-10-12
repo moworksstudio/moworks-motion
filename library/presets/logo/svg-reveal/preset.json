@@ -1,0 +1,17 @@
+{
+ "name": "logo/svg-reveal",
+ "kind": "effect",
+ "group": "logo",
+ "title": "SVG logo reveal (draw / wipe / build)",
+ "title_vi": "Hiện logo SVG của khách: vẽ nét rồi tô, quét, hoặc ghép từng mảnh",
+ "desc_vi": "Logo SVG của khách hiện ra theo cách kinh điển: nét viền tự vẽ rồi tô màu (draw), một vệt quét mềm làm lộ logo (wipe), hoặc từng mảnh bật vào rồi cả logo nảy nhẹ (build). Giữ đúng màu và tỉ lệ thương hiệu.",
+ "params_vi": "src: file SVG trong thư mục phim (ví dụ assets/images/logo.svg) · mode: draw | wipe | build · stroke: độ dày nét khi vẽ (0 = theo file, hình tô màu dùng 3) · direction: hướng quét right | left | down | up · stagger: cách nhau giữa các nét (0.15 s) · duration: thời gian vẽ mỗi nét (1.1 s) · settle: nảy 1.04 cuối khi ghép",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "path": "skills/logo-animation/references/logo-patterns.md" },
+ "license": "MIT",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["logo", "svg", "draw-on", "wipe", "brand"],
+ "check_end": false,
+ "notes": "Patterns 1-3 of the recipe with its timing table (draw-then-fill, clipPath wipe, build-on with stagger and the final 1.04 settle). Filled shapes are drawn as outlines in their own fill colour, then the fill comes in as the outline fades. The SVG is inlined into the film at build time; give its shapes their brand colours in the file. Demo logo made by the kit.",
+ "demo": { "duration": 3.2, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "460px", "top": "340px", "width": "1000px", "height": "400px" } }], "motion": [{ "target": "slot", "at": 0.2 }], "bg": "#0f1319" }
+}

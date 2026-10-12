@@ -1,0 +1,60 @@
+{
+ "name": "effect/ascii-trail-reveal",
+ "kind": "block",
+ "group": "effect",
+ "title": "ASCII Trail Reveal",
+ "title_vi": "Vệt chữ ASCII cong quét lộ bảng",
+ "desc_vi": "Một đường cong chữ S quét qua lưới ký tự ASCII, lật các ô đi để lộ ra một bảng có nhãn bên dưới.",
+ "params_vi": "label: Panel label, mặc định \"The reveal\" · accent: Accent (green | blue | violet), mặc định \"green\" · trail_width: Trail width (narrow | wide), mặc định \"narrow\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/ascii-trail-reveal/ascii-trail-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "intro",
+  "reveal",
+  "ascii",
+  "trail",
+  "grid"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/ascii-trail-reveal.html) in a kit film, mounted by ctx.hf. Kit-side CSS fix: in the source the grid overlay keeps an opaque background (#0b1016) after its cells flip away, so the panel and its label never show; the preset makes the grid background transparent (the HF file is unchanged). Source: An authored S-curve sweeps through a deterministic ASCII grid, flipping cells away to reveal a labeled panel.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "label": "Màn ra mắt",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.5
+ }
+}

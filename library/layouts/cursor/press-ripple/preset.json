@@ -1,0 +1,60 @@
+{
+ "name": "cursor/press-ripple",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Press Ripple",
+ "title_vi": "Con trỏ bấm nút, gợn sóng và đổi nhãn",
+ "desc_vi": "Con trỏ giảm tốc đi vào, đáp lệch tâm nhẹ trên nút, nút lún xuống cùng nhịp, nhả ra với hai vòng gợn và nhãn đổi thành dấu tích, rồi con trỏ đi ra.",
+ "params_vi": "label: Label, mặc định \"Get started\" · done_label: Done label, mặc định \"Saved\" · target_x: Target X, mặc định 50 · target_y: Target Y, mặc định 50 · press_at: Press at, mặc định 0.9 · cursor: Cursor (light | dark), mặc định \"light\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: target), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/press-ripple/press-ripple.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "product-demo",
+  "press",
+  "ripple",
+  "payoff"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/press-ripple.html) in a kit film, mounted by ctx.hf.  Source: A cursor decel-arrives from off-stage, lands slightly off-center on a caller-positioned target, compresses with it in lockstep, releases with two small click rings while the label swaps to a check, then exits off-stage while the confirmed state holds.",
+ "demo": {
+  "duration": 2.4,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "label": "Bắt đầu",
+     "done_label": "Đã lưu",
+     "duration": 2.4
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

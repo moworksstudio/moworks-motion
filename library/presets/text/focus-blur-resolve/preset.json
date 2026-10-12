@@ -1,0 +1,16 @@
+{
+ "name": "text/focus-blur-resolve",
+ "kind": "effect",
+ "group": "text",
+ "title": "Focus blur resolve",
+ "title_vi": "Từng từ lấy nét như ống kính",
+ "desc_vi": "Từng từ thu nhỏ nhẹ từ 108 % về đúng cỡ và lấy nét từ vùng nhoè dày, như ống kính chỉnh nét vào dòng chữ. Mỗi từ cách nhau 0.05 giây.",
+ "params_vi": "blur: soft | standard | heavy (nhoè ban đầu 7 / 16 / 35 px) · scale 1.08 · duration 0.52 · stagger 0.05",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/focus-blur-resolve/focus-blur-resolve.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "words", "blur", "focus"],
+ "notes": "Motion as the source's timeline integration (opacity 0 -> 1, scale 1.08 -> 1, blur 16 px x 0.45 / 1 / 2.2 -> 0, 0.52 s power3.out, stagger 0.05). The source's tone and size variables are the film element's colour and size.",
+ "demo": { "hold": 1.0 }
+}

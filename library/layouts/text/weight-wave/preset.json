@@ -1,0 +1,58 @@
+{
+ "name": "text/weight-wave",
+ "kind": "block",
+ "group": "text",
+ "title": "Weight Wave",
+ "title_vi": "Sóng độ đậm chạy dọc tiêu đề",
+ "desc_vi": "Một đỉnh sóng độ đậm chạy dọc tiêu đề: mỗi chữ phình từ mảnh sang đậm và nghiêng khi sóng đi qua (trục font biến thiên wght, slnt).",
+ "params_vi": "text: Headline, mặc định \"PRESSURE MOVES THROUGH TYPE\" · color: Text color, mặc định \"#f5f5f7\" · background: Background, mặc định \"#0b0b0d\" · weightFrom: Weight (rest), mặc định 400 · weightTo: Weight (crest), mặc định 1000 · crestWidth: Crest width, mặc định 4 · sweepSpeed: Sweep speed, mặc định 0.5 · slant: Slant at crest, mặc định -12 · direction: Direction (ltr | rtl), mặc định \"ltr\" · duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/weight-wave/weight-wave.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "typography",
+  "kinetic-type",
+  "title",
+  "variable-font",
+  "text"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/weight-wave.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A crest of thickness travels along a headline: each character swells from light to black and leans forward as the wave passes, driven by the wght and slnt variable-font axes rather than by transforms.",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

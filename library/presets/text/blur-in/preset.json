@@ -1,0 +1,33 @@
+{
+ "name": "text/blur-in",
+ "kind": "effect",
+ "group": "text",
+ "title": "Blur In",
+ "title_vi": "Từng từ hiện ra từ vùng mờ",
+ "desc_vi": "Từng từ nổi nhẹ lên 8 px và rõ dần từ vùng mờ, nối đuôi nhau rất nhanh.",
+ "params_vi": "duration: mỗi từ (0.36 s) · stagger: độ lệch giữa các từ (0.04 s) · y: quãng nổi (8 px) · blur: độ mờ đầu (10 px) · ease",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/blur-in/blur-in.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "reveal",
+  "stagger",
+  "blur"
+ ],
+ "notes": "Only the motion is ported. The source's variables size, tone and align (type size, colour tokens, flex alignment and the 0.28em word gap) belong to the film's text, not to the effect. Words come from ctx.split (inline-block spans separated by normal spaces) instead of the source's flex row with a 0.28em gap. The stagger is written as explicit start times (at + index x 0.04) and runs across all words of all targets, as the source's selector does.",
+ "demo": {
+  "hold": 1.0,
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3
+   }
+  ]
+ }
+}

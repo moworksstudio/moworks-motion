@@ -1,0 +1,69 @@
+{
+ "name": "hand/paper",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Paper texture",
+ "title_vi": "Nền giấy vẽ tay",
+ "desc_vi": "Nền giấy cho phim vẽ tay, vẽ bằng thư viện claude-animation: giấy sợi (sợi giấy, vết loang mờ, hạt in, góc tối) hoặc giấy trơn có hạt; tuỳ chọn dải sáng chéo trôi trên trời và lớp hạt phim nhấp nháy.",
+ "params_vi": "look fibre | plain · color · bands (dải sáng chéo) · finish (hạt phim) · fps · duration",
+ "source": {
+  "label": "claude-animation (Hanif, MIT), ported to the kit",
+  "url": "https://github.com/buildwithhanif/claude-animation-skill",
+  "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
+ },
+ "license": "MIT (claude-animation, Hanif)",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "hand-drawn",
+  "paper",
+  "texture",
+  "background"
+ ],
+ "notes": "Canvas: AE gets it as a picture (a sequence when bands / finish move). Drawing code: engine/vendor/libs/hand/handkit.js (port checked against the original: .aimotionkit/archive/AI-Motion-Kit-v2/Docs/Audit/handkit-check).",
+ "demo": {
+  "bg": "#f3ead8",
+  "elements": [
+   {
+    "id": "pap",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   },
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Giấy, mực, tay người",
+    "style": {
+     "left": "330px",
+     "top": "430px",
+     "font-size": "110px",
+     "font-weight": "800",
+     "color": "#2b2116",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "pap",
+    "at": 0,
+    "params": {
+     "finish": true,
+     "bands": {
+      "alpha": 0.35
+     },
+     "duration": 2.6
+    }
+   }
+  ],
+  "duration": 2.8
+ },
+ "scripts": [
+  "libs/hand/handkit.js"
+ ]
+}

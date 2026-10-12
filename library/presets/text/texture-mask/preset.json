@@ -1,0 +1,21 @@
+{
+ "name": "text/texture-mask",
+ "kind": "effect",
+ "group": "text",
+ "title": "Texture mask text",
+ "title_vi": "Chữ khoét theo vân vật liệu (66 vân)",
+ "desc_vi": "Nét chữ bị khoét theo vân một vật liệu (dung nham, đá, bê tông, gạch, gỗ, kim loại, tuyết, cẩm thạch, cỏ, vải...), trông như chữ mòn, chạm khắc hay in trên bề mặt đó. Là kiểu dáng, không phải chuyển động: ghép với hiệu ứng chữ khác.",
+ "params_vi": "texture: tên vân, ví dụ lava, rock, concrete, brick, wood, metal, snow, onyx, carpet, marble-012, grass-005... (66 tên trong assets/) · size: cỡ vân (cover) · position: vị trí vân (center) · contrast: độ gắt mép (1)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/texture-mask-text/texture-mask-text.html" },
+ "license": "Apache-2.0 (masks: ambientCG CC0 and HyperFrames)",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["texture", "mask", "material", "style", "grunge"],
+ "check_end": false,
+ "notes": "The source's 66 luminance masks (assets/, 5.6 MB) and its mask settings. The source referenced the masks with project-root URLs; here ctx.asset gives the film's own copy (assets/lib/text/texture-mask/<name>.png). No motion: the style is set when the film builds. End check off: the mask changes the letters. AE: png.",
+ "demo": { "hold": 2.0, "elements": [
+   { "id": "t1", "type": "text", "text": "DUNG NHAM", "style": { "color": "#ffffff", "font-weight": "900", "font-size": "200px", "letter-spacing": "-0.02em", "white-space": "nowrap", "left": "50%", "top": "22%", "transform": "translate(-50%, -50%)" } },
+   { "id": "t2", "type": "text", "text": "ĐÁ TẢNG", "style": { "color": "#ffffff", "font-weight": "900", "font-size": "200px", "letter-spacing": "-0.02em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } },
+   { "id": "t3", "type": "text", "text": "GỖ SỒI", "style": { "color": "#ffffff", "font-weight": "900", "font-size": "200px", "letter-spacing": "-0.02em", "white-space": "nowrap", "left": "50%", "top": "78%", "transform": "translate(-50%, -50%)" } }],
+  "motion": [{ "target": "t1", "at": 0, "params": { "texture": "lava" } }, { "target": "t2", "at": 0, "params": { "texture": "rock" } }, { "target": "t3", "at": 0, "params": { "texture": "wood" } }], "bg": "#1b1d22" }
+}

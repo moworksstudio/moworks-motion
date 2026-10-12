@@ -1,0 +1,672 @@
+{
+ "data/count-up": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 11:35"
+ },
+ "line/draw": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 11:35"
+ },
+ "lower/clean-bar": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "motion/slide-in": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 11:35"
+ },
+ "shape/pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/fade-up": {
+  "decision": "drop",
+  "note": "đang bị giống y chang text/mask-rise về mặt hiệu ứng. → Bạn chọn bỏ (06/10/2026): đã chuyển vào Thùng rác; dùng text/mask-rise hoặc text/staggered-fade-up.",
+  "at": "2026-10-06 22:00"
+ },
+ "text/mask-rise": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:14"
+ },
+ "text/per-word-rise": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:14"
+ },
+ "text/words-rise": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-06 08:58"
+ },
+ "transition/push": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 11:37"
+ },
+ "background/aurora-drift": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:13"
+ },
+ "background/light-sweep-pass": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:13"
+ },
+ "data/animated-bar-chart": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:10"
+ },
+ "data/conic-progress-ring": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:11"
+ },
+ "data/count-up-hf": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:11"
+ },
+ "house/bob": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:11"
+ },
+ "house/hop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:11"
+ },
+ "house/gallery-strip": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:11"
+ },
+ "house/glow-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:11"
+ },
+ "house/deco-float": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/count-up-text": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/burst-pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/breathe": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/kv-burst": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/logo-pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/panel-pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/pop-cute": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/pop-out": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/shot-pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "house/slide-side": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:12"
+ },
+ "line/hw-underline": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "house/zoom-in-shape": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "house/twinkle": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "house/ticker-slide": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "house/tag-pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "house/super-slide": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "line/outline-draw": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "logo/cta-lockup": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "logo/logo-sting": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "lower/accent-underline": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:13"
+ },
+ "lower/kicker-name": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "lower/mask-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/marker-highlight": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/line-by-line-slide": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/headline-slam": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/blur-in": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/per-word-fade": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/scramble-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/staggered-fade-up": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:14"
+ },
+ "text/text-shimmer": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "text/tracking-in": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "transition/whip-pan-cut": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "transition/iris-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "transition/directional-wipe": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "transition/curtain-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "text/typewriter": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "transition/zoom-through-transition": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 13:15"
+ },
+ "card/gloss-sweep": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:16"
+ },
+ "card/grid-card-assemble": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:16"
+ },
+ "card/logo-wall": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:16"
+ },
+ "card/social-proof-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:16"
+ },
+ "card/split-tilt-cards": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:16"
+ },
+ "intake/deck-slide": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "intake/psd-frame": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/spotlight-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/star-rating-fill": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/store-badge-lockup": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/testimonial-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/testimonial-proof-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/tilt-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "card/trust-strip": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "code/code-snippet-dark-modern": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "code/code-terminal-run": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "code/terminal-simulator": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "compare/before-after-wipe": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "compare/comparison-split": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/app-showcase": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/browser-device-stage": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/device-frame-stage": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/iphone-macbook-3d": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/multi-device-splay": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/parallax-device-dive": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "device/ui-3d-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/input-feedback": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/menu-morph": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/modal-morph": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/onboarding-stepper-flow": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/screen-flow-carousel": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/settings-toggle-flow": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/signup-flow": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/tabs-slide-indicator": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/toggle-flip": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "flow/ui-focus-zoom": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "glass/ios-home": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "glass/macos-desktop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "glass/notifications": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "glass/vfx-glass": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "glass/widgets": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/instagram-follow": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/reddit-post": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/spotify-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/tiktok-follow": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/x-follow-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/x-post": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/yt-comment-card": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "social/yt-lower-third": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "title/cta-close": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "title/titlecard-calm": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "title/titlecard-lockup": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/chat-message": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/chat-thread": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/macos-notification": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/message-thread-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/native-notification-pop": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/notes-reveal": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/notification-cascade": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/notification-pileup": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/notification-stack": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/share-sheet-carousel": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/sheet-spring-up": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/thread-message-stack": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ },
+ "ui/typing-indicator": {
+  "decision": "keep",
+  "note": "",
+  "at": "2026-10-05 21:22",
+  "by": "user in chat 05/10: giữ hết layout và animation"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "name": "lower/bild-style",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: tabloid news (BILD style)",
+ "title_vi": "Lower third báo lá cải (kiểu BILD)",
+ "desc_vi": "Dòng chữ hẹp in hoa nền trắng bóng đỏ cứng, dòng phụ nền đỏ bóng trắng cứng, đứng yên (không có chuyển động vào), kiểu báo BILD.",
+ "params_vi": "main, sub: hai dòng chữ · red: màu đỏ · left, mainBottom, subBottom: vị trí (px) · hideAt: giây ẩn (null = giữ đến hết)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lower-third-bild/lower-third-bild.html" },
+ "license": "Apache-2.0 (fonts: Barlow Condensed, SIL OFL 1.1)",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "tags": ["lower third", "news", "broadcast", "tabloid", "static"],
+ "notes": "Static as in the source (no entrance motion; it only hides at the clip end): pair it with a transition or an opacity cut in the film if it must animate. Fonts: the source's own Barlow Condensed Bold / ExtraBold woff2 (shipped in assets/fonts, OFL, Vietnamese complete), as font family \"AIMK Barlow Condensed\". The source's variables TXT_MAIN_1_Line / TXT_SUB are the params main / sub. In After Effects the font must be installed (AE-PORT.md lists it).",
+ "demo": { "bg": "#3a4a5e", "duration": 4 }
+}

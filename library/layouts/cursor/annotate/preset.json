@@ -1,0 +1,58 @@
+{
+ "name": "cursor/annotate",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Annotate Cursor",
+ "title_vi": "Bút dạ bay vào khoanh, gạch, vẽ mũi tên",
+ "desc_vi": "Một cây bút dạ lướt vào khung và vẽ tay một vòng khoanh, một nét gạch chân hoặc một mũi tên quanh vùng chỉ định, mực nằm đúng dưới ngòi, rồi nhấc lên đi ra.",
+ "params_vi": "shape: Mark (circle | underline | arrow), mặc định \"circle\" · color: Ink, mặc định \"#f43f5e\" · target_x: Region left, mặc định 40 · target_y: Region top, mặc định 38 · target_w: Region width, mặc định 20 · target_h: Region height, mặc định 16 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cursor-annotate/cursor-annotate.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "pen",
+  "annotation",
+  "draw-on",
+  "highlight"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cursor-annotate.html) in a kit film, mounted by ctx.hf.  Source: A marker pen glides onto the frame and hand-draws a loose loop, an underline, or an arrow around a region, the ink laid exactly under its nib, then lifts and leaves.",
+ "demo": {
+  "duration": 2.95,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 2.95
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

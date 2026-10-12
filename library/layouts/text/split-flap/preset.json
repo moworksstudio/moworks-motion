@@ -1,0 +1,59 @@
+{
+ "name": "text/split-flap",
+ "kind": "block",
+ "group": "text",
+ "title": "Split-Flap Board",
+ "title_vi": "Bảng lật chữ kiểu nhà ga (Solari)",
+ "desc_vi": "Bảng giờ tàu kiểu Solari: mỗi ô lật qua các ký tự trung gian cho tới ký tự đích, chữ hiện ra như một thác cơ khí.",
+ "params_vi": "boardText: Board text, mặc định \"NOW BOARDING\" · flapAlphabet: Flap alphabet (drum order), mặc định \" ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,'\" · flipDuration: Seconds per flap, mặc định 0.09 · cellStagger: Per-cell start stagger, mặc định 0.05 · cellCount: Cells on the board, mặc định 12 · duration: độ dài của block (3.5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/split-flap-board/split-flap-board.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "text",
+  "kinetic",
+  "mechanical",
+  "split-flap",
+  "solari",
+  "departure-board"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/split-flap-board.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Solari-style departure board: every cell walks its drum forward through the intervening characters of a fixed alphabet until it lands on its target, so the text resolves as a mechanical cascade instead of a fade.",
+ "demo": {
+  "duration": 3.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 3.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

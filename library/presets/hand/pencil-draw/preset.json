@@ -1,0 +1,83 @@
+{
+ "name": "hand/pencil-draw",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Brush / pencil draw-on",
+ "title_vi": "Nét cọ / bút chì vẽ ra",
+ "desc_vi": "Một nét vẽ tay tự vẽ ra quanh, dưới, gạch ngang hoặc dọc theo một phần tử, bằng cây bút của claude-animation: cọ mực (nét thon hai đầu, dày mỏng theo lực tay, ngòi tròn) hoặc bút chì (ba lượt mảnh, đứt chỗ nhấn nhẹ). Khung vẽ từng cạnh, góc lố ra; vòng tròn lố qua điểm đầu.",
+ "params_vi": "tool brush | pencil · mode box | circle | underline | strike | path · points · color · w · pad · duration · ease · boil (vẽ lại / giây khi giữ) · hold · seed",
+ "source": {
+  "label": "claude-animation (Hanif, MIT), ported to the kit",
+  "url": "https://github.com/buildwithhanif/claude-animation-skill",
+  "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
+ },
+ "license": "MIT (claude-animation, Hanif)",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "hand-drawn",
+  "brush",
+  "pencil",
+  "sketch",
+  "underline"
+ ],
+ "notes": "Canvas (claude-animation's Pen): AE gets the line as a picture sequence while it draws. Drawing code: engine/vendor/libs/hand/handkit.js (port checked against the original: .aimotionkit/archive/AI-Motion-Kit-v2/Docs/Audit/handkit-check).",
+ "demo": {
+  "bg": "#f3ead8",
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Ý tưởng",
+    "style": {
+     "left": "260px",
+     "top": "300px",
+     "font-size": "130px",
+     "font-weight": "800",
+     "color": "#1b1b1b",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "t2",
+    "type": "text",
+    "text": "rõ ràng",
+    "style": {
+     "left": "1080px",
+     "top": "560px",
+     "font-size": "130px",
+     "font-weight": "800",
+     "color": "#1b1b1b",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3,
+    "params": {
+     "mode": "circle",
+     "color": "#D0312D",
+     "w": 6,
+     "boil": 10,
+     "hold": 2
+    }
+   },
+   {
+    "target": "t2",
+    "at": 1.2,
+    "params": {
+     "mode": "underline",
+     "tool": "pencil",
+     "color": "#3A3430",
+     "w": 2.4
+    }
+   }
+  ],
+  "duration": 3.4
+ },
+ "scripts": [
+  "libs/hand/handkit.js"
+ ]
+}

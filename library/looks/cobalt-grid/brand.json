@@ -1,0 +1,78 @@
+{
+ "_about": "Public look 'cobalt-grid' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "cobalt-grid",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/cobalt-grid/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "62a6c9e6e5188cc29b9c0098e9bb8e72c23f152d9a99dd92c58139d26b69b19f",
+   "frame-showcase.html": "b135214cd2e310273a01e3f72b2828149f022803954a22a13cbf27aa1c2f518a",
+   "caption-skin.html": "506c0abc064ee4450afc7d34ff71a6fd04fa0dda69d57608ab310569d7651c03"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Newsreader",
+   "family": "Newsreader",
+   "dir": "google/Newsreader",
+   "files": {
+    "400": "Newsreader[opsz,wght].ttf",
+    "700": "Newsreader[opsz,wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Hanken Grotesk",
+   "family": "Hanken Grotesk",
+   "dir": "google/HankenGrotesk",
+   "files": {
+    "400": "HankenGrotesk[wght].ttf",
+    "700": "HankenGrotesk[wght].ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 88.3,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 1.0,
+    "body": 0.18,
+    "disclaimer": 0.18
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 400
+   }
+  }
+ },
+ "color": {
+  "paper": "#F0EBDE",
+  "paper-2": "#E6E0CE",
+  "ink": "#1F2BE0",
+  "ink-soft": "#5560E5",
+  "black": "#1F2BE0",
+  "white": "#F0EBDE"
+ },
+ "kit": {
+  "accent": "ink"
+ }
+}

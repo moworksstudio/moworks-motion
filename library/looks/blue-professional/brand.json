@@ -1,0 +1,81 @@
+{
+ "_about": "Public look 'blue-professional' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "blue-professional",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/blue-professional/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "62e9a445885f6057084493de385a8ce20c3b4a299ae36a553ef54884f06bad68",
+   "frame-showcase.html": "715b130d086977a48925a3c79bb079fbc7270274c9c9a7761bf275df3020b0ba",
+   "caption-skin.html": "a4cec56e723db7fc6b6f0c71a52314f80fc3f3f6c43747ae46af8a0761aa0c8b"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Space Grotesk",
+   "family": "Space Grotesk",
+   "dir": "google/SpaceGrotesk",
+   "files": {
+    "400": "SpaceGrotesk[wght].ttf",
+    "700": "SpaceGrotesk[wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Inter",
+   "family": "Inter",
+   "dir": "google/Inter",
+   "files": {
+    "400": "Inter[opsz,wght].ttf",
+    "700": "Inter[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 153.6,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 1.0,
+    "body": 0.106,
+    "disclaimer": 0.106
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 700
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 700,
+    "weightTwoLines": 700
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 400
+   }
+  }
+ },
+ "color": {
+  "bg": "#fdfae7",
+  "primary": "#1e2bfa",
+  "text": "#111111",
+  "text-muted": "#6b6b6b",
+  "text-light": "#9a9a9a",
+  "positive": "#059669",
+  "negative": "#dc2626",
+  "black": "#111111",
+  "white": "#fdfae7"
+ },
+ "kit": {
+  "accent": "primary"
+ }
+}

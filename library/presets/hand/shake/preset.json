@@ -1,0 +1,56 @@
+{
+ "name": "hand/shake",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Screen shake",
+ "title_vi": "Rung màn hình",
+ "desc_vi": "Cả khung (hoặc một nhóm) rung mạnh rồi tắt dần, cho cú va, cú dậm, chữ đập xuống. Đặt lên khung trong của cảnh (id cảnh + \"in\") hoặc một nhóm.",
+ "params_vi": "duration (giây, gốc 0,45) · amp (px lúc đầu) · rot (độ lúc đầu) · fps",
+ "source": {
+  "label": "claude-animation (Hanif, MIT), formula of lib/fx.mjs shake()",
+  "url": "https://github.com/buildwithhanif/claude-animation-skill"
+ },
+ "license": "MIT (claude-animation, Hanif)",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "hand-drawn",
+  "shake",
+  "impact"
+ ],
+ "notes": "Strict guideline jobs: never while text is read; never on a logo.",
+ "demo": {
+  "bg": "#f3ead8",
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "RẦM!",
+    "style": {
+     "left": "720px",
+     "top": "380px",
+     "font-size": "220px",
+     "font-weight": "900",
+     "color": "#d6342b",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "s1in",
+    "at": 0.6,
+    "params": {}
+   },
+   {
+    "target": "s1in",
+    "at": 2.0,
+    "params": {
+     "amp": 10,
+     "duration": 0.3
+    }
+   }
+  ],
+  "duration": 3.0
+ }
+}

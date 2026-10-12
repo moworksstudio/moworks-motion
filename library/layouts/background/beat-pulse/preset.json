@@ -1,0 +1,58 @@
+{
+ "name": "background/beat-pulse",
+ "kind": "block",
+ "group": "background",
+ "title": "Beat Pulse Background",
+ "title_vi": "Nền phát sáng theo phách nhạc",
+ "desc_vi": "Nền màu nhấn phập phồng độ sáng và độ rực đúng theo danh sách phách nhạc cho sẵn.",
+ "params_vi": "beats: Beats, mặc định \"0.5,1.0,1.5,2.0,2.5,3.0,3.5\" · accent: Accent (green | blue | violet), mặc định \"green\" · intensity: Intensity (subtle | club), mặc định \"subtle\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/beat-pulse-background/beat-pulse-background.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "background",
+  "beat",
+  "pulse",
+  "rhythmic",
+  "reactive"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/beat-pulse-background.html) in a kit film, mounted by ctx.hf.  Source: An accent-derived backdrop pulses its glow intensity and saturation on a deterministic, supplied beat grid.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

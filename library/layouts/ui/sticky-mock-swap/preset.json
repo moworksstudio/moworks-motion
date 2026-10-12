@@ -1,0 +1,59 @@
+{
+ "name": "ui/sticky-mock-swap",
+ "kind": "block",
+ "group": "ui",
+ "title": "Sticky Mock Swap",
+ "title_vi": "Màn hình sản phẩm đổi trạng thái, chú thích chạy cạnh",
+ "desc_vi": "Một màn hình sản phẩm cố định chuyển mờ qua các trạng thái tính năng có màu nhấn, các chú thích tương ứng trồi lên, giữ và ra bên cạnh.",
+ "params_vi": "captions: Captions, mặc định \"Instant previews,Zero config,Ship on Friday\" · accent: Accent (green | blue | violet), mặc định \"violet\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/sticky-mock-swap/sticky-mock-swap.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "product-demo",
+  "sticky",
+  "mock",
+  "crossfade",
+  "feature-tour"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/sticky-mock-swap.html) in a kit film, mounted by ctx.hf.  Source: A pinned product mock cross-fades through accent-tinted feature states while matching captions rise, hold, and exit beside it.",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "captions": "Xem trước tức thì,Không cần cài đặt,Phát hành thứ Sáu",
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

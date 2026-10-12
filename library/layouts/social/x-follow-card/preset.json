@@ -1,0 +1,19 @@
+{
+ "name": "social/x-follow-card",
+ "kind": "block",
+ "group": "social",
+ "title": "Follow card (X style)",
+ "title_vi": "Thẻ số người theo dõi kiểu mạng xã hội",
+ "desc_vi": "Thẻ tối có avatar, tên và mô tả; số người theo dõi rất lớn nảy lên, rồi hàng avatar nhỏ chồng nhau trồi lên lần lượt.",
+ "params_vi": "name: tên tài khoản · text: dòng mô tả · stat: số người theo dõi · count: số avatar nhỏ (1 đến 12) · scale: độ phóng to (1.9 như bản demo gốc, thẻ gốc rộng 700 px) · bg, fg, muted: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/x-follow-card/x-follow-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": ["social", "follow", "followers", "card", "count"],
+ "notes": "Layout, sizes, colours and motion as in the source: card 700 px wide, radius 30, padding 34, #0f172a, shadow 0 28 80 px; header with a 70 px avatar tile (radius 22) and a 36 px / -0.04em title with a muted 18 px line; the number 82 px weight 900 tracking -0.08em, 30 px below; six 46 px avatar discs (3 px ring in the card colour, overlapping by 10 px, first at 72 % white, others 45 %). Motion: the number rises from y 28 and opacity 0 over 0.46 s back.out(1.6); the avatars rise from y 18 with opacity, 0.28 s power2.out, 0.05 s apart, starting 0.22 s after the number (the source used one tween with stagger 0.05; the builder cannot write out a multi-target stagger tween, so there is one tween per avatar). Differences: the source drove the number and the avatars through CSS custom properties (--hf-stat-y, --hf-avatar-y, --hf-avatar-opacity) that feed a CSS transform and opacity; the port tweens y and opacity directly (same values and eases); the source demo wrapped the card in a scale(1.9) frame, here that is the param `scale` and every px size is multiplied by it; the card is centred in the target box; the number of avatars is a param `count` (source: 6); the paragraph size 18 px comes from the source demo. brand_ui: the layout imitates a social platform's follow card. 05/10/2026: source artwork check: the source HTML has no logo or icon (the avatar tile and the overlapping discs are plain CSS shapes, exactly as here), so nothing needed restoring; the source artwork is the default. The source title 'X Follow Card' (a brand name) is replaced by a neutral Vietnamese default; default texts are Vietnamese.",
+ "demo": { "bg": "#fafafa", "duration": 5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.5, "params": {} }] }
+}

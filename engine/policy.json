@@ -1,0 +1,43 @@
+{
+  "_about": "Offline-first policy of Moworks Motion (user decision 04-05/10/2026). Every launcher and the HyperFrames adapter apply this before running anything.",
+  "network": {
+    "allowed": [
+      "registry.npmjs.org (HyperFrames version check + install only)"
+    ],
+    "forbidden": [
+      "telemetry of any tool",
+      "CDN script or font loads during preview/render (vendor everything)",
+      "Google Fonts",
+      "cloud render / publish / upload",
+      "AI vision or TTS APIs on client material"
+    ]
+  },
+  "hyperframes_env": {
+    "HYPERFRAMES_NO_TELEMETRY": "1",
+    "DO_NOT_TRACK": "1",
+    "HYPERFRAMES_SKIP_SKILLS": "1",
+    "HYPERFRAMES_NO_UPDATE_CHECK": "1",
+    "HYPERFRAMES_NO_AUTO_INSTALL": "1",
+    "PRODUCER_FORCE_SCREENSHOT": "true"
+  },
+  "hyperframes_update": "our updater (engine/adapters/hf) checks npm itself, installs the new version into its own folder, runs the smoke test, keeps the previous version and rolls back on failure; projects in progress keep their version. HF's own update check and auto-install stay off.",
+  "hyperframes_forbidden_commands": [
+    "publish",
+    "cloud",
+    "feedback --file-issue",
+    "snapshot --describe",
+    "capture",
+    "media-use --provider",
+    "add (from GitHub)",
+    "catalog (from GitHub)"
+  ],
+  "never_in_env": [
+    "GEMINI_API_KEY",
+    "GOOGLE_API_KEY",
+    "OPENROUTER_API_KEY",
+    "ELEVENLABS_API_KEY",
+    "HEYGEN_API_KEY"
+  ],
+  "client_material": "never leaves the machine; rembg and whisper run offline",
+  "drive": "heavy work files, caches and the HyperFrames install live in %USERPROFILE%\\.aimotionkit (throw-away, rebuilt by the installer); everything the kit needs (code, libraries, assets, fonts) lives in the kit folder; finished deliverables are copied into Projects\\<name>\\ on Drive"
+}

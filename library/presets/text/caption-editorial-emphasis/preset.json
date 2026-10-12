@@ -1,0 +1,21 @@
+{
+ "name": "text/caption-editorial-emphasis",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: editorial emphasis",
+ "title_vi": "Phụ đề kiểu tạp chí, từ nhấn serif nghiêng lớn",
+ "desc_vi": "Phụ đề theo giọng đọc ở góc dưới trái, từng khối một hai dòng: chữ thường nảy hiện khi được nói, từ nhấn đứng riêng một dòng bằng chữ serif nghiêng đậm cỡ rất lớn trượt vào từ trái.",
+ "params_vi": "words: \"voice\" · keywords: các từ nhấn (serif nghiêng lớn) · italics: các từ nghiêng nhẹ · blocks: tự xếp hoặc theo định dạng gốc · maxWords 5 · ink: màu chữ kem · size 86, emphasisSize 180 (tự thu nhỏ cho vừa 1800 px) · left, top, width: vùng an toàn",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-editorial-emphasis/caption-editorial-emphasis.html" },
+ "license": "Apache-2.0 (font: Playfair Display, SIL OFL 1.1)",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "fonts": [ { "family": "AIMK Playfair Display", "vendor": "fonts/PlayfairDisplay-Italic.ttf", "weight": "400 900", "style": "italic" } ],
+ "tags": ["captions", "subtitles", "voice", "editorial", "serif", "emphasis"],
+ "notes": "Look and timing as in the source (cream #f5f0d0 ink with a double shadow, regular 86 px, emphasis 180 px bold italic serif line-height 0.9, safe zone 1800 x 430 at 60 / 580, fit-to-width down to 45 %, word pop 0.1 s power2.out from scale 1.12 at the bottom-left, emphasis line slide from x -1920 in 0.2 s, a block holds until the next starts). Fonts: Playfair Display (the source's emphasis font) is the kit's shared font engine/vendor/fonts/PlayfairDisplay-Italic.ttf (variable, OFL, Vietnamese complete), declared through preset.json \"fonts\" with \"vendor\" so the build copies it into the project and loads it before measuring; Inter becomes the film's font Roboto Flex (italic words use its slant axis, slnt -10). Changed: blocks are made automatically from the voice words and params.keywords (the source hand-listed them; params.blocks takes the source's format); the last block holds 0.8 s after its last word (the source: to the clip end). In After Effects the font must be installed (engine/vendor/fonts).",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.5,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": ["hình.", "HTML", "nghiệp.", "code", "ảnh."] } } ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "effect/ascii-render-pass",
+ "at": "2026-10-06 13:32",
+ "static": [],
+ "build": "ok",
+ "tweens": 0,
+ "codes": 1,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 4,
+ "problems": [],
+ "status": "ok",
+ "seconds": 8.5
+}

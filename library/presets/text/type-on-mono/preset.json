@@ -1,0 +1,71 @@
+{
+ "name": "text/type-on-mono",
+ "kind": "effect",
+ "group": "text",
+ "title": "Type-on, no caret",
+ "title_vi": "Gõ chữ từng ký tự (không con trỏ)",
+ "desc_vi": "Chữ (thường là mono) hiện từng ký tự trong một khoảng thời gian, kiểu chữ trên màn hình máy quay; mỗi ký tự là một keyframe nên sang AE gọn. Khác text/typewriter: không con trỏ, không khối code.",
+ "params_vi": "duration: số giây gõ hết dòng",
+ "ae": "keyframes",
+ "tags": [
+  "text",
+  "type",
+  "mono",
+  "hud"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026).",
+ "demo": {
+  "bg": "#0d0f12",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "l1",
+    "type": "text",
+    "text": "SCENE 04 · TAKE 02",
+    "style": {
+     "left": "560px",
+     "top": "420px",
+     "font": "600 72px RMono",
+     "color": "#f5f5f2",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "l2",
+    "type": "text",
+    "text": "Đạo diễn: Moworks Studio",
+    "style": {
+     "left": "560px",
+     "top": "530px",
+     "font": "500 52px RMono",
+     "color": "rgba(245,245,242,.7)",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "l1",
+    "at": 0.3,
+    "params": {
+     "duration": 0.7
+    }
+   },
+   {
+    "target": "l2",
+    "at": 1.1,
+    "params": {
+     "duration": 0.9
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

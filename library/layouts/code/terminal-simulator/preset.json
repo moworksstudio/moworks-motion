@@ -1,0 +1,32 @@
+{
+ "name": "code/terminal-simulator",
+ "kind": "block",
+ "group": "code",
+ "title": "Terminal simulator",
+ "title_vi": "Cửa sổ terminal có danh sách tệp và trình soạn mã",
+ "desc_vi": "Cửa sổ tối gồm danh sách tệp và khung mã: năm dòng mã vẽ ra từ trái sang phải lần lượt, rồi dòng lệnh mờ hiện bên dưới.",
+ "params_vi": "title: tiêu đề cửa sổ · files: danh sách tên tệp · lines: bề rộng (%) từng dòng mã giả · command: dòng lệnh · startAt: giây bắt đầu (0.5) · bg, chrome, fg, muted, prompt: màu · scale: độ phóng to (1.65)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/terminal-simulator/terminal-simulator.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "terminal",
+  "code",
+  "window",
+  "editor"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, sizes and the two tweens are as in the source (window 760 px wide, radius 24, background #0f172a, chrome 48 px #111827, files column 210 px, five editor lines 18 px tall at 18 % white, terminal strip with min height 78 px, mono 14 / 15 px; lines scaleX 0 -> 1 + opacity, 0.24 s power2.out, stagger 0.08 at startAt = 0.5 s; command line y 16 -> 0 + opacity, 0.34 s power2.out 0.48 s later). Where the source demo differs from the snippet its value is used (chrome title 14 px, file list 15 px / line-height 1.8, editor gap 14 px and line height 18 px, terminal 15 px); the demo's 1.65x enlargement is the param `scale` (a wrapper with transform: scale that is never tweened). The lines were driven by two CSS custom properties (--hf-line, --hf-line-opacity) read by transform: scaleX() and opacity; they are plain scaleX / opacity tweens with the same values (transform-origin at the left edge). The traffic-light dots were one 11 px dot with two box-shadow copies at +18 px / +36 px, which also sat on top of the title text in the source; they are three real dots at the same positions and the title starts after them (a real fix of an overlap, otherwise the same bar). Mono text uses the system monospace stack (Consolas / Cascadia Mono / Menlo), no font file ships. Content as params: the source's labels (Terminal Simulator, index.html / style.css / timeline.js, a render command of the HyperFrames CLI) became a Vietnamese title, the same three file names and the source's command line (code stays code). The window has no brand assets. The terminal text is not typed (the source only fades it in). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "#f7f7f8",
+  "duration": "auto",
+  "hold": 1.4
+ }
+}

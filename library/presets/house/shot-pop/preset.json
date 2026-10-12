@@ -1,0 +1,177 @@
+{
+ "name": "house/shot-pop",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop (photos)",
+ "title_vi": "Ảnh rải bật ra",
+ "desc_vi": "Ảnh UGC rải trên khung bật lần lượt trong 0,9 giây, xoay rất nhẹ.",
+ "params_vi": "Giống pop-cute; mặc định rot 8°, ease back.out(1.8), dur 0.6, spread 0.9",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "photos",
+  "ugc",
+  "house"
+ ],
+ "notes": "Port of P.shotPop (popCute with rot 8, back.out(1.8), 0.6 s, spread 0.9). Demo uses gradient cards instead of the client photos.",
+ "demo": {
+  "bg": "#2b2d42",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "t0",
+    "type": "text",
+    "text": "Khoảnh khắc 1",
+    "style": {
+     "left": "180px",
+     "top": "280px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#ff6b6b,#feca57)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "8px solid #ffffff",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.35)",
+     "width": "260px",
+     "height": "340px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Khoảnh khắc 2",
+    "style": {
+     "left": "500px",
+     "top": "380px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#48dbfb,#5f27cd)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "8px solid #ffffff",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.35)",
+     "width": "260px",
+     "height": "340px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "t2",
+    "type": "text",
+    "text": "Khoảnh khắc 3",
+    "style": {
+     "left": "820px",
+     "top": "250px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#1dd1a1,#10ac84)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "8px solid #ffffff",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.35)",
+     "width": "260px",
+     "height": "340px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "t3",
+    "type": "text",
+    "text": "Khoảnh khắc 4",
+    "style": {
+     "left": "1140px",
+     "top": "360px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#ff9ff3,#f368e0)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "8px solid #ffffff",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.35)",
+     "width": "260px",
+     "height": "340px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "t4",
+    "type": "text",
+    "text": "Khoảnh khắc 5",
+    "style": {
+     "left": "1460px",
+     "top": "270px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#feca57,#ff9f43)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "8px solid #ffffff",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.35)",
+     "width": "260px",
+     "height": "340px",
+     "text-align": "center"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "t0",
+     "t1",
+     "t2",
+     "t3",
+     "t4"
+    ],
+    "at": 0.3
+   }
+  ]
+ }
+}

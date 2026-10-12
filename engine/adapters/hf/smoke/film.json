@@ -1,0 +1,18 @@
+{
+ "spec": "aimk-motionspec/0",
+ "title": "HF smoke test",
+ "size": [1280, 720],
+ "brand": null,
+ "background": "#14161c",
+ "scenes": [
+  { "id": "s1", "name": "Smoke", "duration": 2,
+    "elements": [
+      { "id": "dot", "type": "box", "style": { "left": "140px", "top": "300px", "width": "120px", "height": "120px", "border-radius": "50%", "background": "#ff7a1a" } },
+      { "id": "t1", "type": "text", "text": "Kiểm tra HyperFrames", "style": { "left": "320px", "top": "300px", "font-size": "72px", "font-weight": "760", "color": "#f5f5f2", "white-space": "nowrap" } }
+    ],
+    "motion": [
+      { "preset": "shape/pop", "target": "dot", "at": 0.1 },
+      { "preset": "text/mask-rise", "target": "t1", "at": 0.3 }
+    ] }
+ ]
+}

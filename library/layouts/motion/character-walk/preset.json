@@ -1,0 +1,60 @@
+{
+ "name": "motion/character-walk",
+ "kind": "block",
+ "group": "motion",
+ "title": "Lottie Character Walk",
+ "title_vi": "Nhân vật Lottie đi vào và chỉ vào thẻ",
+ "desc_vi": "Một nhân vật phẳng có khớp đi vào, chân bám đất, dừng lại và chỉ vào một thẻ; diễn xuất là file Lottie, sân khấu là GSAP.",
+ "params_vi": "title: Card title, mặc định \"Meet your guide\" · body: Card text, mặc định \"Walks in on planted feet, then points the way.\" · duration: độ dài của block (7.5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/lottie-character-walk/lottie-character-walk.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js",
+  "libs/lottie.min.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "character",
+  "character-animation",
+  "mascot",
+  "walk-cycle",
+  "gesture",
+  "pointing"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/lottie-character-walk.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A jointed flat character walks in on planted feet, stops and points at a card; the body acting is a Lottie file and the stage is GSAP.",
+ "demo": {
+  "duration": 7.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

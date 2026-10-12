@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-particle-burst",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: particle burst",
+ "title_vi": "Phụ đề từ khoá bắn hạt màu",
+ "desc_vi": "Phụ đề theo giọng đọc chữ trắng mờ: từ đang được nói sáng lên và to ra một chút; từ khoá chuyển vàng, to hơn và bắn ra 10 hạt màu từ giữa phía dưới; cụm chữ bật lên có nảy nhẹ.",
+ "params_vi": "words: \"voice\" · keywords: từ vàng có hạt bắn · groups hoặc tự gom (maxWords 4, maxSpan 2 s) · size 88, upper, bottom 120 · rest, spoken, on, key: màu · burstX, burstBottom: điểm bắn · particles 10 · colors: màu hạt",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-particle-burst/caption-particle-burst.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "particles", "burst", "keywords"],
+ "notes": "Colours (rest 45 %, spoken 40 % white, keyword #FFD700, eight particle colours), scales 1.05 / 1.12, particle burst (10 dots, seeded angle / 120-320 px distance / 4-12 px size, out 0.12 s power3.out staggered 0.018 s, fade 0.45 s) from the source's fixed point (960 px, 180 px from the bottom), group pop 0.92 -> 1 back.out(1.5) 0.2 s and fade-out 0.14 s, as in the source. Changed: the film's font at weight 900 instead of Outfit; words and groups from the voice transcript; keywords are words; every jump is an explicit fromTo / set (seek-safe; the word colour tweens get GSAP's default ease written out).",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.4,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo" } } ]
+ }
+}

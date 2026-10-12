@@ -1,0 +1,55 @@
+{
+ "name": "transition/chromatic-wipe",
+ "kind": "block",
+ "group": "transition",
+ "title": "Chromatic Aberration Wipe",
+ "title_vi": "Quét trượt nhanh tách kênh màu",
+ "desc_vi": "Cú quét trượt nhanh, ở các khung đỉnh thì tách kênh đỏ lục lam.",
+ "params_vi": "direction: Direction (left | right | up | down), mặc định \"left\" · accent: Accent (blue | green | violet), mặc định \"blue\" · aberration: Aberration, mặc định 1 · duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/chromatic-aberration-wipe/demo.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "video-primitive",
+  "transition-primitive"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/demo.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/chromatic-aberration-wipe.html. Source: A fast slide wipe with RGB channel split on peak frames.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

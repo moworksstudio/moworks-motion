@@ -1,0 +1,20 @@
+{
+ "name": "text/text-shimmer",
+ "at": "2026-10-05 22:08",
+ "static": [],
+ "build": "ok",
+ "tweens": 2,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "end": 0.00489,
+ "duration": 4.3,
+ "problems": [
+  "end differs from layout 0.49%"
+ ],
+ "status": "warn",
+ "seconds": 7.6
+}

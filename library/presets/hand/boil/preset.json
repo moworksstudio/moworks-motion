@@ -1,0 +1,21 @@
+{
+ "name": "hand/boil",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Line boil (on twos)",
+ "title_vi": "Rung nét vẽ tay (vẽ lại 12 lần/giây)",
+ "desc_vi": "Nét vẽ tay không bao giờ đứng yên hẳn: phần tử được vẽ lại 12 lần mỗi giây, mỗi lần lệch và nghiêng một chút. Dùng cho chữ, hình vẽ, sticker trong phim phong cách vẽ tay.",
+ "params_vi": "duration (giây) · fps (12 = vẽ đôi, 8 = vẽ ba) · amp (px) · rot (độ) · seed",
+ "source": { "label": "Moworks Motion", "film": "plan C3 07/10/2026 (gói vẽ tay)" },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["hand-drawn", "boil", "jitter"],
+ "notes": "Strict guideline jobs: not on text (a jitter reads as a glitch).",
+ "demo": {
+  "bg": "#f3ead8",
+  "elements": [ { "id": "t1", "type": "text", "text": "Vẽ tay, sống động", "style": { "left": "360px", "top": "420px", "font-size": "120px", "font-weight": "800", "color": "#1b1b1b", "white-space": "nowrap" } } ],
+  "motion": [ { "target": "t1", "at": 0.2, "params": { "duration": 3 } } ],
+  "duration": 3.6
+ }
+}

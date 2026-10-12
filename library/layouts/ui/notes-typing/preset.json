@@ -1,0 +1,59 @@
+{
+ "name": "ui/notes-typing",
+ "kind": "block",
+ "group": "ui",
+ "title": "Notes Typing",
+ "title_vi": "Ứng dụng ghi chú tự gõ lời tâm sự",
+ "desc_vi": "Cảnh ứng dụng ghi chú: tiêu đề đậm, rồi các dòng nội dung tự gõ từng ký tự theo nhịp gõ của người, con trỏ chạy theo và xuống dòng ở mỗi đoạn.",
+ "params_vi": "title: Title, mặc định \"Things nobody told me|about video.\" · lines: Lines, mặc định \"my videos sucked|my tools cost $$$|and re-edits never end.\" · speed: Speed, mặc định 1 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/notes-typing/notes-typing.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "notes",
+  "typing",
+  "mock-ui",
+  "vertical"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/notes-typing.html) in a kit film, mounted by ctx.hf.  Source: The notes-app confession as a mountable scene: a bold title, then body lines typed character by character on the measured human keystroke rhythm, the caret riding every landed character and jumping down at each paragraph. For a bare prompt line use typed-prompt; for an even mechanical reveal use typewriter",
+ "demo": {
+  "duration": 10.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "title": "Những điều không ai nói|về làm video.",
+     "lines": "video của tôi rất tệ|công cụ thì đắt đỏ|và mất cả tuần",
+     "duration": 10.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "title/wordmark-tiles",
+ "kind": "block",
+ "group": "title",
+ "title": "Wordmark tiles",
+ "title_vi": "Lưới ô màu lật dần thành chữ thương hiệu",
+ "desc_vi": "Một lưới ô màu nhiễu; một làn sóng cuộn qua lưới, từng ô lật từ màu nhiễu sang mảnh đúng của chữ thương hiệu, cuối cùng hiện rõ cả chữ. Hợp tên sản phẩm, chiến dịch, chữ logo ngắn.",
+ "params_vi": "text: chữ (tối đa 12 ký tự, tự viết hoa) · columns: số cột 8–14 (12) · waveStagger: cách nhau giữa các ô, 15–50 ms (40) · duration: độ dài gốc 6.5 s (quyết định giữ và lúc mờ ra) · exit: mờ ra cuối (true) · bg, surface, border, muted, brand, accent, fg: màu · radius: bo góc khung (18 px)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/wordmark-tiles/wordmark-tiles.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["wordmark", "tiles", "wave", "reveal", "logo"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Grid, seed, wave order, envelope and tile tweens as in the source (see preset.js). The source's theme tokens (--surface, --border, --muted, --brand, --accent, --fg, --radius) are params with dark defaults; the colour-mix() faces are computed and written as rgb(). The wordmark pieces are cut from the inner grid (inside the border), so they line up exactly. Text default is Vietnamese (source: LAUNCH).",
+ "demo": { "duration": 6.5, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0, "params": { "text": "RA MẮT", "duration": 6.5 } }], "bg": "#0b0c0e" }
+}

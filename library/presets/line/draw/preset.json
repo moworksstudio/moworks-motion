@@ -1,0 +1,18 @@
+{
+ "name": "line/draw",
+ "kind": "effect",
+ "group": "line",
+ "title": "Line draw",
+ "title_vi": "Kẻ đường",
+ "desc_vi": "Đường kẻ chạy ra từ trái sang phải.",
+ "params_vi": "duration · ease",
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": [],
+ "notes": "Written for v2 (MotionSpec test set).",
+ "demo": {}
+}

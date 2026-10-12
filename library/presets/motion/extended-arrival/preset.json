@@ -1,0 +1,17 @@
+{
+ "name": "motion/extended-arrival",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Extended keyframe arrival",
+ "title_vi": "Lao vào thật nhanh, trôi chậm mãi chưa dừng, rồi lao ra",
+ "desc_vi": "Phần tử lao vào gần hết quãng đường trong 1/5 thời gian đầu rồi trôi chậm phần còn lại (kiểu kéo dài keyframe cuối trong After Effects), và khi còn đang trôi thì lao tiếp ra theo đúng hướng đã vào. Nối nhiều phần tử liên tiếp để phim không bao giờ đứng.",
+ "params_vi": "x, y: vào từ đâu (px, mặc định x -1400) · scale: phóng từ cỡ này (1 = không) · duration: thời gian vào (2.5 s) · exit: lao ra (true) · exitDuration 0.5 · fadeIn 0.25",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/extended-keyframe/extended-keyframe.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["arrival", "ease", "creep", "kinetic", "exit"],
+ "check_end": false,
+ "notes": "EK ease profile and the attachExtendedArrival timing as in the source (see preset.js). The exit is written as a fromTo from the place the arrival has reached at 60 % (the source's to() took over mid-move). Next arrival: at + 0.6 x duration + exitDuration (the source's `end`). Motion blur: render with kit.py frames --blur (the source bundled a per-element SVG shutter filter). End check off: the element leaves.",
+ "demo": { "duration": 4.0, "hold": 0, "elements": [{ "id": "w1", "type": "text", "text": "Lao vào", "style": { "color": "#f5f5f2", "font-weight": "800", "font-size": "180px", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }, { "id": "w2", "type": "text", "text": "rồi trôi", "style": { "color": "#f5f5f2", "font-weight": "800", "font-size": "180px", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)", "opacity": "0" } }], "motion": [{ "target": "w1", "at": 0.2 }, { "target": "w2", "at": 1.9, "params": { "x": 0, "scale": 0.35, "exit": false } }] }
+}

@@ -1,0 +1,58 @@
+{
+ "name": "cursor/glyph-trail",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Cursor Glyph Trail",
+ "title_vi": "Con trỏ hướng dẫn để lại vệt chấm và số bước",
+ "desc_vi": "Đường đi của con trỏ hướng dẫn trên màn hình cài đặt: bấm qua ba bước, để lại vệt chấm cách đều và số thứ tự ở mỗi lần bấm; vệt của bước trước mờ đi khi bước sau bắt đầu.",
+ "params_vi": "glyphs: Glyphs (deprecated) · density: Density (low | med | high), mặc định \"med\" · path: Path (sweep | arc | zigzag), mặc định \"sweep\" · fade: Fade, mặc định 0.5 · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: cursor-glyph-trail-actor), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/cursor-glyph-trail/cursor-glyph-trail.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "cursor",
+  "motion-primitive",
+  "demonstrate",
+  "trail",
+  "tutorial",
+  "steps"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/cursor-glyph-trail.html) in a kit film, mounted by ctx.hf.  Source: A tutorial cursor path: on a settings screen the arrow clicks through three steps, leaving a dotted trail spaced evenly by distance and a numbered marker at each click; each step's trail fades as the next move begins.",
+ "demo": {
+  "duration": 3.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 3.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

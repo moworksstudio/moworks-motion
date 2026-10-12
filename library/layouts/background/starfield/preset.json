@@ -1,0 +1,61 @@
+{
+ "name": "background/starfield",
+ "kind": "block",
+ "group": "background",
+ "title": "Starfield",
+ "title_vi": "Bầu trời sao lấp lánh",
+ "desc_vi": "Lớp bầu trời đêm: sao thưa hoặc dày ba cỡ, lấp lánh và trôi theo hai lớp thị sai, giữa khung để trống.",
+ "params_vi": "density: Density (sparse | dense), mặc định \"sparse\" · tone: Tone (warm | cool | white), mặc định \"warm\" · speed: Twinkle speed (slow | fast), mặc định \"slow\" · duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/starfield/starfield.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "starfield",
+  "night-sky",
+  "stars",
+  "twinkle",
+  "sky",
+  "weather"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/starfield.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Seek-safe night-sky overlay: sparse or dense stars in three size tiers that twinkle and drift in two parallax layers, radial-masked to keep the frame center clear",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0,
+     "density": "dense",
+     "tone": "white"
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "_about": "Public look 'bold-poster' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "bold-poster",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/bold-poster/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "af756ef993099f9ac78328f676eb79a6572ff0e9c2aacf12787471cd4525b171",
+   "frame-showcase.html": "57bbc3374b6a8b37ce59e36ed784c22bbb88fd44d039955221913b3e1bacf159",
+   "caption-skin.html": "c5408b8d2b36028d85455003a5f0bbcde863f33474799477bab6afa261ec0214"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Lobster",
+   "family": "Lobster",
+   "dir": "google/Lobster",
+   "files": {
+    "400": "Lobster-Regular.ttf",
+    "700": "Lobster-Regular.ttf"
+   }
+  },
+  "body": {
+   "css": "Look Source Serif 4",
+   "family": "Source Serif 4",
+   "dir": "google/SourceSerif4",
+   "files": {
+    "400": "SourceSerif4[opsz,wght].ttf",
+    "600": "SourceSerif4[opsz,wght].ttf",
+    "700": "SourceSerif4[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {
+   "Shrikhand": "Lobster",
+   "Libre Baskerville": "Source Serif 4"
+  }
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 63.4,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.576,
+    "body": 0.258,
+    "disclaimer": 0.158
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 600
+   }
+  }
+ },
+ "color": {
+  "bg": "#FFFFFF",
+  "dark": "#1C1410",
+  "red": "#D8000F",
+  "light": "#F5F2EF",
+  "black": "#1C1410",
+  "white": "#FFFFFF"
+ },
+ "kit": {
+  "accent": "red"
+ }
+}

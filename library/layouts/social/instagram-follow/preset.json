@@ -1,0 +1,50 @@
+{
+ "name": "social/instagram-follow",
+ "kind": "block",
+ "group": "social",
+ "title": "Follow lower third (photo app style)",
+ "title_vi": "Lower third nút theo dõi kiểu ứng dụng ảnh",
+ "desc_vi": "Thanh bo tròn tối trượt từ dưới lên với avatar, tên có tick, tài khoản, số người theo dõi; nút Theo dõi bị nhấn, nảy lò xo, chuyển xám và đổi thành Đang theo dõi; cuối cùng thanh trượt xuống.",
+ "params_vi": "name, handle, followers: tên, tài khoản, số người theo dõi · verified: yes | no (tick) · follow, following: chữ nút trước và sau khi bấm · avatar: đường dẫn ảnh (trống = ô tròn chữ cái) · avatarColor · accent: màu nút và tick · doneColor: màu nút sau khi bấm · bottom: cách mép dưới (px) · exitAt: giây thanh ra (null = không ra)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/instagram-follow/instagram-follow.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": [
+  "social",
+  "follow",
+  "lower third",
+  "button",
+  "overlay"
+ ],
+ "notes": "Layout and colours as in the source (pill #1a1a1a, radius 75, padding 25 / 40 / 25 / 25, gap 30, shadow 0 8 40; avatar 120 px with a 3 px #333 ring (content box, so 126 px outside, as in the source); name 42 px bold, tick 34 px, handle 28 px #a0a0a0, followers 25 px #737373; button 250 x 80 px radius 40, label 30 px bold, Following with an 18 px chevron). Motion (times relative to `at`, as in the source's own timeline): pill y 300 and opacity 0 -> 0 and 1 over 0.5 s power3.out at 0.1 s; button scale 0.92 over 0.15 s power2.out at 1.0 s, back to 1 over 0.4 s elastic.out(1, 0.4) at 1.15 s; button background accent -> doneColor over 0.12 s at 1.15 s; Follow opacity 1 -> 0 over 0.08 s at 1.15 s, Following 0 -> 1 over 0.08 s at 1.18 s; pill out y 0 -> 300, opacity 1 -> 0 over 0.25 s power3.in at exitAt (3.8 s). brand_ui: imitates a real photo-sharing app's follow card; the accent default #0095f6 is that app's blue (a colour param). Differences (brand material replaced): the avatar photo (a JPEG in the source folder) is an initials disc on a plain colour (param avatarColor), or a picture via `avatar`; the verified tick is the source's plain circle with a check, now in the accent colour; no logo is used anywhere. Other differences: the source composition is 1080 x 1920 with the pill 160 px above the bottom; the port centres the pill horizontally with auto margins (so the y tween never fights a CSS translate) and takes `bottom` as a param (default 160), so it also works in a 1920 x 1080 film; the font is the film's font (source: DM Sans from the web). Default texts are Vietnamese (source: English); the placeholder account is made up. 05/10/2026: the source's own assets are back as defaults (user's decision: open-source assets are used as shipped); pass a param to use your own.",
+ "demo": {
+  "bg": "#2b3140",
+  "duration": 4.4,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0.2,
+    "params": {}
+   }
+  ]
+ }
+}

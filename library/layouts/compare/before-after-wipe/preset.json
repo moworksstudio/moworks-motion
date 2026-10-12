@@ -1,0 +1,20 @@
+{
+ "name": "compare/before-after-wipe",
+ "kind": "block",
+ "group": "compare",
+ "title": "Before / after wipe",
+ "title_vi": "Quét so sánh trước / sau bằng ảnh",
+ "desc_vi": "Hai ảnh toàn khung: ảnh \"trước\" nằm dưới, ảnh \"sau\" quét lên từ mép trái một lượt, thanh chia và núm tròn hiện dần rồi dừng ở vị trí chia và giữ nguyên.",
+ "params_vi": "before, after: đường dẫn ảnh trước / sau (rỗng = thẻ khung xương mặc định) · labelA, labelB: nhãn hai bên (rỗng = ẩn) · restSplit: vị trí dừng, % (50) · wipeAt: giây bắt đầu quét (0.25) · accent: màu núm và nhãn bên sau · exit: none | fade | up · duration: độ dài gốc 4 s · bg, fg, surface, border, muted: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/before-after-wipe/before-after-wipe.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["compare", "before after", "wipe", "divider", "image slots"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, sizes, envelope and eases as in the source (full-bleed panels with the default wireframe card 56 cqw x 56 cqh, label chips, divider 0.4 cqw with a round handle of min(5 cqw, 7 cqh) and an accent ring; stage 0.32 s power2.out, wipe 1.05 s sine.inOut starting at wipeAt (0.25 s), divider and handle fading in over 0.22 s power1.out as the wipe starts, optional exit fade / up (-6 cqh) 0.5 s power2.in at duration - 0.5 s; the phases shrink together when the duration is short). cqw / cqh are taken from the target box. The wipe was one CSS custom property (--baw-split) driving a clip-path calc and the divider's left; it is now two tweens with the same ease and time: the after panel's clip-path inset (100 % -> 100 - restSplit %) and the divider's x (0 -> restSplit % of the box), so the film holds plain keyframes. The two content slots are the params before / after (a picture path, covered edge to edge); the default empty value draws the source's token-styled wireframe card (muted grid on the before layer, accent-tinted gradient on the after layer); the gallery demo passes two neutral generated dashboard pictures (demo-assets flow-before.png / flow-after.png). The source also accepted a video or HTML in a slot: not ported (pictures only). accent is a hex colour (source: green / blue / violet reading theme tokens) and also the brand tint of the default after card (source: --brand, same colour in the default theme); theme tokens became params with the source fallbacks (bg #07111f, fg #f8fafc, surface #172033, border #334155, muted #94a3b8). The divider handle (::after) is a real child span; the hf:sfx 'wipe-land-soft' event is dropped (no audio in the kit). Chips are upper-cased in code (source: text-transform) and Vietnamese by default (source: Before / After); an empty label hides its chip. Font: the film's font instead of Inter. The root takes the radius of its target (border-radius: inherit).",
+ "demo": { "bg": "#f4f6f9", "duration": 4,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0, "params": { "before": "assets/demo/flow-before.png", "after": "assets/demo/flow-after.png", "labelA": "Trước", "labelB": "Sau", "restSplit": 55, "wipeAt": 0.8, "accent": "#8b5cf6", "duration": 4 } }] }
+}

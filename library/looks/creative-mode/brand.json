@@ -1,0 +1,86 @@
+{
+ "_about": "Public look 'creative-mode' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "creative-mode",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/creative-mode/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "c1a1359502d9fc79ef267305291fe0f651219c72d88088cee32327dd933dead8",
+   "frame-showcase.html": "32c1371fcd526c56edb515e5b255ad736a3e330ba3ff2631c61576064b384ef0",
+   "caption-skin.html": "ef4a13de5757453294db153607891e60ab3f408603ed222e53b908359dcbd296"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Archivo",
+   "family": "Archivo",
+   "dir": "google/Archivo",
+   "files": {
+    "400": "Archivo[wdth,wght].ttf",
+    "700": "Archivo[wdth,wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Space Grotesk",
+   "family": "Space Grotesk",
+   "dir": "google/SpaceGrotesk",
+   "files": {
+    "400": "SpaceGrotesk[wght].ttf",
+    "700": "SpaceGrotesk[wght].ttf"
+   }
+  },
+  "_swapped": {
+   "Archivo Black": "Archivo"
+  }
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 297.6,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 1.0,
+    "body": 0.081,
+    "disclaimer": 0.081
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 400
+   }
+  }
+ },
+ "color": {
+  "cream": "#EFE9D9",
+  "cream-2": "#E4DCC4",
+  "ink": "#0F0F0F",
+  "ink-2": "#2A2A2A",
+  "green": "#1F8A4C",
+  "green-dark": "#136636",
+  "pink": "#F06CA8",
+  "pink-dark": "#D14E8B",
+  "orange": "#E85A1F",
+  "yellow": "#F5C518",
+  "black": "#0F0F0F",
+  "white": "#EFE9D9"
+ },
+ "kit": {
+  "accent": "yellow"
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "name": "social/claude-exchange",
+ "kind": "block",
+ "group": "social",
+ "title": "Claude Exchange",
+ "title_vi": "Hội thoại kiểu Claude dọc: tìm kiếm, suy luận, trả lời",
+ "desc_vi": "Hội thoại kiểu Claude khung dọc: gõ câu hỏi, các bước tìm kiếm và suy luận, rồi câu trả lời chi tiết có trích dẫn và nút thao tác.",
+ "params_vi": "duration: độ dài của block (21.4 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/claude-exchange/claude-exchange.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "showcase",
+  "mock-ui",
+  "ai",
+  "chat",
+  "vertical",
+  "ad-template"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/claude-exchange.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A portrait Claude-style exchange types a prompt, works through search and reasoning steps, then streams a detailed answer with citations and actions",
+ "demo": {
+  "duration": 21.4,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 21.4
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

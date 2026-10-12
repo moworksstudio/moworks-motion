@@ -1,0 +1,57 @@
+{
+ "name": "text/mk-word-sweep",
+ "kind": "block",
+ "group": "text",
+ "title": "Word-Sweep Highlight",
+ "title_vi": "Câu được nhấn từng từ theo một giá trị",
+ "desc_vi": "Một câu được nhấn mạnh lần lượt từng từ, điều khiển bằng một giá trị duy nhất để khớp lời đọc.",
+ "params_vi": "duration: độ dài của block (8 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/mk-callout-highlight/mk-callout-highlight.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "typography",
+  "karaoke",
+  "captions",
+  "minimal"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/mk-callout-highlight.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A sentence whose word-by-word emphasis is driven by a single scalar — tween it to sync the highlight with a voiceover",
+ "demo": {
+  "duration": 8.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 8.0
+    }
+   }
+  ],
+  "bg": "#f5f5f7"
+ }
+}

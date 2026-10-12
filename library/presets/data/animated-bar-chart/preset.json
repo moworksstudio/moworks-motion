@@ -1,0 +1,18 @@
+{
+ "name": "data/animated-bar-chart",
+ "kind": "block",
+ "group": "data",
+ "title": "Animated Bar Chart",
+ "title_vi": "Thẻ biểu đồ cột, cột lớn dần",
+ "desc_vi": "Thẻ trắng gọn; các cột lớn dần từ đáy cùng lúc, đường xu hướng vẽ theo, số lớn ở góc.",
+ "params_vi": "title, sub, value: chữ trên thẻ · values: chiều cao cột 0-100 · labels: nhãn dưới cột · ink, accent: màu · scale: phóng thẻ (1.6) · delay: giây từ lúc thẻ hiện đến lúc cột lớn (0.5) · fade: giây hiện (0 = cắt vào)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/animated-bar-chart/animated-bar-chart.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["chart", "bars", "card", "data"],
+ "notes": "The source tweens two CSS variables on the card (--hf-grow 0->1, --hf-dash 900->0, 1.2 s power3.out); here each bar's height (0 -> value % of 210 px) and the line's strokeDashoffset (900 -> 0) are literal tweens with the same ease and duration, so every frame matches. Layout comes from the component file plus its demo page (subtitle paragraph, baseline, month labels, 180 px line, card shown at scale 1.6 = param scale); the demo's header text is replaced by params (Vietnamese defaults). Inter is replaced by the film's font. The source card is static (no entrance): here it appears at `at` (hard cut, or params.fade seconds) and the growth starts params.delay (0.5 s, the demo's start time) later. The source has no exit; the card holds until the scene ends. Bars: any number of values (the source has 7).",
+ "demo": { "bg": "#f7f7f8", "duration": 4.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

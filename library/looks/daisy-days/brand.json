@@ -1,0 +1,89 @@
+{
+ "_about": "Public look 'daisy-days' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "daisy-days",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/daisy-days/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "42d827dbd279990052e171d04380b5e6bbc111ae391dc283deb7a452e70b9b97",
+   "frame-showcase.html": "4fb93e5fa3ba12367f303996b6ca8b62f8e18c721d02e8032274df12d49d96f3",
+   "caption-skin.html": "6090e702f09c1df11e7289269a5b1ebc126981107c3ed5d9f951f69d471d1494"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Baloo 2",
+   "family": "Baloo 2",
+   "dir": "google/Baloo2",
+   "files": {
+    "400": "Baloo2[wght].ttf",
+    "700": "Baloo2[wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Quicksand",
+   "family": "Quicksand",
+   "dir": "google/Quicksand",
+   "files": {
+    "400": "Quicksand[wght].ttf",
+    "500": "Quicksand[wght].ttf",
+    "600": "Quicksand[wght].ttf",
+    "700": "Quicksand[wght].ttf"
+   }
+  },
+  "_swapped": {
+   "Fredoka One": "Baloo 2"
+  }
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 86.4,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.4,
+    "body": 0.211,
+    "disclaimer": 0.173
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 500
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 600
+   }
+  }
+ },
+ "color": {
+  "cream": "#F5F0E6",
+  "turquoise": "#7ECDC0",
+  "soft-pink": "#F7C8D4",
+  "butter": "#FDE68A",
+  "mint": "#A8E6CF",
+  "lavender": "#D4A5E8",
+  "peach": "#FFCBA4",
+  "sky": "#A8D8F0",
+  "coral": "#F8635F",
+  "text-dark": "#2D2D2D",
+  "text-muted": "#6B6B6B",
+  "white": "#FFFFFF",
+  "black": "#2D2D2D"
+ },
+ "kit": {
+  "accent": "coral"
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-neon-glow",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: neon glow",
+ "title_vi": "Phụ đề đèn neon sáng theo từ",
+ "desc_vi": "Phụ đề theo giọng đọc như ống neon chưa bật (xanh mờ 14 %): từ nào được nói thì sáng lên xanh ngọc (từ khoá hồng) với quầng sáng ba lớp rồi tắt khi đọc xong; cụm chữ bật lên chớp một nhịp có trượt nhẹ.",
+ "params_vi": "words: \"voice\" · keywords: từ sáng màu hồng · groups hoặc tự gom (maxWords 4, maxSpan 2 s) · size 96, upper, bottom 120 · off, on, key: màu tắt, sáng, từ khoá",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-neon-glow/caption-neon-glow.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "neon", "glow", "night"],
+ "notes": "Colours (unlit rgba(0,255,240,0.14), lit #00FFF0, keywords #FF0099), glow 10 / 35 / 90 px, word on / off 0.06 s, group step-on with an 8 px slide (0.14 s power3.out) and step-off with a 6 px shift as in the source. Changed: the film's font at weight 900 instead of Outfit; words and groups from the voice transcript; keywords are words; the unlit glow is the same three shadows at alpha 0 (the source wrote 'none', which GSAP cannot interpolate and which then depends on the seek path); the colour fades get GSAP's default ease written out. After Effects: the glow is a text shadow (not keyed).",
+ "demo": {
+  "bg": "#0b0f17", "duration": 8.8, "thumb_at": 0.45,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo" } } ]
+ }
+}

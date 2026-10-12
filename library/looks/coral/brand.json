@@ -1,0 +1,82 @@
+{
+ "_about": "Public look 'coral' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "coral",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/coral/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "8530ecb36d1bb2d53392d88d972df35beeba19a5bcb3260fc9b18a58de7cdfe8",
+   "frame-showcase.html": "8ddf31ae13a4e57fe9730892fbbcb171cae67a204b5cb00b00374984f49b8f76",
+   "caption-skin.html": "9af79dabd44f5d6ac934a5c371aad5316a4e2db76542a1ec3c969245b33892fa"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Oswald",
+   "family": "Oswald",
+   "dir": "google/Oswald",
+   "files": {
+    "400": "Oswald[wght].ttf",
+    "700": "Oswald[wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Inter",
+   "family": "Inter",
+   "dir": "google/Inter",
+   "files": {
+    "400": "Inter[opsz,wght].ttf",
+    "700": "Inter[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {
+   "Bebas Neue": "Oswald"
+  }
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 80.6,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.452,
+    "body": 0.238,
+    "disclaimer": 0.149
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 700
+   }
+  }
+ },
+ "color": {
+  "coral": "#E85D5D",
+  "coral-dark": "#D44A4A",
+  "cream": "#F5F0E8",
+  "cream-dark": "#E8E0D4",
+  "black": "#1A1A1A",
+  "gray": "#6B6B6B",
+  "light-gray": "#B0B0B0",
+  "white": "#FFFFFF"
+ },
+ "kit": {
+  "accent": "coral"
+ }
+}

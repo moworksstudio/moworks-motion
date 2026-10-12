@@ -1,0 +1,83 @@
+{
+ "_about": "Public look 'biennale-yellow' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "biennale-yellow",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/biennale-yellow/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "76d22cced9c152b0edb520543cf34c4ce772a312caa7211c40d4315b53c053cf",
+   "frame-showcase.html": "5ba04e47cf9897e023dcfa49e1ec26fe26bac0c5061097dc6e7cb1d9ed46d7d0",
+   "caption-skin.html": "e6e24155d587ab0fe1beca7c62e6fbfcce9d069cfb9cf02dfcecffe95194554b"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Newsreader",
+   "family": "Newsreader",
+   "dir": "google/Newsreader",
+   "files": {
+    "400": "Newsreader[opsz,wght].ttf",
+    "700": "Newsreader[opsz,wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Archivo",
+   "family": "Archivo",
+   "dir": "google/Archivo",
+   "files": {
+    "400": "Archivo[wdth,wght].ttf",
+    "700": "Archivo[wdth,wght].ttf"
+   }
+  },
+  "_swapped": {
+   "Instrument Serif": "Newsreader"
+  }
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 88.3,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 1.0,
+    "body": 0.185,
+    "disclaimer": 0.185
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 400
+   }
+  }
+ },
+ "color": {
+  "paper": "#E9E5DB",
+  "paper-deep": "#DCD6C4",
+  "sun": "#F1EE2E",
+  "sun-soft": "#F8F39B",
+  "haze": "#F0DA7C",
+  "ink": "#1B2566",
+  "ember": "#E26B4A",
+  "black": "#1B2566",
+  "white": "#F8F39B"
+ },
+ "kit": {
+  "accent": "sun"
+ }
+}

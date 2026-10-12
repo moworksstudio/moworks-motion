@@ -1,0 +1,17 @@
+{
+ "name": "text/state-swap",
+ "kind": "effect",
+ "group": "text",
+ "title": "Text state swap",
+ "title_vi": "Đổi trạng thái nhãn (cũ bay lên, mới trồi vào)",
+ "desc_vi": "Nhãn trạng thái đổi chữ: chữ cũ nhích lên, nhoè và mờ đi, chữ mới trồi lên từ dưới vào đúng chỗ, ví dụ \"Đang lưu bản nháp\" thành \"Đã lưu\". Chữ của phần tử là chữ cũ, at là lúc đổi.",
+ "params_vi": "to: chữ mới · distance: close | standard | far (quãng nhích 9 / 18 / 33 px)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/text-state-swap/text-state-swap.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["swap", "status", "ui", "blur"],
+ "check_end": false,
+ "notes": "Motion as the source's timeline integration (out: opacity -> 0, y -> -18 px x reach, blur -> 8 px, 0.18 s power2.in at the swap; in: from opacity 0, y 18 px x reach, blur 8 px to rest, 0.26 s power2.out, 0.12 s later). The source stacked the two labels absolutely in a fixed 250 x 36 box; here they share one grid cell inside the film element. End check off: the end shows the new text.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "Đang lưu bản nháp", "style": { "color": "#f5f5f2", "font-weight": "800", "font-size": "96px", "letter-spacing": "-0.02em", "white-space": "nowrap", "text-align": "center", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 1.0, "params": { "to": "Đã lưu" } }] }
+}

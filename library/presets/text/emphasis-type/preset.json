@@ -1,0 +1,17 @@
+{
+ "name": "text/emphasis-type",
+ "kind": "effect",
+ "group": "text",
+ "title": "Emphasis background type",
+ "title_vi": "Chữ nền khổng lồ mờ trôi chậm phía sau",
+ "desc_vi": "Một chữ nền rất to, rất nhạt hiện dần rồi trôi chậm sang ngang phía sau nội dung chính suốt thời gian giữ (kiểu chữ nền của bộ minimal). Phần tử là chữ nền: to, viết hoa, màu mờ khoảng 7 %, nằm dưới nội dung.",
+ "params_vi": "drift: quãng trôi (-100 px, âm = sang trái) · hold: thời gian trôi (5 s) · out: mờ đi sau bao nhiêu giây kể từ at (0 = không)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/mk-emphasis-type/mk-emphasis-type.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["background", "type", "drift", "minimal", "texture"],
+ "check_end": false,
+ "notes": "As the source's helpers (opacity 0 -> 1 in 1 s power2.out; x 40 -> 40 + drift over hold, sine.inOut, both from `at`; out: opacity -> 0, 0.5 s power2.in). The source's style (Inter 600, 260 px, -0.02em, upper-case, rgba(29,29,31,0.07) on light / rgba(245,245,247,0.08) on dark) is the element's: see the demo. End check off: the word ends 60 px left of its layout place.",
+ "demo": { "duration": 5.5, "hold": 0.2, "elements": [{ "id": "bgw", "type": "text", "text": "NHẤN MẠNH", "style": { "color": "rgba(245, 245, 247, 0.08)", "font-weight": "600", "font-size": "260px", "letter-spacing": "-0.02em", "line-height": "1", "white-space": "nowrap", "left": "-40px", "top": "400px" } }, { "id": "t1", "type": "text", "text": "Nội dung chính", "style": { "color": "#f5f5f7", "font-weight": "700", "font-size": "96px", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "bgw", "at": 0.3, "params": { "hold": 5 } }] }
+}

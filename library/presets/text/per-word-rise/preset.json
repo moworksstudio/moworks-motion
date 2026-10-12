@@ -1,0 +1,16 @@
+{
+ "name": "text/per-word-rise",
+ "kind": "effect",
+ "group": "text",
+ "title": "Per Word Rise",
+ "title_vi": "Từng chữ nổi lên, mờ thành nét",
+ "desc_vi": "Từng từ (hoặc từng ký tự) trồi lên theo đợt, từ mờ thành nét, đáp nhẹ rồi đứng yên.",
+ "params_vi": "split: words | chars · rise: thời gian mỗi từ (0.74 s) · spread: tổng độ lệch (0.62 s) · y, blur: theo % chiều cao khung · exit: none | fade | up · exitAt",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/per-word-rise/per-word-rise.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "stagger", "blur"],
+ "notes": "Only the motion is ported (the source also sets colour, font size and centring). Its landEase function is fitted to one cubic Bezier (see the gallery check 'ease fit'). Source variable 'cues' (per-word landing times) is not ported: use several calls with different `at` instead.",
+ "demo": { "hold": 1.0 }
+}

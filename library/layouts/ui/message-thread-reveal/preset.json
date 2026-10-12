@@ -1,0 +1,54 @@
+{
+ "name": "ui/message-thread-reveal",
+ "kind": "block",
+ "group": "ui",
+ "title": "Message thread reveal",
+ "title_vi": "Cuộc trò chuyện trên điện thoại + thẻ kết (dọc 9:16)",
+ "desc_vi": "Điện thoại nhắn tin: tin đến, ba chấm đang gõ, câu trả lời được gõ từng chữ, thẻ link, hàng emoji; hết cuộc chat hiện thẻ kết có logo, sao, 3 ưu điểm và nút.",
+ "params_vi": "contact, unread, time, placeholder, delivered: phần khung chat · question, teaser, reaction, reaction_emoji, benefit, discovery, source, workflow, ownership, install, thanks: 11 tin (mỗi tin một dòng ngắn, tối đa khoảng 36 ký tự) · card_title, card_domain, card_image: thẻ link · end_logo, end_proof, end_features (3 mục dạng 'Dòng 1|Dòng 2'), end_cta: thẻ kết",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/message-thread-reveal/message-thread-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": [
+  "chat",
+  "messages",
+  "ios",
+  "phone",
+  "typing",
+  "vertical",
+  "end card",
+  "ui"
+ ],
+ "notes": "Portrait design 1080 x 1920 built at source pixels and fitted (contain, centred) to the target box with one static CSS scale (1 in a 1080 x 1920 film, 0.5625 in the 608 x 1080 demo slot). All event times, the pop-in tweens, the typed-frame schedule (11/24/9/28/25 frames, text spread over them with the source's prefix rule) and the y of every bubble at every step are the source's values (bubbles are a fixed 81 px high, a 'Delivered' bubble 127 px, the card 610 px, the emoji row 140 px, the dots 67 px, so positions do not depend on the text; keep each message to one short line, they do not wrap). Differences: font = the film's font (source: -apple-system / Helvetica Neue / Georgia); the end-card serif font Georgia -> the film's font; the link-card photograph and the HyperFrames wordmark are image params defaulting to generated neutral pictures (ui-card-image.png, ui-logo-dark.png in demo-assets); items are laid out with flex and explicit heights/line-heights instead of inline-block line boxes (same geometry, no font dependence); the card title is clamped to 3 lines; all texts are params with Vietnamese defaults (Delivered -> Đã gửi, Message -> Tin nhắn); the avatar shows the contact's initial on a green circle as in the source; the end card's pencil / heart / palette glyphs are the source's simple paths; the source's `.pop` fromTo on each item is kept (item visibility is set by tl.set autoAlpha, as in the source). Composition length 25.7667 s = demo duration. Imitates the iOS Messages UI (brand_ui). 05/10/2026: the source's own assets are back as defaults (user's decision: open-source assets are used as shipped); pass a param to use your own.",
+ "demo": {
+  "bg": "#1b1d22",
+  "duration": 25.77,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "656px",
+     "top": "0px",
+     "width": "608px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {}
+   }
+  ]
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "name": "transition/zoom-through-transition",
+ "kind": "effect",
+ "group": "transition",
+ "title": "Zoom Through Transition",
+ "title_vi": "Xuyên cảnh, cảnh cũ lùi và nhoè",
+ "desc_vi": "Cảnh mới quét xuyên qua cảnh cũ từ trái sang phải trong khi cảnh cũ lùi nhẹ, thu nhỏ 0.96x và nhoè; vệt sáng chạy ngang, lớp đỏ/xanh nháy 4 lần.",
+ "params_vi": "duration (0.9 s) · ease · depth: nhân quãng trượt và độ nhoè (0.55 gần, 1 chuẩn, 1.7 xa) · ring · accent · fill: true (mặc định) cảnh cũ luôn phủ kín khung (trôi + phóng nhẹ thay vì thu 0,96x lộ nền); false = như bản gốc",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/zoom-through-transition/zoom-through-transition.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "wipe",
+  "blur",
+  "light"
+ ],
+ "notes": "The source motion is the same recipe as directional-wipe, with the literal pixel values at 1920 (incoming x 60 px, outgoing x -70 px, blur 5 px, strobe 16 px, scale 1.04 / 0.96, wipe 0.9 s power3.inOut, light band 0.58 s at +0.18 s, strobe 4 x 0.07 s at +0.32 s), so the two presets differ only in scale. Source variable depth (close / standard / far) is the numeric param depth (0.55 / 1 / 1.7), multiplying both x travels and the blur (as in the source). The light band and strobe boxes are made in the incoming scene element so the inner clip-path does not cut them; the 2 px ring is an inset ring in the incoming inner, faded out over the last 45 % of the wipe (the source keeps it on its placeholder card). Source variables from-label / to-label (captions of the placeholder scenes) are not ported.",
+ "demo": {
+  "scenes": [
+   {
+    "id": "s1",
+    "name": "A",
+    "duration": 1.6,
+    "bg": "#10172a",
+    "elements": [
+     {
+      "id": "a1",
+      "type": "text",
+      "text": "Cảnh cũ lùi lại",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   },
+   {
+    "id": "s2",
+    "name": "B",
+    "duration": 2.4,
+    "bg": "#1d3fd8",
+    "transition_in": {
+     "preset": "transition/zoom-through-transition",
+     "duration": 0.9
+    },
+    "elements": [
+     {
+      "id": "b1",
+      "type": "text",
+      "text": "Cảnh mới xuyên qua",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   }
+  ]
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "name": "motion/spring-track",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Spring track (sum of springs)",
+ "title_vi": "Lò xo đổi đích (cộng dồn lò xo)",
+ "desc_vi": "Giá trị đổi đích nhiều lần theo thời gian, mỗi lần đổi là một lò xo cộng thêm nên giữ được đà (không khựng lại như bắt đầu một ease mới). Có chế độ thanh chỉ báo: mép trước lò xo nhanh, mép sau lò xo nặng, thanh co giãn khi chạy giữa các tab.",
+ "params_vi": "tracks {thuộc tính: [[giây, giá trị, lò xo?]]} · spring snappy | default | heavy | playful | [k, d] · indicator [[giây, trái, phải]] · lead · trail",
+ "source": {
+  "label": "Moworks Motion",
+  "film": "plan B2 07/10/2026 (khoá học @0xMovez: closed-form springs, track, indicator)"
+ },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": ["spring", "ui", "indicator"],
+ "notes": "Needs engine/vendor/libs/aimk/eases.js (kit.py build adds it). UI may overshoot a little; text should not.",
+ "demo": {
+  "elements": [
+   { "id": "rail", "type": "box", "style": { "left": "460px", "top": "600px", "width": "1000px", "height": "14px", "border-radius": "7px", "background": "#2a2d34" } },
+   { "id": "bar", "type": "box", "style": { "left": "460px", "top": "600px", "width": "200px", "height": "14px", "border-radius": "7px", "background": "#ffc400" } },
+   { "id": "dot", "type": "box", "style": { "left": "460px", "top": "380px", "width": "120px", "height": "120px", "border-radius": "60px", "background": "#3a86ff" } }
+  ],
+  "motion": [
+   { "target": "dot", "at": 0.2, "params": { "spring": "playful", "tracks": { "x": [[0, 0], [0.5, 760], [1.0, 300], [1.5, 880]] } } },
+   { "target": "bar", "at": 0.2, "params": { "indicator": [[0, 0, 200], [0.5, 400, 600], [1.1, 800, 1000], [1.7, 200, 400]] } }
+  ],
+  "duration": 3.4
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "title/ticker-takeover",
+ "kind": "block",
+ "group": "title",
+ "title": "Ticker takeover",
+ "title_vi": "Ô chữ cuộn chốt một từ rồi phóng thành tiêu đề",
+ "desc_vi": "Một thanh tin nhỏ cuộn nhanh qua vài từ, phanh lại và chốt vào từ được chọn (loé màu), rồi từ đó phóng to thành tiêu đề lớn giữa khung trong lúc thanh tin mờ đi.",
+ "params_vi": "options: các từ cuộn (dấu phẩy) · final: từ được chốt và phóng to · label: nhãn bên trái (tự viết hoa) · accent: green | blue | violet hoặc mã màu · duration: độ dài gốc 4.5 s · exit: mờ ra cuối (true) · bg, fg, muted, surface, shadow: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/ticker-takeover/ticker-takeover.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["ticker", "roll", "lock", "headline", "promote"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Envelope, geometry and tweens as in the source (see preset.js); option rules as in the source (duplicates and the final word dropped from the list, at most five, padded from its defaults to three, final word last). Theme tokens (--fg, --muted, --surface, --bg) are params; color-mix() values are written as rgba(). The mono face is the kit's RMono. Defaults are Vietnamese (source: faster, smarter, together, everywhere / signal).",
+ "demo": { "duration": 4.5, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0 }], "bg": "#0b0c0e" }
+}

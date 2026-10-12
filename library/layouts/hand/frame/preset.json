@@ -1,0 +1,56 @@
+{
+ "name": "hand/frame",
+ "kind": "block",
+ "group": "hand",
+ "title": "Sketched Frame",
+ "title_vi": "Khung viền vẽ tay quanh ảnh, có chú thích",
+ "desc_vi": "Ảnh trong khung viền vẽ tay, hoạ tiết ở góc và chú thích viết tay; cả khối hơi nghiêng và rung nét.",
+ "params_vi": "duration: độ dài của block (8 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/hw-frame/hw-frame.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "handwritten",
+  "frame",
+  "media"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/hw-frame.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Media in a hand-drawn border with corner doodles and a handwritten caption; the unit tilts slightly and boils (images inside the block; keep live footage in the host)",
+ "demo": {
+  "duration": 8.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 8.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

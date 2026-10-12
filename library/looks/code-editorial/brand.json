@@ -1,0 +1,84 @@
+{
+ "_about": "Public look 'code-editorial' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "code-editorial",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/code-editorial/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "b1c123526634e31a3e36cff9856e3b4322f2f778d2c7f573aa35a9ee1e90deb7",
+   "frame-showcase.html": "08d711f5409a6af3fb6de05febe47fee77e4c8e85517bf2d087e2277b524e4ab",
+   "caption-skin.html": "fe96654fb76433caf5b3c81e4b9c52c07c1d03b267411c12ed94f054ccb92028"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look EB Garamond",
+   "family": "EB Garamond",
+   "dir": "google/EBGaramond",
+   "files": {
+    "400": "EBGaramond[wght].ttf",
+    "500": "EBGaramond[wght].ttf",
+    "700": "EBGaramond[wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Inter",
+   "family": "Inter",
+   "dir": "google/Inter",
+   "files": {
+    "400": "Inter[opsz,wght].ttf",
+    "500": "Inter[opsz,wght].ttf",
+    "700": "Inter[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 88.3,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.5,
+    "body": 0.326,
+    "disclaimer": 0.293
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 400
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 500,
+    "weightTwoLines": 500
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 500
+   }
+  }
+ },
+ "color": {
+  "ink": "#141413",
+  "cream": "#FAF9F5",
+  "tile": "#EFE9DE",
+  "tile-strong": "#ECE3D4",
+  "coral": "#CC785C",
+  "navy": "#181715",
+  "navy-soft": "#1F1E1B",
+  "navy-elev": "#252320",
+  "black": "#141413",
+  "white": "#FAF9F5"
+ },
+ "kit": {
+  "accent": "coral"
+ }
+}

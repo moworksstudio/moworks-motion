@@ -1,0 +1,18 @@
+{
+ "name": "text/line-by-line-slide",
+ "at": "2026-10-05 22:08",
+ "static": [],
+ "build": "ok",
+ "tweens": 3,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "end": 2e-05,
+ "duration": 1.8,
+ "problems": [],
+ "status": "ok",
+ "seconds": 6.3
+}

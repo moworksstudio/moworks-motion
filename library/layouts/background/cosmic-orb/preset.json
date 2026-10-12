@@ -1,0 +1,58 @@
+{
+ "name": "background/cosmic-orb",
+ "kind": "block",
+ "group": "background",
+ "title": "Cosmic Orb",
+ "title_vi": "Hành tinh bong bóng xà phòng óng ánh",
+ "desc_vi": "Một hành tinh như bong bóng xà phòng: quả cầu xoay chậm với dải tinh vân, vệt bụi và sao lấp lánh, viền kính khúc xạ có tách màu.",
+ "params_vi": "hue: Nebula hue, mặc định 268 · accent: Accent hue, mặc định 196 · spin: Spin rate, mặc định 0.035 · stars: Star density, mặc định 1 · glow: Glow intensity, mặc định 1 · size: Orb size, mặc định 0.86 · pulse: Beat pulse, mặc định 0 · pulseEnvelope: Beat pulse envelope (comma-separated 0-1 samples) · backdrop: Backdrop, mặc định \"#04040a\" · duration: độ dài của block (10 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/cosmic-orb/cosmic-orb.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "webgl",
+  "shader",
+  "background",
+  "showcase",
+  "3d"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/cosmic-orb.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: An iridescent soap-bubble planet: a slowly spinning sphere of nebula bands, dust lanes and twinkling stars wrapped in a refracting glass limb with chromatic aberration at the edge.",
+ "demo": {
+  "duration": 10.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 10.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

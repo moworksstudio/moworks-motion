@@ -1,0 +1,205 @@
+{
+ "name": "house/gallery-strip",
+ "kind": "effect",
+ "group": "house",
+ "title": "Gallery strip",
+ "title_vi": "Dải thẻ kiểu iTunes",
+ "desc_vi": "Hàng thẻ chạy liên tục như thư viện iPhone: khoảng cách đều, thẻ giữa phóng to và đẩy hai bên ra đúng bằng phần phóng.",
+ "params_vi": "target = các thẻ · w, h: cỡ thẻ · gap (40) · scale (1.18) · speed: thẻ mỗi giây (0.35) · cx, cy · glow: cỡ quầng (0 = không) · host · dur (30 s)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "gallery",
+  "strip",
+  "cards",
+  "house"
+ ],
+ "notes": "Port of P.galleryStrip as an effect whose targets are the cards (v1 took host + cards). Extra cards are cloned to fill the width; clones get ids with a _g<n> suffix (also their children) and are baked into the film. The layout is one ctx.code block, recomputed from the time every frame. v1 ran 600 s, here `dur` defaults to 30 s after `at`. glow uses the v1 glowCss colours. Demo uses gradient cards instead of photos.",
+ "demo": {
+  "bg": "#2b1d0e",
+  "duration": 6,
+  "elements": [
+   {
+    "id": "g0",
+    "type": "text",
+    "text": "Ý tưởng",
+    "style": {
+     "left": "100px",
+     "top": "400px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#ff6b6b,#feca57)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "220px",
+     "height": "300px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "g1",
+    "type": "text",
+    "text": "Kịch bản",
+    "style": {
+     "left": "160px",
+     "top": "400px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#48dbfb,#5f27cd)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "220px",
+     "height": "300px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "g2",
+    "type": "text",
+    "text": "Phim ngắn",
+    "style": {
+     "left": "220px",
+     "top": "400px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#1dd1a1,#10ac84)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "220px",
+     "height": "300px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "g3",
+    "type": "text",
+    "text": "Ảnh chụp",
+    "style": {
+     "left": "280px",
+     "top": "400px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#ff9ff3,#f368e0)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "220px",
+     "height": "300px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "g4",
+    "type": "text",
+    "text": "Hoạt hình",
+    "style": {
+     "left": "340px",
+     "top": "400px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#feca57,#ff9f43)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "220px",
+     "height": "300px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "g5",
+    "type": "text",
+    "text": "Giao phim",
+    "style": {
+     "left": "400px",
+     "top": "400px",
+     "font-size": "30px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#54a0ff,#2e86de)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "border": "2px solid #ffffff",
+     "width": "220px",
+     "height": "300px",
+     "text-align": "center"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "g0",
+     "g1",
+     "g2",
+     "g3",
+     "g4",
+     "g5"
+    ],
+    "at": 0.0,
+    "params": {
+     "gap": 34,
+     "scale": 1.25,
+     "speed": 0.4,
+     "glow": 50
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "name": "glass/widgets",
+ "kind": "block",
+ "group": "glass",
+ "title": "Liquid Glass Widgets",
+ "title_vi": "Bộ widget kính lỏng",
+ "desc_vi": "Bảy widget kính lỏng nhô lên từ dưới khung trên nền lụa chuyển động: ba thẻ số (nhiệt độ, pin, vòng bước chân) đếm lên, một thẻ giới thiệu có thanh tiến trình và trạng thái đổi sang sẵn sàng, ba nút viên thuốc có chấm nhịp; cuối cùng rơi xuống.",
+ "params_vi": "temp_*, battery_*, steps_*: nhãn, số đầu → số cuối, đơn vị · temp_meter: độ dài thanh nhiệt độ · logo, title, desc: thẻ giới thiệu · status → status_done (đổi lúc 5,2 s), progress: thanh tiến trình · pills: 3 nút {label, dot màu} · duration: độ dài nền chuyển động (8 s). Thiết kế cho khung 1920×1080.",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/liquid-glass-widgets/liquid-glass-widgets.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": ["webgl"],
+ "scripts": ["libs/three-0.147/three.min.js"],
+ "tags": ["widget", "liquid glass", "stats", "counter", "dashboard", "ui"],
+ "notes": "Same layout, sizes, timings and eases as the source. HTML widgets: literal tweens (gsap.set start states -> fromTo; relative '-=12' / '+=760' written as absolute y values; the pill-dot stagger 0.12 written as three tweens). Differences: (1) The glass: the source's lib/liquid-glass.iife.js needs WebGPU, which the kit's Chromium cannot provide (navigator.gpu.requestAdapter() returns null, also with --enable-unsafe-webgpu; measured: in the kit the source shows no glass). Its passes are ported to GLSL on three.js 0.147 (same code as glass/notifications) with the source's --lg-* values (blur 0.42, refraction 0.82, radius 28 / pills 40, z-radius 46, specular 0.34, fresnel 1.25, edge 0.26, chroma 0.08, saturation 0.38, no shadow); the panels' own 2.5 % white CSS background is drawn over the glass as in the source. (2) Seek-safety: the source rendered asynchronously on canvas.onpaint and changed the counters / steps ring / status in onUpdate callbacks and a tl.call (not reversible); here backdrop, glass panel positions (same eases as the HTML widgets), counters (round of power2.out curves), the steps ring angle (round(value x 31.4) deg, 180 deg before 1.2 s as in the CSS) and the status swap at 5.2 s are one pure function of time in ctx.code. Editing the widget tweens in Studio does not move the glass panels. (3) three r128 from a CDN -> the kit's vendored three 0.147 (backdrop GLSL unchanged). (4) The showcase card shows the source's own HyperFrames logo (assets/hyperframes-logo-dark.svg, param logo); texts are Vietnamese params; text uses the film's font (source: Inter). (5) Kit runtime quirk handled: a fresh kit Chromium loses its first WebGL context ~0.15 s after creation and restores it ~1 s later; readiness waits for it, the frame is redrawn on restore. Designed for a 1920 x 1080 target (source px positions). 05/10/2026: source artwork restored as default (user's decision).",
+ "demo": { "bg": "#0a0218", "duration": 8, "hold": 0,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

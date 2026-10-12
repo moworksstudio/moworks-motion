@@ -1,0 +1,50 @@
+{
+ "name": "text/tracking-in",
+ "kind": "effect",
+ "group": "text",
+ "title": "Tracking In",
+ "title_vi": "Giãn chữ rồi khép lại",
+ "desc_vi": "Chữ hiện dần, khoảng cách giữa các chữ khép từ rộng về sát, đồng thời nổi nhẹ lên 8 px.",
+ "params_vi": "duration (0.9 s) · stagger giữa các phần tử (0.1 s) · from / to: giãn chữ đầu / cuối tính theo em (0.28 / 0.02) · reach: nhân cả đường cong (tight 0.6, wide 1.8) · y",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/tracking-in/tracking-in.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "reveal",
+  "letter-spacing",
+  "premium"
+ ],
+ "notes": "Only the motion is ported (the source's tone colour belongs to the film). The source drives a CSS variable --hf-tracking-value read by letter-spacing; here letter-spacing itself is tweened (0.28em -> 0.02em, multiplied by the `reach` param, which replaces the source variables tracking = tight/standard/wide) so the tween is a plain literal one. The source's `rise` variable (subtle 4 px, standard 8, bold 18) is the `y` param. The text lands on letter-spacing 0.02em, which is part of the effect: give the film's text letter-spacing 0.02em if it must match the final layout (the demo does).",
+ "demo": {
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Chuyển động mượt mà",
+    "style": {
+     "color": "#f5f5f2",
+     "font-weight": "760",
+     "font-size": "120px",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)",
+     "letter-spacing": "0.02em"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.3
+   }
+  ]
+ }
+}

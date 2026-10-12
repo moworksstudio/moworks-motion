@@ -1,0 +1,59 @@
+{
+ "name": "code/apple-terminal-pro",
+ "kind": "block",
+ "group": "code",
+ "title": "Code Snippet - Apple Terminal Pro",
+ "title_vi": "Terminal Apple Pro gõ lệnh từng ký tự",
+ "desc_vi": "Cửa sổ Terminal kiểu Pro của Apple: nền đen, chữ xám, con trỏ xanh chanh, gõ một phiên lệnh từng ký tự.",
+ "params_vi": "duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-snippet-apple-terminal-pro/code-snippet-apple-terminal-pro.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "code",
+  "developer",
+  "showcase",
+  "terminal",
+  "apple",
+  "apple-terminal"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/code-snippet-apple-terminal-pro.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. The snippet's timeline callbacks append a new prompt line and hide the first one (not undone going back), so the kit reloads the page on a seek backwards (hf-frame reload). Source: Apple Terminal Pro profile: black background with grey text and lime green cursor, per-character typing animation of a shell session.",
+ "demo": {
+  "duration": 6,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

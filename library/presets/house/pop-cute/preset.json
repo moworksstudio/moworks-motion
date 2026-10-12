@@ -1,0 +1,139 @@
+{
+ "name": "house/pop-cute",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop (cute)",
+ "title_vi": "Bật nảy dễ thương",
+ "desc_vi": "Đồ trang trí bật từ 0 với độ nảy vui và xoay nhẹ; nửa số phần tử nảy đàn hồi, nửa còn lại nảy back.",
+ "params_vi": "stagger: giây giữa các phần tử · spread: tổng giây chia theo hash (thay stagger) · rot: góc xoay đầu (25°) · origin · dur · ease: ép một kiểu",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "decoration",
+  "entrance",
+  "house"
+ ],
+ "notes": "Port of P.popCute. Tweens are written fromTo on the element: the 0.12 s fade-in comes first, then scale 0 -> 1 with the turn (v1 had them the other way round; same result, but the film stays invisible before `at` once the baker adds immediateRender:false to the second tween). The hash is ctx.hash (same FNV hash as v1 hashStr; v1 also fell back to the src attribute when an element had no id, here every element has an id). When rot is 0 the rotation tween is left out. Demo uses generated stickers instead of v1's round dots with symbols.",
+ "demo": {
+  "bg": "#1b1b2f",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "panel",
+    "type": "box",
+    "style": {
+     "left": "360px",
+     "top": "202px",
+     "width": "1200px",
+     "height": "675px",
+     "background": "#fff7e6",
+     "border-radius": "18px"
+    }
+   },
+   {
+    "id": "st0",
+    "type": "image",
+    "src": "assets/demo/house-sticker-heart.png",
+    "style": {
+     "left": "440px",
+     "top": "250px",
+     "width": "190px",
+     "height": "190px"
+    }
+   },
+   {
+    "id": "st1",
+    "type": "image",
+    "src": "assets/demo/house-sticker-star.png",
+    "style": {
+     "left": "720px",
+     "top": "420px",
+     "width": "150px",
+     "height": "150px"
+    }
+   },
+   {
+    "id": "st2",
+    "type": "image",
+    "src": "assets/demo/house-sticker-spark.png",
+    "style": {
+     "left": "930px",
+     "top": "240px",
+     "width": "210px",
+     "height": "210px"
+    }
+   },
+   {
+    "id": "st3",
+    "type": "image",
+    "src": "assets/demo/house-sticker-flower.png",
+    "style": {
+     "left": "1210px",
+     "top": "420px",
+     "width": "170px",
+     "height": "170px"
+    }
+   },
+   {
+    "id": "st4",
+    "type": "image",
+    "src": "assets/demo/house-sticker-bolt.png",
+    "style": {
+     "left": "520px",
+     "top": "540px",
+     "width": "140px",
+     "height": "140px"
+    }
+   },
+   {
+    "id": "st5",
+    "type": "image",
+    "src": "assets/demo/house-sticker-ring.png",
+    "style": {
+     "left": "1340px",
+     "top": "260px",
+     "width": "160px",
+     "height": "160px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "st0",
+     "st1",
+     "st2",
+     "st3",
+     "st4",
+     "st5"
+    ],
+    "at": 0.3,
+    "params": {
+     "spread": 0.6
+    }
+   },
+   {
+    "target": [
+     "st0",
+     "st1",
+     "st2",
+     "st3",
+     "st4",
+     "st5"
+    ],
+    "at": 3.2,
+    "params": {
+     "stagger": 0.04
+    },
+    "preset": "house/pop-out"
+   }
+  ]
+ }
+}

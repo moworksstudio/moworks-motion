@@ -1,0 +1,47 @@
+{
+ "name": "house/logo-pop",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop (logo)",
+ "title_vi": "Logo bật co giãn",
+ "desc_vi": "Logo khách bật ra rồi lắc co giãn dài, chỉ scale đều, không xoay.",
+ "params_vi": "Giống pop-cute; mặc định rot 0, ease elastic.out(1, 0.5), dur 1.2",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "logo",
+  "elastic",
+  "house"
+ ],
+ "notes": "Port of P.logoPop (popCute with rot 0, elastic.out(1, 0.5), 1.2 s). Demo uses a generated neutral mark, not a client logo.",
+ "demo": {
+  "bg": "#ffffff",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "logo",
+    "type": "image",
+    "src": "assets/demo/house-logomark.png",
+    "style": {
+     "left": "700px",
+     "top": "250px",
+     "width": "520px",
+     "height": "520px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "logo",
+    "at": 0.3
+   }
+  ]
+ }
+}

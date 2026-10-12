@@ -1,0 +1,17 @@
+{
+ "name": "ui/notification-stack",
+ "at": "2026-10-05 22:33",
+ "static": [],
+ "build": "ok",
+ "tweens": 9,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 3e-05,
+ "duration": 4,
+ "problems": [],
+ "status": "ok",
+ "seconds": 5.1
+}

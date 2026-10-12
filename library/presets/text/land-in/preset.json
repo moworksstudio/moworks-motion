@@ -1,0 +1,224 @@
+{
+ "name": "text/land-in",
+ "kind": "effect",
+ "group": "text",
+ "title": "Entrances that land on the beat",
+ "title_vi": "20 kiểu vào chữ chạm đúng nhịp",
+ "desc_vi": "Bộ 20 kiểu vào (đập, đập mạnh, lật, xoay, rơi, trồi, phóng, trượt, bẹp-giãn, giãn chữ, lật trang, bật, bước pixel, mờ...) mà cú chạm rơi ĐÚNG thời điểm \"at\" (chuyển động bắt đầu sớm vài phần trăm giây). Dùng cho phim theo nhạc: mỗi chữ một kiểu, đập đúng chữ hát.",
+ "params_vi": "style: stomp · stomp2 · stompS · flip · spin · drop · rise_big · rise · zoom · slideL · slideR · inL · inR · squash · track · pageL · pageR · pop · steps · stepsup · fade · dur: thời lượng riêng · origin · stagger: giây giữa các target",
+ "ae": "keyframes",
+ "tags": [
+  "text",
+  "entrance",
+  "beat",
+  "lyric",
+  "kinetic"
+ ],
+ "notes": "Viết cho một phim lời bài hát của studio (08/10/2026). Đi cùng text/snap-out (kiểu ra) và text/lyric-line (cả dòng lời theo từng chữ).",
+ "demo": {
+  "bg": "#111216",
+  "duration": 4.6,
+  "elements": [
+   {
+    "id": "w0",
+    "type": "text",
+    "text": "stomp",
+    "style": {
+     "left": "150px",
+     "top": "250px",
+     "font": "760 96px RFlex",
+     "color": "#ffd166",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w1",
+    "type": "text",
+    "text": "flip",
+    "style": {
+     "left": "560px",
+     "top": "250px",
+     "font": "760 96px RFlex",
+     "color": "#7cc4ff",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w2",
+    "type": "text",
+    "text": "spin",
+    "style": {
+     "left": "880px",
+     "top": "250px",
+     "font": "760 96px RFlex",
+     "color": "#ef476f",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w3",
+    "type": "text",
+    "text": "drop",
+    "style": {
+     "left": "1220px",
+     "top": "250px",
+     "font": "760 96px RFlex",
+     "color": "#06d6a0",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w4",
+    "type": "text",
+    "text": "zoom",
+    "style": {
+     "left": "1560px",
+     "top": "250px",
+     "font": "760 96px RFlex",
+     "color": "#f5f5f2",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w5",
+    "type": "text",
+    "text": "squash",
+    "style": {
+     "left": "150px",
+     "top": "620px",
+     "font": "760 96px RFlex",
+     "color": "#7cc4ff",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w6",
+    "type": "text",
+    "text": "track",
+    "style": {
+     "left": "620px",
+     "top": "620px",
+     "font": "760 96px RFlex",
+     "color": "#ffd166",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w7",
+    "type": "text",
+    "text": "pageL",
+    "style": {
+     "left": "980px",
+     "top": "620px",
+     "font": "760 96px RFlex",
+     "color": "#06d6a0",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w8",
+    "type": "text",
+    "text": "pop",
+    "style": {
+     "left": "1370px",
+     "top": "620px",
+     "font": "760 96px RFlex",
+     "color": "#ef476f",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "w9",
+    "type": "text",
+    "text": "steps",
+    "style": {
+     "left": "1600px",
+     "top": "620px",
+     "font": "760 96px RFlex",
+     "color": "#f5f5f2",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "w0",
+    "at": 0.3,
+    "params": {
+     "style": "stomp"
+    }
+   },
+   {
+    "target": "w1",
+    "at": 0.6,
+    "params": {
+     "style": "flip"
+    }
+   },
+   {
+    "target": "w2",
+    "at": 0.9,
+    "params": {
+     "style": "spin"
+    }
+   },
+   {
+    "target": "w3",
+    "at": 1.2,
+    "params": {
+     "style": "drop"
+    }
+   },
+   {
+    "target": "w4",
+    "at": 1.5,
+    "params": {
+     "style": "zoom"
+    }
+   },
+   {
+    "target": "w5",
+    "at": 1.8,
+    "params": {
+     "style": "squash"
+    }
+   },
+   {
+    "target": "w6",
+    "at": 2.1,
+    "params": {
+     "style": "track"
+    }
+   },
+   {
+    "target": "w7",
+    "at": 2.4,
+    "params": {
+     "style": "pageL"
+    }
+   },
+   {
+    "target": "w8",
+    "at": 2.7,
+    "params": {
+     "style": "pop"
+    }
+   },
+   {
+    "target": "w9",
+    "at": 3.0,
+    "params": {
+     "style": "steps"
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

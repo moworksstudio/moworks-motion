@@ -1,0 +1,20 @@
+{
+ "name": "ui/sheet-spring-up",
+ "kind": "block",
+ "group": "ui",
+ "title": "Sheet spring-up",
+ "title_vi": "Bảng trượt từ dưới lên bằng lò xo",
+ "desc_vi": "Một tấm bảng (tiêu đề + nội dung) lao lên từ dưới khung, vọt qua chỗ nghỉ 192 px rồi lắng lại trong 0,72 giây, theo bảng lò xo đo từng khung hình.",
+ "params_vi": "title, body: chữ trên bảng (body có thể nhiều dòng, xuống dòng bằng \\n) · width, radius: bề rộng và độ bo góc (px) · tone: light | dark · from: điểm xuất phát dưới vị trí nghỉ (px, mặc định 1450)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/sheet-spring-up/sheet-spring-up.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["sheet", "spring", "bottom sheet", "ios", "ui", "overlay"],
+ "notes": "The 22-step sampled spring table is played verbatim as tl.set steps (y in px, fade-in alpha while it travels). Differences: the component is a snippet with a placeholder sheet; the block builds the sheet centred in the target box (title 44 px / body 29 px, padding 49 / 43, shadow and colours as in the source; the light tone #f9f9f9 and the dark tone = the source's raised-surface tokens #1a1a1a / #f3f3f3 / #929292), font = the film's font (source: ui-sans-serif / -apple-system); texts are Vietnamese params (body may hold \\n line breaks, line-height fixed at 35 px); the source's 'at' is the arrival beat (offsets are relative to it, as in its integration note); before the beat the sheet is parked 1450 px below (an extra tl.set at 0), `from` rescales the start distance if the frame is small (the sampled overshoot is unchanged). The source composition-level accept-press beat of its demo (a 3 px dip) is not part of the component and is not ported. Imitates an iOS bottom sheet (brand_ui).",
+ "demo": { "bg": "#101413", "duration": 2.4,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px", "background": "linear-gradient(165deg, #0f3a2c 0%, #0a9c6b 70%, #3ce6ac 120%)" } }],
+   "motion": [{ "target": "slot", "at": 0.5, "params": { "body": "Bảng trượt lên với lò xo thật,\nvọt qua chỗ nghỉ rồi lắng lại." } }] }
+}

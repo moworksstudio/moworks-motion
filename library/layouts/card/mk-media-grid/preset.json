@@ -1,0 +1,57 @@
+{
+ "name": "card/mk-media-grid",
+ "kind": "block",
+ "group": "card",
+ "title": "Rounded Media Grid",
+ "title_vi": "Lưới khung ảnh bo góc",
+ "desc_vi": "Lưới khung ảnh bo góc (2, 3, 4 ô, 3x2, một lớn hai nhỏ), các ô hiện lần lượt rồi lắng chậm.",
+ "params_vi": "duration: độ dài của block (8 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/mk-placeholder-grid/mk-placeholder-grid.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "placeholder",
+  "media",
+  "grid",
+  "minimal"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/mk-placeholder-grid.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: N-up rounded-corner media grid (2-up, 3-up, 4-up, 3x2, hero plus two): per-cell inside-scale framing, staggered box-in entrance, slow settle",
+ "demo": {
+  "duration": 8.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 8.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

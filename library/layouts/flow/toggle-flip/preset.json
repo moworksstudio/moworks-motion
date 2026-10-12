@@ -1,0 +1,20 @@
+{
+ "name": "flow/toggle-flip",
+ "kind": "block",
+ "group": "flow",
+ "title": "Toggle flip",
+ "title_vi": "Công tắc lật có nảy",
+ "desc_vi": "Công tắc cỡ lớn bị ép nhẹ rồi núm trượt sang bên kia có độ vọt, màu nền công tắc đổi theo, quầng sáng nhấp một lần rồi thở nhẹ.",
+ "params_vi": "direction: on | off (trạng thái đích) · label: chữ dưới công tắc (rỗng = ẩn) · size: bề rộng công tắc, % bề rộng khung (40) · duration: độ dài gốc 4 s (quyết định thời gian giữ và lúc mờ ra) · bg, fg, surface, border, brand, accent, muted, knob: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/toggle-flip/toggle-flip.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["toggle", "switch", "ui prop", "flip"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Order, times and eases as in the source (stage 0.4 s power2.out; press scaleX 0.94 / scaleY 1.06 for 2 x 0.1 s power1.inOut ending where the flip starts; flip at 0.5 s, 0.25 s, back.out(1.9) for the knob (150 % of its width) and the track colour; knob scale 1 -> 1.08 yoyo repeat 1 over 0.1125 s per half; glow pulse 0 -> 1 -> 0 over 0.075 s per half right after the flip; breathing glow to 0.32 with 0.75 s per half and floor(HOLD / 0.75) - 1 repeats, 0.75 s = the source's 1.5 x the default 0.5 s beat; stage fade out 0.5 s at duration - 0.5 s; the whole envelope shrinks together when duration < 1.4 s). All cqw / cqh sizes are computed from the target box (size = percent of its width), so the block also works inside a smaller card like the source demo (768 x 432 card, size 55). The track colour crossfade was a CSS custom property (--tf-mix) inside color-mix(); it is now a second track layer in the brand colour whose opacity is tweened with the same ease (same blend, and the border blends 40 % toward the brand colour as in the source), which also means the back.out overshoot cannot make the colour invalid for a few frames as the source's negative color-mix percentages would. The knob colour is its own param (source: --surface token, whose fallback differs from the track's). Dropped: the aria-pressed attribute switch and the hf:sfx 'click-soft' event (no audio in the kit). Font: the film's font instead of Inter; label default is Vietnamese (source: Auto-save). The root takes the radius of its target (border-radius: inherit) so a rounded card clips the background. direction on = starts off and flips on, off = the reverse, as in the source.",
+ "demo": { "bg": "radial-gradient(ellipse at 50% 40%, #0d1526 0%, #05070d 70%)", "duration": 4,
+   "elements": [{ "id": "card", "type": "box", "style": { "left": "576px", "top": "324px", "width": "768px", "height": "432px", "border-radius": "28px", "border": "1px solid rgba(148,163,184,.25)", "box-shadow": "0 40px 90px rgba(0,0,0,.45)" } }],
+   "motion": [{ "target": "card", "at": 0.3, "params": { "direction": "on", "label": "Chế độ tối", "size": 55, "bg": "#131b2e", "duration": 3.7 } }] }
+}

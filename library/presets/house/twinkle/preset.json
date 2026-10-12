@@ -1,0 +1,123 @@
+{
+ "name": "house/twinkle",
+ "kind": "effect",
+ "group": "house",
+ "title": "Twinkle",
+ "title_vi": "Đèn lấp lánh",
+ "desc_vi": "Đèn và tia sáng lấp lánh: sáng lên, quầng ấm to nhỏ, mờ nhẹ, trôi nhẹ; cái nhỏ còn đập nhẹ theo kích thước.",
+ "params_vi": "color: màu quầng 'r,g,b' (255,224,102) · dur (30 s)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "ambient",
+  "glow",
+  "light",
+  "house"
+ ],
+ "notes": "Port of P.twinkle. Ambient formula via ctx.code on the float layer. Brightness and drop-shadow are CSS filters: the transform and opacity part maps to After Effects expressions, the glow does not (it would need a rendered layer). Demo uses generated sparkle images.",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "l0",
+    "type": "image",
+    "src": "assets/demo/house-light-a.png",
+    "style": {
+     "left": "360px",
+     "top": "220px",
+     "width": "180px",
+     "height": "180px"
+    }
+   },
+   {
+    "id": "l1",
+    "type": "image",
+    "src": "assets/demo/house-light-b.png",
+    "style": {
+     "left": "700px",
+     "top": "560px",
+     "width": "110px",
+     "height": "110px"
+    }
+   },
+   {
+    "id": "l2",
+    "type": "image",
+    "src": "assets/demo/house-light-c.png",
+    "style": {
+     "left": "980px",
+     "top": "250px",
+     "width": "300px",
+     "height": "300px"
+    }
+   },
+   {
+    "id": "l3",
+    "type": "image",
+    "src": "assets/demo/house-light-a.png",
+    "style": {
+     "left": "1380px",
+     "top": "520px",
+     "width": "130px",
+     "height": "130px"
+    }
+   },
+   {
+    "id": "l4",
+    "type": "image",
+    "src": "assets/demo/house-light-b.png",
+    "style": {
+     "left": "560px",
+     "top": "400px",
+     "width": "90px",
+     "height": "90px"
+    }
+   },
+   {
+    "id": "l5",
+    "type": "image",
+    "src": "assets/demo/house-light-c.png",
+    "style": {
+     "left": "1500px",
+     "top": "200px",
+     "width": "120px",
+     "height": "120px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "l0",
+     "l1",
+     "l2",
+     "l3",
+     "l4",
+     "l5"
+    ],
+    "at": 0.2
+   },
+   {
+    "target": [
+     "l0",
+     "l1",
+     "l2",
+     "l3",
+     "l4",
+     "l5"
+    ],
+    "at": 0.2,
+    "params": {
+     "spread": 0.6
+    },
+    "preset": "house/pop-cute"
+   }
+  ]
+ }
+}

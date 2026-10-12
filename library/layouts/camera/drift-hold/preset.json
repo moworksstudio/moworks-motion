@@ -1,0 +1,59 @@
+{
+ "name": "camera/drift-hold",
+ "kind": "block",
+ "group": "camera",
+ "title": "Drift Hold",
+ "title_vi": "Thẻ nội dung đứng yên mà vẫn sống",
+ "desc_vi": "Một thẻ nội dung ở giữa khung vẫn sống động nhờ xoay rất nhẹ theo vòng lặp, phập phồng cỡ và một vệt sáng quét chậm.",
+ "params_vi": "text: Text, mặc định \"Always alive\" · intensity: Intensity (whisper | standard), mặc định \"standard\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/drift-hold/drift-hold.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "camera",
+  "ambient",
+  "drift",
+  "hold",
+  "loopable"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/drift-hold.html) in a kit film, mounted by ctx.hf.  Source: A centered content card stays subtly alive through loop-exact rotation, scale breathing, and a slow light sweep.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "text": "Luôn sống động",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

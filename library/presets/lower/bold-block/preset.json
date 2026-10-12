@@ -1,0 +1,16 @@
+{
+ "name": "lower/bold-block",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: bold block",
+ "title_vi": "Lower third khối đen, tag vàng",
+ "desc_vi": "Khối đen quét vào từ trái, tên in hoa bật lên trong khối, tag vàng nảy lên bên dưới; tự ra ở giây 4.3 (khối quét ra).",
+ "params_vi": "name, tag: chữ · block, tagBg: màu khối và tag · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-bold-block/lt-bold-block.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super", "bold"],
+ "notes": "Fonts: the film's font at weight 900 instead of Archivo Black, the kit's Roboto Mono instead of Space Mono (no network in films). The source's final hard kill (visibility hidden at 4.75 s) is not needed: the block is fully clipped after the exit wipe.",
+ "demo": { "bg": "#2b3a55", "duration": 5.2 }
+}

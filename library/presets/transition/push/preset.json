@@ -1,0 +1,71 @@
+{
+ "name": "transition/push",
+ "kind": "effect",
+ "group": "transition",
+ "title": "Push",
+ "title_vi": "Đẩy cảnh",
+ "desc_vi": "Cảnh cũ đi ra bên trái, cảnh mới vào từ bên phải. Có chế độ va chạm (hit): cái mới lao vào nhún, đẩy văng cái cũ.",
+ "params_vi": "duration · ease · distance · hit: 0 = đẩy thường; 0.4-0.5 = va chạm, cái cũ bị hất ra (và mờ đi) trong phần đầu này của duration (tối đa 0.6) · bounce: độ nhún back.out, mặc định 1.5 (1.2-2) · tilt: độ nghiêng lúc lao vào, mặc định 0 (thẻ: 5-15) · fade: cái mới hiện rõ ở 1/fade đường nhún, mặc định 5. Va chạm hợp nhất với hai thẻ / khối trong một cảnh (\"target\": [cũ, mới]); dùng cho cả cảnh thì độ nhún làm lộ nền phim một dải ở mép phải",
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": [],
+ "notes": "Written for v2 (MotionSpec test set). hit mode (11/10/2026) from HyperFrames skills/hyperframes-animation/rules/reactive-displacement.md (commit 0ca69472d93cf088c836bed3dc7df252247e2101, Apache-2.0): one back.out curve drives both sides, written as literal tweens.",
+ "demo": {
+  "scenes": [
+   {
+    "id": "s1",
+    "name": "A",
+    "duration": 1.6,
+    "bg": "#1d3fd8",
+    "elements": [
+     {
+      "id": "a1",
+      "type": "text",
+      "text": "Cảnh thứ nhất",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   },
+   {
+    "id": "s2",
+    "name": "B",
+    "duration": 2.0,
+    "bg": "#ff7a1a",
+    "transition_in": {
+     "preset": "transition/push",
+     "duration": 0.7
+    },
+    "elements": [
+     {
+      "id": "b1",
+      "type": "text",
+      "text": "Cảnh thứ hai",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   }
+  ]
+ }
+}

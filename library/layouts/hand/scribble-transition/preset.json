@@ -1,0 +1,56 @@
+{
+ "name": "hand/scribble-transition",
+ "kind": "block",
+ "group": "hand",
+ "title": "Scribble Transition",
+ "title_vi": "Chuyển cảnh bằng nét vẽ nguệch ngoạc",
+ "desc_vi": "Lớp chuyển cảnh: các dải nét nguệch ngoạc phủ kín khung, cảnh dưới được cắt, rồi nét vẽ dọn đi.",
+ "params_vi": "duration: độ dài của block (2.2 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/hw-scribble-transition/hw-scribble-transition.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "handwritten",
+  "transition",
+  "wipe"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/hw-scribble-transition.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Overlay transition: scribble bands accumulate to cover the frame with a solid backstop, the host cuts beneath, and the scribble clears",
+ "demo": {
+  "duration": 2.2,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 2.2
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

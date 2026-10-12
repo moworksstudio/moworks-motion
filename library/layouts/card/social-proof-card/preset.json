@@ -1,0 +1,18 @@
+{
+ "name": "card/social-proof-card",
+ "kind": "block",
+ "group": "card",
+ "title": "Social proof closing card",
+ "title_vi": "Thẻ chốt phim kiểu app store",
+ "desc_vi": "Tên thương hiệu, năm sao, dòng bằng chứng xã hội, ba biểu tượng tính năng rồi nút kêu gọi hiện lần lượt nhẹ nhàng, sau đó đứng yên.",
+ "params_vi": "brand: tên · proof: dòng bằng chứng · cta: chữ trên nút · f1, f2, f3: ba tính năng (dấu | xuống dòng) · bg: màu nền thẻ · fg: màu chữ · accent: màu biểu tượng và dòng bằng chứng · brandColor: màu nút · ctaInk: màu chữ trên nút · star: màu sao",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/social-proof-card/social-proof-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["social proof", "app store", "end card", "cta", "stars", "card"],
+ "notes": "Order, timings, distances and eases as in the source: wordmark opacity 0 -> 1, y 1.6cqh -> 0, 0.4 s power2.out at 0.25 s; five stars scale 0.4 -> 1 with opacity, 0.3 s back.out(2.4), at 0.55 s + 0.08 s each; proof line y 1.2cqh, 0.35 s power2.out at 1.05 s; three features y 1.6cqh, 0.4 s power2.out at 1.3 s + 0.15 s each; CTA scale 0.85 -> 1 with opacity, 0.45 s back.out(1.8) at 1.95 s; no exit (the source holds, its 4 s composition length is not a tween). All cqh / cqmin sizes converted to px from the target box (stage gap 4.2cqh, brand min(9cqmin, 7cqh), stars 5.4 x 5.2cqmin with 1.6cqmin gap, proof min(4.2cqmin, 3.4cqh), features gap 8cqmin, icon disc 12cqmin with a glyph at 46 %, label min(3.4cqmin, 2.8cqh), CTA padding 2.4cqh 9cqmin and font min(4.6cqmin, 3.8cqh)). Colours are params with the source's fallback values (surface #f9f2e7 as bg, fg #1c3a34, accent #185450, brand #3ce6ac for the capsule, ink #0d3b2b, star #f5b942). Differences: autoAlpha is written as opacity (no visibility toggle); the box paints bg like the source root did, so in a full-frame slot it covers the film background; the source's serif body font (Georgia) is replaced by the film's font; the three feature icons are the source's own simple paths (pencil, heart, palette); the source clamps texts to 26 / 34 / 30 characters, the port does not. Default texts are Vietnamese (source: English; the placeholder wordmark is a made-up name).",
+ "demo": { "bg": "#f9f2e7", "duration": 4.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

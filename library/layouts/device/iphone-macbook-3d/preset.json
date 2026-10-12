@@ -1,0 +1,21 @@
+{
+ "name": "device/iphone-macbook-3d",
+ "kind": "block",
+ "group": "device",
+ "title": "iPhone & MacBook 3D Showcase",
+ "title_vi": "iPhone và MacBook 3D trình diễn sản phẩm",
+ "desc_vi": "Dựng kiểu review sản phẩm với mô hình 3D thật: iPhone cận cảnh thở nhẹ, xoay 180° ra mặt sau, xoay lại rồi trượt ra trái; MacBook trượt vào từ phải; iPhone quay lại và cả hai xoay bàn xoay 360°. Hai màn hình chạy trang web (tiêu đề hiện dần, số đếm, thẻ hiện lần lượt, cuộn), có thấu kính kính biến hình lướt qua.",
+ "params_vi": "brand, login, nav: thanh đầu trang · title, phone_sub, laptop_sub: tiêu đề và phụ đề · chip, count_label, count_to: hai nhãn và số đếm · cards: 9 thẻ {bg, text, title, meta} (điện thoại dùng 6 thẻ đầu) · duration: độ dài (15 s).",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/vfx-iphone-device/vfx-iphone-device.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": ["webgl", "html-in-canvas"],
+ "scripts": ["libs/three-0.147/three.min.js", "libs/three-0.147/GLTFLoader.js"],
+ "tags": ["iphone", "macbook", "3d", "device", "turntable", "product", "glass"],
+ "notes": "Faithful port of the source scene and edit: same three.js 0.147 renderer, env map, backdrop shader, floor, lights, GLTF iPhone (3.2 units, screen to -Z) and MacBook (4.5 units, planar UVs on 'display'), the same five acts (all tl.to segments on the state object with the source's cubic-bezier eases: enter 0.16,1,0.3,1 / spin 0.76,0,0.18,1 / drift 0.45,0,0.15,1 / snap 0.22,1.15,0.36,1 / breathe 0.37,0,0.63,1), ambient drift, 360 deg turntable at 12.5 s, the morphing transmissive glass lens and its paths, the page content (title fade 0.3 s, counter 0->43, staggered card reveal over all 15 cards, scroll 0.6/0/0.8/0.3 of 500 px phone / 300 px laptop). Differences: (1) seek-safety: the source changed the page HTML every frame and re-captured it with drawElementImage, which only returns the last PAINTED state (a seek showed the previous frame's page). Here each page is captured twice at load (window.__hf.buildReady waits): everything revealed, and title + cards hidden; every frame composes title and cards from the first capture over the second with the same opacity / 15 px rise, draws the counter as canvas text (film font, 9 / 10 px, 50 % white) over the chip whose own text is made transparent, and applies the scroll offset. The state is computed from time (the latest-started segment drives each field from its value at its start, as when the source plays forward; overlapping segments at 5.5 s and 11 s behave like forward playback). (2) Texts are Vietnamese params; the HyperFrames brand / nav and the brand names in the card list (Notion, Dribbble, Stripe, Vercel, Spotify, Product Hunt, iPhone App Store) are replaced by neutral Vietnamese copy. The unused hyperframes-mobile.png / -desktop.png are not copied (the block never loads them). (3) Text uses the film's font (source: Inter). (4) three.js + GLTFLoader from engine/vendor, no DRACO decoder. (5) The block sizes its renderer to the target box. (6) Kit runtime quirk handled: a fresh kit Chromium loses its first WebGL context ~0.15 s after creation and restores it ~1 s later; readiness waits 0.6 s plus any restore before capturing, the env map is rebuilt on restore. The 3D models assets/iphone.glb / macbook.glb ship in the HF repo (Apache-2.0) but their own origin/licence is not verified (the iPhone back may show the maker's logo in the model).",
+ "demo": { "bg": "#050508", "duration": 15, "hold": 0,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

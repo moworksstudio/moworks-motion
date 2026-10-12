@@ -1,0 +1,115 @@
+{
+ "name": "house/slide-side",
+ "kind": "effect",
+ "group": "house",
+ "title": "Slide from the nearer side",
+ "title_vi": "Trượt vào từ cạnh gần nhất",
+ "desc_vi": "Ảnh hoặc nhân vật trượt vào từ phía gần nó nhất của khung và hiện dần; ảnh quá rộng chỉ hiện dần.",
+ "params_vi": "stagger (0.1 s) · dir: -1 trái / 1 phải (null = tự chọn) · max: quãng trượt tối đa (380 px) · dur (0.9) · ease (expo.out) · fadeWidth (1500)",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "slide",
+  "entrance",
+  "picture",
+  "house"
+ ],
+ "notes": "Port of P.slideSide. The centre is measured from layout offsets up to #stage (v1 used getBoundingClientRect), so a parent already scaled by another pop at build time cannot flip the side. The opacity tween is written first for each element (so the film is invisible before `at`). Demo uses gradient cards.",
+ "demo": {
+  "bg": "#fff7e6",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "sl",
+    "type": "text",
+    "text": "Từ bên trái",
+    "style": {
+     "left": "220px",
+     "top": "160px",
+     "font-size": "44px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#ff6b6b,#feca57)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "width": "520px",
+     "height": "480px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "sr",
+    "type": "text",
+    "text": "Từ bên phải",
+    "style": {
+     "left": "1180px",
+     "top": "160px",
+     "font-size": "44px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(160deg,#48dbfb,#5f27cd)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "width": "520px",
+     "height": "480px",
+     "text-align": "center"
+    }
+   },
+   {
+    "id": "sw",
+    "type": "text",
+    "text": "Ảnh rộng chỉ hiện dần",
+    "style": {
+     "left": "160px",
+     "top": "740px",
+     "font-size": "44px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "flex-end",
+     "justify-content": "center",
+     "padding-bottom": "26px",
+     "box-sizing": "border-box",
+     "background": "linear-gradient(90deg,#1dd1a1,#10ac84)",
+     "border-radius": "16px",
+     "overflow": "hidden",
+     "width": "1600px",
+     "height": "200px",
+     "text-align": "center"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "sl",
+     "sr",
+     "sw"
+    ],
+    "at": 0.3
+   }
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "flow/menu-morph",
+ "kind": "block",
+ "group": "flow",
+ "title": "Menu morph",
+ "title_vi": "Nút menu biến thành dấu X, mở hàng lệnh",
+ "desc_vi": "Nút tròn có ba gạch nảy vào, hai gạch ngoài xoay thành dấu X, hàng nút lệnh trồi lên bên dưới lần lượt có độ vọt.",
+ "params_vi": "actions: tên các nút lệnh (mảng hoặc chuỗi cách nhau dấu phẩy, tối đa 6) · tone: màu nút tròn · size: đường kính nút, 52 đến 112 px (68) · bar, pill, pillInk: màu gạch, nút lệnh, chữ · scale: độ phóng to (3.4)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/menu-morph/menu-morph.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["menu", "hamburger", "close", "pills", "ui flow"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, radii, spacing and the four tweens are as in the source (the final rules of the source demo: widget 360 x 220, button 68 px, bars 24 x 3 px with gap 5, pills 9 x 13 px padding, 13 px weight 850, shadows 0 22px 58px and 0 14px 34px; button scale 0.72 -> 1 + opacity 0.34 s back.out(1.8) at 0.3 s; bar 1 y 8 + rotation 45, bar 3 y -8 + rotation -45, 0.24 s power2.inOut, bar 2 opacity 0.18 s power1.out, all at 0.78 s; pills y 28 + scale 0.86 + opacity, 0.26 s back.out(1.6), stagger 0.06 at 0.96 s). The bars and the pills are written as fromTo with explicit start values (the source used to). The demo's 3.4x enlargement is the param `scale` (a wrapper with transform: scale that is never tweened). Font: the film's font instead of Inter. The button grid has align-content: center: in the source the three bars sit in a fixed-height grid whose auto rows stretch, so they are about 24 px apart instead of the intended 8 px (3 px bar + 5 px gap) and the +-8 px move never closes the X (it ends as a '>' shape); with the rows packed in the middle the hamburger is tight and the bars cross into a real X. The pill row is a full-width flex box with justify-content: center instead of an absolutely placed shrink-wrapped flex box that the grid centred; same position. Source variables: actions (comma string, up to 6) accepts an array too, size is clamped to 52 - 112 and the bar width stays size x 6/17, tone is a hex colour (source: ink / green / blue / violet reading theme tokens). Default labels are Vietnamese (source: Text, Image, Audio).",
+ "demo": { "bg": "#f4f4f5", "duration": "auto", "hold": 1.3 }
+}

@@ -1,0 +1,57 @@
+{
+ "name": "transition/halftone-dissolve",
+ "kind": "block",
+ "group": "transition",
+ "title": "Halftone Dissolve",
+ "title_vi": "Chuyển cảnh bằng lưới chấm halftone",
+ "desc_vi": "Cảnh A tan sang cảnh B qua một lưới chấm halftone lớn dần: chấm mực bật lên từ nhỏ đến lớn, mỗi chấm mở ra cửa sổ nhìn sang B cho tới khi B thay hẳn A.",
+ "params_vi": "dot_size: Dot size (small | medium | large), mặc định \"medium\" · direction: Direction (ltr | center | noise), mặc định \"ltr\" · dissolve_at: Dissolve at, mặc định 1.1 · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: halftone-dissolve-a, halftone-dissolve-b), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/halftone-dissolve/halftone-dissolve.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "transition",
+  "texture",
+  "halftone",
+  "dissolve"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/halftone-dissolve.html) in a kit film, mounted by ctx.hf.  Source: Scene A dissolves into scene B through a growing halftone dot field: accent ink dots pop onto a fixed grid smallest-first, each opens into a window onto B, until the windows merge and B fully replaces A.",
+ "demo": {
+  "duration": 3.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 3.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "name": "transition/curtain-reveal",
+ "kind": "effect",
+ "group": "transition",
+ "title": "Curtain Reveal",
+ "title_vi": "Màn nhung kéo ra",
+ "desc_vi": "Hai tấm màn nhung đóng lại rồi vén ra hai bên, các nếp co mạnh nhất ở mép ngoài, lộ cảnh mới; đèn rọi ấm sáng lên khi màn mở.",
+ "params_vi": "duration (1.7 s = cover 0.3 + vén 1.1 + out 0.3) · cover: màn hiện ra · out: màn mờ đi · tone: red | burgundy | navy | forest · pelmet · spotlight",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/curtain-reveal/curtain-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "curtain",
+  "stage",
+  "reveal"
+ ],
+ "notes": "Added for a scene change (the source starts with the curtains already closed and keeps them bunched at the sides): the curtains and pelmet fade in over `cover` s (default 0.3) on top of the outgoing scene, the incoming scene appears behind them at the end of that fade, and curtains plus spotlight fade out over the last `out` s (default 0.3). The draw itself is the source's: 11 folds per curtain from the fixed width tables, power2.inOut over 1.1 s, fold scale sx = 1 - p(0.86 - 0.16u), sy = 1 - 0.07 p u^2, shade 0.34(1 - sx), scalloped pelmet, spotlight 0 -> 0.9 from 0.25 x draw over 0.75 x draw. Every fold pose is linear in the eased progress, so each fold is one literal tween (x, scaleX, scaleY) plus one shade tween; the shade (::after, black at opacity 0.34(1 - sx) in the source) is a real child box whose background colour rgba(0,0,0,a) is tweened (same look; an opacity layer on 22 transformed folds made the renderer's pixels differ between seeks). The source stage slot is the incoming scene. ae is png because of the layered gradients, box-shadows, clip-path hem and screen-blend spotlight. will-change: transform, opacity is set on the curtain group so the renderer gives the same pixels after a seek (many transformed gradient folds are otherwise slightly noisy).",
+ "demo": {
+  "scenes": [
+   {
+    "id": "s1",
+    "name": "A",
+    "duration": 1.6,
+    "bg": "#10172a",
+    "elements": [
+     {
+      "id": "a1",
+      "type": "text",
+      "text": "Màn kéo ra",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   },
+   {
+    "id": "s2",
+    "name": "B",
+    "duration": 2.4,
+    "bg": "#e8e2d6",
+    "transition_in": {
+     "preset": "transition/curtain-reveal",
+     "duration": 1.7
+    },
+    "elements": [
+     {
+      "id": "b1",
+      "type": "text",
+      "text": "Sân khấu hiện ra",
+      "style": {
+       "color": "#1d1b16",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   }
+  ]
+ }
+}

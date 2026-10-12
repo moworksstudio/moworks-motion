@@ -1,0 +1,59 @@
+{
+ "name": "cursor/swipe-rail",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Swipe Rail",
+ "title_vi": "Vuốt dải thẻ có quán tính rồi bám thẻ",
+ "desc_vi": "Một vòng chạm kéo dải thẻ ngang thật nhanh, dải trôi tiếp theo quán tính rồi bám đúng vào thẻ kế tiếp.",
+ "params_vi": "card_count: Card count, mặc định 4 · accent: Accent (green | blue | violet), mặc định \"green\" · card_label_prefix: Card label prefix, mặc định \"Feature\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/swipe-rail/swipe-rail.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "interaction",
+  "gesture",
+  "swipe",
+  "cards",
+  "rail"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/swipe-rail.html) in a kit film, mounted by ctx.hf.  Source: A contact circle leads a horizontal card rail through a fast drag, momentum carry, and settled snap to the next card.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "card_label_prefix": "Tính năng",
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

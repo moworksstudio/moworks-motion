@@ -1,0 +1,59 @@
+{
+ "name": "transition/torn-paper",
+ "kind": "block",
+ "group": "transition",
+ "title": "Torn Paper Rip",
+ "title_vi": "Xé giấy ngang khung lộ cảnh sau",
+ "desc_vi": "Một vết xé giấy xơ sợi chạy ngang khung: mép giấy lộ lõi trắng, tờ giấy nhấc lên trên bóng mềm, để lại cảnh tiếp theo.",
+ "params_vi": "direction: Direction (left-to-right | right-to-left), mặc định \"left-to-right\" · tone: Paper tone (cream | kraft | white), mặc định \"cream\" · roughness: Roughness, mặc định 55 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: torn-paper-rip-from, torn-paper-rip-to), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/torn-paper-rip/torn-paper-rip.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "torn paper",
+  "paper rip",
+  "paper tear",
+  "transition",
+  "texture",
+  "motion-primitive"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/torn-paper-rip.html) in a kit film, mounted by ctx.hf.  Source: A fibrous paper tear runs across the frame: the torn sheet shows its white paper core along the edge and lifts away on a soft shadow, leaving the next scene standing.",
+ "demo": {
+  "duration": 2.4,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 2.4
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.5
+ }
+}

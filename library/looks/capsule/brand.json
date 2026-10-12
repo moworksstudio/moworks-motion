@@ -1,0 +1,88 @@
+{
+ "_about": "Public look 'capsule' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "capsule",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/capsule/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "f06dba67a3859f7c732b5177f7bcc58c94592caa5d6bbbcc6730a7876f5baa7a",
+   "frame-showcase.html": "b3a642b5df3bbfb1ff227f1b82ee3ea02b51f20a0d7c5c46c97d72b180cddb4f",
+   "caption-skin.html": "a66a37a0b2060ebe635f4d2309b3cf0f78c31203de19c12fc477a23009ec0e89"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Playfair Display",
+   "family": "Playfair Display",
+   "dir": "google/PlayfairDisplay",
+   "files": {
+    "400": "PlayfairDisplay[wght].ttf",
+    "700": "PlayfairDisplay[wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Space Grotesk",
+   "family": "Space Grotesk",
+   "dir": "google/SpaceGrotesk",
+   "files": {
+    "400": "SpaceGrotesk[wght].ttf",
+    "500": "SpaceGrotesk[wght].ttf",
+    "700": "SpaceGrotesk[wght].ttf"
+   }
+  },
+  "_swapped": {
+   "Bodoni Moda": "Playfair Display"
+  }
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 96.0,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.19,
+    "body": 0.17,
+    "disclaimer": 0.146
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 700
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 500
+   }
+  }
+ },
+ "color": {
+  "cream": "#F5F5F0",
+  "ink": "#1A1A1A",
+  "outline": "#1E1E1E",
+  "white": "#FFFFFF",
+  "coral": "#E85D4E",
+  "lime": "#C4D94E",
+  "lavender": "#C5B5E0",
+  "sky": "#8BB4F7",
+  "violet": "#A06CE8",
+  "yellow": "#F2D160",
+  "peach": "#F5B895",
+  "mint": "#A8E6CF",
+  "black": "#1A1A1A"
+ },
+ "kit": {
+  "accent": "coral"
+ }
+}

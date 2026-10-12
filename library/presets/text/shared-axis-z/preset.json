@@ -1,0 +1,16 @@
+{
+ "name": "text/shared-axis-z",
+ "kind": "effect",
+ "group": "text",
+ "title": "Shared axis Z",
+ "title_vi": "Từng từ phồng lên vào chỗ (trục sâu)",
+ "desc_vi": "Các từ lần lượt phồng từ 72 % lên đúng cỡ, hơi vượt rồi nảy về, hiện dần: kiểu chuyển cảnh trục sâu của Material. Chọn out thì từ co từ lớn về.",
+ "params_vi": "direction: in | out · depth: shallow | standard | deep · duration 0.34 · stagger 0.06",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/shared-axis-z/shared-axis-z.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "words", "scale", "material", "bounce"],
+ "notes": "Motion as the source's timeline integration (opacity 0 -> 1, scale 0.72 -> 1, 0.34 s back.out(1.8), stagger 0.06); the source's depth variable scales the gap (1 + (0.72 - 1) x sign x reach), computed once here as the start scale.",
+ "demo": { "hold": 1.0 }
+}

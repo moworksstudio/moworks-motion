@@ -1,0 +1,21 @@
+{
+ "name": "text/caption-blend-difference",
+ "at": "2026-10-09 00:21",
+ "static": [],
+ "build": "ok",
+ "tweens": 1,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "end": 0.02516,
+ "duration": 2.4,
+ "problems": [
+  "end differs from layout 2.52%"
+ ],
+ "status": "warn",
+ "seconds": 15.4
+}

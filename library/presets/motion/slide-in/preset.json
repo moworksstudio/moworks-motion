@@ -1,0 +1,28 @@
+{
+ "name": "motion/slide-in",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Slide in",
+ "title_vi": "Trượt vào",
+ "desc_vi": "Trượt vào theo trục ngang từ một khoảng cách.",
+ "params_vi": "from (px, âm = từ trái) · duration · ease",
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": [],
+ "notes": "Written for v2 (MotionSpec test set).",
+ "demo": {
+  "motion": [
+   {
+    "target": "card",
+    "at": 0.3,
+    "params": {
+     "from": 400
+    }
+   }
+  ]
+ }
+}

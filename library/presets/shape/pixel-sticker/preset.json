@@ -1,0 +1,124 @@
+{
+ "name": "shape/pixel-sticker",
+ "kind": "effect",
+ "group": "shape",
+ "title": "8-bit pixel stickers",
+ "title_vi": "Sticker pixel 8-bit",
+ "desc_vi": "13 sticker pixel-art (máy ảnh, pin, chip, lông vũ, nốt nhạc, tim, sao, tia sét, mặt trời, mũi tên, chat, tay cầm game, lấp lánh) vẽ bằng SVG sắc cạnh, viền tối, màu phẳng; đổi được từng màu để hợp mọi thương hiệu. Hiệu ứng vào: gắn thêm house/pop-cute hoặc text/land-in \"steps\".",
+ "params_vi": "name: camera · battery · chip · feather · note · heart · star · bolt · sun · arrows · chat · pad · sparkle · px: cỡ một điểm ảnh · palette: {chữ: màu} (K viền, W trắng, L P V R M tím nhạt / đào / tím / hồng / hồng tím, B N A C xanh, l m d xám nhạt)",
+ "ae": "keyframes",
+ "tags": [
+  "sticker",
+  "pixel",
+  "8-bit",
+  "icon"
+ ],
+ "notes": "Viết cho một phim lời bài hát 8-bit của studio (08/10/2026); bảng màu gốc của phim đã đổi sang bảng trung tính.",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 3.2,
+  "elements": [
+   {
+    "id": "p0",
+    "type": "box",
+    "style": {
+     "left": "260px",
+     "top": "300px"
+    }
+   },
+   {
+    "id": "p1",
+    "type": "box",
+    "style": {
+     "left": "560px",
+     "top": "560px"
+    }
+   },
+   {
+    "id": "p2",
+    "type": "box",
+    "style": {
+     "left": "860px",
+     "top": "280px"
+    }
+   },
+   {
+    "id": "p3",
+    "type": "box",
+    "style": {
+     "left": "1160px",
+     "top": "560px"
+    }
+   },
+   {
+    "id": "p4",
+    "type": "box",
+    "style": {
+     "left": "1460px",
+     "top": "300px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "p0",
+    "at": 0,
+    "params": {
+     "name": "camera",
+     "px": 12
+    }
+   },
+   {
+    "target": "p1",
+    "at": 0,
+    "params": {
+     "name": "heart",
+     "px": 14
+    }
+   },
+   {
+    "target": "p2",
+    "at": 0,
+    "params": {
+     "name": "chip",
+     "px": 12
+    }
+   },
+   {
+    "target": "p3",
+    "at": 0,
+    "params": {
+     "name": "note",
+     "px": 14
+    }
+   },
+   {
+    "target": "p4",
+    "at": 0,
+    "params": {
+     "name": "pad",
+     "px": 12
+    }
+   },
+   {
+    "preset": "house/pop-cute",
+    "target": [
+     "p0",
+     "p1",
+     "p2",
+     "p3",
+     "p4"
+    ],
+    "at": 0.3
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

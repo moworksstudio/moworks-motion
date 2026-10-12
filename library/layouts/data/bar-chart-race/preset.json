@@ -1,0 +1,57 @@
+{
+ "name": "data/bar-chart-race",
+ "kind": "block",
+ "group": "data",
+ "title": "Bar Chart Race",
+ "title_vi": "Đua thanh: các thanh vượt nhau theo thời gian",
+ "desc_vi": "Các thanh xếp hạng lớn dần và vượt nhau khi chuỗi thời gian chạy, trục tự co giãn khi giá trị tăng, màu nhấn chuyển cho bên dẫn đầu.",
+ "params_vi": "title: Title, mặc định \"Streaming Subscribers by Service\" · subtitle: Subtitle, mặc định \"Ranked by reported subscribers\" · periods: Period labels (comma separated), mặc định \"2019, 2020, 2021, 2022, 2023, 2024\" · series: Series (one per line: Name: v1, v2, ...), mặc định \"Northwind: 42, 58, 71, 96, 118, 131\\nCobalt: 30, 46, 68, 92, 126, 168\\nFerry: 55, 62, 66, 70, 74, 79\\nMarlow: 18, 33, 52, 61, 88, 104\\nAster: 25, 28, 44, 58, 63, 72\\nPell: 12, 20, 39, 47, 55, 90\\nQuill: 8, 11, 15, 24, 40, 66\\nDunmore: 35, 37, 38, 40, 42, 44\" · barCount: Bars shown, mặc định 6 · periodDuration: Seconds per period, mặc định 2 · valuePrefix: Value prefix, mặc định \"$\" · valueSuffix: Value suffix, mặc định \"M\" · valueDecimals: Value decimals, mặc định 0 · accent: Leader accent, mặc định \"#c8452d\" · duration: độ dài của block (12 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/bar-chart-race/bar-chart-race.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "data",
+  "chart",
+  "statistics",
+  "ranking"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/bar-chart-race.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Ranked bars grow and overtake each other as a time series advances, with the axis rescaling as values climb and the accent handing over to whoever leads",
+ "demo": {
+  "duration": 12.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 12.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

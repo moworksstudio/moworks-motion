@@ -1,0 +1,81 @@
+{
+ "name": "motion/chaos-shake",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Chaos shake",
+ "title_vi": "Rung hỗn loạn",
+ "desc_vi": "Nhiều thẻ cùng giật lệch và nghiêng mỗi cái một kiểu (cố định theo thời gian), mạnh nhất lúc đầu rồi tắt dần về đúng vị trí thiết kế. Khác hand/shake: rung cả một nhóm, mỗi phần tử một hướng.",
+ "params_vi": "ids: danh sách id (mặc định: các target) · dur · amp: px · rot: độ · rate: lần / giây · seed",
+ "ae": "expression",
+ "tags": [
+  "shake",
+  "chaos",
+  "impact"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026).",
+ "demo": {
+  "bg": "#1b1b22",
+  "duration": 2.6,
+  "elements": [
+   {
+    "id": "c0",
+    "type": "box",
+    "style": {
+     "left": "420px",
+     "top": "330px",
+     "width": "320px",
+     "height": "420px",
+     "border-radius": "24px",
+     "background": "#ff5a5f"
+    }
+   },
+   {
+    "id": "c1",
+    "type": "box",
+    "style": {
+     "left": "800px",
+     "top": "330px",
+     "width": "320px",
+     "height": "420px",
+     "border-radius": "24px",
+     "background": "#ffb400"
+    }
+   },
+   {
+    "id": "c2",
+    "type": "box",
+    "style": {
+     "left": "1180px",
+     "top": "330px",
+     "width": "320px",
+     "height": "420px",
+     "border-radius": "24px",
+     "background": "#3a86ff"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "c0",
+     "c1",
+     "c2"
+    ],
+    "at": 0.4,
+    "params": {
+     "dur": 1.2,
+     "amp": 26,
+     "rot": 5
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

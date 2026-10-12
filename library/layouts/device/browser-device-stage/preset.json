@@ -1,0 +1,70 @@
+{
+ "name": "device/browser-device-stage",
+ "kind": "block",
+ "group": "device",
+ "title": "Browser Device Stage",
+ "title_vi": "Khung trình duyệt / cửa sổ / điện thoại có đổi màn hình",
+ "desc_vi": "Một màn hình ứng dụng trong khung trình duyệt, cửa sổ hoặc điện thoại: hiện lên, nhô nhẹ và phóng nhẹ vào chỗ, trôi nhẹ khi giữ, có thể đổi sang màn hình thứ hai, và có thể mờ hoặc bay lên khi ra.",
+ "params_vi": "chrome: browser | window | phone · title: chữ ô địa chỉ / thanh tiêu đề · screen, screen_b: ảnh màn hình 1 và 2 (để trống = giao diện khung xương mặc định) · swap_at: giây đổi màn hình (0 = không đổi) · accent: màu nhấn · exit: none | fade | up · bg, fg, surface, border: màu nền / chữ / bề mặt / viền · duration: độ dài (5 s).",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/browser-device-stage/browser-device-stage.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": [
+  "browser",
+  "window",
+  "phone",
+  "device",
+  "stage",
+  "product demo",
+  "swap"
+ ],
+ "notes": "Faithful port: same CSS (container units of the target box, color-mix token surfaces, skeleton app and its B state), same envelope (IN 0.9 s: fade 0.594 s power2.out, rise power3.out, scale 0.965->1 power2.out from origin 50% 60%; drift -0.5cqh and back, sine.inOut, half-length (hold - 0.35)/2 capped at 1.6 s; swap: screen A out power1.in, screen B in from +1.6cqh power2.out, clamped inside the hold; exit fade or up -4cqh, power2.in), written as literal tweens; cqh tween values converted to px of the target box (the CSS keeps container units). Differences: the HF variables become params; the slot templates (data-slot) become image params screen / screen_b (empty = the source's skeleton screens); accent is a colour (source: an enum riding theme tokens; default = the violet fallback #c5a3ff the source demo shows); the theme tokens bg / fg / surface / border are params with the source demo's light values; text uses the film's font, the address pill keeps the source's local monospace stack (ui-monospace, SF Mono, Menlo, Consolas). Demo = the source demo (90 % x 88 % mount on a light radial backdrop, browser chrome, swap at 2.2 s, violet). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "#eef0f3",
+  "duration": 5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "back",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px",
+     "background": "radial-gradient(ellipse at 50% 40%, #f7f8fa 0%, #eef0f3 70%)"
+    }
+   },
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "96px",
+     "top": "65px",
+     "width": "1728px",
+     "height": "950px",
+     "overflow": "hidden"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "chrome": "browser",
+     "title": "app.example.com",
+     "swap_at": 2.2
+    }
+   }
+  ]
+ }
+}

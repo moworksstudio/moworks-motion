@@ -1,0 +1,73 @@
+{
+ "name": "ui/toggle-switch",
+ "kind": "effect",
+ "group": "ui",
+ "title": "Toggle switch on a word",
+ "title_vi": "Công tắc bật đúng nhịp",
+ "desc_vi": "Công tắc gạt sang đúng lúc (một chữ hát, một phách): núm trượt có nảy nhẹ (hoặc 3 bước kiểu pixel), rãnh đổi màu. Khác flow/toggle-flip (một màn hình app): một công tắc đơn, khớp thời điểm.",
+ "params_vi": "target: rãnh công tắc (khung rộng gấp đôi cao) · knob: màu núm · on: màu rãnh khi bật · square: kiểu pixel · pad: px · lead: giây bắt đầu trước at",
+ "ae": "keyframes",
+ "tags": [
+  "toggle",
+  "switch",
+  "ui",
+  "beat"
+ ],
+ "notes": "Viết cho một phim lời bài hát của studio (08/10/2026).",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "box",
+    "style": {
+     "left": "560px",
+     "top": "440px",
+     "width": "360px",
+     "height": "180px",
+     "background": "#3a3f5c",
+     "box-shadow": "0 14px 34px rgba(0,0,0,.25)"
+    }
+   },
+   {
+    "id": "t2",
+    "type": "box",
+    "style": {
+     "left": "1060px",
+     "top": "440px",
+     "width": "360px",
+     "height": "180px",
+     "background": "#3a3f5c",
+     "box-shadow": "16px 16px 0 #000"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.8,
+    "params": {
+     "on": "#06d6a0"
+    }
+   },
+   {
+    "target": "t2",
+    "at": 1.6,
+    "params": {
+     "on": "#ffd166",
+     "square": true,
+     "knob": "#14213d"
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

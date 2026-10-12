@@ -1,0 +1,54 @@
+{
+ "name": "device/ui-3d-reveal",
+ "kind": "block",
+ "group": "device",
+ "title": "3D UI Reveal (design tool)",
+ "title_vi": "Giao diện phần mềm hiện ra rồi nghiêng 3D",
+ "desc_vi": "Logo 5 mảnh tự vẽ nét rồi tô màu và thu nhỏ biến mất; giao diện phần mềm thiết kế (thanh công cụ, bảng lớp, khung vẽ có bản thiết kế ứng dụng, bảng thuộc tính) dựng lên phẳng, camera đẩy vào, cả khung nghiêng 3D, lơ lửng rồi bay sâu ra xa; logo dựng lại, khẩu hiệu hiện từng chữ, viên địa chỉ web tự vẽ viền, cuối cùng mờ về đen.",
+ "params_vi": "logo_colors: 5 màu của logo (mặc định là màu gốc của nguồn) · tagline: khẩu hiệu (hiện từng chữ) · url: địa chỉ trong viên cuối · app_logo: logo ứng dụng trong bản thiết kế (ảnh gốc của nguồn trong assets của mẫu, hoặc đường dẫn ảnh trong dự án). Chữ trong giao diện là bản tiếng Anh gốc của nguồn, cố định (sửa trong index.html bằng HF Studio). Thiết kế cho khung 1920×1080.",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/ui-3d-reveal/ui-3d-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": [
+  "ui",
+  "3d",
+  "reveal",
+  "design tool",
+  "showcase",
+  "logo",
+  "outro"
+ ],
+ "notes": "Markup and CSS are generated from the source (scripted copy: comments, xmlns and title attributes dropped, whitespace between tags removed, the composition selector scoped to .aimk-u3, ids prefixed per instance). Timeline: every source tween with the same times and eases (gsap.set start states -> fromTo; GSAP's default ease power1.out written out; class-selector tweens per element; the layer-item stagger {each 0.045, ease power1.in} written as one tween per item at the offsets GSAP computes; stroke lengths measured at build: 2 pi r for circles, getTotalLength otherwise). Differences: (1) The source's own artwork and copy are used as shipped: the Figma mark (intro, toolbar, outro: the source's own paths, colours in the logo_colors param) and the HeyGen app mark (the source embeds it as a base64 PNG; decoded to assets/heygen-logo.png, param app_logo), the English interface copy of the Figma panels and the HeyGen app mock, the tagline 'Nothing great is made alone.' and 'figma.com'. Kit differences kept: the url pill widens to fit the url param (its dash length follows), the tooltips (title attributes) are dropped. (2) The tagline: the source writes one <tspan> per letter separated by markup whitespace and empty tspans for spaces, which renders every letter spaced and no word gaps ('N o t h i n g g r e a t'); here the letter tspans sit together and spaces are real, so the words read normally (same 25 ms per-letter fade). (3) Text uses the film's font (source: Inter from Google Fonts, removed: no network). Symbol glyphs in the properties panel (alignment icons, arrows) still come from a system fallback font, as in the source. 05/10/2026: source artwork restored as default (user's decision).",
+ "demo": {
+  "bg": "#111111",
+  "duration": 13,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0
+   }
+  ],
+  "thumb_at": 0.34
+ }
+}

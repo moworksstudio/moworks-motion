@@ -1,0 +1,59 @@
+{
+ "name": "social/ai-answer-rank",
+ "kind": "block",
+ "group": "social",
+ "title": "AI Answer Rank",
+ "title_vi": "Câu trả lời AI xếp hạng lại thương hiệu",
+ "desc_vi": "Một câu hỏi được gõ vào thẻ chat, trợ lý trả lời bằng danh sách ba lựa chọn rồi xếp hạng lại: thương hiệu được đẩy lên trượt vào vị trí, các mục dưới lùi xuống. Khung vuông.",
+ "params_vi": "prompt: Prompt, mặc định \"What's the best CRM for a small team?\" · lead: Answer lead-in, mặc định \"Here are the top picks:\" · rowA: Pick 1, mặc định \"Brand A\" · rowB: Pick 2, mặc định \"Brand B\" · rowC: Pick 3, mặc định \"Brand C\" · brand: Brand, mặc định \"Your brand\" · brandRank: Brand rank (1 | 2 | 3), mặc định \"1\" · accent: Accent, mặc định \"#16a34a\" · ink: Ink, mặc định \"#18181b\" · ground: Ground, mặc định \"#fcfcfb\" · duration: độ dài của block (9 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/ai-answer-rank/ai-answer-rank.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "mock-ui",
+  "ai",
+  "chat",
+  "ranking",
+  "list",
+  "marketing"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/ai-answer-rank.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Is your brand in the AI answer? A question types into a chat card, the assistant answers with a ranked list of three picks, then re-ranks: the promoted brand slides into its slot, the picks below step down, and the brand row lands with the one accent highlight and a check. For answer-engine and AI-visibility marketing",
+ "demo": {
+  "duration": 9.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 9.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

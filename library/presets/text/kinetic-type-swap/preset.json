@@ -1,0 +1,17 @@
+{
+ "name": "text/kinetic-type-swap",
+ "kind": "effect",
+ "group": "text",
+ "title": "Kinetic type swap",
+ "title_vi": "Câu giữ nguyên, một từ màu cuộn đổi liên tục",
+ "desc_vi": "Câu hiện ra rồi đứng yên, riêng một từ màu nhấn cuộn qua danh sách lựa chọn (từ cũ vụt lên, từ mới trồi vào, từ cuối nảy nhẹ khi vào chỗ) rồi nhịp sáng nhẹ trong lúc giữ. Chữ của phần tử là phần đứng trước từ cuộn.",
+ "params_vi": "options: các từ cuộn, cách nhau dấu phẩy · suffix: chữ đứng sau từ cuộn · cues: các mốc đổi (giây tính từ at, cách nhau dấu phẩy; trống = chia đều) · accent: green | blue | violet hoặc mã màu · glow: quầng sáng quanh từ · exit: none | fade | up · duration: độ dài cả hiệu ứng (4 s) · pad: khoảng chừa cho dấu (0.3 em)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/kinetic-type-swap/kinetic-type-swap.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["swap", "word", "mask", "roll", "kinetic"],
+ "check_end": false,
+ "notes": "Envelope and schedule as in the source (IN 2.25 s, arrival 0.3 s power2.out, first swap 0.48 s, roll 0.46 s (x 0.72 of the step when more than two swaps), out 55 % of the roll power4.in then hidden, in starts so it ends with the roll, power4.out, back.out(1.7) for the last word; cues clamp before the exit; hold pulse opacity 1 -> 0.9 sine.inOut with half = min(0.5 s, hold / 2) and an odd repeat count; exit 0.45 s power2.in, up rises 3 % of the frame; IN and OUT shrink together when duration < IN + OUT). The source's --dur-beat token is 0.5 s (its fallback). Accent colours are the source's fallbacks; the glow is the source's text-shadow (2.8 % of the frame height, accent at 28 %). The source's character-count font fit and flex gap are the film element's size and a normal space. End check off: the end shows the last option.",
+ "demo": { "duration": 4, "hold": 0.2, "elements": [{ "id": "t1", "type": "text", "text": "Làm phim", "style": { "color": "#f8fafc", "font-weight": "760", "font-size": "128px", "letter-spacing": "-0.045em", "line-height": "1.08", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.1 }] }
+}

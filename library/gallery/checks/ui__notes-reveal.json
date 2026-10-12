@@ -1,0 +1,17 @@
+{
+ "name": "ui/notes-reveal",
+ "at": "2026-10-05 22:32",
+ "static": [],
+ "build": "ok",
+ "tweens": 720,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 4e-05,
+ "seek": 2e-05,
+ "bake": 0.0,
+ "duration": 24.85,
+ "problems": [],
+ "status": "ok",
+ "seconds": 15.8
+}

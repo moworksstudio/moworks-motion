@@ -1,0 +1,60 @@
+{
+ "name": "ui/tracing-beam",
+ "kind": "block",
+ "group": "ui",
+ "title": "Tracing Beam",
+ "title_vi": "Vệt sáng chạy qua các thành phần giao diện",
+ "desc_vi": "Một vệt sáng chạy theo một đường SVG qua ba thành phần giao diện, lần lượt nâng và làm sáng từng cái.",
+ "params_vi": "labels: Labels, mặc định \"Search,Preview,Export\" · accent: Accent (cyan | violet | amber), mặc định \"cyan\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/tracing-beam/tracing-beam.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "product-demo",
+  "attention",
+  "beam",
+  "path",
+  "spotlight"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/tracing-beam.html) in a kit film, mounted by ctx.hf. Re-seeking leaves every element in the same state (checked 06/10/2026); the few pixels that differ are the browser's paint of its glow layers, so the gallery's seek limit is raised for this demo. Source: A glowing dash follows one SVG path through three UI elements, lifting and brightening each element in sequence.",
+ "demo": {
+  "duration": 4.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "labels": "Tìm kiếm,Xem trước,Xuất",
+     "duration": 4.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "seek_tolerance": 0.002
+ }
+}

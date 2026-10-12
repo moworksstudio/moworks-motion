@@ -1,0 +1,70 @@
+{
+ "name": "hand/watercolor",
+ "kind": "effect",
+ "group": "hand",
+ "title": "Watercolour wash",
+ "title_vi": "Vệt màu nước loang ra",
+ "desc_vi": "Một vệt màu nước loang ra trong khung, bằng cây bút của claude-animation: ba lớp màu trong suốt chồng lệch nhau (nhân màu), viền đọng màu, hạt giấy, mặt loang lởm chởm nở từ một điểm. Đặt sau chữ hoặc ảnh.",
+ "params_vi": "color · alpha · shape round | ellipse | points · points · from (center | left | right | top | bottom | bottom-left | top-left) · duration · ease · pad · seed · wobble (độ méo viền như vẽ tay, 0 = hình đều)",
+ "source": {
+  "label": "claude-animation (Hanif, MIT), ported to the kit",
+  "url": "https://github.com/buildwithhanif/claude-animation-skill",
+  "local": "%USERPROFILE%/.aimotionkit/sources/claude-animation-skill"
+ },
+ "license": "MIT (claude-animation, Hanif)",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "hand-drawn",
+  "watercolor",
+  "reveal",
+  "background"
+ ],
+ "notes": "Canvas: AE gets it as a picture sequence while it blooms. Drawing code: engine/vendor/libs/hand/handkit.js.",
+ "demo": {
+  "bg": "#f3ead8",
+  "elements": [
+   {
+    "id": "wash",
+    "type": "box",
+    "style": {
+     "left": "380px",
+     "top": "300px",
+     "width": "1160px",
+     "height": "420px"
+    }
+   },
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "Màu nước",
+    "style": {
+     "left": "650px",
+     "top": "420px",
+     "font-size": "150px",
+     "font-weight": "800",
+     "color": "#1b1b1b",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "wash",
+    "at": 0.3,
+    "params": {
+     "from": "left"
+    }
+   },
+   {
+    "preset": "text/mask-rise",
+    "target": "t1",
+    "at": 0.9
+   }
+  ],
+  "duration": 3.0
+ },
+ "scripts": [
+  "libs/hand/handkit.js"
+ ]
+}

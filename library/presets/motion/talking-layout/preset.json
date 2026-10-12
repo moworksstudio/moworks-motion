@@ -1,0 +1,90 @@
+{
+ "name": "motion/talking-layout",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Talking-head Layout",
+ "title_vi": "Video người nói dời bố cục (chia đôi, chồng, góc nhỏ, toàn khung)",
+ "desc_vi": "Khung video người nói chuyển giữa các bố cục của talking-head-recut: chia đôi (video phải), chồng (video trên, thẻ dưới), góc nhỏ bo tròn có viền (pip), toàn khung (thẻ nổi trên video), ẩn. Có khung trang trí hairline (nét đôi + 4 góc ngắm) hoặc polaroid. Khổ 16:9, 9:16, 4:5.",
+ "params_vi": "layout: split | stack | pip | pip-tl | pip-br | overlay | hide · source: \"16:9\" | \"9:16\" (video gốc, cho cỡ pip) · duration: thời gian dời (0 = cắt), mặc định 0.6 · ease · frame: none | hairline | polaroid (chỉ split / stack) · accent: màu khung hairline · caption: chữ dưới polaroid",
+ "source": {
+  "label": "HyperFrames skill talking-head-recut (adapted there from vtake-skills by leeoxiang, MIT)",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/talking-head-recut/references/layouts/ + frames/ + SKILL.md (framing table)"
+ },
+ "license": "Apache-2.0 (HyperFrames) + MIT (vtake-skills)",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "talking-head",
+  "layout",
+  "pip",
+  "split",
+  "video"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Kit code from the layout files' numbers (video rects per canvas, pip chrome, frame decorations).",
+ "demo": {
+  "duration": 4.2,
+  "hold": 0.5,
+  "elements": [
+   {
+    "id": "vid",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px",
+     "background": "linear-gradient(135deg, #3a86ff, #1d3fd8)"
+    }
+   },
+   {
+    "id": "lbl",
+    "type": "text",
+    "text": "Video người nói",
+    "style": {
+     "color": "#f5f5f2",
+     "font-weight": "760",
+     "font-size": "64px",
+     "left": "120px",
+     "top": "120px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "preset": "motion/talking-layout",
+    "target": "vid",
+    "at": 0.4,
+    "params": {
+     "layout": "split",
+     "frame": "hairline"
+    }
+   },
+   {
+    "preset": "motion/talking-layout",
+    "target": "vid",
+    "at": 1.6,
+    "params": {
+     "layout": "pip"
+    }
+   },
+   {
+    "preset": "motion/talking-layout",
+    "target": "vid",
+    "at": 2.8,
+    "params": {
+     "layout": "overlay"
+    }
+   }
+  ],
+  "bg": "#f1e8d5"
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

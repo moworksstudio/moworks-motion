@@ -1,0 +1,61 @@
+{
+ "name": "title/glass-shard",
+ "kind": "block",
+ "group": "title",
+ "title": "Glass Shard Title",
+ "title_vi": "Mảnh kính bay qua sương ghép thành tiêu đề",
+ "desc_vi": "Các mảnh kính bay vào qua sương mù rồi tự ghép thành tiêu đề.",
+ "params_vi": "duration: độ dài của block (9 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/glass-shard-title/glass-shard-title.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js",
+  "libs/d3.min.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "3d-motion",
+  "title-card",
+  "glass",
+  "voronoi",
+  "shards",
+  "fog"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/glass-shard-title.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. length 9: the page's timeline is 9 s (DUR = 9; shards gone by 8.65 s) though its root says 12.16 s; the 3 s after were black on the Gallery (09/10/2026). thumb_at 0.45: the headline tiled (at 82 % the shards are flying out). Source: Glass shards fly in through fog and tile themselves into the headline.",
+ "demo": {
+  "duration": 9.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 9.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.45
+ }
+}

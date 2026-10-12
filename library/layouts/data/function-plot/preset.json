@@ -1,0 +1,19 @@
+{
+ "name": "data/function-plot",
+ "kind": "block",
+ "group": "data",
+ "title": "Function plot with tracker",
+ "title_vi": "Đồ thị hàm số tự vẽ, chấm chạy theo đường cong",
+ "desc_vi": "Kiểu Manim: trục toạ độ và vạch chia tự vẽ ra, nhãn trục hiện, đường cong của hàm số tự vẽ, rồi một chấm chạy dọc đường cong kèm số đọc (x; f(x)) và có thể kèm tiếp tuyến. Hợp video giáo dục, giải thích toán / số liệu.",
+ "params_vi": "fn: hàm số theo x (cú pháp JavaScript, ví dụ 2 * (x - 5) ** 2, Math.sin(x)) · xMin, xMax, yMin, yMax: khung trục · xStep, yStep: bước vạch · xLabel, yLabel · color: màu đường cong · axis: màu trục · dot: màu chấm và số đọc · tangent: vẽ tiếp tuyến · decimals: số chữ số lẻ · axes, curve, trace: thời gian vẽ trục, vẽ đường, chạy chấm · traceFrom, traceTo: chấm chạy từ x nào đến x nào · samples: độ mịn đường",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/manim-skills", "path": "skills/manim/references/graphs-and-updaters.md" },
+ "license": "MIT",
+ "ae": "png",
+ "brand_safe": true,
+ "tags": ["math", "graph", "plot", "education", "tracker"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "The recipe's sequence (Create axes + Write labels, Create curve, ValueTracker driving a dot, a DecimalNumber and a tangent) and its example f(x) = 2 (x - 5)^2 on [0, 10] x [0, 100]. The curve is sampled at build time and drawn with a dash offset; the tracker is one proxy value per frame (ctx.code). Readout uses a semicolon between x and y (Vietnamese decimal style keeps the dot as written by toFixed).",
+ "demo": { "duration": 6.2, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "300px", "top": "120px", "width": "1320px", "height": "840px" } }], "motion": [{ "target": "slot", "at": 0.1, "params": { "tangent": true } }], "bg": "#101418" }
+}

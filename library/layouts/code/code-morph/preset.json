@@ -1,0 +1,58 @@
+{
+ "name": "code/code-morph",
+ "kind": "block",
+ "group": "code",
+ "title": "Code Morph",
+ "title_vi": "Đoạn code biến thành đoạn khác (Magic Move)",
+ "desc_vi": "Một đoạn code biến thành đoạn khác: các token trượt sang vị trí mới, token bỏ mờ đi, token mới hiện vào (kiểu Shiki Magic Move).",
+ "params_vi": "duration: độ dài của block (7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-morph/code-morph.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "code",
+  "code-animation",
+  "morph",
+  "refactor",
+  "developer"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/code-morph.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: One snippet transforms into another — tokens glide between positions, leavers fade out, enterers fade in. Shiki Magic Move re-driven as a paused GSAP timeline.",
+ "demo": {
+  "duration": 7.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

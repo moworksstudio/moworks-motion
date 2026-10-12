@@ -1,0 +1,20 @@
+{
+ "name": "text/typewriter",
+ "kind": "effect",
+ "group": "text",
+ "title": "Typewriter",
+ "title_vi": "Gõ chữ từng ký tự, con trỏ nhấp nháy",
+ "desc_vi": "Dòng chữ tự gõ ra từng ký tự theo nhịp, kèm con trỏ nhấp nháy ở cuối chữ vừa gõ.",
+ "params_vi": "duration: thời gian gõ (1.2 s) · steps: số nhịp (0 = mỗi ký tự một nhịp) · caret: line | block | none · caretWidth · caretColor · blinkAt, blinkLow, blinkHalf, blinkRepeat: nhịp nhấp nháy",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/typewriter/typewriter.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": ["typing", "caret", "per-frame"],
+ "notes": "Only the motion is ported. Source variables text / tone / font (monospace, 42px, colour tokens) belong to the film. Source reveals the line with max-width: progress x 100% on an overflow-hidden span, which works with a monospace font; here the typed part is real text (first k characters, k = round(progress x length)) next to an invisible span holding the rest, so any font works, no half glyphs, and the line never reflows. Ease steps(28) in the source is tuned to its 26-28 character line: param `steps` 0 means one step per character, set 28 to get the source value. Caret: source is an inline flex item (3 px rule or 22 px slab, gap 4 px) that takes layout space after the text; here it is a zero-width inline anchor with the bar drawn 4 px after the typed text (bar height 1em, centred on the line), so it never moves the text. Caret colour = the text colour (currentColor). The caret stays visible after the blink (source default).",
+ "demo": {
+  "hold": 1.0,
+  "elements": [ { "id": "t1", "type": "text", "text": "Làm phim chuyển động ngay trong code", "style": { "color": "#f5f5f2", "font-weight": "760", "font-size": "76px", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } } ],
+  "motion": [ { "target": "t1", "at": 0.3 } ]
+ }
+}

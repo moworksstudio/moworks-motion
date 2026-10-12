@@ -1,0 +1,33 @@
+{
+ "name": "code/code-snippet-dark-modern",
+ "kind": "block",
+ "group": "code",
+ "title": "Code snippet: Dark Modern editor",
+ "title_vi": "Trình soạn mã tối: gõ code từng ký tự",
+ "desc_vi": "Cửa sổ soạn mã (thanh tiêu đề, thanh hoạt động, trình khám phá, tab, vùng mã, terminal, thanh trạng thái) gõ từng ký tự một tệp mã sau con trỏ nhấp nháy, terminal trượt lên in kết quả, rồi cả cửa sổ nghiêng một nhịp và về lại.",
+ "params_vi": "kicker, title, note: dòng đầu trang · windowTitle, search, sidebarTitle, section, tree, treeSelected, tabs, breadcrumbs, panelTabs, statusLeft, statusRight: chữ của giao diện · code: các dòng mã, tô màu bằng thẻ <c> chú thích <k> từ khóa <f> hàm <s> chuỗi <n> số <v> biến <a> tham số <o> toán tử <p> dấu câu <t> tên lớp · terminal: các dòng terminal (cùng thẻ) · background: ảnh nền (rỗng = ảnh gốc đi kèm) · ui, tokens: bảng màu giao diện và màu mã (mặc định Dark Modern)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-snippet-dark-modern/code-snippet-dark-modern.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "code",
+  "editor",
+  "typing",
+  "developer",
+  "workbench",
+  "tilt"
+ ],
+ "brand_ui": true,
+ "needs": [],
+ "notes": "Layout, colours, sizes, content structure and timing as in the source (1920 x 1080 fixed layout: padding 54 70 92, header, workbench 824 px high on a 54 / 290 / 1fr grid with title bar, activity bar with four icons, explorer, tabs, breadcrumbs, 28 px code lines with a 72 px gutter, 138 px terminal panel, 26 px status bar; header y 24 + opacity 0.45 s power3.out; workbench y 42 + scale 0.986 + opacity 0.58 s power3.out at 0.1 s; line highlight fade 0.22 s at 0.74 s; typing from 0.95 s at 0.012 s per character with line gaps max(chars x 0.012, 0.08) + 0.045 s; caret blink 0.34 s steps(1) repeat 25 yoyo from 0.95 s; terminal y 140 + opacity 0.56 s power3.out at 7.55 s, its lines y 8 + opacity 0.24 s stagger 0.16 at 8.05 s; tilt rotateY -10.5 / z 74 for 0.72 s power2.inOut at 9.35 s and back for 0.62 s at 10.08 s; perspective 2200 px at 56 % 52 % on the content, transform-origin 82 % 50 %). The effective theme of the source is the final Dark Modern call at the bottom of the file (keyword #d7ba7d, string #d16969, variable #4FC1FF, operator #d7ba7d, punctuation #CE9178, etc.): those are the defaults of `tokens`; `ui` carries the workbench colours; the source's theme registry (many VS Code themes) is not ported, only this theme as a default that params can override. The source built one span per character (about 330 spans, opacity 1 set at each character's time, and the caret positioned by a tl.set per character from measured boxes: about 700 tweens). Here every code line is one element (coloured token spans inside) revealed by a clip-path inset with the ease steps(n) over (n + 1) x 0.012 s starting 0.012 s early, i.e. the same number of characters visible at the same times, and the caret moves with the same steps(n) ease between its measured start and end x, with a tl.set for its y; the highlight line y and the line-number colour are tl.set at each line's start (the source toggled an is-active class with tl.call). Line geometry (tops, text left, text width) is measured when the block is built (monospace text, so the steps are uniform). The text-shadow header, the explorer glyphs and the icons are kept as in the source. Kept as shipped (rule change: assets are copied, not replaced): the background picture background.jpeg (in this preset's assets/, used with the source's dark gradient overlay), the editor chrome, the four SVG activity-bar icons and the VS Code naming in the window title and kicker. The source's `window.createVSCodeThemeComposition` / `window.VSCODE_THEME_REGISTRY` globals are not used. Content as params with Vietnamese UI labels, Vietnamese comment and docstring in the code and Vietnamese terminal output (code, file names and identifiers stay as in the source). Text is the film's font (the source used Inter / system UI); the editor and terminal use the system monospace stack (Consolas / Cascadia Mono / Menlo / Monaco), no font file ships. The explorer glyphs (diamond, chevrons) come from the system fallback fonts. The layout is designed for a 1920 x 1080 target. ae is png: the tilt is a 3D transform and the SVG icons and the clipped lines are drawn as pictures by the After Effects port. 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack. 06/10/2026 (user asked): the editor area (.csd-area) now clips its overflow. In the source the terminal panel starts 140 px below its slot, outside the area, so while it slid up it painted over the status bar (the status text was dimmed and then cut in half, about 7.6-8.1 s; found by kit.py collide). Now it rises from behind the status bar edge, as in VS Code.",
+ "demo": {
+  "bg": "#000000",
+  "duration": 11
+ }
+}

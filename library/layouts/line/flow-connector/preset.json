@@ -1,0 +1,19 @@
+{
+ "name": "line/flow-connector",
+ "kind": "block",
+ "group": "line",
+ "title": "Flowing connector",
+ "title_vi": "Dây nối có dòng dữ liệu chạy",
+ "desc_vi": "Một dây nối giữa hai thành phần, trên đó nét đứt chạy liên tục và một hạt sáng đi từ đầu này sang đầu kia, lặp lại: dữ liệu đang chảy. Hợp sơ đồ hệ thống, luồng xử lý.",
+ "params_vi": "d: đường SVG trong toạ độ của ô (trống = chữ S nhẹ từ giữa trái sang giữa phải) · wire, flow, packet: màu dây, nét chạy, hạt · width: độ dày · dash, gap: nét đứt (10 / 12) · march: thời gian chạy một chu kỳ nét (0.7 s) · travel: thời gian hạt đi hết dây (1.6 s) · radius: cỡ hạt · reverse: chạy ngược · duration: tổng thời gian · drawIn: thời gian dây tự vẽ ra (0.6 s)",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md" },
+ "license": "MIT",
+ "ae": "png",
+ "brand_safe": true,
+ "tags": ["connector", "flow", "data", "diagram", "packet"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Recipe #3 values (dash 10 / gap 12, march 0.7 s per 22 px, packet 1.6 s per trip, linear). The infinite CSS animations become one linear dash tween and a repeated packet tween (CSS offset-path) so seeking is exact; the wire first draws on (kit addition, drawIn 0.6 s). AE: png (offset-path).",
+ "demo": { "duration": 5, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "360px", "top": "440px", "width": "1200px", "height": "200px" } }], "motion": [{ "target": "slot", "at": 0.1 }], "bg": "#0f1319" }
+}

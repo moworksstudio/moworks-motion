@@ -1,0 +1,21 @@
+{
+ "name": "device/device-frame-stage",
+ "kind": "block",
+ "group": "device",
+ "title": "Device Frame Stage",
+ "title_vi": "Khung điện thoại / máy tính bảng nhô lên sân khấu",
+ "desc_vi": "Khung điện thoại hoặc máy tính bảng như một đạo cụ thật: nhô lên quá điểm dừng, nhún về chỗ, lơ lửng nhẹ theo nhịp sin trong lúc giữ, rồi chìm xuống. Màn hình là một ô để đặt ảnh giao diện.",
+ "params_vi": "device: phone | tablet · cutout: none | island | notch (tai thỏ) · body: graphite | silver (màu vỏ) · screen: ảnh màn hình (\"auto\" = ảnh mẫu trung tính, \"\" = ô trống) · screen_bg: màu nền màn hình · duration: độ dài cả nhịp (5 s; vào 1,08 s và ra 0,56 s cố định, phần giữ co giãn).",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/device-frame-stage/device-frame-stage.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": ["device", "phone", "tablet", "mockup", "prop", "float"],
+ "notes": "Faithful port: same CSS (geometry, materials, cutouts, logical viewport scaled to the measured screen width) and the same per-frame pose function (pre-roll 0.18 s, rise 0.72 s easeOutCubic to -1.2cqh / 1.01, settle 0.18 s easeInOutQuad, idle sin float 3.2 s / 0.6cqh, sink 0.56 s easeInQuad to 18cqh / 0.96; IN / OUT shrink when the duration is shorter than 1.64 s), run per frame in ctx.code (proxy tween) exactly like the source's render(t). The source's comment calls the rise 'power3.out' but its code is a cubic ease-out; the code is followed. Differences: the HF variables device / cutout / body become params; the screen slot gets an image param (default: generated neutral placeholder screens assets/screen-phone.png / screen-tablet.png at the logical sizes; \"\" shows the source's empty-slot hint, translated); the 'device-settle-soft' hf:sfx event at t = IN is not fired (no audio in layout blocks); the screen background token --surface is a param (default #12161d from the source demo). Demo: the source demo's 960 x 540 mount slot with tablet / island / silver on its radial backdrop (without the debug dashed border).",
+ "demo": { "bg": "#05070d", "duration": 5, "hold": 0,
+   "elements": [{ "id": "back", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px", "background": "radial-gradient(120% 120% at 50% 18%, #222b40 0%, #05070d 65%)" } },
+                { "id": "slot", "type": "box", "style": { "left": "480px", "top": "270px", "width": "960px", "height": "540px", "border-radius": "16px", "overflow": "hidden" } }],
+   "motion": [{ "target": "slot", "at": 0, "params": { "device": "tablet", "cutout": "island", "body": "silver" } }] }
+}

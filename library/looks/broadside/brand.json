@@ -1,0 +1,82 @@
+{
+ "_about": "Public look 'broadside' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "broadside",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/broadside/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "3af0a1e5e61bece19841671672d7732082f03d5699b713475e90323a21dbcc89",
+   "frame-showcase.html": "8d23a2cbeb898568a5626b38ffc864236fb4a09930d59b17c34c45f34c8e4161",
+   "caption-skin.html": "d09b3e09bf497c0f2ed8db9dee181f376f75c65a25246181dc9d8f82cc938d6a"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Barlow",
+   "family": "Barlow",
+   "dir": "google/Barlow",
+   "files": {
+    "400": "Barlow-Regular.ttf",
+    "700": "Barlow-Bold.ttf",
+    "900": "Barlow-ExtraBold.ttf"
+   }
+  },
+  "body": {
+   "css": "Look Barlow",
+   "family": "Barlow",
+   "dir": "google/Barlow",
+   "files": {
+    "400": "Barlow-Regular.ttf",
+    "700": "Barlow-Bold.ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 249.6,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 0.123,
+    "body": 0.092,
+    "disclaimer": 0.069
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 900
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 400,
+    "weightTwoLines": 400
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 400
+   }
+  }
+ },
+ "color": {
+  "ink-black": "#111111",
+  "ink-black-alt": "#1A1A18",
+  "fire-orange": "#E85D26",
+  "cream": "#F0ECE5",
+  "cream-muted": "#888880",
+  "cream-hint": "#505048",
+  "border-dark": "#282826",
+  "black": "#111111",
+  "white": "#F0ECE5"
+ },
+ "kit": {
+  "accent": "fire-orange"
+ }
+}

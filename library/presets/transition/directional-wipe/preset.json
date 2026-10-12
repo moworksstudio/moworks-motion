@@ -1,0 +1,79 @@
+{
+ "name": "transition/directional-wipe",
+ "kind": "effect",
+ "group": "transition",
+ "title": "Directional Wipe",
+ "title_vi": "Quét cảnh theo hướng, có vệt sáng",
+ "desc_vi": "Cảnh mới được quét lộ từ trái sang phải trong lúc trượt vào và lắng từ 1.04x; cảnh cũ lùi trái, nhỏ lại và mờ; vệt sáng trắng chạy ngang và lớp đỏ/xanh nháy 4 lần.",
+ "params_vi": "duration (0.9 s, cũng là thời gian chồng cảnh) · ease · k: hệ số khoảng cách (mặc định = rộng khung / 760) · ring: viền mảnh quanh cảnh mới · accent: màu viền · fill: true (mặc định) cảnh cũ luôn phủ kín khung (trôi + phóng nhẹ thay vì thu 0,96x lộ nền); false = như bản gốc",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/directional-wipe/directional-wipe.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "wipe",
+  "push",
+  "glitch",
+  "light"
+ ],
+ "notes": "Source is a 760 px card; its distances (60 / 70 px, blur 5 px, strobe 16 px) are multiplied by k = frame width / 760 so they keep the same proportions on the full frame (zoom-through-transition uses the same numbers literally at 1920 px). The light band and the strobe are two overlay boxes made in the incoming scene element (above its inner, so the inner's clip-path does not cut them). The 2 px accent ring of the source card is an inset ring inside the incoming inner, faded out over the last 45 % of the wipe (the source keeps it as part of its placeholder card). Source variables palette/corner (card chrome) are not ported. The light band uses screen blend; the strobe is steps(1) with repeat/yoyo (literal tweens). Band and strobe timings scale with duration / 0.9.",
+ "demo": {
+  "scenes": [
+   {
+    "id": "s1",
+    "name": "A",
+    "duration": 1.6,
+    "bg": "#1d3fd8",
+    "elements": [
+     {
+      "id": "a1",
+      "type": "text",
+      "text": "Cảnh thứ nhất",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   },
+   {
+    "id": "s2",
+    "name": "B",
+    "duration": 2.4,
+    "bg": "#ff7a1a",
+    "transition_in": {
+     "preset": "transition/directional-wipe",
+     "duration": 0.9
+    },
+    "elements": [
+     {
+      "id": "b1",
+      "type": "text",
+      "text": "Cảnh thứ hai",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   }
+  ]
+ }
+}

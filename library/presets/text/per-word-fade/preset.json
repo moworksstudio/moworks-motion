@@ -1,0 +1,16 @@
+{
+ "name": "text/per-word-fade",
+ "kind": "effect",
+ "group": "text",
+ "title": "Per Word Rise (fade, no blur)",
+ "title_vi": "Từng chữ nổi lên, hiện dần (không mờ)",
+ "desc_vi": "Như per-word-rise nhưng không blur: từng từ trồi lên và hiện dần, đáp nhẹ rồi đứng yên.",
+ "params_vi": "split: words | chars · rise (0.74 s) · spread (0.62 s) · y: % chiều cao khung · exit: none | fade | up · exitAt",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/per-word-rise/per-word-rise.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "stagger", "fade"],
+ "notes": "Variant of text/per-word-rise requested in the gallery review: the blur is removed, everything else is the source motion.",
+ "demo": { "hold": 1.0 }
+}

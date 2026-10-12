@@ -1,0 +1,16 @@
+{
+ "name": "text/shared-axis-y",
+ "kind": "effect",
+ "group": "text",
+ "title": "Shared axis Y",
+ "title_vi": "Từng từ trồi lên gọn (trục dọc)",
+ "desc_vi": "Các từ lần lượt trồi lên 32 px vào chỗ, nhanh và gọn, không nhoè, không phóng: kiểu chuyển cảnh trục dọc của Material.",
+ "params_vi": "direction: up | down · distance: close | standard | far · offset 32 px · duration 0.22 · stagger 0.075",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/shared-axis-y/shared-axis-y.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "words", "stagger", "material"],
+ "notes": "Motion as the source's timeline integration (opacity 0 -> 1, y 32 px x sign x reach -> 0, 0.22 s power2.out, stagger 0.075). The source's tone variable is the film element's colour.",
+ "demo": { "hold": 1.0 }
+}

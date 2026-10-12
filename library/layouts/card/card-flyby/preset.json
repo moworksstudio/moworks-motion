@@ -1,0 +1,68 @@
+{
+ "name": "card/card-flyby",
+ "kind": "block",
+ "group": "card",
+ "title": "Card Flyby",
+ "title_vi": "Chồng thẻ lao tới theo nhịp, nhanh dần",
+ "desc_vi": "Một cột thẻ xếp theo chiều sâu lăn về phía trước: mỗi nhịp một thẻ lật vào ô đầu với mảng màu quét, thẻ cũ rơi về phía máy quay, khoảng giữa các thẻ ngắn dần cho tới thẻ cuối đứng yên. Hợp cho chuỗi tên dự án, tiêu đề, poster dồn lên một cú drop.",
+ "params_vi": "theme: Palette theme — aurora | ember | mono | slate, mặc định \"aurora\" · bgColor: Stage background override (empty = theme bg) · cards: Deck JSON — array of {tag,title,meta,color?} · landings: Landing beats JSON — abs seconds, one per card · yaw: Scene yaw (deg, side tilt of the whole deck), mặc định -12 · duration: độ dài của block (6 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/templates/card-flyby/index.html",
+  "sha256": {
+   "index.html": "22ee2bdc2eca84c124356e7b7d3e8d73f2db65641d5cbf1c7667a14d2ec457a4",
+   "program.json": "0bf66d1c680f5668794bc03939ced411164b0650803b1288dadfed9147bdc975"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "beat",
+  "cards",
+  "3d"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/index.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\"). Source: A depth column of cards rolls forward; each landing beat tumbles the next card into the front slot with a solid colored wipe, the dwell shrinking card to card so the deck accelerates into a held final card.",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "times": [
+  "landings"
+ ],
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

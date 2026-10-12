@@ -1,0 +1,58 @@
+{
+ "name": "camera/scroll-story",
+ "kind": "block",
+ "group": "camera",
+ "title": "Scroll Camera Story",
+ "title_vi": "Cuộn trang điện ảnh nhiều lớp thị sai",
+ "desc_vi": "Một lượt cuộn ép nhịp kiểu điện ảnh: cảnh dài nhiều phần trôi qua máy quay từ trên xuống, các lớp chiều sâu thị sai khác nhau, mỗi phần trồi lên khi máy quay tới.",
+ "params_vi": "sections: Sections, mặc định 3 · travel: Travel, mặc định 220 · cues: Cues · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: scroll-camera-story-sections), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/scroll-camera-story/scroll-camera-story.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "camera",
+  "scroll",
+  "parallax",
+  "story",
+  "sections",
+  "slot"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/scroll-camera-story.html) in a kit film, mounted by ctx.hf.  Source: A compressed forced-scroll cinematic pass: a tall scene of slotted sections travels past the camera top to bottom, depth layers parallax at different rates, each section rises as the camera reaches it, and the pass decelerates into a held final section.",
+ "demo": {
+  "duration": 5.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "name": "text/matrix-decode",
+ "kind": "effect",
+ "group": "text",
+ "title": "Matrix decode",
+ "title_vi": "Ô số 0 xanh lá giải mã thành chữ",
+ "desc_vi": "Một hàng ô chữ xanh lá phát sáng lần lượt trồi lên dưới dạng số 0, rồi từng ô nháy qua vài ký tự mã và chốt thành chữ thật, từ trái sang phải. Kiểu Matrix, chữ máy.",
+ "params_vi": "accent: green | blue | violet · glow: none | standard | strong · decode: có giải mã thành chữ (true) hay giữ số 0 như bản gốc (false) · decodeAt: lúc bắt đầu giải mã (0.6 s sau at) · decodeStagger 0.05 · flips: số ký tự nháy mỗi ô (3) · flip: 0.05 s mỗi lần · glyphs: bộ ký tự nháy",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/matrix-decode/matrix-decode.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["matrix", "decode", "code", "glow", "monospace"],
+ "check_end": false,
+ "notes": "Rise (opacity 0 -> 1, y 12 -> 0, 0.18 s power2.out, stagger 0.035), accent colours, glow and cell width as in the source (px values at its 64 px type, scaled with the element's size). The decode is a kit addition (the source only shows zeros and stores the word in data-final for a decode routine); decode: false gives the source exactly. Each cell stacks its glyphs in one grid cell and switches them with sets. The source's monospace face: use the kit's \"RMono\" on the element. End check off: the cells are wider than the plain letters (0.64 em minimum, 3 px gap).",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "GIẢI MÃ", "style": { "color": "#fafafa", "font-family": "RMono", "font-weight": "700", "font-size": "140px", "line-height": "1", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.3 }], "bg": "#05080a" }
+}

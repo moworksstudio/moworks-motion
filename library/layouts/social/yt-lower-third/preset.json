@@ -1,0 +1,51 @@
+{
+ "name": "social/yt-lower-third",
+ "kind": "block",
+ "group": "social",
+ "title": "Channel lower third (video site style)",
+ "title_vi": "Lower third kênh với nút đăng ký kiểu trang video",
+ "desc_vi": "Thanh bo tròn trắng trượt từ dưới lên với avatar, tên kênh, số người đăng ký; nút Đăng ký bị nhấn, nảy lò xo rồi đổi thành Đã đăng ký có dấu tick; cuối cùng thanh trượt xuống.",
+ "params_vi": "name, subs: tên kênh và số người đăng ký · subscribe, subscribed: chữ nút trước và sau khi bấm · avatar: đường dẫn ảnh (trống = ô tròn chữ cái) · avatarColor · bottom: cách mép dưới (px) · exitAt: giây thanh ra (null = không ra)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/yt-lower-third/yt-lower-third.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_ui": true,
+ "brand_safe": false,
+ "tags": [
+  "social",
+  "subscribe",
+  "lower third",
+  "button",
+  "overlay",
+  "channel"
+ ],
+ "notes": "Layout and colours as in the source (white pill, radius 60, padding 20 / 32 / 20 / 20, gap 28, shadow 0 6 32; avatar 96 px; channel name 34 px bold #0f0f0f, subscribers 22 px #606060; button 220 x 68 px radius 34 #0f0f0f, label 24 px bold, Subscribed with a 24 px check in front). Motion (times relative to `at`, as in the source's own timeline): pill y 300 and opacity 0 -> 0 and 1 over 0.5 s power3.out at 0.1 s; button scale 0.92 over 0.15 s power2.out at 1.0 s, back to 1 over 0.4 s elastic.out(1, 0.4) at 1.15 s; Subscribe opacity 1 -> 0 over 0.08 s at 1.15 s, Subscribed 0 -> 1 over 0.08 s at 1.18 s; pill out y 0 -> 300, opacity 1 -> 0 over 0.25 s power3.in at exitAt (3.8 s). brand_ui: imitates a real video site's channel / subscribe card (the button keeps the source's dark colour, there is no colour change in the source). Differences (brand material replaced): the avatar photo (a JPEG in the source folder) is an initials disc on a plain colour (param avatarColor), or a picture via `avatar`; no logo is used anywhere. Other differences: the port centres the pill horizontally with auto margins (so the y tween never fights a CSS translate) and takes `bottom` as a param (default 80, as the source); the font is the film's font (source: DM Sans from the web). Default texts are Vietnamese (source: English); the placeholder channel is made up. 05/10/2026: the source's own assets are back as defaults (user's decision: open-source assets are used as shipped); pass a param to use your own.",
+ "demo": {
+  "bg": "#3b4252",
+  "duration": 4.4,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0.2,
+    "params": {}
+   }
+  ]
+ }
+}

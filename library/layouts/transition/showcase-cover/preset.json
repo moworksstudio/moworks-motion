@@ -1,0 +1,55 @@
+{
+ "name": "transition/showcase-cover",
+ "kind": "block",
+ "group": "transition",
+ "title": "Cover Transitions",
+ "title_vi": "Bộ chuyển cảnh che / mở",
+ "desc_vi": "Trình diễn các chuyển cảnh trượt che và mở.",
+ "params_vi": "duration: độ dài của block (21 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/transitions-cover/transitions-cover.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "transition",
+  "showcase"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/transitions-cover.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Showcase of cover/uncover slide transitions",
+ "demo": {
+  "duration": 21.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 21.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

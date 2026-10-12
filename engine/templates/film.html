@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<!-- Moworks Motion film (plan option B): a HyperFrames composition. Motion is written as literal GSAP tweens on ONE paused timeline
+     (window.__timelines["root"]) so HyperFrames Studio can edit it; scenes are clips (data-start / data-duration).
+     Rendered by the kit backend (engine/render/capture.py: kit.py mp4 / mov) or by HyperFrames; both read this file.
+     Rules: every element that moves has an id; never animate the clip elements themselves (move an inner layer); a second fromTo on the
+     same element needs immediateRender:false; no Math.random / Date / timers; text masks: hide by >= 135 % (Vietnamese diacritics). -->
+<style>
+  @font-face { font-family: "RFlex"; font-weight: 100 1000; src: url("assets/fonts/RobotoFlex-var.woff2") format("woff2"); font-display: block; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow: hidden; }
+  #stage { position: relative; width: {{W}}px; height: {{H}}px; overflow: hidden; font-family: "RFlex", sans-serif; color: #111;
+           font-kerning: normal; font-variant-ligatures: none; }
+  /* the opaque background is its own composited layer: keeps text greyscale in HyperFrames renders (spike2) */
+  #bg { position: absolute; inset: 0; background: #ffffff; will-change: transform; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+  .inner { position: absolute; inset: 0; }
+  .mask { position: absolute; overflow: hidden; }
+  .title { font-size: 120px; font-weight: 760; line-height: 1.1; }
+  .endbg { position: absolute; inset: 0; background: #000; }
+  .end { position: absolute; left: 0; right: 0; top: 46%; text-align: center; font-size: 96px; font-weight: 800; color: #fff; }
+</style>
+</head>
+<body>
+<div id="stage" data-composition-id="root" data-width="{{W}}" data-height="{{H}}" data-duration="5" data-fps="60">
+  <div id="bg"></div>
+
+  <div id="s1" class="clip scene" data-start="0" data-duration="3.5" data-track-index="1">
+    <div id="s1in" class="inner">
+      <div class="mask" style="left:8%;top:40%;width:84%;height:160px"><div id="title" class="title">{{TITLE}}</div></div>
+    </div>
+  </div>
+
+  <div id="end" class="clip scene" data-start="3.5" data-duration="1.5" data-track-index="1">
+    <div class="endbg"></div>
+    <div id="endtxt" class="end">END TAG</div>
+  </div>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#title", { yPercent: 135 }, { yPercent: 0, duration: 0.8, ease: "expo.out" }, 0.3);
+  window.__timelines = window.__timelines || {};
+  window.__timelines["root"] = tl;
+</script>
+</body>
+</html>

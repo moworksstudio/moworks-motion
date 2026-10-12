@@ -1,0 +1,16 @@
+{
+ "name": "lower/news-ticker",
+ "kind": "block",
+ "group": "lower",
+ "title": "News ticker",
+ "title_vi": "Thanh tin tức có dòng chữ chạy",
+ "desc_vi": "Thanh tin kiểu truyền hình: khung kính tối trồi lên, khối TRỰC TIẾP đỏ trượt vào với chấm nhấp nháy, tiêu đề quét vào có một cụm từ màu, giờ rơi xuống, nhãn TIN NÓNG trồi lên, vệt sáng lướt hai lần, hàng tin chạy ngang có chấm đỏ và số liệu nổi bật.",
+ "params_vi": "live, desk, headline, time, label: chữ ([ngoặc vuông] = cụm từ màu trong tiêu đề, số liệu nổi bật trong items; tiêu đề một dòng, tối đa khoảng 1140 px ở cỡ 48 px, khoảng 40 ký tự, nếu dài hơn sẽ chạm ô giờ) · items: danh sách tin chạy · red: màu đỏ chính · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/news-ticker/news-ticker.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "news", "broadcast", "ticker", "breaking"],
+ "notes": "Layout, gradients and timing as in the source. Changed: the film's font instead of Inter (no network); content as params (the source's markup had the accent word and the metric chips inline: here [brackets] mark them); the ticker repeats the first two items as the source did; the brand block's gradient end and the separator glow follow the red param (source #9f1220 and rgba of #e11d2e). The flash keeps its -16 deg skew as an explicit tween value (it is a picture sequence in After Effects).",
+ "demo": { "bg": "#4a5a70", "duration": 7.2 }
+}

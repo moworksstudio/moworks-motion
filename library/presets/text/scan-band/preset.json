@@ -1,0 +1,16 @@
+{
+ "name": "text/scan-band",
+ "kind": "effect",
+ "group": "text",
+ "title": "Scan band",
+ "title_vi": "Dải nhiễu xéo quét qua chữ",
+ "desc_vi": "Chữ hiện dần, rồi một dải xéo quét ngang một lần: trong dải, chữ tách thành bản đỏ và xanh lơ và lệch sang bên; ngoài dải chữ vẫn sạch. Hợp với logo chữ, tên thương hiệu.",
+ "params_vi": "angle: độ nghiêng dải (12°, -30..30) · fadeIn: hiện dần 0.45 s trước khi quét · sweep: thời gian quét (1.65 s) · exit: none | fade · duration: độ dài cả hiệu ứng khi có exit (3.5 s)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/scan-band/scan-band.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["glitch", "band", "wordmark", "chromatic", "sweep"],
+ "notes": "Band geometry and sweep as in the source, in frame coordinates (-60 % -> 160 % of the frame width, half width 6 % W, lean as the source computes it); the clones sit inside the element over its own text with the source's offsets (cqw = the frame width). The source's drop shadow and font fit belong to the film element. End check: the band has left the text by the end.",
+ "demo": { "duration": 3.0, "hold": 0.2, "elements": [{ "id": "t1", "type": "text", "text": "MOWORKS", "style": { "color": "#f7f8fa", "font-weight": "850", "font-size": "220px", "letter-spacing": "-0.065em", "line-height": "0.86", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.1 }] }
+}

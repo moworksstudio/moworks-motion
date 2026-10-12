@@ -1,0 +1,30 @@
+# Moworks Motion: what stays on this machine only (never on GitHub)
+# the user's guideline packs (client material, some under NDA)
+/brands/*
+!/brands/README.md
+# the studio's own reference films / images
+/library/refs/video/*
+!/library/refs/video/README.md
+/library/refs/image/*
+!/library/refs/image/README.md
+# AI models: install.bat / update.bat download them (engine/models.json)
+/engine/models/*
+!/engine/models/README.md
+
+# machine and sync files
+__pycache__/
+*.pyc
+desktop.ini
+Thumbs.db
+~$*
+.tmp.drivedownload/
+.tmp.driveupload/
+*.part
+# "Mới nhập": presets waiting for the user's Giữ / Bỏ on the Gallery (kept ones move into library/presets|layouts)
+/library/incoming/
+/library/gallery/incoming/
+# the maintainer's working notes (open items, the user's tasks, the build log): they name clients and tests, so they stay on this
+# machine (user 09/10/2026: step 7 of the release plan)
+/docs/TODO.md
+/docs/USER-TASKS.md
+/docs/RECAP-SESSION.md

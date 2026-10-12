@@ -1,0 +1,70 @@
+{
+ "name": "motion/anime-path",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Follow a path (anime.js createMotionPath)",
+ "title_vi": "Đi theo đường SVG, xoay theo hướng (anime.js motion path)",
+ "desc_vi": "Một phần tử chạy dọc một đường SVG và tự xoay theo hướng đi (máy bay giấy, xe trên bản đồ, chấm sáng trên biểu đồ).",
+ "params_vi": "path: #id đường SVG · offset: điểm bắt đầu 0-1 · duration (2.4) · ease (inOutSine) · rotate: false = luôn đứng thẳng",
+ "ae": "keyframes",
+ "tags": [
+  "anime.js",
+  "svg",
+  "motion path",
+  "follow"
+ ],
+ "source": {
+  "label": "anime.js 4.5.0 (Julian Garnier, MIT)",
+  "repo": "juliangarnier/anime",
+  "commit": "v4.5.0",
+  "path": "src/ (npm animejs@4.5.0, engine/vendor/libs/anime)"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/anime/anime.umd.min.js",
+  "libs/aimk/anime-sync.js"
+ ],
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Kit code (preset.js + engine/vendor/libs/aimk/anime-sync.js) calling anime.js 4.5.0 as shipped (engine/vendor/libs/anime, MANIFEST.json sha256). anime.js's own loop is off: the film's GSAP timeline seeks it every frame; randomness seeded. The bake puts back what anime.js wrote (build.py BAKE_JS + AIMKAnime.reverts).",
+ "demo": {
+  "duration": 3.0,
+  "hold": 0.5,
+  "elements": [
+   {
+    "id": "rbox",
+    "type": "box",
+    "style": {
+     "left": "360px",
+     "top": "240px",
+     "width": "1200px",
+     "height": "600px"
+    },
+    "html": "<svg viewBox=\"0 0 1200 600\" width=\"1200\" height=\"600\" fill=\"none\"><path id=\"route\" d=\"M60 480 C 260 80, 520 80, 620 300 S 980 560, 1140 120\" stroke=\"#3a3f4b\" stroke-width=\"6\" stroke-dasharray=\"14 16\"/></svg>"
+   },
+   {
+    "id": "rider",
+    "type": "box",
+    "style": {
+     "left": "330px",
+     "top": "222px",
+     "width": "60px",
+     "height": "36px",
+     "border-radius": "10px",
+     "background": "#ff6a2b"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "rider",
+    "at": 0.3
+   }
+  ]
+ },
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "name": "text/caption-kinetic-slam",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: kinetic slam",
+ "title_vi": "Phụ đề từng từ cỡ lớn đập vào giữa khung",
+ "desc_vi": "Mỗi lần một từ theo giọng đọc, chữ hẹp in hoa cỡ rất lớn giữa khung: từ đập vào khi được nói, luân phiên bốn kiểu (rơi từ trên có nảy, quất từ trái, quất từ phải, bật từ 40 %), từ khoá màu vàng, đọc xong thì tắt.",
+ "params_vi": "words: \"voice\" · keywords: từ màu vàng · size 220 (tự thu nhỏ cho vừa 1720 px) · upper · color, key",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-kinetic-slam/caption-kinetic-slam.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["captions", "subtitles", "voice", "kinetic type", "slam", "one word"],
+ "notes": "Entrances by word index (mod 4: y -120 back.out(1.7) 0.22 s; x -300 / +300 expo.out 0.2 s; scale 0.4 back.out(2.2) 0.24 s), fade-out 0.1 s at the word end, 220 px fitted to 1720 px as in the source. Changed: Anton becomes Roboto Flex at wdth 30 / weight 800 (no network; in After Effects the width axis is lost and the port fits the tracking); words from the voice transcript; keywords are words instead of indexes. The fade-out is shortened to the gap before the next word (at least 0.02 s): in the source a word still faded for 0.1 s while the next one slammed in at the same place, so two words overlapped for about 3 frames (kit rule 1, found by kit.py collide).",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.42,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": "demo" } } ]
+ }
+}

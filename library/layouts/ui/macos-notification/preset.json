@@ -1,0 +1,18 @@
+{
+ "name": "ui/macos-notification",
+ "kind": "block",
+ "group": "ui",
+ "title": "macOS notification banner",
+ "title_vi": "Thông báo kiểu macOS",
+ "desc_vi": "Banner thông báo kính mờ ở góc phải trên, trượt vào từ phải, giữ một lúc rồi trượt ra.",
+ "params_vi": "app_name, time_label, title, body: chữ · icon_letter: chữ trong ô icon (mặc định HF) · icon_from, icon_to: màu gradient icon · right, top: vị trí (px) · exitAt: giây trượt ra (null = ở lại)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/macos-notification/macos-notification.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["notification", "macos", "banner", "overlay", "ui"],
+ "notes": "Sizes, colours, radii and timings as in the source (slide in at 0.2 s for 0.5 s power3.out, out at 4.2 s for 0.3 s power3.in). Differences: font = the film's font (source: Inter from Google Fonts); all texts are params with Vietnamese defaults; the 5 s composition length is the demo duration; the exit is a param (exitAt, null = no exit). The banner uses backdrop-filter blur(40px), so ae is png (AE has no backdrop blur). 05/10/2026: source artwork restored as default (user's decision: open-source registry artwork is used as shipped): the app icon is the source's own SVG, a 36 px violet gradient square (#6366f1 -> #8b5cf6, rx 8) with the bold \"HF\" mark; params icon_letter (the mark text), icon_from and icon_to still let a film pass its own.",
+ "demo": { "bg": "#2b3a55", "duration": 5 }
+}

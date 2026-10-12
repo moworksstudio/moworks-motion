@@ -1,0 +1,19 @@
+{
+ "name": "title/stitched-draw",
+ "kind": "block",
+ "group": "title",
+ "title": "Stitched text draw",
+ "title_vi": "Chữ được khâu bằng chỉ",
+ "desc_vi": "Một từ được khâu bằng chỉ màu: kim chạy dọc từng nét, để lại mũi chỉ và lỗ kim, cuối mỗi nét có đầu chỉ thò ra rồi kéo căng; các chữ cái khâu lần lượt. Chỉ vẽ được chữ in hoa Latin A–Z và số (dấu tiếng Việt bị bỏ).",
+ "params_vi": "text: từ (tối đa 12 ký tự, chữ hoa không dấu) · stitch: fine | coarse (mũi nhỏ / to) · accent: màu chỉ · fg: màu kim và lỗ kim · duration: độ dài gốc 4 s · exit: none | fade | up",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/stitched-text-draw/stitched-text-draw.html" },
+ "license": "Apache-2.0",
+ "scripts": ["libs/hf/stitched-text-draw.js"],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["stitch", "thread", "craft", "draw-on", "handmade"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "The source's code runs in the film (vendor script made from it with a script, colour tokens turned into params). Its accent tokens fell back to zinc #52525b without a theme; the kit default is green #71f5a7. Vietnamese: the stroke alphabet has no marks, so marks are removed (Đ -> D); for Vietnamese titles use another effect.",
+ "demo": { "duration": 4, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }], "motion": [{ "target": "slot", "at": 0 }], "bg": "#101215" }
+}

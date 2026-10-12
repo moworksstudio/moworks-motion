@@ -1,0 +1,60 @@
+{
+ "name": "effect/avatar-cloud",
+ "kind": "block",
+ "group": "effect",
+ "title": "Avatar Cloud",
+ "title_vi": "Đám mây avatar nối về nhãn trung tâm",
+ "desc_vi": "Các avatar chữ cái hiện dần thành một đám mây hình elip, các đường nối mảnh vẽ từ cộng đồng về nhãn chứng thực ở giữa.",
+ "params_vi": "avatarCount: Avatar count, mặc định 10 · showLinks: Show links (yes | no), mặc định \"yes\" · label: Proof label, mặc định \"50k builders\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/avatar-cloud/avatar-cloud.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "effects",
+  "avatars",
+  "community",
+  "network",
+  "social-proof",
+  "prove"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/avatar-cloud.html) in a kit film, mounted by ctx.hf. Re-seeking leaves every element in the same state (checked 06/10/2026); the few differing pixels are the browser paint of its soft links, so the seek limit is raised for this demo. Source: Lettermark avatars populate a loose elliptical cloud while fine SVG links draw between the community and its central proof label.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "label": "50 nghìn nhà sáng tạo",
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "seek_tolerance": 0.003
+ }
+}

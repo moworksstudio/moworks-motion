@@ -1,0 +1,18 @@
+{
+ "name": "ui/thread-message-stack",
+ "kind": "block",
+ "group": "ui",
+ "title": "Thread message stack",
+ "title_vi": "Chồng tin nhắn trò chuyện",
+ "desc_vi": "Từng tin nhắn nảy vào từ phía người gửi, đẩy các tin cũ lên, trên nền gradient ấm trôi chậm.",
+ "params_vi": "messages: danh sách {side: incoming | outgoing, text, sender (tuỳ chọn)}, mỗi tin một dòng, xuống dòng bằng \\n · stagger: giây giữa 2 tin · hold: giây giữ cuối · duration: độ dài cảnh (giây) · out_fill, out_ink, in_fill, in_ink: màu bong bóng",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/thread-message-stack/thread-message-stack.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": ["chat", "messages", "conversation", "social", "ui"],
+ "notes": "Same sizes, colours, radii, timings and eases as the source. Differences: font = the film's font (source: -apple-system / Helvetica Neue / Segoe UI system stack); the source measured every row height at mount (offsetHeight), but fonts are not loaded when a preset builds, so the height is computed with the same formula the measurement gives for a single line (bubble 54.6 px per line + 48 px padding, sender row 32 px, pitch = max(118, height) + 22) and a message is one line unless it contains a newline (white-space: pre instead of pre-wrap / overflow-wrap anywhere): break long messages with \\n; the source's JSON data block became the messages param (Vietnamese defaults); hold / stagger / duration are params (defaults 1 / 0.86 / 8) and the composition length (8 s) is the demo duration; bubble colours are params. Imitates iMessage-style bubbles (brand_ui).",
+ "demo": { "bg": "#2e241a", "duration": 8 }
+}

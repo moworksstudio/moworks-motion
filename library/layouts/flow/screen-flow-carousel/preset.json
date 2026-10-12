@@ -1,0 +1,68 @@
+{
+ "name": "flow/screen-flow-carousel",
+ "kind": "block",
+ "group": "flow",
+ "title": "Screen flow carousel",
+ "title_vi": "Băng chuyền màn hình ứng dụng",
+ "desc_vi": "Hai đến năm màn hình xếp hàng ngang, màn giữa to và sáng; mỗi nhịp cả hàng được ném sang màn kế tiếp rồi dừng êm, vòng nhấn và chú thích bên dưới đổi theo.",
+ "params_vi": "screens: số màn (2 - 5) · captions: chú thích từng màn (mảng hoặc chuỗi cách nhau dấu phẩy) · cues: giây của từng lần chuyển (rỗng = chia đều) · images: ảnh từng màn (rỗng = màn khung xương) · accent: màu nhấn · exit: none | fade | up · duration: độ dài gốc 5 s · bg, base, fg, surface, border, muted, shadow: màu · radius: bo góc (px, 0 = mặc định)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/screen-flow-carousel/screen-flow-carousel.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "carousel",
+  "app screens",
+  "product demo",
+  "rail",
+  "ui flow"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Geometry, envelope and eases as in the source (screen 44 cqw wide with a 4 cqw gap, rail 64 cqh tall at 9 cqh, captions band at 78 cqh; stage settle 0.9 s; advance 0.84 s = throw 42 % power4.out to pos - 0.14 then catch power2.out; non-active screens scale 0.94 / opacity 0.62; ring and caption swaps with their delays; evenly re-spaced cues clamped inside the hold; exit fade / up 0.45 s; everything shrinks together when the duration is short). cqw / cqh / cqmin are taken from the target box (custom properties --cw / --ch / --cm hold one percent of it; the source demo mounted it in an 84 % x 78 % card, the gallery demo fills the whole frame). The rail position was the CSS custom property --sfc-pos tweened as a number; it is the rail's x here (x = (50 - 22 - pos x 48) cqw in px) with the same two segments, so it is ordinary tweens; the screens, rings and captions are written as fromTo with explicit start values instead of a set + to. Source variables: screens, captions (comma string; array accepted), cues (comma string; array accepted), exit kept; accent is a hex colour (source: green / blue / violet reading theme tokens); theme tokens became params with the source fallbacks (fg #f8fafc, surface #0f141b, border #475569, muted #8b93a3; --bg for painting is `bg`, the dark tone used when mixing is `base` #05070c). Screens are the source's four token-styled skeletons (list, cards, chart, detail) unless `images` gives a picture for that screen (source: slot templates); the first-of-type accent dot rule of the source never matched anything, so the list dots are not tinted, as in the source render. The caption dot (::before in the source) is a real child span. Captions use the system monospace stack (Consolas / Cascadia Mono / Menlo), no font file ships. color-mix() is written as rgba / computed hex. Default captions are Vietnamese (source: Overview, Details, Insights, Activity, Settings). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "radial-gradient(ellipse at 50% 40%, #171a20 0%, #0b0c0e 74%)",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "screens": 4,
+     "captions": [
+      "Thu thập",
+      "Biên soạn",
+      "Kết xuất",
+      "Xuất bản"
+     ],
+     "cues": [
+      1.3,
+      2.4,
+      3.5
+     ],
+     "accent": "#61a8ff",
+     "surface": "#14171c",
+     "border": "#343a46",
+     "duration": 5
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "name": "transition/iris-reveal",
+ "kind": "effect",
+ "group": "transition",
+ "title": "Iris Reveal",
+ "title_vi": "Mở mống mắt (vòng tròn)",
+ "desc_vi": "Vòng tròn mở từ một điểm, lộ cảnh mới trên nền cảnh cũ đã tối và xám đi; viền mảnh chạy theo mép vòng và tan trước khi vòng ra hết khung.",
+ "params_vi": "duration (1.45 s = open + 1.1 s, thời gian khác thì co giãn đều) · x, y: tâm vòng (% khung) · open: trễ trước khi mở (0.35 s) · register: color | plain · accent: màu viền · rim: bật/tắt viền",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/iris-reveal/iris-reveal.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "iris",
+  "circle",
+  "clip-path",
+  "reveal"
+ ],
+ "notes": "The outgoing scene's grayscale(1) brightness(0.76) is static in the source (state A is dimmed from the first frame); in a film it is eased in over the first 0.32 s (the source's stage settle time, power2.out) so the outgoing scene does not jump grey. The rim is an SVG circle in the source; here a div ring (border-radius 50 %, border = the same max(2, 0.21 % of width) px) tweened in left/top/width/height with the same power2.inOut ease as the clip circle, centred on the clip edge, so both stay locked. The ring lives in the incoming scene element (above its inner, not clipped by it). Sound cue and exit variable are not ported; the source slots are the film's own two scenes. The circle clip-path is a plain tween; in After Effects it has to be rebuilt as an elliptical mask. will-change: filter is set on the outgoing scene (renderer raster noise made the seek check flaky without it).",
+ "demo": {
+  "scenes": [
+   {
+    "id": "s1",
+    "name": "A",
+    "duration": 1.6,
+    "bg": "#14213d",
+    "elements": [
+     {
+      "id": "a1",
+      "type": "text",
+      "text": "Cảnh thứ nhất",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   },
+   {
+    "id": "s2",
+    "name": "B",
+    "duration": 2.4,
+    "bg": "#ff7a1a",
+    "transition_in": {
+     "preset": "transition/iris-reveal",
+     "duration": 1.45
+    },
+    "elements": [
+     {
+      "id": "b1",
+      "type": "text",
+      "text": "Cảnh thứ hai mở ra",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   }
+  ]
+ }
+}

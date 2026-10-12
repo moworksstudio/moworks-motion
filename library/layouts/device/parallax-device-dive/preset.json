@@ -1,0 +1,22 @@
+{
+ "name": "device/parallax-device-dive",
+ "kind": "block",
+ "group": "device",
+ "title": "Parallax Device Dive",
+ "title_vi": "Điện thoại nhô lên rồi máy quay lao vào màn hình",
+ "desc_vi": "Điện thoại có ứng dụng bảng số liệu nhô lên quá điểm dừng rồi nhún về, lơ lửng một nhịp, sau đó máy quay lao vào màn hình: điện thoại phóng to 6,4 lần trong khi thanh đầu, thẻ biểu đồ và hai thẻ số tách lớp theo chiều sâu rồi về lại.",
+ "params_vi": "accent: màu nhấn · kicker, app_title, avatar: đầu ứng dụng · hero_label, value, delta: thẻ biểu đồ · stat1_label / stat1_value, stat2_label / stat2_value: hai thẻ số · duration: độ dài (4,5 s; vào 1,05 s và lao 1,65 s cố định, phần giữ co giãn).",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/parallax-device-dive/parallax-device-dive.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": ["phone", "device", "dive", "zoom", "parallax", "dashboard", "transition"],
+ "notes": "Faithful port: same CSS (container units of the target box) and the same envelope as literal tweens: rise from y 18cqh / scale 0.86 / opacity 0 to -1cqh / 1.02 (78 % of IN, power3.out), settle (power2.out), hold float -0.55cqh and back (sine.inOut), dive scale 6.4 / y 2.4cqh (power4.in over OUT), cutout fade (45 % of the dive, power2.out), header -1.2cqh x1.035, hero -2.1cqh x1.09, stats +2.4cqh x1.16 (power4.in over 72 % of OUT), then back to 0 / 1 (power4.out); IN / OUT shrink below 2.7 s. cqh tween values are converted to px of the target box. Differences: texts are Vietnamese params (source: 'Overview', app_title variable, 'HF' avatar, 'Weekly activity', 'Conversion', 'Active users'); accent is a colour (source: an enum riding theme tokens whose fallbacks are all #a1a1aa, which is what the source demo shows); text uses the film's font (source: Inter). Demo = the source demo (76 % x 80 % mount card on the dark radial backdrop).",
+ "demo": { "bg": "#0b0c0e", "duration": 4.5, "hold": 0,
+   "elements": [{ "id": "back", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px", "background": "radial-gradient(ellipse at 50% 44%, #202033 0%, #0b0c0e 68%)" } },
+                { "id": "slot", "type": "box", "style": { "left": "230px", "top": "108px", "width": "1459px", "height": "864px", "overflow": "hidden", "border": "1px solid rgba(255, 255, 255, 0.14)", "border-radius": "28px",
+                  "background": "#0b0c0e", "box-shadow": "0 48px 120px rgba(0, 0, 0, 0.52)" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

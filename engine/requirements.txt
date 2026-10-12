@@ -1,0 +1,14 @@
+# Moworks Motion: Python packages (versions tested on the original machine, 05/10/2026). Installed by install.bat (engine/install.py); update.bat installs what a new version adds.
+playwright==1.63.0        # renders films (Chromium: python -m playwright install chromium)
+numpy==2.5.1
+pillow==12.3.0
+fonttools==4.66.1         # fonts: find / check Vietnamese, woff2 -> ttf, AE font names
+brotli==1.2.0             # woff2 fonts
+imageio-ffmpeg==0.6.0     # its own ffmpeg.exe (gallery clips, audio), no separate ffmpeg install needed
+psd-tools[composite]==1.23.0   # kit.py psd (PSD / PSB layers, effects); [composite] brings scipy + scikit-image
+python-pptx==1.0.2        # PowerPoint intake
+# optional (big; the installer asks)
+faster-whisper==1.2.1     # transcripts of voice-overs (model downloads into <kit>/engine/models once)
+rembg==2.0.85             # offline background removal (models in <kit>/engine/models/rembg)
+pymupdf==1.28.2           # kit.py pdf: guideline PDF pages as PNG (optional, about 20 MB)
+librosa==1.0.0            # kit.py beats / align: sharper onsets, beats when a song changes tempo (optional, about 30 MB with scikit-learn)

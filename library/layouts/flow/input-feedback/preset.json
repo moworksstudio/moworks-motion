@@ -1,0 +1,18 @@
+{
+ "name": "flow/input-feedback",
+ "kind": "block",
+ "group": "flow",
+ "title": "Input feedback",
+ "title_vi": "Ô nhập có phản hồi hợp lệ / lỗi",
+ "desc_vi": "Ô nhập trồi lên, rung ngang một nhịp, nhãn trạng thái nảy vào, dòng gợi ý hạ xuống bên dưới; trạng thái hợp lệ màu xanh hoặc lỗi màu đỏ.",
+ "params_vi": "status: valid | error · label, value, hint: chữ (hint nên khớp trạng thái) · clear: ký tự nút xóa · chipOk, chipErr: chữ nhãn trạng thái · ink, labelInk, surface, clearBg, clearInk: màu · scale: độ phóng to (2.8)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/input-feedback/input-feedback.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["input", "form", "validation", "shake", "ui flow"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, colours, radii, spacing and the four tweens are as in the source (widget y 22 + opacity 0.34 s power2.out at 0.3 s; shell shake x 0 -> -12, 0.06 s linear, yoyo with 5 repeats = six 0.06 s half-shakes ending back at 0, at 0.72 s, written as a fromTo with explicit start x; chip scale 0 -> 1 + opacity 0.28 s back.out(2) at 1.18 s; hint y -6 -> 0 + opacity 0.22 s power2.out at 1.28 s). The valid and error colour sets are those of the source (valid: border #d4d4d8, chip #dcfce7 / #166534, hint #16a34a; error: border #fca5a5, chip #fee2e2 / #991b1b, hint #dc2626); the valid border is grey in the source css although its comment calls it green, grey is kept. The shake also runs for the valid state, as in the source. The demo's 2.8x enlargement is the param `scale` (a wrapper with transform: scale that is never tweened). Font: the film's font instead of Inter (weights 850 / 760 / 900 as in the source's final rules). Content as params with Vietnamese defaults (source: Email, mia@example.com, Looks good.); the status chip text is a param (source: OK and !); the clear button and the chip are div elements instead of button / span. A blank value or hint is not replaced by a default (the source fell back to its English defaults).",
+ "demo": { "bg": "#f8fafc", "duration": "auto", "hold": 1.3 }
+}

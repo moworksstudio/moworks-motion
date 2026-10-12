@@ -1,0 +1,16 @@
+{
+ "name": "text/streaming-text",
+ "kind": "effect",
+ "group": "text",
+ "title": "Streaming text",
+ "title_vi": "Câu trả lời AI hiện từng cụm từ",
+ "desc_vi": "Chữ hiện như câu trả lời AI đang chạy: từng cụm từ đến theo nhịp không đều (hai từ cùng lúc, ngừng, ba từ nữa), mỗi từ hiện màu xám rồi đậm dần sang màu chữ thật trong 0.27 giây. Không phải máy đánh chữ đều đều.",
+ "params_vi": "fresh: màu xám lúc từ mới đến (auto: tự chọn theo màu chữ) · speed: nhân tốc độ nhịp (1)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/streaming-text/streaming-text.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["ai", "streaming", "words", "chat", "answer"],
+ "notes": "GAPS table (seconds between words, zeros arrive together) and the 0.2667 s linear grey -> ink ramp as in the source's timeline integration; each word is hidden until its set. The source's size / tone variables are the element's size and colour (its paragraph style: line-height 1.43, letter-spacing 0.046em, max 24.5 em).",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "Bạn không cần phần mềm dựng phim. Bộ kit dựng chính HTML bạn đã viết thành video chuẩn từng điểm ảnh, lần nào cũng như nhau.", "style": { "color": "#141414", "font-size": "54px", "line-height": "1.43", "letter-spacing": "0.02em", "width": "1300px", "left": "310px", "top": "330px" } }], "motion": [{ "target": "t1", "at": 0.3 }], "bg": "#f6f5f1" }
+}

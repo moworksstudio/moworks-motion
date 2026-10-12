@@ -1,0 +1,62 @@
+{
+ "name": "carousel/vision-4",
+ "kind": "block",
+ "group": "carousel",
+ "title": "Vision Carousel 4",
+ "title_vi": "Vòng thẻ ảnh lớn nghiêng 3D, kiểu 4",
+ "desc_vi": "Một vòng thẻ ảnh lớn nghiêng thành hàng dưới máy quay 3D, mỗi thẻ quay mặt về giữa. 12 ô ảnh.",
+ "params_vi": "speed: Speed, mặc định 1 · background: Background, mặc định \"#EDEDEF\" · background có hiệu lực (kit vá lúc build; \"transparent\" = nền trong suốt) · cardBg: nền thẻ, mặc định #fff (\"transparent\" cho ảnh PNG trong suốt) · scale: cỡ cả vòng, mặc định 100 · card: [rộng, cao] cho mọi thẻ (trống = cỡ thẻ mẫu, vd [404, 640] thẻ dọc) · duration: độ dài của block (6 s; dài hơn thì block chạy chậm lại cho vừa cảnh) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt) · images: danh sách ảnh của job cho các ô ảnh, theo thứ tự (trống = ảnh giữ chỗ của kit; ít ảnh thì lặp lại)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/carousel-vision-4/carousel-vision-4.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "vendor": [
+  "data/placeholders"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "carousel",
+  "gallery",
+  "images",
+  "showcase",
+  "vision",
+  "3d"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/carousel-vision-4.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: A ring of large image cards tilted into a row under a 3D camera, each card turning toward the centre (Vision style 4); 12 image slots.",
+ "demo": {
+  "duration": 6.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 6.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

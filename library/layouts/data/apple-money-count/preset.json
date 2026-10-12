@@ -1,0 +1,58 @@
+{
+ "name": "data/apple-money-count",
+ "kind": "block",
+ "group": "data",
+ "title": "Apple Money Count",
+ "title_vi": "Số tiền đếm lên kiểu Apple, nổ biểu tượng tiền",
+ "desc_vi": "Bộ đếm tài chính kiểu Apple đếm từ $0 đến $10.000, loé xanh và bắn biểu tượng tiền, có âm thanh.",
+ "params_vi": "duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/apple-money-count/apple-money-count.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "showcase",
+  "finance",
+  "kinetic",
+  "youtube",
+  "sfx"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/apple-money-count.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Apple-style finance counter that counts from $0 to $10,000, flashes green, and bursts money icons with sound.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

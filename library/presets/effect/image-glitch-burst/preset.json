@@ -1,0 +1,70 @@
+{
+ "name": "effect/image-glitch-burst",
+ "kind": "effect",
+ "group": "effect",
+ "title": "Glitch burst from pictures",
+ "title_vi": "Glitch từ ảnh thiết kế",
+ "desc_vi": "Cắt ảnh (của chính thiết kế) thành lát ngang giật lệch 30 lần / giây, vạch màu cyan / magenta, rung khung; mạnh dần rồi tắt, hiện ngay từ khung đầu. Dùng làm chuyển cảnh \"giật\" hoặc nhấn. Khác text/rgb-glitch (chữ) và transition/shader-glitch (WebGL): chạy trên mọi ảnh, HTML thường.",
+ "params_vi": "layers: [[ảnh, x, y, rộng, cao], ...] (lớp trên trước) · dur · slices: số lát · amp: px · seed · bars: số vạch màu · fps",
+ "ae": "png",
+ "tags": [
+  "glitch",
+  "transition",
+  "impact"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026). Khung cố định 1920 x 1080.",
+ "demo": {
+  "bg": "#111216",
+  "duration": 2.4,
+  "elements": [
+   {
+    "id": "pic",
+    "type": "image",
+    "src": "assets/demo/flow-before.png",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   },
+   {
+    "id": "gl",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "gl",
+    "at": 0.6,
+    "params": {
+     "dur": 0.9,
+     "layers": [
+      [
+       "assets/demo/flow-after.png",
+       0,
+       0,
+       1920,
+       1080
+      ]
+     ]
+    }
+   }
+  ],
+  "thumb_at": 0.4
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

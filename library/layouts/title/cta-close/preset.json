@@ -1,0 +1,20 @@
+{
+ "name": "title/cta-close",
+ "kind": "block",
+ "group": "title",
+ "title": "CTA close",
+ "title_vi": "Màn kêu gọi hành động cuối phim",
+ "desc_vi": "Dòng kêu gọi cỡ lớn hiện từng chữ, một nút bấm bo tròn nảy ra bên dưới với một nhịp vọt vừa phải, rồi cả khối đứng im tới lúc cắt.",
+ "params_vi": "action: dòng kêu gọi 2 - 4 chữ (tự co theo số ký tự) · button: chữ trên nút · accent: màu nút · exit: none | fade | up · duration: độ dài gốc 3.5 s · bg, fg: màu · buttonInk: màu chữ trên nút (rỗng = màu nền)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/cta-close/cta-close.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["cta", "end card", "button", "action line"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Order, timings, sizes and eases as in the source (words opacity 0 -> 1 and y 8 cqh -> 0, 0.62 s power3.out, stagger 0.1 s from 0.06 s; capsule scale 0.85 -> 1 and y 3 cqh -> 0 for 0.6 s back.out(1.5) plus an opacity fade 0.22 s power2.out, both at 0.72 s; dead-still hold; exit fade or up (-5 cqh) 0.45 s power2.in at duration - 0.45 s; everything shrinks together when the duration is short). The fitted sizes follow the source formulas (action min(min(24, 76 / (0.47 x characters)) cqw, 30 cqh); button text min(min(3.5, 50 / (0.5 x characters)) cqw, 6 cqh); capsule padding 2.9 cqh x 5 cqw; lockup gap 7 cqh, max width 96 cqw) with cqw / cqh taken from the target box. The words are split with ctx.split (inline-block spans with natural spaces kept). The capsule is a div instead of a button element. The empty set that pinned the timeline to the mount duration is not needed (use `duration` on the scene). The capsule text colour is the background colour (source: --bg) unless buttonInk is set; accent is a hex colour (source: green / blue / violet reading theme tokens). The font is the film's font (source: display and body theme tokens). Defaults are Vietnamese (source: Make it happen / Start now).",
+ "demo": { "bg": "#0b0c0e", "duration": 3.5,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0, "params": { "action": "Dựng phim đầu tiên của bạn", "button": "Bắt đầu miễn phí", "accent": "#c5a3ff", "duration": 3.5 } }] }
+}

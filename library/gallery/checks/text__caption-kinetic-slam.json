@@ -1,0 +1,18 @@
+{
+ "name": "text/caption-kinetic-slam",
+ "at": "2026-10-10 11:21",
+ "static": [],
+ "build": "ok",
+ "tweens": 166,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 8.8,
+ "problems": [],
+ "status": "ok",
+ "seconds": 11.0
+}

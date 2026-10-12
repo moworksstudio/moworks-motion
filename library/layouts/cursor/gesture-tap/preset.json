@@ -1,0 +1,59 @@
+{
+ "name": "cursor/gesture-tap",
+ "kind": "block",
+ "group": "cursor",
+ "title": "Gesture Tap",
+ "title_vi": "Ngón tay chạm nút, nút đổi trạng thái",
+ "desc_vi": "Một vòng chạm ấn vào nút trên điện thoại, nhả ra thì nút chuyển sang trạng thái mới có màu nhấn, rồi ngón tay nhấc lên.",
+ "params_vi": "tap_label: Tap label, mặc định \"Follow\" · response_label: Response label, mặc định \"Following\" · accent: Accent (green | blue | violet), mặc định \"green\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/gesture-tap/gesture-tap.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "gesture",
+  "tap",
+  "interaction",
+  "ui-props"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/gesture-tap.html) in a kit film, mounted by ctx.hf.  Source: A contact circle taps a mobile pill button, releases it into a new labeled accent state, and lifts away.",
+ "demo": {
+  "duration": 3.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "tap_label": "Theo dõi",
+     "response_label": "Đang theo dõi",
+     "duration": 3.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

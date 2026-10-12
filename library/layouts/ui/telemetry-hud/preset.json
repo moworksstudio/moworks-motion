@@ -1,0 +1,57 @@
+{
+ "name": "ui/telemetry-hud",
+ "kind": "block",
+ "group": "ui",
+ "title": "Telemetry HUD",
+ "title_vi": "Khung HUD số đo kỹ thuật quanh chủ thể",
+ "desc_vi": "Các dòng số đo chữ máy kiểu HUD gỡ lỗi bao quanh chủ thể: bốn góc vẽ ra, các giá trị nhảy theo nhịp, một dòng được nhấn màu. Chủ thể đứng yên.",
+ "params_vi": "readouts: Readouts, mặc định \"fps:59.94,latency:11.8 ms,gpu:38%,heap:1.2 GB\" · emphasize: Emphasize, mặc định 0 · cues: Cues · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: subject), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/telemetry-hud/telemetry-hud.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "product-demo",
+  "hud",
+  "telemetry",
+  "deterministic"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/telemetry-hud.html) in a kit film, mounted by ctx.hf.  Source: Quiet mono debug-HUD readouts frame a slotted subject: corner brackets draw on, label:value lines tick their values on cues, one readout emphasized in accent. The subject never moves; the HUD breathes zero.",
+ "demo": {
+  "duration": 4.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

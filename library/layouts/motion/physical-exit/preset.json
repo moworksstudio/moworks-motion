@@ -1,0 +1,59 @@
+{
+ "name": "motion/physical-exit",
+ "kind": "block",
+ "group": "motion",
+ "title": "Physical Exit",
+ "title_vi": "Thẻ ra khỏi khung có quán tính",
+ "desc_vi": "Một thẻ rời khung có đà thật: ném, rơi hoặc trượt, giữ gia tốc và độ xoay tới khi ra hẳn ngoài khung, không mờ dần.",
+ "params_vi": "mode: Exit mode (toss | drop | slide), mặc định \"toss\" · text: Card text, mặc định \"Later\" · accent: Accent (green | blue | violet), mặc định \"green\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/physical-exit/physical-exit.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "exit",
+  "momentum",
+  "toss",
+  "drop",
+  "slide"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/physical-exit.html) in a kit film, mounted by ctx.hf.  Source: A card exits with physical momentum in toss, drop, or slide mode, carrying acceleration and rotation through the final offscreen pose without fading.",
+ "demo": {
+  "duration": 3.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "text": "Để sau",
+     "duration": 3.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

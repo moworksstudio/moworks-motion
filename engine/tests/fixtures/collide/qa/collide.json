@@ -1,0 +1,32 @@
+{
+ "url": "http://127.0.0.1:53306/Engine/Tests/fixtures/collide/index.html",
+ "step": 0.05,
+ "samples": 109,
+ "duration": 5.4,
+ "collisions": [
+  {
+   "kind": "text-text",
+   "a": "#a \"Chữ thứ nhất\"",
+   "b": "#b \"Chữ thứ hai\"",
+   "t0": 0.0,
+   "t1": 1.65,
+   "ratio": 0.7,
+   "scene": "Bugs"
+  },
+  {
+   "kind": "covered",
+   "a": "#c \"Bị che\"",
+   "b": "#lid",
+   "t0": 0.55,
+   "t1": 1.35,
+   "ratio": 1,
+   "partly": true,
+   "scene": "Bugs"
+  }
+ ],
+ "blank_frames": [
+  3.4,
+  3.4167
+ ],
+ "page_errors": []
+}

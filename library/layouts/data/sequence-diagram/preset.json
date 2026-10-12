@@ -1,0 +1,19 @@
+{
+ "name": "data/sequence-diagram",
+ "kind": "block",
+ "group": "data",
+ "title": "Sequence diagram",
+ "title_vi": "Sơ đồ tuần tự: mũi tên tin nhắn lần lượt",
+ "desc_vi": "Sơ đồ tuần tự kể câu chuyện một yêu cầu: các hộp thành phần với đường đời nét đứt, rồi từng mũi tên tin nhắn tự vẽ từ bên này sang bên kia theo thứ tự, nhãn rơi vào khi mũi tên tới, có nhịp giữ để đọc. Phản hồi vẽ nét đứt.",
+ "params_vi": "participants: các thành phần, cách nhau | · messages: các tin nhắn \"A>B: nội dung\" (phản hồi viết \"B<A: nội dung\"), cách nhau | · accent: màu mũi tên · ink: màu chữ · muted: màu đường đời, viền · box: nền hộp · draw: thời gian vẽ mỗi mũi tên (0.5 s) · hold: giữ giữa các tin nhắn (0.6 s)",
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md" },
+ "license": "MIT",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "tags": ["diagram", "sequence", "uml", "explainer", "arrows"],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Recipe #2 timing (draw 0.5 s power1.inOut, label 0.3 s from -4 px overlapping 0.2 s, hold 0.6 s). The recipe gave the message loop only; participants, lifelines and the arrowhead (shown as the line arrives) are the kit's. Replies are dashed with a dash pattern that sums to the line length, so they still reveal with the same offset tween. Default story in Vietnamese.",
+ "demo": { "hold": 0.6, "elements": [{ "id": "slot", "type": "box", "style": { "left": "120px", "top": "60px", "width": "1680px", "height": "960px" } }], "motion": [{ "target": "slot", "at": 0.1 }], "bg": "#0f1319" }
+}

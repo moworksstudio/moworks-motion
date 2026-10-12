@@ -1,0 +1,18 @@
+{
+ "name": "character/sheet",
+ "kind": "block",
+ "group": "character",
+ "title": "Character sheet",
+ "title_vi": "Bảng nhân vật (rig + diễn đủ tư thế)",
+ "desc_vi": "Nhân vật lớn diễn lần lượt mọi tư thế (đổi biểu cảm, chớp mắt, nói), bên phải là lưới mọi tư thế, bộ biểu cảm và bộ bàn tay: để duyệt và soi lỗi khớp trước khi làm animation.",
+ "params_vi": "look: tên look (man, woman, boy, girl hoặc look của phim) · over: ghi đè look · poses: danh sách tư thế (mặc định bộ kiểm khớp) · move / hold: giây đổi / giữ mỗi tư thế · title",
+ "source": { "label": "Moworks Motion (written for the kit, 09/10/2026)", "path": "engine/vendor/libs/aimk/rig.js" },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": true,
+ "scripts": ["libs/aimk/rig.js"],
+ "tags": ["character", "rig", "sheet", "approval"],
+ "notes": "The rig is the library's character rig (window.AIMK_RIG). kit.py sheet <film> makes one scene per cast look and renders the joint check at 2x.",
+ "demo": { "bg": "#E9EEF3", "duration": "auto", "hold": 0.5, "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+           "motion": [{ "target": "slot", "at": 0, "params": { "look": "woman", "poses": ["stand", "armsUp", "wave", "flex", "crouch", "jump", "kick", "sitSide"] } }] }
+}

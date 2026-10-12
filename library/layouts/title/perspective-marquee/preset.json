@@ -1,0 +1,18 @@
+{
+ "name": "title/perspective-marquee",
+ "kind": "block",
+ "group": "title",
+ "title": "Perspective marquee",
+ "title_vi": "Dải nhãn viên thuốc chạy ngang trên mặt phẳng nghiêng",
+ "desc_vi": "Một dải nhãn dạng viên thuốc chạy ngang chậm trên mặt phẳng ngả về phía chân trời, như băng chữ chạy 3D. Hợp liệt kê tính năng, từ khoá.",
+ "params_vi": "words: các nhãn, cách nhau dấu phẩy · tilt: flat | standard | steep (6 / 18 / 34°) · travel: short | standard | long · tone: ink | paper | accent · duration: thời gian chạy (4.5 s)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/perspective-marquee/perspective-marquee.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["marquee", "pills", "perspective", "labels", "ticker"],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Tilt, travel, tones, pill style and the linear 4.5 s roll as in the source, scaled from its 720 px strip to the box width. The source tilted its root (rotateX) with perspective on the same element, so the plane is foreshortened flat; kept. Vertical padding added inside the clipped strip so the pill shadows are not cut. AE: png (3D rotate). Labels default to Vietnamese (source: COMPONENTS, PRIMITIVES, TRANSITIONS, AGENTS).",
+ "demo": { "duration": 4.8, "hold": 0, "elements": [{ "id": "slot", "type": "box", "style": { "left": "260px", "top": "390px", "width": "1400px", "height": "300px" } }], "motion": [{ "target": "slot", "at": 0.2 }], "bg": "#f4f4f5" }
+}

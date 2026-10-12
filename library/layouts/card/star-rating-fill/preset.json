@@ -1,0 +1,18 @@
+{
+ "name": "card/star-rating-fill",
+ "kind": "block",
+ "group": "card",
+ "title": "Star rating fill",
+ "title_vi": "Hàng sao đánh giá được tô đầy",
+ "desc_vi": "Một lớp sao màu quét từ trái sang phải đè lên lớp sao xám, dừng đúng điểm số (sao cuối có thể tô dở); số điểm đếm lên cùng lúc, từng sao nảy nhẹ; cuối clip mờ đi.",
+ "params_vi": "rating: điểm 0 đến 5 (lẻ được) · starCount: số sao 1 đến 10 · showValue: yes | no (hiện số đếm) · duration: độ dài gốc 4 s (quyết định lúc mờ đi) · star: màu sao đầy · fg: màu số · muted: màu sao nền · surface: màu nền sau sao (trống = sao nền trong suốt 68 %)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/star-rating-fill/star-rating-fill.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": ["rating", "stars", "count-up", "social proof", "clip-path"],
+ "notes": "Layout and motion as in the source: star row width min(68cqw, 72cqh x starCount) with equal square cells, the muted base layer under a coloured fill layer that is clip-path inset(0 100% 0 0) -> inset(0 (100 - rating / starCount x 100)% 0 0) over 1.1 s power2.out from 0.2 s; value font min(9cqw, 16cqh) weight 720 tabular, gap 3cqw; per-star pops scale 1 -> 1.06 (45 % of 0.2 s) and back (55 %) on the base and fill star together, at 0.2 s + 1.1 s x (index / max(1, rating)) x 0.82 for the first ceil(rating) stars; the whole stage fades out over 0.4 s power2.in at the end of `duration` (4 s); IN 1.5 s and OUT 0.4 s scale together when `duration` is below 1.9 s. The synchronized number is a count-up written as a small code block (ctx.code, a proxy tween with onUpdate, pure function of time), hence ae = expression; the decimal uses a comma (Vietnamese). Differences: the fill star colour is a param `star` (default #f5b942 gold; the source used the --brand token with currentColor as fallback, which has no sensible default outside a theme); the muted base colour is muted at 68 % alpha when `surface` is empty (the source mixed it with the surface token, transparent by default), or mixed with the surface colour when you set one; theme tokens fg and muted are params with neutral defaults (#f8fafc, #94a3b8); the source's transparent background stays transparent. Value text is a number, no translation needed.",
+ "demo": { "bg": "#0b0c10", "duration": 4.6,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

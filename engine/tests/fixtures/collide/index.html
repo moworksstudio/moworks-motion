@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>collide test</title>
+<!-- AI Motion Kit v2 film, built by `kit.py build` from film.json (MotionSpec) on 2026-10-06 15:54. From here on this file is the
+     source: ask Claude, or edit it by hand in HyperFrames Studio (4. HF Studio (tuy chon).bat). Rebuilding from film.json backs this file up to
+     qa/backup/ first. -->
+<style>
+  @font-face { font-family: "RFlex"; font-weight: 100 1000; src: url("assets/fonts/RobotoFlex-var.woff2") format("woff2"); font-display: block; }
+  @font-face { font-family: "RMono"; font-weight: 100 700; src: url("assets/fonts/RobotoMono-var.woff2") format("woff2"); font-display: block; }
+  @font-face { font-family: "RMono"; font-style: italic; font-weight: 100 700; src: url("assets/fonts/RobotoMono-Italic-var.woff2") format("woff2"); font-display: block; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow: hidden; }
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; font-family: "RFlex", sans-serif; color: #111; font-kerning: normal; font-variant-ligatures: none; }
+  #bg { position: absolute; inset: 0; background: #ffffff; will-change: transform; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+  .inner { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div id="stage" data-composition-id="root" data-width="1920" data-height="1080" data-duration="5.4">
+  <div id="bg"></div>
+
+  <div id="s1" class="clip scene" data-start="0.0" data-duration="2.0" data-track-index="1" data-name="Bugs">
+    <div id="s1in" class="inner" style="">
+      <div id="a" style="position:absolute;left:100px;top:100px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Chữ thứ nhất</div>
+      <div id="b" style="position:absolute;left:160px;top:120px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Chữ thứ hai</div>
+      <div id="c" style="position:absolute;left:100px;top:400px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Bị che</div>
+      <div id="lid" style="position: absolute; left: 80px; top: 380px; width: 300px; height: 140px; background: rgb(255, 122, 26);"></div>
+    </div>
+  </div>
+
+  <div id="s2" class="clip scene" data-start="1.4" data-duration="2.0" data-track-index="2" data-name="Fine">
+    <div id="s2in" class="inner" style="">
+      <div id="pic" style="position:absolute;left:80px;top:80px;width:800px;height:300px;background:#1d3fd8"></div>
+      <div id="d" style="position:absolute;left:100px;top:150px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Trên panel</div>
+      <div id="e1" style="position:absolute;left:100px;top:600px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Bản sao</div>
+      <div id="e2" style="position:absolute;left:100px;top:600px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Bản sao</div>
+      <div id="f1" data-lint="ignore" style="position:absolute;left:1000px;top:600px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Bỏ qua</div>
+      <div id="f2" style="position:absolute;left:1020px;top:610px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Bỏ qua nhé</div>
+    </div>
+  </div>
+
+  <div id="s3" class="clip scene" data-start="3.4" data-duration="2.0" data-track-index="2" data-name="Blank start">
+    <div id="s3in" class="inner" style="">
+      <div id="g" style="position:absolute;left:100px;top:400px;font-size:80px;font-weight:700;white-space:nowrap;color:#111">Cảnh trống lúc đầu</div>
+    </div>
+  </div>
+</div>
+<script src="assets/vendor/gsap.min.js"></script>
+<script>
+  document.querySelectorAll("#stage [style*='translate']").forEach(e => { if (!(e instanceof HTMLElement)) return; const m = (e.style.transform || "").trim().match(/^translate(X|Y)?\(\s*(-?[\d.]+)%\s*(?:,\s*(-?[\d.]+)%\s*)?\)(\s+(?:rotate|scale|skew)(?!.*(?:translate|matrix|perspective|3d\()).*)?$/); if (!m) return; const xp = m[1] === "Y" ? 0 : +m[2], yp = m[1] === "Y" ? +m[2] : m[1] === "X" ? 0 : +(m[3] || 0); (window.__aimkCenter = window.__aimkCenter || []).push(gsap.set(e, { xPercent: xp, yPercent: yp, x: 0, y: 0 })); });
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#lid", { x: -260, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.5);
+  tl.fromTo("#s1in", { x: 0 }, { x: -1920, duration: 0.6, ease: "power3.inOut" }, 1.4);
+  tl.fromTo("#s2in", { x: 1920 }, { x: 0, duration: 0.6, ease: "power3.inOut" }, 1.4);
+  tl.fromTo("#s3in", { opacity: 0, y: 28, filter: "blur(18px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "power3.out" }, 3.7);
+  window.__timelines = window.__timelines || {};
+  window.__timelines["root"] = tl;
+</script>
+</body>
+</html>

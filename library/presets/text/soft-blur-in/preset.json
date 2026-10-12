@@ -1,0 +1,16 @@
+{
+ "name": "text/soft-blur-in",
+ "kind": "effect",
+ "group": "text",
+ "title": "Soft blur in",
+ "title_vi": "Cả khối trượt lên từ vùng nhoè",
+ "desc_vi": "Cả phần tử (chữ, ảnh, thẻ) trượt nhẹ vào chỗ từ một vùng nhoè dày, hiện dần trong 0.8 giây. Nhiều phần tử thì lần lượt cách nhau 0.08 giây.",
+ "params_vi": "distance: close | standard | far (14 / 28 / 52 px) · direction: up | down · blur: soft | standard | heavy (8 / 18 / 34 px) · duration 0.8 · stagger 0.08",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/soft-blur-in/soft-blur-in.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["reveal", "blur", "element"],
+ "notes": "Motion as the source's timeline integration (opacity 0 -> 1, y 28 px x direction -> 0, blur 18 px -> 0, 0.8 s power3.out, stagger 0.08 across the targets). The source set the start through root custom properties; here they are the element's own y / filter.",
+ "demo": { "hold": 1.0 }
+}

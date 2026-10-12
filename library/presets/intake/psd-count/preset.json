@@ -1,0 +1,54 @@
+{
+ "name": "intake/psd-count",
+ "kind": "effect",
+ "group": "intake",
+ "title": "Count on a PSD number",
+ "title_vi": "Đếm số trên chữ PSD",
+ "desc_vi": "Con số trong frame PSD (intake/psd-frame) đếm lên tới đúng số thiết kế, đổi chữ ở mọi lớp (bóng, viền, mặt) nên giữ nguyên hiệu ứng Photoshop; số luôn canh giữa theo bề rộng thiết kế khi đang đếm. Khác data/count-up: dùng cho chữ PSD nhiều lớp.",
+ "params_vi": "id: id ngoài của lớp chữ (<frame>_u<NN>; mặc định target) · from · to · dur · dec: số lẻ · pre / suf: tiền tố / hậu tố · comma: dấu phẩy nghìn · ease",
+ "ae": "expression",
+ "tags": [
+  "counter",
+  "number",
+  "psd"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026). Demo dựng lại cấu trúc lớp của psd-frame (_rot > _rot_in > bóng + mặt).",
+ "demo": {
+  "bg": "#14213d",
+  "duration": 3,
+  "elements": [
+   {
+    "id": "u1",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    },
+    "html": "<div id='u1_rot' style='position:absolute;left:640px;top:440px;width:0px;height:0px'><div id='u1_rot_in' style='position:absolute;left:0px;top:0px'><div id='u1_shadow' style='position:absolute;left:0px;top:0px;white-space:nowrap;font:800 220px RFlex;color:#000;opacity:.45;transform:translate(10px,12px)'>61,000</div><div id='u1_face' style='position:absolute;left:0px;top:0px;white-space:nowrap;font:800 220px RFlex;color:#ffd166'>61,000</div></div></div>"
+   }
+  ],
+  "motion": [
+   {
+    "target": "u1",
+    "at": 0.3,
+    "params": {
+     "id": "u1",
+     "from": 0,
+     "to": 61000,
+     "comma": true,
+     "dur": 1.8
+    }
+   }
+  ]
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

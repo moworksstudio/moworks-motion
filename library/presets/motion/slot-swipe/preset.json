@@ -1,0 +1,166 @@
+{
+ "name": "motion/slot-swipe",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Designed cards swipe slot to slot",
+ "title_vi": "Hàng thẻ lướt kiểu thư viện ảnh",
+ "desc_vi": "Hàng thẻ đã thiết kế (khác cỡ: thẻ giữa to, hai bên nhỏ) lướt như thư viện ảnh iPhone: mỗi lần lướt, thẻ sang chỗ thẻ bên cạnh và lấy cỡ của chỗ đó, thẻ ra khỏi một đầu mờ đi rồi quay lại ở đầu kia. Khác house/gallery-strip: giữ nguyên khung thẻ của thiết kế.",
+ "params_vi": "cards: [[id, chỗ thiết kế], ...] · slots: [[tâm x, tâm y, rộng], ...] trái → phải · swipes: [[giây, thời lượng], ...] · dir: -1 sang trái / 1 · bob: px · dur · zbase",
+ "ae": "expression",
+ "tags": [
+  "carousel",
+  "gallery",
+  "cards",
+  "swipe"
+ ],
+ "notes": "Viết cho một phim của studio (08/10/2026). Mỗi thẻ phải đặt đúng tâm và bề rộng của chỗ thiết kế của nó.",
+ "demo": {
+  "bg": "#101418",
+  "duration": 4.8,
+  "elements": [
+   {
+    "id": "c0",
+    "type": "image",
+    "src": "assets/demo/ui-slide-1.png",
+    "style": {
+     "left": "130px",
+     "top": "434px",
+     "width": "260px",
+     "height": "213px",
+     "border-radius": "18px"
+    }
+   },
+   {
+    "id": "c1",
+    "type": "image",
+    "src": "assets/demo/ui-slide-2.png",
+    "style": {
+     "left": "440px",
+     "top": "393px",
+     "width": "360px",
+     "height": "294px",
+     "border-radius": "18px"
+    }
+   },
+   {
+    "id": "c2",
+    "type": "image",
+    "src": "assets/demo/ui-slide-3.png",
+    "style": {
+     "left": "700px",
+     "top": "327px",
+     "width": "520px",
+     "height": "425px",
+     "border-radius": "18px"
+    }
+   },
+   {
+    "id": "c3",
+    "type": "image",
+    "src": "assets/demo/ui-slide-4.png",
+    "style": {
+     "left": "1120px",
+     "top": "393px",
+     "width": "360px",
+     "height": "294px",
+     "border-radius": "18px"
+    }
+   },
+   {
+    "id": "c4",
+    "type": "image",
+    "src": "assets/demo/ui-card-image.png",
+    "style": {
+     "left": "1530px",
+     "top": "434px",
+     "width": "260px",
+     "height": "213px",
+     "border-radius": "18px",
+     "object-fit": "cover"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "c0",
+    "at": 0.2,
+    "params": {
+     "dur": 4.6,
+     "dir": -1,
+     "cards": [
+      [
+       "c0",
+       0
+      ],
+      [
+       "c1",
+       1
+      ],
+      [
+       "c2",
+       2
+      ],
+      [
+       "c3",
+       3
+      ],
+      [
+       "c4",
+       4
+      ]
+     ],
+     "slots": [
+      [
+       260,
+       540,
+       260
+      ],
+      [
+       620,
+       540,
+       360
+      ],
+      [
+       960,
+       540,
+       520
+      ],
+      [
+       1300,
+       540,
+       360
+      ],
+      [
+       1660,
+       540,
+       260
+      ]
+     ],
+     "swipes": [
+      [
+       0.5,
+       0.7
+      ],
+      [
+       1.8,
+       0.7
+      ],
+      [
+       3.1,
+       0.7
+      ]
+     ]
+    }
+   }
+  ],
+  "thumb_at": 0.5
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

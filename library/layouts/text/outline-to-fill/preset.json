@@ -1,0 +1,63 @@
+{
+ "name": "text/outline-to-fill",
+ "kind": "block",
+ "group": "text",
+ "title": "Outline to Fill",
+ "title_vi": "Chữ viền nét rồi tô đặc",
+ "desc_vi": "Một từ hiện bằng nét viền trước, rồi tô đặc lại trên phách mạnh. 0.8-1.8 s.",
+ "params_vi": "duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · replace: các cặp [chữ gốc, chữ mới] đổi chữ của cảnh mẫu (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/motion-primitives/outline-to-fill/scene.html",
+  "sha256": {
+   "scene.html": "f65d2f5f2d6644453e51cf4356cefa70c42bb0c9eabf499c3dfd7e5f8c5d014d"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "outline",
+  "fill",
+  "type"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/scene.html) in a kit film, mounted by ctx.hf. A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words. Source: A word drawn as a stroke outline, then filled solid.",
+ "demo": {
+  "duration": 2.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 2.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "name": "intake/deck-slide",
+ "kind": "block",
+ "group": "intake",
+ "title": "Deck slide",
+ "title_vi": "Dựng lại một slide PowerPoint / Google Slides",
+ "desc_vi": "Dựng lại đúng từng pixel một slide đã đọc bằng kit.py ingest: hình, ảnh (crop, xoay), chữ (lề trong, căn, đoạn, font, giãn chữ, màu). Không có chuyển động; gắn preset khác vào các phần tử sau.",
+ "params_vi": "slide: một slide trong layout.json · fonts: font của deck -> font phim nạp · asc / nudge: chỉnh đường chân chữ nếu lệch",
+ "source": { "label": "Moworks Motion v1", "path": "AI Motion Kit/Engine/deck.js (SSDeck, credentials film 02/10/2026)" },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": ["pptx", "google slides", "faithful", "intake"],
+ "notes": "Port of the v1 SSDeck slide builder (same text model). Used by `kit.py ingest`, not shown in the gallery (needs a project's deck).",
+ "check_end": false,
+ "demo": { "skip": true }
+}

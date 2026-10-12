@@ -1,0 +1,18 @@
+{
+ "name": "card/trust-strip",
+ "kind": "block",
+ "group": "card",
+ "title": "Trust strip",
+ "title_vi": "Dải tên đối tác một màu",
+ "desc_vi": "Một hàng tên đối tác viết hoa giãn chữ, một màu, không khung; từng tên mờ hiện từ trái sang phải rồi đứng yên.",
+ "params_vi": "marks: các tên, cách nhau dấu phẩy (3 đến 7 tên) · tone: muted | ink (màu xám nhạt hay màu chữ đậm) · cues: giây hiện của từng tên (trống = nhịp mặc định 0.15 s) · accent: màu pha nhẹ 10 % · exit: none | fade | up · duration: độ dài gốc 3.5 s · fg, muted: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/trust-strip/trust-strip.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["trust", "partners", "wordmarks", "social proof", "fade"],
+ "notes": "Layout and motion as in the source: one centred flex row 86cqw wide, wrapping to a second centred row, column gap 4.8cqw, row gap 4.2cqh, mark min(1.9cqw, 6.4cqh) weight 400 tracking 0.32em uppercase, colour = tone mixed 90 / 10 with the accent; marks opacity 0 -> 1 over 0.5 s power2.out, first at 0.2 s then 0.15 s apart (or the `cues`: missing tail entries continue from the last cue by the 0.15 s gap), left to right; hold dead still; exit fade (strip opacity) or up (opacity + y -1.6cqh) 0.45 s power2.in at `duration` - 0.45 s; everything (cues included) compresses together when `duration` is below IN + OUT. All cqw / cqh converted to px from the target box. Differences: the marks are plain text (the source's own approach, no logos); the monospace token font is replaced by the film's font (tracking kept); accent is a hex param (default #1d4ed8, the source demo's brand colour; the source offered green / blue / violet tokens); the theme tokens fg and muted are params with the source demo / fallback values (#14161b, #93939f); the source's transparent background stays transparent; color-mix() written as hex. The demo uses the light theme of the source demo (#f4f6f9). Default marks are made-up Vietnamese names (source: Northwind, Acme Corp ...).",
+ "demo": { "bg": "#f4f6f9", "duration": 3.8,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

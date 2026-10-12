@@ -1,0 +1,53 @@
+{
+ "name": "ui/share-sheet-carousel",
+ "kind": "block",
+ "group": "ui",
+ "title": "Share sheet carousel",
+ "title_vi": "Bảng chia sẻ trên điện thoại, ảnh đổi liên tục (dọc 9:16)",
+ "desc_vi": "Bảng chia sẻ bật lên từ dưới với lò xo, 4 ảnh đổi nhanh theo nhịp trên nền ảnh mờ, rồi nút Chấp nhận được bấm.",
+ "params_vi": "title, sender, message: chữ đầu bảng · strip_text: dòng nhỏ cạnh logo · decline, accept: nhãn 2 nút · accent: màu nút phải · slides: 4 đường dẫn ảnh · logo: ảnh logo trong suốt (đường dẫn)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/share-sheet-carousel/share-sheet-carousel.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": [],
+ "tags": [
+  "share sheet",
+  "ios",
+  "phone",
+  "carousel",
+  "spring",
+  "vertical",
+  "ui"
+ ],
+ "notes": "Portrait design 1080 x 1920 built at source pixels and fitted (contain, centred) to the target box with one static CSS scale (1 in a 1080 x 1920 film, 0.5625 in the 608 x 1080 demo slot). Geometry, colours, the 22-step sampled spring (kept verbatim as tl.set steps), the 13 cut times and the press beat are as in the source. Differences: the four slide photographs and the HyperFrames wordmark are image params defaulting to generated neutral pictures (ui-slide-1..4.png, ui-logo-dark.png in demo-assets); font = the film's font (source: -apple-system / Helvetica Neue); texts are params with Vietnamese defaults (sentence 'X would like to share Y' = bold sender + message); the source's final `tl.set({}, {}, 7.2333)` pad is not ported (a tween on a non-element cannot be baked), the 7.2333 s length is the demo duration; the blurred background is a CSS filter blur(46px) on the images, so ae is png. Imitates an iOS share sheet (brand_ui). 05/10/2026: the source's own assets are back as defaults (user's decision: open-source assets are used as shipped); pass a param to use your own.",
+ "demo": {
+  "bg": "#1b1d22",
+  "duration": 7.23,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "656px",
+     "top": "0px",
+     "width": "608px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {}
+   }
+  ]
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "name": "motion/anime-layout",
+ "kind": "effect",
+ "group": "motion",
+ "title": "Layout change (FLIP on anime.js)",
+ "title_vi": "Đổi bố cục tự diễn (FLIP, ease và stagger của anime.js)",
+ "desc_vi": "Đổi cách sắp xếp (đảo thứ tự, hàng thành cột, thêm class, chuyển thẻ sang khung khác): mọi phần tử tự đi từ chỗ cũ sang chỗ mới.",
+ "params_vi": "changes: [{sel, style, add, remove, before, after, append}] · duration (0.9) · ease (inOutQuart) · each: giây giữa các phần tử (0.05)",
+ "ae": "keyframes",
+ "tags": [
+  "anime.js",
+  "layout",
+  "flip",
+  "reorder",
+  "ui"
+ ],
+ "source": {
+  "label": "anime.js 4.5.0 (Julian Garnier, MIT)",
+  "repo": "juliangarnier/anime",
+  "commit": "v4.5.0",
+  "path": "src/ (npm animejs@4.5.0, engine/vendor/libs/anime)"
+ },
+ "license": "MIT",
+ "scripts": [
+  "libs/anime/anime.umd.min.js",
+  "libs/aimk/anime-sync.js"
+ ],
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Kit code (preset.js + engine/vendor/libs/aimk/anime-sync.js) calling anime.js 4.5.0 as shipped (engine/vendor/libs/anime, MANIFEST.json sha256). anime.js's own loop is off: the film's GSAP timeline seeks it every frame; randomness seeded. The bake puts back what anime.js wrote (build.py BAKE_JS + AIMKAnime.reverts).",
+ "demo": {
+  "duration": 2.4,
+  "hold": 0.8,
+  "elements": [
+   {
+    "id": "lyrow",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px",
+     "display": "flex",
+     "gap": "40px",
+     "justify-content": "center",
+     "align-items": "center"
+    },
+    "html": "<div id=\"ly1\" style=\"width:240px;height:320px;border-radius:28px;background:#ff6a2b;display:grid;place-items:center;color:#111216;font:800 96px/1 sans-serif\">1</div><div id=\"ly2\" style=\"width:240px;height:320px;border-radius:28px;background:#3a86ff;display:grid;place-items:center;color:#111216;font:800 96px/1 sans-serif\">2</div><div id=\"ly3\" style=\"width:240px;height:320px;border-radius:28px;background:#00a699;display:grid;place-items:center;color:#111216;font:800 96px/1 sans-serif\">3</div><div id=\"ly4\" style=\"width:240px;height:320px;border-radius:28px;background:#ffb400;display:grid;place-items:center;color:#111216;font:800 96px/1 sans-serif\">4</div>"
+   }
+  ],
+  "motion": [
+   {
+    "target": "lyrow",
+    "at": 0.4,
+    "params": {
+     "changes": [
+      {
+       "sel": "#ly1",
+       "append": "#lyrow"
+      },
+      {
+       "sel": "#ly3",
+       "before": "#ly2"
+      },
+      {
+       "sel": "#lyrow",
+       "style": {
+        "gap": "90px"
+       }
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "kept": {
+  "imported": null,
+  "kept": "2026-10-12"
+ }
+}

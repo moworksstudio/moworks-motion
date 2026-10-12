@@ -1,0 +1,10 @@
+{
+ "about": "HyperFrames' locate (find an object in an image by picking numbered strips, no detector API), as shipped (11/10/2026, user OK). Run by `kit.py measure <image> --locate overlay | region | final | mark` (Node.js, ffmpeg + ffprobe). PROTOCOL.md is the loop Claude follows. kit.py checks these hashes (LF line ends) before every run.",
+ "license": "Apache-2.0 (Copyright HeyGen), LICENSE here",
+ "sources": {"locate.mjs, PROTOCOL.md": "github.com/heygen-com/hyperframes commit ba08acb1f506b06757bd77a7e7f491d412647fbd skills/motion-graphics/grounding/", "LICENSE": "the repo's LICENSE"},
+ "sha256": {
+  "LICENSE": "4259155fb06f127687ee7b0a8a3682d45132db0f2da26cbc0b7a2d1e796436b8",
+  "PROTOCOL.md": "01a5bd32b14c13d5b7a396184f633d11e61c24910470461c4351b03d1a3a65a5",
+  "locate.mjs": "7572b3dadf3561495a1ad4c67b1fd7dd6e871c65aec8ca13574fc52649ce66cd"
+ }
+}

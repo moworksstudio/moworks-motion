@@ -1,0 +1,21 @@
+{
+ "name": "glass/ios-home",
+ "kind": "block",
+ "group": "glass",
+ "title": "iOS 26 Liquid Glass Home Screen (3D iPhone)",
+ "title_vi": "Màn hình chính iOS kính lỏng trên iPhone 3D",
+ "desc_vi": "iPhone 3D trên nền shader tối, màn hình chính iOS (lưới ứng dụng, dock kính); ba thông báo kính lỏng rơi xuống từ thanh trạng thái, máy quay lùi chậm và điện thoại nghiêng nhẹ ba nhịp.",
+ "params_vi": "apps: 24 ứng dụng {label, icon, badge} · dock: 4 biểu tượng {icon, badge} · notifications: 3 thông báo {icon, title, time, body} · time, battery, search: chữ trên thanh trạng thái / ô tìm kiếm · mono_icons: biểu tượng xám kiểu kính (như bản gốc) · duration: độ dài chuyển động (15 s). icon = icons/<tên>.jpg trong assets của mẫu (ảnh gốc của nguồn), hoặc đường dẫn ảnh trong dự án.",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/ios26-liquid-glass/ios26-liquid-glass.html" },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "brand_ui": true,
+ "needs": ["webgl", "html-in-canvas"],
+ "scripts": ["libs/three-0.147/three.min.js", "libs/three-0.147/GLTFLoader.js"],
+ "tags": ["iphone", "ios", "liquid glass", "notification", "3d", "device", "home screen"],
+ "notes": "Faithful port of the source scene: same three.js 0.147 renderer settings (ACES 1.15, sRGB), painted env map, shader backdrop, metal floor, lights, GLTF iPhone (scaled to 3.2 units, planar screen UVs, screen turned to -Z), camera drift 6.15->6.45 / 0.18->0.16 over 0.5-12.5 s (cubic-bezier 0.45,0,0.15,1), three tilts (0.37,0,0.63,1), notifications at 0.85/1.7/2.55 s (0.72/0.74/0.76 s, cubic-bezier 0.22,0,0.16,1) drawn exactly as the source's canvas glass cards. Differences: (1) seek-safety: the source re-captured the HTML screen every frame with drawElementImage, which only returns the last PAINTED state (measured: a DOM change is invisible to drawElementImage until the next paint), so a jump-seek showed stale frames. The visible home screen never changes in the source, so it is captured once at load (registered in window.__hf.buildReady, which the kit driver and HF Studio wait for) and every frame is composed from it; state is computed from time directly instead of from GSAP-tweened proxy fields (the source's onUpdate proxy at t=0 ran before later tweens in a forward seek). (2) Dropped dead parts: the MacBook canvas/HTML (the source never loads macbook.glb), the hidden HTML notification layer and hidden title/counter/card elements (display:none, never visible). (3) App icons and labels are the source's own (assets/icons/*.jpg from the HF registry, copied as shipped, 24 grid apps + 4 dock apps as in the source; the source's English labels, badges, notification copy and search text are the defaults, all still params; the source draws its 'HyperFrames' notification with slack.jpg, kept). Dock icons are <img> instead of CSS backgrounds (so the one-time capture waits for them). (4) Text uses the film's font (source: Inter/system-ui); the location arrow is a CSS triangle (the source's U+25B2 glyph depends on a fallback font); notification title/body end with an ellipsis if too long. (5) Three.js and GLTFLoader come from engine/vendor (no CDN); DRACO decoder removed (iphone.glb is not Draco-compressed). (6) The block sizes its renderer to the target box (source: fixed 1920x1080). (7) Kit runtime quirk handled: a fresh kit Chromium loses its first WebGL context ~0.15 s after creation and restores it ~1 s later (measured on a bare WebGL page); the readiness promise waits 0.6 s plus any restore before the one-time screen capture (a capture during the GPU restart lost all text), and the PMREM env map is rebuilt on webglcontextrestored (otherwise the metal floor renders dark). The 3D model assets/iphone.glb ships in the HF repo (Apache-2.0) but the model's own origin/licence is not verified. 05/10/2026: source artwork restored as default (user's decision).",
+ "demo": { "bg": "#050508", "duration": 15, "hold": 0,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

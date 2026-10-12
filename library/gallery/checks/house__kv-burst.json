@@ -1,0 +1,18 @@
+{
+ "name": "house/kv-burst",
+ "at": "2026-10-10 01:57",
+ "static": [],
+ "build": "ok",
+ "tweens": 24,
+ "codes": 3,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 5,
+ "problems": [],
+ "status": "ok",
+ "seconds": 7.5
+}

@@ -1,0 +1,22 @@
+{
+ "name": "text/caption-parallax-layers",
+ "kind": "block",
+ "group": "text",
+ "title": "Captions: parallax layers",
+ "title_vi": "Phụ đề hai lớp, từ nhấn đỏ khổng lồ phía sau",
+ "desc_vi": "Phụ đề theo giọng đọc hai lớp: từ nhấn thành một chữ serif đỏ khổng lồ kéo giãn kín nửa trên khung (cao gấp 2.8, bóng cứng kiểu 3D, để sau chủ thể nếu đặt video lên trên), các từ còn lại chữ serif trắng ở một phần ba dưới; từ hiện đúng lúc được nói.",
+ "params_vi": "words: \"voice\" · keywords: từ nhấn (lớp sau) · italics: từ nghiêng (lớp trước) · blocks: tự xếp hoặc theo định dạng gốc · red, shadow, ink: màu · behindSize 220, frontSize 130, behindWidth 1800, frontWidth 1750, stretch 2.8 · behindTop 40, frontTop 700",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/caption-parallax-layers/caption-parallax-layers.html" },
+ "license": "Apache-2.0 (font: Playfair Display, SIL OFL 1.1)",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "fonts": [ { "family": "AIMK Playfair Display", "vendor": "fonts/PlayfairDisplay-Regular.ttf", "weight": "400 900", "style": "normal" },
+            { "family": "AIMK Playfair Display", "vendor": "fonts/PlayfairDisplay-Italic.ttf", "weight": "400 900", "style": "italic" } ],
+ "tags": ["captions", "subtitles", "voice", "serif", "layers", "behind subject"],
+ "notes": "Look and timing as in the source (behind: red #e50914 with a 5 px same-colour stroke and a hard #a30610 shadow, 220 px fitted to 1800, then scaleX to the full 1800 px and scaleY 2.8 from the top, words fade in 0.1 s; front: #eeeeee 130 px fitted to 1750 with a double soft shadow, words cut in; a block holds until the next). Changed: Instrument Serif (no Vietnamese glyphs) becomes Playfair Display, the kit's shared serif; blocks are made from the voice words and params.keywords (the source hand-listed them; params.blocks takes the source's format with word indexes); the last block holds 0.8 s after its last word. The 'behind the subject' look needs the film to place the subject (a cut-out, kit.py cutout) above this layer.",
+ "demo": {
+  "bg": "#1b2230", "duration": 8.8, "thumb_at": 0.42,
+  "elements": [ { "id": "cap", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } } ],
+  "motion": [ { "target": "cap", "at": 0.3, "params": { "words": "demo", "keywords": ["hình.", "HTML", "nghiệp.", "code", "ảnh."], "italics": ["timeline."] } } ]
+ }
+}

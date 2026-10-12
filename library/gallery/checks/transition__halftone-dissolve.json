@@ -1,0 +1,18 @@
+{
+ "name": "transition/halftone-dissolve",
+ "at": "2026-10-06 12:25",
+ "static": [],
+ "build": "ok",
+ "tweens": 0,
+ "codes": 1,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 3.5,
+ "problems": [],
+ "status": "ok",
+ "seconds": 8.8
+}

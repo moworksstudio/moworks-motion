@@ -1,0 +1,17 @@
+{
+ "name": "house/ticker-slide",
+ "at": "2026-10-05 22:06",
+ "static": [],
+ "build": "ok",
+ "tweens": 4,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 2,
+ "problems": [],
+ "status": "ok",
+ "seconds": 4.7
+}

@@ -1,0 +1,20 @@
+{
+ "name": "ui/notification-stack",
+ "kind": "block",
+ "group": "ui",
+ "title": "Notification stack",
+ "title_vi": "Chồng thẻ thông báo, thẻ mới nhất nổi lên",
+ "desc_vi": "1 đến 5 thẻ thông báo trượt vào chồng lên nhau, thẻ mới ở trên cùng; sau thẻ cuối, một thẻ phóng nhẹ và sáng lên làm tâm điểm, các thẻ khác mờ dần theo độ sâu; rồi đứng yên.",
+ "params_vi": "titles, bodies: danh sách tiêu đề và dòng phụ (1 đến 5 thẻ) · expand: thẻ làm tâm điểm (-1 = thẻ mới nhất) · cues: giây thẻ vào (bỏ trống = nhịp mặc định) · accent: màu chấm (#71f5a7 xanh lá, #61a8ff xanh dương, #c5a3ff tím) · exit: none | fade | up · duration: độ dài gốc 4 s (quyết định lúc ra) · fg, surface, border, muted: màu",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/notification-stack/notification-stack.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": ["notification", "stack", "cards", "product demo", "ui"],
+ "notes": "Same layout rules, timings (0.2 s start, 0.55 s gap or cues, enter 0.55 s power3.out, shift 0.45 s power3.out, resolve 0.5 s power2.out, dim 0.72 - 0.07 x depth floor 0.42, exit 0.45 s) and eases as the source. Differences: container-query units (cqw / cqh / cqmin) become px of the target box, computed at build time (the source did the same for its tween distances, noting that cqh-unit transform tweens interpolate wrongly); the source's theme tokens (--bg transparent, --fg #f8fafc, --surface #131a24, --border #334155, --muted #94a3b8, --brand #71f5a7 / --accent #61a8ff / --accent-2 #c5a3ff, --radius, --space-2) are params / fixed fallback values: accent is a hex colour (green #71f5a7 by default); the comma-separated titles / bodies / cues strings are arrays; font = the film's font (source: --font-body); the source's filter tween on the focus card (brightness 1 -> 1.1) is kept; the shadow colour-mix is its resolved rgba(5, 7, 10, 0.45); Vietnamese default texts. The authored 4 s length is the `duration` param and the demo duration.",
+ "demo": { "bg": "#05070a", "duration": 4,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0, "params": {} }] }
+}

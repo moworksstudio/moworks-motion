@@ -1,0 +1,59 @@
+{
+ "name": "ui/focus-swap",
+ "kind": "block",
+ "group": "ui",
+ "title": "Focus Swap",
+ "title_vi": "Chuyển sự chú ý giữa hai thẻ cạnh nhau",
+ "desc_vi": "Hai thẻ cạnh nhau: một thẻ lùi lại (nhỏ, nhoè, tối) trong khi thẻ kia tiến lên rõ nét, kéo sự chú ý sang.",
+ "params_vi": "focus: Final focus (a | b), mặc định \"b\" · blurPx: Unfocused blur, mặc định 6 · dim: Unfocused opacity, mặc định 0.5 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/focus-swap/focus-swap.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "effect",
+  "ui-props",
+  "focus",
+  "blur",
+  "attention",
+  "demonstrate"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/focus-swap.html) in a kit film, mounted by ctx.hf.  Source: Moves attention between two side-by-side cards as one recedes with scale, blur, and dimming while the other advances to full focus.",
+ "demo": {
+  "duration": 1.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 1.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e",
+  "thumb_at": 0.5
+ }
+}

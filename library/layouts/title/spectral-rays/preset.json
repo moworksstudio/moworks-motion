@@ -1,0 +1,64 @@
+{
+ "name": "title/spectral-rays",
+ "kind": "block",
+ "group": "title",
+ "title": "Text Spectral Rays",
+ "title_vi": "Tia sáng toả ra từ chữ",
+ "desc_vi": "Chữ lớn phát ra những tia sáng thể tích về phía một đốm sáng quét ngang; chính shader vẽ chữ (không đặt thêm chữ khác lên cùng từ đó). Cho tiêu đề chính 2.5-5 s.",
+ "params_vi": "text: Wordmark, mặc định \"SPECTRAL\" · textColor: Wordmark fill, mặc định \"#f6ff7a\" · bgColor: Stage background, mặc định \"#000000\" · sweepSpeed: Light sweep speed, mặc định 1 · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · replace: các cặp [chữ gốc, chữ mới] đổi chữ của cảnh mẫu (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames skill",
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/music-to-video/references/motion-primitives/text-spectral-rays/scene.html",
+  "sha256": {
+   "scene.html": "164f582e24620fb7b08d94651876e86640b1cd3195e1c1255f28858ef64b96e2"
+  }
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "music",
+  "light",
+  "rays",
+  "webgl",
+  "title"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/scene.html) in a kit film, mounted by ctx.hf. A motion primitive of HyperFrames' music-to-video skill (a short scene with its own copy and palette): replace changes its words. Source: Volumetric light rays cast by a wordmark toward a sweeping light cursor; the shader draws the word itself.",
+ "demo": {
+  "duration": 4.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 4.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ },
+ "kept": {
+  "imported": "2026-10-11",
+  "kept": "2026-10-11"
+ }
+}

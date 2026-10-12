@@ -1,0 +1,17 @@
+{
+ "name": "social/yt-lower-third",
+ "at": "2026-10-05 22:31",
+ "static": [],
+ "build": "ok",
+ "tweens": 6,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 0.00016,
+ "seek": 0.00015,
+ "bake": 0.0,
+ "duration": 4.4,
+ "problems": [],
+ "status": "ok",
+ "seconds": 5.4
+}

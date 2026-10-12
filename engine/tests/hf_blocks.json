@@ -1,0 +1,1323 @@
+{
+ "ai-answer-rank": {
+  "name": "social/ai-answer-rank",
+  "title_vi": "Câu trả lời AI xếp hạng lại thương hiệu",
+  "desc_vi": "Một câu hỏi được gõ vào thẻ chat, trợ lý trả lời bằng danh sách ba lựa chọn rồi xếp hạng lại: thương hiệu được đẩy lên trượt vào vị trí, các mục dưới lùi xuống. Khung vuông."
+ },
+ "ai-chat-reveal": {
+  "name": "social/ai-chat-reveal",
+  "title_vi": "Hỏi AI trên điện thoại, câu trả lời chạy từng cụm",
+  "desc_vi": "Câu hỏi được gõ trên bàn phím điện thoại trồi lên, gửi đi, AI trả lời từng cụm từ theo nhịp thật (chấm suy nghĩ, cụm không đều, danh sách gạch đầu dòng) rồi cắt sang cảnh khác. Khung dọc."
+ },
+ "apple-money-count": {
+  "name": "data/apple-money-count",
+  "title_vi": "Số tiền đếm lên kiểu Apple, nổ biểu tượng tiền",
+  "desc_vi": "Bộ đếm tài chính kiểu Apple đếm từ $0 đến $10.000, loé xanh và bắn biểu tượng tiền, có âm thanh."
+ },
+ "bar-chart-race": {
+  "name": "data/bar-chart-race",
+  "title_vi": "Đua thanh: các thanh vượt nhau theo thời gian",
+  "desc_vi": "Các thanh xếp hạng lớn dần và vượt nhau khi chuỗi thời gian chạy, trục tự co giãn khi giá trị tăng, màu nhấn chuyển cho bên dẫn đầu."
+ },
+ "beat-freeze-cut": {
+  "name": "transition/beat-freeze-cut",
+  "title_vi": "Đổi tốc theo phách, đứng hình rồi cắt",
+  "desc_vi": "Chuỗi đổi tốc theo phách nhạc, một cú đứng hình và cắt cứng, cho quảng cáo và dựng nhạc."
+ },
+ "blue-sweater-intro-video": {
+  "name": "social/creator-intro",
+  "title_vi": "Intro nhà sáng tạo AI, kết bằng thẻ theo dõi X",
+  "desc_vi": "Chuỗi intro ấm áp của một nhà sáng tạo AI, kết thúc bằng thẻ theo dõi trên X (bản mẫu của tài khoản @_blue_sweater_)."
+ },
+ "camcorder-hud": {
+  "name": "effect/camcorder-hud",
+  "title_vi": "Khung máy quay cầm tay: REC, pin, ngày, bộ đếm",
+  "desc_vi": "Lớp phủ kiểu máy quay: chấm REC, pin, ngày tháng sửa được và bộ đếm thời gian chạy theo phim."
+ },
+ "camera-dolly-zoom": {
+  "name": "camera/dolly-zoom",
+  "title_vi": "Dolly zoom (cú máy Vertigo)",
+  "desc_vi": "Máy quay tiến hoặc lùi trong khi góc nhìn đổi ngược lại, chủ thể giữ nguyên cỡ còn hậu cảnh co rút hoặc ùa tới."
+ },
+ "canopy-part-title": {
+  "name": "title/canopy-part",
+  "title_vi": "Lá cây lướt qua, rẽ ra lộ tiêu đề",
+  "desc_vi": "Lá cây quét qua khung rồi rẽ sang hai bên để lộ tiêu đề."
+ },
+ "carousel-circle-1": {
+  "name": "carousel/circle-1",
+  "title_vi": "Băng chuyền vòng tròn, kiểu 1",
+  "desc_vi": "Các thẻ ảnh chạy trên một vòng tròn, cỡ to nhỏ theo độ sâu, quét nhanh chậm nhanh. 12 ô ảnh."
+ },
+ "carousel-circle-2": {
+  "name": "carousel/circle-2",
+  "title_vi": "Băng chuyền vòng tròn, kiểu 2",
+  "desc_vi": "Các thẻ ảnh chạy trên một vòng tròn, cỡ to nhỏ theo độ sâu, quét nhanh chậm nhanh. 12 ô ảnh."
+ },
+ "carousel-circle-3": {
+  "name": "carousel/circle-3",
+  "title_vi": "Băng chuyền vòng tròn, kiểu 3",
+  "desc_vi": "Các thẻ ảnh chạy trên một vòng tròn, cỡ to nhỏ theo độ sâu, quét nhanh chậm nhanh. 12 ô ảnh."
+ },
+ "carousel-circle-4": {
+  "name": "carousel/circle-4",
+  "title_vi": "Băng chuyền vòng tròn, kiểu 4",
+  "desc_vi": "Các thẻ ảnh chạy trên một vòng tròn, cỡ to nhỏ theo độ sâu, quét nhanh chậm nhanh. 12 ô ảnh."
+ },
+ "carousel-circle-5": {
+  "name": "carousel/circle-5",
+  "title_vi": "Băng chuyền vòng tròn, kiểu 5",
+  "desc_vi": "Các thẻ ảnh chạy trên một vòng tròn, cỡ to nhỏ theo độ sâu, quét nhanh chậm nhanh. 12 ô ảnh."
+ },
+ "carousel-orbit-1": {
+  "name": "carousel/orbit-1",
+  "title_vi": "Quả cầu ảnh xoay 3D, kiểu 1",
+  "desc_vi": "Các thẻ ảnh trên một quả cầu Fibonacci 3D đang xoay, luôn quay mặt về máy quay, cỡ theo khoảng cách. 24 ô ảnh."
+ },
+ "carousel-orbit-2": {
+  "name": "carousel/orbit-2",
+  "title_vi": "Quả cầu ảnh xoay 3D, kiểu 2",
+  "desc_vi": "Các thẻ ảnh trên một quả cầu Fibonacci 3D đang xoay, luôn quay mặt về máy quay, cỡ theo khoảng cách. 24 ô ảnh."
+ },
+ "carousel-orbit-3": {
+  "name": "carousel/orbit-3",
+  "title_vi": "Quả cầu ảnh xoay 3D, kiểu 3",
+  "desc_vi": "Các thẻ ảnh trên một quả cầu Fibonacci 3D đang xoay, luôn quay mặt về máy quay, cỡ theo khoảng cách. 24 ô ảnh."
+ },
+ "carousel-orbit-4": {
+  "name": "carousel/orbit-4",
+  "title_vi": "Quả cầu ảnh xoay 3D, kiểu 4",
+  "desc_vi": "Các thẻ ảnh trên một quả cầu Fibonacci 3D đang xoay, luôn quay mặt về máy quay, cỡ theo khoảng cách. 24 ô ảnh."
+ },
+ "carousel-orbit-5": {
+  "name": "carousel/orbit-5",
+  "title_vi": "Quả cầu ảnh xoay 3D, kiểu 5",
+  "desc_vi": "Các thẻ ảnh trên một quả cầu Fibonacci 3D đang xoay, luôn quay mặt về máy quay, cỡ theo khoảng cách. 24 ô ảnh."
+ },
+ "carousel-path-1": {
+  "name": "carousel/path-1",
+  "title_vi": "Băng chuyền ảnh theo đường cong, kiểu 1",
+  "desc_vi": "Các thẻ ảnh chạy theo một đường bezier mở (vòng cung, chữ V, chéo, sóng, chữ S), to nhỏ theo độ sâu, xoay theo hướng đường."
+ },
+ "carousel-path-2": {
+  "name": "carousel/path-2",
+  "title_vi": "Băng chuyền ảnh theo đường cong, kiểu 2",
+  "desc_vi": "Các thẻ ảnh chạy theo một đường bezier mở (vòng cung, chữ V, chéo, sóng, chữ S), to nhỏ theo độ sâu, xoay theo hướng đường."
+ },
+ "carousel-path-3": {
+  "name": "carousel/path-3",
+  "title_vi": "Băng chuyền ảnh theo đường cong, kiểu 3",
+  "desc_vi": "Các thẻ ảnh chạy theo một đường bezier mở (vòng cung, chữ V, chéo, sóng, chữ S), to nhỏ theo độ sâu, xoay theo hướng đường."
+ },
+ "carousel-path-4": {
+  "name": "carousel/path-4",
+  "title_vi": "Băng chuyền ảnh theo đường cong, kiểu 4",
+  "desc_vi": "Các thẻ ảnh chạy theo một đường bezier mở (vòng cung, chữ V, chéo, sóng, chữ S), to nhỏ theo độ sâu, xoay theo hướng đường."
+ },
+ "carousel-path-5": {
+  "name": "carousel/path-5",
+  "title_vi": "Băng chuyền ảnh theo đường cong, kiểu 5",
+  "desc_vi": "Các thẻ ảnh chạy theo một đường bezier mở (vòng cung, chữ V, chéo, sóng, chữ S), to nhỏ theo độ sâu, xoay theo hướng đường."
+ },
+ "carousel-text-circle-1": {
+  "name": "carousel/text-circle-1",
+  "title_vi": "Tiêu đề và vòng ảnh xuyên qua chữ, kiểu 1",
+  "desc_vi": "Tiêu đề hiện từng từ qua mặt nạ trong khi một vòng ảnh hội tụ từ ngoài khung xuyên qua dòng chữ, thu về giữa rồi cắt cứng sang dòng thứ hai."
+ },
+ "carousel-text-circle-2": {
+  "name": "carousel/text-circle-2",
+  "title_vi": "Tiêu đề và vòng ảnh xuyên qua chữ, kiểu 2",
+  "desc_vi": "Tiêu đề hiện từng từ qua mặt nạ trong khi một vòng ảnh hội tụ từ ngoài khung xuyên qua dòng chữ, thu về giữa rồi cắt cứng sang dòng thứ hai."
+ },
+ "carousel-text-circle-3": {
+  "name": "carousel/text-circle-3",
+  "title_vi": "Tiêu đề và vòng ảnh xuyên qua chữ, kiểu 3",
+  "desc_vi": "Tiêu đề hiện từng từ qua mặt nạ trong khi một vòng ảnh hội tụ từ ngoài khung xuyên qua dòng chữ, thu về giữa rồi cắt cứng sang dòng thứ hai."
+ },
+ "carousel-text-circle-4": {
+  "name": "carousel/text-circle-4",
+  "title_vi": "Tiêu đề và vòng ảnh xuyên qua chữ, kiểu 4",
+  "desc_vi": "Tiêu đề hiện từng từ qua mặt nạ trong khi một vòng ảnh hội tụ từ ngoài khung xuyên qua dòng chữ, thu về giữa rồi cắt cứng sang dòng thứ hai."
+ },
+ "carousel-text-circle-5": {
+  "name": "carousel/text-circle-5",
+  "title_vi": "Tiêu đề và vòng ảnh xuyên qua chữ, kiểu 5",
+  "desc_vi": "Tiêu đề hiện từng từ qua mặt nạ trong khi một vòng ảnh hội tụ từ ngoài khung xuyên qua dòng chữ, thu về giữa rồi cắt cứng sang dòng thứ hai."
+ },
+ "carousel-vision-1": {
+  "name": "carousel/vision-1",
+  "title_vi": "Vòng thẻ ảnh lớn nghiêng 3D, kiểu 1",
+  "desc_vi": "Một vòng thẻ ảnh lớn nghiêng thành hàng dưới máy quay 3D, mỗi thẻ quay mặt về giữa. 12 ô ảnh."
+ },
+ "carousel-vision-2": {
+  "name": "carousel/vision-2",
+  "title_vi": "Vòng thẻ ảnh lớn nghiêng 3D, kiểu 2",
+  "desc_vi": "Một vòng thẻ ảnh lớn nghiêng thành hàng dưới máy quay 3D, mỗi thẻ quay mặt về giữa. 12 ô ảnh."
+ },
+ "carousel-vision-3": {
+  "name": "carousel/vision-3",
+  "title_vi": "Vòng thẻ ảnh lớn nghiêng 3D, kiểu 3",
+  "desc_vi": "Một vòng thẻ ảnh lớn nghiêng thành hàng dưới máy quay 3D, mỗi thẻ quay mặt về giữa. 12 ô ảnh."
+ },
+ "carousel-vision-4": {
+  "name": "carousel/vision-4",
+  "title_vi": "Vòng thẻ ảnh lớn nghiêng 3D, kiểu 4",
+  "desc_vi": "Một vòng thẻ ảnh lớn nghiêng thành hàng dưới máy quay 3D, mỗi thẻ quay mặt về giữa. 12 ô ảnh."
+ },
+ "carousel-vision-5": {
+  "name": "carousel/vision-5",
+  "title_vi": "Vòng thẻ ảnh lớn nghiêng 3D, kiểu 5",
+  "desc_vi": "Một vòng thẻ ảnh lớn nghiêng thành hàng dưới máy quay 3D, mỗi thẻ quay mặt về giữa. 12 ô ảnh."
+ },
+ "chatgpt-exchange": {
+  "name": "social/chatgpt-exchange",
+  "title_vi": "Hội thoại kiểu ChatGPT dọc: hỏi, trả lời, bảng so sánh",
+  "desc_vi": "Hội thoại kiểu ChatGPT khung dọc: gõ và gửi câu hỏi, câu trả lời chạy ra, ghép thành bảng so sánh rồi cuộn lại xem kết quả."
+ },
+ "chromatic-radial-split": {
+  "name": "transition/shader-chromatic-split",
+  "title_vi": "Chuyển cảnh shader: tách màu toả tròn",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: tách màu (quang sai) toả tròn từ tâm giữa hai cảnh."
+ },
+ "cinemagraph": {
+  "name": "effect/cinemagraph",
+  "title_vi": "Cinemagraph: ảnh tĩnh với một vùng chuyển động",
+  "desc_vi": "Một tấm ảnh đứng yên với một vùng duy nhất còn sống (khói bốc lên trên tách cà phê), lặp liền mạch."
+ },
+ "cinematic-zoom": {
+  "name": "transition/shader-cinematic-zoom",
+  "title_vi": "Chuyển cảnh shader: zoom nhoè điện ảnh",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: phóng nhoè mạnh xuyên sang cảnh sau."
+ },
+ "claude-exchange": {
+  "name": "social/claude-exchange",
+  "title_vi": "Hội thoại kiểu Claude dọc: tìm kiếm, suy luận, trả lời",
+  "desc_vi": "Hội thoại kiểu Claude khung dọc: gõ câu hỏi, các bước tìm kiếm và suy luận, rồi câu trả lời chi tiết có trích dẫn và nút thao tác."
+ },
+ "code-3d-extrude": {
+  "name": "code/code-3d-extrude",
+  "title_vi": "Khối code 3D có ánh sáng xoay rồi dừng",
+  "desc_vi": "Code tô màu cú pháp trên một khối 3D vát cạnh có ánh sáng, xoay trong không gian thật rồi dừng ở góc đọc được (WebGL)."
+ },
+ "code-diff": {
+  "name": "code/code-diff",
+  "title_vi": "Diff code: dòng xoá thu lại đỏ, dòng thêm mở xanh",
+  "desc_vi": "Một chỉnh sửa hiện dạng diff màu: dòng bị xoá thu lại màu đỏ, dòng thêm mở ra màu xanh."
+ },
+ "code-highlight": {
+  "name": "code/code-highlight",
+  "title_vi": "Dải sáng quét một dòng code, phần còn lại tối",
+  "desc_vi": "Một dải sáng quét qua dòng code cần chú ý trong khi phần xung quanh tối đi."
+ },
+ "code-morph": {
+  "name": "code/code-morph",
+  "title_vi": "Đoạn code biến thành đoạn khác (Magic Move)",
+  "desc_vi": "Một đoạn code biến thành đoạn khác: các token trượt sang vị trí mới, token bỏ mờ đi, token mới hiện vào (kiểu Shiki Magic Move)."
+ },
+ "code-particle-assemble": {
+  "name": "code/code-particle-assemble",
+  "title_vi": "Hàng nghìn hạt bay về thành đoạn code",
+  "desc_vi": "Hàng nghìn điểm sáng GPU tản ra trong không gian rồi bay về đúng từng điểm ảnh của chữ code, kết thành đoạn code tô màu đọc được."
+ },
+ "code-scroll": {
+  "name": "code/code-scroll",
+  "title_vi": "Cuộn tệp code tới dòng cần xem và soi sáng",
+  "desc_vi": "Máy quay cuộn một tệp code dài để đưa dòng cần xem vào giữa và soi sáng nó.",
+  "seek_tolerance": 0.015,
+  "notes": "Seek check tolerance 1.5 %: mid-scroll the code sits on a GPU layer (translate3d at a fractional y) and Chromium's text raster on it depends on the seek history; the state is the same (checked: identical transforms)."
+ },
+ "code-shader-dissolve": {
+  "name": "code/code-shader-dissolve",
+  "title_vi": "Code hiện ra từ nhiễu bằng shader",
+  "desc_vi": "Code hiện ra từ nhiễu bằng một shader GPU với mép tan có tách màu và viền sáng, rồi giữ nét."
+ },
+ "code-slice-hero": {
+  "name": "title/code-slice-hero",
+  "title_vi": "Mặt tiêu đề lật từng ô lộ tiêu đề phía sau",
+  "desc_vi": "Một mặt tiêu đề chia ô lật từng ô dưới một trường độ sâu quét qua, lộ ra tiêu đề phía sau."
+ },
+ "code-snippet-apple-terminal-pro": {
+  "name": "code/apple-terminal-pro",
+  "title_vi": "Terminal Apple Pro gõ lệnh từng ký tự",
+  "desc_vi": "Cửa sổ Terminal kiểu Pro của Apple: nền đen, chữ xám, con trỏ xanh chanh, gõ một phiên lệnh từng ký tự.",
+  "duration": 6,
+  "reload": true,
+  "notes": "The snippet's timeline callbacks append a new prompt line and hide the first one (not undone going back), so the kit reloads the page on a seek backwards (hf-frame reload)."
+ },
+ "code-typing": {
+  "name": "code/code-typing",
+  "title_vi": "Code gõ ra theo từng token, con trỏ chạy theo",
+  "desc_vi": "Code hiện ra theo từng token, con trỏ bám theo đầu dòng đang gõ."
+ },
+ "cosmic-orb": {
+  "name": "background/cosmic-orb",
+  "title_vi": "Hành tinh bong bóng xà phòng óng ánh",
+  "desc_vi": "Một hành tinh như bong bóng xà phòng: quả cầu xoay chậm với dải tinh vân, vệt bụi và sao lấp lánh, viền kính khúc xạ có tách màu."
+ },
+ "cross-warp-morph": {
+  "name": "transition/shader-cross-warp",
+  "title_vi": "Chuyển cảnh shader: bẻ cong chéo",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: hai cảnh bẻ cong chéo vào nhau."
+ },
+ "cuboid-carousel": {
+  "name": "carousel/cuboid",
+  "title_vi": "Chuỗi khối hộp chạy sóng làm băng chuyền",
+  "desc_vi": "Một chuỗi khối hộp vát cạnh chạy theo làn sóng như một băng chuyền nội dung."
+ },
+ "data-chart": {
+  "name": "data/data-chart",
+  "title_vi": "Biểu đồ cột + đường kiểu báo NYT",
+  "desc_vi": "Biểu đồ cột kết hợp đường, hiện lần lượt, chữ kiểu báo New York Times, có nhãn giá trị."
+ },
+ "domain-warp-dissolve": {
+  "name": "transition/shader-domain-warp",
+  "title_vi": "Chuyển cảnh shader: tan theo nhiễu fractal",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: cảnh tan theo nhiễu fractal bị bẻ cong."
+ },
+ "editorial-flash-overlay": {
+  "name": "effect/editorial-flash",
+  "title_vi": "Lớp loé đèn flash kiểu tạp chí",
+  "desc_vi": "Các lớp sáng trung tính ấm cho cú cắt kiểu đèn flash máy ảnh hoặc màn lộ trên mạng xã hội.",
+  "demo_vars": {
+   "replace": [
+    [
+     "background: transparent",
+     "background: url(./demo-backdrop.jpg) center / cover no-repeat"
+    ]
+   ]
+  },
+  "notes": "Demo: its own backdrop picture under the overlay (alone it is a transparent layer with 0.04 s flashes: the Gallery showed black, 09/10/2026)."
+ },
+ "exploded-stack": {
+  "name": "data/exploded-stack",
+  "title_vi": "Các lớp xếp chồng tách ra có nhãn rồi gộp lại",
+  "desc_vi": "Các tấm lớp isometric tách rời nhau, mỗi lớp có nhãn bên cạnh, giữ rồi gộp lại thành một khối. Cho sơ đồ kiến trúc, hệ thống."
+ },
+ "extruded-logo": {
+  "name": "logo/extruded-logo",
+  "title_vi": "Chữ 3D vát cạnh lật lên từng chữ",
+  "desc_vi": "Các chữ 3D vát cạnh lật lên từng chữ, cả từ xoay để ánh sáng chạy qua cạnh vát rồi dừng để đọc. Chrome, vàng hoặc mờ."
+ },
+ "flash-through-white": {
+  "name": "transition/shader-flash-white",
+  "title_vi": "Chuyển cảnh shader: loé trắng",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: chuyển qua một nhịp loé trắng."
+ },
+ "flowchart": {
+  "name": "data/flowchart",
+  "title_vi": "Sơ đồ quyết định với giấy note và con trỏ",
+  "desc_vi": "Cây quyết định động với dây nối SVG, nút dạng giấy note, con trỏ thao tác và gõ sửa chữ."
+ },
+ "flowchart-vertical": {
+  "name": "data/flowchart-vertical",
+  "title_vi": "Sơ đồ quyết định khung dọc",
+  "desc_vi": "Cây quyết định động khung dọc với dây nối SVG, nút giấy note, con trỏ thao tác và gõ sửa chữ."
+ },
+ "freeze-frame-dressing": {
+  "name": "effect/freeze-frame-dressing",
+  "title_vi": "Đứng hình trang trí giấy, băng dính, flash",
+  "desc_vi": "Trang trí cho khung đứng hình hoặc chủ thể đã tách nền: giấy, băng dính và đèn flash chạy theo timeline.",
+  "demo_vars": {
+   "replace": [
+    [
+     "background: transparent",
+     "background: url(./demo-background.jpg) center / cover no-repeat"
+    ]
+   ]
+  },
+  "notes": "Demo: its own backdrop picture under the overlay (alone it is a transparent layer: the Gallery showed a flat grey card on black, 09/10/2026)."
+ },
+ "frost-sequence-camera-orbit": {
+  "name": "logo/frost-orbit",
+  "title_vi": "Logo băng vỡ ra rồi kết thành chữ, máy quay bay vòng",
+  "desc_vi": "Máy quay bay vòng quanh một logo băng đang vỡ ra, kết lại thành hai cụm chữ rồi mờ đi. Chưa chạy được trong kit: cần WebGPU trên card đồ hoạ (WebGPU chạy bằng CPU quá chậm cho mẫu này).",
+  "notes": "KNOWN LIMIT: renders with WebGPU only. The kit's renderer has no WebGPU (software WebGL on SwiftShader for the same picture on every machine). Tried 06/10/2026: full Chromium gives WebGPU on SwiftShader (CPU), but this block's 66k-triangle text mesh did not finish building in 30 s and a frame took 15 s; a GPU adapter would differ between machines. Its remote files are downloaded.",
+  "needs": [
+   "webgpu"
+  ],
+  "drop": "07/10/2026 (bạn: xoá mẫu bị giới hạn): cần WebGPU trên card đồ hoạ; WebGPU bằng CPU quá chậm."
+ },
+ "gallery-tunnel": {
+  "name": "background/gallery-tunnel",
+  "title_vi": "Đường hầm vô tận ốp ảnh và khối màu",
+  "desc_vi": "Một hành lang vô tận: đường hầm vuông lùi về điểm tụ, sàn, trần, tường ốp khối màu rực và ảnh, phồng lên khi tới gần máy quay."
+ },
+ "glass-hero": {
+  "name": "title/glass-hero",
+  "title_vi": "Khối thuỷ tinh xoay trước tiêu đề khổng lồ",
+  "desc_vi": "Một khối thuỷ tinh đặc trồi lên trước tiêu đề khổng lồ và xoay mãi, chữ bị bẻ cong và tách màu qua nó."
+ },
+ "glass-shard-title": {
+  "name": "title/glass-shard",
+  "title_vi": "Mảnh kính bay qua sương ghép thành tiêu đề",
+  "desc_vi": "Các mảnh kính bay vào qua sương mù rồi tự ghép thành tiêu đề.",
+  "length": 9,
+  "notes": "length 9: the page's timeline is 9 s (DUR = 9; shards gone by 8.65 s) though its root says 12.16 s; the 3 s after were black on the Gallery (09/10/2026). thumb_at 0.45: the headline tiled (at 82 % the shards are flying out).",
+  "thumb_at": 0.45
+ },
+ "glitch": {
+  "name": "transition/shader-glitch",
+  "title_vi": "Chuyển cảnh shader: nhiễu số",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: nhiễu kỹ thuật số giữa hai cảnh."
+ },
+ "gravitational-lens": {
+  "name": "transition/shader-gravitational-lens",
+  "title_vi": "Chuyển cảnh shader: thấu kính hấp dẫn",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: bẻ cong như thấu kính hấp dẫn."
+ },
+ "halftone-field": {
+  "name": "background/halftone-field",
+  "title_vi": "Trường chấm halftone sáng như tường LED",
+  "desc_vi": "Một trường chấm halftone toàn khung: cỡ và màu chấm theo một trường nhiễu trôi chậm, các dải sáng quét qua khung đen như bức tường LED khổng lồ."
+ },
+ "heygen-avatar-promo-card": {
+  "name": "social/avatar-promo-card",
+  "title_vi": "Thẻ khuyến mãi dọc với ghép avatar động",
+  "desc_vi": "Thẻ ưu đãi khung dọc ghép một mảng avatar chuyển động với chữ khuyến mãi đậm và nhãn thương hiệu (bản mẫu HeyGen)."
+ },
+ "hw-frame": {
+  "name": "hand/frame",
+  "title_vi": "Khung viền vẽ tay quanh ảnh, có chú thích",
+  "desc_vi": "Ảnh trong khung viền vẽ tay, hoạ tiết ở góc và chú thích viết tay; cả khối hơi nghiêng và rung nét."
+ },
+ "hw-path-text": {
+  "name": "hand/path-text",
+  "title_vi": "Chữ viết tay chạy theo đường cong",
+  "desc_vi": "Chữ viết tay chạy dọc theo một đường SVG, hiện từng ký tự."
+ },
+ "hw-pipeline": {
+  "name": "hand/pipeline",
+  "title_vi": "Sơ đồ vẽ tay: hộp, nhãn, dây nối cong",
+  "desc_vi": "Các hộp nét run có nhãn viết tay nối nhau bằng dây cong, vẽ lần lượt theo danh sách nút."
+ },
+ "hw-scribble-transition": {
+  "name": "hand/scribble-transition",
+  "title_vi": "Chuyển cảnh bằng nét vẽ nguệch ngoạc",
+  "desc_vi": "Lớp chuyển cảnh: các dải nét nguệch ngoạc phủ kín khung, cảnh dưới được cắt, rồi nét vẽ dọn đi."
+ },
+ "hw-text-cloud": {
+  "name": "hand/speech-bubble",
+  "title_vi": "Bong bóng thoại vẽ tay",
+  "desc_vi": "Bong bóng thoại vẽ tay có đuôi đặt được: viền tự vẽ, nền giấy hiện dần, chữ viết tay gõ từng ký tự; nét rung."
+ },
+ "hw-title": {
+  "name": "hand/title",
+  "title_vi": "Tiêu đề viết tay có dải tô và gạch chân nguệch ngoạc",
+  "desc_vi": "Chữ viết tay cỡ lớn với dải tô quét từng từ và nét gạch chân nguệch ngoạc vừa với chữ; nét rung."
+ },
+ "hw-write-title": {
+  "name": "hand/write-title",
+  "title_vi": "Tiêu đề tự viết ra từng nét",
+  "desc_vi": "Chữ viết tay thật sự được viết ra: từng chữ cái Caveat hiện theo nét bút đúng thứ tự, bút nhanh ở nét thẳng, chậm ở nét cong."
+ },
+ "light-leak": {
+  "name": "transition/shader-light-leak",
+  "title_vi": "Chuyển cảnh shader: lọt sáng điện ảnh",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: lớp lọt sáng kiểu phim điện ảnh."
+ },
+ "logo-outro": {
+  "name": "logo/logo-outro",
+  "title_vi": "Logo lắp ráp từng mảnh, phát sáng, kết phim",
+  "desc_vi": "Logo hiện ra bằng cách lắp từng mảnh, bùng sáng, khẩu hiệu hiện dần và viên địa chỉ web."
+ },
+ "lottie-character-walk": {
+  "name": "motion/character-walk",
+  "title_vi": "Nhân vật Lottie đi vào và chỉ vào thẻ",
+  "desc_vi": "Một nhân vật phẳng có khớp đi vào, chân bám đất, dừng lại và chỉ vào một thẻ; diễn xuất là file Lottie, sân khấu là GSAP."
+ },
+ "mk-background": {
+  "name": "background/mk-gradient",
+  "title_vi": "Nền gradient mềm tối giản",
+  "desc_vi": "Nền gradient mềm kiểu trình chiếu tối giản: hai vệt màu tròn trôi trên nền, có mặt nạ thẻ bo góc và chế độ kính mờ."
+ },
+ "mk-callout-highlight": {
+  "name": "text/mk-word-sweep",
+  "title_vi": "Câu được nhấn từng từ theo một giá trị",
+  "desc_vi": "Một câu được nhấn mạnh lần lượt từng từ, điều khiển bằng một giá trị duy nhất để khớp lời đọc.",
+  "bg": "#f5f5f7"
+ },
+ "mk-clone-wall-transition": {
+  "name": "transition/clone-wall",
+  "title_vi": "Chuyển cảnh tường chữ lặp lại",
+  "desc_vi": "Lớp chuyển cảnh: một bức tường chữ lặp phủ kín khung, đảo màu bằng hoà trộn difference rồi dọn đi."
+ },
+ "mk-line-graph": {
+  "name": "data/mk-line-graph",
+  "title_vi": "Biểu đồ đường tối giản",
+  "desc_vi": "Một hoặc hai đường số liệu tự vẽ, chấm bật lên, nhãn giá trị chạy theo đầu nét, trục mờ, chú giải chấm màu."
+ },
+ "mk-placeholder-grid": {
+  "name": "card/mk-media-grid",
+  "title_vi": "Lưới khung ảnh bo góc",
+  "desc_vi": "Lưới khung ảnh bo góc (2, 3, 4 ô, 3x2, một lớn hai nhỏ), các ô hiện lần lượt rồi lắng chậm."
+ },
+ "mk-progress-stat": {
+  "name": "data/mk-progress-stat",
+  "title_vi": "Thẻ số liệu đếm lên với thanh tiến độ",
+  "desc_vi": "Con số lớn đếm lên, nhãn, thanh tiến độ mảnh chạy tới giá trị và chú thích; nền sáng hoặc tối.",
+  "bg": "#f5f5f7"
+ },
+ "mk-specs-list": {
+  "name": "card/mk-specs-list",
+  "title_vi": "Danh sách thông số có dấu tích",
+  "desc_vi": "Danh sách thông số canh trái trên nền phim, các dòng trượt vào lần lượt kèm gạch chân màu quét qua.",
+  "bg": "#f5f5f7"
+ },
+ "north-korea-locked-down": {
+  "name": "map/zoom-scribble",
+  "title_vi": "Bản đồ zoom vào quốc gia, khoanh đỏ, nhãn",
+  "desc_vi": "Bản đồ thực zoom vào Triều Tiên, khoanh tròn nét đỏ, nhãn bật lên và lớp phủ đỏ kiểu báo chí (bản mẫu)."
+ },
+ "nyc-paris-flight": {
+  "name": "map/flight-path",
+  "title_vi": "Bản đồ máy bay bay từ New York đến Paris",
+  "desc_vi": "Bản đồ thực kiểu Apple: máy bay bay từ New York đến Paris, khoanh điểm, nhịp hạ cánh, có âm thanh (bản mẫu)."
+ },
+ "orbit-card": {
+  "name": "card/orbit-card",
+  "title_vi": "Thẻ tính năng bay quanh quả cầu chấm",
+  "desc_vi": "Một thẻ tính năng bay quanh một quả cầu chấm theo chuyển động máy quay Blender."
+ },
+ "organic-light-leak-overlay": {
+  "name": "effect/light-leak-overlay",
+  "title_vi": "Lớp lọt sáng hữu cơ",
+  "desc_vi": "Lớp lọt sáng CSS cho nhịp hồi ức và chuyển cảnh có lý do."
+ },
+ "oscilloscope-trace": {
+  "name": "data/oscilloscope",
+  "title_vi": "Máy hiện sóng CRT vẽ dạng sóng",
+  "desc_vi": "Tia máy hiện sóng CRT quét một dạng sóng trên lưới 10x8, vệt phốt pho mờ dần và sáng hơn ở chỗ tia đi chậm."
+ },
+ "product-turntable": {
+  "name": "device/product-turntable",
+  "title_vi": "Sản phẩm xoay trên bệ studio",
+  "desc_vi": "Một sản phẩm xoay trọn vòng trên bệ studio, lặp liền mạch. Thay bằng model GLB/glTF hoặc giữ lon nước có sẵn với nhãn của bạn."
+ },
+ "rack-focus": {
+  "name": "camera/rack-focus",
+  "title_vi": "Chuyển nét với bokeh khẩu thật",
+  "desc_vi": "Một cú chuyển nét với bokeh thật: mặt phẳng nét đi từ chủ thể gần ra xa, một cái rõ dần trong khi cái kia nhoè thành đĩa bokeh đa giác."
+ },
+ "ridged-burn": {
+  "name": "transition/shader-ridged-burn",
+  "title_vi": "Chuyển cảnh shader: cháy rìa nhiễu",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: cảnh cháy theo nhiễu gợn."
+ },
+ "ripple-waves": {
+  "name": "transition/shader-ripple",
+  "title_vi": "Chuyển cảnh shader: gợn sóng đồng tâm",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: gợn sóng đồng tâm."
+ },
+ "sdf-iris": {
+  "name": "transition/shader-sdf-iris",
+  "title_vi": "Chuyển cảnh shader: mống mắt SDF",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: mở mống mắt bằng trường khoảng cách."
+ },
+ "slack-notification-ad": {
+  "name": "social/slack-notification-ad",
+  "title_vi": "Quảng cáo dọc: thông báo Slack dồn dập",
+  "desc_vi": "Màn hình khoá điện thoại đầy dần các tin nhắn Slack đòi video, rồi HeyGen giải quyết (bản mẫu quảng cáo dọc)."
+ },
+ "snow": {
+  "name": "background/snow",
+  "title_vi": "Tuyết rơi phủ khung",
+  "desc_vi": "Lớp tuyết rơi thưa hoặc dày, bông tuyết to nhỏ, nhanh chậm, đậm nhạt theo chiều sâu, giữa khung để trống."
+ },
+ "split-flap-board": {
+  "name": "text/split-flap",
+  "title_vi": "Bảng lật chữ kiểu nhà ga (Solari)",
+  "desc_vi": "Bảng giờ tàu kiểu Solari: mỗi ô lật qua các ký tự trung gian cho tới ký tự đích, chữ hiện ra như một thác cơ khí."
+ },
+ "starfield": {
+  "name": "background/starfield",
+  "title_vi": "Bầu trời sao lấp lánh",
+  "desc_vi": "Lớp bầu trời đêm: sao thưa hoặc dày ba cỡ, lấp lánh và trôi theo hai lớp thị sai, giữa khung để trống.",
+  "demo_vars": {
+   "density": "dense",
+   "tone": "white"
+  }
+ },
+ "swirl-vortex": {
+  "name": "transition/shader-swirl",
+  "title_vi": "Chuyển cảnh shader: xoáy lốc",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: xoáy lốc."
+ },
+ "thermal-distortion": {
+  "name": "transition/shader-thermal",
+  "title_vi": "Chuyển cảnh shader: méo nhiệt",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: méo như hơi nóng bốc lên."
+ },
+ "transitions-3d": {
+  "name": "transition/showcase-3d",
+  "title_vi": "Bộ chuyển cảnh 3D (lật, xoay)",
+  "desc_vi": "Trình diễn các chuyển cảnh lật và xoay phối cảnh 3D."
+ },
+ "transitions-blur": {
+  "name": "transition/showcase-blur",
+  "title_vi": "Bộ chuyển cảnh nhoè",
+  "desc_vi": "Trình diễn các chuyển cảnh dựa trên nhoè."
+ },
+ "transitions-cover": {
+  "name": "transition/showcase-cover",
+  "title_vi": "Bộ chuyển cảnh che / mở",
+  "desc_vi": "Trình diễn các chuyển cảnh trượt che và mở."
+ },
+ "transitions-destruction": {
+  "name": "transition/showcase-destruction",
+  "title_vi": "Bộ chuyển cảnh vỡ vụn",
+  "desc_vi": "Trình diễn các chuyển cảnh vỡ ra từng mảnh."
+ },
+ "transitions-dissolve": {
+  "name": "transition/showcase-dissolve",
+  "title_vi": "Bộ chuyển cảnh hoà tan",
+  "desc_vi": "Trình diễn các chuyển cảnh hoà tan và mờ dần."
+ },
+ "transitions-distortion": {
+  "name": "transition/showcase-distortion",
+  "title_vi": "Bộ chuyển cảnh méo",
+  "desc_vi": "Trình diễn các chuyển cảnh bẻ cong và méo hình."
+ },
+ "transitions-grid": {
+  "name": "transition/showcase-grid",
+  "title_vi": "Bộ chuyển cảnh lưới ô",
+  "desc_vi": "Trình diễn các chuyển cảnh theo lưới ô."
+ },
+ "transitions-light": {
+  "name": "transition/showcase-light",
+  "title_vi": "Bộ chuyển cảnh ánh sáng",
+  "desc_vi": "Trình diễn các chuyển cảnh phát sáng và loé."
+ },
+ "transitions-mechanical": {
+  "name": "transition/showcase-mechanical",
+  "title_vi": "Bộ chuyển cảnh cơ khí (màn trập, mống mắt)",
+  "desc_vi": "Trình diễn các chuyển cảnh màn trập và mống mắt cơ khí.",
+  "thumb_at": 0.4,
+  "notes": "thumb_at 0.4: at 82 % the page sits between two scenes on a flat navy frame (a black-looking Gallery card, 09/10/2026)."
+ },
+ "transitions-other": {
+  "name": "transition/showcase-other",
+  "title_vi": "Bộ chuyển cảnh sáng tạo khác",
+  "desc_vi": "Trình diễn các chuyển cảnh sáng tạo khác."
+ },
+ "transitions-push": {
+  "name": "transition/showcase-push",
+  "title_vi": "Bộ chuyển cảnh đẩy / trượt",
+  "desc_vi": "Trình diễn các chuyển cảnh đẩy và trượt."
+ },
+ "transitions-radial": {
+  "name": "transition/showcase-radial",
+  "title_vi": "Bộ chuyển cảnh quét tròn",
+  "desc_vi": "Trình diễn các chuyển cảnh quét và lộ theo vòng tròn."
+ },
+ "transitions-scale": {
+  "name": "transition/showcase-scale",
+  "title_vi": "Bộ chuyển cảnh phóng / thu",
+  "desc_vi": "Trình diễn các chuyển cảnh phóng to và thu nhỏ.",
+  "thumb_at": 0.4,
+  "notes": "thumb_at 0.4: at 82 % the page sits between two scenes on a flat navy frame (a black-looking Gallery card, 09/10/2026)."
+ },
+ "us-map-hex": {
+  "name": "map/us-hex",
+  "title_vi": "Bản đồ Mỹ dạng lưới lục giác",
+  "desc_vi": "Bản đồ lưới lục giác: mỗi bang một ô lục giác bằng nhau, tô màu theo số liệu, có chữ viết tắt."
+ },
+ "vfx-anamorphic-flare": {
+  "name": "effect/vfx-anamorphic-flare",
+  "title_vi": "Vệt loé ống kính anamorphic xanh tím",
+  "desc_vi": "Một trường điểm sáng trôi, mỗi điểm phóng ra vệt loé ngang xanh tím như ống kính anamorphic điện ảnh."
+ },
+ "vfx-liquid-background": {
+  "name": "effect/vfx-liquid",
+  "title_vi": "Nền chất lỏng gợn sóng 3D",
+  "desc_vi": "Mô phỏng chất lỏng hữu cơ trên một mặt phẳng chia lưới, nội dung HTML nổi trên mặt nước gợn sóng."
+ },
+ "vfx-magnetic": {
+  "name": "effect/vfx-magnetic",
+  "title_vi": "Hiệu ứng từ trường (VFX)",
+  "desc_vi": "Khối VFX: các phần tử bị hút như nam châm (bản trình diễn). Chưa chạy được trong kit: cần HTML-in-Canvas mà Chromium của kit chưa có.",
+  "notes": "KNOWN LIMIT: the effect uploads live HTML to WebGL with texElementImage2D (HTML-in-Canvas), which the kit's Chromium does not have (the page fails the same way outside the kit). Kept for when the renderer supports it.",
+  "drop": "07/10/2026 (bạn: xoá mẫu bị giới hạn): gọi texElementImage2D theo bản API cũ hơn Chromium 153 của kit."
+ },
+ "vfx-portal": {
+  "name": "effect/vfx-portal",
+  "title_vi": "Cổng không gian (VFX)",
+  "desc_vi": "Khối VFX: cổng không gian 3D mở ra (bản trình diễn)."
+ },
+ "vfx-shatter": {
+  "name": "effect/vfx-shatter",
+  "title_vi": "Vỡ vụn (VFX)",
+  "desc_vi": "Khối VFX: nội dung vỡ vụn thành mảnh 3D (bản trình diễn)."
+ },
+ "vfx-text-cursor": {
+  "name": "effect/vfx-text-cursor",
+  "title_vi": "Chữ hiện theo con trỏ phát sáng, tia tách màu",
+  "desc_vi": "Chữ hiện ra kịch tính theo một con trỏ phát sáng, tia bóng tách màu và ánh sáng có hướng trên nền đen."
+ },
+ "vpn-youtube-spot": {
+  "name": "device/vpn-app-spot",
+  "title_vi": "Điện thoại tìm và cài ứng dụng VPN (chèn YouTube)",
+  "desc_vi": "Đoạn chèn YouTube kiểu Apple: điện thoại tìm và cài một ứng dụng VPN, có âm thanh (bản mẫu)."
+ },
+ "week-in-merges": {
+  "name": "data/week-in-merges",
+  "title_vi": "Avatar nảy theo số pull request trong tuần",
+  "desc_vi": "Avatar mỗi tác giả nảy dọc hàng của mình với tốc độ theo số pull request đã merge trong tuần."
+ },
+ "weight-wave": {
+  "name": "text/weight-wave",
+  "title_vi": "Sóng độ đậm chạy dọc tiêu đề",
+  "desc_vi": "Một đỉnh sóng độ đậm chạy dọc tiêu đề: mỗi chữ phình từ mảnh sang đậm và nghiêng khi sóng đi qua (trục font biến thiên wght, slnt)."
+ },
+ "whip-pan": {
+  "name": "transition/shader-whip-pan",
+  "title_vi": "Chuyển cảnh shader: lia máy nhanh",
+  "desc_vi": "Thẻ trình diễn chuyển cảnh shader: lia máy rất nhanh."
+ },
+ "world-map": {
+  "name": "map/world",
+  "title_vi": "Bản đồ thế giới tô màu theo quốc gia",
+  "desc_vi": "Bản đồ thế giới tô màu hiện từng nước, nhãn chú thích và quả địa cầu xoay ở góc."
+ },
+ "yt-lcd-background": {
+  "name": "background/lcd-board",
+  "title_vi": "Nền bảng giấy có dòng quét",
+  "desc_vi": "Nền bảng giấy có vân: dòng quét trôi chậm, lưới điểm ảnh, hạt tĩnh, chữ hiện từ nhoè và tiêu đề tách màu."
+ },
+ "yt-logo-intro": {
+  "name": "logo/yt-logo-intro",
+  "title_vi": "Logo đóng dấu trên bảng kẻ, tiêu đề và mũi tên",
+  "desc_vi": "Logo đóng dấu bật lên trên bảng kẻ dòng, dòng dẫn nhường chỗ cho tiêu đề kèm nhãn mũi tên màu."
+ },
+ "yt-prism-title": {
+  "name": "title/prism",
+  "title_vi": "Tiêu đề tách màu đỏ xanh, cong phối cảnh",
+  "desc_vi": "Tiêu đề trên nền trong suốt: hiện từ nhoè, viền tách màu đỏ xanh lắng rồi thở, cong phối cảnh, phóng chậm."
+ },
+ "yt-vertical-fill": {
+  "name": "effect/vertical-fill",
+  "title_vi": "Video dọc lấp đầy khung ngang",
+  "desc_vi": "Video / ảnh dọc lấp đầy khung ngang bằng hai bên nhoè phóng to, soi gương hoặc nhân bản, có vân lưới và tăng tương phản."
+ },
+ "arc-motion-path": {
+  "name": "motion/arc-path",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Chú thích bay theo đường cung, tự xoay",
+  "desc_vi": "Một nhãn chú thích bay theo một đường cung cong và tự xoay theo hướng (GSAP MotionPath).",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/arc-motion-path.html."
+ },
+ "avatar-group-hover": {
+  "name": "ui/avatar-group-hover",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Nhóm avatar nhấc lên theo con trỏ",
+  "desc_vi": "Một hàng avatar nhấc lên theo khoảng cách tới điểm hover rồi nảy về.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/avatar-group-hover.html."
+ },
+ "badge-pop": {
+  "name": "ui/badge-pop",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Huy hiệu thông báo bật nảy, đếm số",
+  "desc_vi": "Huy hiệu thông báo bật ra co giãn đàn hồi và hiện số đếm.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/badge-pop.html."
+ },
+ "camera-rig-depth-stack": {
+  "name": "card/depth-stack",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Thẻ 3D nghiêng có chiều sâu, chuyển tiêu điểm",
+  "desc_vi": "Một thẻ kính trong khung tối nghiêng 3D có chiều sâu, thị sai và chuyển tiêu điểm như giàn máy quay.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/camera-rig-depth-stack.html."
+ },
+ "camera-shake": {
+  "name": "camera/camera-shake",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Rung máy cầm tay / ống tele / giàn máy",
+  "desc_vi": "Rung máy quay theo 9 kiểu đo thật (cầm tay, tele, giàn máy) cho bất kỳ khối bọc nào, tính theo thời gian nên tua chính xác.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/camera-shake.html."
+ },
+ "card-resize": {
+  "name": "ui/card-resize",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Thẻ nhỏ mở rộng thành bảng chi tiết",
+  "desc_vi": "Một thẻ gọn mở rộng thành bảng chi tiết.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/card-resize.html."
+ },
+ "chromatic-aberration-wipe": {
+  "name": "transition/chromatic-wipe",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Quét trượt nhanh tách kênh màu",
+  "desc_vi": "Cú quét trượt nhanh, ở các khung đỉnh thì tách kênh đỏ lục lam.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/chromatic-aberration-wipe.html."
+ },
+ "confetti": {
+  "name": "effect/confetti",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Pháo giấy ăn mừng có trọng lực",
+  "desc_vi": "Một cú nổ pháo giấy ăn mừng, hạt cố định theo seed, rơi theo trọng lực.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/confetti.html."
+ },
+ "dynamic-grid": {
+  "name": "background/dynamic-grid",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Nền lưới động cho cảnh SaaS / code / dữ liệu",
+  "desc_vi": "Nền lưới chuyển động điều khiển bằng biến CSS, hợp cảnh SaaS, code, dữ liệu.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/dynamic-grid.html."
+ },
+ "fade-through": {
+  "name": "transition/fade-through",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Chuyển cảnh mờ qua một lớp màu",
+  "desc_vi": "Chuyển cảnh nhẹ nhàng: lớp cũ mờ đi, đi qua một lớp màu, rồi lộ lớp mới.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/fade-through.html."
+ },
+ "grain-overlay": {
+  "name": "effect/grain-overlay",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Lớp hạt phim",
+  "desc_vi": "Lớp hạt phim chuyển động phủ toàn khung, thêm cảm giác analog ấm.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/grain-overlay.html."
+ },
+ "grid-pixelate-wipe": {
+  "name": "transition/grid-pixelate",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Chuyển cảnh lưới ô vuông vỡ điểm ảnh",
+  "desc_vi": "Khung vỡ thành lưới ô vuông phủ kín rồi tan đi lần lượt, dùng giữa hai cảnh.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/grid-pixelate-wipe.html."
+ },
+ "hw-arrow": {
+  "name": "hand/arrow",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Mũi tên vẽ tay tự vẽ ra",
+  "desc_vi": "Mũi tên nét run tự vẽ ra: thẳng, cong nhẹ hoặc vòng, bốn kiểu nét (trơn, mềm, sắc, phun), đầu mũi theo hướng nét.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/hw-arrow.html."
+ },
+ "hw-boil": {
+  "name": "hand/boil-hf",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Nét vẽ tay rung (boil)",
+  "desc_vi": "Hiệu ứng nét vẽ tay rung, đổi dáng mỗi vài khung theo hash cố định, tua chính xác.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/hw-boil.html."
+ },
+ "hw-box-label": {
+  "name": "hand/box-label",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Khung chữ nhật vẽ tay có nhãn",
+  "desc_vi": "Hình chữ nhật bo góc nét run tự vẽ ra (nhiều kiểu nét) hoặc rơi xuống và đáp có bẹp, kèm nhãn.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/hw-box-label.html."
+ },
+ "hw-callout-circle": {
+  "name": "hand/callout-circle",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Vòng khoanh nguệch ngoạc chú thích",
+  "desc_vi": "Vòng elip nét run khoanh quanh mục tiêu, có thể tô nguệch ngoạc và dây nối cong; nhãn viết tay bật ra có đà.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/hw-callout-circle.html."
+ },
+ "icon-swap": {
+  "name": "ui/icon-swap",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Đổi biểu tượng thu nhỏ có nhoè",
+  "desc_vi": "Đổi biểu tượng trên thanh công cụ bằng thu nhỏ kèm nhoè.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/icon-swap.html."
+ },
+ "keyframe-scrub-stack": {
+  "name": "card/keyframe-stack",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Chồng thẻ vào lệch nhịp",
+  "desc_vi": "Một chồng thẻ vào theo keyframe lệch nhịp với các kiểu ease.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/keyframe-scrub-stack.html."
+ },
+ "mesh-gradient-bg": {
+  "name": "background/mesh-gradient",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Nền gradient lưới mềm chuyển động",
+  "desc_vi": "Nền gradient lưới mềm từ các lớp tròn chuyển động.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/mesh-gradient-bg.html."
+ },
+ "micro-transitions": {
+  "name": "ui/micro-transitions",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Bộ chuyển động giao diện nhỏ",
+  "desc_vi": "Bộ chuyển động giao diện nhỏ: huy hiệu, menu thả, hộp thoại, tab, tooltip, dấu tích thành công.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/micro-transitions.html."
+ },
+ "mk-usage-arc": {
+  "name": "data/mk-usage-arc",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Đồng hồ vòng cung mảnh đếm phần trăm",
+  "desc_vi": "Đồng hồ vòng tròn mảnh tự vẽ trong khi số phần trăm đếm lên.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/mk-usage-arc.html."
+ },
+ "motion-blur": {
+  "name": "effect/motion-blur",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Nhoè chuyển động kiểu After Effects",
+  "desc_vi": "Nhoè chuyển động kiểu After Effects: tích phân mỗi phần tử qua cửa sổ màn trập (góc, pha, số mẫu) bằng cách lấy mẫu timeline.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/motion-blur.html."
+ },
+ "number-pop-in": {
+  "name": "data/number-pop-in",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Chữ số bật vào có nhoè",
+  "desc_vi": "Các chữ số bật vào có nhoè, nhích lên và hiện lần lượt.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/number-pop-in.html."
+ },
+ "number-wheel": {
+  "name": "data/number-wheel",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Bộ đếm cuộn số",
+  "desc_vi": "Bộ đếm cuộn từng chữ số cho chỉ số, giá, số đếm, bảng điểm.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/number-wheel.html."
+ },
+ "page-slide": {
+  "name": "transition/page-slide",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Trượt trang ra / vào",
+  "desc_vi": "Trang cũ trượt ra, trang mới trượt vào.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/page-slide.html."
+ },
+ "panel-reveal": {
+  "name": "ui/panel-reveal",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Bảng mở chiều cao, nội dung hiện dần",
+  "desc_vi": "Một bảng mở rộng chiều cao rồi nội dung hiện dần.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/panel-reveal.html."
+ },
+ "parallax-unzoom": {
+  "name": "transition/parallax-unzoom",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Thẻ thu nhỏ, các thẻ khác ghép thành lưới",
+  "desc_vi": "Thẻ đang đầy khung thu nhỏ lại trong khi các thẻ khác trôi vào thành lưới (ngược của parallax-zoom).",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/parallax-unzoom.html."
+ },
+ "parallax-zoom": {
+  "name": "transition/parallax-zoom",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Thẻ giữa phóng đầy khung, thẻ khác dạt ra",
+  "desc_vi": "Thẻ ở giữa phóng to đầy khung trong khi các thẻ xung quanh dạt ra theo thị sai.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/parallax-zoom.html."
+ },
+ "pendulum-swing": {
+  "name": "motion/pendulum-swing",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Biển treo đung đưa rồi dừng",
+  "desc_vi": "Nội dung treo trên một chốt, đung đưa tắt dần như tấm biển treo móc.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/pendulum-swing.html."
+ },
+ "separator": {
+  "name": "line/separator",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Đường kẻ phân cách mảnh chạy ra",
+  "desc_vi": "Đường kẻ phân cách một điểm ảnh, ngang hoặc dọc, chạy ra theo tiến độ.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/separator.html. Demo: the line drawn lighter (#2a2a2a on #0a0a0a was invisible on the Gallery, 09/10/2026).",
+  "demo_vars": {
+   "replace": [
+    [
+     "#2a2a2a",
+     "#9aa0ad"
+    ]
+   ],
+   "thickness": "bold"
+  }
+ },
+ "skeleton-reveal": {
+  "name": "ui/skeleton-reveal",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Khung xương tải rồi hiện nội dung",
+  "desc_vi": "Khung xương đang tải nhấp nháy rồi chuyển mờ sang nội dung thật.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/skeleton-reveal.html."
+ },
+ "stagger-lattice": {
+  "name": "card/stagger-lattice",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Lưới ô hiện lan theo nhịp",
+  "desc_vi": "Lưới ô hiện ra lan dần theo nhịp kiểu Anime.js stagger.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/stagger-lattice.html."
+ },
+ "success-check": {
+  "name": "ui/success-check",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Dấu tích thành công",
+  "desc_vi": "Vòng tròn bật ra, dấu tích tự vẽ, xoay nhẹ có nhoè.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/success-check.html."
+ },
+ "svg-line-draw-loader": {
+  "name": "line/draw-loader",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Đường SVG tự vẽ kiểu loader",
+  "desc_vi": "Một đường cong SVG tự vẽ theo chiều dài kiểu loader.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/svg-line-draw-loader.html."
+ },
+ "three-orbiting-cards": {
+  "name": "card/three-orbit",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Thẻ bay quanh quỹ đạo 3D (Three.js)",
+  "desc_vi": "Cảnh Three.js các thẻ bay quanh quỹ đạo, điều khiển bằng timeline.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/three-orbiting-cards.html."
+ },
+ "vignette": {
+  "name": "effect/vignette",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Viền tối điện ảnh",
+  "desc_vi": "Viền tối hình elip kiểu điện ảnh kéo mắt vào giữa khung.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/vignette.html."
+ },
+ "yt-camera-move": {
+  "name": "camera/punch-in",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Phóng nhanh, trượt, nghiêng 3D cho khối bất kỳ",
+  "desc_vi": "Phóng nhanh, trượt và nghiêng lia 3D cho video, khối hay thẻ, kèm nhịp nhoè rìa.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/yt-camera-move.html."
+ },
+ "yt-circle-pointer": {
+  "name": "hand/circle-pointer",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Vòng khoanh và đồng hồ đếm ngược",
+  "desc_vi": "Vòng elip tự vẽ quanh mục tiêu và một nhãn đếm ngược nhịp mỗi giây.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/yt-circle-pointer.html."
+ },
+ "yt-feather-highlight": {
+  "name": "effect/spotlight",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Đèn rọi mềm làm tối phần còn lại",
+  "desc_vi": "Làm tối cả khung trừ một hình elip mềm; vị trí và cỡ là biến nên đèn rọi trượt giữa các mục tiêu.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/yt-feather-highlight.html."
+ },
+ "yt-screen-warp": {
+  "name": "effect/screen-warp",
+  "kind": "components",
+  "file": "demo.html",
+  "title_vi": "Hiệu ứng như đang chiếu trên màn hình thật",
+  "desc_vi": "Lớp lưới, dòng quét, viền tối và vệt sáng cùng khối nghiêng 3D khiến hình như đang chiếu trên một màn hình thật.",
+  "notes": "Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/yt-screen-warp.html."
+ },
+ "spiral-galaxy": {
+  "name": "background/spiral-galaxy",
+  "title_vi": "Thiên hà xoắn ốc xoay thật",
+  "desc_vi": "Một thiên hà xoắn ốc nhìn từ ngoài, xoay vi sai thật: sao phía trong quay nhanh hơn phía ngoài nên các nhánh cuộn lại dần. 20.000 hạt GPU cộng sáng."
+ },
+ "spain-map": {
+  "name": "map/spain",
+  "title_vi": "Bản đồ Tây Ban Nha tô màu theo vùng",
+  "desc_vi": "Bản đồ Tây Ban Nha tô màu theo từng vùng tự trị, hiện so le từng vùng, có thang màu chú thích (phép chiếu D3)."
+ },
+ "us-map": {
+  "name": "map/us",
+  "title_vi": "Bản đồ Mỹ tô màu theo bang",
+  "desc_vi": "Bản đồ Mỹ tô màu theo từng bang, các bang hiện so le, có nhãn số liệu và thang màu chú thích."
+ },
+ "us-map-bubble": {
+  "name": "map/us-bubble",
+  "title_vi": "Bản đồ Mỹ với bong bóng theo thành phố",
+  "desc_vi": "Bản đồ Mỹ với bong bóng tỉ lệ theo số liệu ở các thành phố, nhãn giá trị và đường nối; ghép được với bản đồ Mỹ tô màu."
+ },
+ "us-map-flow": {
+  "name": "map/us-flow",
+  "title_vi": "Bản đồ Mỹ với đường bay giữa các thành phố",
+  "desc_vi": "Các cung nối giữa những thành phố Mỹ vẽ dần trên nền bản đồ: luồng đi / đến giữa các điểm."
+ },
+ "wireframe-portal-title": {
+  "name": "title/wireframe-portal",
+  "title_vi": "Cổng khung dây bung mở, tiêu đề đi xuyên qua",
+  "desc_vi": "Một cổng khung dây 3D bung mở, tiêu đề đi xuyên qua cổng, rồi các chữ cái đổi chỗ thành cụm chữ thứ hai."
+ },
+ "gooey-split": {
+  "name": "effect/gooey-split",
+  "title_vi": "Chấm dẻo tách ba rồi xoáy thành dấu",
+  "desc_vi": "Một chấm tách thành ba chấm có cổ dính như chất lỏng (metaball), xoay thành dấu xoáy với vệt mờ chuyển động theo đúng hướng quay, rồi tách lại ba chấm và nhập về một. Hợp cho icon, logo nhỏ, nút menu.",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "incoming": true,
+  "bg": "#f9da41",
+  "notes": "Added 11/10/2026 from HyperFrames main (the block came after the 0ca6947 snapshot, on 06/10/2026). Its motion blur is its own shutter snippet (sub-frame seeks inside the page), not the kit's."
+ },
+ "card-flyby": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "card/card-flyby",
+  "title": "Card Flyby",
+  "tags": [
+   "music",
+   "beat",
+   "cards",
+   "3d"
+  ],
+  "times": [
+   "landings"
+  ],
+  "title_vi": "Chồng thẻ lao tới theo nhịp, nhanh dần",
+  "desc_vi": "Một cột thẻ xếp theo chiều sâu lăn về phía trước: mỗi nhịp một thẻ lật vào ô đầu với mảng màu quét, thẻ cũ rơi về phía máy quay, khoảng giữa các thẻ ngắn dần cho tới thẻ cuối đứng yên. Hợp cho chuỗi tên dự án, tiêu đề, poster dồn lên một cú drop.",
+  "about": "A depth column of cards rolls forward; each landing beat tumbles the next card into the front slot with a solid colored wipe, the dwell shrinking card to card so the deck accelerates into a held final card.",
+  "defaults": {
+   "cards": [
+    {
+     "title": "Ý TƯỞNG"
+    },
+    {
+     "title": "PHÁC THẢO"
+    },
+    {
+     "title": "THIẾT KẾ"
+    },
+    {
+     "title": "CHUYỂN ĐỘNG"
+    },
+    {
+     "title": "ÂM THANH"
+    },
+    {
+     "title": "RA MẮT"
+    }
+   ]
+  }
+ },
+ "held-message-living-field": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "title/living-field",
+  "title": "Held Message, Living Field",
+  "tags": [
+   "music",
+   "calm",
+   "title",
+   "webgl"
+  ],
+  "title_vi": "Chữ đứng yên trên nền màu loang chuyển động",
+  "desc_vi": "Một dấu hiệu (chữ cái, từ, tiêu đề) đứng yên tuyệt đối trên nền màu mờ loang chậm; chỉ có nền thở. Cho đoạn nhạc êm, ít nhịp gõ (pad, riser), 6-16 s.",
+  "about": "A readable mark held dead still over a soft, color-shifting blurred field; only the field breathes. For a calm stretch with few onsets.",
+  "defaults": {
+   "markText": "M",
+   "titleText": "CHUYỂN ĐỘNG",
+   "tagText": "THIẾT KẾ · NHỊP ĐIỆU · CẢM XÚC"
+  }
+ },
+ "held-text-strobe-burst": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "text/texture-strobe",
+  "title": "Held Text, Strobe Burst",
+  "tags": [
+   "music",
+   "strobe",
+   "texture",
+   "type"
+  ],
+  "times": [
+   "strobePlan"
+  ],
+  "title_vi": "Chữ đứng yên, lớp chất liệu nháy theo đoạn trống dồn",
+  "desc_vi": "Một từ đứng yên, các chữ cái đổi chất liệu (vân gỗ, vải, ảnh...) mỗi khoảng 3 khung hình trong từng loạt ngắn bám đoạn trống dồn. Tối đa khoảng 4 s rồi chuyển sang thứ sạch hơn.",
+  "about": "A dead-still word whose letters flip through texture-filled frames every ~3 frames, in short bursts pinned to a drum roll.",
+  "defaults": {
+   "markText": "BÙNG"
+  }
+ },
+ "intro-kinetic-cascade": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "text/kinetic-cascade",
+  "title": "Intro Kinetic Cascade",
+  "tags": [
+   "music",
+   "intro",
+   "kinetic",
+   "type"
+  ],
+  "times": [
+   "phrases",
+   "climax"
+  ],
+  "title_vi": "Câu mở đầu hiện từng chữ lớn, kết bằng icon reo",
+  "desc_vi": "Một câu mở đầu dàn thành các cụm chữ lớn kiểu tạp chí (mỗi cụm một chữ được phóng to), hiện từng chữ đúng mốc, cắt cứng giữa các cụm, kết bằng cụm trượt vào kèm icon reo (chuông, con trỏ, lấp lánh, emoji, SVG). 3.5-7 s."
+ },
+ "logo-split-lockup-pulse": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "logo/split-lockup-pulse",
+  "title": "Logo Split, Lockup Pulse",
+  "tags": [
+   "music",
+   "logo",
+   "sting",
+   "lockup"
+  ],
+  "title_vi": "Logo hai nửa tách ra, chữ mọc giữa rồi đập theo nhịp",
+  "desc_vi": "Một dấu hai phần ghép ở giữa tách trái phải mở khe, giữa khe mọc cụm chữ từng từ một theo nhịp (từ chính rơi đúng cú drop), khép lại trên một cú hit rồi đập theo nhịp. Logo sting ngắn 2-4 s.",
+  "defaults": {
+   "word1": "mùa",
+   "word2": "hè",
+   "word3": "rực",
+   "word4": "rỡ"
+  },
+  "vendor_files": [
+   "fonts/google/Baloo2/Baloo2[wght].ttf"
+  ],
+  "fix": [
+   [
+    "url(\"./assets/fredoka-700.woff2\") format(\"woff2\")",
+    "url(\"./Baloo2[wght].ttf\") format(\"truetype\")"
+   ]
+  ]
+ },
+ "poster-tile-mosaic": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "card/poster-tile-mosaic",
+  "title": "Poster Tile Mosaic",
+  "tags": [
+   "music",
+   "mosaic",
+   "tiles",
+   "poster"
+  ],
+  "times": [
+   "program"
+  ],
+  "title_vi": "Tường ô màu ghép kín khung, đổi theo nhịp",
+  "desc_vi": "Các ô màu đủ cỡ ghép kín khung (không chồng nhau), chạy theo các thao tác bám nhịp: vào / ra so le, đổi màu cả tường trên đoạn trống dồn, tô kín dạng rắn rồi phủ lớp. 4-7 s, cho đoạn nhạc dày nhiều mốc."
+ },
+ "roll-flipbook-word-cycle": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "text/flipbook-word-cycle",
+  "title": "Roll Flipbook, Word Cycle",
+  "tags": [
+   "music",
+   "roll",
+   "flipbook",
+   "type"
+  ],
+  "title_vi": "Chữ giữa khung lật liên tục theo tiếng hi-hat, rồi khoá lại",
+  "desc_vi": "Một đoạn hi-hat dồn làm chữ ở giữa lật mỗi nốt móc kép qua danh sách từ; có thể dừng lại và khoá thành cụm cuối. 1.2-3.8 s.",
+  "defaults": {
+   "flipWords": "Thiết kế,Chiến lược,Thương hiệu,Nội dung,Sản xuất,Chiến dịch,Trải nghiệm,Truyền thông",
+   "resolveText": "mọi thứ bạn cần"
+  }
+ },
+ "split-anchor-word-slot": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "text/anchor-word-slot",
+  "title": "Split Anchor, Word Slot",
+  "tags": [
+   "music",
+   "anchor",
+   "slot",
+   "type"
+  ],
+  "times": [
+   "program"
+  ],
+  "title_vi": "Cột chữ neo bên trái, ô chữ xé giấy đổi từ bên phải",
+  "desc_vi": "Cột chữ cố định bên trái (tên, thương hiệu) cạnh một ô chữ viền giấy xé bên phải; các nhóm từ vào / ra trong ô theo nhịp, nền đổi màu cả cảnh, rung theo đoạn dồn, ô phóng to xoá cảnh ở cú drop. 3-6 s."
+ },
+ "typewriter-phrase-keyword-shuffle": {
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "music-to-video/references/templates",
+  "incoming": true,
+  "notes": "A beat-synced template of HyperFrames' music-to-video skill (asset-free; the music drives it): give its times from the song's grid ({beat} / {hit} / {downbeat} references are converted to the block's seconds, preset.json \"times\").",
+  "name": "text/keyword-font-shuffle",
+  "title": "Typewriter Phrase, Keyword Font Shuffle",
+  "tags": [
+   "music",
+   "typewriter",
+   "font",
+   "type"
+  ],
+  "title_vi": "Gõ từng chữ theo nhịp, từ khoá đổi font liên tục",
+  "desc_vi": "Các từ gõ vào mỗi nhịp một từ thành câu, rồi một từ khoá đổi kiểu chữ theo nhịp trong khi mọi thứ khác đứng yên. 2.5-5 s.",
+  "defaults": {
+   "lead1": "thiết kế",
+   "lead2": "bằng",
+   "keyword": "cảm xúc"
+  }
+ },
+ "asset-fusion": {
+  "name": "effect/circle-highlight",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "skill": "motion-graphics/samples",
+  "file": "_ref-circle-highlight.html",
+  "incoming": true,
+  "title": "Circle Highlight",
+  "tags": [
+   "highlight",
+   "annotation",
+   "ring",
+   "callout",
+   "photo"
+  ],
+  "about": "Ring / spotlight one object in a real picture: radial wash, double over-stroke ring, connector, callout label, corner-bracket reticle, all computed from the object's box.",
+  "title_vi": "Khoanh một vật trong ảnh thật: vòng tròn, đường nối, nhãn",
+  "desc_vi": "Khoanh một vật trong ảnh: làm tối quanh vật, vòng tròn nét đôi, đường nối tới nhãn, khung góc ngắm, vệt quét. Vị trí vật lấy từ kit.py measure <ảnh> --locate (không đoán bằng mắt). Ảnh phải đúng cỡ chẵn của trang (mặc định 1998 x 1368): đổi bằng replace cùng lúc asset, W, H, box, label và data-width / data-height.",
+  "notes": "The page as shipped (HyperFrames motion-graphics asset-fusion sample); its CFG is set with replace pairs, e.g. [\"asset: \\\"assets/shot.png\\\"\", \"asset: \\\"assets/images/x.jpg\\\"\"], [\"box: [0.244, 0.277, 0.607, 0.425]\", \"box: [x0, y0, x1, y1]\"], [\"label: \\\"HyperFrames\\\"\", \"label: \\\"...\\\"\"]; the picture at the page's size (even width and height), box from kit.py measure --locate.",
+  "bg": "#0b0c0e",
+  "demo_vars": {
+   "replace": [
+    [
+     "asset: \"assets/shot.png\"",
+     "asset: \"assets/demo/locate-demo.jpg\""
+    ],
+    [
+     "box: [0.244, 0.277, 0.607, 0.425]",
+     "box: [0.36, 0.30, 0.64, 0.70]"
+    ],
+    [
+     "label: \"HyperFrames\"",
+     "label: \"Điểm nhấn\""
+    ]
+   ]
+  },
+  "thumb_at": 0.6
+ }
+}

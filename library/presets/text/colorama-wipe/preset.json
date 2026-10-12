@@ -1,0 +1,18 @@
+{
+ "name": "text/colorama-wipe",
+ "kind": "effect",
+ "group": "text",
+ "title": "Colorama wipe",
+ "title_vi": "Vệt quét ánh màu kiểu After Effects (shiny wipe)",
+ "desc_vi": "Tiêu đề hiện qua một mép quét nghiêng, mềm, vừa nhoè vừa đổi màu (đen, xanh đậm, xanh lơ, tím, trắng) khi đi qua, rồi lắng thành chữ trắng sạch; hết thời gian giữ thì mép quét khép lại. Kiểu shiny wipe (Colorama) trong After Effects. Dành cho chữ sáng trên nền tối, một dòng.",
+ "params_vi": "in: thời gian quét vào (0.75 s) · hold: thời gian giữ (2 s) · out: thời gian quét ra (0.55 s) · feather: độ mềm mép (2.4 lần cao chữ) · tilt: độ nghiêng mép (40°) · blur: độ nhoè (0.15) · trail: phần còn nhoè sau mép (0.55) · noise: hạt nhiễu (0.03) · crisp: phủ bản chữ nét lên trên (true) · scale: độ phân giải hiệu ứng (0.5; 1 cho chữ rất lớn) · ink: màu bản chữ nét",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/colorama-wipe/colorama-wipe.html" },
+ "license": "Apache-2.0",
+ "scripts": ["libs/hf/colorama-wipe.js"],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": ["wipe", "colorama", "shiny", "blur", "after-effects"],
+ "check_end": false,
+ "notes": "The source's painter, options and defaults (colour cycle, levels, mask, compound blur, noise hash, crisp copy). The source created its canvases at attach time; here the preset builds them in the film's DOM (saved with the film) and the painter (engine/vendor/libs/hf/colorama-wipe.js, copied into the film's assets) only draws, rasterising the text on its first frame. The element is hidden for the whole film (the wipe paints it only inside its window). End check off: after the window the text is gone, as in the source.",
+ "demo": { "hold": 0.3, "elements": [{ "id": "t1", "type": "text", "text": "Ánh màu lướt qua", "style": { "color": "#ffffff", "font-weight": "800", "font-size": "150px", "letter-spacing": "-0.03em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.3, "params": { "hold": 1.6 } }], "bg": "#05060a" }
+}

@@ -1,0 +1,123 @@
+{
+ "name": "house/panel-pop",
+ "kind": "effect",
+ "group": "house",
+ "title": "Pop (panel)",
+ "title_vi": "Bảng trắng bật ra",
+ "desc_vi": "Bảng trắng bo góc bật ra với độ nảy mềm, không xoay.",
+ "params_vi": "Giống pop-cute; mặc định rot 0, ease back.out(1.5), dur 0.75",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "pop",
+  "panel",
+  "house"
+ ],
+ "notes": "Port of P.panelPop (popCute with rot 0, back.out(1.5), 0.75 s). No rotation tween is written (rot 0).",
+ "demo": {
+  "bg": "#ffd166",
+  "duration": "auto",
+  "hold": 1.0,
+  "elements": [
+   {
+    "id": "p0",
+    "type": "text",
+    "text": "",
+    "style": {
+     "left": "190px",
+     "top": "300px",
+     "font-size": "34px",
+     "color": "#1d1d1d",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "center",
+     "justify-content": "center",
+     "padding-bottom": "0px",
+     "box-sizing": "border-box",
+     "background": "#ffffff",
+     "border-radius": "28px",
+     "overflow": "hidden",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.18)",
+     "width": "480px",
+     "height": "460px",
+     "text-align": "center"
+    },
+    "html": "<div style='text-align:center'><div style='font-size:60px;font-weight:760'>Ý tưởng</div><div style='font-size:30px;font-weight:400;margin-top:14px'>Kịch bản và phác thảo</div></div>"
+   },
+   {
+    "id": "p1",
+    "type": "text",
+    "text": "",
+    "style": {
+     "left": "710px",
+     "top": "300px",
+     "font-size": "34px",
+     "color": "#1d1d1d",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "center",
+     "justify-content": "center",
+     "padding-bottom": "0px",
+     "box-sizing": "border-box",
+     "background": "#ffffff",
+     "border-radius": "28px",
+     "overflow": "hidden",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.18)",
+     "width": "480px",
+     "height": "460px",
+     "text-align": "center"
+    },
+    "html": "<div style='text-align:center'><div style='font-size:60px;font-weight:760'>Sản xuất</div><div style='font-size:30px;font-weight:400;margin-top:14px'>Quay dựng và hoạt hình</div></div>"
+   },
+   {
+    "id": "p2",
+    "type": "text",
+    "text": "",
+    "style": {
+     "left": "1230px",
+     "top": "300px",
+     "font-size": "34px",
+     "color": "#1d1d1d",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "normal",
+     "display": "flex",
+     "align-items": "center",
+     "justify-content": "center",
+     "padding-bottom": "0px",
+     "box-sizing": "border-box",
+     "background": "#ffffff",
+     "border-radius": "28px",
+     "overflow": "hidden",
+     "box-shadow": "0 18px 40px rgba(0,0,0,.18)",
+     "width": "480px",
+     "height": "460px",
+     "text-align": "center"
+    },
+    "html": "<div style='text-align:center'><div style='font-size:60px;font-weight:760'>Giao phim</div><div style='font-size:30px;font-weight:400;margin-top:14px'>Xuất file cho khách</div></div>"
+   }
+  ],
+  "motion": [
+   {
+    "target": [
+     "p0",
+     "p1",
+     "p2"
+    ],
+    "at": 0.2,
+    "params": {
+     "stagger": 0.25
+    }
+   }
+  ]
+ }
+}

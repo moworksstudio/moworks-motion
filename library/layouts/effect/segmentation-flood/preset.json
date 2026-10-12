@@ -1,0 +1,59 @@
+{
+ "name": "effect/segmentation-flood",
+ "kind": "block",
+ "group": "effect",
+ "title": "Segmentation Flood",
+ "title_vi": "Máy nhìn phân vùng: mặt nạ màu và nhãn HUD",
+ "desc_vi": "Máy đọc hình: các mặt nạ phân vùng màu nhấn trong mờ tràn lên theo từng bậc dòng quét, mỗi vùng có khung mảnh và nhãn chữ máy, HUD nháy nhẹ.",
+ "params_vi": "regions: Regions, mặc định \"Figure, Signal, Ground\" · flood_at: Flood at, mặc định 0.8 · flicker: Flicker (on | off), mặc định \"on\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit) · slots: nội dung HTML của job cho các ô của thành phần ({\"tên ô\": \"<div>...</div>\"}; ô: segmentation-flood-subject), để trống thì thành phần dùng nội dung mặc định",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/segmentation-flood/segmentation-flood.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "product-demo",
+  "ai",
+  "hud",
+  "canvas",
+  "deterministic"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/segmentation-flood.html) in a kit film, mounted by ctx.hf.  Source: Machine-vision read of a slotted subject: translucent accent segmentation masks flood on in quantized scanline steps, each region gets a thin bracket and mono label chip, a deterministic 2-frame HUD flicker rides the pass, then the labeled read settles clean.",
+ "demo": {
+  "duration": 4.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "regions": "Người, Tín hiệu, Nền",
+     "duration": 4.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

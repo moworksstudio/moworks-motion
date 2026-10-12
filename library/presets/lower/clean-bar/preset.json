@@ -1,0 +1,16 @@
+{
+ "name": "lower/clean-bar",
+ "kind": "block",
+ "group": "lower",
+ "title": "Lower third: clean bar",
+ "title_vi": "Lower third thẻ trắng, vạch màu",
+ "desc_vi": "Thẻ trắng quét vào từ trái, vạch màu mọc xuống, tên và chức danh trồi lên; tự ra ở giây 4.2.",
+ "params_vi": "name, role: chữ · accent: màu vạch · left, bottom: vị trí (px) · exitAt: giây ra (null = không ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/lt-clean-bar/lt-clean-bar.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["lower third", "name", "super"],
+ "notes": "Font: the film's font instead of Montserrat from the web (no network in films).",
+ "demo": { "bg": "#2b3a55", "duration": 5.2 }
+}

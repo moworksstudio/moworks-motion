@@ -1,0 +1,12 @@
+{
+  "_about": "Tool versions the kit is built and tested with (measured on the user's machine 08/10/2026). Python packages and their pins: requirements.txt. HyperFrames (optional) is managed by adapters/hf (hf_version.json).",
+  "os": "Windows 11 Pro (build 26300)",
+  "python": "3.12.10",
+  "python_packages": "requirements.txt (playwright 1.63.0, numpy 2.5.1, pillow 12.3.0, imageio-ffmpeg 0.6.0, ...)",
+  "playwright_chromium": "chromium-1243 (Playwright 1.63.0)",
+  "ffmpeg": "the one imageio-ffmpeg bundles (no separate install)",
+  "node": "24.19.0 (only for the optional HyperFrames Studio)",
+  "gsap": "3.15.0 (vendored, GSAP Standard License)",
+  "hyperframes": "optional; current and tested version in hf_version.json",
+  "after_effects": "After Effects 2026 / Beta (only for Port to AE)"
+}

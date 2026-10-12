@@ -1,0 +1,20 @@
+{
+ "name": "device/app-showcase",
+ "kind": "block",
+ "group": "device",
+ "title": "App Showcase (three phones)",
+ "title_vi": "Giới thiệu ứng dụng trên ba điện thoại",
+ "desc_vi": "Điện thoại giữa (bảng điều khiển) bật lên, hai điện thoại hai bên xòe ra từ phía sau; vòng mục tiêu đầy dần, ba thanh hoạt động dài ra, biểu đồ calo tự vẽ kèm điểm bật lên, khẩu hiệu và nút nổi lên, sân khấu đẩy vào nhẹ, các điểm nhấn màu chanh nhịp một lần.",
+ "params_vi": "tagline, cta: điện thoại trái · initials, name, member, goal_label, goal_done / goal_total, days, progress_title, progress_link, bars [{name, value, width}]: điện thoại giữa · cal_title, cal_value, cal_unit, week, stats [{label, value}]: điện thoại phải · accent: màu nhấn (#e4fa72). Thiết kế cho khung 1920×1080.",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/blocks/app-showcase/app-showcase.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "brand_ui": false,
+ "needs": [],
+ "tags": ["phone", "app", "showcase", "fitness", "dashboard", "chart", "ui"],
+ "notes": "Faithful port: same markup, CSS, timings and eases. The source's gsap.set start states become fromTo starts; the graph-dot stagger {each: 0.06, ease: power2.in} is written as 7 tweens at the offsets GSAP computes (0.36 x (i/6)^2); the stroke dash lengths (circle 2 x 3.14159265 x 52, polyline getTotalLength) are measured at build and written as numbers; class-selector tweens (.bar-value, .ring-fill) are written per element. Differences: the user is 'James Medrano' -> Vietnamese params, all copy is Vietnamese (weekday letters M T W... -> 2 3 4 ... CN); the accent colour is a param (source #e4fa72 hard-coded; the radial background glow keeps its fixed lime tint); the goal ring fills to goal_done / goal_total (source 2/3); text uses the film's font (source: DM Sans from Google Fonts, removed: no network). The centred glow uses px offsets instead of translate(-50%, -50%) (same place).",
+ "demo": { "bg": "#f1f2ec", "duration": 5.5, "hold": 0,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0 }] }
+}

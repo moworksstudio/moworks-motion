@@ -1,0 +1,16 @@
+{
+ "name": "text/rgb-glitch",
+ "kind": "effect",
+ "group": "text",
+ "title": "RGB glitch text",
+ "title_vi": "Chữ nhiễu tách màu đỏ xanh (3 nháy)",
+ "desc_vi": "Một bản đỏ và một bản xanh lơ của chữ giật ra hai bên ba lần rất nhanh (mỗi lần 0.06 giây) rồi khớp lại đúng chỗ. Chữ chính giữ màu của phần tử.",
+ "params_vi": "intensity: subtle | standard | extreme (độ giật 0.5 / 1 / 2.25 lần) · red, cyan: màu hai bản tách · offset: độ giật ở cỡ chữ 72 px (8 px, tự nhân theo cỡ chữ)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/rgb-glitch-text/rgb-glitch-text.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["glitch", "rgb", "chromatic", "flash"],
+ "notes": "The source's yoyo / steps(1) tween is written out as the three flashes it produces (offsets on during 0.16-0.22, 0.28-0.34, 0.40-0.46 s after `at`). The source's tone variable is the element's colour; its 0.01 s opacity tween was a no-op and is left out. The three copies share one grid cell inside the element.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "NHIỄU SÓNG", "style": { "color": "#fafafa", "font-weight": "900", "font-size": "160px", "letter-spacing": "-0.04em", "line-height": "1", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.3 }] }
+}

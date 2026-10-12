@@ -1,0 +1,17 @@
+{
+ "name": "text/inline-highlight",
+ "at": "2026-10-06 10:36",
+ "static": [],
+ "build": "ok",
+ "tweens": 1,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "seek_exact": 4e-05,
+ "seek": 4e-05,
+ "bake": 0.0,
+ "duration": 1.85,
+ "problems": [],
+ "status": "ok",
+ "seconds": 5.6
+}

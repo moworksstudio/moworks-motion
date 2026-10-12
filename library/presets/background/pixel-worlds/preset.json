@@ -1,0 +1,106 @@
+{
+ "name": "background/pixel-worlds",
+ "kind": "effect",
+ "group": "background",
+ "title": "Pixel-cell worlds",
+ "title_vi": "Thế giới ô pixel",
+ "desc_vi": "Nền arcade 8-bit bằng ô pixel 64 px: \"thế giới\" mới đến bằng một làn sóng ô lật từ một điểm (sản phẩm, một chữ), có thể là bàn cờ hai màu; xung vòng ô sáng trên các cú đập; lưới trôi chéo, bậc thang pixel ở góc nhảy theo phách mạnh, lấp lánh né chữ.",
+ "params_vi": "worlds: [{t, A, B?, ox, oy (ô), sp (ô / giây; 0 = cắt)}] · pulses: [[giây, ox, oy, màu]] · downs: [giây phách mạnh] · keep: vùng chữ · sparks: số lấp lánh · stairs: 4 màu · spark_dark / spark_light · dur",
+ "ae": "png",
+ "tags": [
+  "background",
+  "pixel",
+  "8-bit",
+  "arcade",
+  "lyric"
+ ],
+ "notes": "Viết cho một phim lời bài hát 8-bit của studio (08/10/2026). Vẽ trên canvas: sang AE là chuỗi ảnh (KNOWN-ISSUES KI-10). Hợp với shape/pixel-sticker.",
+ "demo": {
+  "bg": "#000000",
+  "duration": 5,
+  "elements": [
+   {
+    "id": "world",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "world",
+    "at": 0,
+    "params": {
+     "dur": 5,
+     "sparks": 30,
+     "worlds": [
+      {
+       "t": 0,
+       "A": "#14213D",
+       "ox": 15,
+       "oy": 8.5,
+       "sp": 0
+      },
+      {
+       "t": 0.7,
+       "A": "#3A86FF",
+       "ox": 15,
+       "oy": 8.5,
+       "sp": 30
+      },
+      {
+       "t": 2.1,
+       "A": "#FFD166",
+       "B": "#EF476F",
+       "ox": 4,
+       "oy": 12,
+       "sp": 40
+      },
+      {
+       "t": 3.5,
+       "A": "#06D6A0",
+       "ox": 26,
+       "oy": 3,
+       "sp": 50
+      }
+     ],
+     "pulses": [
+      [
+       1.5,
+       15,
+       8.5,
+       "#FFFFFF"
+      ],
+      [
+       4.4,
+       26,
+       3,
+       "#FFFFFF"
+      ]
+     ],
+     "downs": [
+      0.5,
+      1.5,
+      2.5,
+      3.5,
+      4.5
+     ],
+     "keep": []
+    }
+   }
+  ],
+  "thumb_at": 0.5
+ },
+ "source": {
+  "label": "Moworks Motion"
+ },
+ "license": "Moworks",
+ "kept": {
+  "imported": "2026-10-08",
+  "kept": "2026-10-09"
+ }
+}

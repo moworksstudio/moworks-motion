@@ -1,0 +1,54 @@
+{
+ "name": "text/variable-flex",
+ "kind": "effect",
+ "group": "text",
+ "title": "Variable font flex",
+ "title_vi": "Từng chữ cái phình từ mảnh hẹp sang đậm rộng",
+ "desc_vi": "Từng chữ cái lần lượt trồi lên và phình từ nét mảnh, hẹp sang nét đậm, rộng (hơi vượt rồi về), trong khi cỡ chữ cả từ lùi nhẹ để khối chữ gần như không to ra. Cần font RFlex của kit.",
+ "params_vi": "axis: both | weight | width · stagger: cách nhau giữa các chữ cái (0.06 s, tối đa 0.25) · flex: thời gian mỗi chữ cái (1.15 s) · lead: chờ trước khi bắt đầu (0.12 s)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/variable-font-flex/variable-font-flex.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "variable-font",
+  "weight",
+  "width",
+  "letters",
+  "flex"
+ ],
+ "check_end": false,
+ "notes": "Painter maths as in the source (axis endpoints, carve ease, smoothstep opacity, 0.14 em rise on relative top, compensation 1 - COMP x mean progress). The source pinned Roboto Flex from a CDN; the kit ships Roboto Flex as RFlex (all axes, Vietnamese complete). Its accent colour and exit are the film's (element colour, scene cut). Landing size = the element's font size (base = size / (1 - COMP)). End check off: letters are split (kerning) and the axes differ from the element's static weight.",
+ "demo": {
+  "hold": 0.8,
+  "elements": [
+   {
+    "id": "t1",
+    "type": "text",
+    "text": "UYỂN",
+    "style": {
+     "color": "#f8fafc",
+     "font-family": "RFlex",
+     "font-weight": "400",
+     "font-size": "260px",
+     "line-height": "1",
+     "white-space": "nowrap",
+     "left": "50%",
+     "top": "50%",
+     "transform": "translate(-50%, -50%)"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "t1",
+    "at": 0.2
+   }
+  ]
+ }
+}

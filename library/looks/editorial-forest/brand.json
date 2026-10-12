@@ -1,0 +1,84 @@
+{
+ "_about": "Public look 'editorial-forest' from HyperFrames' frame presets (FRAME.md here, as shipped). Made by engine/tests/hf_looks.py; the design rules beyond colours and type (grids, borders, shadows, components) are in FRAME.md.",
+ "name": "editorial-forest",
+ "look": true,
+ "sources": {
+  "repo": "heygen-com/hyperframes",
+  "commit": "ba08acb1f506b06757bd77a7e7f491d412647fbd",
+  "path": "skills/hyperframes-creative/frame-presets/editorial-forest/",
+  "license": "Apache-2.0",
+  "sha256": {
+   "FRAME.md": "ceeb2ab768367da1e1f3e1eca36ab9feeb3de3e4d15493319b0044c3d869329c",
+   "frame-showcase.html": "bb87b88b91184f4fee7f02eea63ed35d9d378fa89fad8988326e31e82a43dbb1",
+   "caption-skin.html": "31999378b8fed9a4511432e38017f287127ce25a534ee57bfe4cc0f3b74c7d48"
+  }
+ },
+ "fonts": {
+  "head": {
+   "css": "Look Source Serif 4",
+   "family": "Source Serif 4",
+   "dir": "google/SourceSerif4",
+   "files": {
+    "400": "SourceSerif4[opsz,wght].ttf",
+    "500": "SourceSerif4[opsz,wght].ttf",
+    "700": "SourceSerif4[opsz,wght].ttf"
+   }
+  },
+  "body": {
+   "css": "Look Source Serif 4",
+   "family": "Source Serif 4",
+   "dir": "google/SourceSerif4",
+   "files": {
+    "400": "SourceSerif4[opsz,wght].ttf",
+    "500": "SourceSerif4[opsz,wght].ttf",
+    "700": "SourceSerif4[opsz,wght].ttf"
+   }
+  },
+  "_swapped": {}
+ },
+ "type": {
+  "scale": {
+   "headlinePx1920": 84.5,
+   "ratios": {
+    "headline": 1.0,
+    "subhead": 1.0,
+    "body": 0.355,
+    "disclaimer": 0.307
+   }
+  },
+  "roles": {
+   "headline": {
+    "family": "head",
+    "weight": 500
+   },
+   "subhead": {
+    "family": "head",
+    "weight": 500,
+    "weightTwoLines": 500
+   },
+   "body": {
+    "family": "body",
+    "weight": 400
+   },
+   "disclaimer": {
+    "family": "body",
+    "weight": 500
+   }
+  }
+ },
+ "color": {
+  "green": "#2e4a2a",
+  "green-deep": "#243a21",
+  "green-lite": "#3a5a36",
+  "pink": "#e89cb1",
+  "pink-deep": "#d27e96",
+  "cream": "#efe7d4",
+  "cream-2": "#e6dcc4",
+  "ink": "#1a1a17",
+  "black": "#1a1a17",
+  "white": "#efe7d4"
+ },
+ "kit": {
+  "accent": "pink-deep"
+ }
+}

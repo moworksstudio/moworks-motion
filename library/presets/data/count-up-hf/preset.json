@@ -1,0 +1,18 @@
+{
+ "name": "data/count-up-hf",
+ "kind": "block",
+ "group": "data",
+ "title": "Count Up (HyperFrames)",
+ "title_vi": "Số đếm lên, chạm đích có nhịp phồng",
+ "desc_vi": "Số hiện lên, đếm từ đầu đến cuối theo đường sine, chạm đúng số đích với một nhịp phồng nhẹ, trôi nhẹ rồi đứng yên.",
+ "params_vi": "start, end: số đầu/cuối · prefix, suffix: chữ trước/sau số · accent: màu số (#hex) · glow: quầng sáng · exit: none | fade | up · duration: độ dài gốc 3 s (quyết định độ trôi và lúc ra)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/count-up/count-up.html" },
+ "license": "Apache-2.0",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": ["counter", "stat", "number", "proof"],
+ "notes": "Block built from the source markup: size = min(20cqw, 150/characters cqw, 34cqh) converted with ctx.W/ctx.H; affix colour = colour-mix(accent 72%, fg) computed to rgb. The accent is a hex param (source: a theme token green/blue/violet; defaults to the source fallback #71f5a7, blue #61a8ff, violet #c5a3ff). Count: the source writes 53 textContent rows at 30 fps steps; here a proxy tween runs 0..1 over 1.72 s and the shown value is round(start + (end-start) * sine.inOut(floor(p*52)/52)) = the same rows, written by ctx.code (hence ae: expression). The source's yoyo+repeat drift is written as two tweens (up then back, sine.inOut). The source compresses IN/OUT when the composition is shorter than 2.5 s: not ported (use duration >= 2.5). The source's text colour/font come from theme tokens (--fg #f8fafc, --font-display): fg is a param, font = the film's font. Locale param (default en-US as in the source).",
+ "demo": { "bg": "#111216", "duration": "auto", "hold": 1.0,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": { "start": 0, "end": 98, "suffix": "% khách hài lòng", "duration": 3 } }] }
+}

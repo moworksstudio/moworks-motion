@@ -1,0 +1,59 @@
+{
+ "name": "code/code-shader-dissolve",
+ "kind": "block",
+ "group": "code",
+ "title": "Code Shader Dissolve",
+ "title_vi": "Code hiện ra từ nhiễu bằng shader",
+ "desc_vi": "Code hiện ra từ nhiễu bằng một shader GPU với mép tan có tách màu và viền sáng, rồi giữ nét.",
+ "params_vi": "duration: độ dài của block (7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/code-shader-dissolve/code-shader-dissolve.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js",
+  "libs/three-0.147/three.min.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "code",
+  "code-animation",
+  "shader",
+  "webgl",
+  "developer"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/code-shader-dissolve.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: The code compiles into existence: a GPU fragment shader resolves it out of seeded noise with a chromatic dissolve front and edge glow, then holds crisp.",
+ "demo": {
+  "duration": 7.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

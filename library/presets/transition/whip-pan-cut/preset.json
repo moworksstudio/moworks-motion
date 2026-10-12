@@ -1,0 +1,78 @@
+{
+ "name": "transition/whip-pan-cut",
+ "kind": "effect",
+ "group": "transition",
+ "title": "Whip Pan Cut",
+ "title_vi": "Lia máy ngang (whip pan)",
+ "desc_vi": "Hai cảnh cùng lia ngang với tốc độ tăng rồi hãm, nhoè theo chiều ngang mạnh nhất giữa pha lia; vạch màu mảnh chạy trên đường nối hai cảnh.",
+ "params_vi": "duration (0.55 s) · direction: left | right · accent: màu vạch · peak: độ nhoè tối đa (16 px)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/whip-pan-cut/whip-pan-cut.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "whip",
+  "pan",
+  "motion blur"
+ ],
+ "notes": "The source strip (both scenes on one mover) is two inners with the same power3.inOut x tween (one frame width), so seam velocity matches as in the source. The horizontal-only blur is the source's SVG feGaussianBlur stdDeviation 'v 0' (v 0 -> 16 px over the first half, power3.in, then 16 -> 0, power3.out); it is written per frame by a small ctx.code proxy and applied to both inners with filter:url(#...) set at the start and 'none' at the end. The SVG filter lives in the incoming scene element. The seam hairline (0.35 % of width) is a box in the incoming scene element that follows the boundary (same x tween, offset by half its width), faded in over 0.1 s and out over the last 0.15 s, as in the source. The source lead-in (whip_at), exit variable and sound cue are not ported. ae is png because of the directional SVG blur.",
+ "demo": {
+  "scenes": [
+   {
+    "id": "s1",
+    "name": "A",
+    "duration": 1.6,
+    "bg": "#1d3fd8",
+    "elements": [
+     {
+      "id": "a1",
+      "type": "text",
+      "text": "Cảnh thứ nhất",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   },
+   {
+    "id": "s2",
+    "name": "B",
+    "duration": 2.4,
+    "bg": "#ff7a1a",
+    "transition_in": {
+     "preset": "transition/whip-pan-cut",
+     "duration": 0.55
+    },
+    "elements": [
+     {
+      "id": "b1",
+      "type": "text",
+      "text": "Cảnh thứ hai",
+      "style": {
+       "color": "#f5f5f2",
+       "font-weight": "760",
+       "font-size": "120px",
+       "white-space": "nowrap",
+       "left": "50%",
+       "top": "50%",
+       "transform": "translate(-50%, -50%)"
+      }
+     }
+    ],
+    "motion": []
+   }
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "name": "intake/psd-frame",
+ "kind": "block",
+ "group": "intake",
+ "title": "PSD frame",
+ "title_vi": "Dựng lại một frame từ file PSD",
+ "desc_vi": "Dựng lại một frame Photoshop (đã tách bằng kit.py psd) đúng vị trí từng layer: ảnh, chữ sống canh theo khung mực, stroke/bóng/glow/gradient. Không có chuyển động; gắn preset khác vào các layer sau.",
+ "params_vi": "units: các layer của frame (từ psd.json) · fonts: font PSD -> font dùng trong phim (family, skew)",
+ "source": { "label": "Moworks Motion v1", "path": "AI Motion Kit/Engine/psd.js (SSPsd, 03/10/2026)" },
+ "license": "kit",
+ "ae": "keyframes",
+ "brand_safe": null,
+ "tags": ["psd", "faithful", "intake"],
+ "notes": "Port of the v1 SSPsd text fit, image layers and effects. Used by `kit.py psd --film`, not shown in the gallery (needs a project's PSD export).",
+ "check_end": false,
+ "demo": { "skip": true }
+}

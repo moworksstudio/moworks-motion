@@ -1,0 +1,54 @@
+{
+ "name": "title/titlecard-calm",
+ "kind": "block",
+ "group": "title",
+ "title": "Titlecard calm",
+ "title_vi": "Thẻ tiêu đề tĩnh lặng",
+ "desc_vi": "Dòng nhãn nhỏ kiểu mono trồi lên trước, tiêu đề lớn theo sau, cả khối trôi lên rất nhẹ trong lúc giữ rồi mờ ra với một nhịp nhích lên.",
+ "params_vi": "headline: tiêu đề lớn · kicker: nhãn nhỏ phía trên (tự viết hoa) · duration: độ dài gốc 4 s (quyết định thời gian giữ và lúc mờ ra) · bg, fg, muted: màu (bg trong suốt = lấy nền phim)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/titlecard-calm/titlecard-calm.html"
+ },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": [
+  "title card",
+  "typography",
+  "calm",
+  "kicker"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Layout, sizes and envelope as in the source (lockup 78 cqw wide with a 6 cqh gap; kicker 3.2 cqmin / weight 600 / tracking 0.18em; headline 17 cqmin / weight 600 / line-height 0.94 / tracking -0.055em, balanced wrap; kicker 0.5 s power2.out from 2.2 cqh, headline 0.72 s power3.out from 3.2 cqh at 0.28 s, hold drift to -0.65 cqh with sine.inOut over the whole hold, exit 0.55 s power2.in to -2.1 cqh + opacity 0; IN / OUT shrink together when the duration is below 1.75 s). cqw / cqh / cqmin are taken from the target box. The source's mount duration is the param `duration` (authored 4 s) because the hold and the exit depend on it. Tweens are written as fromTo with explicit start values (the source set the lockup first and used to for the drift / exit). The headline uses the film's font (source: Helvetica Neue / Helvetica / Arial theme token). The kicker is the source's monospace face: the system monospace stack (Consolas / Cascadia Mono / Menlo), no font file ships; it is upper-cased in code instead of text-transform. The mounted-card frame of the source demo (rounded card with border and shadow, 78 % x 62 %) is not part of the primitive. Defaults are Vietnamese (source: Less, but better / DESIGN PRINCIPLE). 05/10/2026: monospace text uses the kit's Roboto Mono (\"RMono\", Vietnamese complete, the same on every machine) before the system stack.",
+ "demo": {
+  "bg": "radial-gradient(circle at 50% 45%, #12151a 0%, #0b0c0e 72%)",
+  "duration": 4,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "headline": "Rõ ràng hơn ồn ào",
+     "kicker": "SỰ TỰ TIN LẶNG LẼ",
+     "duration": 4
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "name": "card/testimonial-proof-card",
+ "kind": "block",
+ "group": "card",
+ "title": "Testimonial proof card",
+ "title_vi": "Thẻ trích dẫn khách hàng, gạch chân nhấn",
+ "desc_vi": "Thẻ nổi lên, câu trích hiện từng dòng qua mặt nạ mềm, dòng tên và chức danh hiện sau, rồi một nét gạch tay vẽ dưới cụm từ cần nhấn.",
+ "params_vi": "quote: câu trích (gõ | để tự ngắt dòng) · name, role, company: người nói (role hoặc company để trống thì ẩn) · emphasis: cụm từ gạch chân · accent: màu nhấn · fg, muted, surface, border: màu · radius: bo góc · exit: none | fade | up · duration: độ dài gốc 4.5 s",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/testimonial-proof-card/testimonial-proof-card.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["testimonial", "quote", "underline", "social proof", "card"],
+ "notes": "Motion, order and timings as in the source: card opacity 0 -> 1 and y 4cqh -> 0 over 0.5 s power3.out; each quote line yPercent 130 -> 0 with opacity 0 -> 1 over 0.6 s power3.out through its own overflow mask (padding 0.12em 0.24em 0.3em), 0.18 s stagger from 0.15 s; byline opacity + y 2.5cqh -> 0 over 0.5 s power3.out at (quote end - 0.15 s); underline: dash tween strokeDashoffset length -> 0 over 0.55 s power2.inOut at (quote end + 0.1 s), ink opacity 0 until the cue; exit fade (opacity) or up (opacity + y -6cqh), 0.45 s power2.in; the phases compress together when `duration` is too short. Sizes: all cqw / cqh / cqmin converted to px from the target box (card width min(76cqw, 150cqh), padding 6cqmin 7cqmin, quote font = 46 / sqrt(characters) cqmin clamped 3.8 to 7.2, byline sizes in cqmin). Differences: (1) line breaking: the source measured the wrapped rows in the browser (text-wrap: balance); a block cannot count on the film font being loaded while it builds, so the lines come from a balanced split on an estimated glyph width (the quote font is fitted so every line stays 6 % inside the card), or from the | characters in the quote; the emphasised words stay one unbreakable token as in the source; (2) the avatar is the initials disc of the source (the source's image slot is not ported, no photos); (3) the monospace token font of the byline and the company mark is replaced by the film's font (tracking kept); (4) accent is a hex param instead of the green / blue / violet token choice (default #71f5a7); theme tokens fg, muted, surface, border, radius are params with the source's fallback values; the source's full-box background (var(--bg)) is not painted, the film shows through; color-mix() written as hex / rgba; (5) `exit` default none and `duration` 4.5 s as in the source. Default texts are Vietnamese (source: English).",
+ "demo": { "bg": "#0b0c0e", "duration": 5.2,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

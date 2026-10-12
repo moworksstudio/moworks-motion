@@ -1,0 +1,57 @@
+{
+ "name": "ui/panel-reveal",
+ "kind": "block",
+ "group": "ui",
+ "title": "Panel Reveal",
+ "title_vi": "Bảng mở chiều cao, nội dung hiện dần",
+ "desc_vi": "Một bảng mở rộng chiều cao rồi nội dung hiện dần.",
+ "params_vi": "title: Title, mặc định \"Motion tokens\" · width: Width (narrow | standard | wide), mặc định \"standard\" · tone: Tone (paper | ink), mặc định \"paper\" · reveal: Reveal (fade | solid), mặc định \"fade\" · duration: độ dài của block (5 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/panel-reveal/demo.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "transition-primitive",
+  "transitions-dev-port",
+  "panel",
+  "reveal"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/demo.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono. Shown through the component's own demo page (a full composition). To apply the snippet to the film's own elements, ask Claude: the snippet is in assets/panel-reveal.html. Source: A panel reveal primitive with height expansion and content fade",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

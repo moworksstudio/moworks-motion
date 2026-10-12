@@ -1,0 +1,18 @@
+{
+ "name": "logo/cta-lockup",
+ "kind": "block",
+ "group": "logo",
+ "title": "CTA Lockup",
+ "title_vi": "Khối kêu gọi hành động cuối phim",
+ "desc_vi": "Dòng kêu gọi trồi lên trước, nút bấm nảy ra bên dưới với một chút vọt, rồi dòng phụ hạ xuống; cả khối trôi nhẹ một nhịp rồi đứng yên.",
+ "params_vi": "action: dòng kêu gọi · button: chữ trên nút · micro: dòng phụ · accent: màu nút · fg, muted, buttonInk: màu chữ · duration: độ dài gốc 4 s (quyết định độ trôi cuối)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/cta-lockup/cta-lockup.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["cta", "end card", "button", "lockup"],
+ "notes": "Order, timings, distances and eases as in the source (action 0.5 s power3.out; capsule scale 0.72 -> 1 with back.out(1.7) over 0.6 s plus opacity 0 -> 1 over 0.24 s from 0.56 s (written as set opacity 0 at time 0 + a to tween, same result); microcopy 0.42 s from 1.18 s). All cqw/cqh sizes converted with ctx.W/ctx.H (lockup width min(88cqw,150cqh), action min(10cqw,14cqh), capsule min(4.3cqw,6.8cqh), microcopy min(3cqw,4.2cqh), margins and padding in cqh/cqw). The capsule is a div instead of a button element, and the glow colour-mix(accent 28%) is written as rgba. The source's hold drift (yoyo + repeat 1 over HOLD) is written as two tweens (up then back, sine.inOut), HOLD = duration - 1.6 s with duration the authored 4 s of the source. Accent is a hex param (source: green #22c55e, blue #38bdf8, violet #a78bfa); the fixed capsule text colour #07110d, fg #f8fafc and muted #cbd5e1 are params. Default texts are Vietnamese (source: English). The source compresses IN when the composition is shorter than 1.6 s: not ported. The font is the film's font for all three lines (the source uses two theme font tokens).",
+ "demo": { "bg": "#0b0c0e", "duration": 4.6,
+   "elements": [{ "id": "slot", "type": "box", "style": { "left": "0px", "top": "0px", "width": "1920px", "height": "1080px" } }],
+   "motion": [{ "target": "slot", "at": 0.3, "params": {} }] }
+}

@@ -1,0 +1,67 @@
+{
+ "name": "card/marker-checklist",
+ "kind": "block",
+ "group": "card",
+ "title": "Marker Checklist Card",
+ "title_vi": "Thẻ giấy viết tay bút dạ, danh sách tích",
+ "desc_vi": "Một thẻ giấy viết tay: tiêu đề bút dạ có gạch chân và một vòng khoanh quanh một từ, rồi ba dòng danh sách tự vẽ dấu tích, nhãn chữ máy chữ, giá trị bút dạ.",
+ "params_vi": "top: Headline top, mặc định \"THE POWER\" · mid: Headline middle, mặc định \"OF\" · circled: Circled word, mặc định \"ONE\" · rest: Headline rest, mặc định \"FILE\" · l1: Row 1 label, mặc định \"WRITE\" · v1: Row 1 value, mặc định \"HTML\" · l2: Row 2 label, mặc định \"RENDER\" · v2: Row 2 value, mặc định \"IN 4K\" · l3: Row 3 label, mặc định \"SHIP\" · v3: Row 3 value, mặc định \"TODAY\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/marker-checklist-card/marker-checklist-card.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "handwritten",
+  "checklist",
+  "paper",
+  "marker"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/marker-checklist-card.html) in a kit film, mounted by ctx.hf. Its fonts (Permanent Marker, Courier Prime, shipped in assets/assets/fonts) have no Vietnamese marks: Vietnamese letters fall back to another face. Use short unaccented words or ask Claude to swap the fonts. Source: A hand-lettered paper card: marker headline with an underline and a drawn ellipse around one word, then three checklist rows whose checks draw themselves on - typewriter labels, marker values. The paper-and-marker sibling of mk-specs-list's clean professional rows",
+ "demo": {
+  "duration": 4.5,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "top": "SỨC MẠNH",
+     "mid": "CỦA",
+     "circled": "MỘT",
+     "rest": "TỆP",
+     "l1": "VIẾT",
+     "v1": "HTML",
+     "l2": "XUẤT",
+     "v2": "4K",
+     "l3": "GIAO",
+     "v3": "HÔM NAY",
+     "duration": 4.5
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

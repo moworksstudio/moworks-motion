@@ -1,0 +1,19 @@
+{
+ "name": "effect/datamosh-smear",
+ "at": "2026-10-11 21:16",
+ "source": [],
+ "static": [],
+ "build": "ok",
+ "tweens": 0,
+ "codes": 1,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.00033,
+ "duration": 2,
+ "problems": [],
+ "status": "ok",
+ "seconds": 8.4
+}

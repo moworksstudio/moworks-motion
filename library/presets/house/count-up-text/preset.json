@@ -1,0 +1,70 @@
+{
+ "name": "house/count-up-text",
+ "kind": "effect",
+ "group": "house",
+ "title": "Count up inside text",
+ "title_vi": "Số trong dòng chữ chạy lên",
+ "desc_vi": "Con số đầu tiên trong dòng chữ chạy lên tới giá trị, dòng chữ giữ nguyên bố cục (chữ số đều nhau).",
+ "params_vi": "from: số bắt đầu (null = tự tính) · dur (1.2 s) · ease (power2.out) · copies: id các bản sao cùng chữ",
+ "source": {
+  "label": "Moworks v1 (house)",
+  "path": "AI Motion Kit/Engine/presets/house.js"
+ },
+ "license": "Moworks internal",
+ "ae": "expression",
+ "brand_safe": false,
+ "tags": [
+  "number",
+  "count",
+  "text",
+  "house"
+ ],
+ "notes": "Port of P.countUpText as a ctx.code block (per-frame text). Same rules: first number in the text, comma = thousands and dot = decimals (no locale), starts at max(10^(digits-1), 70 % of the value) unless `from` has the same digit count, values under 10 do not count. The v1 deck-text (SSDeck runs) handling and the `sfx` tick hook are not ported; `copies` takes element ids. The text is set to the start value at build, the film shows it before `at`.",
+ "demo": {
+  "bg": "#1b1b1b",
+  "duration": 3.2,
+  "elements": [
+   {
+    "id": "n1",
+    "type": "text",
+    "text": "2,450,000 LƯỢT XEM",
+    "style": {
+     "left": "260px",
+     "top": "330px",
+     "font-size": "120px",
+     "color": "#ffc708",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   },
+   {
+    "id": "n2",
+    "type": "text",
+    "text": "98.6% KHÁCH HÀI LÒNG",
+    "style": {
+     "left": "260px",
+     "top": "530px",
+     "font-size": "120px",
+     "color": "#ffffff",
+     "font-weight": "760",
+     "line-height": "1.1",
+     "white-space": "nowrap"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "n1",
+    "at": 0.3
+   },
+   {
+    "target": "n2",
+    "at": 0.6,
+    "params": {
+     "dur": 1.4
+    }
+   }
+  ]
+ }
+}

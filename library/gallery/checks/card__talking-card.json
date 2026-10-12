@@ -1,0 +1,19 @@
+{
+ "name": "card/talking-card",
+ "at": "2026-10-11 21:16",
+ "source": [],
+ "static": [],
+ "build": "ok",
+ "tweens": 7,
+ "codes": 0,
+ "ease_fit": 0,
+ "page_errors": [],
+ "blank": false,
+ "seek_exact": 0.0,
+ "seek": 0.0,
+ "bake": 0.0,
+ "duration": 3.5,
+ "problems": [],
+ "status": "ok",
+ "seconds": 8.0
+}

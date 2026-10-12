@@ -1,0 +1,56 @@
+{
+ "name": "data/mk-progress-stat",
+ "kind": "block",
+ "group": "data",
+ "title": "Count-Up Stat Card",
+ "title_vi": "Thẻ số liệu đếm lên với thanh tiến độ",
+ "desc_vi": "Con số lớn đếm lên, nhãn, thanh tiến độ mảnh chạy tới giá trị và chú thích; nền sáng hoặc tối.",
+ "params_vi": "duration: độ dài của block (7 s) · replace: các cặp [chữ gốc, chữ mới] đổi nội dung trước khi chạy (ví dụ tiếng Việt)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/blocks/mk-progress-stat/mk-progress-stat.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-frame.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "data-viz",
+  "stat",
+  "minimal"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "check_end": false,
+ "notes": "Run as shipped: the block's own page (assets/mk-progress-stat.html) in an iframe, its timeline set from the film's time. Fonts: Google / fontsource families are drawn with the kit's RFlex / RMono.  Source: Big-numeral statistic with count-up, label, thin progress track filling to value/max, and caption; light and dark schemes",
+ "demo": {
+  "duration": 7.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "duration": 7.0
+    }
+   }
+  ],
+  "bg": "#f5f5f7"
+ }
+}

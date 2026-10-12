@@ -1,0 +1,59 @@
+{
+ "name": "data/chart-story",
+ "kind": "block",
+ "group": "data",
+ "title": "Chart Story",
+ "title_vi": "Biểu đồ dựng theo thứ tự đọc, có chú thích số",
+ "desc_vi": "Một biểu đồ dựng từ dữ liệu theo thứ tự đọc và dừng đúng số liệu: cột lần lượt, đường kẻ trái sang phải có vùng tô, vòng donut quét, hoặc thanh tiến độ; cột được nhấn có nhãn giá trị màu.",
+ "params_vi": "type: Chart type (bars | line | donut | progress), mặc định \"bars\" · data: Data, mặc định \"12, 28, 45, 64\" · labels: Labels, mặc định \"Q1, Q2, Q3, Q4\" · emphasize: Emphasize, mặc định 3 · unit: Unit, mặc định \"%\" · accent: Accent (green | blue | violet), mặc định \"green\" · exit: Exit (none | fade | up), mặc định \"none\" · duration: độ dài gốc của thành phần (quyết định nhịp vào / giữ / ra) · theme: biến màu / font của thành phần, ví dụ {\"--brand\": \"#ff5a1f\", \"--bg\": \"transparent\"} (mặc định font RFlex / RMono của kit)",
+ "source": {
+  "label": "HyperFrames registry",
+  "repo": "heygen-com/hyperframes",
+  "commit": "0ca69472d93cf088c836bed3dc7df252247e2101",
+  "path": "registry/components/chart-story/chart-story.html"
+ },
+ "license": "Apache-2.0",
+ "scripts": [
+  "libs/hf/hf-mount.js"
+ ],
+ "ae": "png",
+ "brand_safe": false,
+ "tags": [
+  "motion-primitive",
+  "proof",
+  "stats",
+  "chart",
+  "bars",
+  "line"
+ ],
+ "brand_ui": false,
+ "needs": [],
+ "notes": "Run as shipped: the component's own HTML, CSS and script (assets/chart-story.html) in a kit film, mounted by ctx.hf.  Source: One chart builds from data in reading order and lands the exact supplied values: staggered bars, a left-to-right line with area fill, a sweeping donut, or filling progress bars, with an accented value callout on the emphasized datum.",
+ "demo": {
+  "duration": 5.0,
+  "hold": 0,
+  "elements": [
+   {
+    "id": "slot",
+    "type": "box",
+    "style": {
+     "left": "0px",
+     "top": "0px",
+     "width": "1920px",
+     "height": "1080px"
+    }
+   }
+  ],
+  "motion": [
+   {
+    "target": "slot",
+    "at": 0,
+    "params": {
+     "labels": "Q1, Q2, Q3, Q4",
+     "duration": 5.0
+    }
+   }
+  ],
+  "bg": "#0b0c0e"
+ }
+}

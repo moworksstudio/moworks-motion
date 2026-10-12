@@ -1,0 +1,17 @@
+{
+ "name": "text/strike-replace",
+ "kind": "effect",
+ "group": "text",
+ "title": "Strikethrough replace",
+ "title_vi": "Gạch bỏ từ cũ, từ mới hiện bên cạnh",
+ "desc_vi": "Một vạch màu gạch ngang từ cũ, ngay sau đó từ thay thế hiện dần và nhích lên bên cạnh. Chữ của phần tử là từ cũ, to là từ mới.",
+ "params_vi": "to: từ mới · origin: left | center | right (vạch mọc từ đâu) · thickness: thin | standard | thick · tint: red | amber | blue | violet hoặc mã màu · gap: khoảng cách hai từ (0.31 em)",
+ "source": { "label": "HyperFrames registry", "repo": "heygen-com/hyperframes", "commit": "0ca69472d93cf088c836bed3dc7df252247e2101", "path": "registry/components/strikethrough-replace/strikethrough-replace.html" },
+ "license": "Apache-2.0",
+ "ae": "keyframes",
+ "brand_safe": false,
+ "tags": ["strike", "replace", "word", "emphasis"],
+ "check_end": false,
+ "notes": "Motion as the source's timeline integration (strike scaleX 0 -> 1, 0.28 s power2.out; replacement opacity 0 -> 1, y 14 -> 0, 0.3 s power2.out, 0.24 s later). Tints are the source's literals / fallbacks. Gap 18 px at 58 px = 0.31 em. End check off: the end shows the struck word and the new word.",
+ "demo": { "hold": 1.0, "elements": [{ "id": "t1", "type": "text", "text": "Chậm", "style": { "color": "#fafafa", "font-weight": "900", "font-size": "140px", "letter-spacing": "-0.04em", "white-space": "nowrap", "left": "50%", "top": "50%", "transform": "translate(-50%, -50%)" } }], "motion": [{ "target": "t1", "at": 0.4, "params": { "to": "Nhanh" } }] }
+}
