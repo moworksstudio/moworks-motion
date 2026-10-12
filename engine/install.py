@@ -166,7 +166,13 @@ def skill_step():
     if new is None: note("skill", f"[LỖI] không đọc được {SKILL_ZIP}"); return False
     web = sorted({skill_version(d) for d in claude_ai_skills()})
     extra = f"; máy còn bản claude.ai {', '.join(web)}: gỡ nó trong Settings > Capabilities > Skills (tránh hai bản)" if web else ""
-    if old == new: note("skill", f"{new}: đã có" + extra); return True
+    # the same version number is not the same skill: compare the files too (12/10/2026: a skill edited under 2.0.0 was never installed,
+    # update.bat said "đã có")
+    with zipfile.ZipFile(SKILL_ZIP) as z:
+        files = {Path(*Path(n).parts[1:]): n for n in z.namelist() if n.startswith("moworks-motion/") and not n.endswith("/")}
+        same = SKILL_DST.is_dir() and all((SKILL_DST / r).is_file() and (SKILL_DST / r).read_bytes() == z.read(n) for r, n in files.items())
+    if same: same = {p.relative_to(SKILL_DST) for p in SKILL_DST.rglob("*") if p.is_file() and p.name.lower() != "desktop.ini"} <= set(files)
+    if old == new and same: note("skill", f"{new}: đã có" + extra); return True
     if SKILL_DST.exists():
         from common import trash
         if not trash([SKILL_DST]) or SKILL_DST.exists(): note("skill", f"[LỖI] không chuyển được bản cũ ({SKILL_DST}); đóng Claude rồi chạy lại"); return False
@@ -175,7 +181,7 @@ def skill_step():
             rel = Path(*Path(n).parts[1:]) if n.startswith("moworks-motion/") else None
             if not rel or n.endswith("/") or ".." in rel.parts: continue
             (SKILL_DST / rel).parent.mkdir(parents=True, exist_ok=True); (SKILL_DST / rel).write_bytes(z.read(n))
-    note("skill", f"{new}" + (f" (thay {old})" if old else "") + ": đã cài" + extra)
+    note("skill", f"{new}" + (f" (thay {old})" if old and old != new else "") + (": đã cập nhật nội dung" if old == new else ": đã cài") + extra)
     return True
 
 

@@ -75,6 +75,7 @@ def changelog_since(text, mine):
 
 
 def main():
+    global I                                                   # reloaded after the pull (below)
     check_only = "--check" in sys.argv
     if check_only and "--quiet" in sys.argv: return quick()
     if not check_only and outside.sandboxed() and "--here" not in sys.argv:   # --check installs nothing: it stays in the chat
@@ -114,6 +115,7 @@ def main():
     req_changed = bool(git("diff", "--name-only", "HEAD", up, "--", "engine/requirements.txt"))
     if git("pull", "--ff-only", "--quiet") is None:
         print("[LỖI] Không cập nhật được (file bạn sửa trùng với bản mới, hoặc lịch sử khác nhau). Chụp màn hình gửi Claude, đừng xoá gì."); return 1
+    I = __import__("importlib").reload(I)                     # the steps below run the code just pulled, not the copy loaded at start
     print(f"\nĐã kéo bản {I.version()}.")
     ok = True
     steps = ([("python", I.packages)] if req_changed else []) + [("chromium", I.chromium_step), ("models", I.models_step),

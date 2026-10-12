@@ -74,6 +74,8 @@ Bản phát hành chính thức đầu tiên của Moworks Motion.
 - `compare --shots` nhầm chuyển cảnh nhanh với cut; `compare` lệch nửa khung với video 30 fps.
 - Giá trị `style` có nháy kép làm gãy thuộc tính; `ctx.hash` cho giá trị xếp thành hàng chéo.
 - Mục quá lớn so với Thùng rác bị xoá hẳn mà không hỏi.
+- `install.bat` / `update.bat` chỉ so số phiên bản của skill, nên skill sửa mà giữ nguyên số không được cài lại; nay so cả nội dung,
+  và `update.bat` chạy các bước cài đặt bằng mã vừa tải về.
 
 ## 2.0.0-beta.1 (08/10/2026)
 
