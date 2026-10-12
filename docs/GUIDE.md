@@ -49,7 +49,7 @@ Mọi thứ được chuyển vào Thùng rác. Python, Git, các gói Python d�
 thay đổi chưa đẩy lên GitHub. `uninstall.bat --all` gỡ thêm các gói Python của kit và Chromium ở vị trí mặc định của Playwright.
 
 Gốc kit chỉ chứa bốn file `.bat` và các thư mục. Tài liệu nằm trong `docs\`, số phiên bản trong `engine\VERSION`; `.gitignore`,
-`.gitattributes` và `LICENSE` được đặt ẩn.
+`.gitattributes`, `LICENSE` và `CLAUDE.md` (hướng dẫn cho các phiên Claude làm việc trên repo) được đặt ẩn.
 
 ## 3. Làm một phim
 

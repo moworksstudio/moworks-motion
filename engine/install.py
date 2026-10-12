@@ -195,7 +195,8 @@ def root_step():
     return True
 
 
-ROOT_HIDDEN = (".gitignore", ".gitattributes", "LICENSE")              # git needs the first two in the kit root, GitHub reads LICENSE there
+ROOT_HIDDEN = (".gitignore", ".gitattributes", "LICENSE", "CLAUDE.md")  # git needs the first two in the kit root, GitHub reads LICENSE there,
+                                                                         # Claude Code reads CLAUDE.md there
 
 
 def hide_root_files():
