@@ -17,9 +17,11 @@
 
 ## Tóm tắt cho người dùng
 
-**Quyết định (người dùng, 2026-10-12): lấy theo 4 bước dưới.** anidoodle chạy riêng như một skill (không nhập engine vào kit); 32 phong
-cách thành một **danh mục "Phong cách vẽ tay"** trong Gallery để chọn và brief khi job chưa có định hướng hình ảnh; cầu nối để tranh /
-phim anidoodle nằm trong phim kit.
+**Trạng thái (người dùng, 2026-10-13): giữ mọi mục làm ứng viên, test rồi tự cherry-pick** (như huashu-art-motion). Hướng 4 bước
+người dùng đồng ý ngày 2026-10-12 vẫn là kế hoạch test: anidoodle chạy riêng như một skill (không nhập engine vào kit); 32 phong cách
+thành danh mục "Phong cách vẽ tay" trong Gallery; cầu nối để tranh / phim anidoodle nằm trong phim kit. Mục chọn giữ hay bỏ là của
+người dùng sau khi test; cột "Đề xuất" là ý kiến của Claude, kể cả dòng 5. So sánh công cụ với kit, huashu và tegaki:
+`docs/intake/2026-10-13-huashu-art-motion.md` ("So sánh công cụ").
 
 **anidoodle làm gì:** vẽ tranh minh hoạ hoàn toàn bằng code theo 32 chất liệu, và **làm cả chuyển động**, không chỉ tranh tĩnh:
 - tranh **tự vẽ ra từng nét** theo thứ tự của hoạ sĩ chất liệu đó (cả 32 phong cách đều có bản "tự vẽ");
@@ -41,9 +43,9 @@ Còn **danh mục phong cách** thì vào Gallery, như một bảng màu / ch�
 | 2 | **Danh mục "Phong cách vẽ tay"** trong Gallery: 32 thẻ, mỗi thẻ có ảnh mẫu, clip tranh tự vẽ ra, mô tả (chất liệu, thứ tự nét, hợp với loại phim nào) và nút COPY brief (ví dụ *"Vẽ minh hoạ phong cách khắc gỗ (anidoodle) cho cảnh 3"*) | Một mục mới của Gallery (`engine/gallery.py`); ảnh và clip lấy từ kết quả bài thử #1 | Apache-2.0: ảnh / clip là bản render của code tác giả; kèm `LICENSE` + `NOTICE`, một dòng `THIRD-PARTY.md` | cao (job chưa có định hướng hình ảnh có chỗ chọn) | 0,5–1 ngày | làm |
 | 3 | Cầu nối: tranh / phim anidoodle (file HTML xuất từ `emit.mjs`) thành một lớp trong phim kit, tua theo đồng hồ phim, nét 4K | Mở rộng `engine/vendor/libs/hf/hf-frame.js` (`ctx.hfFrame`) để nhận trang có `window.FILM`; một dòng trong `workflow/recipes.md` | code kit (MIT); file HTML nhúng là Apache-2.0, đi kèm `NOTICE` | cao nếu #1 đạt | 0,5–1 ngày | viết trong kit |
 | 4 | Nhạc viết bằng code của anidoodle cho phim kit (không bản quyền, chạy offline) | Ngoài kit: xuất WAV, đưa vào `audio/music` của phim | Apache-2.0; nếu dùng tiếng phòng thu (rooms) thì phải ghi công CC BY 4.0 | vừa (phải nghe thử) | 1 giờ thử | thử nghe, chưa quyết |
-| 5 | Engine vào `library/` hoặc `engine/vendor/`; 32 bức thành preset / layout chạy được; nhân vật canvas thay rig của kit | — | — | thấp | — | không lấy |
+| 5 | Engine vào `library/` hoặc `engine/vendor/`; 32 bức thành preset / layout chạy được; nhân vật canvas thay rig của kit | — | — | thấp | — | ứng viên test (ý kiến của Claude: không nên) |
 
-**Kết luận:** Làm #1 trước, rồi #2 (không phụ thuộc kết quả #1, nhưng thẻ chỉ có ích khi máy có skill anidoodle), #3 nếu #1 đạt, #4 khi
+**Ý kiến của Claude (thứ tự test):** Làm #1 trước, rồi #2 (không phụ thuộc kết quả #1, nhưng thẻ chỉ có ích khi máy có skill anidoodle), #3 nếu #1 đạt, #4 khi
 có job cần nhạc. After Effects nhận tranh anidoodle dưới dạng chuỗi ảnh (canvas, như KI-10), không phải layer chỉnh được. Chữ trong phim
 nên là chữ của kit đặt trên tranh, vì chữ của anidoodle dùng font hệ thống của Mac (Avenir Next, Helvetica); trên Windows sẽ đổi sang
 Arial.
@@ -60,7 +62,7 @@ Arial.
 | Sound-effects kit, 14 synthesised layered effects | 19 recorded effects (HyperFrames / Pixabay), the sound pass | Kit, by its own documented choice (recorded, not synthesised) |
 | Determinism gate (`gate.mjs`: frames hashed forward / reversed / across pages, cold vs cached, contract scan, dead air) | `kit.py verify`, `verify --play`, Gallery `seek` / `bake` checks | Same spirit; each checks its own engine. Nothing to port |
 
-## Not taken, and why
+## Not proposed by Claude, and why (still candidates: the user keeps every item for testing)
 
 - **The engine into `library/` or `engine/vendor/`.** Each piece is bespoke TypeScript built with esbuild; 22,873 lines in
   `engine/src/canvas-core/*.ts` alone (top level, without `music/`, `character/`), plus tools. It brings its own skill, gates and
