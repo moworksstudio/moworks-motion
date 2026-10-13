@@ -18,8 +18,10 @@
 
 ## Tóm tắt cho người dùng
 
-**Quyết định (người dùng, 2026-10-13): lấy theo hướng dưới, gộp chung với anidoodle** (một danh mục phong cách, một cầu nối, một bộ
-luật), cộng mục #7 mới sau khi so thẩm mỹ: nâng các layout giải thích của kit theo cách dàn dựng của huashu (viết lại trong kit).
+**Trạng thái (người dùng, 2026-10-13): CHƯA QUYẾT ĐỊNH.** Người dùng giữ **mọi mục** của báo cáo này làm ứng viên, sẽ tự test rồi
+cherry-pick từng cái; thẩm mỹ chưa kết luận. Tiêu chí chính của người dùng: **công cụ nào mạnh hơn để tạo artwork về sau**, không phải
+thẩm mỹ hiện tại (xem "So sánh công cụ"). Cột "Đề xuất" dưới đây chỉ là ý kiến của Claude; phiên desktop không dựng mục nào khi
+người dùng chưa chọn.
 
 **Có lấy được phong cách, cách vẽ và cách làm chuyển động không? Được về mặt giấy phép (MIT). Nhưng lấy theo dạng "bộ cọ + công thức +
 luật", không phải lấy 35 cảnh có sẵn.** Lý do:
@@ -60,10 +62,10 @@ luật", không phải lấy 35 cảnh có sẵn.** Lý do:
 | 3 | **Một cầu nối chung** cho cả anidoodle và huashu: `hf-frame.js` nhận thêm trang có `window.FILM` (anidoodle) **hoặc** `window.renderFrame / prepare` (huashu); engine huashu (`engine.js`, `lib/`, `transitions.js`, cảnh) đi kèm như tài sản của layout / preset phim, nguyên bản, có SHA-256 | Mở rộng `engine/vendor/libs/hf/hf-frame.js` một lần cho cả hai | MIT | cao nếu #1 đạt | thêm 0,5 ngày so với cầu nối anidoodle | làm cùng cầu nối anidoodle |
 | 4 | **Luật cho skill**: bảng camera có số đo + ngân sách điểm nhấn; "tranh sống" = 1 chuyển động chính + 2–4 mô-típ; chuyển cảnh chữ ký mọc từ một vật; bảng màu theo vùng; nhân vật đi qua cùng bộ vẽ; fps nhảy bậc theo phong cách (rubber hose 12, rối bóng 10, Haring 8); một phim một phong cách; mỗi dòng phân cảnh có một vật + một động từ; cue gắn theo từ trong lời đọc | `workflow/film.md` ("The numbers"), `free-design.md`, `recipes.md` (sửa luật zoom cho rõ), `review.md` | MIT (viết lại bằng lời của kit, ghi công) | cao | 2–3 giờ | làm |
 | 5 | Đo "phim PPT" trong `kit.py qa` (tỉ lệ khung chuyển động nhanh, đoạn trống ≥ 0,3 s, nền xanh tím, đẩy vào / phút) và lưới nhịp + bản đồ nhiệt trong `kit.py compare --shots` | `engine/qa/motion_qa.py`, `engine/qa/shots.py` | MIT (viết lại bằng numpy; bản gốc cần OpenCV, kit không có) | vừa | 4–6 giờ | làm sau |
-| 6 | 8 đoạn giải thích JSON, 49 chuyển cảnh dùng cho cảnh kit, nhạc, giọng (Volcengine), cầu nối ảnh AI, phim tham khảo SpaceX, khung nhân vật của tác giả, Mario / Clawd, dữ liệu nét Arphic | — | xem trên | thấp | — | không lấy |
-| 7 | **Nâng cấp layout giải thích của kit theo cách dàn dựng của huashu** (xem "So sánh thẩm mỹ"): bàn điều tra kiểu Vox (bản in bán sắc, dây đỏ, bút dạ quang, nhãn đen rách mép, camera lia giữa các món), bảng trắng có bàn tay cầm bút, biểu đồ kiểu báo (tít kết luận, đơn vị, nguồn, chỉ đánh dấu một điểm, nhãn "số liệu minh hoạ") | Viết lại thành layout kit (DOM, chữ tiếng Việt, lên AE chỉnh được), qua "Mới nhập": nâng `text/vox-annotate`, `line/whiteboard-ink`, `data/chart-story` / `data/data-chart` hoặc thêm layout mới | MIT (viết lại, ghi công) | cao | 1–2 ngày | làm sau #4 |
+| 6 | 8 đoạn giải thích JSON, 49 chuyển cảnh dùng cho cảnh kit, nhạc, giọng (Volcengine), cầu nối ảnh AI, phim tham khảo SpaceX, khung nhân vật của tác giả, Mario / Clawd, dữ liệu nét Arphic | — | xem trên | thấp | — | ứng viên test (ý kiến của Claude: ít giá trị so với kit) |
+| 7 | **Nâng cấp layout giải thích của kit theo cách dàn dựng của huashu** (xem "So sánh thẩm mỹ"): bàn điều tra kiểu Vox (bản in bán sắc, dây đỏ, bút dạ quang, nhãn đen rách mép, camera lia giữa các món), bảng trắng có bàn tay cầm bút, biểu đồ kiểu báo (tít kết luận, đơn vị, nguồn, chỉ đánh dấu một điểm, nhãn "số liệu minh hoạ") | Viết lại thành layout kit (DOM, chữ tiếng Việt, lên AE chỉnh được), qua "Mới nhập": nâng `text/vox-annotate`, `line/whiteboard-ink`, `data/chart-story` / `data/data-chart` hoặc thêm layout mới | MIT (viết lại, ghi công) | cao | 1–2 ngày | ứng viên test |
 
-**Kết luận:** Dùng huashu theo cùng con đường đã chọn cho anidoodle, **gộp chung chứ không làm song song**: một danh mục phong cách,
+**Ý kiến của Claude (chưa phải quyết định):** Dùng huashu theo cùng con đường đã chọn cho anidoodle, **gộp chung chứ không làm song song**: một danh mục phong cách,
 một cầu nối, một bộ luật; cộng #7: nâng layout giải thích của kit lên chuẩn dàn dựng của huashu (xem "So sánh thẩm mỹ"). Trước hết thử trên Windows và thử vẽ một chủ đề thật bằng bộ cọ; 35 cảnh mẫu chỉ để xem phong cách. After
 Effects nhận mọi thứ engine này vẽ dưới dạng chuỗi ảnh (canvas, KI-10); chữ trong phim để kit lo (tiếng Việt, text layer AE).
 
@@ -74,7 +76,45 @@ Effects nhận mọi thứ engine này vẽ dưới dạng chuỗi ảnh (canvas
 - **Chữ, UI, biểu đồ, giải thích, chuyển cảnh giữa cảnh, AE chỉnh được**: kit như hiện nay (không dùng 8 đoạn JSON của huashu).
 - **Luật đạo diễn** (camera, nhịp, màu, chống PPT): gộp vào skill của kit, một nơi.
 
-## So sánh thẩm mỹ: kit và huashu
+## So sánh công cụ: bên nào mạnh hơn để tạo artwork về sau
+
+Đây là tiêu chí chính của người dùng (2026-10-13). So **năng lực của công cụ** (thư viện, engine, quy trình, bộ kiểm), không so ảnh
+mẫu hiện có. Số dòng code đếm tại các commit đã đọc; nhiều dòng không có nghĩa là tốt hơn, chỉ cho biết độ sâu.
+
+**Mỗi bên là loại công cụ gì**
+
+| | Kit (moworks-motion) | huashu-art-motion | anidoodle | tegaki |
+|---|---|---|---|---|
+| Bản chất | Dây chuyền **làm phim và giao phim**: film.json → GSAP trên DOM / SVG, preset, layout, render 60 fps, MP4 / MOV / AE | **Bộ lọc phong cách hội hoạ** cho canvas: vẽ nền phẳng rồi "vẽ lại" bằng một renderer; cộng thư viện cho phim giải thích | **Xưởng vẽ minh hoạ bằng code**: chất liệu, thứ tự nét, nhân vật 3D-ish, nhạc | **Dữ liệu nét chữ viết tay** cho font bất kỳ |
+| Engine vẽ | Không có engine vẽ tranh. `handkit.js` 191 dòng (bút chì, màu nước, giấy), `rig.js` 585 dòng (người phẳng, lên AE thành shape layer) | `lib/` 2.786 dòng JS thuần, không cần build: `paint.js`, `brush.js`, `render.js`, `post.js` + camera, motion, chart, typo, diagram, collage, media | ~22.900 dòng TypeScript ở `canvas-core/` (20 "kit" chất liệu ~3.070 dòng), nhân vật ~2.140 dòng, nhạc ~8.830 dòng; cần esbuild | Generator (Bun) + dữ liệu JSON |
+
+**Năng lực tạo artwork mới, từng việc**
+
+| Việc cần làm về sau | Kit | huashu | anidoodle | Mạnh nhất |
+|---|---|---|---|---|
+| **Biến một hình bất kỳ thành tranh theo phong cách** (ảnh sản phẩm, khung phim kit, ảnh chụp) | Không có | **Có, tổng quát nhất**: renderer đọc pixel của *bất kỳ* canvas nguồn (`P.strokes` lấy `getImageData` của nền) rồi vẽ lại thành nét cọ, chấm, khảm, bán sắc, pixel, mặt cắt, màu nước, thuỷ mặc, ánh sáng Rembrandt…; một nền phẳng → nhiều phong cách (chính là cách họ làm 35 phong cách trên cùng một căn phòng). Phải tự viết trường hướng nét và bảng màu theo vùng cho từng cảnh | Có cho một số chất liệu (`fromPhoto.ts`: đọc độ sáng và hướng lông / vân từ ảnh để điều khiển nét: khắc nền đen, khắc gỗ, một nét xoắn); còn lại vẽ chủ thể bằng điểm điều khiển | **huashu** (rộng và nhanh); anidoodle sâu hơn ở vài chất liệu |
+| **Vẽ một bức minh hoạ mới từ đầu** theo chất liệu thật (thứ tự nét, mép giấy, mực loang) | Không | Có, viết `scenes/<id>.js`: nền phẳng + renderer; thứ tự nét không được mô hình hoá | **Có, sâu nhất**: mỗi chất liệu một "kit" mô phỏng quy trình thật (dao khắc, bàn chà baren, giấy washi…); **drawing score** ghi thứ tự vẽ theo bộ phận và phụ thuộc ("tai chờ đầu"), lớp phác thảo xanh bị tẩy, nên một nguồn ra cả tranh tĩnh, timelapse, bảng bước | **anidoodle** |
+| **Nhân vật giữ nguyên qua nhiều cảnh / phong cách** | `AIMK_RIG` (người phẳng, 20 tư thế, tay, biểu cảm, khẩu hình, đi bộ), **lên AE chỉnh được**, có sheet và bộ kiểm khớp nối | Không có hệ nhân vật chung: rig chỉ cho cô gái + mèo của phim mẫu; người thật giao cho ảnh AI tạo | **Hệ mạnh nhất**: khung xương người theo tỉ lệ chuẩn, giới hạn khớp, tay, đầu, quần áo, cân bằng, dáng đi; phần 2.5D (tóc, mũ xoay theo đầu, theo SIGGRAPH 2010); **kiểm "vẫn là cô ấy"** qua từng chất liệu | anidoodle cho nhân vật vẽ; **kit** cho nhân vật cần sửa trong AE |
+| **Học phong cách từ ảnh tham khảo của khách** | `kit.py compare` (đo phim tham khảo), `ref add` | 35 thẻ công thức; không có công cụ đọc phong cách từ ảnh | `analyze-style.mjs`: đọc bảng màu, độ sáng, nét, kết cấu, bán sắc, mép của ảnh tham khảo và gợi ý chất liệu gần nhất | **anidoodle** |
+| **Chuyển động** (diễn, camera, chuyển cảnh, nhịp) | **Mạnh nhất cho sản xuất**: preset + layout có sẵn, ease theo vai trò, lò xo, overlap, anime.js, three.js, camera layout, `verify --play`, AE keyframe | Từ vựng camera có số đo (`CAM.track`: đẩy, kéo, lia, đẩy nhanh, dập, rung), ease / lò xo (`MO`), lưới nhịp, 49 chuyển cảnh nghệ thuật (chỉ giữa hai canvas), khung "đi xuyên tranh" | `camera.ts` (lớp chiều sâu), `seams.ts` (cắt nối chuyển động), `morph.ts` (vật biến thành cảnh sau), `motif.ts`, chữ động vẽ tay, dáng đi nhân vật | **kit** cho phim khách; huashu / anidoodle có ý tưởng chuyển động "nghệ thuật" kit chưa có |
+| **Phim giải thích** (biểu đồ, bảng trắng, cắt dán, UI) | Nhiều layout có sẵn, chữ tiếng Việt, lên AE thành text / shape layer | Thư viện `chart.js`, `diagram.js` (bút vẽ theo nét, morph kiểu 3b1b), `collage.js`, `media.js`, `typo.js`, `ui.js` + 8 mẫu JSON; canvas, font không có tiếng Việt | Launch template, chữ động; không chuyên phim giải thích | **kit** về sản xuất; **huashu** có thư viện dựng cảnh giải thích giàu hơn để học / viết lại |
+| **Độ phân giải / 4K** | 4K thật (`--4k`), AE | Cảnh nghệ thuật cố định 1920×1080 (4K chỉ là phóng to); thư viện giải thích co giãn theo khung | Vẽ lại theo `scale` (không bao giờ phóng to bitmap): 4K thật | kit, anidoodle |
+| **Âm thanh** | Tiếng hiệu ứng thu thật, ElevenLabs, beat, align lời, carve, loudness | Một bản nhạc mẫu tổng hợp | **Engine nhạc** 21 phong cách, nhạc cụ mô phỏng + thu thật, bộ kiểm nhạc | anidoodle (nhạc code); kit (nhạc thật, giọng, mix) |
+| **Bộ kiểm chất lượng** | Nhiều nhất: lint, collide, verify, qa, brand-check, loudness, AE | qa (tất định, chi phí khung, vùng chuyển động, chữ bị cắt), film_gate (chống phim PPT), storyboard_lint | gate (tất định qua nhiều trang, cache, dead air), framecheck, verify-export, music check | kit; mỗi bên kiểm engine của mình |
+| **Dễ để Claude mở rộng** | Python + preset JS theo chuẩn kit | **Dễ nhất**: JS thuần, không build, một file mỗi cảnh, có quy chuẩn tác giả cảnh (`08-风格作者规范.md`) | TypeScript có kiểu, cần Node + esbuild; quy trình kỹ hơn | huashu nhanh; anidoodle chặt |
+| **Chữ viết tay theo font** | `hand/write-title` (75 ký tự ASCII) | Không | Chữ ký vẽ tay từng từ | **tegaki** |
+
+**Nhận xét của Claude về công cụ (không phải quyết định):**
+- Không bên nào thay được bên nào. **Kit là dây chuyền giao phim** (DOM, AE, tiếng Việt, brand, âm thanh, bộ kiểm); hai repo kia là
+  **công cụ tạo hình** mà kit đang thiếu.
+- Giữa hai công cụ tạo hình: **huashu mạnh ở độ rộng và tốc độ** (một renderer biến bất kỳ hình nào thành tranh theo trường phái; code
+  đơn giản, Claude viết thêm phong cách nhanh). **anidoodle mạnh ở chiều sâu** (chất liệu mô phỏng quy trình thật, thứ tự nét, nhân vật
+  nhất quán, đọc phong cách từ ảnh, 4K thật, nhạc). Về lâu dài, **nền móng kỹ thuật của anidoodle chắc hơn** (kiểu dữ liệu, bộ kiểm,
+  tách lõi khỏi nơi chạy); **huashu dễ thử nghiệm hơn**.
+- Cách test công bằng nhất cho tiêu chí "công cụ": cùng một đề bài mới (ví dụ một sản phẩm của khách, một nhân vật, 10 giây), cho mỗi
+  công cụ làm, đo thời gian Claude viết, thời gian render, số vòng sửa, và xem kết quả đặt trong phim kit (qua cầu nối).
+
+## So sánh thẩm mỹ: kit và huashu (nhận xét của Claude, người dùng chưa kết luận)
 
 **Cách so (2026-10-13):** đặt cạnh nhau những gì có sẵn trong hai repo, cùng loại việc. Bên huashu: `assets/全风格总览.jpg` (35
 phong cách, cắt phóng to 6 ô ở độ phân giải gốc), 8 ảnh tổng quan `assets/动画语法/*_总览.jpg`, dải 6 khung trích từ các GIF
@@ -102,7 +142,7 @@ cloud); các tấm ghép nằm trong scratchpad, không commit.
 | **Độ đều tay giữa các mẫu** | Đều, sạch, ít lỗi | Không đều: 20 phong cách 3 sao, 14 phong cách 2 sao, 1 phong cách 1 sao; Van Gogh trong phim speedrun phẳng hơn hẳn Van Gogh trong phim Clawd (code phim Clawd không có trong repo) | **kit** đều hơn |
 | **Dùng được cho phim khách** | Tiếng Việt, brand, AE chỉnh được, 4K | 35 cảnh là một căn phòng; chữ không tiếng Việt; AE chỉ là ảnh; 4K chỉ là phóng to | **kit** |
 
-**Kết luận thẩm mỹ:** về **độ đẹp và độ "có nghề"** của khung hình, huashu cao hơn rõ ở hai mảng: **tranh minh hoạ theo trường phái**
+**Nhận xét thẩm mỹ của Claude:** về **độ đẹp và độ "có nghề"** của khung hình, huashu cao hơn rõ ở hai mảng: **tranh minh hoạ theo trường phái**
 (kit không có) và **dàn dựng phim giải thích** (bàn Vox, bảng trắng có tay, biểu đồ kiểu báo). Chuyển động của huashu cũng "sống" hơn vì
 mỗi cảnh luôn có mô-típ chạy. Kit hơn về **độ sạch, độ đều, chữ tiếng Việt, brand và After Effects**: những thứ quyết định giao được
 phim cho khách. Vì vậy cách lấy hợp lý:
@@ -126,7 +166,7 @@ phim cho khách. Vì vậy cách lấy hợp lý:
 | Music synthesised in code (`scripts/audio/synth_艺术史速通.py`) | recorded effects, Mixkit, ElevenLabs; anidoodle's engine for code scores | Not taken: one example score |
 | Art transitions (`transitions.js`, 49, two raster canvases) | ~60 kit transitions between DOM scenes | Kit between kit scenes; theirs only inside a huashu layer |
 
-## Not taken, and why
+## Not proposed by Claude, and why (still candidates: the user keeps every item for testing)
 
 - **The 35 scenes as client content.** One fixed composition (`references/风格配方/INDEX.md` line 3; all 35 `scenes/*.js` call
   `RIG.girl` / `RIG.cat`), absolute 1080p coordinates, landscape only. They are previews (row 2) and examples of how to write a scene.
@@ -163,6 +203,9 @@ phim cho khách. Vì vậy cách lấy hợp lý:
    cards carry that credit with the author's.
 
 ## Build notes for the desktop session
+
+Nothing is decided (user, 2026-10-13): the notes below are for the tests the user will run and for whichever items the user
+picks afterwards.
 
 **Row 1: Windows trial (nothing committed)**
 - `uv run --with playwright playwright install chromium` (or point to the kit's Chromium), then from the repo:
@@ -208,7 +251,7 @@ phim cho khách. Vì vậy cách lấy hợp lý:
   minute (their camera estimate uses OpenCV LK flow + RANSAC: re-write in numpy or skip). Report lines, not a gate.
 - `kit.py compare --shots`: beat-grid fit and per-segment motion heatmap (`scripts/analyze/breakdown.py`).
 
-**Row 7: kit explainer layouts raised to huashu's art direction** (each through `kit.py library import`, "Mới nhập")
+**Row 7: kit explainer layouts raised to huashu's art direction** (candidate, not decided) (each through `kit.py library import`, "Mới nhập")
 - Reference frames: `assets/动画语法/y2_vox_总览.jpg`, `y3_whiteboard_总览.jpg`, `t3_finance_chart_总览.jpg`; the recipes in
   `references/动画语法/y2_vox.md`, `y3_whiteboard.md`, `t3_finance_chart.md` (measured numbers) and `lib/collage.js`, `lib/media.js`,
   `lib/diagram.js`, `lib/chart.js` (how each piece is drawn) at the commit above. Re-write in DOM / SVG + GSAP, not copied.
