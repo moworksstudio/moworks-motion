@@ -18,6 +18,9 @@
 
 ## Tóm tắt cho người dùng
 
+**Quyết định (người dùng, 2026-10-13): lấy theo hướng dưới, gộp chung với anidoodle** (một danh mục phong cách, một cầu nối, một bộ
+luật), cộng mục #7 mới sau khi so thẩm mỹ: nâng các layout giải thích của kit theo cách dàn dựng của huashu (viết lại trong kit).
+
 **Có lấy được phong cách, cách vẽ và cách làm chuyển động không? Được về mặt giấy phép (MIT). Nhưng lấy theo dạng "bộ cọ + công thức +
 luật", không phải lấy 35 cảnh có sẵn.** Lý do:
 
@@ -58,9 +61,10 @@ luật", không phải lấy 35 cảnh có sẵn.** Lý do:
 | 4 | **Luật cho skill**: bảng camera có số đo + ngân sách điểm nhấn; "tranh sống" = 1 chuyển động chính + 2–4 mô-típ; chuyển cảnh chữ ký mọc từ một vật; bảng màu theo vùng; nhân vật đi qua cùng bộ vẽ; fps nhảy bậc theo phong cách (rubber hose 12, rối bóng 10, Haring 8); một phim một phong cách; mỗi dòng phân cảnh có một vật + một động từ; cue gắn theo từ trong lời đọc | `workflow/film.md` ("The numbers"), `free-design.md`, `recipes.md` (sửa luật zoom cho rõ), `review.md` | MIT (viết lại bằng lời của kit, ghi công) | cao | 2–3 giờ | làm |
 | 5 | Đo "phim PPT" trong `kit.py qa` (tỉ lệ khung chuyển động nhanh, đoạn trống ≥ 0,3 s, nền xanh tím, đẩy vào / phút) và lưới nhịp + bản đồ nhiệt trong `kit.py compare --shots` | `engine/qa/motion_qa.py`, `engine/qa/shots.py` | MIT (viết lại bằng numpy; bản gốc cần OpenCV, kit không có) | vừa | 4–6 giờ | làm sau |
 | 6 | 8 đoạn giải thích JSON, 49 chuyển cảnh dùng cho cảnh kit, nhạc, giọng (Volcengine), cầu nối ảnh AI, phim tham khảo SpaceX, khung nhân vật của tác giả, Mario / Clawd, dữ liệu nét Arphic | — | xem trên | thấp | — | không lấy |
+| 7 | **Nâng cấp layout giải thích của kit theo cách dàn dựng của huashu** (xem "So sánh thẩm mỹ"): bàn điều tra kiểu Vox (bản in bán sắc, dây đỏ, bút dạ quang, nhãn đen rách mép, camera lia giữa các món), bảng trắng có bàn tay cầm bút, biểu đồ kiểu báo (tít kết luận, đơn vị, nguồn, chỉ đánh dấu một điểm, nhãn "số liệu minh hoạ") | Viết lại thành layout kit (DOM, chữ tiếng Việt, lên AE chỉnh được), qua "Mới nhập": nâng `text/vox-annotate`, `line/whiteboard-ink`, `data/chart-story` / `data/data-chart` hoặc thêm layout mới | MIT (viết lại, ghi công) | cao | 1–2 ngày | làm sau #4 |
 
 **Kết luận:** Dùng huashu theo cùng con đường đã chọn cho anidoodle, **gộp chung chứ không làm song song**: một danh mục phong cách,
-một cầu nối, một bộ luật. Trước hết thử trên Windows và thử vẽ một chủ đề thật bằng bộ cọ; 35 cảnh mẫu chỉ để xem phong cách. After
+một cầu nối, một bộ luật; cộng #7: nâng layout giải thích của kit lên chuẩn dàn dựng của huashu (xem "So sánh thẩm mỹ"). Trước hết thử trên Windows và thử vẽ một chủ đề thật bằng bộ cọ; 35 cảnh mẫu chỉ để xem phong cách. After
 Effects nhận mọi thứ engine này vẽ dưới dạng chuỗi ảnh (canvas, KI-10); chữ trong phim để kit lo (tiếng Việt, text layer AE).
 
 **Cách dùng thông minh nhất khi có cả ba repo:**
@@ -69,6 +73,43 @@ Effects nhận mọi thứ engine này vẽ dưới dạng chuỗi ảnh (canvas
 - **"Tranh sống" theo trường phái / hoạ sĩ** (Van Gogh, Klimt, Ghibli, Bauhaus, pixel…), chuyển cảnh chữ ký: huashu.
 - **Chữ, UI, biểu đồ, giải thích, chuyển cảnh giữa cảnh, AE chỉnh được**: kit như hiện nay (không dùng 8 đoạn JSON của huashu).
 - **Luật đạo diễn** (camera, nhịp, màu, chống PPT): gộp vào skill của kit, một nơi.
+
+## So sánh thẩm mỹ: kit và huashu
+
+**Cách so (2026-10-13):** đặt cạnh nhau những gì có sẵn trong hai repo, cùng loại việc. Bên huashu: `assets/全风格总览.jpg` (35
+phong cách, cắt phóng to 6 ô ở độ phân giải gốc), 8 ảnh tổng quan `assets/动画语法/*_总览.jpg`, dải 6 khung trích từ các GIF
+`assets/showcase/monet.gif`, `egypt.gif`, `clawd-vangogh.gif`. Bên kit: thumbnail trong `library/gallery/thumbs/` của 12 mẫu vẽ tay /
+chất liệu và 16 mẫu giải thích / dữ liệu / UI, dải 6 khung trích từ clip Gallery `hand__watercolor`, `line__whiteboard-ink`,
+`text__vox-annotate`, `data__chart-story`. Chỉ trích khung từ file có sẵn bằng ffmpeg / Pillow, **không render gì mới** (luật phiên
+cloud); các tấm ghép nằm trong scratchpad, không commit.
+
+**Giới hạn của phép so (đọc trước khi tin kết luận):**
+- Không ngang nhau về bản chất: Gallery của kit là **demo một hiệu ứng** trên nội dung mặc định (một dòng chữ, một biểu đồ, nền trơn),
+  còn ảnh của huashu là **khung đã dàn dựng** do tác giả chọn đưa lên README. Một phim thật của kit (Claude dàn cảnh, brand, nhiều lớp)
+  không có trong repo để so.
+- Ảnh tĩnh và GIF 640 px không cho thấy hết độ mượt; chuyển động chỉ so bằng dải khung.
+- Đánh giá thẩm mỹ là nhận xét của người xem, không phải số đo. Người dùng nên tự xem 5 tấm ghép cạnh nhau trên máy desktop
+  (Gallery của kit và README / Releases của huashu).
+
+| Tiêu chí | Kit (Gallery hiện có) | huashu | Bên nào hơn |
+|---|---|---|---|
+| **Tranh minh hoạ, chất liệu hội hoạ** | Không có engine vẽ tranh. Các mẫu `hand/*` là hiệu ứng trên chữ: mảng màu nước sau một dòng chữ, giấy, vòng bút chì, chữ comic; `effect/dither-pass`, `background/halftone-field`, `background/pixel-worlds`, `effect/facet-morph` là hiệu ứng lẻ trên nền trơn | Cả một bức tranh có bố cục, ánh sáng, chất liệu nhận ra ngay: nét cọ Van Gogh, chấm Seurat, vàng lá Klimt, bóng tối Rembrandt, thuỷ mặc có khoảng trắng, nền màu nước kiểu Ghibli, khảm, Bauhaus, pop | **huashu, cách xa.** Kit không có thứ tương đương |
+| **Dàn dựng khung hình** (phim giải thích) | Mỗi mẫu một thành phần giữa khung, nền trơn tối hoặc kem, nhiều khoảng trống | Khung có chủ đề và lớp lang: bàn điều tra Vox (bài báo cắt, ảnh in bán sắc, dây đỏ nối, bút dạ quang, nhãn đen rách mép), bảng trắng có bàn tay cầm bút đang vẽ, biểu đồ kiểu tạp chí kinh tế | **huashu** về độ "có đạo diễn". Kit gọn, sạch nhưng trông như linh kiện |
+| **Chữ và phân cấp chữ** | Tiếng Việt chuẩn trên mọi mẫu; chữ lớn rõ; biểu đồ `data/data-chart` chữ nhãn rất nhỏ, phân cấp yếu | Biểu đồ có tít kết luận đậm, dòng đơn vị, nguồn, nhãn "số liệu minh hoạ", chỉ đánh dấu một điểm: phân cấp kiểu báo chí tốt. Nhưng font không có tiếng Việt và chữ vẽ trên canvas | **huashu** về cách bày chữ trên biểu đồ; **kit** về chữ dùng được thật (tiếng Việt, AE, brand) |
+| **Màu** | Nền tối hoặc kem, một màu nhấn (xanh lá, vàng): sạch, hơi giống nhau giữa các mẫu; `glass/widgets` nền gradient sặc sỡ | 8 bảng màu có tên, một phim một bảng; tranh có bảng màu theo vùng. Riêng `t2_keynote_ui` lại dùng nền mesh xanh tím, trái chính luật cấm "AI slop" của nó | Gần ngang; huashu đa dạng và có chủ ý hơn; cả hai đều có một chỗ lệch luật của chính mình |
+| **Độ "sống" của chuyển động** | Dải khung: mẫu vào trong khoảng 1 s đầu rồi **đứng yên** tới hết (cột biểu đồ mọc rồi dừng, mảng màu nước hiện rồi dừng, chữ Vox gạch chân rồi dừng). Đúng với một demo hiệu ứng | Dải khung: cảnh **luôn có chuyện xảy ra** (nhân vật đi qua cầu Monet, ném đá, nước gợn; đi dọc bức hoạ Ai Cập, chim, bọ hung, rồi chuyển cảnh bằng ngôn ngữ của phong cách sau; camera trượt qua cánh đồng Van Gogh) | **huashu** về độ sống; kit có luật chuyển động chi tiết hơn (ease theo vai trò, lò xo, overlap) nhưng demo không cho thấy |
+| **Nhân vật** | Rig người phẳng của kit (không có trong các ảnh so) | Cô gái, con mèo, nhân vật chibi: vẽ vector phẳng, nhiều phong cách trông như dán lên tranh (tác giả tự nhận là điểm yếu nhất; Rembrandt 1 sao) | Ngang nhau, cả hai trung bình |
+| **Độ đều tay giữa các mẫu** | Đều, sạch, ít lỗi | Không đều: 20 phong cách 3 sao, 14 phong cách 2 sao, 1 phong cách 1 sao; Van Gogh trong phim speedrun phẳng hơn hẳn Van Gogh trong phim Clawd (code phim Clawd không có trong repo) | **kit** đều hơn |
+| **Dùng được cho phim khách** | Tiếng Việt, brand, AE chỉnh được, 4K | 35 cảnh là một căn phòng; chữ không tiếng Việt; AE chỉ là ảnh; 4K chỉ là phóng to | **kit** |
+
+**Kết luận thẩm mỹ:** về **độ đẹp và độ "có nghề"** của khung hình, huashu cao hơn rõ ở hai mảng: **tranh minh hoạ theo trường phái**
+(kit không có) và **dàn dựng phim giải thích** (bàn Vox, bảng trắng có tay, biểu đồ kiểu báo). Chuyển động của huashu cũng "sống" hơn vì
+mỗi cảnh luôn có mô-típ chạy. Kit hơn về **độ sạch, độ đều, chữ tiếng Việt, brand và After Effects**: những thứ quyết định giao được
+phim cho khách. Vì vậy cách lấy hợp lý:
+- **Tranh nghệ thuật:** dùng engine huashu qua cầu nối (#3), vì kit không có gì thay được.
+- **Phim giải thích:** không chạy code JSON của huashu (font, AE, tiếng Việt), mà **lấy huashu làm chuẩn thẩm mỹ để nâng layout của kit**
+  (#7): dàn dựng bàn Vox, bảng trắng có tay cầm bút, luật biểu đồ kiểu báo, viết lại trong kit.
+- **Luật** (#4) để mọi phim kit có độ sống đó: 1 chuyển động chính + mô-típ chạy liên tục, không để cảnh đứng yên kiểu "demo".
 
 ## Already in the kit
 
@@ -90,7 +131,8 @@ Effects nhận mọi thứ engine này vẽ dưới dạng chuỗi ảnh (canvas
 - **The 35 scenes as client content.** One fixed composition (`references/风格配方/INDEX.md` line 3; all 35 `scenes/*.js` call
   `RIG.girl` / `RIG.cat`), absolute 1080p coordinates, landscape only. They are previews (row 2) and examples of how to write a scene.
 - **The 8 clip grammars as code.** Duplicate kit layouts; Chinese-only fonts; canvas text (no AE text layers); a second spec format
-  beside `film.json`. Their numbers and rules go to the skill (row 4).
+  beside `film.json`. Their numbers and rules go to the skill (row 4), and their art direction becomes the target for re-written kit
+  layouts (row 7).
 - **Transitions between kit scenes.** They composite two canvases; kit scenes are DOM.
 - **Voice (Volcengine voice clone, paid cloud), the image-generation bridge, `font_subset.py`, `key_green.py` / `key_split.py`.** The
   kit has ElevenLabs, rembg, `kit.py font`.
@@ -165,3 +207,16 @@ Effects nhận mọi thứ engine này vẽ dưới dạng chuỗi ảnh (canvas
   yellow < 0.06), blank runs ≥ 0.3 s, blue-purple frame share (hue 225–300°, saturation ≥ 0.30 over 30 % of a frame), push-ins per
   minute (their camera estimate uses OpenCV LK flow + RANSAC: re-write in numpy or skip). Report lines, not a gate.
 - `kit.py compare --shots`: beat-grid fit and per-segment motion heatmap (`scripts/analyze/breakdown.py`).
+
+**Row 7: kit explainer layouts raised to huashu's art direction** (each through `kit.py library import`, "Mới nhập")
+- Reference frames: `assets/动画语法/y2_vox_总览.jpg`, `y3_whiteboard_总览.jpg`, `t3_finance_chart_总览.jpg`; the recipes in
+  `references/动画语法/y2_vox.md`, `y3_whiteboard.md`, `t3_finance_chart.md` (measured numbers) and `lib/collage.js`, `lib/media.js`,
+  `lib/diagram.js`, `lib/chart.js` (how each piece is drawn) at the commit above. Re-write in DOM / SVG + GSAP, not copied.
+- Vox desk: paper ground with grain, prints with halftone and tape / pin, torn black labels, red string drawn between items, a
+  multiply yellow highlighter `#DACF08`, elements stepped at 12 fps while the camera glides smoothly between items (their y2 card).
+- Whiteboard: a hand holding a pen that follows the drawing tip (`DG.pen`), writing about 16 characters a second starting 0.5 s after
+  the spoken phrase, pans of about 0.23 of the frame width over 1.2–2.4 s, the final pull-back to the whole board (y3 card). The hand
+  must be the kit's own art or a licensed asset (theirs in `reference_films/` are gpt-image PNGs: not taken).
+- Editorial chart: a conclusion headline, a unit line, a source line, an "illustrative data" badge when the numbers are examples, axes
+  first, bars from 0, hold at least 0.5 s after a number lands, one highlighted item, honest scales (t3 card).
+- Vietnamese titles in the demo; `gallery check` on each new layout; AE: text layers and shape layers expected (DOM / SVG).
