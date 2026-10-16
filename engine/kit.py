@@ -61,6 +61,7 @@ python kit.py ae      <project>                            editable After Effect
 python kit.py library [motion|layout] [word ...]         the library, one line per preset (name, verdict, description, tags), for choosing
 python kit.py library import <project> <preset> [--as group/name] [--layout]   a film's own preset -> "Mới nhập" (library/incoming), demo + checks
 python kit.py library incoming | keep <name> | drop <name>   what waits in "Mới nhập"; Giữ (into the library) / Bỏ (Recycle Bin), as the Gallery's buttons
+                                                             (import / keep / drop: the kit owner's machine only; drop also takes a library preset the kit does not use)
 python kit.py pulse   <project> [--video f.mp4] [--from s --to s]   does the picture move ON the beat (lift, jolts, still frames; the A/B film B as reference)
 python kit.py collide <project> [--step 0.05]             readable elements running into each other, blank frames at scene cuts -> qa\\collide.json
 python kit.py transcribe <project> [file.wav] [--lang vi] [--prompt "names"]   voice -> words with times (local Whisper) -> audio\\transcript\\ (a file: before film.json has it)
@@ -1213,14 +1214,17 @@ def cmd_build(a):
 
 
 def cmd_gallery(a):
-    """kit.py gallery build [filter] | kit.py gallery check [filter] | kit.py gallery open   (engine/gallery.py)"""
+    """kit.py gallery build [filter] | kit.py gallery check [filter] [--static | --random N] | kit.py gallery open   (engine/gallery.py)
+    --static: only what needs no browser (preset.json reads, the frame rules of preset.js, as-shipped SHA-256): GitHub runs it
+    --random N: N presets picked at random (the whole library takes about 1.5 h)"""
     import gallery
     if a.project == "build": gallery.build_all(a.times[0] if a.times else None)
-    elif a.project == "check": sys.exit(1 if gallery.check_all(a.times[0] if a.times else None) else 0)
+    elif a.project == "check" and a.static: sys.exit(1 if gallery.check_static(a.times[0] if a.times else None) else 0)
+    elif a.project == "check": sys.exit(1 if gallery.check_all(a.times[0] if a.times else None, sample=a.random) else 0)
     elif a.project == "open": gallery.open_page()
     elif a.project == "data":
         gallery.write_data(gallery.load_checks())
-    else: raise SystemExit("usage: kit.py gallery build [filter] | check [filter] | open | data")
+    else: raise SystemExit("usage: kit.py gallery build [filter] | check [filter] [--static | --random N] | open | data")
 
 
 def cmd_library(a):
@@ -1257,7 +1261,7 @@ def cmd_library(a):
 
 
 def _library_intake(a, words, gallery):
-    """kit.py library import | incoming | keep | drop (E5, "Mới nhập": gallery.py)"""
+    """kit.py library import | incoming | keep | drop (E5, "Mới nhập": gallery.py); import / keep / drop on the kit owner's machine only"""
     cmd, rest = words[0], words[1:]
     if cmd == "incoming":
         recs = [(n, m) for n, m in gallery.records() if m.get("_incoming")]
@@ -1663,6 +1667,8 @@ def main():
     ap.add_argument("--no-blur", dest="blur", action="store_false", help="mov: no motion blur (default bakes a 180-degree shutter, never across cuts; off for pixel art / hand-drawn)")
     ap.add_argument("--run", action="store_true", help="ae: build the project inside the open After Effects")
     ap.add_argument("--check", default="", help="ae: film seconds to render in AE and compare with the browser, e.g. 1.5,4")
+    ap.add_argument("--static", action="store_true", help="gallery check: only what needs no browser (preset.json, frame rules, as-shipped SHA-256)")
+    ap.add_argument("--random", type=int, default=0, help="gallery check: N presets picked at random")
     ap.add_argument("--no-save", action="store_true", help="ae: do not save the .aep")
     ap.add_argument("--estimate", action="store_true", help="ae: only the size of the port (layers x samples, MB, minutes), in seconds")
     ap.add_argument("--rebuild", action="store_true", help="ae: the AE step again from the saved recording (after a port code change)")

@@ -3,7 +3,7 @@ name: moworks-motion
 description: Make motion graphic films for any brief in code with Moworks Motion (HTML + GSAP films built from film.json, motion and layout libraries as a toolbox, the kit's review player with timed notes and an Export panel: MP4 Export, MOV Export, Port to AE; films cut to a song or a voice-over). Any brand, product, service or idea: the film is designed for its own brief. Finished artwork (PSD/PSB, PowerPoint or Google Slides deck, final frame images) is kept as designed and only animated; text, an idea or a song alone gets a free design of layout, graphics and motion. Brand guideline packs kept on this machine (`brands\<pack>\`) apply only to that brand's films. Use for any motion graphic, launch, lyric or music film, explainer, social or data film, credentials, a deck or PSD to animate, a port to After Effects; also to install, update or remove the kit.
 ---
 # Moworks Motion: do this first
-Skill version **2.0.2** (must match the kit's `engine\VERSION` file).
+Skill version **2.0.4** (must match the kit's `engine\VERSION` file).
 
 0. **No brief yet** (the skill was opened on its own, or the user asks what it can do): send the welcome card in `workflow/start.md`
    (capabilities, what to send, the steps) and wait for the brief. A message that already holds a brief: skip the card.
@@ -153,8 +153,8 @@ Rebuild, and answer with a table: line · what you changed · fixed / not fixed 
      versions) are never removed at all, not even offered (`workflow/film.md`, Rounds).
    - A file the user has open or edits (lyrics, notes, a brief) is theirs: write yours next to it under a new name.
    - **A film chat never changes the kit or its libraries** (`engine`, `library`, `skill`: no fix, no new shared function).
-     One exception, only when the user asks: a clean copy of an effect or layout into the Gallery's Incoming section (`kit.py library import`,
-     `workflow/library-intake.md`); the user keeps or drops it on the Gallery.
+     One exception, only when the user asks and only on the kit owner's machine: a clean copy of an effect or layout into the Gallery's
+     Incoming section (`kit.py library import`, `workflow/library-intake.md`); the owner keeps or drops it on the Gallery.
      A kit bug that blocks the film: work around it INSIDE the film (`03_HTML\presets\`, a film.json trick, a film script) so the film gets
      done, and write it down for the main kit chat (`workflow/film.md`, "Handoff"): the bug, the file, how you worked around it, every
      function or preset you wrote. Code for one film lives in `03_HTML\presets\`.

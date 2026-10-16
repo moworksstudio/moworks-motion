@@ -8,7 +8,7 @@
  "params_vi": "Chữ của phần tử là mã TeX (ví dụ a^2 + b^2 = c^2; tô màu bằng \\textcolor{#ffd60a}{...}) · mode: write | terms · duration: thời gian viết (1.2 s) · stagger: cách nhau khi hiện từng số hạng (0.08) · to: công thức thứ hai (trống = không biến) · morphAt: lúc bắt đầu biến (2 s sau at) · morph: thời gian biến (1 s)",
  "source": {
   "label": "iart-ai motion skills (MIT)",
-  "repo": "iart-ai/manim-skills",
+  "repo": "iart-ai/manim-skills", "commit": "a15833c44de5108a3ee68f178a1fca126aa7c6d8",
   "path": "skills/manim/references/math-and-text.md"
  },
  "license": "MIT",

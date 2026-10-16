@@ -3,32 +3,91 @@
 Mỗi phiên bản một mục, mới nhất ở trên. `update.bat` hiển thị các mục mới hơn bản đang cài, cùng danh sách mẫu thư viện được thêm, sửa
 hoặc bỏ.
 
+## 2.0.4 (12/10/2026)
+
+Bản cập nhật về độ ổn định của thư viện mẫu, ghi công tác giả và kiểm thử tự động.
+
+### Sửa lỗi
+- **Chữ trong các mẫu HyperFrames hiển thị giống nhau trên mọi máy:** mẫu dùng font mà tự nó không tải (Inter, JetBrains Mono, Playfair
+  Display…) nay dùng bản font đi kèm kit thay cho font cài trên từng máy.
+- Quy tắc phát hiện truy cập mạng trong bộ kiểm tra thư viện hoạt động đúng trở lại; toàn bộ thư viện đạt.
+
+### Ghi công
+- Mọi mẫu trong thư viện ghi rõ tác giả, giấy phép và phiên bản nguồn. `docs/THIRD-PARTY.md` bổ sung iart.ai (14 mẫu, kèm thông báo giấy
+  phép MIT) và Remocn (2 mẫu), cùng phiên bản cụ thể của claude-animation và anime.js.
+- Bộ kiểm tra tự động từ chối mẫu thiếu thông tin tác giả; khi đưa vào thư viện một hiệu ứng làm từ mã nguồn của người khác, skill hướng dẫn
+  ghi tác giả và giấy phép.
+
+### Kiểm thử
+- GitHub chạy thêm bài kiểm tra trên một máy Windows mới: cài đặt như `install.bat`, rồi dựng, kiểm tra và xuất một phim mẫu. Nhánh `main`
+  chỉ nhận thay đổi khi mọi bài kiểm tra đều đạt.
+
+## 2.0.3 (12/10/2026)
+
+Bản cập nhật về bảo mật và độ ổn định: siết chặt trình xem phim và các máy chủ cục bộ, xác minh model AI, khoá phiên bản gói Python và đưa
+thư viện về chế độ do chủ kit tuyển chọn.
+
+### Bảo mật
+- **Trình xem phim chỉ phục vụ file của phim:** sửa lỗi cho phép đọc file nằm ngoài thư mục phim bằng đường dẫn tuyệt đối trong lúc trình
+  xem đang mở.
+- **Máy chủ cục bộ chỉ trả lời trang của chính nó:** trình xem phim, Gallery và máy chủ render kiểm tra Host và Origin; yêu cầu từ các trang
+  web khác trong trình duyệt bị từ chối.
+- **Model AI được xác minh:** mỗi file model được kiểm tra SHA-256 khi tải và khi cài; Whisper được tải từ một phiên bản cố định trên
+  Hugging Face.
+- Bật cảnh báo lỗ hổng phụ thuộc (Dependabot) cho kho mã.
+
+### Cài đặt và cập nhật
+- Phiên bản của toàn bộ gói Python phụ thuộc được khoá trong `engine/constraints.txt`: mọi máy cài cùng một bộ đã được kiểm thử.
+- `update.bat` thông báo rõ khi kit đang trong quá trình bảo trì, thay cho thông báo lỗi git.
+
+### Thư viện
+- **Thư viện do chủ kit tuyển chọn:** chỉ máy của chủ kit được thêm, giữ hoặc gỡ mẫu. Trên máy đó, mỗi thẻ trong Gallery có nút Bỏ (chuyển
+  vào Thùng rác, khôi phục được), trừ các mẫu kit đang sử dụng. Người dùng khác vẫn dùng toàn bộ thư viện; hiệu ứng tự viết được lưu trong
+  chính phim đó.
+- `kit.py gallery check` có thêm `--static` (kiểm tra nhanh, không cần trình duyệt) và `--random N` (kiểm tra ngẫu nhiên N mẫu).
+
+### Hiệu năng
+- Trình xem phim phát âm thanh theo từng phần thay vì nạp toàn bộ file vào bộ nhớ.
+
+### Kiểm thử
+- Mọi pull request được GitHub kiểm tra tự động: định dạng file, quy tắc của thư viện, gói skill và nội dung không được công khai.
+
 ## 2.0.2 (12/10/2026)
 
-Bản cập nhật lớn cho âm thanh ("sound pass": Claude không nghe được, nên mọi bước âm thanh đều được đo).
+Nâng cấp phần âm thanh: hiệu ứng âm thanh thu thật, mức âm lượng được cân tự động khi dựng phim và công cụ đo trực tiếp trên file đã xuất.
 
-- **Tiếng hiệu ứng thu thật thay cho tiếng tạo bằng code:** bộ 19 tiếng của HyperFrames (Pixabay, dùng thương mại được) trong
-  `engine\vendor\hf-sfx\`: whoosh (ngắn, dài), riser, pop, click, gõ phím, typing, sparkle, chime, ping, notification, error, glitch,
-  impact bass. Tên cũ (swoosh, tick, tickhi, thump) vẫn dùng được và trỏ sang tiếng thật. Mỗi tiếng được căn theo điểm bắt đầu kêu (whoosh,
-  riser: theo đỉnh), rơi sau hình một khung.
-- **Mức tiếng hiệu ứng được đo khi dựng phim:** mỗi tiếng nằm trên nhạc khoảng 4 dB và thấp hơn giọng đọc ít nhất 2 dB, đo trên đúng đoạn nền
-  dưới nó; `"gain"` trong film.json chỉnh thêm (0,5 = mức đo được).
-- **Mức tổng mới: −16 LUFS, đỉnh thật ≤ −4 dBTP** để không vỡ tiếng sau khi nén AAC hay trên loa điện thoại; film.json `"loudness": -14` khi
-  khách cần bản to hơn.
-- **`kit.py loudness <phim>`** đo trên file MP4 đã xuất (và khi ghép mono), từng tiếng so với nhạc và giọng đọc, liệt kê cut chưa có tiếng,
-  chỉ ra nguồn gây đỉnh khi phim nhỏ hơn mục tiêu, xuất bảng ảnh khung trước / sau mỗi tiếng kèm sóng âm, và đưa 5 mốc để người dùng nghe
-  bằng tai nghe.
-- **`kit.py beats`** kiểm tiếng kick dưới 120 Hz so với lưới nhịp (tự dời lưới nửa nhịp khi rõ ràng) và vẽ ảnh để xem; **`--fit`** dời
-  điểm bắt đầu nhạc để cut và tiếng hiệu ứng rơi đúng beat khi không sửa được hình.
-- Sửa: kit đọc được các file mp3 rất ngắn (ffmpeg không tua được trong đó).
+### Điểm mới
+- **19 hiệu ứng âm thanh thu thật** (whoosh ngắn và dài, riser, pop, click, gõ phím, typing, sparkle, chime, ping, notification, error,
+  glitch, impact bass) thay cho âm thanh tạo bằng code. Tên cũ (swoosh, tick, tickhi, thump) vẫn dùng được. Mỗi âm thanh được căn theo điểm
+  bắt đầu kêu để khớp với hình.
+- **`kit.py loudness <phim>`** đo trực tiếp trên file MP4 đã xuất, kể cả khi ghép mono: mức từng hiệu ứng so với nhạc và giọng đọc, các điểm
+  cắt cảnh chưa có âm thanh, nguồn gây đỉnh, bảng hình trước và sau mỗi âm thanh kèm dạng sóng, cùng năm mốc thời gian để nghe kiểm tra bằng
+  tai nghe.
+- **`kit.py beats`** kiểm tra tiếng trống kick so với nhịp bài hát và xuất hình minh hoạ; tuỳ chọn `--fit` dời điểm bắt đầu nhạc để cắt cảnh
+  và hiệu ứng rơi đúng nhịp.
+
+### Cải thiện
+- Mức hiệu ứng âm thanh được cân tự động khi dựng phim: cao hơn nhạc nền khoảng 4 dB và thấp hơn giọng đọc ít nhất 2 dB; tinh chỉnh bằng
+  `"gain"` trong film.json.
+- Mức âm lượng tổng mặc định −16 LUFS, đỉnh thật tối đa −4 dBTP, giữ tiếng sạch sau khi nén và khi phát trên điện thoại; dùng `"loudness":
+  -14` khi cần bản to hơn.
+
+### Sửa lỗi
+- Đọc được các file MP3 rất ngắn.
+
+Hiệu ứng âm thanh lấy từ thư viện của HyperFrames, theo giấy phép Pixabay Content License (dùng được cho mục đích thương mại).
 
 ## 2.0.1 (12/10/2026)
 
-- **Cập nhật skill đúng cả khi số phiên bản không đổi:** `install.bat` và `update.bat` so nội dung skill đã cài với bản trong kit,
-  không chỉ số phiên bản (trước đây bản skill sửa mà giữ nguyên số không được cài lại); bảng kết quả ghi rõ "trùng nội dung bản trong
-  kit" khi không có gì để cài.
-- `update.bat` chạy các bước cài đặt bằng mã vừa tải về, nên bản sửa của trình cài đặt có tác dụng ngay trong lần cập nhật đó.
-- Skill: bỏ các ghi chú nội bộ (ai quyết định, ngày, tên bài test), giữ nguyên mọi quy tắc.
+Bản sửa lỗi cho trình cài đặt và cập nhật.
+
+### Sửa lỗi
+- `install.bat` và `update.bat` cài lại skill khi nội dung skill thay đổi, kể cả khi số phiên bản giữ nguyên; bảng kết quả cho biết khi
+  skill đã là bản mới nhất.
+- `update.bat` dùng mã vừa tải về cho các bước cài đặt, nên bản sửa của trình cài đặt có hiệu lực ngay trong lần cập nhật đó.
+
+### Cải thiện
+- Skill được biên tập lại gọn hơn, giữ nguyên toàn bộ quy tắc.
 
 ## 2.0.0 (09/10/2026, cập nhật đến 12/10/2026)
 

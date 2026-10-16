@@ -6,7 +6,7 @@
  "title_vi": "Danh sách gạch đầu dòng hiện lần lượt",
  "desc_vi": "Danh sách ý kiểu trình chiếu hiện theo thứ tự đọc: mỗi dòng hiện dần và nhích lên 18 px như lò xo không nảy, cách nhau 0.27 giây, có chấm màu nhấn đầu dòng; có thể kèm tiêu đề.",
  "params_vi": "items: các ý, cách nhau | · title: tiêu đề phía trên (trống = không) · accent: màu chấm · ink: màu chữ · size: cỡ chữ (54) · gap: khoảng cách dòng (28) · stagger: cách nhau (0.267 s = 8 khung) · enter: thời gian mỗi dòng (0.4 s)",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/data-animation-skills", "path": "skills/presentation-video/references/slide-components.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/data-animation-skills", "commit": "8ce2709c3992490251e8a991535b1945f01c6865", "path": "skills/presentation-video/references/slide-components.md" },
  "license": "MIT",
  "ae": "keyframes",
  "brand_safe": true,

@@ -296,11 +296,20 @@ Kit xem phim, xuất MP4 / MOV và port AE mà không cần HyperFrames. Chỉ k
 kiểm tự động và nút sao chép brief. Bộ lọc theo **danh mục** (công dụng), **Dùng cho** (talking head, phim nhạc, giữ thiết kế, sản phẩm /
 app, code, deck, nhân vật) và **nguồn**. Thư viện là bộ công cụ: Claude chọn mẫu khi phù hợp, hoặc dùng đúng mẫu bạn chỉ định.
 
-**Thêm mẫu mới ("Mới nhập"):** mẫu mới chỉ vào thư viện khi bạn yêu cầu và luôn qua bước duyệt.
+**Thư viện do chủ kit chọn lọc:** chỉ máy của chủ kit (có file `%USERPROFILE%\.aimotionkit\maintainer.txt`, không bao giờ lên git)
+được thêm, giữ hay bỏ mẫu. Máy khác chỉ thấy nút COPY; hiệu ứng mới của một phim nằm trong `03_HTML\presets\` của phim đó. Người dùng
+vẫn đưa tham khảo cho Claude khi làm phim như thường.
+
+**Thêm mẫu mới ("Mới nhập", máy chủ kit):** mẫu mới chỉ vào thư viện khi bạn yêu cầu và luôn qua bước duyệt.
 1. Trong cuộc trò chuyện làm phim, yêu cầu "đưa hiệu ứng <tên> vào thư viện" (hoặc gửi video tham khảo và chỉ đoạn cần lấy).
 2. Claude làm bản trung tính (bỏ nội dung, màu, tên của khách), chạy bộ kiểm và đặt vào `library\incoming\` (không lên git).
 3. Trong Gallery, mở **Mới nhập**: **Giữ** đưa mẫu vào thư viện, **Bỏ** chuyển vào Thùng rác. Lệnh tương đương:
    `kit.py library incoming | keep <tên> | drop <tên>`.
+
+**Sàng lọc thư viện (máy chủ kit):** mỗi thẻ trong thư viện có nút **BỎ**: mẫu, clip, ảnh và kết quả kiểm vào Thùng rác (khôi phục được).
+Mẫu kit đang dùng (code, skill, test, hoặc mẫu khác gọi tới) ghi "kit đang dùng" thay cho nút; bỏ hết mẫu gọi tới nó thì nút hiện lại.
+Lần mở chat bảo trì kế tiếp, Claude đưa các mẫu đã bỏ lên GitHub. Phim cũ có dùng mẫu đã bỏ sẽ không build lại được (file đã render
+không sao): khôi phục mẫu từ Thùng rác khi cần.
 
 **Kho tham khảo** (`library\refs\`, không lên git): phim (`video\`, để học chuyển động) và ảnh / deck (`image\`, để học dàn trang) của
 studio. Sau khi chép file vào, yêu cầu Claude "nạp kho tham khảo" (`kit.py ref sync`).
@@ -313,7 +322,7 @@ Dành cho người phát triển kit; chạy từ thư mục gốc.
 |---|---|
 | `engine\tests\smoke_new_project.py` | Chạy thử một phim từ lúc tạo tới khi xuất, báo từng bước |
 | `engine\tests\ae\run_cases.py` | Bộ ca port After Effects (cần AE đang mở), so khung với trình duyệt |
-| `kit.py gallery check [lọc]` | Chạy bộ kiểm mọi demo ra thư mục tạm và báo mẫu nào khác kết quả đã lưu |
+| `kit.py gallery check [lọc] [--static \| --random N]` | Chạy bộ kiểm mọi demo ra thư mục tạm và báo mẫu nào khác kết quả đã lưu (cả thư viện khoảng 1,5 giờ). `--static`: chỉ phần không cần trình duyệt (preset.json, quy tắc khung hình, SHA-256 file gốc), GitHub chạy phần này; `--random N`: kiểm N mẫu chọn ngẫu nhiên |
 | `kit.py gallery build [lọc]` | Dựng lại clip demo và kết quả kiểm |
 | `engine\tests\bake_library.py`, `demo_pixels.py` | Kiểm việc dựng mọi demo; so điểm ảnh giữa hai phiên bản engine |
 | `engine\tests\hf_blocks.py`, `hf_templates.py` | Sinh lại các mẫu HyperFrames từ mã nguồn gốc |

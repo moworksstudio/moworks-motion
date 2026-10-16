@@ -6,7 +6,7 @@
  "title_vi": "Hiện logo SVG của khách: vẽ nét rồi tô, quét, hoặc ghép từng mảnh",
  "desc_vi": "Logo SVG của khách hiện ra theo cách kinh điển: nét viền tự vẽ rồi tô màu (draw), một vệt quét mềm làm lộ logo (wipe), hoặc từng mảnh bật vào rồi cả logo nảy nhẹ (build). Giữ đúng màu và tỉ lệ thương hiệu.",
  "params_vi": "src: file SVG trong thư mục phim (ví dụ assets/images/logo.svg) · mode: draw | wipe | build · stroke: độ dày nét khi vẽ (0 = theo file, hình tô màu dùng 3) · direction: hướng quét right | left | down | up · stagger: cách nhau giữa các nét (0.15 s) · duration: thời gian vẽ mỗi nét (1.1 s) · settle: nảy 1.04 cuối khi ghép",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "path": "skills/logo-animation/references/logo-patterns.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/motion-design-skills", "commit": "3c129f769d90a1328c209c386492333c9ac62312", "path": "skills/logo-animation/references/logo-patterns.md" },
  "license": "MIT",
  "ae": "png",
  "brand_safe": false,

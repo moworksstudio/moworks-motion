@@ -5,7 +5,7 @@
 <p align="center"><b>Từ brief đến phim motion graphic: Claude đạo diễn, kit dựng từng khung hình bằng code.</b></p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-2.0.2-1d3fd8" alt="version 2.0.2">
+  <img src="https://img.shields.io/badge/version-2.0.4-1d3fd8" alt="version 2.0.4">
   <img src="https://img.shields.io/badge/Claude-Opus_5.5-d97757" alt="Claude Opus 5.5">
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-555" alt="Windows 10 | 11">
   <img src="https://img.shields.io/badge/fps-60-111" alt="60 fps">

@@ -184,7 +184,20 @@
       s = s.replace(/https:\/\/cdn\.jsdelivr\.net\/fontsource\/fonts\/[^"')\s]+/g, u => "assets/fonts/" + (/mono/i.test(u) ? "RobotoMono-var.woff2" : "RobotoFlex-var.woff2"));
       for (const k in o.urls || {}) s = s.split(k).join(ctx.asset(o.urls[k]));
       for (const f of o.files || []) s = s.replace(new RegExp(`(["'(])(\\./)?${f.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(["')])`, "g"), (m0, a, d, b) => a + "./" + ctx.asset(f) + b);
-      const face = [...fams].map(f => `@font-face { font-family: "${f}"; src: url("assets/fonts/${/mono|code|courier/i.test(f) ? "RobotoMono-var.woff2" : "RobotoFlex-var.woff2"}") format("woff2"); font-weight: 100 1000; font-display: block; }`).join("\n");
+      let face = [...fams].map(f => `@font-face { font-family: "${f}"; src: url("assets/fonts/${/mono|code|courier/i.test(f) ? "RobotoMono-var.woff2" : "RobotoFlex-var.woff2"}") format("woff2"); font-weight: 100 1000; font-display: block; }`).join("\n");
+      // a family the page names but loads nowhere (no link, no @font-face) was drawn with whatever Windows had installed under that name:
+      // the kit's own copy instead (window.AIMK_HF_FACES: kit build, hf_faces), the same on every machine (12/10/2026)
+      const HFF = window.AIMK_HF_FACES || {}, gone = new Set([...fams].map(f => f.toLowerCase()));
+      const declared = new Set([...s.matchAll(/@font-face\s*\{[^}]*?font-family:\s*["']?([^;"'}]+)/gi)].map(m => m[1].trim().toLowerCase()));
+      const own = new Set();
+      for (const m of s.matchAll(/font-family\s*:\s*([^;}{<\n]+)|fontFamily\s*[:=]\s*["'`]([^"'`]+)/gi))
+        for (const x of (m[1] || m[2]).split(",")) { const k = x.trim().replace(/^["']|["']$/g, "").trim().toLowerCase(); if (HFF[k] && !declared.has(k) && !gone.has(k)) own.add(k); }
+      const ownFaces = [...own].flatMap(k => HFF[k]);
+      face += ownFaces.map(x => `\n@font-face { font-family: "${x.name}"; src: url("${x.src}"); font-weight: ${x.weight}; font-style: ${x.style}; font-display: block; }`).join("");
+      // these start loading in the page's <head>, so a block that waits for document.fonts.ready before it measures its text waits for
+      // them too (ready settles at once when no font has been asked for yet). Only these: an early load of the Google substitutes moved
+      // their swap under effect/vfx-portal / vfx-shatter, which copy a panel into a canvas on a timer ("no cached paint record")
+      const kick = ownFaces.map(x => `document.fonts.load(${JSON.stringify(x.style + " " + x.weight.split(" ")[0] + " 40px \"" + x.name + "\"")}).catch(function () {});`).join(" ");
       const V = Object.assign({}, o.vars || {}), pics0 = (o.images && o.images.length) ? o.images : o.placeholders || [];
       (o.imageVars || []).forEach((id, i) => { if (pics0.length && V[id] === undefined) V[id] = pics0[i % pics0.length]; });   // image variables
       // the host API a block reads: getVariables(), and assetUrl(path) = path beside the block's file (its own runtime-built paths, e.g.
@@ -192,7 +205,7 @@
       const AB = "./" + ctx.asset("");
       const hv = Object.keys(V).length || /__hyperframes\.assetUrl/.test(s) ? `\n<script>window.__hyperframes = Object.assign(window.__hyperframes || {}, { getVariables: function () { return ${JSON.stringify(V).replace(/</g, "\\u003c")}; }, assetUrl: function (p) { p = String(p); return /^(?:[a-z]+:|\\/|\\.?\\/?assets\\/lib\\/)/i.test(p) ? p : ${JSON.stringify(AB)} + p.replace(/^\\.\\//, ""); } });<\/script>` : "";
       const [W0, H0] = o.size || [1920, 1080];         // the root at its data-width x data-height, as the HF runtime sizes it (no specificity: the block's own rules win)
-      s = s.replace(/<head([^>]*)>/i, `<head$1>\n<style data-aimk="font substitutes">\n${face}\n:where(body > [data-composition-id]) { width: ${W0}px; height: ${H0}px; }\n</style>\n<script>window.__timelines = window.__timelines || {};<\/script>${hv}`);   // what a host gives a block: a registry, its variables
+      s = s.replace(/<head([^>]*)>/i, `<head$1>\n<style data-aimk="font substitutes">\n${face}\n:where(body > [data-composition-id]) { width: ${W0}px; height: ${H0}px; }\n</style>\n<script>window.__timelines = window.__timelines || {};${kick ? " try { " + kick + " } catch (e) {}" : ""}<\/script>${hv}`);   // what a host gives a block: a registry, its variables
       const [W, H] = o.size || [1920, 1080], bw = slot.offsetWidth || ctx.W, bh = slot.offsetHeight || ctx.H, k = Math.min(bw / W, bh / H);
       ctx.id(slot, "b");
       if (getComputedStyle(slot).position === "static") slot.style.position = "relative";

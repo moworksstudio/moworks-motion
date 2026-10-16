@@ -6,7 +6,7 @@
  "title_vi": "Sơ đồ tuần tự: mũi tên tin nhắn lần lượt",
  "desc_vi": "Sơ đồ tuần tự kể câu chuyện một yêu cầu: các hộp thành phần với đường đời nét đứt, rồi từng mũi tên tin nhắn tự vẽ từ bên này sang bên kia theo thứ tự, nhãn rơi vào khi mũi tên tới, có nhịp giữ để đọc. Phản hồi vẽ nét đứt.",
  "params_vi": "participants: các thành phần, cách nhau | · messages: các tin nhắn \"A>B: nội dung\" (phản hồi viết \"B<A: nội dung\"), cách nhau | · accent: màu mũi tên · ink: màu chữ · muted: màu đường đời, viền · box: nền hộp · draw: thời gian vẽ mỗi mũi tên (0.5 s) · hold: giữ giữa các tin nhắn (0.6 s)",
- "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md" },
+ "source": { "label": "iart-ai motion skills (MIT)", "repo": "iart-ai/explainer-video-skills", "commit": "3e2d411b725d9a72939cf8e5eb81579e751373e7", "path": "skills/diagram-animation/references/diagram-and-chart-recipes.md" },
  "license": "MIT",
  "ae": "keyframes",
  "brand_safe": true,

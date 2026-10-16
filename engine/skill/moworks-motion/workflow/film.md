@@ -268,7 +268,7 @@ tag, logo, type rules), the brief wins on what the film says; a credit "througho
 - **A new motion stays in the project:** `<film>\03_HTML\presets\<group>\<name>\preset.js` (same format as the library).
 - **The libraries change only when the user asks** (rule 9): a film chat lists its new presets in the handoff (below) for the main chat.
   One exception: the user asks to keep an effect or layout → a clean copy into the Gallery's Incoming section (`kit.py library import`,
-  `workflow/library-intake.md`); the user keeps or drops it on the Gallery.
+  `workflow/library-intake.md`), on the kit owner's machine only; the owner keeps or drops it on the Gallery.
 - **Say what you chose:** in the round-1 message, one line per scene: its idea, the moves written for it (marked "new") and the library parts used.
 
 ## The numbers (write motion as numbers, not adjectives)

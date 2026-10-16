@@ -18,10 +18,16 @@ Chromium (Playwright), exported as MP4 / MOV or an editable After Effects projec
 - Talk to the user in Vietnamese: short, plain words, tables. Code, commit messages and file names in English.
 - Do only what the user asked. Nothing is deleted for good. Ask before downloading anything large or paid.
 - The repository is public (MIT): no client, brand or job names in any tracked file, commit message or pull request.
+- Everything shown on GitHub (README and docs, CHANGELOG, release notes, pull request titles and descriptions, commit messages) is
+  professional public writing: no internal build notes, chat quotes, test names, work-log asides or debugging stories. Release notes
+  are written fresh as product notes (summary, how to update, then sections such as Bảo mật / Điểm mới / Cải thiện / Sửa lỗi).
 - Third-party code and assets: source, commit and licence recorded in `docs/THIRD-PARTY.md`; files copied as shipped keep SHA-256 checksums.
 - New features extend existing commands and workflows (a flag, a section), never parallel ones. Upstream code as shipped beats a kit re-write
   when it is better; a re-write needs a stated reason.
 - `main` is protected: changes arrive by pull request (the maintainer merges). Never force-push, rewrite history or push tags.
+- GitHub runs `.github/workflows/checks.yml` on every pull request and both jobs must pass before `main` takes it: `checks` (JSON /
+  Python, `kit.py gallery check --static` with the frame rules, as-shipped SHA-256 and every preset's author, `pack_skill.py --check`,
+  looks, `publish-check`) and `smoke` (a clean Windows machine: install.bat's Python and Chromium steps, then the smoke test).
 
 ## Cloud sessions: repo intake research
 
@@ -51,10 +57,17 @@ The user gives repositories (or articles) to study. For each one:
 
 ## Desktop sessions: building from intake reports
 
+- The library is the owner's cherry-pick: only the owner's machine (`%USERPROFILE%/.aimotionkit/maintainer.txt`) imports, keeps or drops
+  presets. First thing in a desktop session: `git status`; library files the owner removed with the Gallery's BỎ go to GitHub
+  quietly (the owner's wish): one short commit through a pull request, merged at once, with the counts kept right (README, README.en,
+  library/README, repo About) and their names out of `engine/tests/hf_blocks.json` / `hf_templates.json` so a re-import does not bring
+  them back; no CHANGELOG line, no version, no release, no announcement.
 - Read the report(s), show the user the table (take what, merge where, licence) and wait for the OK before building.
 - New presets / layouts go through "Mới nhập" (`kit.py library import`, the user keeps or drops them on the Gallery); engine changes extend
   existing commands; a `docs/THIRD-PARTY.md` row and a `docs/CHANGELOG.md` line for each.
-- Before a commit: `engine/tests/smoke_new_project.py`; `kit.py gallery check` when the engine or library changed;
+- Before a commit: `engine/tests/smoke_new_project.py`. `kit.py gallery check` (the whole library takes about 1.5 h) only when what films
+  look like may change (runtime, build, presets / layouts, the frame render): the touched presets by filter, the whole library when the
+  change reaches every film, `--random 30` when unsure; not for servers, the installer, tests or docs;
   `engine/tests/ae/run_cases.py` when the AE port changed; skill edits in `engine/skill/moworks-motion/`, then `engine/tests/pack_skill.py`.
 - Before a push: `kit.py publish-check`, grep the diff and the commit message for client names, then the user's OK. Versions: a small fix
   is a commit only; a batch worth reading bumps the last number + a CHANGELOG section + a GitHub release; the middle or first number only

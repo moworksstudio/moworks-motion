@@ -12,6 +12,12 @@ cần final check giữ hoặc không"): a film's own preset goes to library/inc
 its demo clip and checks here, and shows on the page under "Mới nhập" with Giữ (moved into library/presets|layouts, usable by every film)
 and Bỏ (Recycle Bin). Until kept, films cannot use it (build only looks in the library and the film's own presets/).
 
+The library is the kit owner's cherry-pick (user 12/10/2026: "library là không cho sửa trừ chủ repo"): only the owner's machine
+(%USERPROFILE%\\.aimotionkit\\maintainer.txt, never in git) imports, keeps or drops presets, from the Gallery's buttons or kit.py library
+import | keep | drop. The owner also gets Bỏ on every library card (the preset to the Recycle Bin; the next maintenance pull request takes
+the removal to GitHub), except on presets the kit itself uses (in_use: its code, skill, tests, or another preset). Other machines see
+Copy only, and their films keep a new effect in the film's own presets/.
+
 Machine checks (results in library/gallery/checks/<group>__<name>.json and on each card):
   build     the preset bakes into literal tweens (no tween the builder cannot write out), no page errors
   seek      the same time renders the same pixels after jumping elsewhere (seek-safe, nothing random or wall-clock); "seek" counts pixels
@@ -37,10 +43,17 @@ ROOTS = {("motion", False): LIBP, ("layout", False): LIBL, ("motion", True): INC
 GAL = KIT / "library" / "gallery"
 GALI = GAL / "incoming"                                # "Mới nhập" clips / thumbs / checks + incoming.js data: out of git until kept
 WORKG = LOCAL / "work" / "gallery"
+OWNER = LOCAL / "maintainer.txt"                       # this machine is the kit owner's: the only one that changes the library
 VENDOR = ENGINE / "vendor"
 FPS, SCALE, CHECK_SCALE = 15, 0.25, 0.5
 BAD = [(r"Math\.random", "Math.random"), (r"Date\.now|new Date", "Date"), (r"performance\.now", "performance.now"),
        (r"requestAnimationFrame", "requestAnimationFrame"), (r"https?://", "network URL")]
+# what static_problems leaves out before the BAD rules (12/10/2026: "//" was cut as a comment inside "https://" too, so the network rule
+# never fired): comments (a "//" only at a line start or after a space or ; { } ( ) is one), a CDN address the preset maps to its local
+# copy ("libs": {"https://cdn...": "assets/vendor/..."}, the build uses the copy), and SVG / XML namespaces (www.w3.org, never fetched)
+NOT_CODE = [(r"/\*.*?\*/|(?:^|(?<=[\s;{}()]))//[^\n]*", re.S | re.M),
+            (r"""(["'`])https?://[^"'`\s]+\1\s*:\s*(["'`])(?!https?:)[^"'`]+\2""", 0),
+            (r"https?://www\.w3\.org/[^\s\"'`]*", 0)]
 
 VN = "Chuyển động mượt mà"
 VN2 = "Thiết kế đẹp, dễ chỉnh sửa"
@@ -83,10 +96,43 @@ def find(name):
     return None
 
 
+def owner():
+    return OWNER.exists()
+
+
+def need_owner(what):
+    if not owner():
+        raise SystemExit(f"{what}: only the kit owner changes the library (this machine has no {OWNER}). A new effect stays in the "
+                         "film's own 03_HTML/presets/ (workflow/library-intake.md)")
+
+
+def in_use():
+    """{library preset: [what uses it]}: the kit's own code, skill and tests (engine/, vendor aside) and the other library presets' code or
+    demo (e.g. house/pop-cute is called by five others). The owner's Bỏ is refused for these: a film, the skill or a preset would break.
+    Not counted: engine/tests/hf_*.json (the HyperFrames import lists name every block they made) and notes (tests/*.md).
+    Read again on every call, so a preset whose last user was dropped becomes droppable."""
+    recs = [(n, m) for n, m in records() if not m.get("_incoming")]
+    names, used = {n for n, _ in recs}, {}
+    name_rx = re.compile(r"""["'`]([a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*)["'`]""")
+    for f in ENGINE.rglob("*"):
+        rel = f.relative_to(ENGINE).parts
+        if rel[0] in ("vendor", "models", "fonts") or "__pycache__" in rel or f.suffix not in (".py", ".js", ".mjs", ".html", ".json", ".md") or not f.is_file(): continue
+        if rel[0] == "tests" and (f.name.startswith("hf_") or f.suffix == ".md"): continue
+        where = rel[0] if rel[0] in ("skill", "tests") else "engine"
+        for x in set(name_rx.findall(f.read_text(encoding="utf-8", errors="ignore"))):
+            if x in names: used.setdefault(x, set()).add(where)
+    for n, m in recs:
+        text = Path(m["_js"]).read_text(encoding="utf-8", errors="ignore") + json.dumps(m.get("demo") or {})
+        for x in set(name_rx.findall(text)):
+            if x in names and x != n: used.setdefault(x, set()).add(n)
+    return {k: sorted(v) for k, v in used.items()}
+
+
 def import_preset(src_dir, name, layout=False, say=say):
     """a film's preset folder -> library/incoming/<presets|layouts>/<name>/ (its AIMK.preset("...") registration renamed to <name>), then its
     demo clip and checks. The folder is copied as it is: check it first for client text, pictures, colours and names (the skill says how)."""
     import datetime
+    need_owner("library import")
     src_dir = Path(src_dir)
     if not (src_dir / "preset.js").exists(): raise SystemExit(f"no preset.js in {src_dir}")
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*", name):
@@ -124,6 +170,7 @@ def _prune(d):
 def keep(name, say=say):
     """Giữ: library/incoming/.../<name> -> library/presets|layouts/<name> (films can use it now); its clip and checks stay"""
     import datetime
+    need_owner("library keep")
     f = find(name)
     if not f or not f[1]: raise SystemExit(f"keep: {name} is not waiting in Mới nhập")
     dst = ROOTS[(f[0], False)] / name
@@ -145,12 +192,16 @@ def keep(name, say=say):
 
 
 def drop(name, say=say):
-    """Bỏ: the waiting preset, its clip, picture and checks -> Recycle Bin"""
+    """Bỏ: a preset waiting in Mới nhập, or (12/10/2026) one in the library: its folder, clip, picture and checks -> Recycle Bin. The kit
+    owner only; a library preset the kit uses (in_use) stays. A library removal reaches GitHub with the next maintenance pull request."""
     from common import trash
+    need_owner("library drop")
     f = find(name)
-    if not f or not f[1]: raise SystemExit(f"drop: {name} is not waiting in Mới nhập")
-    s = slug(name)
-    trash([f[2]] + [x for x in (GALI / "clips" / f"{s}.mp4", GALI / "thumbs" / f"{s}.png", GALI / "checks" / f"{s}.json") if x.exists()])
+    if not f: raise SystemExit(f"drop: no preset {name} in the library or Mới nhập")
+    if not f[1] and (by := in_use().get(name)):
+        raise SystemExit(f"drop: {name} stays, the kit uses it ({', '.join(by)})")
+    s, G = slug(name), (GALI if f[1] else GAL)
+    trash([f[2]] + [x for x in (G / "clips" / f"{s}.mp4", G / "thumbs" / f"{s}.png", G / "checks" / f"{s}.json") if x.exists()])
     _prune(f[2].parent)
     write_data(load_checks())
     say(f"  {name}: -> Recycle Bin")
@@ -280,6 +331,18 @@ async def _render_and_check(base, kind, clip_out, thumb_out, check_end, thumb_at
     return res
 
 
+def static_problems(meta):
+    """what a preset's files say without a browser: the BAD rules its preset.js breaks (comments left out), and its files copied as
+    shipped whose SHA-256 changed (None when it has none; engine/tests/hf_blocks.py, blocks added from 11/10/2026)"""
+    js = Path(meta["_js"]).read_text(encoding="utf-8")
+    for rx, fl in NOT_CODE: js = re.sub(rx, '""', js, flags=fl)
+    static = [lab for rx, lab in BAD if re.search(rx, js)]
+    sums = (meta.get("source") or {}).get("sha256") or {}
+    if not sums: return static, None
+    from common import as_shipped
+    return static, [f for f, h in sums.items() if not as_shipped(Path(meta["_js"]).parent / "assets" / f, h)]
+
+
 def run_one(name, meta, say=say, out=None):
     """one demo built, rendered (clip + thumbnail) and checked; out = a scratch folder for the clip, thumbnail and work files (gallery check)"""
     from build import build
@@ -291,12 +354,8 @@ def run_one(name, meta, say=say, out=None):
     if meta.get("_incoming"):                            # a "Mới nhập" preset is not in the library yet: the demo film carries its own copy
         shutil.copytree(Path(meta["_js"]).parent, d / "presets" / name, ignore=shutil.ignore_patterns("desktop.ini"))
     chk = {"name": name, "at": time.strftime("%Y-%m-%d %H:%M")}
-    sums = (meta.get("source") or {}).get("sha256") or {}   # files copied as shipped (engine/tests/hf_blocks.py, blocks added from 11/10/2026)
-    if sums:
-        from common import as_shipped
-        chk["source"] = [f for f, h in sums.items() if not as_shipped(Path(meta["_js"]).parent / "assets" / f, h)]
-    js = Path(meta["_js"]).read_text(encoding="utf-8")
-    chk["static"] = [lab for rx, lab in BAD if re.search(rx, re.sub(r"/\*.*?\*/|//[^\n]*", "", js, flags=re.S))]
+    chk["static"], src = static_problems(meta)
+    if src is not None: chk["source"] = src
     rep = {}
     quiet = lambda *a: None
     try:
@@ -328,7 +387,8 @@ def run_one(name, meta, say=say, out=None):
     if r.get("blank"): problems.append("blank: nothing drawn at any sample")
     stol = float((meta.get("demo") or {}).get("seek_tolerance", 0.0002))   # demo.seek_tolerance: paint-level noise of an as-shipped component (same state, notes say why)
     if r["seek"] > stol: problems.append(f"seek not stable {r['seek']:.3%}")
-    if r["bake"] > 0.002: problems.append(f"bake differs {r['bake']:.2%}")
+    btol = float((meta.get("demo") or {}).get("bake_tolerance", 0.002))   # demo.bake_tolerance: the same, film against draft (12/10/2026)
+    if r["bake"] > btol: problems.append(f"bake differs {r['bake']:.2%}")
     if check_end and r.get("end", 0) > 0.003: problems.append(f"end differs from layout {r['end']:.2%}")
     if chk["static"]: problems.append("uses " + ", ".join(chk["static"]))
     if chk.get("source"): problems.append("not as shipped (SHA-256): " + ", ".join(chk["source"]))
@@ -434,15 +494,19 @@ def build_all(filt=None, say=say):
     say(f"gallery data: {n} presets -> {GAL / 'data.js'}")
 
 
-def check_all(filt=None, say=say):
-    """kit.py gallery check [filter]: every demo built, rendered and checked as `gallery build` does, but into a scratch folder: the
-    library's clips, thumbnails and checks are not touched. Lists every preset whose result differs from its stored check. Final audit
-    09/10/2026: an engine change that breaks a preset in the film and the draft alike (text/mask-rise since 06/10) passed an old-vs-new
-    engine pixel compare, but not this. Returns the changed presets."""
+def check_all(filt=None, say=say, sample=0):
+    """kit.py gallery check [filter] [--random N]: every demo built, rendered and checked as `gallery build` does, but into a scratch
+    folder: the library's clips, thumbnails and checks are not touched. Lists every preset whose result differs from its stored check.
+    Final audit 09/10/2026: an engine change that breaks a preset in the film and the draft alike (text/mask-rise since 06/10) passed an
+    old-vs-new engine pixel compare, but not this. sample: N presets picked at random (12/10/2026: the whole library takes about 1.5 h;
+    it runs only when what films look like may change, a sample when unsure). Returns the changed presets."""
     out = LOCAL / "work" / "gallery-check"
     if out.exists(): shutil.rmtree(out, ignore_errors=True)
     old, changed = load_checks(), []
     recs = [(n, m) for n, m in records() if (not filt or any(f in n for f in filt.split(","))) and not (m.get("demo") or {}).get("skip")]
+    if sample and sample < len(recs):
+        import random
+        recs = sorted(random.sample(recs, sample), key=lambda r: r[0])
     say(f"gallery check: {len(recs)} preset(s) into {out} (the library is not touched)")
     for i, (name, meta) in enumerate(recs, 1):
         c = run_one(name, meta, out=out); o = old.get(name) or {}
@@ -453,6 +517,46 @@ def check_all(filt=None, say=say):
     say(f"gallery check: {len(changed)} of {len(recs)} differ from the stored checks" + (": look at each (kit.py gallery build <name> once it is right)" if changed else ""))
     for n, a, b, pr in changed: say(f"  {n}: {a} -> {b} {'; '.join(str(x) for x in pr if x)}")
     return changed
+
+
+def credit_problems(meta, third):
+    """who made a preset, from its preset.json (12/10/2026, the user: every preset names its author): a "source" label and a "license";
+    one made outside the studio also its repo or url, the commit read ("read": the date, for a page with no commits), and that repo in
+    docs/THIRD-PARTY.md (`third`: its text)"""
+    s = meta.get("source") if isinstance(meta.get("source"), dict) else {}
+    lic = str(meta.get("license") or "").strip()
+    if not s.get("label") or not lic: return ["credit: no source label or licence in preset.json"]
+    if lic.lower().startswith(("moworks", "kit")): return []          # the studio's own
+    where, out = s.get("repo") or s.get("url"), []
+    if not where: out.append("credit: no repo or url")
+    if not (s.get("commit") or s.get("read")): out.append("credit: no commit (or read date)")
+    if where and where.split("github.com/")[-1].strip("/") not in third: out.append(f"credit: {where} not in docs/THIRD-PARTY.md")
+    return out
+
+
+def check_static(filt=None, say=say):
+    """kit.py gallery check --static: the part of the check that needs no browser, for GitHub's checks on every pull request (audit
+    12/10/2026): every preset.json reads, no preset.js breaks the BAD rules (a frame must be a function of time: no Math.random, Date,
+    requestAnimationFrame, network), files copied as shipped keep their SHA-256, every preset names who made it (credit_problems). A
+    problem its stored check already names passes. Returns [(name, [problems])]."""
+    bad = []
+    for root in (LIBP, LIBL):
+        for mj in sorted(root.rglob("preset.json")):
+            try: json.loads(mj.read_text(encoding="utf-8"))
+            except ValueError as e: bad.append((mj.parent.relative_to(root).as_posix(), [f"preset.json does not read: {e}"]))
+    if bad:
+        for n, pr in bad: say(f"  {n}: {'; '.join(pr)}")
+        return bad
+    old, recs = load_checks(), [(n, m) for n, m in records() if not m.get("_incoming") and (not filt or any(f in n for f in filt.split(",")))]
+    third = (KIT / "docs" / "THIRD-PARTY.md").read_text(encoding="utf-8")
+    for name, meta in recs:
+        static, src = static_problems(meta)
+        probs = (["uses " + ", ".join(static)] if static else []) + (["not as shipped (SHA-256): " + ", ".join(src)] if src else []) + credit_problems(meta, third)
+        new = [x for x in probs if x not in ((old.get(name) or {}).get("problems") or [])]
+        if new: bad.append((name, new))
+    say(f"gallery check --static: {len(recs)} preset(s), {len(bad)} with a new problem")
+    for n, pr in bad: say(f"  {n}: {'; '.join(pr)}")
+    return bad
 
 
 def open_page(port=None, say=say):
@@ -486,10 +590,12 @@ def serve_page(port=None):
                 body = dec.read_bytes() if dec.exists() else b"{}"
                 self.send_response(200); self.send_header("Content-Type", "application/json"); self.send_header("Content-Length", str(len(body))); self.end_headers()
                 self.wfile.write(body); return
+            if self.path.startswith("/api/owner"):          # the owner's machine: its buttons, and the presets the kit uses (no Bỏ on those)
+                return self._json(200, {"owner": True, "in_use": in_use()} if owner() else {"owner": False})
             return super().do_GET()
 
-        def do_POST(self):                                  # the "Mới nhập" buttons: {"name": "<group>/<name>"} -> Giữ / Bỏ
-            act = {"/api/incoming/keep": keep, "/api/incoming/drop": drop}.get(self.path.split("?")[0])
+        def do_POST(self):                                  # Giữ / Bỏ of "Mới nhập", Bỏ of a library card: {"name": "<group>/<name>"} (the owner only)
+            act = {"/api/incoming/keep": keep, "/api/incoming/drop": drop, "/api/library/drop": drop}.get(self.path.split("?")[0])
             if not act: return self._json(404, {"ok": False, "msg": "unknown"})
             try:
                 name = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}").get("name", "")

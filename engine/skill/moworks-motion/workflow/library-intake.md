@@ -6,6 +6,11 @@ library grows only when the user asks). Everything goes first into **Incoming** 
 yet; the user watches it on the Gallery and presses **KEEP** (into the library, every film can use it) or **DROP** (Recycle Bin). This is
 the one change to the kit a film chat may make (`SKILL.md` rule 9), and only when the user asks.
 
+**The kit owner's machine only.** The library is the owner's cherry-pick: `kit.py library import | keep | drop` work only where
+`%USERPROFILE%\.aimotionkit\maintainer.txt` exists. Elsewhere `kit.py library import` says "only the kit owner changes the library": tell
+the user in one line that the library is curated by the kit's owner and the effect stays in this film (`03_HTML\presets\<group>\<name>\`;
+the folder can be copied into another film's `presets\` to use it there). Never write into `library\` by hand to get around it.
+
 ## The user's guide (send it in Vietnamese when the user asks how, or with the first import; the Gallery's on-screen labels as they are)
 
 **Putting an effect / layout into the library, step by step:**
@@ -31,6 +36,11 @@ the one change to the kit a film chat may make (`SKILL.md` rule 9), and only whe
    closest library preset, in Vietnamese: the user decides KEEP / DROP with it), `params_vi`, `ae` (keyframes | expression | png), `tags`, `notes`,
    `demo` (neutral: the Gallery's pictures `assets/demo/...` (dishes, people, stickers, UI cards, two 1920x1080 screens), Vietnamese text
    with its marks, `bg`, `duration`, `thumb_at` when 82 % is already the outro). A `box` takes `html`, not `text`.
+   **Who made it** (`source`, `license`; GitHub's checks refuse a preset without them): the studio's own work → `"source": {"label":
+   "Moworks Motion"}`, `"license": "Moworks"`. Built from someone else's code, repo, article or post (ask the user when unsure) →
+   `"source": {"label": "<project> (<author>, <licence>)", "repo": "<owner/name>" or "url": "...", "commit": "<sha>" or "read":
+   "<date>"}` and its licence: MIT, Apache-2.0, BSD, ISC, OFL, CC0 only; anything else or unclear: stop and ask. Tell the user the source
+   needs a docs/THIRD-PARTY.md row (the maintenance chat adds it when it takes the preset to GitHub).
 4. `kit.py library import <film> <group>/<name>` (`--layout` for a layout / UI block; `--as <group>/<name>` to rename on the way). It copies
    the folder into `library\incoming\`, builds the demo and runs the machine checks. Not `ok`: read the check, fix the copy in the film,
    `kit.py library drop <name>`, import again.
